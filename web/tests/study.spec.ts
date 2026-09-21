@@ -57,7 +57,7 @@ test('practice checks once, while hidden practice reveals only after submission'
   await page.locator('.choice-button').nth(1).click();await expect(page.locator('.explanation')).toHaveCount(0);await expect(page.getByRole('button',{name:'Kiểm tra đáp án'})).toHaveCount(0);
 });
 test('flashcards remember the deck position and known cards',async({page})=>{
-  await page.goto('/#/flashcards');await expect(page.getByRole('button',{name:'Đã thuộc',exact:true}).last()).toBeDisabled();await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();
+  await page.goto('/#/flashcards');await expect(page.locator('.answer-analysis')).toHaveCount(0);await expect(page.getByRole('button',{name:'Đã thuộc',exact:true}).last()).toBeDisabled();await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();
   await expect(page.locator('.explanation')).toBeVisible();await page.screenshot({path:'test-results/flashcard-desktop.png',fullPage:true});
   await page.getByRole('button',{name:'Đã thuộc',exact:true}).last().click();await expect(page.locator('.flashcard-top>.eyebrow')).toContainText('#003');
   await page.reload();await expect(page.locator('.flashcard-top>.eyebrow')).toContainText('#003');expect((await snapshot(page)).known).toEqual([2]);
@@ -87,6 +87,8 @@ test('multiple choices enforce the required count and survive reload',async({pag
   await page.locator('.choice-button').nth(0).click();await expect(page.getByRole('button',{name:'Kiểm tra đáp án'})).toBeDisabled();
   await page.locator('.choice-button').nth(3).click();await page.locator('.choice-button').nth(1).click();await expect(page.locator('.choice-button[aria-pressed=true]')).toHaveCount(2);
   await page.reload();await expect(page.locator('.choice-button[aria-pressed=true]')).toHaveCount(2);await page.getByRole('button',{name:'Kiểm tra đáp án'}).click();await expect(page.locator('.feedback-banner')).toContainText('Chính xác!');
+  await expect(page.locator('.why-correct [data-option]')).toHaveCount(2);
+  await expect(page.locator('.why-incorrect [data-option]')).toHaveCount(3);
 });
 
 test('storage failures are visible and progress can still be exported',async({page})=>{

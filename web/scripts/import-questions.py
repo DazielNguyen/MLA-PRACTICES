@@ -6,6 +6,7 @@ import json
 import re
 import shutil
 import zipfile
+from answer_analysis import attach
 
 APP = Path(__file__).resolve().parents[1]
 ROOT = APP.parent
@@ -142,7 +143,7 @@ def merge_bundle(old):
 def write_exports(bank):
     md = ['# Bộ câu hỏi tổng hợp MLS và MLA-C01', '',
           f'{len(bank)} câu. Mã câu MLS cũ được giữ nguyên. Câu MLA dùng mã 332 + số câu nguồn.', '',
-          '“Theo nguồn” chưa phải đáp án đã kiểm chứng AWS. “Cần xác minh” không dùng để tính điểm.', '']
+          'Mỗi câu có phân tích tiếng Anh cho từng lựa chọn. “Cần xác minh” không dùng để tính điểm.', '']
     cards = []
     statuses = {'checked': 'Đã đối chiếu', 'historical': 'Dịch vụ cũ', 'source': 'Theo nguồn', 'review': 'Cần xác minh'}
     for q in bank:
@@ -152,14 +153,31 @@ def write_exports(bank):
         for letter, text in q['choices'].items():
             md += [f'{letter}. {text}']
             md += [f"![{im['alt']}](../../web/public{im['url']})" for im in q['images'] if im['slot'] == letter]
-        md += ['', '<details><summary>Đáp án và giải thích</summary>', '',
-               'Chưa chốt đáp án.' if q['status'] == 'review' else 'Đáp án: **' + ', '.join(q['answer']) + '**', '', q['explanation'], '']
-        md += [f"- [{s['title']}]({s['url']})" for s in q['sources']]
+        analysis = q['analysis']
+        answer_label = 'Source answer' if q['status'] == 'source' else 'Correct answer'
+        md += ['', '<details><summary>Answer and explanation</summary>', '',
+               'Answer not finalized. This question is not scored.' if q['status'] == 'review' else answer_label + ': ' + ' | '.join(f"**{a}. {q['choices'][a]}**" for a in q['answer']), '',
+               '### Explanation and distractor analysis', '', '#### Key Concept', '', analysis['keyConcept'], '']
+        groups = [('Option-by-option analysis', list(q['choices']))] if q['status'] == 'review' else [
+            ('Why the source selects this answer' if q['status'] == 'source' else 'Why this is correct', q['answer']),
+            ('Why other options are incorrect', [a for a in q['choices'] if a not in q['answer']])]
+        for heading, letters in groups:
+            md += [f'#### {heading}', '']
+            md += [f"- **{a}. {q['choices'][a]}** — {analysis['options'][a]}" for a in letters]
+            md += ['']
+        if q['notes']:
+            md += ['#### Notes', '', *[f'- {note}' for note in q['notes']], '']
+        md += ['#### References', '', *[f"- [{s['title']}]({s['url']})" for s in q['sources']]]
         md += ['', '</details>', '']
         front = f"[{label}] {q['text']} " + ' '.join(f'{a}. {t}' for a, t in q['choices'].items())
-        back = f"[{statuses[q['status']]}] " + ('Chưa chốt đáp án. ' if q['status'] == 'review' else ' | '.join(f"{a}. {q['choices'][a]}" for a in q['answer']) + '. ') + q['explanation']
+        answer_text = ' | '.join(f"{a}. {q['choices'][a]}" for a in q['answer']).rstrip('. ')
+        back = f"[{statuses[q['status']]}] " + ('Answer not finalized. ' if q['status'] == 'review' else answer_label + ': ' + answer_text + '. ')
+        back += 'Key Concept: ' + analysis['keyConcept'] + ' '
+        for heading, letters in groups:
+            back += heading + ': ' + ' | '.join(f"{a}. {q['choices'][a]} — {analysis['options'][a]}" for a in letters) + ' '
+        if q['notes']: back += 'Notes: ' + ' | '.join(q['notes']) + ' '
         if q['images']: front += ' [Có hình: xem bản Markdown tổng hợp.]'
-        cards.append(re.sub(r'\s+', ' ', front) + '\t' + re.sub(r'\s+', ' ', back))
+        cards.append(re.sub(r'\s+', ' ', front).strip() + '\t' + re.sub(r'\s+', ' ', back).strip())
     (OUTPUT / 'ML_COMBINED.md').write_text('\n'.join(md).rstrip() + '\n')
     (OUTPUT / 'QUIZLET_COMBINED.md').write_text('\n'.join(cards) + '\n')
 
@@ -169,6 +187,8 @@ def main():
     old = legacy_bank()
     new, audit = merge_bundle(old)
     bank = old + new
+    original_keys = {q['id']: {'answer': list(q['answer']), 'status': q['status']} for q in bank}
+    attach(bank)
     assert len({q['id'] for q in bank}) == len(bank)
     assert all(len(q['answer']) == q['required'] for q in bank if q['status'] != 'review')
     catalog = {'total': len(bank), 'maxId': max(q['id'] for q in bank),
@@ -177,6 +197,17 @@ def main():
     (APP / 'src/data/questions.json').write_text(json.dumps(bank, ensure_ascii=False, separators=(',', ':')) + '\n')
     (APP / 'src/data/catalog.json').write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + '\n')
     (OUTPUT / 'MERGE_AUDIT.json').write_text(json.dumps(audit, ensure_ascii=False, indent=2) + '\n')
+    analysis_audit = {
+        'total': len(bank), 'complete': sum(bool(q.get('analysis')) for q in bank),
+        'optionAnalyses': sum(len(q['analysis']['options']) for q in bank),
+        'statuses': catalog['statuses'],
+        'changes': [dict(id=q['id'], collection=q['collection'], sourceIds=q['sourceIds'],
+                         before=original_keys[q['id']], after={'answer': q['answer'], 'status': q['status']},
+                         notes=q['notes'], sources=q['sources'])
+                    for q in bank if original_keys[q['id']] != {'answer': q['answer'], 'status': q['status']}],
+        'unresolvedIds': [q['id'] for q in bank if q['status'] == 'review'],
+    }
+    (OUTPUT / 'ANSWER_ANALYSIS_AUDIT.json').write_text(json.dumps(analysis_audit, ensure_ascii=False, indent=2) + '\n')
     write_exports(bank)
     print(json.dumps({k:v for k,v in catalog.items() if k!='sourceMap'}, ensure_ascii=False))
     print(f"Removed {audit['removedDuplicates']} duplicated MLA entries; exported {len(bank)} questions.")

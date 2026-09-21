@@ -1,0 +1,149 @@
+{
+  "181": [
+    "Autopilot automates data preparation, candidate model training, and tuning for tabular prediction tasks, including regression.",
+    "Logistic regression predicts class probabilities, not continuous house prices. An ECS cluster and custom feature pipeline also add operational work.",
+    "Manual feature engineering and model comparison can improve accuracy, but require more experimentation and implementation than an AutoML job.",
+    "XGBoost can predict prices, but this workflow leaves data preparation and tuning to the team and adds custom Lambda model hosting.",
+    "Autopilot can use the target price column, prepare the tabular features, and compare candidate regressors. Deploying the best candidate provides the shortest managed workflow among these options."
+  ],
+  "182": [
+    "Basic text exploration benefits from normalizing word variants and measuring which terms characterize each document.",
+    "Named entity recognition extracts entities such as people and organizations. It does not provide the general term normalization and weighting needed for this initial word analysis.",
+    "Coreference resolution links mentions such as pronouns to the same entity. That adds linguistic processing without directly producing the requested term-level summary.",
+    "Stemming groups related word forms under a shared stem, reducing duplicated variants in term counts and visualizations.",
+    "TF-IDF assigns greater weight to terms that distinguish a document from the collection, providing useful features and weights for exploratory charts.",
+    "Sentiment analysis predicts an opinion's polarity. It is a downstream NLP task rather than the requested preparation for an initial term-based exploration."
+  ],
+  "183": [
+    "A calibrated quantile forecast has approximately q of the observed outcomes at or below its predicted q-quantile.",
+    "Coverage should increase with the quantile level. Equal coverage at the median and the 90th percentile would indicate a calibration problem.",
+    "Coverage is a cumulative proportion, not a density. It should not peak at the median and then decline toward the upper tail.",
+    "The observed values are close to their nominal levels, but good calibration does not require every empirical coverage estimate to fall below its quantile.",
+    "The coverages 0.489 and 0.889 are close to 0.5 and 0.9. They support approximate calibration at these two quantiles, though they do not prove calibration everywhere."
+  ],
+  "184": [
+    "AWS IoT Core accepts authenticated MQTT device messages and can route them through an IoT rule to Amazon Data Firehose for S3 delivery.",
+    "An EC2 HTTP ingestion tier requires custom device handling, scaling, and S3 delivery logic. It has more operational overhead than managed IoT ingestion.",
+    "This reverses the delivery relationship: Firehose is not used to send records into a Kinesis data stream. A direct IoT rule to Firehose is sufficient.",
+    "IoT Core supplies MQTT connectivity and device security, while the Firehose rule action delivers buffered records to S3. Devices still need suitable retry or local buffering for outages.",
+    "Kinesis Data Streams does not expose an MQTT broker endpoint. Devices need IoT Core or an adapter before their MQTT messages can enter the ingestion pipeline."
+  ],
+  "185": [
+    "Multi-label classification allows several nonexclusive category labels on the same document; multi-class classification selects one mutually exclusive class.",
+    "Multi-class mode would choose a single class, so it cannot represent yogurt, snack, and dairy product together for the same text.",
+    "Multi-label custom classification learns the company's overlapping categories and can assign all applicable labels to a comment.",
+    "Custom entity recognition locates named spans such as product mentions. It does not replace document classification into several business categories.",
+    "Built-in models provide predefined capabilities and labels. They do not learn the company's custom overlapping product taxonomy without custom classification."
+  ],
+  "186": [
+    "The historical Glue development-endpoint workflow connected a SageMaker notebook to an interactive Glue environment and used IAM roles for authorized service access.",
+    "A SageMaker development endpoint is not the Glue development resource used by this workflow. SageMaker hosting endpoints serve models instead.",
+    "A Glue development endpoint in the team's VPC supplies the interactive Glue environment described by the historical setup.",
+    "Creating the notebook through the Glue development-endpoint integration connects it to that Glue environment for ETL development.",
+    "A standalone notebook created in the SageMaker console does not by itself configure the specific Glue development-endpoint integration requested here.",
+    "A notebook cannot use a free-standing decryption policy as its execution identity. Any required KMS permissions belong in an appropriate IAM policy attached to its role.",
+    "The notebook needs an IAM role with policies permitting the relevant Glue, SageMaker, S3, and any required KMS operations. Modern implementations should review Glue interactive sessions instead of assuming this legacy setup is current."
+  ],
+  "187": [
+    "A scheduled Glue ETL job provides managed extraction and transformations without maintaining a separate compute cluster.",
+    "Spark on EMR can perform the transformations, but creating and operating an EMR cluster adds infrastructure work for a monthly extraction.",
+    "An EC2 SQL client introduces a host to maintain and a manual export-and-upload workflow. It does not provide the requested managed automation.",
+    "Glue can extract the Redshift data, filter null card numbers, map the timestamp to date and time, and rename the cardholder field. Processing transformations outside Redshift avoids additional transformation workload there.",
+    "Redshift Spectrum primarily queries external data. Redshift UNLOAD, not a Spectrum query as described, is the normal mechanism for exporting Redshift query results to S3."
+  ],
+  "188": [
+    "SageMaker starts a custom training container using its configured entry point and the training invocation contract.",
+    "A serving command launches an inference server, not the training program. It would not implement the training invocation expected by SageMaker.",
+    "Setting ENTRYPOINT to the training executable makes the container start the intended program when SageMaker launches the training job; the program must also handle SageMaker's invocation arguments.",
+    "Training channels are supplied at job runtime. Adding a data path to docker build neither selects the container entry point nor configures those runtime channels.",
+    "COPY places a file in the image but does not make it executable at container startup. The container still needs an entry point that launches training."
+  ],
+  "189": [
+    "Unlabeled fraud signals require unsupervised anomaly detection; anomalous behavior is a review signal rather than proof of fraud.",
+    "IP Insights learns normal associations between identifiers and IP addresses and flags unusual pairs. The input must include an appropriate entity identifier in addition to the IP address.",
+    "The SageMaker built-in k-NN classifier or regressor requires target labels for its supervised prediction task, which this dataset lacks.",
+    "A logistic linear learner requires labeled normal and fraudulent examples. It cannot directly train that classifier from the unlabeled transactions described.",
+    "RCF assigns anomaly scores to multivariate numeric behavior, such as session duration and click counts, without requiring fraud labels.",
+    "The proposed XGBoost classifier needs supervised target labels. It does not directly solve the stated unlabeled anomaly-detection task."
+  ],
+  "190": [
+    "A VPC-attached notebook with direct internet access disabled can reach S3 privately through an S3 VPC endpoint.",
+    "Attaching the notebook to the VPC and disabling its direct internet path makes its network access follow the configured VPC routes and endpoints.",
+    "S3 is not a customer VPN endpoint. A VPN tunnel between a notebook service and an S3 bucket is not the supported private-access mechanism.",
+    "An S3 VPC endpoint provides the private route needed to access training data without sending that traffic through an internet gateway.",
+    "A bucket policy can restrict access using endpoint-related conditions, but it does not create a private network route. The endpoint and notebook networking must be configured first.",
+    "An S3 bucket cannot be attached directly to Transit Gateway as described. Transit Gateway does not replace the S3 VPC endpoint."
+  ],
+  "191": [
+    "Forecasts can improve when they include known sales-event covariates and use an explicit, validated strategy for missing observations.",
+    "Sales-period indicators identify promotions or seasonal events that ordinary date patterns may not capture, helping the model account for systematic event-related errors.",
+    "Nearby stores may have different demand patterns. Aggregating their sales changes the target population and does not directly address missing days or this store's event effects.",
+    "Smoothing away seasonal variation can remove the very demand signal the forecast must learn. It does not explain event-specific increases or decreases.",
+    "Weekly aggregation loses the daily detail required by the existing task and can conceal event effects rather than model them.",
+    "Linear interpolation supplies a plausible baseline for short gaps in the training series. It must be checked against event-driven demand, since interpolated values are estimates rather than observed sales."
+  ],
+  "192": [
+    "Subscription prediction from labeled customer attributes is supervised classification on tabular data.",
+    "RCF detects unusual observations without subscription labels. Anomaly scores do not directly estimate whether a customer will subscribe.",
+    "XGBoost supports supervised classification and captures nonlinear interactions among customer attributes. Categorical inputs must use a representation supported by the selected implementation.",
+    "NTM discovers topics in document collections. The task uses structured customer features and a known subscription target, not unlabeled text topics.",
+    "DeepAR forecasts related time series. The described table contains customer records for classification rather than sequential demand observations."
+  ],
+  "193": [
+    "AWS KMS integrates managed key protection, service-side encryption, and CloudTrail logging of key API use.",
+    "STS issues temporary credentials for authorization. Those credentials are not encryption keys for EBS volumes or S3 objects.",
+    "Customer managed KMS keys provide policy-controlled encryption for supported SageMaker storage and S3 data, with AWS-managed key infrastructure and auditable key operations.",
+    "CloudHSM requires managing an HSM cluster and its integration. It adds operational responsibility compared with native SageMaker and S3 integration with KMS.",
+    "Instance-local transient encryption and EBS defaults do not establish a single auditable KMS-based encryption policy for both the relevant SageMaker storage and S3 artifacts."
+  ],
+  "194": [
+    "Athena queries data in S3 using catalog metadata without requiring a dedicated analytics cluster.",
+    "Hive on EMR can query the files, but a provisioned cluster adds administration and running costs for exploratory SQL.",
+    "A Glue crawler registers the CSV schema, and Athena runs SQL directly against S3. Partitioning and columnar conversion can further reduce the amount scanned.",
+    "Loading all data into a new Redshift cluster adds storage, ingestion, and cluster management that are unnecessary for this S3 exploration task.",
+    "Redshift external tables avoid copying the data, but this option still provisions a Redshift cluster. Athena meets the ad hoc requirement with less infrastructure."
+  ],
+  "195": [
+    "Pipe mode streams training input instead of downloading the entire dataset onto the training instance before training begins.",
+    "Adding another GPU instance raises cost and does not inherently fix local disk exhaustion, especially if each instance still receives the full input.",
+    "Streaming supported Object Detection input through Pipe mode avoids storing the growing dataset in full on the instance and reduces the initial download delay.",
+    "A more powerful GPU addresses computation, not the demonstrated shortage of input storage. It also increases instance cost without fixing the input strategy.",
+    "Moving the dataset to EFS introduces another storage system and configuration work. Pipe mode can solve the local-storage problem directly with the existing S3 data."
+  ],
+  "196": [
+    "When raw data is much larger than derived results, running GPU inference near the data can avoid a slow bulk transfer. This question describes historical Snow hardware.",
+    "The GPU-equipped Snowball Edge configuration could transcribe the local audio first, allowing only the much smaller text results to cross the 100 Mbps connection.",
+    "Snowcone did not provide the proposed EC2 Inf1 configuration, and Inferentia is not a drop-in GPU for an algorithm that requires GPU execution.",
+    "Outposts introduces substantial installation and infrastructure lead time. Ordering a rack deployment is not the quickest approach to this one-time transcription bottleneck.",
+    "Uploading petabytes over the constrained link is the bottleneck, and Lambda does not provide the GPU runtime required by the transcription algorithm."
+  ],
+  "197": [
+    "Managed Apache Flink applications support stateful stream transformations and time-window aggregations over Kinesis events.",
+    "DynamoDB Streams invokes processing for changes, but reconstructing and maintaining each ten-minute window requires additional custom state and query logic.",
+    "Firehose delivery to S3 and Glue batch processing introduce buffering and batch orchestration. They are less direct for continuously maintained ten-minute windows.",
+    "Kinesis ingestion plus a managed Flink application provides built-in windowing and state management for the transformations before anomaly inference. The service is now named Amazon Managed Service for Apache Flink.",
+    "MSK with Lambda can process events, but managing the required rolling window and state adds application logic; the proposed solution does not supply Flink's native window semantics."
+  ],
+  "198": [
+    "Production variants place multiple model versions behind one endpoint; TargetVariant selects a particular variant for an invocation.",
+    "Starting three batch jobs for every document incurs repeated provisioning and orchestration overhead, which is unsuitable for arrivals every three seconds.",
+    "One endpoint can hold all three variants, and the Lambda function can invoke each with TargetVariant. Default weighted routing alone would not return all three predictions.",
+    "Three separate endpoints can produce the results, but require more endpoint configurations and management than variants on one endpoint.",
+    "Separate endpoints, functions, and notifications multiply the resources and failure paths. They provide no required benefit over one function invoking three variants."
+  ],
+  "199": [
+    "Reducing redundant high-dimensional features can improve generalization and neighbor search, but the effect on F1 must be confirmed on held-out labeled data.",
+    "PCA can compress correlated diagnostic measurements before linear classification, reducing redundancy and noise. The retained components and resulting F1 need validation.",
+    "MDS generally relies on pairwise distances and is poorly suited to millions of records compared with the proposed scalable dimension-reduction approaches.",
+    "Changing to a regressor changes the prediction task to a continuous target. It does not address the binary moisture-damage classification problem.",
+    "K-means forms unlabeled clusters. Choosing fewer than 1,000 clusters does not train the required supervised classifier or directly optimize its F1 score.",
+    "SageMaker k-NN supports dimensionality reduction, which can make neighbor comparisons more effective in a large feature space. Its nonlinear decision rule is also worth testing against the linear baseline."
+  ],
+  "200": [
+    "High ModelLatency indicates that model execution, rather than network transit, dominates response time. Elastic Inference was a historical GPU-acceleration option.",
+    "A burstable CPU instance with the same vCPU count does not provide the missing neural-network acceleration and may introduce CPU-credit limits under load.",
+    "Historically, an Elastic Inference accelerator could offload supported image-model operations from the CPU, reducing model execution latency. It is no longer a current deployment choice.",
+    "Autopilot builds and compares models for supported AutoML tasks. It is not a switch that tunes the runtime of this existing image-classification endpoint.",
+    "More memory only addresses a memory bottleneck. The scenario gives no evidence of memory pressure, while the supported historical accelerator targets neural-network computation."
+  ]
+}

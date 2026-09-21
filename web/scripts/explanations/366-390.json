@@ -1,0 +1,179 @@
+{
+  "366": [
+    "Training sustainability improves by avoiding wasted computation and selecting efficient hardware for supported workloads.",
+    "Debugger can detect nonconverging runs and trigger a stop action, preventing further compute and energy use on training that is not making useful progress.",
+    "Ground Truth supports labeling. It does not directly reduce the compute or energy consumed by the training jobs described.",
+    "Hosting inference in Lambda changes deployment, not the energy or resources used by the model's training jobs.",
+    "Trainium is purpose-built training hardware that can improve training efficiency for compatible models. Measure performance and energy-related efficiency for the actual workload rather than assuming every model benefits equally.",
+    "Distributed training can reduce elapsed time but uses more devices. It does not inherently reduce total computation or energy consumption."
+  ],
+  "367": [
+    "SageMaker Pipelines orchestrates dependent processing jobs, allowing each stage to use appropriate managed compute and run longer than a short function invocation.",
+    "Data Wrangler can automate many transformations, but a sequence of complex custom and NLP processing stages is more flexibly expressed as managed Processing steps in a pipeline.",
+    "Notebooks are interactive development tools and need extra execution, dependency, and failure-management logic for a reliable multi-hour production workflow.",
+    "A Lambda function cannot run for hours. Splitting orchestration into Step Functions does not remove the need for a suitable long-running processing service.",
+    "Pipelines can coordinate separate processing steps over the large S3 dataset, while EventBridge starts the workflow on a schedule or event without manual notebook execution."
+  ],
+  "368": [
+    "CloudFormation separates the model definition from the endpoint configuration and the endpoint that hosts it.",
+    "AWS::SageMaker::Model declares the model's serving container, artifact location, and execution role, which are then referenced by endpoint configuration resources.",
+    "AWS::SageMaker::Endpoint creates the hosting endpoint from an endpoint configuration. It does not replace the model definition resource.",
+    "AWS::SageMaker::NotebookInstance creates an interactive development environment, not a registered serving model.",
+    "AWS::SageMaker::Pipeline defines an ML workflow. It is not the resource type for the trained model that an endpoint will host."
+  ],
+  "369": [
+    "Lake Formation tag-based permissions can map campaign categories to data resources. Direct S3 access must also follow the governed credential path or equivalent restrictive S3 permissions.",
+    "Catalog IAM policies alone do not consistently enforce campaign-specific access to the underlying S3 objects, especially when users browse them directly.",
+    "A DynamoDB-driven bucket-policy updater requires custom state synchronization and policy code instead of using the existing data-lake governance service.",
+    "Campaign LF-tags and grants can centralize access to the registered data. For direct file browsing, configure supported Lake Formation credential vending or matching S3 restrictions; ordinary broad IAM S3 access would bypass the intended controls.",
+    "Bucket policies can restrict object prefixes but do not alone configure the Lake Formation and catalog permissions needed for the complete Athena and lake-governance workflow."
+  ],
+  "370": [
+    "Parquet is a typed columnar format with compression and support for nested structures, making it efficient for supported analytical ingestion paths.",
+    "CSV lacks native nested structure and type metadata. Compression does not remove the parsing and schema limitations of that text representation.",
+    "JSON Lines represents nested records, but repeated field names and text parsing usually make it less efficient than a suitable columnar representation for large tabular processing.",
+    "Gzip reduces JSON storage size, but parsing remains necessary and whole-file compression can limit parallel reads. File-format support also must match Canvas's import path.",
+    "Parquet preserves schema and stores columns efficiently, reducing parsing and unnecessary data reads in supported Canvas imports. Complex fields may still need flattening for the chosen model."
+  ],
+  "371": [
+    "Recall measures how many actual positives are detected; higher recall means fewer false negatives at the selected decision threshold.",
+    "Low precision means more positive predictions are incorrect. It is not a useful objective in itself and does not guarantee that actual positives are found.",
+    "High precision makes positive predictions reliable but can coexist with many missed positives if the decision threshold is too strict.",
+    "Low recall means many actual positive cases are missed, directly worsening the more expensive error type.",
+    "High recall minimizes the fraction of actual positives missed, matching the stated priority when false negatives cost much more than false positives."
+  ],
+  "372": [
+    "CloudTrail data events audit individual endpoint invocations, while CloudWatch metrics and alarms monitor counts and notify on a threshold breach.",
+    "Debugger analyzes training tensors and execution behavior. It does not provide an audit record of every hosted endpoint API invocation.",
+    "The tensor-variance rule detects a training-tensor issue, not an invocation-count threshold or endpoint API audit event.",
+    "Enable CloudTrail data events for the endpoint to record supported invocation calls, then use an invocation metric or log-derived count in a CloudWatch alarm with a notification action. Data-event logging must be explicitly configured.",
+    "The Invocations metric and alarm provide aggregate monitoring, but do not satisfy the separate requirement to record every API call event."
+  ],
+  "373": [
+    "A Pipelines callback step pauses workflow progress until an external process reports success or failure using its callback token.",
+    "Step Functions can coordinate the services but introduces another orchestration layer when the model workflow already uses SageMaker Pipelines.",
+    "A Processing step does not execute a Glue job merely because its input contains the Glue job ARN. It launches a SageMaker Processing workload.",
+    "The callback can send an SQS message to a worker that starts the Glue workflow. The worker reports completion with the callback token, allowing Pipelines to continue only after the Glue output is ready.",
+    "Independent EventBridge triggers do not by themselves enforce successful completion of all Glue jobs before the dependent pipeline stages proceed."
+  ],
+  "374": [
+    "Redshift dynamic data masking changes the values visible to a querying user or role without rewriting the underlying stored data.",
+    "A masking policy applied to the data scientist's access can hide or transform sensitive fields at query time, preserving the original data and avoiding a separate anonymized copy.",
+    "A materialized view stores query results and requires refresh management, conflicting with the requirement to avoid storing anonymized data in the database.",
+    "Exporting to S3 and building Athena views adds a copied dataset and a separate query-access workflow that native masking avoids.",
+    "A Glue anonymization job creates and maintains a transformed copy. It adds processing and storage rather than applying a policy to existing queries."
+  ],
+  "375": [
+    "Debugger combines captured tensors and profiling data with rules that identify training problems and trigger configured actions.",
+    "TensorBoard helps inspect training, but the proposed notification and response path requires custom publishing, analysis, and Lambda logic.",
+    "Default CloudWatch resource metrics can show utilization but do not provide the gradient and generalization diagnostics needed for all three issues.",
+    "Publishing every gradient through custom metrics and writing reaction code duplicates capabilities available through Debugger's supported instrumentation and rules.",
+    "Built-in rules can detect issues such as vanishing gradients, low GPU utilization, and overfitting, then trigger configured actions with less custom monitoring code."
+  ],
+  "376": [
+    "Shadow testing sends copied live requests to a candidate model while keeping its responses out of the user-facing production response path.",
+    "Debugger diagnoses training behavior. It does not mirror production inference requests to a candidate endpoint variant.",
+    "All-at-once traffic shifting immediately exposes production users to the new model, violating the no-user-impact evaluation requirement.",
+    "Canary shifting exposes a small production fraction to the candidate. Those users still receive the new model's predictions.",
+    "A shadow variant receives copies of live requests for measurement, while the production variant's output remains the only response returned to the banking application."
+  ],
+  "377": [
+    "Date partitioning lets Athena prune older data when a query specifies recent dates; lifecycle rules manage the storage class of aging objects.",
+    "Without partitioning, recent-date queries may scan much more data. Manual movement also increases operational effort and risks inconsistent retention.",
+    "Copying data among buckets adds processing without inherently supplying partition pruning for the three-day analytical window.",
+    "Cataloged date-prefix partitions let Athena read only the relevant days when queries filter on the partition keys. Lifecycle rules can transition the underlying objects after 30 days.",
+    "A separate bucket for every day complicates cataloging and access without improving on ordinary partition pruning. Lifecycle transitions apply to objects, not to a bucket as a stored object."
+  ],
+  "378": [
+    "Real-time inference provides synchronous low-latency responses, while model-quality monitoring compares predictions with later ground truth and emits alarmable metrics.",
+    "A real-time endpoint avoids the asynchronous request queue and result-retrieval workflow. Model Monitor with captured predictions, labels, and CloudWatch alarms can report quality deviations.",
+    "Batch Transform is designed for offline datasets and would not provide an immediate fraud decision for each live transaction.",
+    "Serverless can have cold-start latency, and Inference Recommender benchmarks serving configurations rather than monitoring ongoing predictive quality.",
+    "Keeping the asynchronous serving pattern does not directly address the reported response delay, and Inference Recommender is not a quality-drift notification service."
+  ],
+  "379": [
+    "Metric-based endpoint autoscaling adjusts serving capacity with demand, reducing overprovisioning while retaining configured capacity for responsiveness.",
+    "A fixed concurrency limit does not by itself define a model-serving environment or guarantee peak capacity. Lambda also has model-size and runtime constraints that must be designed around.",
+    "A static peak-sized Fargate service keeps paying for peak capacity during quiet periods and does not meet the dynamic cost requirement.",
+    "SageMaker already routes requests among endpoint instances. Adding an ALB in front of supposed individual copies is unnecessary and is not the native scaling mechanism.",
+    "Endpoint autoscaling can increase or decrease instances based on suitable CloudWatch metrics. A conventional real-time endpoint still has a minimum capacity floor, so this option reduces idle cost rather than guaranteeing zero idle cost."
+  ],
+  "380": [
+    "Cost-allocation tags identify the intended SageMaker resources, and AWS Budgets sends notifications when actual or forecasted spend crosses a configured threshold.",
+    "User-profile resource tags can help allocate costs, but Cost Explorer primarily analyzes spend; the threshold notification belongs in AWS Budgets.",
+    "Propagate the relevant SageMaker resource tags, activate them for cost allocation, and create a tag-filtered budget with notifications. Billing alerts are not an instantaneous compute shutdown mechanism.",
+    "Tagging an IAM identity does not automatically tag the SageMaker compute it uses, and Cost Explorer alone is not the specified budget-alert service.",
+    "Budgets is appropriate, but IAM profile tags alone do not establish the resource cost-allocation tags needed to isolate this Studio usage."
+  ],
+  "381": [
+    "A visual column-management transform is sufficient for removing known unnecessary fields from a small supported tabular file.",
+    "One-hot encoding expands categorical values into indicators; it does not perform the requested removal of correlated columns.",
+    "An EMR Spark job requires cluster and script configuration for a simple 50 MB column-selection operation.",
+    "A custom Processing job can drop columns, but requires code and job setup that the built-in visual transform avoids.",
+    "Data Wrangler can import Parquet and apply a drop-column transform in a flow, meeting the task without a custom processing script."
+  ],
+  "382": [
+    "Amazon Q Business global blocked-phrase controls restrict specified terms in chat responses at the application level.",
+    "Adding the competitor name to blocked phrases applies a response-level control and can provide a configured replacement message when the blocked phrase is encountered.",
+    "Retriever filtering affects retrieved content, but does not reliably prevent a term from appearing through another source or the model's generated response.",
+    "Removing a name from one Kendra index does not establish a global response restriction across the application's other content and generation paths.",
+    "Attribute boosting changes ranking preference, not a prohibition. A deprioritized document or term can still appear in a response."
+  ],
+  "383": [
+    "Autopilot supports instruction-based fine-tuning for selected JumpStart text-generation models, with a managed workflow and Canvas as a visual entry point.",
+    "Operating an LLM directly on EC2 through Studio still requires custom training and instance-management work; using Studio alone does not make that workflow low-code.",
+    "Autopilot does not fine-tune an arbitrary remote model just by receiving a custom inference API endpoint. It needs a supported base model and training data.",
+    "An arbitrary EC2-hosted LLM is not the supported Autopilot fine-tuning integration described by the service.",
+    "Using a supported JumpStart base model with Autopilot delegates the fine-tuning workflow to managed services. Prepare instruction-response examples and check the supported model and Region; a preexisting endpoint is not itself the training input."
+  ],
+  "384": [
+    "On-demand Serverless Inference suits infrequent short requests within its payload and execution limits, with no provisioned instance to keep running between invocations.",
+    "SageMaker Serverless Inference does not support the proposed multi-model endpoint arrangement. A single nightly model also does not require that architecture.",
+    "An asynchronous endpoint can later scale to zero, but its provisioned variant is not created with InitialInstanceCount equal to zero as described.",
+    "A conventional real-time endpoint does not scale its ordinary instance-based variant to zero through this simple configuration. Specialized scale-to-zero features require a different setup.",
+    "The 3 MB input and sub-minute processing fit serverless invocation limits, and one concurrent request is enough for a single nightly run. Cold-start time is acceptable unless a stricter latency requirement is added."
+  ],
+  "385": [
+    "Training augmentation can simulate camera degradation so a vision model learns to tolerate quality variation absent from its original dataset.",
+    "Collecting and labeling representative production-camera images is valuable, but usually takes longer than applying a relevant augmentation to the existing dataset.",
+    "Impulse-noise corruption quickly adds degraded training examples and can improve robustness to similar camera noise. Validate that this corruption reflects the real problem; it does not solve every kind of image-quality variation.",
+    "Gamma contrast targets brightness and contrast variation, not general sensor noise. It would be appropriate only if that specific mismatch explains the failures.",
+    "Cropping to a uniform size standardizes geometry but does not simulate the quality degradation causing the training-to-production mismatch."
+  ],
+  "386": [
+    "Secrets Manager coordinates secret versions and scheduled rotation through a rotation function that updates both the stored value and the external credential issuer.",
+    "Store the API tokens as secrets and configure a scheduled Lambda rotation workflow that creates, tests, and promotes replacement tokens using each provider's supported API.",
+    "Parameter Store can hold encrypted values, but a Lambda-based rotation system requires custom scheduling and lifecycle handling rather than the dedicated Secrets Manager rotation workflow.",
+    "KMS manages encryption keys, not arbitrary third-party API-token rotation. Rotating a KMS key does not change the external API credential.",
+    "An AWS owned KMS key is not a store for user-managed API tokens, and its rotation cannot issue a replacement token at an external provider."
+  ],
+  "387": [
+    "Data Wrangler combines datasets and applies reusable cleaning operations for missing values, duplicates, and outliers in one preparation flow.",
+    "Import, join or concatenate the datasets, then apply the appropriate missing-value, deduplication, and outlier transforms in a repeatable flow.",
+    "Ground Truth manages human or automated labeling tasks. It is not the general dataframe-join and data-cleansing tool required here.",
+    "Generated code can help implement cleaning, but manual ingestion and integration still require code review and execution management that the integrated visual workflow avoids.",
+    "Labeling supplies target annotations. It does not replace the missing-value handling, duplicate removal, and outlier preparation needed for the combined table."
+  ],
+  "388": [
+    "Predicting whether long-term support is needed from labeled historical records is supervised binary classification.",
+    "Anomaly detection finds unusual customers but does not directly learn the supplied support-needed versus not-needed outcome.",
+    "Ordinary linear regression produces unconstrained numeric predictions rather than a directly modeled binary-outcome probability.",
+    "Logistic regression learns a probability for the binary support outcome from customer features, matching the available labels and desired prediction.",
+    "Semantic segmentation labels image pixels and is unrelated to a tabular customer-support classification task."
+  ],
+  "389": [
+    "Sharing an externally built model into Canvas requires an accessible registered model package and permissions to its artifacts. Import for prediction does not automatically enable retraining an arbitrary external model.",
+    "The collaboration workflow requires compatible users within the same SageMaker domain, not separate domains as proposed.",
+    "The Canvas execution identity must be able to read the S3 model artifacts and use any required encryption key; otherwise the shared package cannot be loaded.",
+    "Registering the externally built model in Model Registry provides the model package that can be shared with Canvas. The phrase additional tuning overstates what import alone provides; training changes may need to remain with the data scientist.",
+    "Publishing to AWS Marketplace is not required for private collaboration within the same domain.",
+    "A preexisting SageMaker endpoint is not a prerequisite for sharing a registered model package and its artifacts into Canvas."
+  ],
+  "390": [
+    "Hyperband reduces search computation by stopping poorly performing configurations early and allocating more training resources to promising candidates.",
+    "Hyperband uses intermediate validation performance to avoid fully training every candidate, which is a strong fit for expensive deep-learning trials with comparable learning progress.",
+    "Grid search can require evaluating many combinations to completion and grows rapidly as the number of tunable parameters increases.",
+    "Bayesian optimization can be sample-efficient, but does not by itself provide Hyperband's successive resource-allocation strategy for large parallel deep-learning searches.",
+    "Random search explores configurations without modeling previous outcomes and does not inherently stop weak trials or promote stronger ones."
+  ]
+}

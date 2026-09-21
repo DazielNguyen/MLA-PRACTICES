@@ -1,0 +1,151 @@
+{
+  "281": [
+    "Comprehend asynchronous analysis jobs process large document collections stored in S3 without requiring a client to coordinate one synchronous request per document.",
+    "One synchronous call per post creates a million API requests and substantial client orchestration and quota-management overhead.",
+    "Batches of 25 reduce request count but still require coordinating many small synchronous requests for the million-post dataset.",
+    "An asynchronous sentiment-detection job processes the S3 collection through the service's bulk workflow. Lambda only needs to submit the job, not remain running until it completes.",
+    "BatchDetectSentiment cannot accept the entire million-document dataset in one request; its document-count and document-size limits still apply inside Lambda."
+  ],
+  "282": [
+    "A daily forecasting series needs an explicit strategy for missing days; otherwise missing observations can distort the learned time structure.",
+    "Combining nearby stores changes the target series and may mix different demand patterns without resolving gaps in this store's history.",
+    "Smoothing can suppress meaningful seasonal variation instead of teaching the model to predict it. It does not directly repair the missing daily observations.",
+    "Weekly aggregation changes the forecast granularity and sacrifices the daily predictions requested by the task.",
+    "Interpolation provides estimated values for missing training days and restores a regular daily series. It is a baseline to validate, especially around holidays, and must not use future validation data during training preparation."
+  ],
+  "283": [
+    "Inference Recommender advanced jobs benchmark endpoint configurations against custom traffic patterns and latency or throughput requirements.",
+    "A default recommendation job supplies an initial benchmark, but does not provide the custom traffic-pattern load test specified here.",
+    "An advanced job accepts the known workload pattern and candidate configurations, reducing custom load-test development while comparing latency, throughput, and resource choices.",
+    "A manually deployed GPU endpoint plus a custom API and load-testing stack adds components and code that Inference Recommender can manage.",
+    "A CPU endpoint might be suitable after benchmarking, but assuming it in advance and building a custom test stack does not minimize development effort."
+  ],
+  "284": [
+    "Interruption-tolerant training can use discounted Spot capacity and resume from saved checkpoints instead of repeating all completed work.",
+    "On-Demand capacity avoids Spot interruption risk but does not provide the same cost savings for a workload that can wait and resume.",
+    "Checkpoints preserve model and optimizer state so training can recover after interruption, reducing repeated computation.",
+    "EC2 Reserved Instance discounts do not directly replace SageMaker's managed training pricing model, and a long-term commitment is unnecessary for the stated flexible workload.",
+    "Incremental training updates a model using additional data. It is distinct from preserving execution state so an interrupted training job can resume.",
+    "Spot instances reduce compute cost, and the ability to wait days makes their variable availability acceptable when combined with checkpointing."
+  ],
+  "285": [
+    "Accurately labeled historical feedback supports supervised text classification into the existing fixed categories.",
+    "LDA discovers unlabeled topics rather than learning the product managers' predefined category labels.",
+    "BlazingText supervised mode learns text-to-label mappings and supports multiclass classification, matching the labeled feedback dataset.",
+    "NTM discovers latent topics. Its topics need not align with the fixed support categories the company already uses.",
+    "CatBoost can handle classification and supported text features in some implementations, but the listed SageMaker text-specific built-in approach directly matches this task with less feature-pipeline work."
+  ],
+  "286": [
+    "A churn decision is categorical prediction, and a visual preparation-and-modeling workflow can reduce code needed for tabular data cleaning and classification.",
+    "Canvas provides a low-code workflow for preparing tabular data and training a categorical prediction model. The proposed cleaning choices should still be reviewed for their effect on rare but meaningful cases.",
+    "Data Wrangler plus XGBoost classification is technically suitable, but requires more explicit model configuration and workflow integration than the all-in-one Canvas option.",
+    "Data preparation is appropriate, but a regression model is not the direct choice for the stated stop-using versus continue-using classification target.",
+    "The proposed regression task does not match the categorical churn outcome, even though Data Wrangler and Autopilot can otherwise support tabular workflows."
+  ],
+  "287": [
+    "Multicollinearity diagnostics examine redundant predictor directions or coefficient behavior; ordinary scaling and feature importance do not directly diagnose it.",
+    "One-hot encoding represents categorical values but does not test for multicollinearity and can introduce exact dependencies if all dummy columns and an intercept are retained.",
+    "PCA and SVD diagnostics reveal small singular values or redundant directions, indicating that some numeric feature combinations contain little independent information.",
+    "Quick Model feature importance measures predictive usefulness, which is different from diagnosing linear dependence among predictors.",
+    "Min-max scaling changes feature ranges but does not remove or diagnose linear dependence between columns.",
+    "LASSO coefficient paths show how features enter or leave as regularization changes, helping identify groups of redundant predictors through the built-in diagnostic visualization."
+  ],
+  "288": [
+    "Near-real-time DynamoDB analytics requires a supported change-data path and a refresh or direct-query path into QuickSight. The listed options omit important integration details.",
+    "A Glue export is a batch-oriented approach and introduces scheduling and job delay, making it a weak fit for the smallest change-to-dashboard latency.",
+    "DynamoDB can publish changes to Kinesis Data Streams. Delivering those records to S3 and refreshing a supported QuickSight dataset still requires configuration; a stream by itself is not the whole dashboard path.",
+    "QuickSight does not simply call the DynamoDB API as a native direct table source in the manner described. A supported connector or intermediate query layer is needed.",
+    "Firehose can deliver data to S3, but does not directly subscribe to DynamoDB tables as written. A Kinesis or Lambda ingestion bridge and a defined QuickSight refresh strategy are missing, so this key remains unresolved."
+  ],
+  "289": [
+    "An S3 event can trigger a short orchestration function that starts a managed Glue ETL job for a longer-running join.",
+    "The subscribed files are already in S3. Adding a Kinesis ingestion path introduces unnecessary movement and does not simplify the join.",
+    "Data Wrangler could prepare data through an exported processing workflow, but this option adds a less direct integration when a managed Glue join job can be triggered immediately.",
+    "Lambda can submit the Glue job and return, while Glue performs the 30–60 minute transformation using the cataloged S3 tables. The function does not need to run for the duration of the ETL job.",
+    "Provisioning a Redshift cluster and moving the workflow into it adds database infrastructure for data that is already queryable in S3."
+  ],
+  "290": [
+    "Predictive-maintenance models need representative sensor history and examples of the failures they must recognize before they occur.",
+    "Missing periods and sparse attributes reduce the evidence available to learn reliable precursors and can bias the training dataset.",
+    "If simple thresholds already predict failures adequately, a more complex ML system may add cost without improving the required outcome.",
+    "Failure examples from only one crane type may not generalize to the other types in operation, leaving important deployment cases unsupported.",
+    "Three years of high-granularity sensor history provides temporal detail and operating variation that can support learning early failure signals.",
+    "Examples covering the common target failure modes let a supervised model learn and validate the events the company actually wants to predict."
+  ],
+  "291": [
+    "Person detection identifies individual people, while pose estimation locates body joints for geometric analysis of movement and posture.",
+    "Image classification assigns labels to an image but does not directly locate every student or provide arm and leg joint coordinates.",
+    "OCR reads text and does not count people or estimate their body posture.",
+    "Object detection can locate each visible student with a person bounding box, providing the basis for a per-frame count.",
+    "Pose estimation predicts body keypoints, allowing the application to calculate joint angles and compare the observed stretch with an appropriate reference.",
+    "An image GAN generates or transforms images. It is not the direct model for counting people or measuring their limb positions."
+  ],
+  "292": [
+    "Production-variant weights define default traffic allocation, and TargetVariant overrides that allocation for requests requiring a particular model.",
+    "SageMaker managed endpoints are not directly registered as the proposed ALB target groups. An additional proxy design would add work and is unnecessary for native variant routing.",
+    "Autoscaling controls variant capacity, not the A/B traffic percentages. The weights belong in the endpoint variant configuration or its weight-update operation.",
+    "An NLB does not provide the described application-level listener rules for geographic routing, and managed endpoints are not direct NLB targets in this design.",
+    "The endpoint can retain FM and add TensorFlow and PyTorch variants with 70/15/15 relative weights. Requests identified by the application as European can explicitly target TensorFlow; the weights then describe the default-routed traffic, not necessarily the final global mix."
+  ],
+  "293": [
+    "Athena ML inference requires permission to run Athena queries, permission to invoke the referenced SageMaker endpoint, and an external-function declaration in SQL.",
+    "AmazonAthenaFullAccess supplies Athena permissions for the proposed user workflow. A suitably scoped custom policy can also work; the managed policy is not the only valid way to grant access.",
+    "The querying IAM principal needs sagemaker:InvokeEndpoint on the model endpoint so Athena can request inference on its behalf.",
+    "An identity policy on the user does not grant permissions to the SageMaker service execution role, and S3 read access does not authorize endpoint invocation.",
+    "GetRecord retrieves Feature Store data. It does not invoke a hosted prediction model.",
+    "USING EXTERNAL FUNCTION declares the ML function and its endpoint and data types before the query calls it. The full declaration is required, not just the abbreviated fragment shown.",
+    "SageMaker endpoints do not implement the proposed remapping from one IAM user to another. Authorization is provided through IAM policies."
+  ],
+  "294": [
+    "A mean above the median and mode suggests right skew, but linear regression does not require normally distributed input features. Transformation suitability depends on the modeled relationship and residuals.",
+    "An exponential transformation usually stretches large positive values and can increase right skew rather than reduce it.",
+    "A logarithm can compress a positive right tail and sometimes linearize a multiplicative relationship. It is plausible, but positivity and the response relationship are unspecified, so it is not a universal prerequisite for regression.",
+    "Polynomial features can represent nonlinear relationships, but the summary of the marginal distribution alone does not establish that a polynomial is appropriate.",
+    "A sinusoidal transform encodes periodic effects. Nothing in the stated ordering of mean, median, and mode establishes periodicity."
+  ],
+  "295": [
+    "Predicting future monthly counts by outcome category is a time-series forecasting task, distinct from classifying the outcome of an individual claim.",
+    "A claim classifier predicts labels for known claims. It does not directly forecast how many claims will reach each category in future months.",
+    "There is no sequential action-and-reward environment described for reinforcement learning. Asking agents to estimate volumes also does not create the requested automated forecasting model.",
+    "Aggregate unique claims by outcome date, month, and category to form count series, then forecast those series. Claim IDs support deduplication and counting rather than serving as meaningful numeric predictors.",
+    "Mixing individual-claim classification for some categories with forecasting for others does not consistently estimate future monthly counts across all categories."
+  ],
+  "296": [
+    "Glue crawlers discover schema, Glue jobs transform data, and the historical Fraud Detector workflow supplied managed fraud-specific model training.",
+    "Athena queries data using table metadata. A crawler is the purpose-built service for automatically discovering and registering the source schema.",
+    "Glue crawlers inspect the S3 records and populate the Data Catalog with their schema, reducing manual table-definition work.",
+    "Redshift stored procedures require a warehouse-based workflow and data movement that are unnecessary for transforming the existing S3 data with Glue.",
+    "Glue jobs implement the transformations, and Glue workflows coordinate their execution without a separately maintained ETL cluster.",
+    "Redshift ML can train predictive models, but adds a Redshift-centric setup for a fraud workflow already served by the historical specialized service.",
+    "Fraud Detector offered managed fraud-model training with little custom modeling. It is closed to new customers, so this service-selection answer reflects the older exam context."
+  ],
+  "297": [
+    "EventBridge can start SageMaker Pipelines from S3 events, allowing a saved transformation and feature-ingestion workflow to run when new data arrives.",
+    "A Lambda function can start the pipeline but introduces custom orchestration code where EventBridge supports the pipeline as a target directly.",
+    "Step Functions adds another workflow layer when the required transformation sequence is already defined as a SageMaker pipeline.",
+    "Airflow adds an orchestration environment and DAG maintenance for a simple native event-to-pipeline integration.",
+    "An EventBridge rule can match the configured S3 object event and start the predefined pipeline with the required role and input parameters, avoiding a custom intermediary."
+  ],
+  "298": [
+    "Shadow testing copies production requests to a candidate model for evaluation while returning only the existing production model's response to users.",
+    "A/B testing routes some real users to the candidate model, so its predictions affect live user responses.",
+    "A canary release exposes a small share of live traffic to the new model and therefore does not meet the requirement that it serve no user responses during validation.",
+    "A shadow deployment evaluates the candidate on copied production traffic while the original model remains the response source. Shadow outputs can be compared offline with outcomes and baseline predictions.",
+    "Blue/green deployment provides separate environments and a traffic-switching strategy. It does not inherently mirror requests for a no-impact prediction comparison."
+  ],
+  "299": [
+    "Model maintenance combines retraining with representative recent data and ongoing quality monitoring using actual outcomes when accuracy is the target metric.",
+    "An algorithm that supports incremental training can incorporate new market data while retaining learned information. Model Monitor can publish quality violations for alarms once predictions are joined to actual sale outcomes.",
+    "Model Governance tracks and documents models; it does not automatically adjust hyperparameters to repair prediction accuracy.",
+    "Debugger targets training behavior, not ongoing production prediction quality. Using only a short recent window may also discard useful seasonal or market history.",
+    "Recent data is useful, but restricting updates only to a few months is an unsupported constraint that can omit important patterns. The broader update-and-monitor approach does not impose that unnecessary restriction."
+  ],
+  "300": [
+    "Predicting whether an applicant enrolls is supervised binary classification, which requires accurate historical enrollment labels.",
+    "A labeling workflow can attach enrolled or not-enrolled outcomes to historical applicant records when those outcomes are available. Annotators must use actual records rather than guess future enrollment.",
+    "Forecasting estimates future values over time, such as total enrollment counts, rather than the binary outcome for an individual applicant.",
+    "Ordinary regression predicts a continuous value. A binary classifier is the direct formulation for this yes-or-no enrollment target.",
+    "A classifier learns the relationship between applicant features and observed enrollment labels, producing a class or probability for a new applicant.",
+    "K-means finds similarity-based clusters without using the enrollment outcome. Two clusters do not automatically correspond to enrolled and not enrolled."
+  ]
+}

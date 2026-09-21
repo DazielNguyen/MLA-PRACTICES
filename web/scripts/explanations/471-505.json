@@ -1,0 +1,240 @@
+{
+  "471": [
+    "A model can lose predictive quality when production inputs no longer resemble the data on which it was trained. Drift is a hypothesis to investigate, not proof from the performance drop alone.",
+    "Insufficient original training data could limit generalization from the start, but does not directly explain a sudden decline after months of stable performance.",
+    "A change in production data distribution can make learned relationships less applicable, explaining the sudden degradation. Check input distributions and ground-truth performance to confirm the cause.",
+    "Compute constraints commonly affect latency, throughput, and availability. They do not usually change prediction accuracy for successfully processed identical inputs.",
+    "Overfitting usually appears as poor validation or early production generalization. It is a less direct explanation than a recent data change for this timeline."
+  ],
+  "472": [
+    "DeepAR accepts supported JSON Lines or Parquet time-series data. Parquet compression must use a supported codec and the data must have the required schema.",
+    "Snappy is supported for DeepAR Parquet input, but RecordIO-Protobuf is not the DeepAR input format described by this option.",
+    "Neither RecordIO-Protobuf input nor XZ compression matches the documented DeepAR data interface.",
+    "Parquet is supported, but XZ is not one of the documented DeepAR Parquet compression choices.",
+    "Write the time-series fields to Parquet using gzip compression in Glue. Gzip supplies compression; the Glue transformation and Parquet writer perform format conversion."
+  ],
+  "473": [
+    "Columnar formats such as Parquet reduce unnecessary column reads and support compression and predicate pruning for analytics.",
+    "Splitting CSV into many smaller objects does not add columnar encoding and can increase per-file overhead.",
+    "Dropping all string columns may destroy needed features and information. It is not a justified performance optimization.",
+    "A managed Glue ETL job can convert CSV to Parquet, reducing scanned bytes for column-selective queries and improving analytics efficiency.",
+    "EMR can process the data, but adds cluster operation and does not by itself improve the stored file layout for later queries."
+  ],
+  "474": [
+    "DPL compares positive-label rates between two specified facets. Overall target-class imbalance is instead established by inspecting target-label counts and proportions.",
+    "MSE measures numerical prediction error. It is not a pre-training label distribution or bias metric.",
+    "DPL is the only listed pre-training bias metric, but it requires defined comparison facets and measures differences between their label rates. It cannot by itself confirm overall class-label imbalance in the unspecified dataset, so the source key is conditional.",
+    "Silhouette score measures cluster separation and compactness, not the distribution of supervised target labels.",
+    "SSIM compares structural similarity between images. It does not measure target-class imbalance."
+  ],
+  "475": [
+    "A multi-model endpoint shares a serving container and instance fleet across compatible models, loading models as needed.",
+    "Direct multi-container hosting supports separate serving stacks, but adds distinct container overhead when all models use a compatible shared framework.",
+    "A multi-model endpoint shares capacity across the compatible models and avoids provisioning a separate endpoint for each. Validate model size, traffic, and cold-load behavior for the workload.",
+    "Sequential multi-container invocation chains models for each request. That is a processing pipeline, not independent hosting of multiple alternative models.",
+    "Separate endpoints reserve independent serving capacity, which can leave more paid resources idle when individual model traffic is low."
+  ],
+  "476": [
+    "Ground Truth video-frame labeling supports task-specific annotation interfaces and assistive workflows that reduce repetitive manual work.",
+    "Use Ground Truth's supported video-frame annotation tasks and worker aids, such as object tracking and annotation propagation where applicable, to accelerate labeling and integrate results with the training workflow.",
+    "JumpStart models could provide candidate prelabels, but developing and validating a custom labeling model adds work and does not replace the annotation workflow.",
+    "Data Wrangler prepares structured training data. It is not a video-frame annotation interface or workforce management system.",
+    "A2I is intended for human review workflows. A Rekognition integration does not automatically provide the specialized video-frame annotation and tracking workflow offered by Ground Truth."
+  ],
+  "477": [
+    "Long-term performance maintenance requires detecting relevant changes, acquiring current validated data, retraining, and evaluating the replacement before deployment.",
+    "Debugger analyzes training behavior. Alerts alone neither monitor all production predictive drift nor retrain the model.",
+    "X-Ray traces request execution and service latency. It does not measure forecast error or refresh the training data.",
+    "Retraining on representative, high-quality data can help, but Ground Truth labeling alone does not establish an automated monitoring and retraining loop. Forecast targets also commonly come from later observed sales rather than manual annotation.",
+    "Clarify bias and feature-attribution drift may inform investigation, but these do not cover general forecast-performance degradation or implement automatic retraining. None of the listed solutions fully specifies the required automation."
+  ],
+  "478": [
+    "Rekognition can estimate eye gaze direction from supported face images, providing a managed signal for a driver attention application.",
+    "Use the eye-direction output on suitable camera frames and combine it with calibrated temporal rules to flag possible distraction. Gaze is a signal to validate, not a complete guarantee of driver attentiveness.",
+    "A custom SageMaker model requires collecting labels, training, evaluating, and operating a specialized model, increasing effort.",
+    "A third-party system plus Rekognition introduces an additional integration and operational dependency when the managed gaze signal meets the stated basic need.",
+    "Comprehend analyzes text. Driver feedback cannot provide the live visual attention signal captured by the cameras."
+  ],
+  "479": [
+    "EKS manages the Kubernetes control plane. AWS CDK defines repeatable infrastructure using programming languages including Python.",
+    "Running Kubernetes directly on EC2 makes the company responsible for its control plane, and a raw CloudFormation template is not Python infrastructure code.",
+    "EKS satisfies the managed control-plane requirement, but imperative CLI provisioning is not the requested Python infrastructure definition.",
+    "Define the EKS cluster and related resources with Python CDK code, store the model image in ECR, and deploy its Kubernetes workload. EKS manages the control plane while CDK supports repeatable provisioning.",
+    "CloudFormation can provision EKS repeatably, but templates are JSON or YAML. CDK is the option that meets the explicit Python authoring requirement."
+  ],
+  "480": [
+    "High training performance with poor unseen-data performance suggests overfitting. Regularization controls model complexity, and cross-validation estimates generalization.",
+    "Increasing complexity can worsen overfitting. Debugger convergence checks do not directly resolve the training-to-validation gap.",
+    "Apply regularization, evaluate candidates with cross-validation, and track the runs and metrics with Experiments. Select the configuration based on held-out performance.",
+    "Deploying a known poorly generalizing model exposes users to errors. Explainability after deployment is not a substitute for validation and regularization.",
+    "More representative data can help, but a confusion matrix evaluates classification rather than continuous linear regression. The proposed evaluation is inappropriate."
+  ],
+  "481": [
+    "Shadow testing measures a candidate under live traffic without allowing its predictions to affect the user-facing response.",
+    "Linear traffic shifting sends an increasing fraction of actual client responses through the new model, so users are affected during evaluation.",
+    "Canary shifting exposes a small group of users to the new model; it does not provide zero-impact evaluation.",
+    "A rolling deployment replaces serving capacity and returns new-model predictions to users. It is a rollout strategy rather than an isolated evaluation.",
+    "Send copies of all requests to the shadow variant while the existing model answers clients. Measure latency and compare captured predictions with ground truth to assess accuracy."
+  ],
+  "482": [
+    "Glue combines managed ETL with the Data Catalog. Schema discovery can use crawlers or inferred job schemas, and configured jobs can update catalog metadata.",
+    "Use Glue's managed ETL and catalog integration, with a crawler or configured catalog updates to discover and register schemas. This avoids building a separate metadata management layer.",
+    "Data Wrangler can prepare data, but exporting metadata to S3 does not provide the integrated shared catalog requested here.",
+    "Athena queries data and Step Functions orchestrates work. Additional schema discovery and metadata storage logic would still be necessary.",
+    "A self-managed EC2 script and Redshift metadata store introduce compute management and custom catalog implementation."
+  ],
+  "483": [
+    "Parquet improves analytical scans through columnar storage, compression, and pruning. File format alone does not guarantee real-time inference latency.",
+    "CSV is row-oriented text and often requires parsing and scanning fields that a query does not need.",
+    "Parquet allows Athena to read selected columns and skip irrelevant row groups, reducing I/O for both large transformations and selective analytical queries.",
+    "Nested JSON requires text parsing and is generally less efficient for repeated tabular column scans.",
+    "Flattening or deserializing JSON does not provide Parquet's on-disk columnar layout and pruning metadata."
+  ],
+  "484": [
+    "A scale-out cooldown allows recently added capacity time to initialize and affect load metrics before another scaling action is considered.",
+    "A multi-model endpoint changes how models share capacity. It does not address repeated scale-out before new instances become ready.",
+    "Adding an API layer does not change the endpoint scaling policy's startup stabilization period.",
+    "Shortening scale-in cooldown addresses removal of capacity, not premature additions. Raising the maximum can allow even more unnecessary instances.",
+    "Increase scale-out cooldown to reflect observed initialization time and avoid repeated reactions before capacity becomes effective. Tune it with load tests so it does not delay necessary scaling during genuine demand growth."
+  ],
+  "485": [
+    "An S3 gateway endpoint adds private AWS-network routing to S3 through VPC route tables, with an endpoint policy that limits accessible buckets.",
+    "A NAT gateway enables access through public service endpoints and is unnecessary for the requested S3 endpoint path.",
+    "Create an S3 gateway endpoint, associate the training or hosting subnets' route tables, and restrict bucket access through its endpoint policy along with IAM and bucket permissions.",
+    "S3 interface endpoints can provide private access, but this option incorrectly describes route-table redirection and ignores required outbound connectivity. Interface endpoints use private endpoint addresses and DNS.",
+    "Gateway Load Balancer endpoints route traffic through network appliances. They are not S3 gateway service endpoints."
+  ],
+  "486": [
+    "XGBoost supports supervised ranking objectives and can also estimate credit-related scores that are ordered for a business decision.",
+    "Use XGBoost with a suitable ranking objective and correctly grouped relevance data, or train a validated repayment-probability model and rank its scores.",
+    "K-means groups similar customers without using the repayment target. Cluster assignments are not a learned repayment ranking.",
+    "PCA produces lower-dimensional feature representations. It does not predict the requested ranking target.",
+    "Neural Topic Model discovers topics in text. It is not a supervised customer repayment ranking algorithm."
+  ],
+  "487": [
+    "A drift detector must be connected to an event or alarm that starts retraining. Detection alone does not invoke the training pipeline.",
+    "Glue crawlers discover schemas, and ETL jobs transform data. They do not supply the configured SageMaker production drift baseline by default.",
+    "Flink could implement custom drift statistics, but the detector and orchestration would need to be built and maintained.",
+    "Use Model Monitor to compare captured inputs with a baseline, emit an alarm or event, and invoke Lambda to start the retraining pipeline. Keep model evaluation and approval checks before any replacement is deployed.",
+    "QuickSight anomaly detection concerns analytical time series. It is not the direct production feature-distribution monitoring integration for this SageMaker pipeline."
+  ],
+  "488": [
+    "Model Registry manages model versions. Inference Recommender benchmarks supported hosting configurations to guide instance selection.",
+    "ECR stores container images rather than model lifecycle versions, and Compute Optimizer is not the tool for benchmarking this new SageMaker model's inference requirements.",
+    "Model Registry is appropriate, but Autopilot automates model development rather than performing the requested serving-instance recommendation task.",
+    "Register the model package and use Inference Recommender to test supported serving configurations against sample payloads and performance goals.",
+    "ECR alone is not the model version registry, and Experiments records training runs rather than recommending inference instance types."
+  ],
+  "489": [
+    "A large training-versus-validation accuracy gap is a warning sign of overfitting. Regularization and robust validation help control it.",
+    "Early stopping may help, but adding dense layers increases capacity and can worsen the existing overfitting problem.",
+    "Dropout and L1/L2 penalties reduce reliance on overly specific training patterns. Cross-validation helps select and assess these settings across multiple splits.",
+    "Dimensionality reduction and fewer layers might help, but switching to cross-entropy alone does not address overfitting and may already be the classification loss.",
+    "Augmentation and data cleanup can help when appropriate, but this option does not directly control model complexity. It is less targeted than explicit regularization for the described gap."
+  ],
+  "490": [
+    "Glue Data Quality evaluates declarative rules on cataloged or ETL data, reducing custom validation code.",
+    "Update the catalog for newly added partitions and schedule Data Quality rule evaluation before publishing dashboard inputs. Gate the downstream step on the rule results.",
+    "Custom PySpark validation can work, but requires more rule implementation and maintenance than the managed Data Quality feature.",
+    "Custom Lambda validation must handle the compressed dataset and execution limits. The option also mixes per-object triggers with monthly processing without defining coordination.",
+    "SQS notifications contain event metadata, not a queryable copy of every dataset value. CloudWatch log queries over those notifications cannot establish the data's quality."
+  ],
+  "491": [
+    "Data-quality monitoring can compare current feature distributions with a reference baseline and emit metrics for CloudWatch alarms.",
+    "Create the data-quality baseline, enable emitted monitoring metrics, and alarm on the relevant violations. Schedule monitoring over captured production inputs so changes are detected automatically.",
+    "Model-quality monitoring compares predictions with ground truth. It is not the baseline type for measuring input feature distribution drift.",
+    "Debugger targets training diagnostics. Implementing production feature-drift checks there is not the managed monitoring path.",
+    "Endpoint operational metrics measure latency, errors, and utilization. Manual log inspection does not provide the requested automatic distribution comparison."
+  ],
+  "492": [
+    "On-demand serverless inference adjusts serving resources to request traffic and can avoid paying for idle provisioned capacity, within its payload and runtime limits.",
+    "Batch transform is an offline job rather than an interactive recommendation endpoint.",
+    "Asynchronous inference returns results later, making it a poor fit for immediate website recommendations unless the application explicitly tolerates that behavior.",
+    "A real-time endpoint fits synchronous recommendations but normally carries provisioned capacity costs during quiet periods.",
+    "Serverless inference is the intended fit for variable, compatible CPU workloads without a strict cold-start latency requirement. Verify payload, execution time, and traffic economics; variable traffic alone does not guarantee it is cheapest at every scale."
+  ],
+  "494": [
+    "One-hot encoding represents each weekday with its own 0/1 indicator, without imposing a numeric ordering between categories.",
+    "Binary encoding also produces bits, typically using fewer columns. It does not create a separate indicator for each weekday. The stem's broad phrase 'binary values' makes this a valid literal alternative unless one indicator per category is specified.",
+    "Label encoding assigns category identifiers such as 0 through 6, rather than one binary indicator per weekday.",
+    "This is the intended answer if the goal is a separate binary indicator for every weekday. The question should state that representation explicitly to distinguish it from binary encoding.",
+    "Tokenization breaks text into tokens or token IDs. It is not the categorical indicator transformation intended here."
+  ],
+  "495": [
+    "The mode is the most frequent category and can be used to impute missing categorical values. Fit imputation rules on training data to avoid leakage.",
+    "Clarify analyzes bias and explanations rather than serving as the data preparation tool, and a mean is not meaningful for unordered category labels.",
+    "There is no SageMaker 'Clarity' data-imputation feature. Even interpreting this as Clarify, it is not the requested data transformation tool.",
+    "Data Wrangler is the appropriate tool, but mean imputation is for numerical values rather than categorical labels.",
+    "Configure Data Wrangler to replace missing categorical values with the training-set mode, while considering a distinct missing-value category if absence itself carries information."
+  ],
+  "496": [
+    "Private S3 access and training telemetry opt-out are separate controls. Cross-account IAM, bucket, and any KMS permissions must also authorize the training role.",
+    "VPC peering connects VPC networks but does not directly create private access to S3. The documented metadata opt-out is configured on job submission rather than requested by email.",
+    "Use an S3 VPC endpoint and set OPT_OUT_TRACKING to '1' in the training job creation request. For a literal private-IP requirement, use an S3 interface endpoint with private DNS; a gateway endpoint keeps traffic on AWS but uses S3 service addresses.",
+    "S3 buckets do not have attached security groups. AI services opt-out policies are not a substitute for the SageMaker training metadata setting.",
+    "Presigned URLs authorize access but do not establish a private network path. Their expiration also must not be assumed to cover a ten-day training workflow."
+  ],
+  "497": [
+    "Feature Store provides a shared feature definition and ingestion path for low-latency online values and historical offline training records.",
+    "Ingest the prepared rating features into a feature group with suitable online and offline stores and event times. Keep ingestion running as source data arrives; tags or indexes alone do not synchronize new records.",
+    "CTAS creates a query result table at a point in time. It does not automatically maintain fresh online serving features and historical feature versions.",
+    "Lake Formation manages lake access and governance. Tag-based authorization is not a feature ingestion or synchronization mechanism.",
+    "Data Insights assesses a dataset. It does not create a shared online/offline feature repository."
+  ],
+  "498": [
+    "Batch monitoring can be orchestrated in Pipelines, but raw image quality needs suitable custom analysis and model performance needs ground-truth labels. Built-in QualityCheck steps analyze supported tabular inputs.",
+    "Scheduled monitoring can be part of a solution, but this option does not define image checks, ground-truth matching, or synchronization with each nightly batch.",
+    "Resource metrics show processing health and duration, not image data quality or whether x-ray predictions are correct.",
+    "A numerical profile of a model file does not evaluate the incoming x-rays or prediction accuracy.",
+    "This is the intended orchestration approach, but one QualityCheck step handles one check type and does not directly monitor raw x-rays. Add image-specific processing, tabular prediction/label evaluation, and separate checks; the source key is incomplete as written."
+  ],
+  "499": [
+    "Data Wrangler direct connections read from the source system, whereas cataloged transfers can reflect an earlier extracted copy.",
+    "Use direct connections to import the latest source contents when the flow runs or data is reimported. The connection does not continuously mutate an already imported snapshot without a refresh or job execution.",
+    "A cataloged connection can refer to the result of an earlier data transfer and therefore can lag behind the original source.",
+    "A separate Glue extraction introduces another scheduled copy and freshness dependency instead of using the native source connection.",
+    "Custom Lambda extraction also adds code and a refresh pipeline, with no inherent guarantee that it stays synchronized."
+  ],
+  "500": [
+    "Continuous numerical predictions are evaluated with regression error metrics. RMSE expresses error in the target's units and penalizes large misses.",
+    "Accuracy counts correct class predictions. It is not the usual metric for continuous numerical error.",
+    "InferenceLatency measures response speed, not prediction quality.",
+    "ROC AUC evaluates ranking of positive versus negative classes, not continuous-value forecast or regression error.",
+    "RMSE measures the magnitude of the model's numerical errors. Use a time-aware evaluation split when the ten years of data have temporal dependence."
+  ],
+  "501": [
+    "Deployment should match each model's invocation pattern: immediate per-transaction scoring versus infrequent offline forecasting.",
+    "A combined always-running endpoint pays to host the monthly model continuously and couples two different serving workloads.",
+    "This reverses the natural fit: queued fraud results delay a transaction decision, while a monthly forecast does not need continuously provisioned serving.",
+    "Serve fraud predictions synchronously through a real-time endpoint. Run the monthly sales forecast with batch transform and store its results for downstream use.",
+    "Batch fraud scoring cannot answer each transaction immediately. An asynchronous forecast endpoint is possible, but adds endpoint workflow management for an infrequent batch need."
+  ],
+  "502": [
+    "Linear models expose coefficients that connect input features to a score, supporting explanation when features and preprocessing are well defined.",
+    "Object2Vec learns dense representations and is less directly interpretable than a linear decision function for this tabular eligibility task.",
+    "Linear Learner supports supervised classification with an interpretable linear score. Document feature encoding, scaling, coefficients, and validation to support regulatory review.",
+    "A neural network can model complex relationships, but its internal representation is generally harder to explain directly than a linear model.",
+    "K-means produces unsupervised clusters, not a supervised eligibility prediction tied to the bank's target labels."
+  ],
+  "503": [
+    "Data preparation resolves duplicates and missing values. Bias analysis separately measures representation and label disparities across defined groups.",
+    "Clarify is not the main deduplication and imputation tool. Model Monitor's production monitoring role does not replace initial data preparation.",
+    "Use Data Wrangler transformations or quality checks to prepare the data, then Clarify pre-training bias analysis with the relevant facets and labels. Bias metrics identify disparities; they do not automatically decide the appropriate correction.",
+    "Debugger inspects model training rather than providing a dataset cleaning workflow. This combination does not address the initial duplicates and missing values.",
+    "Model Monitor can establish quality constraints, but does not itself perform the required cleaning and imputation. Data Wrangler is the direct preparation component."
+  ],
+  "504": [
+    "Preprocessing for a defined target population can exclude observations outside that scope and transform a positive skewed size feature. Price must be the prediction target, not an input that leaks the answer.",
+    "For a model explicitly limited to typical properties, validate and exclude the out-of-scope size extremes, then consider a log transform for positive Square Meters values. Confirm the effect on held-out typical properties; unusual values are not automatically erroneous.",
+    "Normalization rescales values but does not remove the influence of outliers or correct skew by itself.",
+    "Removing justified out-of-scope records may help, but one-hot encoding a continuous size variable loses its natural quantitative structure and can create many sparse columns.",
+    "This retains the extreme observations and applies an unsuitable categorical representation to continuous size, addressing neither issue well."
+  ],
+  "505": [
+    "Bias monitoring publishes numerical monitoring metrics that CloudWatch can display and alarm on.",
+    "CloudTrail records API events for auditing. It is not the time-series store for computed bias metrics.",
+    "Capture the Clarify bias monitoring metrics in CloudWatch and add the relevant metrics and dimensions to a dashboard. Interpret them with the configured facets and baseline.",
+    "EventBridge routes events. It is not the primary metric storage and dashboard service for the computed bias statistics.",
+    "SNS delivers notifications. It does not store the time series required for a bias metrics dashboard."
+  ]
+}

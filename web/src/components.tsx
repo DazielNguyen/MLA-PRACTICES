@@ -15,12 +15,14 @@ export function QuestionText({ question, allowHint = false }: { question: Questi
 }
 export function Explanation({ question, selected }: { question: Question; selected?: string[] }) {
   const unscored = question.status === 'review';
+  const analysis = question.analysis;
+  const optionAnalysis = (letters: string[]) => <ul className="option-analysis-list">{letters.map(letter=><li key={letter} data-option={letter}><p className="option-analysis-choice"><strong>{letter}.</strong> {question.choices[letter]}</p><p>{analysis?.options[letter]}</p></li>)}</ul>;
   return <div className={`explanation ${unscored ? 'uncertain' : ''}`}>
-    <div className="explanation-title"><span className="answer-label">{unscored ? 'CHƯA CHỐT ĐÁP ÁN' : `ĐÁP ÁN ${question.answer.join(' + ')}`}</span>{selected && <span className="muted">Bạn chọn: {selected.join(', ') || 'Chưa trả lời'}</span>}</div>
+    <div className="explanation-title"><span className="answer-label" lang="en">{unscored ? 'Answer not finalized' : `${question.status === 'source' ? 'Source answer' : 'Correct answer'}: ${question.answer.join(' + ')}`}</span>{selected && <span className="muted">Bạn chọn: {selected.join(', ') || 'Chưa trả lời'}</span>}</div>
     {!unscored && <div className="correct-answer-text" lang="en">{question.answer.map(a => <p key={a}><strong>{a}.</strong> {question.choices[a]}</p>)}</div>}
     {unscored && question.answer.length > 0 && <p>Phương án tham khảo có điều kiện: <strong>{question.answer.join(', ')}</strong>. Câu này không tính điểm.</p>}
     {question.status === 'source' && <p className="source-answer-note">Đáp án theo bộ đề bổ sung, chưa được kiểm chứng với AWS. Điểm câu này dựa trên khóa đáp án của nguồn.</p>}
-    <p className="explanation-copy">{question.explanation}</p>
+    {analysis ? <div className="answer-analysis" lang="en"><h3>Explanation and distractor analysis</h3><section className="key-concept"><h4>Key Concept</h4><p>{analysis.keyConcept}</p></section>{unscored ? <section><h4>Option-by-option analysis</h4><p className="analysis-caveat">The question has unresolved assumptions or conflicting answer keys. The analysis below explains each option without treating a disputed answer as confirmed.</p>{optionAnalysis(Object.keys(question.choices))}</section> : <><section className="why-correct"><h4>{question.status === 'source' ? 'Why the source selects this answer' : 'Why this is correct'}</h4>{optionAnalysis(question.answer)}</section><section className="why-incorrect"><h4>Why other options are incorrect</h4>{optionAnalysis(Object.keys(question.choices).filter(letter=>!question.answer.includes(letter)))}</section></>}</div> : <p className="explanation-copy">{question.explanation}</p>}
     <details className="source-list"><summary>Nguồn và ghi chú · {question.page ? `PDF trang ${question.page}` : sourceLabel(question)}</summary><p>{question.sourceName}{question.sourceIds.length > 1 && ` · Q${question.sourceIds.join(', Q')}`}</p>{question.notes.map(note=><p key={note}>{note}</p>)}{question.sources.map(s => <a href={s.url} target="_blank" rel="noreferrer" key={s.url}>{s.title}<ExternalLink size={12} /></a>)}</details>
   </div>;
 }

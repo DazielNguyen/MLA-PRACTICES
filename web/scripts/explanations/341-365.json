@@ -1,0 +1,178 @@
+{
+  "341": [
+    "Gradient-boosted decision trees capture nonlinear relationships and feature interactions in labeled tabular data.",
+    "LightGBM builds an ensemble of trees that can represent the interdependent fraud signals the current model misses. Class imbalance still needs appropriate weighting, resampling, or evaluation choices.",
+    "A linear learner cannot directly express complex interactions unless suitable interaction features are engineered first, making it less suitable for the described missing nonlinear patterns.",
+    "K-means forms unlabeled clusters. It does not directly learn the known fraud outcome or optimize supervised fraud detection.",
+    "NTM discovers topics in document representations. It is not the appropriate classifier for the combined transaction and customer table."
+  ],
+  "342": [
+    "Concept drift changes the relationship between input features and the target, so a previously effective model may lose predictive quality over time.",
+    "A change in how current customer behavior relates to cancellation can reduce F1 after a stable period. The metric drop is consistent with concept drift, though it should trigger investigation rather than be treated as proof of one cause.",
+    "Insufficient complexity would generally affect the original evaluation too. It does not explain a new decline after months of stable quality as directly as a changed data-to-target relationship.",
+    "Missing values in the original baseline would already have influenced the initial evaluation. The scenario describes a later change rather than an identified original data defect.",
+    "Incorrect baseline labels could make the reference misleading, but no such error is reported. A later performance decline on changing customer data makes drift the stronger listed explanation."
+  ],
+  "343": [
+    "A SageMaker notebook uses an execution role for AWS API permissions. Reusing a suitably scoped role centralizes updates across notebooks that need the same access.",
+    "Attaching one shared execution role to the team's notebooks lets the company update the relevant permissions in one place, provided those notebooks should have the same access scope.",
+    "IAM groups contain users and receive identity policies, but a notebook cannot use a group as its execution role.",
+    "A notebook should use temporary role credentials, not a shared IAM user's credentials. AdministratorAccess also grants far more permissions than the stated task requires.",
+    "Roles cannot be associated with groups as notebook execution identities in the proposed way. The broad administrator policy does not solve the unsupported identity arrangement."
+  ],
+  "344": [
+    "Apartment-price prediction is regression, so evaluation should measure the difference between predicted and observed numeric prices.",
+    "Accuracy counts correctly classified categories. It is not the standard metric for continuous price errors.",
+    "ROC AUC evaluates classification ranking across thresholds, not the magnitude of a numeric price prediction error.",
+    "F1 combines classification precision and recall. Apartment prices are continuous targets rather than positive and negative labels.",
+    "MAE averages absolute price errors and expresses the typical error in the same currency units as the target, making it directly interpretable."
+  ],
+  "345": [
+    "An excessively large SGD learning rate can repeatedly overshoot useful parameter values, causing high, oscillating training and validation losses.",
+    "Early stopping can prevent later overfitting, but does not fix a training process that remains unstable and poorly fitted throughout the observed cycles.",
+    "A larger test set improves evaluation precision but does not change the optimizer or its training behavior.",
+    "Increasing the learning rate makes parameter updates larger and can worsen the suspected overshooting.",
+    "Reducing the learning rate makes SGD updates smaller and can stabilize convergence. If oscillation persists, investigate scaling, batch noise, and other optimization issues as well."
+  ],
+  "346": [
+    "Athena CTAS can transform and partition existing S3 data for date-based queries, but a CTAS result is not automatically refreshed when new source objects arrive.",
+    "CTAS is a low-overhead way to build a date-partitioned table from the existing CSVs. The solution is incomplete for ongoing arrivals unless it adds incremental INSERT INTO or an equivalent refresh process.",
+    "S3 replication copies objects without creating a date-query engine. Object Lambda transforms individual object reads and does not provide the proposed cross-object SQL query workflow.",
+    "A Glue Spark job can process the existing and newly selected objects, but needs job scheduling and incremental-selection logic. It has more configuration than Athena SQL for the initial transformation.",
+    "Firehose does not automatically read historical CSV objects from an S3 bucket as its stream source. Lambda record transformation is not a substitute for the requested date-query table."
+  ],
+  "347": [
+    "Glue FindMatches performs learned record matching across attributes, including cases where equivalent entities are represented by slightly different values.",
+    "A human-labeling workforce does not provide an efficient automated deduplication pipeline for a large existing dataset.",
+    "QuickSight ML Insights targets analytical insights such as anomalies and forecasts, not training a general entity-deduplication model.",
+    "Data Wrangler can remove exact duplicate rows after preparation. It is a valid simpler choice for exact duplicates, but does not supply the same learned fuzzy entity-matching workflow as FindMatches.",
+    "FindMatches uses labeled match examples and multiple attributes to detect records describing the same entity with little custom matching code. If the question means exact duplicates only, the Data Wrangler alternative is also plausible."
+  ],
+  "348": [
+    "Spot capacity is suited to short, retryable batch workloads that can tolerate interruption and flexible completion times.",
+    "The weekend job can recover from interruption, so Spot discounts reduce compute cost without requiring a long-term commitment for mostly idle capacity.",
+    "Reserved Instances require a longer commitment and are poorly matched to only 90 minutes of usage each week for six months.",
+    "On-Demand avoids commitment and interruption risk, but costs more than available Spot capacity for the same interruption-tolerant work.",
+    "Dedicated Instances pay for hardware isolation, a requirement not present here, and do not provide the most economical batch option."
+  ],
+  "349": [
+    "Comprehend supports importing a custom model from another account in the same Region when the source model has an authorizing resource policy.",
+    "A managed Comprehend model is not copied into another account simply by duplicating arbitrary S3 objects. The service provides a model-import operation.",
+    "The source account grants ImportModel permission through the model's resource policy, and the destination account imports the source model ARN in the same Region.",
+    "DataSync transfers supported file and object data. It does not create a copied Comprehend custom-model resource in another account.",
+    "A VPN provides network connectivity, not authorization or a model-copy operation. The managed ImportModel API does not require an account-to-account VPN."
+  ],
+  "350": [
+    "Validation performance that improves and then degrades suggests overfitting after the useful training phase.",
+    "Early stopping selects or restores a checkpoint from before validation performance deteriorates, avoiding unnecessary overfitting epochs.",
+    "Increasing dropout adds regularization and reduces reliance on particular internal units, which can improve generalization when tuned appropriately.",
+    "More layers increase capacity and can worsen the tendency to overfit the training data.",
+    "More neurons also increase capacity rather than directly controlling the observed late-training overfitting.",
+    "Reducing high bias is a remedy for underfitting. The improvement followed by validation deterioration points more directly to excessive fitting and variance."
+  ],
+  "351": [
+    "Kendra provides managed semantic document retrieval and an S3 connector, avoiding a custom embedding-storage and search pipeline for the listed task.",
+    "Glue catalogs and transforms data; it is not a vector database. Storing embeddings through Glue and ordinary SQL does not by itself implement semantic nearest-neighbor retrieval.",
+    "Feature Store serves ML features but is not a managed vector-similarity search index. The option still needs custom retrieval logic and infrastructure.",
+    "The S3 connector ingests the existing documents into Kendra, whose query interface retrieves semantically relevant results for the RAG application's retrieval step.",
+    "Textract extracts text and document structure. It does not index a text corpus for semantic search."
+  ],
+  "352": [
+    "AutoML can quickly establish a predictive baseline for a labeled tabular dataset by preparing features, training candidates, and reporting validation metrics.",
+    "Autopilot can train candidate models for the target and report their performance with little custom code, helping determine whether the available features support useful predictions.",
+    "Custom preprocessing, regression, and evaluation scripts require development and EC2 operations. Linear regression may also be the wrong task type for the target.",
+    "Macie discovers sensitive data and security-related findings. It does not train predictive models for an arbitrary target column.",
+    "Fine-tuning a foundation model is unnecessary for an initial tabular predictive baseline and requires model-specific preparation and evaluation."
+  ],
+  "353": [
+    "Nominal categories such as color names have no inherent numeric order, so their encoding should not introduce a false ordering.",
+    "Arbitrary integer labels suggest numeric distances or order between colors when fed directly into the network as scalar values.",
+    "Padding makes sequence or vector lengths consistent. It does not define a meaningful representation of the color categories.",
+    "Dimensionality reduction requires an existing numeric representation and does not itself encode the categorical color values.",
+    "One-hot encoding gives each color a separate binary indicator, representing category membership without imposing an ordinal relationship."
+  ],
+  "354": [
+    "Macie discovers sensitive information in S3 objects; a separate remediation workflow must remove or replace the affected content before the model uses it.",
+    "Moving the model to SageMaker does not solve sensitive-data discovery and adds a migration unrelated to cleaning the existing S3 data.",
+    "Migrating to ECS and operating a Batch redaction job adds infrastructure without providing a built-in sensitive-data discovery service.",
+    "Macie supplies S3-sensitive-data findings, and Lambda can orchestrate a validated redaction or quarantine workflow. Macie does not redact by itself, and finding samples must not be mistaken for an exhaustive list of every sensitive occurrence.",
+    "Comprehend can detect supported PII in text, but managing EC2 instances for removal adds operational work compared with the proposed serverless S3 discovery and remediation workflow."
+  ],
+  "355": [
+    "Existing S3 datasets suit Glue batch ingestion and preparation, while SageMaker Pipelines or Projects can be developed through Studio for model deployment workflows.",
+    "Firehose accepts streaming records from supported producers; it is not a general reader for processing the historical raw objects already stored in S3.",
+    "Glue can orchestrate ETL over the S3 source data. Studio provides access to the SageMaker workflow tools needed to define model build and deployment pipelines.",
+    "Redshift ML trains and invokes models from a warehouse workflow. It is not the general S3 data-ingestion pipeline service requested.",
+    "Athena queries S3 data but does not by itself supply an ingestion pipeline. A notebook also needs an explicitly automated deployment workflow rather than manual execution."
+  ],
+  "356": [
+    "Model Registry collections organize existing model groups into a discoverable hierarchy without changing their model versions or underlying artifacts.",
+    "Tags help filtering, but a collection provides the native category hierarchy and group-level organization requested at this scale.",
+    "Moving model versions into new category model groups changes the existing version groupings that the requirement says to preserve.",
+    "Lineage tracks relationships among artifacts and executions. It does not automatically infer and reorganize the requested business categories.",
+    "Creating CV, NLP, and speech collections and adding the existing model groups supplies the category structure while preserving each group's models and artifacts."
+  ],
+  "357": [
+    "Network ACLs support explicit IP-deny rules for traffic crossing their associated subnets, but Studio browser access may use a service-managed path outside that boundary.",
+    "Security groups contain allow rules rather than explicit deny rules, so the proposed single-IP deny rule cannot be created there.",
+    "A subnet ACL can deny the source IP for traffic that actually traverses that subnet. The domain's public access path is unspecified, so this cannot be assumed to block all browser access to a service-managed Studio endpoint.",
+    "Shadow variants and Inference Recommender apply to model serving and testing, not network access control for a Studio domain.",
+    "Route tables choose next hops for destination networks. They do not implement the proposed source-IP inbound deny policy."
+  ],
+  "358": [
+    "A managed transcription, translation, and text-summarization pipeline avoids training several custom models. The specific foundation model in this older question must be checked for current availability.",
+    "Training conversion and summarization models from scratch requires substantial datasets, training, and deployment work before the company can process its content.",
+    "Transcribe can convert supported Spanish audio, including extracted video audio, to text; Translate can produce English text for summarization by a supported text LLM. The Jurassic model reference is historical and should not be assumed available for a new deployment.",
+    "Rekognition analyzes visual content but does not replace speech transcription of the audio recordings. A capable summarizer does not fix the missing audio-to-text stage.",
+    "Comprehend does not transcribe speech, and Stable Diffusion generates images rather than serving as the requested text-summary model."
+  ],
+  "359": [
+    "The named RANDOM_CUT_FOREST SQL function belongs to the older Kinesis SQL engine. Managed Flink can run RCF code, but that requires an explicit implementation or integration.",
+    "The source incorrectly treats the legacy Kinesis SQL function as a built-in Flink function. A Flink RCF library or custom function can work, but is not the zero-code operation described.",
+    "Kinesis Data Streams can trigger Lambda, which can invoke a hosted anomaly model. This is a supported managed ingestion and scoring architecture once the endpoint and event-source mapping are configured.",
+    "Self-managed Kafka brokers on EC2 add cluster operations while providing no required advantage over the managed Kinesis ingestion path.",
+    "Starting Glue batch jobs from queue messages introduces startup and batch-processing delay rather than continuous low-latency anomaly scoring."
+  ],
+  "360": [
+    "Comprehend provides pretrained sentiment analysis for supported text and languages, avoiding custom classifier training for an initial sentiment assessment.",
+    "Rekognition analyzes images and video. It does not classify sentiment in the text of chat conversations.",
+    "A Naive Bayes classifier requires labeled examples, text preprocessing, training, and evaluation before it can be used.",
+    "Comprehend can score the chat text as positive, negative, neutral, or mixed using an existing API. If the recordings are audio rather than stored chat text, transcribe them first.",
+    "A random-forest text classifier requires feature extraction and labeled training data, adding work compared with the pretrained sentiment service."
+  ],
+  "361": [
+    "Lower temperature concentrates token probabilities, and a smaller supported top-k limits the candidate tokens considered during sampling.",
+    "Higher temperature and a larger candidate set both encourage more varied outputs, opposing the request for consistency.",
+    "A smaller top-k restricts candidates, but increasing temperature makes sampling among them more random.",
+    "Lower temperature helps consistency, but increasing top-k permits more candidate tokens instead of restricting them.",
+    "Reducing both supported parameters narrows and concentrates sampling, making responses more consistent. Parameter support is model-version-specific, and these settings do not guarantee identical outputs."
+  ],
+  "362": [
+    "Linear Learner target_precision is part of binary classifier model selection, not the multiclass configuration stated in this question.",
+    "Removing weight decay reduces regularization and does not directly set a false-positive constraint. It can also worsen generalization.",
+    "More epochs may change fit but do not impose the desired precision or false-positive behavior.",
+    "A higher precision target is meaningful with binary classification and recall_at_target_precision. It does not apply as described to the stated multiclass classifier, so the source key needs a corrected premise.",
+    "Changing to regression changes the task to predicting a continuous value and does not implement a weed-presence decision threshold."
+  ],
+  "363": [
+    "Removing a buffering interval reduces delivery delay, but AWS describes Firehose zero-buffer delivery in seconds, not as a sub-second end-to-end dashboard guarantee.",
+    "Zero buffering is the intended latency reduction, but does not establish the required sub-second result. Producer batching, delivery, OpenSearch indexing, and dashboard refresh still contribute delay.",
+    "DataSync transfers files or objects and does not use Kinesis enhanced fan-out consumers. It is not a replacement for this low-latency record stream.",
+    "Increasing the buffer interval increases waiting time and moves farther from the latency requirement.",
+    "An SQS queue alone does not deliver records into OpenSearch or set dashboard freshness. A consumer and an end-to-end latency design are missing."
+  ],
+  "364": [
+    "SageMaker real-time endpoints support low-latency inference with autoscaling, while baseline capacity and multi-instance placement support availability during bursts.",
+    "A real-time endpoint accepts the stated request sizes and can scale with invocation load. Configure suitable minimum capacity and scaling behavior because reactive scaling is not instantaneous.",
+    "Scheduled scaling follows a timetable rather than unpredictable CPU or request changes. The wording also mixes scheduled and metric-driven scaling concepts.",
+    "An EKS deployment requires cluster operations, and memory-based scaling may not track this inference workload's request demand. It adds work beyond managed endpoint hosting.",
+    "Spot fleets can lose capacity unexpectedly and require more serving and availability engineering. They are a weaker fit for the stated highly available, minimum-latency requirement."
+  ],
+  "365": [
+    "EMR primary and core nodes maintain cluster control and HDFS data, while task nodes add processing capacity without holding the durable HDFS replicas.",
+    "All On-Demand nodes avoid Spot interruptions but miss the cost savings available on replaceable task-node capacity.",
+    "Spot interruption of primary or core nodes can disrupt the cluster and risk HDFS data, conflicting with the stated data-loss constraint.",
+    "Keeping only the primary On-Demand leaves HDFS-bearing core nodes exposed to Spot reclamation and potential data loss.",
+    "On-Demand primary and core nodes protect control and HDFS capacity from Spot reclamation, while Spot task nodes lower processing cost. HDFS replication and durable output storage remain necessary for other failure types."
+  ]
+}

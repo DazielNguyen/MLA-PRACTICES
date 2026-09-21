@@ -1,0 +1,6650 @@
+{
+  "total": 574,
+  "complete": 574,
+  "optionAnalyses": 2396,
+  "statuses": {
+    "review": 60,
+    "checked": 487,
+    "historical": 27
+  },
+  "changes": [
+    {
+      "id": 161,
+      "collection": "mls",
+      "sourceIds": [
+        161
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "historical"
+      },
+      "notes": [
+        "The curated custom-vocabulary approach remains relevant, but Transcribe no longer supports the IPA and SoundsLike pronunciation inputs stated in this historical option."
+      ],
+      "sources": [
+        {
+          "key": "transcribe_vocab",
+          "title": "Custom vocabularies - Amazon Transcribe",
+          "url": "https://docs.aws.amazon.com/transcribe/latest/dg/custom-vocabulary.html"
+        },
+        {
+          "title": "AWS — Creating a Transcribe custom vocabulary table",
+          "url": "https://docs.aws.amazon.com/transcribe/latest/dg/custom-vocabulary-create-table.html"
+        }
+      ]
+    },
+    {
+      "id": 333,
+      "collection": "mla",
+      "sourceIds": [
+        1,
+        277
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Model groups provide native model version cataloging."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Model Registry Models, Model Versions, and Model Groups",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-models.html"
+        }
+      ]
+    },
+    {
+      "id": 334,
+      "collection": "mla",
+      "sourceIds": [
+        2,
+        276
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Managed warm pools and the startup-latency requirement have been checked against the AWS warm-pool documentation."
+      ],
+      "sources": [
+        {
+          "title": "AWS — SageMaker managed warm pools",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/train-warm-pools.html"
+        }
+      ]
+    },
+    {
+      "id": 335,
+      "collection": "mla",
+      "sourceIds": [
+        3,
+        275
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "The SDK approval update must follow an authorized human decision; automatically approving every registration does not implement manual approval."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Update the Approval Status of a Model",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-approve.html"
+        }
+      ]
+    },
+    {
+      "id": 336,
+      "collection": "mla",
+      "sourceIds": [
+        4,
+        274
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "On-demand bias analysis requires configured facets and a comparison baseline. Clarify is no longer open to new customers; existing customers can continue to use it.",
+        "Service availability: SageMaker Clarify is closed to new customers; existing customers can continue using it. This answer describes its documented capabilities."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Pre-training Bias Metrics",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-data-bias.html"
+        },
+        {
+          "title": "AWS — Clarify capabilities and availability",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-configure-processing-jobs.html"
+        }
+      ]
+    },
+    {
+      "id": 337,
+      "collection": "mla",
+      "sourceIds": [
+        5,
+        273
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Both EMR Spark and Lake Formation ingestion workflows can combine the stated sources. The prompt does not provide a constraint that uniquely excludes Spark."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Creating a data lake from a JDBC source",
+          "url": "https://docs.aws.amazon.com/lake-formation/latest/dg/getting-started-tutorial-jdbc.html"
+        }
+      ]
+    },
+    {
+      "id": 338,
+      "collection": "mla",
+      "sourceIds": [
+        6,
+        272
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Data Wrangler provides an anomaly-detection visualization."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Analyze and Visualize",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-analyses.html"
+        }
+      ]
+    },
+    {
+      "id": 339,
+      "collection": "mla",
+      "sourceIds": [
+        7,
+        271
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Data Wrangler supplies built-in categorical encoding operations. Encoding suitability depends on the selected algorithm and feature."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Transform Data",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        }
+      ]
+    },
+    {
+      "id": 340,
+      "collection": "mla",
+      "sourceIds": [
+        8,
+        270
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "The Balance Data operation supports oversampling; apply balancing only to the training partition."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Transform Data",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        }
+      ]
+    },
+    {
+      "id": 341,
+      "collection": "mla",
+      "sourceIds": [
+        9,
+        269
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "LightGBM captures nonlinear interactions in tabular data."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — lightgbm",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/lightgbm.html"
+        }
+      ]
+    },
+    {
+      "id": 342,
+      "collection": "mla",
+      "sourceIds": [
+        10
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "A later F1 decline is consistent with concept drift, but the metric alone does not prove its cause."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — model monitor model quality metrics",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html"
+        }
+      ]
+    },
+    {
+      "id": 343,
+      "collection": "mla",
+      "sourceIds": [
+        11
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Notebook execution permissions can be centralized through a shared role when all notebooks need the same scope."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — sagemaker roles",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html"
+        }
+      ]
+    },
+    {
+      "id": 344,
+      "collection": "mla",
+      "sourceIds": [
+        12,
+        268
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "MAE is a regression metric in the target units."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — model monitor model quality metrics",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html"
+        }
+      ]
+    },
+    {
+      "id": 345,
+      "collection": "mla",
+      "sourceIds": [
+        13
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Learning rate and convergence",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/ip-insights-hyperparameters.html"
+        }
+      ]
+    },
+    {
+      "id": 346,
+      "collection": "mla",
+      "sourceIds": [
+        14
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "CTAS processes the existing input snapshot. The prompt also requires newly arriving objects, but no incremental INSERT INTO or refresh mechanism is specified."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — ctas insert into etl",
+          "url": "https://docs.aws.amazon.com/athena/latest/ug/ctas-insert-into-etl.html"
+        }
+      ]
+    },
+    {
+      "id": 347,
+      "collection": "mla",
+      "sourceIds": [
+        15,
+        267
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "FindMatches fits fuzzy entity resolution, but Data Wrangler can remove exact duplicates. The question does not specify which type of duplication is present."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — machine learning",
+          "url": "https://docs.aws.amazon.com/glue/latest/dg/machine-learning.html"
+        }
+      ]
+    },
+    {
+      "id": 348,
+      "collection": "mla",
+      "sourceIds": [
+        16
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Spot workloads",
+          "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-best-practices.html"
+        }
+      ]
+    },
+    {
+      "id": 349,
+      "collection": "mla",
+      "sourceIds": [
+        17
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Cross-account import requires a resource policy on the source custom model and matching Regions."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — custom copy sharing",
+          "url": "https://docs.aws.amazon.com/comprehend/latest/dg/custom-copy-sharing.html"
+        }
+      ]
+    },
+    {
+      "id": 350,
+      "collection": "mla",
+      "sourceIds": [
+        18
+      ],
+      "before": {
+        "answer": [
+          "A",
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A",
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Dropout and early stopping",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/object2vec-hyperparameters.html"
+        }
+      ]
+    },
+    {
+      "id": 351,
+      "collection": "mla",
+      "sourceIds": [
+        19
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Kendra S3 connector",
+          "url": "https://docs.aws.amazon.com/kendra/latest/dg/data-source-s3.html"
+        }
+      ]
+    },
+    {
+      "id": 352,
+      "collection": "mla",
+      "sourceIds": [
+        20,
+        266
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Autopilot provides automated candidate training and performance evaluation for the tabular target."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — autopilot automate model development",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html"
+        }
+      ]
+    },
+    {
+      "id": 353,
+      "collection": "mla",
+      "sourceIds": [
+        21
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "One-hot encoding avoids an artificial order among nominal color categories."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — data wrangler transform",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        }
+      ]
+    },
+    {
+      "id": 354,
+      "collection": "mla",
+      "sourceIds": [
+        22
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Macie discovers sensitive S3 data; Lambda must implement a separate complete redaction or quarantine workflow. Finding samples alone are not exhaustive redaction instructions."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — findings investigate sd",
+          "url": "https://docs.aws.amazon.com/macie/latest/user/findings-investigate-sd.html"
+        }
+      ]
+    },
+    {
+      "id": 355,
+      "collection": "mla",
+      "sourceIds": [
+        23,
+        265
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Glue prepares existing S3 data; deployment workflows can be defined using SageMaker Pipelines through Studio."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — pipelines",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html"
+        }
+      ]
+    },
+    {
+      "id": 356,
+      "collection": "mla",
+      "sourceIds": [
+        24
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Collections organize existing model groups without changing their underlying artifacts."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — modelcollections",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/modelcollections.html"
+        }
+      ]
+    },
+    {
+      "id": 357,
+      "collection": "mla",
+      "sourceIds": [
+        25,
+        161
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Đáp án theo nguồn, chưa được kiểm chứng AWS trong lần gộp này.",
+        "Q161 lặp Q25; Q25 có lỗi chữ 'network Ad' thay cho 'network ACL'. Giữ nguyên bản gốc trong hồ sơ nguồn.",
+        "A subnet ACL blocks only traffic crossing that subnet. The prompt does not establish that public Studio access uses that path, and PublicInternetOnly uses a SageMaker-managed VPC for non-EFS traffic."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — API_CreateDomain",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateDomain.html"
+        }
+      ]
+    },
+    {
+      "id": 358,
+      "collection": "mla",
+      "sourceIds": [
+        26
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects B. The architecture can summarize transcribed Spanish speech after translation, but does not extract arbitrary visual video content. The exact Jurassic model and its current availability are unspecified; use a supported text model for a current implementation."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Model lifecycle",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html"
+        }
+      ]
+    },
+    {
+      "id": 359,
+      "collection": "mla",
+      "sourceIds": [
+        27
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Corrected source answer A to B. RANDOM_CUT_FOREST is a legacy Kinesis SQL function; Flink requires an RCF implementation or integration. Kinesis plus Lambda invoking a model endpoint is supported."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — migrating to kda studio overview",
+          "url": "https://docs.aws.amazon.com/kinesisanalytics/latest/dev/migrating-to-kda-studio-overview.html"
+        }
+      ]
+    },
+    {
+      "id": 360,
+      "collection": "mla",
+      "sourceIds": [
+        28
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Sentiment, entities, and key phrases",
+          "url": "https://docs.aws.amazon.com/comprehend/latest/dg/concepts-insights.html"
+        }
+      ]
+    },
+    {
+      "id": 361,
+      "collection": "mla",
+      "sourceIds": [
+        29
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "For model versions supporting these sampling controls, lower temperature and top-k reduce output variation; they do not guarantee determinism."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — model parameters anthropic claude messages request response",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-anthropic-claude-messages-request-response.html"
+        }
+      ]
+    },
+    {
+      "id": 362,
+      "collection": "mla",
+      "sourceIds": [
+        30
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "The source uses target_precision in a multiclass problem. That setting belongs to binary classifier model selection, so no listed option supplies a valid complete fix."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — ll_hyperparameters",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/ll_hyperparameters.html"
+        }
+      ]
+    },
+    {
+      "id": 363,
+      "collection": "mla",
+      "sourceIds": [
+        31
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "AWS describes zero-buffer delivery as within a few seconds. None of the options establishes the required sub-second end-to-end latency."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — create configure backup",
+          "url": "https://docs.aws.amazon.com/firehose/latest/dev/create-configure-backup.html"
+        }
+      ]
+    },
+    {
+      "id": 364,
+      "collection": "mla",
+      "sourceIds": [
+        32,
+        261
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Inference options",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model-options.html"
+        }
+      ]
+    },
+    {
+      "id": 365,
+      "collection": "mla",
+      "sourceIds": [
+        33,
+        260
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Keep HDFS-bearing core nodes and the primary node On-Demand; use Spot for task-node processing capacity."
+      ],
+      "sources": [
+        {
+          "title": "AWS documentation — emr plan instances guidelines",
+          "url": "https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-instances-guidelines.html"
+        }
+      ]
+    },
+    {
+      "id": 366,
+      "collection": "mla",
+      "sourceIds": [
+        34,
+        259
+      ],
+      "before": {
+        "answer": [
+          "A",
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A",
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Sustainable training",
+          "url": "https://docs.aws.amazon.com/solutions/optimizing-deep-learning-workloads-for-sustainability-on-aws/"
+        }
+      ]
+    },
+    {
+      "id": 367,
+      "collection": "mla",
+      "sourceIds": [
+        35
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Pipelines steps",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps-types.html"
+        }
+      ]
+    },
+    {
+      "id": 368,
+      "collection": "mla",
+      "sourceIds": [
+        36,
+        258
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — CloudFormation Model resource",
+          "url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-sagemaker-model.html"
+        }
+      ]
+    },
+    {
+      "id": 369,
+      "collection": "mla",
+      "sourceIds": [
+        37,
+        257
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Lake Formation tags must be paired with governed direct S3 credential access or equivalent S3 restrictions. Broad direct IAM access can bypass Lake Formation."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Lake Formation direct S3 access",
+          "url": "https://docs.aws.amazon.com/lake-formation/latest/dg/accessing-s3-locations.html"
+        }
+      ]
+    },
+    {
+      "id": 370,
+      "collection": "mla",
+      "sourceIds": [
+        38
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Canvas supported input formats",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-importing-data.html"
+        }
+      ]
+    },
+    {
+      "id": 371,
+      "collection": "mla",
+      "sourceIds": [
+        39
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Classification and regression metrics",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html"
+        }
+      ]
+    },
+    {
+      "id": 372,
+      "collection": "mla",
+      "sourceIds": [
+        40
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — SageMaker CloudTrail data events",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/logging-using-cloudtrail.html"
+        }
+      ]
+    },
+    {
+      "id": 373,
+      "collection": "mla",
+      "sourceIds": [
+        41
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Pipelines callback steps",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps-types.html"
+        }
+      ]
+    },
+    {
+      "id": 374,
+      "collection": "mla",
+      "sourceIds": [
+        42,
+        256
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Redshift dynamic data masking",
+          "url": "https://docs.aws.amazon.com/redshift/latest/dg/t_ddm.html"
+        }
+      ]
+    },
+    {
+      "id": 375,
+      "collection": "mla",
+      "sourceIds": [
+        43
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Debugger built-in rules",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html"
+        }
+      ]
+    },
+    {
+      "id": 376,
+      "collection": "mla",
+      "sourceIds": [
+        44
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Shadow testing",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-shadow-deployment.html"
+        }
+      ]
+    },
+    {
+      "id": 377,
+      "collection": "mla",
+      "sourceIds": [
+        45
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Athena partitioning",
+          "url": "https://docs.aws.amazon.com/athena/latest/ug/partitions.html"
+        }
+      ]
+    },
+    {
+      "id": 378,
+      "collection": "mla",
+      "sourceIds": [
+        46
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Service availability: SageMaker Model Monitor is closed to new customers; existing customers can continue using it. This answer describes its documented capabilities."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Model quality monitoring",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html"
+        },
+        {
+          "title": "AWS — Model Monitor capabilities and availability",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html"
+        }
+      ]
+    },
+    {
+      "id": 379,
+      "collection": "mla",
+      "sourceIds": [
+        47,
+        255
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Endpoint auto scaling",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html"
+        }
+      ]
+    },
+    {
+      "id": 380,
+      "collection": "mla",
+      "sourceIds": [
+        48
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Studio cost attribution",
+          "url": "https://docs.aws.amazon.com/whitepapers/latest/sagemaker-studio-admin-best-practices/cost-attribution.html"
+        },
+        {
+          "title": "AWS — AWS Budgets alerts",
+          "url": "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+        }
+      ]
+    },
+    {
+      "id": 381,
+      "collection": "mla",
+      "sourceIds": [
+        49
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Data Wrangler transforms",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        }
+      ]
+    },
+    {
+      "id": 382,
+      "collection": "mla",
+      "sourceIds": [
+        50
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Q Business global controls",
+          "url": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/guardrails-global-controls.html"
+        }
+      ]
+    },
+    {
+      "id": 383,
+      "collection": "mla",
+      "sourceIds": [
+        51
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Autopilot LLM fine-tuning",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-create-experiment-finetune-llms.html"
+        }
+      ]
+    },
+    {
+      "id": 384,
+      "collection": "mla",
+      "sourceIds": [
+        52
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Serverless invocation limits",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints-invoke.html"
+        }
+      ]
+    },
+    {
+      "id": 385,
+      "collection": "mla",
+      "sourceIds": [
+        53
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Data Wrangler image transformations",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        }
+      ]
+    },
+    {
+      "id": 386,
+      "collection": "mla",
+      "sourceIds": [
+        54
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Secrets Manager rotation",
+          "url": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html"
+        }
+      ]
+    },
+    {
+      "id": 387,
+      "collection": "mla",
+      "sourceIds": [
+        55
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Data Wrangler transforms",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        }
+      ]
+    },
+    {
+      "id": 388,
+      "collection": "mla",
+      "sourceIds": [
+        56
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Linear classification and model selection",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/ll_how-it-works.html"
+        }
+      ]
+    },
+    {
+      "id": 389,
+      "collection": "mla",
+      "sourceIds": [
+        57
+      ],
+      "before": {
+        "answer": [
+          "B",
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B",
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "B and C are the sharing prerequisites. Importing a model for Canvas predictions does not by itself enable additional tuning of an arbitrary external classifier."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Bring your own model to Canvas",
+          "url": "https://aws.amazon.com/blogs/machine-learning/bring-your-own-ml-model-into-amazon-sagemaker-canvas-and-generate-accurate-predictions/"
+        }
+      ]
+    },
+    {
+      "id": 390,
+      "collection": "mla",
+      "sourceIds": [
+        58
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Tuning strategies",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html"
+        }
+      ]
+    },
+    {
+      "id": 391,
+      "collection": "mla",
+      "sourceIds": [
+        59,
+        254
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Private notebook networking",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/appendix-notebook-and-internet-access.html"
+        },
+        {
+          "title": "AWS — Cross-account IAM authorization",
+          "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-cross-account-resource-access.html"
+        },
+        {
+          "title": "AWS — S3 gateway endpoints",
+          "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html"
+        }
+      ]
+    },
+    {
+      "id": 392,
+      "collection": "mla",
+      "sourceIds": [
+        60
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Metric alarms and SNS actions",
+          "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ConsoleAlarms.html"
+        }
+      ]
+    },
+    {
+      "id": 393,
+      "collection": "mla",
+      "sourceIds": [
+        61
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "A new baseline is justified only if the changed input is valid and the previous baseline is stale. The prompt does not distinguish this from a real data-quality defect; automatically rebasing may hide bad data."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Create a data quality baseline",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-create-baseline.html"
+        }
+      ]
+    },
+    {
+      "id": 394,
+      "collection": "mla",
+      "sourceIds": [
+        62
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Inference options",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model-options.html"
+        }
+      ]
+    },
+    {
+      "id": 395,
+      "collection": "mla",
+      "sourceIds": [
+        63,
+        253
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Sentiment, entities, and key phrases",
+          "url": "https://docs.aws.amazon.com/comprehend/latest/dg/concepts-insights.html"
+        }
+      ]
+    },
+    {
+      "id": 396,
+      "collection": "mla",
+      "sourceIds": [
+        64
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — SageMaker execution roles",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html"
+        }
+      ]
+    },
+    {
+      "id": 397,
+      "collection": "mla",
+      "sourceIds": [
+        65
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Serverless provisioned concurrency scaling",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints-autoscale.html"
+        }
+      ]
+    },
+    {
+      "id": 398,
+      "collection": "mla",
+      "sourceIds": [
+        66
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Service availability: SageMaker Clarify is closed to new customers; existing customers can continue using it. This answer describes its documented capabilities."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Clarify explainability",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-explainability.html"
+        },
+        {
+          "title": "AWS — Clarify capabilities and availability",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-configure-processing-jobs.html"
+        }
+      ]
+    },
+    {
+      "id": 399,
+      "collection": "mla",
+      "sourceIds": [
+        67
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Distributed training and network placement",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-training-get-started.html"
+        }
+      ]
+    },
+    {
+      "id": 400,
+      "collection": "mla",
+      "sourceIds": [
+        68
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Script mode training",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-training-algo-dockerfile.html"
+        },
+        {
+          "title": "AWS — PyTorch script training",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/training-compiler-enable-pytorch.html"
+        }
+      ]
+    },
+    {
+      "id": 401,
+      "collection": "mla",
+      "sourceIds": [
+        69
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Training data access",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html"
+        }
+      ]
+    },
+    {
+      "id": 402,
+      "collection": "mla",
+      "sourceIds": [
+        70
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — DataBrew PII protection",
+          "url": "https://docs.aws.amazon.com/databrew/latest/dg/personal-information-protection.html"
+        }
+      ]
+    },
+    {
+      "id": 403,
+      "collection": "mla",
+      "sourceIds": [
+        71
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Service availability: SageMaker Model Monitor is closed to new customers; existing customers can continue using it. This answer describes its documented capabilities."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Batch transform data capture and monitoring",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-capture.html"
+        },
+        {
+          "title": "AWS — Model Monitor capabilities and availability",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html"
+        }
+      ]
+    },
+    {
+      "id": 404,
+      "collection": "mla",
+      "sourceIds": [
+        72
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "scikit-learn — Inconsistent preprocessing and data leakage",
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html"
+        }
+      ]
+    },
+    {
+      "id": 405,
+      "collection": "mla",
+      "sourceIds": [
+        73
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — FSx for ONTAP clients",
+          "url": "https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/supported-fsx-clients.html"
+        }
+      ]
+    },
+    {
+      "id": 406,
+      "collection": "mla",
+      "sourceIds": [
+        74
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — EventBridge pipeline scheduling",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/pipeline-eventbridge.html"
+        }
+      ]
+    },
+    {
+      "id": 407,
+      "collection": "mla",
+      "sourceIds": [
+        75
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — XGBoost hyperparameters",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html"
+        }
+      ]
+    },
+    {
+      "id": 408,
+      "collection": "mla",
+      "sourceIds": [
+        76,
+        252
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Classification and regression metrics",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html"
+        }
+      ]
+    },
+    {
+      "id": 409,
+      "collection": "mla",
+      "sourceIds": [
+        77
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Pipelines",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html"
+        },
+        {
+          "title": "AWS — ML Lineage Tracking",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html"
+        }
+      ]
+    },
+    {
+      "id": 410,
+      "collection": "mla",
+      "sourceIds": [
+        78
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Compute Optimizer supported resources",
+          "url": "https://docs.aws.amazon.com/compute-optimizer/latest/ug/supported-resources.html"
+        }
+      ]
+    },
+    {
+      "id": 411,
+      "collection": "mla",
+      "sourceIds": [
+        79
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Cross-account Model Registry discovery",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-ram.html"
+        }
+      ]
+    },
+    {
+      "id": 412,
+      "collection": "mla",
+      "sourceIds": [
+        80
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Variant weights are relative. For exactly 10% traffic, use new:old weights of 0.1:0.9 or 1:9; new=0.1 with old=1 is approximately 9.09%."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Model A/B testing",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html"
+        }
+      ]
+    },
+    {
+      "id": 413,
+      "collection": "mla",
+      "sourceIds": [
+        81,
+        251
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Object Detection",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/object-detection.html"
+        }
+      ]
+    },
+    {
+      "id": 414,
+      "collection": "mla",
+      "sourceIds": [
+        82
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — DataBrew multi-file datasets",
+          "url": "https://docs.aws.amazon.com/databrew/latest/dg/datasets.multiple-files.html"
+        }
+      ]
+    },
+    {
+      "id": 415,
+      "collection": "mla",
+      "sourceIds": [
+        83
+      ],
+      "before": {
+        "answer": [
+          "A",
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A",
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Classification and regression metrics",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html"
+        }
+      ]
+    },
+    {
+      "id": 416,
+      "collection": "mla",
+      "sourceIds": [
+        84
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Inter-container traffic encryption",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html"
+        }
+      ]
+    },
+    {
+      "id": 417,
+      "collection": "mla",
+      "sourceIds": [
+        85,
+        250
+      ],
+      "before": {
+        "answer": [
+          "C",
+          "E"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C",
+          "E"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Forecast accuracy metrics",
+          "url": "https://docs.aws.amazon.com/forecast/latest/dg/metrics.html"
+        }
+      ]
+    },
+    {
+      "id": 418,
+      "collection": "mla",
+      "sourceIds": [
+        86
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Inference component resources",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_InferenceComponentComputeResourceRequirements.html"
+        }
+      ]
+    },
+    {
+      "id": 419,
+      "collection": "mla",
+      "sourceIds": [
+        87
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — SSE-KMS permissions",
+          "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html"
+        }
+      ]
+    },
+    {
+      "id": 420,
+      "collection": "mla",
+      "sourceIds": [
+        88
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects D. A workload of 35 hours per week does not establish sufficient hourly utilization for a one-year Savings Plan to reduce total cost. Unused hourly commitment does not carry over."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Savings Plans hourly commitments",
+          "url": "https://docs.aws.amazon.com/savingsplans/latest/userguide/sp-applying.html"
+        }
+      ]
+    },
+    {
+      "id": 421,
+      "collection": "mla",
+      "sourceIds": [
+        89
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects C. Comparing input distributions detects data drift, not an observed decline in accuracy. Ground-truth labels and model quality monitoring are missing."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Model quality monitoring",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html"
+        }
+      ]
+    },
+    {
+      "id": 422,
+      "collection": "mla",
+      "sourceIds": [
+        90
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Service availability: SageMaker Clarify is closed to new customers; existing customers can continue using it. This answer describes its documented capabilities."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Bias analysis with Clarify",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-configure-processing-jobs.html"
+        }
+      ]
+    },
+    {
+      "id": 423,
+      "collection": "mla",
+      "sourceIds": [
+        91
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "D matches the one-instance temporary capacity limit. Rolling deployments replace hosts; they do not promise reuse of the original physical instances. Configure rollback batch capacity consistently."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Rolling deployments",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-rolling.html"
+        }
+      ]
+    },
+    {
+      "id": 424,
+      "collection": "mla",
+      "sourceIds": [
+        92
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — SNS SMS notifications",
+          "url": "https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-phone-number-as-subscriber.html"
+        },
+        {
+          "title": "AWS — SageMaker CloudWatch metrics",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/monitoring-cloudwatch.html"
+        }
+      ]
+    },
+    {
+      "id": 425,
+      "collection": "mla",
+      "sourceIds": [
+        93
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Enforce notebook root access restrictions",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/security_iam_id-based-policy-examples.html"
+        }
+      ]
+    },
+    {
+      "id": 426,
+      "collection": "mla",
+      "sourceIds": [
+        94
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Internetwork traffic privacy",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/inter-network-privacy.html"
+        }
+      ]
+    },
+    {
+      "id": 427,
+      "collection": "mla",
+      "sourceIds": [
+        95,
+        249
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Model Registry versions",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-models.html"
+        }
+      ]
+    },
+    {
+      "id": 428,
+      "collection": "mla",
+      "sourceIds": [
+        96
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Knowledge base document formats",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-ds.html"
+        }
+      ]
+    },
+    {
+      "id": 429,
+      "collection": "mla",
+      "sourceIds": [
+        97
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Inference deployment options",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model-options.html"
+        }
+      ]
+    },
+    {
+      "id": 430,
+      "collection": "mla",
+      "sourceIds": [
+        98,
+        248
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Feature transforms and class balancing",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        }
+      ]
+    },
+    {
+      "id": 431,
+      "collection": "mla",
+      "sourceIds": [
+        99
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Detect and process sensitive data",
+          "url": "https://docs.aws.amazon.com/glue/latest/dg/detect-PII.html"
+        }
+      ]
+    },
+    {
+      "id": 432,
+      "collection": "mla",
+      "sourceIds": [
+        100
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects B. Comprehend Medical extracts medical entities and relationships; it does not directly generate a text summary. B is only valid under a broader interpretation of summarization."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Comprehend Medical overview",
+          "url": "https://docs.aws.amazon.com/comprehend-medical/latest/dev/comprehendmedical-welcome.html"
+        }
+      ]
+    },
+    {
+      "id": 434,
+      "collection": "mla",
+      "sourceIds": [
+        102
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Studio presigned URL access controls",
+          "url": "https://docs.aws.amazon.com/whitepapers/latest/sagemaker-studio-admin-best-practices/multiple-domains-and-shared-spaces.html"
+        }
+      ]
+    },
+    {
+      "id": 435,
+      "collection": "mla",
+      "sourceIds": [
+        103
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — S3 and JDBC DynamicFrames",
+          "url": "https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-crawler-pyspark-extensions-dynamic-frame-reader.html"
+        }
+      ]
+    },
+    {
+      "id": 436,
+      "collection": "mla",
+      "sourceIds": [
+        104
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Endpoint CloudWatch metrics",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/monitoring-cloudwatch.html"
+        }
+      ]
+    },
+    {
+      "id": 437,
+      "collection": "mla",
+      "sourceIds": [
+        105
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects A. DetectPiiEntities returns entity offsets, not redacted text. Add explicit masking or use an asynchronous PII redaction job before training."
+      ],
+      "sources": [
+        {
+          "title": "AWS — PII detection and redaction",
+          "url": "https://docs.aws.amazon.com/comprehend/latest/dg/how-pii.html"
+        }
+      ]
+    },
+    {
+      "id": 438,
+      "collection": "mla",
+      "sourceIds": [
+        106,
+        246
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Notebook creation and start hooks",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstanceLifecycleConfig.html"
+        }
+      ]
+    },
+    {
+      "id": 439,
+      "collection": "mla",
+      "sourceIds": [
+        107
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects D. Managed Flink Studio uses Apache Zeppelin rather than Jupyter, and the Flink dashboard monitors jobs rather than providing the requested clickstream visualizations."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Managed Flink Studio notebook",
+          "url": "https://docs.aws.amazon.com/managed-flink/latest/java/example-notebook-msk.html"
+        }
+      ]
+    },
+    {
+      "id": 440,
+      "collection": "mla",
+      "sourceIds": [
+        108,
+        245
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects C. DetectPHI returns entity locations and requires a masking step. A can also work for structured fields; the question does not specify the data format well enough to exclude it."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Comprehend Medical DetectPHI",
+          "url": "https://docs.aws.amazon.com/comprehend-medical/latest/api/API_DetectPHI.html"
+        }
+      ]
+    },
+    {
+      "id": 441,
+      "collection": "mla",
+      "sourceIds": [
+        109
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Framework and custom containers",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers.html"
+        }
+      ]
+    },
+    {
+      "id": 442,
+      "collection": "mla",
+      "sourceIds": [
+        110
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Service availability: SageMaker Model Monitor is closed to new customers; existing customers can continue using it. This answer describes its documented capabilities."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Data quality monitoring",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html"
+        },
+        {
+          "title": "AWS — Model Monitor capabilities and availability",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html"
+        }
+      ]
+    },
+    {
+      "id": 443,
+      "collection": "mla",
+      "sourceIds": [
+        111
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Training input modes",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data-best-practices.html"
+        }
+      ]
+    },
+    {
+      "id": 444,
+      "collection": "mla",
+      "sourceIds": [
+        112
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Shadow tests",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html"
+        }
+      ]
+    },
+    {
+      "id": 445,
+      "collection": "mla",
+      "sourceIds": [
+        113
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Training metadata opt-out",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-privacy.html"
+        }
+      ]
+    },
+    {
+      "id": 446,
+      "collection": "mla",
+      "sourceIds": [
+        114
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Bedrock private endpoints",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/vpc-interface-endpoints.html"
+        }
+      ]
+    },
+    {
+      "id": 447,
+      "collection": "mla",
+      "sourceIds": [
+        115
+      ],
+      "before": {
+        "answer": [
+          "A",
+          "E"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A",
+          "E"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Managed conversational interface",
+          "url": "https://docs.aws.amazon.com/lexv2/latest/dg/quick-start.html"
+        },
+        {
+          "title": "AWS — JumpStart foundation models",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-foundation-models-latest.html"
+        }
+      ]
+    },
+    {
+      "id": 448,
+      "collection": "mla",
+      "sourceIds": [
+        116
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Flink stream processing sinks",
+          "url": "https://docs.aws.amazon.com/managed-flink/latest/java/how-sinks.html"
+        }
+      ]
+    },
+    {
+      "id": 449,
+      "collection": "mla",
+      "sourceIds": [
+        117
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Encryption CLI wrapping keys",
+          "url": "https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/crypto-cli-how-to.html"
+        }
+      ]
+    },
+    {
+      "id": 450,
+      "collection": "mla",
+      "sourceIds": [
+        118
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects A, the integrated managed solution. C can also implement feature transformations and ingestion using Flink and Feature Store APIs. The question lacks a batch-input or least-overhead constraint that uniquely excludes C."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Feature Processing",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-feature-processing.html"
+        }
+      ]
+    },
+    {
+      "id": 451,
+      "collection": "mla",
+      "sourceIds": [
+        119
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Inference deployment options",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model-options.html"
+        }
+      ]
+    },
+    {
+      "id": 452,
+      "collection": "mla",
+      "sourceIds": [
+        120
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Feature Store Spark ingestion",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/batch-ingestion-spark-connector-setup.html"
+        }
+      ]
+    },
+    {
+      "id": 453,
+      "collection": "mla",
+      "sourceIds": [
+        121
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Direct multi-container invocation",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/multi-container-direct.html"
+        }
+      ]
+    },
+    {
+      "id": 455,
+      "collection": "mla",
+      "sourceIds": [
+        123
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Private labeling workforce",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-private.html"
+        }
+      ]
+    },
+    {
+      "id": 456,
+      "collection": "mla",
+      "sourceIds": [
+        124
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Inference deployment options",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model-options.html"
+        }
+      ]
+    },
+    {
+      "id": 457,
+      "collection": "mla",
+      "sourceIds": [
+        125
+      ],
+      "before": {
+        "answer": [
+          "C",
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C",
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Private labeling workforce",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-private.html"
+        }
+      ]
+    },
+    {
+      "id": 458,
+      "collection": "mla",
+      "sourceIds": [
+        126
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Recipe jobs and transformed output",
+          "url": "https://docs.aws.amazon.com/databrew/latest/dg/jobs.recipe.html"
+        }
+      ]
+    },
+    {
+      "id": 459,
+      "collection": "mla",
+      "sourceIds": [
+        127
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Relationalize nested records",
+          "url": "https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-crawler-pyspark-extensions-dynamic-frame.html"
+        }
+      ]
+    },
+    {
+      "id": 460,
+      "collection": "mla",
+      "sourceIds": [
+        128
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Experiment parameters and artifacts",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/experiments-view-compare.html"
+        }
+      ]
+    },
+    {
+      "id": 461,
+      "collection": "mla",
+      "sourceIds": [
+        129
+      ],
+      "before": {
+        "answer": [
+          "A",
+          "D",
+          "E"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A",
+          "D",
+          "E"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects A, D, E. Bedrock and Lambda provide serverless compute, but storing vector index dumps in S3 does not itself provide the retrieval required for a document chatbot. An explicit queryable index is missing."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Bedrock Knowledge Bases document retrieval",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/kb-how-data.html"
+        }
+      ]
+    },
+    {
+      "id": 462,
+      "collection": "mla",
+      "sourceIds": [
+        130
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Inference hosting limits",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model-options.html"
+        }
+      ]
+    },
+    {
+      "id": 463,
+      "collection": "mla",
+      "sourceIds": [
+        131,
+        285
+      ],
+      "before": {
+        "answer": [
+          "A",
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A",
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Feature transforms and class balancing",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        }
+      ]
+    },
+    {
+      "id": 464,
+      "collection": "mla",
+      "sourceIds": [
+        132
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Factorization Machines",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/fact-machines.html"
+        }
+      ]
+    },
+    {
+      "id": 465,
+      "collection": "mla",
+      "sourceIds": [
+        133
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Framework and custom containers",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers.html"
+        }
+      ]
+    },
+    {
+      "id": 466,
+      "collection": "mla",
+      "sourceIds": [
+        134
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects B but incorrectly describes Large Model Inference containers as training containers. A may fit a compatible model; the model and framework versions are not specified."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Training and inference container roles",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/amazon-sagemaker-toolkits.html"
+        },
+        {
+          "title": "AWS — Large Model Inference",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/large-model-inference.html"
+        }
+      ]
+    },
+    {
+      "id": 467,
+      "collection": "mla",
+      "sourceIds": [
+        135
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Shadow tests",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html"
+        }
+      ]
+    },
+    {
+      "id": 468,
+      "collection": "mla",
+      "sourceIds": [
+        136
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Training metadata opt-out",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-privacy.html"
+        }
+      ]
+    },
+    {
+      "id": 470,
+      "collection": "mla",
+      "sourceIds": [
+        138,
+        284
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Inter-container encryption",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html"
+        }
+      ]
+    },
+    {
+      "id": 471,
+      "collection": "mla",
+      "sourceIds": [
+        139
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Data quality baseline and monitoring",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html"
+        }
+      ]
+    },
+    {
+      "id": 472,
+      "collection": "mla",
+      "sourceIds": [
+        140
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — DeepAR input formats",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/deepar.html"
+        }
+      ]
+    },
+    {
+      "id": 473,
+      "collection": "mla",
+      "sourceIds": [
+        141
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Columnar storage",
+          "url": "https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html"
+        }
+      ]
+    },
+    {
+      "id": 474,
+      "collection": "mla",
+      "sourceIds": [
+        142
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects B. DPL compares positive-label proportions between specified facets, rather than measuring overall target-class imbalance without facets."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Bias facets and metrics",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-processing-job-configure-analysis.html"
+        }
+      ]
+    },
+    {
+      "id": 475,
+      "collection": "mla",
+      "sourceIds": [
+        143
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Multi-model endpoints",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/multi-model-endpoints.html"
+        }
+      ]
+    },
+    {
+      "id": 476,
+      "collection": "mla",
+      "sourceIds": [
+        144
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Video frame labeling",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/sms-video-overview.html"
+        }
+      ]
+    },
+    {
+      "id": 477,
+      "collection": "mla",
+      "sourceIds": [
+        145
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects C. Curating labels and retraining once is not a complete automated long-term monitoring and retraining solution. None of the options defines the required loop."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Production quality monitoring",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html"
+        }
+      ]
+    },
+    {
+      "id": 478,
+      "collection": "mla",
+      "sourceIds": [
+        146
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Eye direction",
+          "url": "https://docs.aws.amazon.com/rekognition/latest/APIReference/API_EyeDirection.html"
+        }
+      ]
+    },
+    {
+      "id": 479,
+      "collection": "mla",
+      "sourceIds": [
+        147
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — EKS infrastructure in Python",
+          "url": "https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_eks_v2/Cluster.html"
+        }
+      ]
+    },
+    {
+      "id": 480,
+      "collection": "mla",
+      "sourceIds": [
+        148
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Training and validation curves",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/train-valid-curve.html"
+        }
+      ]
+    },
+    {
+      "id": 481,
+      "collection": "mla",
+      "sourceIds": [
+        149,
+        232
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Shadow tests",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html"
+        }
+      ]
+    },
+    {
+      "id": 482,
+      "collection": "mla",
+      "sourceIds": [
+        150
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Crawler schema discovery and catalog",
+          "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/serverless-etl-aws-glue/aws-glue-data-catalog.html"
+        }
+      ]
+    },
+    {
+      "id": 483,
+      "collection": "mla",
+      "sourceIds": [
+        151
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Columnar storage",
+          "url": "https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html"
+        }
+      ]
+    },
+    {
+      "id": 484,
+      "collection": "mla",
+      "sourceIds": [
+        152,
+        233
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Scaling cooldowns",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-add-code-define.html"
+        }
+      ]
+    },
+    {
+      "id": 485,
+      "collection": "mla",
+      "sourceIds": [
+        153
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — S3 gateway endpoints",
+          "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html"
+        }
+      ]
+    },
+    {
+      "id": 486,
+      "collection": "mla",
+      "sourceIds": [
+        154
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — XGBoost objectives",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html"
+        }
+      ]
+    },
+    {
+      "id": 487,
+      "collection": "mla",
+      "sourceIds": [
+        155
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Service availability: SageMaker Model Monitor is closed to new customers; existing customers can continue using it. This answer describes its documented capabilities."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Data quality baseline and monitoring",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html"
+        },
+        {
+          "title": "AWS — Model Monitor capabilities and availability",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html"
+        }
+      ]
+    },
+    {
+      "id": 488,
+      "collection": "mla",
+      "sourceIds": [
+        156
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Inference Recommender",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/inference-recommender.html"
+        }
+      ]
+    },
+    {
+      "id": 489,
+      "collection": "mla",
+      "sourceIds": [
+        157
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Dropout and early stopping",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/object2vec-hyperparameters.html"
+        }
+      ]
+    },
+    {
+      "id": 490,
+      "collection": "mla",
+      "sourceIds": [
+        158
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Data Quality rules",
+          "url": "https://docs.aws.amazon.com/glue/latest/dg/glue-data-quality.html"
+        }
+      ]
+    },
+    {
+      "id": 491,
+      "collection": "mla",
+      "sourceIds": [
+        159
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Service availability: SageMaker Model Monitor is closed to new customers; existing customers can continue using it. This answer describes its documented capabilities."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Monitoring metrics and emit_metrics",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-interpreting-cloudwatch.html"
+        },
+        {
+          "title": "AWS — Model Monitor capabilities and availability",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html"
+        }
+      ]
+    },
+    {
+      "id": 492,
+      "collection": "mla",
+      "sourceIds": [
+        160
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Inference deployment options",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model-options.html"
+        }
+      ]
+    },
+    {
+      "id": 494,
+      "collection": "mla",
+      "sourceIds": [
+        162
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects C. Both binary encoding and one-hot encoding produce binary values. C is unique only if the requirement is one separate indicator per weekday."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Categorical encodings",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        }
+      ]
+    },
+    {
+      "id": 495,
+      "collection": "mla",
+      "sourceIds": [
+        163
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Data Wrangler transforms",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        }
+      ]
+    },
+    {
+      "id": 496,
+      "collection": "mla",
+      "sourceIds": [
+        164,
+        231
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Private S3 interface endpoints",
+          "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html"
+        },
+        {
+          "title": "AWS — Training metadata opt-out",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-privacy.html"
+        }
+      ]
+    },
+    {
+      "id": 497,
+      "collection": "mla",
+      "sourceIds": [
+        165
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Feature ingestion and online freshness",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-ingest-data.html"
+        }
+      ]
+    },
+    {
+      "id": 498,
+      "collection": "mla",
+      "sourceIds": [
+        166
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects D. A QualityCheck step checks one quality type using a tabular prebuilt container. X-ray data needs image-specific checks and model quality needs labels; these prerequisites are omitted."
+      ],
+      "sources": [
+        {
+          "title": "AWS — QualityCheck steps",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps-types.html"
+        }
+      ]
+    },
+    {
+      "id": 499,
+      "collection": "mla",
+      "sourceIds": [
+        167
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Data Wrangler connections",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-import.html"
+        }
+      ]
+    },
+    {
+      "id": 500,
+      "collection": "mla",
+      "sourceIds": [
+        168
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Classification and regression metrics",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html"
+        }
+      ]
+    },
+    {
+      "id": 501,
+      "collection": "mla",
+      "sourceIds": [
+        169,
+        264
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Inference deployment options",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model-options.html"
+        }
+      ]
+    },
+    {
+      "id": 502,
+      "collection": "mla",
+      "sourceIds": [
+        170
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Linear classification and model selection",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/ll_how-it-works.html"
+        }
+      ]
+    },
+    {
+      "id": 503,
+      "collection": "mla",
+      "sourceIds": [
+        171
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Service availability: SageMaker Clarify is closed to new customers; existing customers can continue using it. This answer describes its documented capabilities."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Bias analysis with Clarify",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-configure-processing-jobs.html"
+        }
+      ]
+    },
+    {
+      "id": 504,
+      "collection": "mla",
+      "sourceIds": [
+        172
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Feature transforms and class balancing",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        }
+      ]
+    },
+    {
+      "id": 505,
+      "collection": "mla",
+      "sourceIds": [
+        173
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Service availability: SageMaker Clarify is closed to new customers; existing customers can continue using it. This answer describes its documented capabilities."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Clarify analysis results",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-processing-job-analysis-results.html"
+        },
+        {
+          "title": "AWS — Clarify capabilities and availability",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-configure-processing-jobs.html"
+        },
+        {
+          "title": "AWS — CloudWatch metrics for bias drift",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-bias-drift-cw.html"
+        }
+      ]
+    },
+    {
+      "id": 506,
+      "collection": "mla",
+      "sourceIds": [
+        174
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects C. A new baseline is appropriate only after validating an intended distribution change. Rebaselining faulty input would hide a data problem, and the question does not establish the cause."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Data quality drift",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html"
+        }
+      ]
+    },
+    {
+      "id": 507,
+      "collection": "mla",
+      "sourceIds": [
+        175,
+        263
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Classification and regression metrics",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html"
+        }
+      ]
+    },
+    {
+      "id": 508,
+      "collection": "mla",
+      "sourceIds": [
+        176
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Endpoint auto scaling",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html"
+        }
+      ]
+    },
+    {
+      "id": 509,
+      "collection": "mla",
+      "sourceIds": [
+        177
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — L1 and L2 regularization",
+          "url": "https://docs.aws.amazon.com/machine-learning/latest/dg/training-parameters.html"
+        }
+      ]
+    },
+    {
+      "id": 510,
+      "collection": "mla",
+      "sourceIds": [
+        178,
+        234
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Data Wrangler transforms",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        }
+      ]
+    },
+    {
+      "id": 511,
+      "collection": "mla",
+      "sourceIds": [
+        179
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Learning rate and convergence",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/ip-insights-hyperparameters.html"
+        }
+      ]
+    },
+    {
+      "id": 512,
+      "collection": "mla",
+      "sourceIds": [
+        180,
+        262
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — NFS semantics and file locking",
+          "url": "https://docs.aws.amazon.com/efs/latest/ug/features.html"
+        }
+      ]
+    },
+    {
+      "id": 513,
+      "collection": "mla",
+      "sourceIds": [
+        181
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "DataBrew ONE_HOT_ENCODING supports at most ten distinct values per source column. Validate the column cardinality before applying the recipe."
+      ],
+      "sources": [
+        {
+          "title": "AWS — One-hot encoding",
+          "url": "https://docs.aws.amazon.com/databrew/latest/dg/recipe-actions.ONE_HOT_ENCODING.html"
+        }
+      ]
+    },
+    {
+      "id": 514,
+      "collection": "mla",
+      "sourceIds": [
+        182
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — PyTorch script entry points and Estimator.fit",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/training-compiler-enable-pytorch.html"
+        }
+      ]
+    },
+    {
+      "id": 515,
+      "collection": "mla",
+      "sourceIds": [
+        183,
+        243
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Anomaly direction and insights",
+          "url": "https://docs.aws.amazon.com/quick/latest/userguide/anomaly-detection-adding-anomaly-insights.html"
+        }
+      ]
+    },
+    {
+      "id": 516,
+      "collection": "mla",
+      "sourceIds": [
+        184
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Anomaly direction and insights",
+          "url": "https://docs.aws.amazon.com/quick/latest/userguide/anomaly-detection-adding-anomaly-insights.html"
+        }
+      ]
+    },
+    {
+      "id": 517,
+      "collection": "mla",
+      "sourceIds": [
+        185
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — ECR images on EKS",
+          "url": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/ECR_on_EKS.html"
+        }
+      ]
+    },
+    {
+      "id": 518,
+      "collection": "mla",
+      "sourceIds": [
+        186
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Document metadata filtering",
+          "url": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/metadata-filtering.html"
+        }
+      ]
+    },
+    {
+      "id": 519,
+      "collection": "mla",
+      "sourceIds": [
+        187
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects C. SageMaker Factorization Machines supports binary classification or regression, not a direct 2,000-class target. C requires reformulating the task as scoring user-airport pairs."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Factorization Machines target types",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/fact-machines.html"
+        }
+      ]
+    },
+    {
+      "id": 520,
+      "collection": "mla",
+      "sourceIds": [
+        188
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects D. Reactive step scaling begins after capacity failures and still takes minutes. Scheduled prewarming or a nonzero minimum is needed for readiness at the start of the day."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Scaling from zero",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-zero-instances.html"
+        }
+      ]
+    },
+    {
+      "id": 521,
+      "collection": "mla",
+      "sourceIds": [
+        189
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "AWS has announced the end of SageMaker Profiler support on June 30, 2027. The profiling concept remains valid; check the service lifecycle for implementation."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Training CPU and GPU profiling",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/train-use-sagemaker-profiler.html"
+        }
+      ]
+    },
+    {
+      "id": 522,
+      "collection": "mla",
+      "sourceIds": [
+        190
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Data quality baseline and monitoring",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html"
+        }
+      ]
+    },
+    {
+      "id": 523,
+      "collection": "mla",
+      "sourceIds": [
+        191
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Asynchronous input, output, and notifications",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference.html"
+        }
+      ]
+    },
+    {
+      "id": 524,
+      "collection": "mla",
+      "sourceIds": [
+        192
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Classification and regression metrics",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html"
+        }
+      ]
+    },
+    {
+      "id": 525,
+      "collection": "mla",
+      "sourceIds": [
+        193
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects D. InvocationsPerInstance is a standard one-minute metric. The supported high-resolution metrics are ConcurrentRequestsPerModel and ConcurrentRequestsPerCopy; changing the evaluation period does not change publication resolution."
+      ],
+      "sources": [
+        {
+          "title": "AWS — High-resolution scaling metrics",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-add-code-define.html"
+        }
+      ]
+    },
+    {
+      "id": 526,
+      "collection": "mla",
+      "sourceIds": [
+        194
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Service availability: SageMaker Clarify is closed to new customers; existing customers can continue using it. This answer describes its documented capabilities."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Feature transforms and class balancing",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        },
+        {
+          "title": "AWS — Clarify capabilities and availability",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-configure-processing-jobs.html"
+        }
+      ]
+    },
+    {
+      "id": 527,
+      "collection": "mla",
+      "sourceIds": [
+        195
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Feature transforms and class balancing",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        }
+      ]
+    },
+    {
+      "id": 528,
+      "collection": "mla",
+      "sourceIds": [
+        196
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Endpoint auto scaling",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html"
+        }
+      ]
+    },
+    {
+      "id": 529,
+      "collection": "mla",
+      "sourceIds": [
+        197
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Distributed training and network placement",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-training-get-started.html"
+        }
+      ]
+    },
+    {
+      "id": 530,
+      "collection": "mla",
+      "sourceIds": [
+        198
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Bayesian and Hyperband tuning",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html"
+        }
+      ]
+    },
+    {
+      "id": 531,
+      "collection": "mla",
+      "sourceIds": [
+        199
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — RCF ensemble settings",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/rcf_hyperparameters.html"
+        }
+      ]
+    },
+    {
+      "id": 532,
+      "collection": "mla",
+      "sourceIds": [
+        200
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Early stopping",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-early-stopping.html"
+        }
+      ]
+    },
+    {
+      "id": 533,
+      "collection": "mla",
+      "sourceIds": [
+        201
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Image augmentation and training",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/IC-Hyperparameter.html"
+        }
+      ]
+    },
+    {
+      "id": 534,
+      "collection": "mla",
+      "sourceIds": [
+        202
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Knowledge base embedding models",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-supported.html"
+        }
+      ]
+    },
+    {
+      "id": 535,
+      "collection": "mla",
+      "sourceIds": [
+        203
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Sensitive data detection and redaction",
+          "url": "https://docs.aws.amazon.com/glue/latest/dg/detect-PII.html"
+        }
+      ]
+    },
+    {
+      "id": 536,
+      "collection": "mla",
+      "sourceIds": [
+        204
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects D. Constraint violations and endpoint error logs do not by themselves validate predictive performance. The monitoring type, ground truth, and pre-campaign validation are missing."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Model quality and ground truth",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html"
+        }
+      ]
+    },
+    {
+      "id": 537,
+      "collection": "mla",
+      "sourceIds": [
+        205
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects D. Per-region normalization may help regional scale differences but does not inherently correct recurring seasonal peaks. The algorithm, distribution mismatch, and validation split are unspecified."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Feature transforms",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        }
+      ]
+    },
+    {
+      "id": 538,
+      "collection": "mla",
+      "sourceIds": [
+        206
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Feature transforms and class balancing",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        }
+      ]
+    },
+    {
+      "id": 539,
+      "collection": "mla",
+      "sourceIds": [
+        207
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Data Wrangler connections",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-import.html"
+        }
+      ]
+    },
+    {
+      "id": 540,
+      "collection": "mla",
+      "sourceIds": [
+        208
+      ],
+      "before": {
+        "answer": [
+          "A",
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A",
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Model invocation permissions",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/inference-prereq.html"
+        },
+        {
+          "title": "AWS — SQS receive and delete permissions",
+          "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-api-permissions-reference.html"
+        }
+      ]
+    },
+    {
+      "id": 541,
+      "collection": "mla",
+      "sourceIds": [
+        209
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Pulling notebook repository updates",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/git-nbi-use.html"
+        }
+      ]
+    },
+    {
+      "id": 542,
+      "collection": "mla",
+      "sourceIds": [
+        210
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — DeepAR forecasting",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/deepar.html"
+        }
+      ]
+    },
+    {
+      "id": 543,
+      "collection": "mla",
+      "sourceIds": [
+        211
+      ],
+      "before": {
+        "answer": [
+          "A",
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A",
+          "C"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects A and C. The real-time plus Processing architecture fits, but A names ConcurrentInvocationsPerinstance instead of a supported documented metric. Correct the metric before treating the combination as deployable."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Supported target tracking metrics",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-add-code-define.html"
+        }
+      ]
+    },
+    {
+      "id": 544,
+      "collection": "mla",
+      "sourceIds": [
+        212
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Corrected source key A to D. For the described training/validation gap, increasing XGBoost lambda adds L2 regularization with less implementation effort than acquiring a larger dataset. Validate the setting; confirmed distribution shift would also require representative data."
+      ],
+      "sources": [
+        {
+          "title": "AWS — XGBoost lambda and evaluation metrics",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html"
+        }
+      ]
+    },
+    {
+      "id": 545,
+      "collection": "mla",
+      "sourceIds": [
+        213
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Online model comparisons",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html"
+        }
+      ]
+    },
+    {
+      "id": 546,
+      "collection": "mla",
+      "sourceIds": [
+        214
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Service availability: SageMaker Clarify is closed to new customers; existing customers can continue using it. This answer describes its documented capabilities."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Bias analysis with Clarify",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-configure-processing-jobs.html"
+        }
+      ]
+    },
+    {
+      "id": 547,
+      "collection": "mla",
+      "sourceIds": [
+        215
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Moderation labels",
+          "url": "https://docs.aws.amazon.com/rekognition/latest/APIReference/API_ModerationLabel.html"
+        }
+      ]
+    },
+    {
+      "id": 548,
+      "collection": "mla",
+      "sourceIds": [
+        216
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Endpoint invocation, latency, and error metrics",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/monitoring-cloudwatch.html"
+        }
+      ]
+    },
+    {
+      "id": 549,
+      "collection": "mla",
+      "sourceIds": [
+        217
+      ],
+      "before": {
+        "answer": [
+          "A",
+          "E"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A",
+          "E"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Custom model import",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model-job.html"
+        }
+      ]
+    },
+    {
+      "id": 550,
+      "collection": "mla",
+      "sourceIds": [
+        218
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — PyTorch script entry points and Estimator.fit",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/training-compiler-enable-pytorch.html"
+        }
+      ]
+    },
+    {
+      "id": 551,
+      "collection": "mla",
+      "sourceIds": [
+        219
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Learning rate and convergence",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/ip-insights-hyperparameters.html"
+        }
+      ]
+    },
+    {
+      "id": 552,
+      "collection": "mla",
+      "sourceIds": [
+        220
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Knowledge bases, embeddings, and retrieval",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/kb-how-data.html"
+        }
+      ]
+    },
+    {
+      "id": 553,
+      "collection": "mla",
+      "sourceIds": [
+        221
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Service availability: SageMaker Model Monitor is closed to new customers; existing customers can continue using it. This answer describes its documented capabilities."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Data quality baseline and monitoring",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html"
+        },
+        {
+          "title": "AWS — Model Monitor capabilities and availability",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html"
+        }
+      ]
+    },
+    {
+      "id": 554,
+      "collection": "mla",
+      "sourceIds": [
+        222
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Câu gốc dạng ghép hoặc sắp xếp. Chọn một phương án chứa toàn bộ tổ hợp đúng."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Algorithm and task selection",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html"
+        }
+      ]
+    },
+    {
+      "id": 556,
+      "collection": "mla",
+      "sourceIds": [
+        224
+      ],
+      "before": {
+        "answer": [
+          "E"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "E"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Câu gốc dạng ghép hoặc sắp xếp. Chọn một phương án chứa toàn bộ tổ hợp đúng."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Recipe jobs and transformed output",
+          "url": "https://docs.aws.amazon.com/databrew/latest/dg/jobs.recipe.html"
+        }
+      ]
+    },
+    {
+      "id": 557,
+      "collection": "mla",
+      "sourceIds": [
+        225
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Câu gốc dạng ghép hoặc sắp xếp. Chọn một phương án chứa toàn bộ tổ hợp đúng."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Feature groups and records",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-concepts.html"
+        }
+      ]
+    },
+    {
+      "id": 558,
+      "collection": "mla",
+      "sourceIds": [
+        226
+      ],
+      "before": {
+        "answer": [
+          "F"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "F"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Câu gốc dạng ghép hoặc sắp xếp. Chọn một phương án chứa toàn bộ tổ hợp đúng."
+      ],
+      "sources": [
+        {
+          "title": "AWS — S3 event-driven pipelines",
+          "url": "https://docs.aws.amazon.com/codepipeline/latest/userguide/create-S3-source-events.html"
+        }
+      ]
+    },
+    {
+      "id": 559,
+      "collection": "mla",
+      "sourceIds": [
+        227,
+        228
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Câu gốc dạng ghép hoặc sắp xếp. Chọn một phương án chứa toàn bộ tổ hợp đúng."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Knowledge bases, embeddings, and retrieval",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/kb-how-data.html"
+        }
+      ]
+    },
+    {
+      "id": 561,
+      "collection": "mla",
+      "sourceIds": [
+        229
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Câu gốc dạng ghép hoặc sắp xếp. Chọn một phương án chứa toàn bộ tổ hợp đúng."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Feature transforms and class balancing",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        }
+      ]
+    },
+    {
+      "id": 562,
+      "collection": "mla",
+      "sourceIds": [
+        230
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Câu gốc dạng ghép hoặc sắp xếp. Chọn một phương án chứa toàn bộ tổ hợp đúng."
+      ],
+      "sources": [
+        {
+          "title": "AWS — L1 and L2 regularization",
+          "url": "https://docs.aws.amazon.com/machine-learning/latest/dg/training-parameters.html"
+        }
+      ]
+    },
+    {
+      "id": 567,
+      "collection": "mla",
+      "sourceIds": [
+        235
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Câu gốc dạng ghép hoặc sắp xếp. Chọn một phương án chứa toàn bộ tổ hợp đúng."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Bayesian and Hyperband tuning",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html"
+        }
+      ]
+    },
+    {
+      "id": 568,
+      "collection": "mla",
+      "sourceIds": [
+        236
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Câu gốc dạng ghép hoặc sắp xếp. Chọn một phương án chứa toàn bộ tổ hợp đúng.",
+        "The source instruction says choose five, but both its image and options show only four tasks. A is the intended visible mapping. SMOTE must operate on suitable numerical text features, not raw strings; the missing fifth mapping cannot be reconstructed."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Numerical SMOTE and resampling",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html"
+        }
+      ]
+    },
+    {
+      "id": 569,
+      "collection": "mla",
+      "sourceIds": [
+        237
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Câu gốc dạng ghép hoặc sắp xếp. Chọn một phương án chứa toàn bộ tổ hợp đúng."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Inference deployment options",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model-options.html"
+        }
+      ]
+    },
+    {
+      "id": 570,
+      "collection": "mla",
+      "sourceIds": [
+        238
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Câu gốc dạng ghép hoặc sắp xếp. Chọn một phương án chứa toàn bộ tổ hợp đúng."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Model package groups and versions",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-models.html"
+        }
+      ]
+    },
+    {
+      "id": 571,
+      "collection": "mla",
+      "sourceIds": [
+        239
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Câu gốc dạng ghép hoặc sắp xếp. Chọn một phương án chứa toàn bộ tổ hợp đúng."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Serverless namespace IAM roles",
+          "url": "https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-security-other-services.html"
+        }
+      ]
+    },
+    {
+      "id": 572,
+      "collection": "mla",
+      "sourceIds": [
+        240
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Câu gốc dạng ghép hoặc sắp xếp. Chọn một phương án chứa toàn bộ tổ hợp đúng."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Git, CodeBuild, and ML pipelines",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-templates-sm.html"
+        }
+      ]
+    },
+    {
+      "id": 573,
+      "collection": "mla",
+      "sourceIds": [
+        241
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Câu gốc dạng ghép hoặc sắp xếp. Chọn một phương án chứa toàn bộ tổ hợp đúng."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Deployment traffic shifting",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-blue-green.html"
+        }
+      ]
+    },
+    {
+      "id": 574,
+      "collection": "mla",
+      "sourceIds": [
+        242
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Câu gốc dạng ghép hoặc sắp xếp. Chọn một phương án chứa toàn bộ tổ hợp đúng."
+      ],
+      "sources": [
+        {
+          "title": "AWS — Algorithm and task selection",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html"
+        }
+      ]
+    },
+    {
+      "id": 576,
+      "collection": "mla",
+      "sourceIds": [
+        244
+      ],
+      "before": {
+        "answer": [
+          "F"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "F"
+        ],
+        "status": "checked"
+      },
+      "notes": [
+        "Câu gốc dạng ghép hoặc sắp xếp. Chọn một phương án chứa toàn bộ tổ hợp đúng."
+      ],
+      "sources": [
+        {
+          "title": "AWS — SQL analysis of S3 data",
+          "url": "https://docs.aws.amazon.com/athena/latest/ug/what-is.html"
+        },
+        {
+          "title": "AWS — Glue DynamicFrame transformations",
+          "url": "https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-crawler-pyspark-extensions-dynamic-frame.html"
+        }
+      ]
+    },
+    {
+      "id": 610,
+      "collection": "mla",
+      "sourceIds": [
+        278
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Sharing and importing custom models",
+          "url": "https://docs.aws.amazon.com/comprehend/latest/dg/custom-copy-sharing.html"
+        }
+      ]
+    },
+    {
+      "id": 611,
+      "collection": "mla",
+      "sourceIds": [
+        279
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects B. Lake Formation governance and ingestion are not a complete multi-source feature preparation workflow. Spark on EMR in D can perform the stated JDBC/S3 joins and schema alignment; Data Wrangler can also help with appropriate source access."
+      ],
+      "sources": [
+        {
+          "title": "AWS — JDBC ingestion and data lake governance",
+          "url": "https://docs.aws.amazon.com/lake-formation/latest/dg/getting-started-tutorial-jdbc.html"
+        }
+      ]
+    },
+    {
+      "id": 612,
+      "collection": "mla",
+      "sourceIds": [
+        280
+      ],
+      "before": {
+        "answer": [
+          "C"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "C"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Model package groups and versions",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-models.html"
+        }
+      ]
+    },
+    {
+      "id": 613,
+      "collection": "mla",
+      "sourceIds": [
+        281
+      ],
+      "before": {
+        "answer": [
+          "A"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "A"
+        ],
+        "status": "review"
+      },
+      "notes": [
+        "Source selects A. CloudWatch and SNS satisfy threshold alerting, but do not record every API event. Enable CloudTrail endpoint data events as well. CloudTrail Insights is not the fixed-count threshold alarm described."
+      ],
+      "sources": [
+        {
+          "title": "AWS — CloudTrail endpoint data events",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/logging-using-cloudtrail.html"
+        }
+      ]
+    },
+    {
+      "id": 614,
+      "collection": "mla",
+      "sourceIds": [
+        282
+      ],
+      "before": {
+        "answer": [
+          "B"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "B"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Feature groups and records",
+          "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-concepts.html"
+        }
+      ]
+    },
+    {
+      "id": 615,
+      "collection": "mla",
+      "sourceIds": [
+        283
+      ],
+      "before": {
+        "answer": [
+          "D"
+        ],
+        "status": "source"
+      },
+      "after": {
+        "answer": [
+          "D"
+        ],
+        "status": "checked"
+      },
+      "notes": [],
+      "sources": [
+        {
+          "title": "AWS — Managed foundation models",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html"
+        }
+      ]
+    }
+  ],
+  "unresolvedIds": [
+    1,
+    25,
+    30,
+    42,
+    60,
+    97,
+    105,
+    106,
+    118,
+    156,
+    159,
+    163,
+    176,
+    178,
+    207,
+    208,
+    242,
+    252,
+    254,
+    258,
+    262,
+    268,
+    288,
+    294,
+    313,
+    319,
+    320,
+    323,
+    337,
+    346,
+    347,
+    357,
+    358,
+    362,
+    363,
+    393,
+    420,
+    421,
+    432,
+    437,
+    439,
+    440,
+    450,
+    461,
+    466,
+    469,
+    474,
+    477,
+    494,
+    498,
+    506,
+    519,
+    520,
+    525,
+    536,
+    537,
+    543,
+    568,
+    611,
+    613
+  ]
+}

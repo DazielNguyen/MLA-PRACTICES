@@ -3,6 +3,7 @@ export type Question = {
   collection: 'mls' | 'mla'; sourceIds: number[]; sourceName: string; domain?: string; hint?: string;
   answer: string[]; required: number; status: 'checked' | 'historical' | 'review' | 'source';
   explanation: string; sources: { title: string; url: string }[]; notes: string[];
+  analysis?: { keyConcept: string; options: Record<string, string> };
   images: { url: string; slot: string; alt: string }[];
 };
 export type Settings = {

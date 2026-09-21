@@ -8,3 +8,5 @@
 /tmp/pdfs/legacy-quiz-audit.json
 /tmp/pdfs/merge-candidates.json
 /tmp/pdfs/mla-bundle-parsed.json
+/tmp/answer-analysis/
+__pycache__/

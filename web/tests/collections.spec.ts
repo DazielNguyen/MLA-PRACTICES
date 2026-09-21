@@ -2,32 +2,33 @@ import { test, expect } from '@playwright/test';
 import { onboard, snapshot } from './helpers';
 
 test.beforeEach(async({page})=>{await onboard(page);});
-test('MLA filters, source labels, hints and answers survive reload',async({page})=>{
+test('MLA reviewed explanations, hints and answers survive reload',async({page})=>{
   await page.goto('/#/practice');
   await page.getByRole('combobox',{name:'Bộ đề',exact:true}).selectOption('mla');
-  await expect(page.locator('.pool-count')).toContainText('241 câu');
+  await expect(page.locator('.pool-count')).toContainText('210 câu');
   await page.getByLabel('Số câu hỏi',{exact:true}).fill('2');
   await page.getByRole('button',{name:'Theo thứ tự',exact:true}).click();
   await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();
   await expect(page.locator('.question-id')).toHaveText('Ngân hàng #333');
-  await expect(page.getByText('Theo nguồn',{exact:true})).toBeVisible();
+  await expect(page.getByText('Đã đối chiếu',{exact:true})).toBeVisible();
   await expect(page.locator('.question-hint')).toBeVisible();
   await page.locator('.choice-button').nth(2).click();
   await page.getByRole('button',{name:'Kiểm tra đáp án'}).click();
-  await expect(page.locator('.source-answer-note')).toContainText('chưa được kiểm chứng');
+  await expect(page.locator('.answer-label')).toHaveText('Correct answer: C');
+  await expect(page.locator('.answer-analysis')).toBeVisible();
   await page.reload();
   expect((await snapshot(page)).progress[333].correct).toBe(1);
   await expect(page.locator('.choice-button').nth(2)).toHaveAttribute('aria-pressed','true');
 });
-test('MLA exam hides hints and can exclude imported answer keys',async({page})=>{
+test('MLA exam hides hints and includes reviewed imported questions',async({page})=>{
   await page.goto('/#/exam');
   await page.getByRole('combobox',{name:'Bộ đề',exact:true}).selectOption('mla');
   await page.getByLabel('Bao gồm đáp án theo nguồn').uncheck();
-  await expect(page.locator('.pool-count')).toContainText('2 câu');
+  await expect(page.locator('.pool-count')).toContainText('210 câu');
   await page.getByLabel('Số câu hỏi',{exact:true}).fill('2');
   await page.getByRole('button',{name:'Theo thứ tự',exact:true}).click();
   await page.getByRole('button',{name:'Bắt đầu thi thử',exact:true}).click();
-  expect((await snapshot(page)).active!.questionIds).toEqual([433,454]);
+  expect((await snapshot(page)).active!.questionIds).toEqual([333,334]);
   await expect(page.locator('.question-hint')).toHaveCount(0);
   await expect(page.locator('.explanation')).toHaveCount(0);
 });
@@ -35,8 +36,9 @@ test('MLA flashcards and library preserve source references and hotspot images',
   await page.goto('/#/flashcards');
   await page.getByRole('combobox',{name:'Bộ đề flashcard'}).selectOption('mla');
   await expect(page.locator('.question-origin')).toContainText('MLA-C01 Q001');
+  await expect(page.locator('.answer-analysis')).toHaveCount(0);
   await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();
-  await expect(page.locator('.source-answer-note')).toBeVisible();
+  await expect(page.locator('.answer-analysis')).toBeVisible();
   await page.reload();
   await expect(page.getByRole('combobox',{name:'Bộ đề flashcard'})).toHaveValue('mla');
   await page.goto('/#/library');

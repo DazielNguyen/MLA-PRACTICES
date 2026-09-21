@@ -4,6 +4,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { createSession, defaultSettings, eligibleQuestions, emptyState, finishSession, formatTime, isCorrect, remainingMs, revealAnswer, score, shuffle, toggleChoice, validateState } from './domain.ts';
 import type { Question, State } from './domain.ts';
 const bank:Question[]=JSON.parse(readFileSync(new URL('./data/questions.json',import.meta.url),'utf8'));
+const answerReviews=JSON.parse(readFileSync(new URL('../scripts/answer-review.json',import.meta.url),'utf8'));
 const single=bank.find(q=>q.status==='checked'&&q.required===1)!;
 const multi=bank.find(q=>q.status==='checked'&&q.required>1)!;
 const review=bank.find(q=>q.status==='review')!;
@@ -11,7 +12,7 @@ const settings={...defaultSettings,count:2,order:'sequential' as const};
 const make=():State=>({...emptyState(),active:createSession([single,multi],settings,'practice',1000)});
 test('merged bank retains unique IDs, provenance, choices, and image assets',()=>{
   assert.equal(bank.length,574);assert.equal(new Set(bank.map(q=>q.id)).size,574);
-  assert.equal(bank.filter(q=>q.status==='review').length,29);
+  assert.equal(bank.filter(q=>q.status==='review').length,60);
   for(const q of bank){assert.ok(q.text.length>30);assert.ok(Object.keys(q.choices).length>=4);assert.ok(q.sourceName);assert.ok(q.sourceIds.length);if(q.status!=='source')assert.ok(q.sources.length);for(const source of q.sources)assert.match(source.url,/^https:\/\//);if(q.status!=='review'){assert.equal(q.required,q.answer.length);assert.ok(q.answer.every(a=>Object.hasOwn(q.choices,a)));}for(const im of q.images){assert.ok(existsSync(new URL(`../public${im.url}`,import.meta.url)));assert.ok(im.slot==='question'||Object.hasOwn(q.choices,im.slot));}}
 });
 test('multiple answers require the exact set, independent of order',()=>{
@@ -26,8 +27,8 @@ test('single choice replaces; multi choice caps and can be deselected',()=>{
 });
 test('exam never contains unresolved answers, even with includeReview enabled',()=>{
   const pool=eligibleQuestions(bank,{...defaultSettings,includeReview:true},emptyState(),'exam');
-  assert.equal(pool.length,545);assert.ok(pool.every(q=>q.status!=='review'));
-  assert.equal(eligibleQuestions(bank,{...defaultSettings,includeHistorical:false},emptyState(),'exam').length,519);
+  assert.equal(pool.length,514);assert.ok(pool.every(q=>q.status!=='review'));
+  assert.equal(eligibleQuestions(bank,{...defaultSettings,includeHistorical:false},emptyState(),'exam').length,487);
 });
 test('question filters combine scope, range and status',()=>{
   const state=emptyState();state.bookmarks=[2,70];
@@ -81,14 +82,14 @@ test('invalid backups are rejected before replacing progress',()=>{
 
 test('collection and source status filters keep MLS and MLA separate',()=>{
   const mla=eligibleQuestions(bank,{...defaultSettings,collection:'mla'},emptyState(),'exam');
-  assert.equal(mla.length,241);assert.ok(mla.every(q=>q.collection==='mla'));
-  assert.deepEqual(eligibleQuestions(bank,{...defaultSettings,collection:'mla',includeSource:false},emptyState(),'exam').map(q=>q.id),[433,454]);
+  assert.equal(mla.length,210);assert.ok(mla.every(q=>q.collection==='mla'));
+  assert.deepEqual(eligibleQuestions(bank,{...defaultSettings,collection:'mla',includeSource:false},emptyState(),'exam'),mla);
   assert.equal(eligibleQuestions(bank,{...defaultSettings,collection:'mls'},emptyState(),'exam').length,304);
   assert.ok(!mla.some(q=>q.id===469));
 });
-test('legacy question IDs and answers remain unchanged after adding MLA',()=>{
+test('legacy content and IDs are preserved; answer changes require explicit documented reviews',()=>{
   const old=JSON.parse(readFileSync(new URL('../../tmp/pdfs/reviewed_questions.json',import.meta.url),'utf8'));
-  for(const original of old){const q=bank.find(q=>q.id===original.id)!;assert.equal(q.collection,'mls');assert.equal(q.text,original.question);assert.deepEqual(q.choices,original.choices);assert.deepEqual(q.answer,[...original.answer]);assert.equal(q.status,original.status);}
+  for(const original of old){const q=bank.find(q=>q.id===original.id)!;const review=answerReviews[q.id];assert.equal(q.collection,'mls');assert.equal(q.text,original.question);assert.deepEqual(q.choices,original.choices);assert.deepEqual(q.answer,review?.answer??[...original.answer]);assert.equal(q.status,review?.status??original.status);}
 });
 test('new question sessions roundtrip and old sessions without collection still load',()=>{
   const q=bank.find(q=>q.id===333)!;const state=emptyState();
@@ -106,5 +107,34 @@ test('deduplication preserves all source question references and resolves confli
   assert.deepEqual(bank.find(q=>q.id===454)!.sourceIds,[122,286]);
   assert.deepEqual(bank.find(q=>q.id===559)!.sourceIds,[227,228]);
   assert.equal(bank.find(q=>q.id===469)!.status,'review');
-  assert.ok(mla.filter(q=>q.status==='source').every(q=>q.sources.length===0));
+  assert.ok(mla.every(q=>q.status!=='source'&&q.sources.length>0));
+});
+
+test('every question explains its concept and every option without source boilerplate',()=>{
+  const generic=/This is correct because it directly addresses the requirement|This option does not meet the requirements as effectively/i;
+  for(const q of bank){
+    assert.ok(q.analysis,`Missing analysis: ${q.id}`);
+    assert.ok(q.analysis.keyConcept.trim(),`Missing concept: ${q.id}`);
+    assert.deepEqual(Object.keys(q.analysis.options).sort(),Object.keys(q.choices).sort(),`Incomplete options: ${q.id}`);
+    for(const [letter,reason] of Object.entries(q.analysis.options)){
+      assert.ok(reason.trim(),`Empty explanation: ${q.id}/${letter}`);
+      assert.doesNotMatch(reason,generic,`Generic explanation: ${q.id}/${letter}`);
+    }
+    assert.doesNotMatch(q.explanation,generic);
+    assert.ok(q.sources.length,`Missing references: ${q.id}`);
+  }
+});
+
+test('reviewed corrections and disputed API behavior affect grading explicitly',()=>{
+  assert.deepEqual(bank.find(q=>q.id===359)!.answer,['B']);
+  assert.deepEqual(bank.find(q=>q.id===544)!.answer,['D']);
+  for(const id of [437,466,525,568,613]){
+    const q=bank.find(q=>q.id===id)!;
+    assert.equal(q.status,'review');
+    assert.equal(isCorrect(q,q.answer),false);
+  }
+  const warm=bank.find(q=>q.id===334)!;
+  assert.deepEqual(warm.answer,['B']);
+  assert.match(warm.analysis!.options.B,/warm|startup|initializ/i);
+  assert.match(warm.analysis!.options.A,/cost|Spot/i);
 });

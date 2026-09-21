@@ -80,18 +80,30 @@ MLS và MLA-C01 là hai bộ nguồn riêng. Chọn bộ trong Luyện tập, Th
 
 | Trạng thái | Số câu | Cách sử dụng |
 | --- | ---: | --- |
-| Đã đối chiếu | 280 | Có chấm điểm; gồm 278 câu MLS và 2 câu MLA vừa xử lý mâu thuẫn. |
-| Dịch vụ cũ | 26 | Có chấm điểm theo bối cảnh cũ. Có thể loại bằng bộ lọc. |
-| Theo nguồn | 239 | Chấm theo khóa trong ZIP, chưa kiểm chứng toàn bộ với AWS. Có thể loại khỏi bài bằng bộ lọc. |
-| Cần xác minh | 29 | Không chấm điểm. Luôn loại khỏi thi thử. Có thể đọc trong luyện tập và flashcard. |
+| Đã đối chiếu | 487 | Có chấm điểm; gồm 277 câu MLS và 210 câu MLA. |
+| Dịch vụ cũ | 27 | Có chấm điểm theo bối cảnh cũ. Có thể loại bằng bộ lọc. |
+| Theo nguồn | 0 | Trạng thái dự phòng cho các lần nhập tiếp theo. |
+| Cần xác minh | 60 | Không chấm điểm. Luôn loại khỏi thi thử. Có thể đọc trong luyện tập và flashcard. |
 
-Các câu đã đối chiếu có liên kết tài liệu hỗ trợ. Câu **Theo nguồn** giữ lời giải trong ZIP và ghi rõ trạng thái này.
+Toàn bộ 574 câu có giải thích tiếng Anh cho từng lựa chọn và liên kết tài liệu hỗ trợ.
+
+Phần đáp án gồm **Correct answer**, **Key Concept**, **Why this is correct** và **Why other options are incorrect**.
+
+Câu **Cần xác minh** dùng **Answer not finalized** và phân tích từng lựa chọn theo điều kiện của đề.
+
+Thi thử có 514 câu chấm được, hoặc 487 câu khi loại dịch vụ cũ. Riêng MLA có 210 câu chấm được.
 
 Tỷ lệ đúng của bài luyện không quy đổi thành điểm AWS. Hint chỉ hiện trong luyện cùng đáp án, flashcard và thư viện.
 
 Mã 1–332 không đổi. Mã câu MLA bằng 332 cộng số câu nguồn được giữ; khoảng trống là các bản lặp đã gộp.
 
-Xem [báo cáo đối chiếu đầy đủ](../BAO_CAO_GOP_BO_DE.md), [Markdown tổng hợp](../output/merged/ML_COMBINED.md) và [file Quizlet](../output/merged/QUIZLET_COMBINED.md).
+Xem [báo cáo giải thích và sửa đáp án](../BAO_CAO_GIAI_THICH_DAP_AN.md), [báo cáo gộp ban đầu](../BAO_CAO_GOP_BO_DE.md), [Markdown tổng hợp](../output/merged/ML_COMBINED.md) và [file Quizlet](../output/merged/QUIZLET_COMBINED.md).
+
+Trong Quizlet, dùng TAB để tách hai mặt thẻ và dòng mới để tách thẻ. File có 574 thẻ.
+
+Lịch sử giữ các lựa chọn đã lưu. Điểm bài cũ được tính lại theo khóa và trạng thái hiện tại khi mở kết quả.
+
+Thống kê lượt luyện đã ghi không được viết lại. Vì vậy, thống kê cũ có thể khác điểm bài sau khi sửa khóa.
 
 File dùng trong ứng dụng là `src/data/questions.json`. Các hình nằm trong `public/images/`.
 
@@ -105,7 +117,13 @@ npm run build
 
 Lệnh nhập cần `../tmp/pdfs/reviewed_questions.json`, các hình gốc và `../MLA-C01_Web_Study_Bundle.zip`.
 
-Quyết định gộp thủ công và sửa đáp án nằm trong `scripts/bank-review.json`. Dữ liệu nguồn và nhật ký gộp được xuất vào `../output/merged/`.
+Quyết định gộp thủ công nằm trong `scripts/bank-review.json` và dùng số câu nguồn MLA.
+
+Giải thích nằm trong `scripts/explanations/`. Khóa, trạng thái, ghi chú và nguồn đối chiếu bổ sung nằm trong `scripts/answer-review.json`.
+
+Hai phần bổ sung dùng mã câu của ngân hàng web. Lệnh nhập dừng nếu thiếu giải thích hoặc sai số lựa chọn.
+
+Dữ liệu nguồn, nhật ký gộp và `ANSWER_ANALYSIS_AUDIT.json` được xuất vào `../output/merged/`.
 
 ## Đưa lên Vercel
 

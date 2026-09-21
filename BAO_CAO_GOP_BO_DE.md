@@ -1,5 +1,7 @@
 # Báo cáo gộp bộ đề và kiểm tra đáp án
 
+> Báo cáo này ghi nhận đợt gộp ban đầu. Số liệu và khóa hiện tại nằm trong [báo cáo giải thích đáp án](BAO_CAO_GIAI_THICH_DAP_AN.md).
+
 Đã kiểm tra 5 file quiz cũ, ngân hàng 332 câu đang dùng và ZIP bổ sung `MLA-C01_Web_Study_Bundle.zip`.
 
 Kết quả: **574 câu = 332 câu MLS cũ + 242 câu MLA-C01**. ZIP có 286 mục; đã gộp 44 bản lặp.

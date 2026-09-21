@@ -1,0 +1,184 @@
+{
+  "551": [
+    "An overly small learning rate can make SGD progress too slowly within a fixed training budget. Increasing it cautiously can speed optimization when loss is stable rather than oscillating.",
+    "Try a larger initial learning rate and evaluate the training and validation curves. It can accelerate the slow, stable optimization described, though an excessive increase would cause instability.",
+    "A smaller learning rate makes already small updates even smaller and can slow progress further.",
+    "More epochs increase the training budget, contrary to the requirement to avoid increasing total training time.",
+    "Fewer epochs stop training earlier without fixing the slow progress per update and may worsen underfitting."
+  ],
+  "552": [
+    "RAG retrieves current documentation at inference time, allowing knowledge updates without repeatedly modifying a model's weights.",
+    "Training a new foundation model requires substantial data, compute, and development, far beyond the small internal document collection.",
+    "Guardrails evaluate or constrain content. They are not a knowledge ingestion and document retrieval system.",
+    "Fine-tuning is not a reliable replacement for retrieving frequently updated factual documents and would require repeated model updates.",
+    "Connect the documentation to a Bedrock knowledge base, synchronize updates, and retrieve relevant passages for each question. This supplies current context without retraining the LLM for every document change."
+  ],
+  "553": [
+    "Drift monitoring needs a reference baseline before scheduled comparisons can identify deviations from that reference.",
+    "The monitoring job must be configured with the intended baseline; creating the comparison workflow first does not establish what constitutes drift.",
+    "Build and validate the baseline, then configure scheduled Model Monitor comparisons on captured production data. For actual predictive performance drift, also capture ground truth and use model-quality monitoring.",
+    "Clarify addresses bias and feature attribution, and a generic 'built-in rule' does not establish the requested production data-quality baseline and schedule.",
+    "Comparing one retrained model with the original is a point-in-time evaluation. It does not create ongoing detection of future drift."
+  ],
+  "554": [
+    "Match algorithm output to the task: seq2seq produces a sequence, semantic segmentation assigns pixel labels, and RCF scores unusual observations.",
+    "Semantic segmentation does not summarize text, and seq2seq is not the pixel-labeling algorithm. Only the RCF assignment is correct.",
+    "Seq2seq can learn text summarization from suitable paired examples; semantic segmentation classifies image pixels; RCF detects anomalous data points.",
+    "The summarization assignment is correct, but RCF and semantic segmentation are swapped: anomaly scores do not provide semantic pixel classes.",
+    "Semantic segmentation fits the image task, but RCF cannot generate a text summary and seq2seq is not the listed unsupervised anomaly detector."
+  ],
+  "556": [
+    "A preparation workflow first discovers structure, then cleans and engineers features, and finally persists the prepared dataset for training.",
+    "The second schema step is redundant, batch transform is a prediction service rather than the designated preparation tool, and prepared output is not stored.",
+    "The first two steps are appropriate, but the final step should save the transformed dataset rather than perform another schema discovery operation.",
+    "Schema discovery and S3 output are appropriate, but batch transform is not the general cleaning and feature engineering service requested here.",
+    "This stores data before defining a cleaning transformation and never performs the necessary preparation.",
+    "Use a Glue crawler to infer columns and types, a DataBrew recipe to handle missing values and engineer features, then write the output to S3. Review inferred names and types for the unlabeled sparse source.",
+    "This starts with an inference job instead of schema discovery. It does not establish the source structure before preparing the dataset."
+  ],
+  "557": [
+    "Feature Store requires a feature group definition before records can be ingested and made available for training dataset construction.",
+    "The store cannot supply these features before the feature group and its records exist; the order is reversed.",
+    "Creating the group is correct, but a training dataset cannot contain the new records until ingestion completes.",
+    "Records need a target feature group with defined schema and keys, so ingestion cannot precede group creation.",
+    "Create the feature group, ingest records with valid identifiers and event times, then query the appropriate store to build the training dataset. Account for offline-store ingestion latency."
+  ],
+  "558": [
+    "An event-driven retraining pipeline must receive the data-arrival signal, train a new model, and then deploy an evaluated artifact to a serving endpoint.",
+    "Model Registry registration is not hosting, and S3 Lifecycle transitions or expires objects rather than triggering this new-data pipeline.",
+    "An S3 Lifecycle rule is not the required event trigger, and this sequence skips training on the uploaded data.",
+    "The trigger and retraining order are appropriate, but registering a model does not host it at an inference endpoint.",
+    "This deploys before retraining on the new data and ends with registration rather than the needed training-to-serving sequence.",
+    "Deployment precedes retraining, so the deployed artifact cannot be the one learned from the newly uploaded data.",
+    "Route the S3 object-created event through a supported EventBridge or Lambda integration to start CodePipeline, retrain, validate, and deploy to a SageMaker endpoint. An S3 notification does not directly target CodePipeline without that integration."
+  ],
+  "559": [
+    "Tokens are model input/output units, embeddings are numerical representations, and RAG supplies retrieved external context. Temperature controls sampling behavior.",
+    "Temperature is not a data unit, a token is not the semantic vector itself, and embedding is not the process of retrieving external context.",
+    "The embedding assignment is correct, but temperature and token are incorrectly assigned to data units and retrieval augmentation.",
+    "Token matches the basic text units, embedding matches the semantic vector representation, and RAG matches retrieval of additional information for generation.",
+    "Embedding and token are swapped, and temperature adjusts randomness rather than retrieving information.",
+    "None of the mappings is correct: embeddings are vectors, RAG is a retrieval workflow, and temperature is a generation control."
+  ],
+  "561": [
+    "Feature engineering should respect data meaning: encode nominal city names, split a field that combines two attributes, and transform positive numerical size only when justified.",
+    "City names are categories rather than a composite field to split, and a combined text type/year cannot be standardized as one numerical value.",
+    "One-hot encode city and split Type_year into home type and year. A log size transform is the plausible numerical transformation among these combinations, but validate its usefulness; similarly sized homes do not automatically imply a skewed size distribution.",
+    "City encoding is appropriate, but standardizing the combined type/year field and splitting a single numerical size field do not match their meanings.",
+    "A logarithm cannot be applied meaningfully to city names, and one-hot encoding continuous building size would discard its natural numerical structure."
+  ],
+  "562": [
+    "L2 shrinks coefficients smoothly, while L1 promotes exact zero coefficients and feature selection. Correlated-feature selection under L1 can be unstable across samples.",
+    "L1 can set coefficients to zero, conflicting with the first requirement. L2 generally does not eliminate the irrelevant polynomial terms in the second task.",
+    "The first two assignments are correct, but L2 tends to retain correlated predictors with shrunken weights rather than eliminate redundant ones.",
+    "Use L2 for shrinkage without intentional sparsity, L1 to eliminate irrelevant polynomial terms, and L1 for sparse selection among redundant logistic-regression predictors. Check selection stability with correlated features.",
+    "The first and third assignments fit, but L2 is not the penalty that explicitly promotes removing polynomial terms by setting their coefficients to zero."
+  ],
+  "567": [
+    "Hyperband saves tuning resources by stopping unpromising iterative trials early. Measuring the resulting training time requires running the candidate configuration before deployment.",
+    "Increasing the number of tuned parameters expands the search problem. Bayesian optimization does not guarantee a faster individual training run.",
+    "A random seed does not provide a speed optimization, and the SageMaker tuning RandomSeed parameter requires a nonnegative value, so -1 is invalid.",
+    "Use Hyperband for a supported iterative algorithm, focus the search on relevant parameters, run training, and compare elapsed time and quality. Hyperband reduces wasted tuning work; it does not guarantee that the final selected model trains faster.",
+    "Deploying a model does not run the training experiment needed to measure training-time improvement. Retraining and evaluation must precede that decision."
+  ],
+  "568": [
+    "Hierarchy-aware metrics and losses serve different purposes from resampling. SMOTE requires a numerical feature representation and does not directly synthesize grammatical raw text.",
+    "The four visible mappings are the intended ones: a defined fallback metric can credit an ancestor category, oversampling increases minority representation, hierarchical loss uses the taxonomy, and SMOTE can interpolate suitable text embeddings. The prompt says choose five but shows only four tasks, so the complete original mapping cannot be confirmed.",
+    "Oversampling is not an evaluation metric, cross-entropy does not change class counts, and a fallback evaluation rule is not a training loss for nested categories.",
+    "Hierarchical loss is not the named fallback evaluation metric, and SMOTE does not encode taxonomy structure. Cross-entropy also does not create minority text features.",
+    "SMOTE is a resampling method rather than an evaluation metric, and cross-entropy does not increase minority sample counts. Generic oversampling does not itself enrich text representations."
+  ],
+  "569": [
+    "Choose inference by response timing and workload shape: synchronous low latency, intermittent compatible requests, offline batches, or queued long-running generation.",
+    "Asynchronous inference does not return immediate flight updates, and real-time inference is less suited to potentially long-running media generation in this mapping.",
+    "The flight and reporting assignments fit, but serverless limits can be unsuitable for long media generation. Serverless is the intended fit for the compatible spiky promotional workload.",
+    "Real-time inference serves immediate updates; serverless handles compatible spiky requests; batch inference supports large periodic reports; asynchronous inference supports queued image/audio generation with larger payloads or longer processing.",
+    "Batch inference does not serve interactive spiky promotional requests, and serverless endpoints are not the intended tool for large quarterly offline report jobs."
+  ],
+  "570": [
+    "Model Registry stores versioned model-package metadata and references to artifacts. ECR stores executable container images and their packaged dependencies.",
+    "The first mapping is wrong: model package groups belong to Model Registry, not ECR. The other three mappings are appropriate.",
+    "Use Model Registry for tagged model versions and model groups, and ECR for containerized dependencies and built-in training images. Registry packages reference container images; they do not replace ECR image storage.",
+    "ECR does not provide SageMaker model package groups, and Model Registry is not the image repository from which built-in containers are pulled.",
+    "Model Registry does not store kernel/container layers, and ECR does not replace the model-group organization provided by Model Registry."
+  ],
+  "571": [
+    "Redshift Serverless associates IAM roles with a namespace. An external schema maps a Glue catalog database into the Redshift SQL environment.",
+    "Creating a second S3-only role does not associate the required role with the namespace and leaves catalog authorization incomplete.",
+    "Create a role with appropriate Glue catalog and S3 access, associate it with the serverless namespace, then create the external schema referencing the catalog database. Add KMS or Lake Formation permissions when applicable.",
+    "The sequence tries to create the external schema before establishing access, repeats that step, and never grants or associates the complete required role.",
+    "A provisioned Redshift cluster can have an attached role, but this scenario uses Serverless, where the role is associated with the namespace."
+  ],
+  "572": [
+    "A source-controlled CI/CD workflow builds and tests code changes before invoking model training and controlled deployment stages.",
+    "Create the source repository, configure CodePipeline and CodeBuild to react to changes and validate containers, then invoke the SageMaker workflow with explicit training, evaluation, and deployment integration.",
+    "The pipeline's source and change trigger depend on the repository. Creating the repository after configuring that source reverses the intended setup dependency.",
+    "This invokes the ML workflow before establishing the source repository and build/test stages that should supply its validated code.",
+    "The repository appears last, so the described pipeline cannot yet be driven by its code changes."
+  ],
+  "573": [
+    "All-at-once moves traffic in one step, canary first tests a small portion before the remainder, and linear shifts equal increments over time.",
+    "All-at-once does not provide the two-stage canary validation, and canary is not the shortest one-step traffic shift.",
+    "Linear shifting is incremental rather than the specific two-step canary pattern. Canary is not the repeated equal-increment strategy.",
+    "Canary fits two-stage validation, all-at-once completes traffic shifting fastest after the new fleet is ready, and linear provides gradual increments.",
+    "The canary mapping is correct, but linear and all-at-once are reversed for fastest versus incremental traffic movement."
+  ],
+  "574": [
+    "First define the computer vision task, then choose a suitable model, and prepare inputs according to that model's requirements. Counting unique passers-by also needs tracking logic.",
+    "The task is correctly identified first, but committing to a final training input format before selecting the model can lead to incompatible data preparation.",
+    "Preparing data and choosing a model before defining the task risks optimizing for the wrong output, such as image classification instead of object detection.",
+    "Selecting an algorithm before determining whether the task requires detection, segmentation, or classification reverses the key design dependency.",
+    "Identify the task, choose an appropriate built-in or pretrained model, and then prepare its required input format and valid augmentations. Add tracking or line-crossing rules to avoid counting the same person in successive frames."
+  ],
+  "576": [
+    "A common data-lake workflow uses S3 for durable storage, Athena for interactive SQL exploration, and Glue for managed data preparation.",
+    "Kinesis Data Streams ingests and retains streaming records; it is not an interactive SQL query engine for historical S3 data.",
+    "Athena and S3 fit the first two tasks, but Kinesis Data Streams is not the general ETL transformation engine.",
+    "Athena and Glue fit their tasks, but a stream is not the intended durable historical object store.",
+    "Glue is not the primary object storage service, and Kinesis Data Streams does not replace the ETL transformation service.",
+    "Glue can run analysis code and Athena can express transformations in SQL, but this reverses the intended dedicated interactive-query and managed-ETL roles.",
+    "Query historical data with Athena, store it in S3, and use Glue jobs to clean, aggregate, and engineer the training features."
+  ],
+  "610": [
+    "Comprehend can share a supported custom classifier or entity recognizer through a resource policy on the source model, then copy it with ImportModel in the destination account.",
+    "Grant Account B access through the model resource policy in Account A, then call ImportModel in Account B in the supported Region. For this scenario, sentiment must be implemented as a custom classifier; the managed DetectSentiment model is not a customer-owned model to copy.",
+    "Glue Data Catalog shares data metadata. It does not transfer a Comprehend custom model or authorize its import.",
+    "Comprehend does not provide this as a generic downloadable-artifact recreation workflow. Manual retraining would add effort compared with the supported import operation.",
+    "The destination account cannot grant itself access to a model owned by Account A. The source owner must authorize access on the source model."
+  ],
+  "611": [
+    "Combining S3 files with on-premises PostgreSQL requires data access, schema alignment, joins, and transformations. Governance and ingestion do not automatically perform all feature preparation.",
+    "Data Wrangler can prepare and join imported sources, but access to the on-premises PostgreSQL data must be established through a supported connector or staged/queryable source. This could be part of a valid solution.",
+    "Lake Formation centralizes catalog and access governance and can support ingestion workflows, but it does not automatically resolve feature inconsistencies and perform all required joins. The source key overstates the service's standalone role.",
+    "DMS can replicate PostgreSQL data into supported targets with limited transformations. It does not replace the full multi-source ML feature engineering workflow.",
+    "Spark on EMR can read S3 and PostgreSQL over JDBC, align schemas, join records, and preprocess features once private connectivity and credentials are configured. This is a concrete valid alternative, so B is not a unique confirmed answer."
+  ],
+  "612": [
+    "Model Registry provides managed model version groups and lifecycle metadata. Training-data isolation must still be enforced independently through IAM, S3, and network controls.",
+    "ECR versions container images, but does not by itself manage model packages, approval states, and model version groups.",
+    "S3 versioning preserves artifact object versions, but manual deployment and metadata tracking increase operational effort.",
+    "Register models in model package groups to manage versions and approval metadata with minimal custom infrastructure. Apply workflow-specific execution roles and data access policies separately; registry grouping alone does not isolate training data.",
+    "Unique tags can aid discovery, but are not needed to reinvent the version numbering and grouping already provided by Model Registry."
+  ],
+  "613": [
+    "Invocation count metrics and per-call audit records are different outputs. Fixed-volume alerting uses CloudWatch alarms; endpoint invocation auditing requires enabled CloudTrail data events.",
+    "CloudWatch invocation metrics and an SNS alarm meet the count-threshold notification requirement. They do not by themselves record every API call event, so the source answer is incomplete for the full wording.",
+    "Model Monitor evaluates captured data and predictions. It is not the API audit trail or simplest request-count alarm service.",
+    "EventBridge routes matching events, but a rule does not automatically aggregate all calls into a threshold counter or guarantee a complete audit log.",
+    "CloudTrail can log endpoint invocations when the appropriate data events are enabled. Insights detects unusual API activity rather than implementing the specified fixed request-count threshold; combine auditing with the CloudWatch/SNS portion of A."
+  ],
+  "614": [
+    "A feature store is a reusable repository of model input features for training and inference, with consistent definitions and access patterns.",
+    "Clarify evaluates bias and explains predictions. It is not the feature repository.",
+    "SageMaker Feature Store stores and shares feature records through feature groups, with online access for current values and offline storage for historical training data where configured.",
+    "Data Wrangler prepares and transforms features, but is not the long-lived online/offline feature management service.",
+    "Ground Truth manages data labeling workflows and workforces, not serving shared feature records for inference."
+  ],
+  "615": [
+    "Bedrock provides managed access to multiple foundation-model providers through AWS APIs, supporting generation and text analysis without operating the model infrastructure.",
+    "SageMaker can train and host suitable models, but requires more model deployment and lifecycle management than the requested managed multi-provider model API.",
+    "Rekognition analyzes images and video. It is not the general text generation and review-analysis service described.",
+    "Personalize generates personalized recommendations and rankings. It does not provide the broad selection of foundation models for free-form descriptions and marketing copy.",
+    "Bedrock offers supported foundation models for generating product text, adapting prompts to customer context, and analyzing review sentiment. Select and evaluate the model suited to each task and its current availability."
+  ]
+}

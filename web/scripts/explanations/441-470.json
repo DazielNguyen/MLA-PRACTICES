@@ -1,0 +1,217 @@
+{
+  "441": [
+    "A versioned container image makes custom dependencies reproducible across managed processing and training jobs. Pipelines references the images used by its job steps.",
+    "Manual installation in individual running containers must be repeated and can produce inconsistent environments. It does not provide a reusable dependency package.",
+    "Package the required libraries in a SageMaker-compatible image, push it to ECR, and reference it in the relevant job steps. Respect the processing and training container entry-point contracts.",
+    "Managed processing and training jobs do not run inside the notebook instance. Installing libraries on that notebook does not install them in separate job containers.",
+    "External EC2 execution adds a second execution environment and data-transfer workflow instead of making the libraries available inside the requested SageMaker jobs."
+  ],
+  "442": [
+    "Production data quality monitoring compares captured inference inputs with baseline statistics and constraints, then exposes violations for alerting.",
+    "A CloudWatch alarm and SNS action can deliver alerts, but this option does not create the data-quality detector or the metric it must evaluate.",
+    "Clarify focuses on bias and feature attribution. It is not the general input data-quality monitor requested here.",
+    "Schedule Model Monitor data-quality jobs and connect violation metrics to CloudWatch alarms and notification actions. This supplies both detection and alerting. Model Monitor availability is restricted to existing customers.",
+    "Data Wrangler prepares and transforms datasets. A data flow does not by itself monitor a deployed endpoint's production inputs on a schedule."
+  ],
+  "443": [
+    "FastFile mode lets training code access S3 data through a file-system interface while streaming content on demand, avoiding a separate shared file system.",
+    "EFS would add file-system storage and a data-copy path despite the data already being available in S3.",
+    "FSx for Lustre can improve throughput for demanding workloads, but adds file-system cost and provisioning without a stated performance requirement that justifies it.",
+    "S3 Express One Zone can improve access performance, but moving this existing Standard dataset to a new storage tier is not required by the scenario.",
+    "Use FastFile with the existing S3 Standard objects. The relatively large files are suitable for efficient streaming, and this avoids extra file-system infrastructure or a storage-tier migration. Actual cost still depends on the access pattern."
+  ],
+  "444": [
+    "A shadow variant evaluates a candidate model on copies of production requests while the production variant continues to return responses to users.",
+    "A second endpoint and manual traffic distribution require custom routing and expose users to the candidate when traffic is split.",
+    "CloudFront is not a model-comparison mechanism. Configuring distribution and routing adds work without the managed shadow-evaluation behavior.",
+    "Deploy the candidate as a shadow variant, capture its results, and compare them with production results before promotion. Shadow responses are not returned to clients.",
+    "Custom Lambda routing requires implementation and maintenance that SageMaker shadow testing already handles."
+  ],
+  "445": [
+    "SageMaker training metadata collection has an explicit per-job opt-out in the job creation request.",
+    "Set the documented opt-out for every submitted training job, such as Environment.OPT_OUT_TRACKING = '1' in CreateTrainingJob. Setting it only inside the training script is insufficient.",
+    "Private subnet placement controls network connectivity. It does not express the service-level metadata collection preference.",
+    "A customer managed KMS key protects data encryption, not the collection of usage and error metadata.",
+    "Nitro provides compute isolation and hardware capabilities. Instance hardware does not replace the metadata opt-out setting."
+  ],
+  "446": [
+    "An interface VPC endpoint provides private connectivity from a VPC to a supported AWS service through AWS PrivateLink.",
+    "Security-group rules authorize traffic but do not create a private route or endpoint to Bedrock.",
+    "Create the appropriate Bedrock interface endpoint, including bedrock-runtime for model invocations, and allow HTTPS from the instance security group. Configure private DNS so requests resolve to the endpoint.",
+    "Bedrock is a managed service, not a model server that can simply be placed in the application's private subnet.",
+    "Direct Connect links external networks to AWS. It is not the required VPC-to-Bedrock service endpoint."
+  ],
+  "447": [
+    "JumpStart simplifies supported foundation-model deployment, while Lex supplies a managed conversational interface that can call a model through fulfillment logic.",
+    "JumpStart provides supported model packages and managed deployment workflows, avoiding manual GPU server setup for the selected open model.",
+    "Manual EC2 hosting requires configuring the serving stack, GPU dependencies, scaling, and maintenance.",
+    "A custom HTML, WebSocket, and Lambda application can work, but requires more interface and conversation-management code than a managed bot integration.",
+    "QuickSight builds analytics dashboards. It is not a general-purpose chatbot interface for invoking the selected LLM.",
+    "Lex manages conversational interactions. Connect fulfillment to the deployed LLM and embed or expose the bot through an appropriate client; Lex does not automatically generate a complete standalone website."
+  ],
+  "448": [
+    "Kinesis Data Streams and Flink support high-throughput stream ingestion and stateful transformation. DynamoDB supports low-latency access when queries match its key design.",
+    "EventBridge is an event-routing service, and Glue plus a Memcached cache is not the most direct persistent stream-analytics architecture for this volume.",
+    "SQS and Lambda can process messages, but S3 alone does not provide the fast indexed query layer requested by the application.",
+    "SNS supplies message fan-out rather than a replayable stream-processing backbone. EMR and RDS also add capacity and pipeline design work for this workload.",
+    "Kinesis ingests the stream, Flink transforms or aggregates it continuously, and DynamoDB serves keyed low-latency queries. Provision throughput, partitions, and item sizes for the stated volume; DynamoDB is not an arbitrary SQL analytics engine."
+  ],
+  "449": [
+    "Envelope encryption uses a data key to encrypt content and a KMS key to protect that data key. KMS key policies and IAM permissions control authorized applications.",
+    "An SSH key authenticates SSH access. It is not the KMS wrapping key required by the AWS Encryption CLI workflow.",
+    "An API Gateway API key identifies or meters API clients. It is not a cryptographic key for encrypting the CSV file.",
+    "An IAM role supplies permissions, not an encryption key or a complete file-encryption operation. A specific authorized KMS key and encryption tool are still needed.",
+    "Create a KMS key, restrict its use to the intended application roles, and reference it in the AWS Encryption CLI. The CLI encrypts the file with a data key protected by that KMS key."
+  ],
+  "450": [
+    "Feature Processing defines managed transformations and ingestion into Feature Store. A custom streaming pipeline can also write features through Feature Store APIs.",
+    "This is the intended integrated solution: define transformations and aggregation in Feature Processing and persist the results in Feature Store.",
+    "Model Monitor evaluates production data and model behavior. It does not automatically become a feature engineering and ingestion pipeline.",
+    "Flink can also transform streaming data and write features through an implemented Feature Store sink or API calls. Because the question does not specify batch input or least overhead, this is a feasible alternative and the single-answer key needs clarification.",
+    "Batch transform runs model inference over batches. It does not automatically provide feature engineering, feature ingestion, or Feature Store management in DynamoDB."
+  ],
+  "451": [
+    "An always-ready real-time endpoint is suited to synchronous, low-latency decisions in an interactive application.",
+    "Batch transform produces results for offline batches rather than returning each customer's score immediately.",
+    "A real-time endpoint keeps serving capacity available and returns synchronous predictions, matching the application's immediate product-selection flow.",
+    "Serverless inference can serve synchronous requests, but on-demand cold starts add latency. No provisioned concurrency configuration is specified here.",
+    "Asynchronous inference queues work and returns results later, which does not minimize latency for an interactive customer decision."
+  ],
+  "452": [
+    "A feature group can keep the latest record online while retaining historical records offline. Event time determines which record remains current online.",
+    "If this means targeting only OnlineStore, historical offline persistence is missing. PutRecord can actually update both stores when both are enabled and no exclusive target is specified; the option's online-only wording is the limitation.",
+    "Writing only to OfflineStore preserves history but does not update the low-latency online record.",
+    "Use the Spark connector with both stores enabled and ingest to both. It fits the existing EMR DataFrame workflow, keeps the latest event online, and writes history offline with the documented propagation delay.",
+    "An online-only feature group cannot maintain the complete offline history required for batch processing."
+  ],
+  "453": [
+    "A multi-container endpoint can host different framework containers on shared instances. Direct invocation targets a particular container; Serial mode instead chains them.",
+    "A conventional multi-model endpoint loads models through a shared serving container and is not the direct fit for four separate framework containers.",
+    "Use a multi-container endpoint in Direct mode and specify TargetContainerHostname in invoke_endpoint. This shares hosting resources while allowing each model to be invoked independently; it does not simultaneously execute a Serial pipeline for that request.",
+    "Separate endpoints can support all frameworks, but each endpoint has its own serving capacity and management overhead.",
+    "A SparkML job does not provide the required multi-framework endpoint routing. Generating separate endpoints also loses the shared-hosting cost advantage."
+  ],
+  "454": [
+    "An idle-shutdown monitor must be installed whenever a notebook instance starts. The monitor checks notebook activity and stops the instance after the configured idle period.",
+    "Install the auto-stop idle script through the OnStart lifecycle configuration and set the idle threshold to one hour. The start hook reinstalls the scheduled monitor after each restart.",
+    "OnCreate runs only at initial creation. Startup-dependent scheduling, such as a cron entry, must be restored on subsequent starts.",
+    "CPU usage is not a reliable definition of notebook idleness, and CloudWatch Logs is not the CPU metric store. Active users may have low CPU usage.",
+    "A running notebook normally uses memory even when idle. Zero memory usage is not a suitable idle detection criterion, and logs are not the memory metric mechanism."
+  ],
+  "455": [
+    "A Ground Truth private workforce assigns labeling tasks to known workers, such as the company's employees or contracted specialists.",
+    "Data Exchange distributes datasets and data subscriptions. It does not register workers for image annotation jobs.",
+    "Register the specialists in a private workforce and place them in work teams for the company's Ground Truth labeling jobs. This controls which named specialists receive tasks.",
+    "A Mechanical Turk public workforce does not specifically register the company's own internal specialists. A human review loop also differs from creating the requested labeling workforce.",
+    "Mechanical Turk supports public crowdsourcing tasks. It is not the managed private workforce setup for these selected specialists."
+  ],
+  "456": [
+    "Serverless CPU inference fits intermittent synchronous traffic. Provisioned concurrency can be scheduled for periods when startup latency matters, but it adds a standing cost.",
+    "A conventional real-time endpoint retains provisioned instances even during idle periods unless additional lifecycle management is implemented.",
+    "Serverless inference fits intermittent CPU requests and can avoid off-hours compute charges when provisioned concurrency is reduced to zero. Use provisioned concurrency during business hours only to the extent needed for latency; cost optimality depends on actual traffic.",
+    "Asynchronous inference can scale to zero, but it does not provide the required synchronous real-time response.",
+    "A normal endpoint has no simple pause/resume activation operation. Deleting and recreating it requires orchestration and startup time, and still pays for idle capacity during business hours."
+  ],
+  "457": [
+    "Supervised learning requires labels. A private Ground Truth workforce can label and review data while limiting access to authorized employees.",
+    "Pretrained Rekognition labels may not match the project's target classes or accuracy requirements. Automatic labels do not replace the specified employee annotation and review process.",
+    "A supervised classifier cannot learn the intended target labels from unlabeled examples without an additional labeling or learning strategy.",
+    "Define a Ground Truth labeling job with clear instructions, label categories, and quality controls for the task.",
+    "Use a private workforce restricted to employees and assign work teams to annotate and review the images. This satisfies the access restriction and supports quality assurance.",
+    "Mechanical Turk uses external public workers, violating the requirement that only employees access the dataset."
+  ],
+  "458": [
+    "A DataBrew profile job measures data quality and statistics. A recipe job applies transformations and writes prepared data.",
+    "The S3 dataset connection is appropriate, but profiling describes the data instead of cleaning and normalizing it.",
+    "Create the dataset from its S3 location and execute a recipe containing the required cleaning and normalization steps.",
+    "S3 uses a native object-storage connection rather than a JDBC database connection, and a profile job does not apply the transformations.",
+    "The recipe job is the right job type, but the proposed JDBC connection is not the appropriate way to define an S3 dataset."
+  ],
+  "459": [
+    "Glue Relationalize converts nested structures into a collection of relational DynamicFrames, including separate tables for arrays when necessary.",
+    "Use the built-in Relationalize transform in a managed Glue PySpark job. Select or join the resulting tables into the feature table required by XGBoost.",
+    "Custom Scala on EMR Serverless can work, but requires implementing the nested-data conversion instead of using Glue's built-in transform.",
+    "Python reduce is a general accumulation function, not a complete nested-JSON relationalization solution. The transformation logic and scaling would still be custom.",
+    "Athena has array and row operations, but flatten is not a general nested-document-to-relational-tables transformation. This option does not specify the necessary schema and SQL conversion."
+  ],
+  "460": [
+    "Experiment tracking records parameters, input configurations, metrics, and artifacts for comparable training runs.",
+    "Custom CloudWatch metrics can record numerical values, but the engineer would need to build the run organization and parameter/artifact relationships.",
+    "S3 logs with Glue and Athena can support analysis, but require a custom logging schema and query pipeline.",
+    "Model Registry governs model versions and approval for deployment. It is not the primary tool for comparing every training iteration's parameters and results.",
+    "SageMaker Experiments organizes training runs and their parameters, metrics, and artifacts, reducing custom experiment-tracking code. Use the tracking interface supported by the selected SageMaker environment."
+  ],
+  "461": [
+    "A serverless document chatbot needs managed model inference, serverless request handling, and a retrieval layer over internal content. Storing embeddings alone is not retrieval.",
+    "Bedrock provides managed Claude inference without operating model-hosting servers, making it a suitable model layer.",
+    "A standard JumpStart deployment provisions SageMaker hosting instances. It does not satisfy the serverless model-hosting requirement as stated.",
+    "EC2 requires managing server capacity, contrary to the serverless constraint.",
+    "API Gateway and Lambda provide a serverless request layer that can authenticate employees, retrieve context, and invoke Bedrock.",
+    "S3 is serverless storage for embeddings or index dumps, but a dump alone cannot answer similarity queries. A queryable index, such as an explicitly configured S3 Vectors index or another retrieval service, is missing from the proposed A/D/E combination.",
+    "An ordinary RDS for MySQL deployment is not the stated serverless vector retrieval layer. Merely storing dumps also does not define semantic search."
+  ],
+  "462": [
+    "Asynchronous inference supports large payloads and long-running requests through a managed queue and S3 result storage.",
+    "EC2 with an Auto Scaling group can host custom inference, but requires operating the serving stack, queueing, scaling, and request lifecycle.",
+    "A real-time endpoint's ordinary payload and execution-time limits do not accommodate 100 MB requests that take several minutes.",
+    "Asynchronous inference supports payloads up to 1 GB and processing up to one hour, fitting this workload with managed hosting and request handling.",
+    "ECS on EC2 adds container orchestration and host management, plus custom handling for long-running requests."
+  ],
+  "463": [
+    "A binary categorical feature can be represented in one numeric column. Encoding the two responses as 0 and 1 preserves dimensionality.",
+    "For a genuinely binary yes/no feature, map the two states directly to a single binary value. Check the encoder configuration because some general categorical encoders reserve extra codes.",
+    "Label encoding can map no to 0 and yes to 1 in one column. With only two categories, this represents the binary distinction without introducing a multi-level ordering problem.",
+    "Default one-hot encoding creates a column per category and increases dimensionality. A configured drop-one binary encoding could avoid that, but the option does not specify it.",
+    "Imputation fills missing values. It does not encode the existing yes/no responses as the required numeric feature.",
+    "Tokenization splits or maps text tokens. It is unnecessary for a two-valued structured feature and does not ensure a one-column numeric representation."
+  ],
+  "464": [
+    "Factorization Machines learn pairwise feature interactions using low-dimensional factors, which is useful for sparse, high-dimensional recommendation data.",
+    "k-NN finds nearby examples but is not designed to learn compact latent interactions among sparse user/item features.",
+    "Factorization Machines model interactions even when many feature pairs are rarely observed, making them suitable for recommendation with sparse input vectors.",
+    "PCA reduces dimensionality. It does not directly train the requested supervised recommendation predictor.",
+    "Sequence-to-sequence models map one sequence to another. They are not the designated built-in algorithm for sparse tabular recommendation interactions."
+  ],
+  "465": [
+    "SageMaker provides framework containers for supported scikit-learn and TensorFlow workloads. Training code can be adapted to those containers and the outputs registered.",
+    "Uploading artifacts and adding an API does not rebuild the models in the managed training infrastructure required by the question.",
+    "Model Registry records deployable model packages; registering a model does not itself retrain or execute it.",
+    "Custom containers can work, but maintaining them adds effort when the existing frameworks are supported by managed framework images.",
+    "Move the Python training code and dependencies to supported SageMaker framework jobs, retrain the models, and register their artifacts as model versions. 'Import' requires the appropriate code and artifact packaging, not a single automatic conversion command."
+  ],
+  "466": [
+    "Training containers run optimization and update model weights. Large Model Inference containers are optimized for serving trained models, so the two roles must not be confused.",
+    "Training Compiler can optimize supported training workloads and real-time inference fits a conversational application. Its suitability depends on the model and supported framework versions, which the question does not identify.",
+    "This is the source answer, but it incorrectly assigns LMI serving containers to training. Use a compatible training container first, then an LMI container for real-time deployment. The source key is not confirmed as written.",
+    "A notebook job can orchestrate training, but asynchronous inference does not provide the synchronous conversational response required here.",
+    "Studio can be used to develop and submit training jobs, but batch transform produces offline predictions rather than live conversational responses."
+  ],
+  "467": [
+    "Shadow testing runs a candidate on copies of live requests without returning candidate predictions to users.",
+    "Sending 1% of production traffic to v2 exposes that subset of users to potentially incorrect candidate responses before validation.",
+    "Sending 10% to v2 exposes an even larger subset of users to unvalidated outputs.",
+    "A separate endpoint and replay script can approximate shadow testing, but introduce custom replay, timing, and cutover logic. Deactivating v1 before a safe routing change could interrupt service.",
+    "A shadow variant can receive copies of all live requests while v1 continues to answer clients. Capture and evaluate v2 outputs, then promote it through a controlled endpoint update."
+  ],
+  "468": [
+    "Aggregated training-library usage and error metadata is controlled by an explicit training job opt-out, separate from CloudWatch logging permissions.",
+    "Denying CloudWatch logs can remove useful application diagnostics, but it is not the documented control for SageMaker training metadata collection.",
+    "A domain role permission does not express the training job's metadata opt-out and need not be the role used by every submitted job.",
+    "Console-created training jobs already disable this metadata collection by default. The proposed domain-wide console setting is not the documented mechanism.",
+    "Set OPT_OUT_TRACKING to '1' in each training job's creation configuration through the CLI or SDK. The opt-out must be submitted with the job, not set later inside the training script."
+  ],
+  "469": [
+    "Difference in proportions of labels is DPL = q_a − q_d. The direction of correction depends on which age group is assigned to each facet.",
+    "Increasing positives among ages 40–45 raises that group's positive rate. This would worsen a positive DPL if that group is facet a, but could help if it is facet d.",
+    "Reducing positives among ages 40–45 lowers that group's positive rate. This is appropriate if ages 40–45 are facet a and have the higher positive rate.",
+    "Reducing positives in the other ages lowers their positive rate. This helps only if those other ages are the higher-rate facet, not if ages 40–45 already have the higher rate.",
+    "Adding negatives to the other ages also lowers their positive rate. Without naming the facets, the sign alone cannot justify this option. The conflicting source keys therefore remain unscored."
+  ],
+  "470": [
+    "Private network placement controls routing but does not itself encrypt worker-to-worker traffic in distributed jobs.",
+    "Network isolation restricts container network access. It is not an encryption protocol for distributed worker communication.",
+    "Security groups filter traffic. They can permit the protocols required by encryption, but do not perform encryption themselves.",
+    "Enable the distributed job's inter-container traffic encryption option. For training this is EnableInterContainerTrafficEncryption; use the corresponding network configuration for processing jobs.",
+    "VPC flow logs record network flow metadata. They neither encrypt packet contents nor change how workers communicate."
+  ]
+}

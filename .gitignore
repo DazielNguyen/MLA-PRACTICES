@@ -2,4 +2,9 @@
 .vercel/
 .env*
 !.env.example
-.vercel
+
+# Generated copies of tracked source bundles and audit exports.
+/extracted/MLA-C01-Web-Study-Bundle/
+/tmp/pdfs/legacy-quiz-audit.json
+/tmp/pdfs/merge-candidates.json
+/tmp/pdfs/mla-bundle-parsed.json

@@ -1,0 +1,137 @@
+196	A	historical	Xử lý GPU tại chỗ trên Snowball Edge rồi chỉ chuyển transcript nhỏ qua mạng; lựa chọn thuộc dòng Snow cũ.	snowball
+197	C	checked	Flink xử lý cửa sổ thời gian trên stream và thực hiện transformation được quản lý.	flink
+198	B	checked	Đặt ba production variants trên một endpoint và gọi từng variant bằng TargetVariant.	variants
+199	AE	checked	PCA hoặc dimension reduction của k-NN giảm dư thừa trong 2.000 đặc trưng.	pca,knn
+200	B	historical	Elastic Inference từng thêm GPU acceleration cho image inference; không còn là lựa chọn triển khai mới.	elastic_inference
+201	C	checked	Debugger thu tensors; pruning loại các filter ít đóng góp rồi huấn luyện lại.	pruning
+202	D	checked	TensorFlow script mode có thể đọc TFRecord từ S3, không cần đổi định dạng.	tensorflow
+203	D	checked	Managed Spot Training kết hợp checkpoint giảm chi phí và cho phép phục hồi tiến trình.	spot
+204	A	checked	Data quality monitor phát hiện thay đổi phân phối feature; CloudWatch báo vi phạm baseline.	modelmonitor_baseline
+205	D	checked	Một tuning job có thể so sánh nhiều thuật toán theo cùng objective metric.	hpo_multi
+206	CE	checked	Truy vấn phần dữ liệu cần thiết rồi xuất S3; dùng Secrets Manager hoặc tích hợp Redshift của Data Wrangler.	wrangler_import
+207	B	review	B mô tả đúng phân loại BERT bằng token đầu [CLS]. D cũng có thể diễn giải là thay task head; đề cần nói rõ kiến trúc head để loại mơ hồ.	bert
+208		review	Cần xác định cách tích hợp nền tảng điện thoại cũ. Transcribe Call Analytics hỗ trợ categories/issues; Contact Lens có yêu cầu tích hợp Connect, nên không chốt chỉ theo bình chọn.	call_analytics,contact_lens
+209	A	checked	Train trên quá khứ và kiểm tra trên đoạn tương lai để tránh rò rỉ thời gian.	crossval
+210	C	checked	User-Personalization tạo recommendations; filter loại item đã mua trước khi trả kết quả.	personalize_filter
+211	C	checked	Warm start tái sử dụng kết quả tuning trước khi objective metric không thay đổi.	hpo_warm
+212	B	checked	Glue ETL chuyển CSV sang Parquet; crawler chỉ khám phá metadata.	glue_etl
+213	A	checked	Firehose dùng Lambda transformation rồi lưu dữ liệu S3.	firehose_lambda
+214	A	checked	Lambda transformation của Firehose xử lý record trước khi ghi đích.	firehose_lambda
+215	BE	checked	Custom language model bổ sung ngữ cảnh lĩnh vực; Translate dịch transcript sang ngôn ngữ đích.	transcribe_clm,sentiment_pipeline
+216	B	historical	DeepAR+ dùng chuỗi liên quan và thông tin holiday trong Forecast; Forecast không mở cho khách hàng mới.	forecast_deepar
+217	B	checked	SMOTE tổng hợp thêm mẫu của lớp lỗi thiểu số trên training data.	smote
+218	C	checked	NTM khám phá chủ đề trong tài liệu không nhãn.	ntm
+219	A	checked	Rekognition DetectText đọc chữ trong hình.	rekognition_text
+220	A	checked	Batch Transform phù hợp inference định kỳ, không giữ endpoint chạy liên tục.	batch_transform
+221	D	checked	Elbow chọn k tại điểm mức cải thiện SSE bắt đầu giảm rõ rệt.	kmeans_elbow
+222	AB	checked	Pipelines điều phối huấn luyện; Model Monitor phát hiện drift để kích hoạt luồng retraining.	pipelines,modelmonitor
+223	BEF	checked	Residual có cấu trúc ở vùng giá cao; thử mô hình phi tuyến, mô hình riêng hoặc biến đổi để mô tả quan hệ này.	regression
+224	A	checked	Tuning số láng giềng và dimension reduction ảnh hưởng chất lượng k-NN.	knn
+225	C	checked	Debugger phát hiện vanishing gradients hoặc GPU utilization thấp và hỗ trợ dừng training job.	debugger
+226	C	checked	Clarify tạo SHAP explanations cho model đã huấn luyện.	clarify
+227	DEF	checked	KL, JS và total variation so sánh phân phối của nhãn liên tục giữa các nhóm.	clarify_bias
+228	C	historical	CNN-QR hỗ trợ covariates chỉ có trong quá khứ; quantile P75 ưu tiên giảm thiếu hàng.	forecast_cnn
+229	ACF	checked	Mã hóa inter-container traffic, S3 VPC endpoint và security group cho phép các training instances liên lạc.	training_vpc
+230	A	historical	Elastic Inference là đáp án của kiến trúc cũ, không còn dùng để triển khai mới.	elastic_inference
+231	ACE	checked	Lake Formation quản lý lake và quyền; Glue crawler xây Data Catalog.	lakeformation
+232	DEF	checked	Regularization, dropout và giảm độ sâu hạn chế overfitting.	overfit,dropout
+233	A	checked	L1 có thể đưa hệ số về zero, đồng thời giảm overfit và chọn đặc trưng.	feature_selection
+234	A	checked	SMOTE trên lớp fraud thiểu số giúp cân bằng dữ liệu training.	smote
+235	D	checked	FastFile đọc dữ liệu S3 theo nhu cầu, không tải trước toàn bộ 200 TB.	pipe
+236	C	checked	Quantile binning biểu diễn quan hệ phi tuyến bằng các khoảng của biến số lệch.	transforms
+237	C	checked	Gắn identity policy cho IAM group; IAM group không dùng làm Principal trong bucket policy hoặc ACL.	iam_group
+238	B	checked	Kinesis Video Streams lưu/index video và HLS phục vụ xem trực tiếp.	video_hls
+239	B	checked	Rekognition xử lý ảnh; A2I private workforce gửi ca cần kiểm tra cho đội nội bộ.	a2i,rekognition_custom
+240	C	historical	SQL window tính rolling average, Lambda ghi online store; dịch vụ Kinesis SQL cũ đã ngừng hoạt động.	kda,featurestore
+241	A	checked	Firehose ghi S3; QuickSight ML Insights phát hiện bất thường và trực quan hóa.	quicksight
+242		review	Không phương án nào ghép đúng hai tham số. Cần target_recall=0.9 và binary_classifier_model_selection_criteria=precision_at_target_recall.	linear_hyper
+243	B	checked	Image Classification trả nhãn cho toàn ảnh khi không cần bounding boxes.	image_classification
+244	D	checked	Precision tập trung vào tỷ lệ bệnh thật trong các dự đoán dương, phù hợp yêu cầu giảm false positive.	pr_metrics
+245	B	checked	L1 quá mạnh xóa mọi hệ số; giảm regularization để mô hình học tín hiệu.	feature_selection
+246	D	checked	GetRecord đọc bản ghi mới nhất của một identifier trong online store.	featurestore
+247	AE	checked	Tạo endpoint configuration với hai variants, rồi UpdateEndpoint dùng configuration mới.	variants
+248	C	checked	Data Wrangler có Featurize date/time, không cần viết job ETL riêng.	wrangler_transform
+249	B	checked	XGBoost phân loại chất lượng từ các feature số và nhãn inspection.	xgboost
+250	D	checked	CloudWatch Logs lưu log ứng dụng/container của SageMaker Studio.	studio_logs
+251	D	checked	Reinforcement learning tối ưu phần thưởng tích lũy qua chuỗi hành động.	multiagent
+252	B	review	Ý định là Training Compiler kết hợp Spot. Mọi lựa chọn mô tả truyền script vào fit() không đúng SDK: script đặt ở entry_point; Compiler còn phụ thuộc model được hỗ trợ.	spot,training_compiler
+253	C	checked	Dùng tensor từ Debugger để xếp hạng và prune filters, rồi huấn luyện lại.	pruning
+254		review	B và E phù hợp underfitting. Thêm training examples không bảo đảm giảm high bias; đề yêu cầu ba lựa chọn nhưng thiếu lựa chọn thứ ba có căn cứ.	overfit
+255	B	checked	CNN khai thác cấu trúc ảnh; softmax hai lớp trả phân phối xác suất hợp lệ.	image_classification,softmax
+256	DE	checked	Transfer learning bổ sung lớp ít gặp; augmented manifest JSON Lines hỗ trợ Pipe mode cho ảnh.	image_classification
+257	A	checked	Online store phục vụ độ trễ thấp; offline store giữ lịch sử cho training.	featurestore
+258	A	review	Object detection + ResNet thường ít công sức hơn gán nhãn pixel. Segmentation + ResNet cũng khả thi; đề không cho ràng buộc độ chính xác để chốt duy nhất.	object_detection,groundtruth_segmentation
+259	C	checked	Clarify cung cấp feature attributions giải thích dự đoán.	clarify
+260	D	checked	Factorization Machines là built-in hỗ trợ recommendation; Batch Transform phù hợp chiến dịch tuần.	fm,batch_transform
+261	D	checked	Chuyển ảnh thành RecordIO bằng im2rec để dùng Pipe mode. Cần đặt training/validation đúng channel khi cấu hình job.	image_classification
+262	C	review	Rekognition nhận diện celebrity; CloudTrail ghi IP của API caller. Nếu upload qua backend, đó không tự động là IP người dùng cuối; cần bổ sung logging tại ingress.	rekognition_celebrity,cloudtrail
+263	AC	checked	LDA và NTM khám phá các topic trong tập văn bản không gán nhãn.	ntm,lda
+264	A	checked	Kendra index tài liệu và Query API cung cấp kết quả phù hợp câu hỏi.	kendra
+265	A	checked	Ground Truth automated labeling giảm việc gán nhãn; Custom Labels giảm công sức xây và host model.	groundtruth,rekognition_custom
+266	C	checked	DataBrew có transformation nhận diện và redact PII.	databrew_pii
+267	C	checked	Standard-IA giữ dữ liệu ít truy cập trước 90 ngày; Deep Archive phù hợp lưu compliance dài hạn.	s3_classes
+268	D	checked	Feature Store lưu custom feature metadata; QuickSight phục vụ phân tích và báo cáo metadata.	feature_metadata
+269	C	checked	Execution role cần quyền đọc S3 và sử dụng KMS key; gán cùng key cho notebook chưa đủ.	processing_role,kms
+270	C	checked	Kinesis nhận event, ứng dụng xử lý stream duy trì cửa sổ 10 phút; triển khai mới dùng Managed Service for Apache Flink.	flink
+271	A	checked	Class weights tăng mức phạt khi bỏ sót lớp mục tiêu, không cần thu thập thêm dữ liệu.	imbalance
+272	AD	checked	Clarify phân tích bias trước huấn luyện; Data Wrangler cung cấp giao diện báo cáo bias.	clarify_bias,wrangler_analysis
+273	C	historical	Windowed analytics tổng hợp theo giờ rồi Firehose ghi S3; nếu dùng Kinesis SQL thì cần chuyển sang Flink hiện nay.	kda,flink
+274	C	checked	Similarity encoding phù hợp category cardinality cao có chuỗi gần giống và lỗi chính tả.	wrangler_transform
+275	AC	checked	Role cross-account cùng STS AssumeRole cấp credentials tạm để dùng Feature Store và S3 nguồn.	feature_crossaccount
+276	B	checked	PCA giảm số chiều numeric, loại bớt dư thừa và giảm chi phí tính toán.	pca
+277	A	checked	L1 loại bớt feature nhiễu bằng cách đưa một số hệ số về zero.	feature_selection
+278	AC	checked	Gán nhãn thêm dữ liệu và augmentation tăng số lượng/đa dạng mẫu training.	groundtruth,augmentation
+279	A	checked	Data Wrangler có transforms, visualization và export workflow sang Pipelines.	wrangler_export
+280	A	checked	Notebook interface endpoint kết hợp VPN giữ kết nối trong mạng riêng.	notebook_private
+281	C	checked	Asynchronous sentiment job xử lý tập lớn trên S3; BatchDetectSentiment chỉ nhận tối đa 25 documents mỗi lần.	comprehend_sentiment
+282	D	checked	Điền ngày thiếu giúp giữ chuỗi daily liên tục; interpolation phải thực hiện tránh dùng dữ liệu tương lai ngoài tập train.	imputation
+283	B	checked	Advanced recommendation job cho phép traffic pattern/load test tùy chỉnh.	inference_recommender
+284	BE	checked	Spot giảm giá compute; checkpoint phục hồi tiến trình sau interruption.	spot
+285	B	checked	BlazingText supervised mode hỗ trợ multi-class text classification.	blazingtext
+286	A	checked	Canvas hỗ trợ chuẩn bị dữ liệu và xây categorical prediction model qua giao diện ít code.	canvas
+287	BE	checked	Data Wrangler multicollinearity diagnostics hỗ trợ PCA/SVD và LASSO coefficient paths.	wrangler_analysis
+288	D	review	Firehose có thể ghi S3 nhưng không tự đọc trực tiếp DynamoDB. Cần DynamoDB→Kinesis Data Streams→Firehose (hoặc Lambda); các lựa chọn đều lược thiếu một bước.	dynamodb_stream,firehose
+289	C	checked	S3 event kích hoạt Lambda khởi chạy Glue job; Glue xử lý tác vụ 30–60 phút.	glue_etl
+290	DE	checked	Dữ liệu lịch sử đủ chi tiết và bao phủ các failure mục tiêu hỗ trợ xây supervised predictive maintenance.	ml_problem
+291	CD	checked	Object detection đếm người; pose estimation xác định khớp, góc tay/chân.	pose
+292	D	checked	Variant weights chia 70/15/15; TargetVariant ghi đè routing theo người dùng châu Âu.	variants
+293	ABE	checked	Athena cần quyền sử dụng dịch vụ, InvokeEndpoint và khai báo external ML function trong SQL.	athena_ml
+294	B	review	Mode < median < mean gợi ý lệch phải; log có thể hữu ích với giá trị dương. OLS không bắt buộc feature có phân phối chuẩn.	transforms,regression
+295	C	checked	Mục tiêu là số claims mỗi tháng theo category nên cần forecasting theo chuỗi thời gian.	deepar
+296	BDF	historical	Glue crawler + ETL + Fraud Detector giảm quản lý hạ tầng; Fraud Detector đã đóng với khách hàng mới.	fraud_detector,glue_catalog
+297	D	checked	EventBridge hỗ trợ target SageMaker Pipeline theo sự kiện S3.	pipelines_event
+298	C	checked	Shadow variant nhận bản sao traffic nhưng response không trả cho người dùng.	shadow
+299	A	checked	Cập nhật model bằng dữ liệu mới và dùng Model Monitor theo dõi drift/performance; incremental training cần thuật toán hỗ trợ.	modelmonitor
+300	AD	checked	Dùng nhãn enrolled/not enrolled để huấn luyện classifier. Ground Truth tạo nhãn; clustering không tự gán ý nghĩa nhãn này.	groundtruth,linear
+301	CD	checked	DeepAR hỗ trợ GPU và distributed training; Spot chủ yếu giảm chi phí, không tăng tốc tính toán.	deepar
+302	B	checked	Recall 0,98 là cao nhất nên bỏ sót ít abnormality nhất trong các phương án.	pr_metrics
+303	B	checked	Multi-model endpoint dùng chung tài nguyên; TargetModel chọn model theo thành phố.	multi_model
+304	B	checked	Heterogeneous training tách CPU preprocessing và GPU model computation để sử dụng tài nguyên hiệu quả.	heterogeneous
+305	C	checked	Data Wrangler có time-series resampling và xử lý missing values qua UI.	wrangler_transform
+306	D	checked	GroupBy theo year/region; facet theo year và đường trung bình chung đáp ứng đúng phép so sánh.	pandas_groupby
+307	C	checked	Anomaly visualization tìm điểm bất thường; Data Wrangler flow lọc theo transformation.	wrangler_analysis
+308	B	checked	Scale các feature trước PCA; không cần xóa thông tin tương quan mà PCA có thể tổng hợp.	pca,scaling
+309	BD	checked	PCA giảm 980 biến, k-means tìm nhóm khách hàng khi không có nhãn sẵn.	pca,kmeans
+310	A	checked	Stratified split bảo toàn tỷ lệ lớp giữa train và validation.	crossval
+311	A	checked	Athena for Apache Spark hỗ trợ notebook Python và compute được quản lý, tính phí theo mức sử dụng.	athena_spark
+312	D	checked	Data Wrangler đọc CSV trực tiếp và tạo Data Quality and Insights Report.	wrangler_quality
+313	B	review	B là ý định hợp lý nếu metric bị lỗi chữ trong PDF là validation:f1. csv_weight bật trọng số theo hàng, không trực tiếp là hệ số cân bằng; mục tiêu bắt tối đa positives nên xét recall/PR trade-off.	xgboost,hpo
+314	AC	checked	Hyperband dừng cấu hình kém; giới hạn số training jobs giảm tổng khối lượng tuning.	hpo_strategy
+315	C	checked	AMT tìm hyperparameters theo objective metric và các khoảng giá trị đã đặt.	hpo
+316	A	checked	Quick Model trong Data Wrangler cung cấp Gini feature importance.	wrangler_analysis
+317	A	checked	CreatePresignedDomainUrl tạo URL cho user profile trong Studio domain đã được xác thực.	presigned_domain
+318	D	checked	Tăng L2 regularization giảm overfitting và cải thiện khả năng tổng quát hóa.	overfit,object_tf
+319	C	review	C tạo chuỗi daily đúng tần suất dự báo, nhưng decomposition không đủ chứng minh ARIMA phù hợp; còn cần xử lý giờ thiếu và kiểm tra stationarity/residuals.	wrangler_transform
+320		review	Không lựa chọn nào đầy đủ: phải tắt direct internet, có S3 gateway/API endpoints, và cho phép inbound HTTPS tại endpoint SG. B ghi chỉ outbound nên sai cấu hình.	notebook_vpc,privatelink
+321	D	checked	Warm start yêu cầu cùng objective metric; đổi precision sang recall cần tuning mới, có thể chạy jobs song song.	hpo_warm
+322	B	checked	TF-IDF kết hợp tần suất trong document và độ hiếm giữa documents.	textprep
+323	C	review	Ý định là nhiều instances trên ít nhất hai AZ. C viết hai subnet trong AZ thứ hai gây mơ hồ; chỉ hai subnet cùng AZ không tạo khả năng chịu lỗi đa AZ, cũng chưa chứng minh RTO 5 phút.	endpoint_ha
+324	D	checked	Textract trích xuất chữ/fields; Comprehend custom classification phân loại tài liệu.	textract,comprehend_custom
+325	DE	checked	True positive rate là recall; F1 cân bằng precision và recall trong dữ liệu lệch lớp.	pr_metrics
+326	A	checked	S3 versioning + Cross-Region Replication duy trì bản sao ở Region khác.	s3_crr
+327	B	checked	Production variants giữ nguyên endpoint API và chia traffic để kiểm tra model mới.	variants
+328	B	checked	DeepAR hỗ trợ target missing được mã hóa bằng chuỗi NaN hoặc null trong JSON; NaN literal không phải JSON chuẩn.	deepar
+329	A	checked	AnalyzeDocument với FeatureTypes=SIGNATURES trả signature blocks, trang và confidence; tài liệu nhiều trang có thể dùng async flow.	textract_signature
+330	ADE	checked	Object detection định vị, classifier dựa trên đặc trưng ảnh phân mức độ; augmentation tăng lớp corrosion hiếm.	object_detection,xgboost,augmentation
+331	B	checked	AWS Batch trên Spot mở rộng batch inference; FSx for Lustre cung cấp dữ liệu hiệu năng cao.	batch_gpu
+332	D	checked	Hyperband dừng sớm cấu hình kém và phân bổ tài nguyên cho cấu hình có triển vọng.	hpo_strategy

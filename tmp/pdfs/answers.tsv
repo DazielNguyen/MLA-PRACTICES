@@ -1,0 +1,195 @@
+1	C	review	Accuracy = 86%; precision = 50%. C phù hợp nếu nói chi phí mỗi lỗi; tổng chi phí còn phụ thuộc tỷ lệ chi phí churn/incentive.	metrics
+2	B	checked	Collaborative filtering dùng tương tác của những người dùng tương tự.	collab
+3	B	checked	Glue xử lý CSV từ Kinesis; Firehose chỉ đổi JSON sang Parquet nếu không thêm Lambda.	glue_stream,firehose
+4	C	checked	Đích là giá trị liên tục; Linear Learner ở chế độ regression phù hợp nhất trong các lựa chọn.	linear
+5	D	checked	KMS bảo vệ dữ liệu lưu trữ; Glue hỗ trợ phát hiện và che dữ liệu cá nhân.	pii,kms
+6	C	checked	Notebook chạy trong tài khoản dịch vụ SageMaker, kết nối VPC khách hàng qua ENI.	notebook_account
+7	B	checked	CloudWatch cung cấp CPU, bộ nhớ và độ trễ endpoint.	cloudwatch
+8	B	checked	Glue quản lý metadata; Athena truy vấn dữ liệu S3 bằng SQL.	athena
+9	A	checked	Pipe mode truyền dữ liệu S3 trực tiếp vào training job, không cần tải hết vào notebook.	pipe
+10	B	historical	Chuyển dữ liệu RDS sang S3 cho training; lựa chọn dùng Data Pipeline là kiến trúc cũ.	datapipeline
+11	C	checked	Tương tác người dùng là đầu vào cho collaborative filtering.	collab
+12	B	checked	Nhãn churn hoặc không churn tạo bài toán phân loại nhị phân.	linear
+13	A	checked	Hai đường cùng tăng và có các đỉnh/đáy tương ứng; dự báo vẫn lệch mức tuyệt đối.	forecast
+14	C	checked	Hai lớp có ranh giới phi tuyến dạng vòng tròn; SVM với kernel phi tuyến phù hợp.	svm
+15	A	checked	Bucket policy có thể giới hạn truy cập theo SourceVpce hoặc SourceVpc.	s3_vpc
+16	D	checked	Learning rate quá lớn làm cập nhật vượt qua vùng cực tiểu và dao động.	learning_rate
+17	A	checked	Transcribe chuyển âm thanh thành chữ, Translate dịch, Comprehend phân tích cảm xúc.	sentiment_pipeline
+18	B	checked	Container GPU phải tương thích NVIDIA; không đóng gói NVIDIA driver vào image.	docker
+19	A	checked	ROC so sánh tỷ lệ true positive và false positive ở nhiều ngưỡng.	metrics
+20	D	checked	Word embeddings biểu diễn quan hệ ngữ nghĩa và ngữ cảnh.	blazingtext
+21	AD	checked	CloudTrail ghi hoạt động API; CloudWatch theo dõi tài nguyên, log và lỗi endpoint.	cloudtrail,cloudwatch
+22	D	historical	Kinesis Data Analytics SQL từng nhận Firehose làm đầu vào; dịch vụ SQL cũ đã ngừng hoạt động.	kda
+23	C	checked	Softmax chuyển đầu ra các lớp thành phân phối xác suất có tổng bằng 1.	softmax
+24	B	checked	Dấu của residual thể hiện mô hình dự đoán cao hoặc thấp hơn thực tế.	regression
+25		review	Không thể khẳng định mô hình có recall cao nhất chỉ từ hình; còn phụ thuộc phân phối, huấn luyện và ngưỡng.	metrics,svm
+26	D	checked	So sánh max_depth với objective metric giúp thu hẹp miền tìm kiếm hyperparameter.	hpo
+27	BCF	checked	Chuẩn hóa chữ thường, lọc stopword và tokenization là các bước xử lý văn bản trong lựa chọn.	textprep
+28	B	checked	Lexicon quy định phát âm acronym và có thể tái sử dụng cho tài liệu sau.	polly
+29	BE	checked	Augmentation tăng đa dạng ảnh; L2 hạn chế overfitting.	augmentation,overfit
+30		review	Đề yêu cầu chọn 3 nhưng cấu hình built-in training thường cần A, C, E và F; không có bộ ba duy nhất đầy đủ.	training_api
+31	B	checked	Parquet lưu theo cột, giảm lượng dữ liệu Athena phải đọc.	athena_column
+32	B	checked	One-hot encoding tạo cột nhị phân riêng cho từng ngày trong tuần.	encoding
+33	CD	checked	Tăng mẫu lớp thiểu số và tăng chi phí false negative để xử lý mất cân bằng.	imbalance
+34	B	checked	Coi age=0 là thiếu dữ liệu; thay bằng thống kê của tuổi hợp lệ, không tính các số 0.	imputation
+35	A	checked	S3 mở rộng cho data lake; Athena hoặc Spectrum bổ sung truy vấn SQL.	athena
+36	D	checked	Huấn luyện lại với dữ liệu mới giúp thích nghi thay đổi phân phối và sản phẩm.	modelmonitor
+37	A	historical	Glue làm catalog, Kinesis xử lý luồng, Firehose chuyển dữ liệu, EMR hỗ trợ recommendation; có tên dịch vụ cũ.	kda,collab,athena
+38	CD	checked	Inception có thể dùng qua TensorFlow script hoặc container tùy chỉnh.	docker,transfer
+39	B	checked	Dropout tăng regularization khi training tốt nhưng test kém.	dropout
+40	B	checked	CloudTrail ghi API; custom metric, CloudWatch alarm và SNS đáp ứng yêu cầu cảnh báo.	cloudtrail,cloudwatch
+41	C	checked	PCA tạo các thành phần không tương quan và giảm số chiều.	pca
+42		review	Đề mô tả thời gian chờ có giới hạn 10 phút nhưng yêu cầu Poisson cho số đếm; không đủ giả định xác định prior.	poisson
+43	C	checked	Dùng endpoint riêng cho S3 và SageMaker, đồng thời tắt direct internet access.	notebook_vpc
+44	BCF	checked	Tăng regularization/dropout và giảm độ phức tạp đặc trưng giúp hạn chế overfitting.	overfit,dropout
+45	A	checked	Firehose đổi JSON sang Parquet/ORC và ghi S3; Athena cung cấp SQL/JDBC.	firehose,athena
+46	C	checked	Multiple imputation dùng quan hệ giữa các biến để tái tạo giá trị thiếu.	imputation
+47	C	checked	Interface VPC endpoints cung cấp truy cập SageMaker không qua internet.	notebook_vpc
+48	B	checked	Tái sử dụng trọng số pretrained, thay lớp đầu ra theo các lớp mới.	transfer
+49	A	checked	Kinesis Video Streams và Rekognition stream processor hỗ trợ tìm khuôn mặt trong collection.	rekognition_video
+50	B	checked	Clustering tìm nhóm khách hàng tương tự khi chưa có nhãn phân khúc.	kmeans
+51	D	checked	Dự báo số lượng là regression, không phải classification hoặc phát hiện bất thường.	linear
+52	A	checked	Glue crawler/catalog quản lý metadata và ETL; Lambda kích hoạt theo sự kiện.	glue_catalog
+53	B	checked	Horovod phân tán TensorFlow training qua nhiều máy mà vẫn giữ mô hình hiện có.	horovod
+54	D	checked	ROC-AUC so sánh khả năng xếp hạng của mô hình qua các ngưỡng.	metrics
+55	C	checked	EMR tổng hợp lượng dữ liệu lớn; QuickSight hiển thị và chia sẻ dashboard.	quicksight
+56	C	checked	RecordIO protobuf tối ưu serialization cho các built-in algorithm hỗ trợ định dạng này.	training_formats
+57	A	checked	Bổ sung ảnh xoay giúp mô hình học các tư thế đang thiếu.	augmentation
+58	C	checked	Firehose hỗ trợ ingest và chuyển đổi JSON sang Parquet trước khi lưu S3.	firehose
+59	B	checked	Fit scaler trên training set rồi tái sử dụng cho validation/test để tránh rò rỉ dữ liệu.	leakage
+60	B	review	Ý định là SageMaker Local Mode với container đã tải sẵn; image chính thức lấy từ registry, không trực tiếp từ GitHub.	local_mode
+61	A	historical	RCF trên Kinesis SQL từng phát hiện bất thường luồng; cần thay kiến trúc do dịch vụ cũ ngừng hoạt động.	kda_rcf
+62	A	historical	Lambda giải nén trước khi Kinesis SQL xử lý; đây là dịch vụ SQL cũ.	kda_lambda
+63	A	checked	XGBoost multi:softmax phân loại nhiều lớp trên dữ liệu dạng bảng.	xgboost
+64	C	checked	Stemming giảm biến thể từ và độ thưa; TF-IDF đơn thuần chỉ đổi trọng số, không giải quyết kích thước từ vựng.	textprep
+65	C	checked	Chuẩn hóa z-score đưa đặc trưng về mean 0 và variance 1.	scaling
+66	A	checked	Parquet cho phép Athena chỉ đọc những cột cần thiết.	athena_column
+67	A	checked	Step Functions điều phối, Glue xử lý dữ liệu lớn, CloudWatch/SNS thông báo lỗi.	step_glue
+68	CD	checked	PCA giảm 500 chiều; k-means tìm các nhóm dân cư tương tự.	pca,kmeans
+69	B	checked	DeepAR học chung các chuỗi liên quan và dự báo cho sản phẩm tương tự.	deepar
+70	C	checked	Execution role cần quyền đọc S3 và giải mã bằng KMS key.	kms
+71	B	checked	Glue chạy PySpark ETL theo lịch mà không quản lý cluster.	glue_etl
+72	AC	checked	L1 và recursive feature elimination chọn đặc trưng, giữ khả năng giải thích hệ số.	feature_selection
+73	D	historical	Kinesis SQL RCF phù hợp kiến trúc thời điểm đề; dịch vụ SQL cũ đã ngừng hoạt động.	kda_rcf
+74	CE	checked	ECR lưu container; S3 lưu dữ liệu và model artifacts.	docker
+75	C	checked	20 request/giây × 60 giây × 0,5 = 600 invocation/phút/instance.	autoscale
+76	D	checked	Embedding được pretrained trên lĩnh vực năng lượng bổ sung thông tin ngữ nghĩa chuyên ngành.	blazingtext
+77	BC	historical	Kinesis cấp dữ liệu luồng; Data Pipeline điều phối xử lý định kỳ trên EMR.	datapipeline,kinesis_emr
+78	A	checked	Đóng gói inference code trong container và đẩy image lên ECR; model artifact đưa lên S3.	docker_inference
+79	B	checked	S3 data lake phù hợp ảnh lớn; bucket policy giới hạn IAM principal.	s3_access
+80	C	checked	PCA hoặc autoencoder nén đặc trưng mà giữ phần lớn thông tin.	pca
+81	D	checked	Tăng trọng số lớp mục tiêu làm loss phạt mạnh lỗi bỏ sót lớp đó.	imbalance
+82	B	checked	Fraud hoặc không fraud là hai nhãn; mô hình trả xác suất lớp dương.	metrics
+83	B	checked	Giá nhà là biến đích liên tục nên dùng linear regression.	linear
+84	B	checked	Hai cột phụ thuộc tuyến tính làm ma trận chuẩn suy biến, hệ số OLS không duy nhất.	multicollinearity
+85	B	checked	Đọc tổng hàng Romance = 57,92% và tổng cột Adventure = 13,12% trong hình.	metrics
+86	C	checked	Container cần ENTRYPOINT xử lý lệnh train; SageMaker truyền train khi khởi chạy.	docker
+87	BD	checked	Binning và log transform là các cách xử lý đặc trưng số lệch phải trong các lựa chọn.	transforms
+88	C	checked	Regularization và dropout giúp giảm khoảng cách giữa training và test.	overfit,dropout
+89	A	checked	t-SNE đưa dữ liệu nhiều chiều về scatter plot để xem cấu trúc nhóm.	tsne
+90	C	checked	Task node không chứa HDFS nên thích hợp dùng Spot cho cluster chạy lâu.	emr_spot
+91	A	checked	Nhãn lỗi trong tương lai và RNN tận dụng chuỗi sensor để dự báo bảo trì.	rnn
+92	D	checked	Tương quan với biến đích phù hợp sàng lọc đặc trưng cho mô hình tuyến tính đã nêu.	feature_selection
+93	B	checked	Ranh giới hình chữ nhật song song trục phù hợp các phép chia của decision tree.	trees
+94	BDF	checked	Giảm độ phức tạp, dropout và early stopping xử lý overfitting.	overfit,dropout,earlystop
+95	A	checked	Validation loss tăng sau khoảng epoch 60 dù training loss giảm; dừng sớm tránh overfitting.	earlystop
+96	A	checked	Độ phân tán residual tăng theo X: phương sai không đồng nhất.	regression
+97		review	Lex đã hỗ trợ cả tiếng nói và văn bản; đề không đủ yêu cầu để chọn duy nhất ba dịch vụ, các phương án có chức năng chồng lấp.	lex
+98	C	checked	Training và validation cùng thấp là high bias; mô hình mạnh hơn phù hợp hơn chỉ thêm dữ liệu.	overfit,transfer
+99	D	checked	Augmentation tăng độ đa dạng khi chỉ có ít ảnh gán nhãn.	augmentation
+100	B	checked	Stratified k-fold giữ tỷ lệ lớp hiếm trong từng fold.	crossval
+101	A	checked	AWS Batch chạy GPU job trên Spot; checkpoint cho phép tiếp tục khi gián đoạn.	batch_gpu
+102	B	checked	Đường SSE bắt đầu phẳng từ khoảng k=4 trong biểu đồ.	kmeans_elbow
+103	A	checked	Dịch vụ AI dựng sẵn nhận diện ảnh, văn bản và lời nói giảm công sức xây mô hình.	ai_services
+104	B	checked	100 × 100 KB/giây cần khoảng 10 MB/giây; một shard ghi tối đa 1 MB/giây.	kinesis_shards
+105	D	review	D là ý định của đề, nhưng tương quan biên không chứng minh phụ thuộc có điều kiện theo nhãn.	naive_bayes
+106	B	review	Log giúp giảm skew; hồi quy tuyến tính không bắt buộc các biến đầu vào có phân phối chuẩn.	regression,transforms
+107	B	checked	Giảm max_depth giảm độ phức tạp và nguy cơ overfit của cây.	xgboost
+108	D	historical	Streaming RCF thích nghi cửa sổ dữ liệu; lựa chọn thuộc Kinesis SQL cũ.	kda_rcf
+109	C	checked	Đích là số claim theo tháng cho từng nhóm, nên dùng forecasting.	deepar
+110	B	checked	Production variants chia lưu lượng giữa các model trên cùng endpoint.	variants
+111	C	checked	Object detection SSD trả loại và vị trí đối tượng; built-in hỗ trợ RecordIO.	object_detection
+112	B	checked	Inference tại edge không phụ thuộc kết nối internet liên tục.	greengrass
+113	B	checked	Script mode đọc TFRecord từ S3; không cần đổi sang định dạng built-in khác.	tensorflow
+114	D	checked	CNN học đặc trưng không gian cho bài toán nhận diện trong ảnh.	image_classification
+115	A	checked	Event tracker đưa tương tác mới vào hệ thống Personalize.	personalize_events
+116	AC	checked	Endpoint policy kiểm soát principal; security group của ENI kiểm soát nguồn mạng.	privatelink
+117	A	checked	Chọn dữ liệu không nhạy cảm ngay tại nguồn; Site-to-Site VPN cung cấp IPsec.	glue_jdbc,vpn
+118	AD	review	AutoML hoặc HPO có thể cải thiện model, nhưng API cấm bật cả hai cùng lúc trong một CreatePredictor call.	forecast_api
+119	A	historical	Forecast dùng target time series và item metadata, nhập CSV từ S3.	forecast_data
+120	B	historical	Elastic Inference từng bổ sung GPU nhỏ cho CPU instance; dịch vụ đã ngừng nhận khách hàng mới.	elastic_inference
+121	D	checked	Lifecycle configuration tự cài package khi tạo hoặc khởi động notebook.	lifecycle
+122	B	checked	Glue FindMatches hỗ trợ entity matching và nhận diện bản ghi trùng.	findmatches
+123	BD	checked	scale_pos_weight tăng trọng số fraud; AUC phù hợp phân loại hơn RMSE.	xgboost,metrics
+124	C	checked	Attention giúp decoder truy cập các phần liên quan của chuỗi đầu vào dài.	seq2seq
+125	DE	checked	Recall đo tỷ lệ bắt được fraud; PR-AUC thích hợp khi lớp dương hiếm.	pr_metrics
+126	D	checked	Network isolation chặn outbound network từ training container.	network_isolation
+127	C	checked	Bounding boxes xác định vùng bất thường; private workforce giữ giới hạn người được truy cập.	groundtruth
+128	C	checked	A2I tích hợp Textract để đưa dự đoán confidence thấp cho người kiểm tra.	a2i
+129	C	checked	Thêm shard tăng tổng throughput của Kinesis Data Streams.	kinesis_shards
+130	D	checked	Giữ nguyên toàn bộ tương tác của người dùng test để mô phỏng khách hàng mới.	group_split
+131	ADE	checked	PrivateLink, network isolation và giới hạn presigned URL kiểm soát đường truy cập/thoát dữ liệu; cần endpoint policy phù hợp.	sagemaker_security
+132	C	checked	Glue khám phá/ETL, Athena SQL và QuickSight hiển thị dữ liệu với ít hạ tầng cần quản lý.	glue_catalog,athena,quicksight
+133	C	checked	Textract đọc văn bản; Comprehend cung cấp entity detection và custom entity recognition.	comprehend_entities
+134	B	checked	Tách role gọi job và execution role của Processing; caller còn cần iam:PassRole.	processing_role
+135	C	checked	Stop/start notebook áp dụng bản cập nhật do SageMaker cung cấp.	notebook_update
+136	A	historical	SSE-S3 và HTTPS bảo vệ ảnh; cơ chế opt-out hiện dùng AWS Organizations AI services policy, thay quy trình Support cũ.	rekognition_privacy
+137	D	historical	Inference cục bộ đáp ứng băng thông thấp; AWS DeepLens trong lựa chọn đã ngừng hỗ trợ.	deeplens
+138	D	checked	Tăng scale-out cooldown để chờ instance mới sẵn sàng trước lần scale tiếp.	autoscale
+139	A	checked	Thêm model cần cấu hình endpoint mới; UpdateEndpointWeightsAndCapacities chỉ đổi variant đã tồn tại.	variants,update_weights
+140	B	checked	IP Insights học quan hệ giữa user/entity và IP từ dữ liệu không nhãn.	ip_insights
+141	C	checked	FindMatches hỗ trợ nối các entity tương tự và loại trùng khi chuỗi không khớp hoàn toàn.	findmatches
+142	B	checked	IAM condition theo VPC endpoint giới hạn quyền tạo và sử dụng presigned notebook URL.	notebook_private
+143	C	checked	Customer managed KMS key hỗ trợ mã hóa volumes/S3 và ghi log sử dụng khóa.	kms
+144	D	checked	Glue đọc hai nguồn, join và ghi CSV vào S3 cho training.	glue_etl
+145	A	checked	Comprehend custom classification huấn luyện trực tiếp từ văn bản đã gán nhãn.	comprehend_custom
+146	D	checked	Slot synonyms ánh xạ các cách nói khác nhau về giá trị chuẩn.	lex_synonyms
+147	D	checked	Đưa model xuống Greengrass tránh tải luồng ảnh lên internet cho mỗi inference.	greengrass
+148	C	checked	Notebook sử dụng execution role; cấp quyền S3 cho role thay vì notebook ARN hoặc access key.	processing_role
+149	D	checked	Comprehend phân tích sentiment; CloudWatch metric/alarm hỗ trợ xu hướng và cảnh báo.	comprehend_sentiment,cloudwatch
+150	B	checked	Debugger hỗ trợ thu thập SHAP values của XGBoost để giải thích dự đoán.	debugger_shap
+151	D	checked	Comprehend hỗ trợ syntax/key phrases; container SageMaker dùng classifier MXNet có sẵn.	comprehend_syntax,docker_inference
+152	A	checked	PCA giảm các đặc trưng tương quan mạnh.	pca
+153	D	checked	Training gần mức con người nhưng validation thấp cho thấy variance cao; tăng regularization.	overfit
+154	CE	checked	Translate kết hợp Comprehend topic modeling hoặc SageMaker NTM; BlazingText không phải topic modeling.	comprehend_topics,ntm
+155	B	checked	Model mới cần baseline phù hợp tập training mới trước khi đánh giá drift.	modelmonitor_baseline
+156		review	C và D trực tiếp sửa độ phân giải và dữ liệu zero bị bỏ; A cũng có thể hỗ trợ cold-start/seasonality. Đề chưa loại trừ một bộ đôi duy nhất.	deepar,forecast_missing
+157	CEF	checked	Augmentation, cân bằng lớp và Custom Labels là các cách cải thiện; built-in image classification đã xử lý chuẩn hóa ảnh.	augmentation,rekognition_custom,imbalance
+158	A	checked	Hai ma trận đều nhầm C với D nhiều; lỗi này xuất hiện cả trong training.	metrics
+159	BDE	review	B/D/E là nhóm chọn đặc trưng; E ghi classifier dù giá bán liên tục cần regressor hoặc cách chia nhãn rõ ràng.	feature_selection
+160	C	historical	CNN-QR hỗ trợ nhiều chuỗi cùng covariates và metadata trong Forecast.	forecast_cnn
+161	C	checked	Custom vocabulary nhắm vào tên sản phẩm và chỉnh nhanh; custom language model cần corpus lớn hơn.	transcribe_vocab
+162	C	checked	Notebook nhỏ cho phát triển; job Processing chỉ thuê RAM lớn trong thời gian xử lý.	processing
+163		review	One-hot chắc chắn phù hợp; RGB và frequency encoding đều có thể dùng với giả định khác nhau, nên không có cặp duy nhất từ đề.	encoding
+164	A	checked	Các đèn tương tác phù hợp multi-agent reinforcement learning để phối hợp chính sách.	multiagent
+165	D	checked	CountVectorizer có stop_words để loại từ dừng mà vẫn giữ từ hiếm hợp lệ.	textprep
+166	C	checked	DataSync hỗ trợ copy ban đầu, incremental transfer, lịch chạy và kiểm tra toàn vẹn.	datasync
+167	D	checked	Semantic segmentation gán nhãn từng pixel để phân ranh giới chính xác; dùng private workforce.	groundtruth_segmentation
+168	BC	checked	PCA hoặc loại bớt đặc trưng tương quan giải quyết dư thừa; scaling không loại tương quan.	pca
+169	C	checked	Glue PySpark xử lý dữ liệu lớn và job lâu; Lambda bị giới hạn thời gian mỗi invocation.	glue_etl
+170	ABD	checked	Email khách hàng, mạng xã hội và review công khai chứa ý kiến trực tiếp.	comprehend_custom
+171	D	checked	SageMaker Experiments theo dõi tham số; Spark Processing chạy preprocessing được quản lý.	experiments,processing
+172	D	checked	SageMaker training hỗ trợ EFS làm nguồn dữ liệu trực tiếp.	pipe
+173	C	checked	MAE theo tuần biểu diễn mức lỗi thay đổi qua thời gian.	regression
+174	D	checked	Chưa có nhãn phân khúc nên dùng k-means với k=5.	kmeans
+175	A	checked	One-hot xử lý category, L1 giảm overfit; chuẩn hóa không bắt buộc cho cây nhưng không làm phương án sai.	encoding,xgboost
+176		review	Object2Vec hỗ trợ sentence embeddings. Phương án thứ hai phụ thuộc khả năng lấy encoder state hoặc thiết kế custom RNN; chưa đủ để chốt cặp.	object2vec,seq2seq
+177	D	checked	Xuất văn bản và nhãn đã có để train Comprehend custom classifier, không cần xây model thủ công.	comprehend_custom
+178	C	review	Ý định là Logarithmic scaling; các hình gốc đảo MinValue=0.1 và MaxValue=0.0001 nên cấu hình phải sửa trước khi chạy.	hpo_ranges
+179	C	checked	Huấn luyện trong SageMaker rồi dùng Neo/Greengrass cho inference tại edge.	greengrass,neo
+180	AC	historical	Autoscaling giảm cấp phát dư; Elastic Inference là lựa chọn của kiến trúc cũ.	autoscale,elastic_inference
+181	D	checked	Autopilot tự chuẩn bị đặc trưng, thử model và tuning cho dữ liệu tabular.	autopilot
+182	CD	checked	Stemming gom biến thể từ; TF-IDF biểu diễn độ quan trọng của từ.	textprep
+183	D	checked	Forecast được calibration tốt khi coverage tại quantile q xấp xỉ q.	gluonts
+184	C	checked	IoT Core nhận MQTT, rule gửi Firehose và Firehose ghi S3.	iot_firehose
+185	B	checked	Multi-label cho phép một văn bản thuộc nhiều nhãn không loại trừ nhau.	comprehend_custom
+186	BCF	historical	Glue development endpoint, notebook tích hợp và IAM role là quy trình phát triển Glue cũ.	glue_dev
+187	C	checked	Glue cung cấp Filter, Map, RenameField và lịch chạy ETL.	glue_etl
+188	B	checked	ENTRYPOINT chỉ định training program trong Docker image.	docker
+189	AD	checked	IP Insights và RCF đều hỗ trợ phát hiện bất thường không cần nhãn.	ip_insights,rcf
+190	AC	checked	Tắt direct internet và thêm S3 gateway endpoint vào VPC.	notebook_vpc
+191	AE	checked	Thêm biến sales period và xử lý giá trị thiếu; không xóa tín hiệu mùa vụ bằng smoothing tùy tiện.	forecast_missing,deepar
+192	B	checked	XGBoost phân loại trên dữ liệu tabular có biến số và category đã mã hóa.	xgboost
+193	B	checked	KMS quản lý khóa mã hóa volumes/S3 và ghi nhận hoạt động sử dụng khóa.	kms
+194	B	checked	Glue catalog và Athena truy vấn S3 trực tiếp, không cần cluster riêng.	athena
+195	B	checked	Pipe mode không tải toàn bộ tập ảnh vào ổ đĩa training instance.	pipe,object_detection

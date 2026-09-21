@@ -1,0 +1,24 @@
+{
+    "storageInfo": "[{\"name\":\"images\\\/img-b4f5-aa9d-10b0-5b66.png\",\"originalHash\":\"c040f0879571a8ed8216ea7cc0c8eb29ff2fadf5\",\"hash\":\"c040f0879571a8ed8216ea7cc0c8eb29ff2fadf5\"}]",
+    "title": "AWS Certified Solutions Architect Associate (SAA-C02)",
+    "courseLessonTitle": "",
+    "courseDescription": "",
+    "courseAuthor": "",
+    "courseTags": "",
+    "courseGuid": "B053F429-E77C-4351-9DB7-B965A2531734",
+    "lastPublishingPath": "[[\"\\uFFFD$\\uFFFD\\u0012{D85A8358-7113-484C-9642-A15DD907C616}\",\"D:\\\\AWSStudy\\\\AWS_Cert\\\\MyTask\\\\MLS-Part1-MinhTien(266-332)\"]]",
+    "publishSettings": "{\"commonSettings\":{\"webSettings\":{\"useMobileViewer\":\"T_FALSE\"},\"lmsSettings\":{\"useMobileViewer\":\"T_FALSE\"},\"cloudSettings\":{\"useMobileViewer\":\"T_FALSE\"},\"ispringLmsSettings\":{\"useMobileViewer\":\"T_FALSE\"},\"studioSettings\":{\"useMobileViewer\":\"T_FALSE\"}},\"advancedSettings\":{\"enableTextAllocation\":\"T_TRUE\",\"viewingFromLocalDrive\":\"T_TRUE\",\"contentScale\":100,\"contentScaleMode\":\"ORIGINAL_SIZE\"},\"accessibilitySettings\":{\"enabled\":\"T_FALSE\"},\"compressionSettings\":{\"imageSettings\":{\"jpegQuality\":70,\"optimizeImageForResolution\":\"T_FALSE\"},\"audioQuality\":70,\"videoQuality\":65},\"protectionSettings\":{\"watermarkEnabled\":\"T_FALSE\",\"watermarkPosition\":\"MIDDLE_CENTER\",\"openWatermarkUrl\":\"T_FALSE\",\"openWatermarkWebPageInNewWindow\":\"T_FALSE\",\"displayAfterEnabled\":\"T_FALSE\",\"displayUntilEnabled\":\"T_FALSE\",\"domainRestrictionEnabled\":\"T_FALSE\"},\"videoSettings\":{\"videoCompressionSettings\":{\"audioQuality\":70,\"videoQuality\":75},\"secondsOnEachSlide\":5,\"hostingSettings\":{}},\"ispringOnlineSettings\":{\"onlineDestinationFolderId\":\"1\"},\"cloudSettings\":{\"onlineDestinationFolderId\":\"1\"},\"wordSettings\":{\"printCopies\":1},\"studioSettings\":{\"onlineDestinationFolderId\":\"1\",\"uploadSources\":true}}",
+    "lmsPublishOptions": "{\"apiStandard\":\"AS_SCORM12\",\"reportStatuses\":\"RS_PASSED_FAILED\",\"useXAPIEndpoint\":\"T_FALSE\"}",
+    "onlinePublishOptions": "{\"ispringCloud\":{\"directoryId\":\"1\"},\"ispringLms\":{\"directoryId\":\"1\"},\"ispringStudio\":{\"directoryId\":\"1\"}}",
+    "quiz": {
+        "version": "13",
+        "compatible": "2",
+        "edition": "free",
+        "showAllQuestions": "false",
+        "gradeInfo": {
+            "maxScore": "670",
+            "passingScore": "80",
+            "isPassingScorePercent": "true"
+        }
+    }
+}

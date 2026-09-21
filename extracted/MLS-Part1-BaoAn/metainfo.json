@@ -1,0 +1,24 @@
+{
+    "storageInfo": "[{\"name\":\"images\\\/img-9fae22a73b7478102b59c78c81cfb061da47b5d5.png\",\"originalHash\":\"9fae22a73b7478102b59c78c81cfb061da47b5d5\",\"hash\":\"9fae22a73b7478102b59c78c81cfb061da47b5d5\"},{\"name\":\"images\\\/img-24151467f4d33340222b5263ef26b28e9c1cf54c.png\",\"originalHash\":\"24151467f4d33340222b5263ef26b28e9c1cf54c\",\"hash\":\"24151467f4d33340222b5263ef26b28e9c1cf54c\"},{\"name\":\"images\\\/img-bd93dfbe3991bec83da0a48b37d30086e79de5f1.png\",\"originalHash\":\"bd93dfbe3991bec83da0a48b37d30086e79de5f1\",\"hash\":\"bd93dfbe3991bec83da0a48b37d30086e79de5f1\"},{\"name\":\"images\\\/img-b4f5-aa9d-10b0-5b66.png\",\"originalHash\":\"c040f0879571a8ed8216ea7cc0c8eb29ff2fadf5\",\"hash\":\"c040f0879571a8ed8216ea7cc0c8eb29ff2fadf5\"},{\"name\":\"images\\\/img-a44642a5f944bb6415b46988dda60dc389beb9d7.png\",\"originalHash\":\"a44642a5f944bb6415b46988dda60dc389beb9d7\",\"hash\":\"a44642a5f944bb6415b46988dda60dc389beb9d7\"},{\"name\":\"images\\\/img-39e0fb8dcae2f3e0f0a17a254f9435404500df0b.png\",\"originalHash\":\"39e0fb8dcae2f3e0f0a17a254f9435404500df0b\",\"hash\":\"39e0fb8dcae2f3e0f0a17a254f9435404500df0b\"}]",
+    "title": "MLS-Part1-BaoAn",
+    "courseLessonTitle": "",
+    "courseDescription": "",
+    "courseAuthor": "",
+    "courseTags": "",
+    "courseGuid": "B053F429-E77C-4351-9DB7-B965A2531734",
+    "lastPublishingPath": "[[\"\\uFFFD\\u0014\\u001A\\n{10ECAFAE-7452-4869-919F-435CFBF47131}\",\"D:\\\\UNIVERSITY\\\\AWS\\\\Quiz_Cert\\\\MLS\\\\Part1\"]]",
+    "publishSettings": "{\"commonSettings\":{\"webSettings\":{\"useMobileViewer\":\"T_FALSE\"},\"lmsSettings\":{\"useMobileViewer\":\"T_FALSE\"},\"cloudSettings\":{\"useMobileViewer\":\"T_FALSE\"},\"ispringLmsSettings\":{\"useMobileViewer\":\"T_FALSE\"},\"studioSettings\":{\"useMobileViewer\":\"T_FALSE\"}},\"advancedSettings\":{\"enableTextAllocation\":\"T_TRUE\",\"viewingFromLocalDrive\":\"T_TRUE\",\"contentScale\":100,\"contentScaleMode\":\"ORIGINAL_SIZE\"},\"accessibilitySettings\":{\"enabled\":\"T_FALSE\"},\"compressionSettings\":{\"imageSettings\":{\"jpegQuality\":70,\"optimizeImageForResolution\":\"T_FALSE\"},\"audioQuality\":70,\"videoQuality\":65},\"protectionSettings\":{\"watermarkEnabled\":\"T_FALSE\",\"watermarkPosition\":\"MIDDLE_CENTER\",\"openWatermarkUrl\":\"T_FALSE\",\"openWatermarkWebPageInNewWindow\":\"T_FALSE\",\"displayAfterEnabled\":\"T_FALSE\",\"displayUntilEnabled\":\"T_FALSE\",\"domainRestrictionEnabled\":\"T_FALSE\"},\"videoSettings\":{\"videoCompressionSettings\":{\"audioQuality\":70,\"videoQuality\":75},\"secondsOnEachSlide\":5,\"hostingSettings\":{}},\"ispringOnlineSettings\":{\"onlineDestinationFolderId\":\"1\"},\"cloudSettings\":{\"onlineDestinationFolderId\":\"1\"},\"wordSettings\":{\"printCopies\":1},\"studioSettings\":{\"onlineDestinationFolderId\":\"1\",\"uploadSources\":true}}",
+    "lmsPublishOptions": "{\"apiStandard\":\"AS_SCORM12\",\"reportStatuses\":\"RS_PASSED_FAILED\",\"useXAPIEndpoint\":\"T_FALSE\"}",
+    "onlinePublishOptions": "{\"ispringCloud\":{\"directoryId\":\"1\"},\"ispringLms\":{\"directoryId\":\"1\"},\"ispringStudio\":{\"directoryId\":\"1\"}}",
+    "quiz": {
+        "version": "13",
+        "compatible": "2",
+        "edition": "free",
+        "showAllQuestions": "false",
+        "gradeInfo": {
+            "maxScore": "690",
+            "passingScore": "80",
+            "isPassingScorePercent": "true"
+        }
+    }
+}

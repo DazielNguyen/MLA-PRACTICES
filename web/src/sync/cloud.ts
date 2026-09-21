@@ -71,7 +71,7 @@ export async function syncRepository(repo: ProgressRepository, pull: boolean) {
       if (!data || data.length < 500) break;
     }
   }
-  notifyChange();
+  notifyChange(repo.learner.id);
 }
 export type SharedLearner = { id: string; name: string; sessions: number; latest: string | null };
 export async function sharedProfiles(): Promise<SharedLearner[]> { await ensureIdentity(); return rpc('ml_shared_profiles'); }

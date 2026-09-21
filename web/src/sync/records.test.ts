@@ -84,3 +84,23 @@ test('an unsent ownership claim survives edits before the first cloud acknowledg
   const a=make(),b=new ProgressRepository(a.learner,bank,crypto.randomUUID());const session=start(a);b.resume(session.id);
   b.update(s=>({...s,active:{...s.active!,answers:{2:['B']}}}));const row=b.rows().find(r=>r.kind==='session')!;assert.equal(row.claim,true);assert.equal(row.writer,b.writer);
 });
+
+test('cached rows detect external storage changes and reject corrupted replacements',()=>{
+  const repo=make();repo.update(s=>({...s,known:[2]}));
+  assert.deepEqual(repo.state().known,[2]);
+  const row=repo.rows().find(r=>r.key==='known:2')!;
+  localStorage.setItem(repo.prefix+row.key,JSON.stringify({...row,value:false,stamp:row.stamp+1}));
+  assert.deepEqual(repo.state().known,[]);
+  localStorage.setItem(repo.prefix+row.key,'{"invalid":true}');
+  assert.equal(repo.rows().length,0);
+  localStorage.setItem(repo.prefix+row.key,JSON.stringify(row));
+  assert.deepEqual(repo.state().known,[2]);
+});
+test('a remote acknowledgement reads its own row instead of scanning all history',()=>{
+  const repo=make();repo.update(s=>({...s,known:[2,3,4,5]}));const row=repo.rows()[0];
+  const original=localStorage.getItem;let reads=0;
+  localStorage.getItem=function(key){reads++;return original.call(this,key);};
+  try{repo.mergeRemote(row,row);assert.ok(reads<=2,`Unexpected storage scan: ${reads} reads`);}
+  finally{localStorage.getItem=original;}
+  assert.equal(repo.rows().find(r=>r.key===row.key)!.dirty,false);
+});

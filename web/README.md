@@ -22,7 +22,7 @@ Dùng Node.js 24 LTS. Mã nguồn yêu cầu Node.js từ 22.12 trở lên.
 
 | Chế độ | Cách dùng |
 | --- | --- |
-| Học nhanh | Làm 10 câu ngẫu nhiên, xem giải thích sau khi kiểm tra từng câu. |
+| Học nhanh | Chọn là chấm, xem đáp án và giải thích ngay. Trang chủ mở 10 câu ngẫu nhiên. |
 | Flashcard | Lật thẻ, đánh dấu đã thuộc, lọc thẻ chưa thuộc hoặc đã lưu. |
 | Luyện cùng đáp án | Chọn đủ phương án rồi bấm **Kiểm tra đáp án**. Câu đã kiểm tra sẽ khóa lựa chọn. |
 | Tự kiểm tra | Trả lời trước, xem toàn bộ đáp án sau khi nộp bài. Không giới hạn thời gian. |
@@ -36,7 +36,21 @@ Trong Ngân hàng câu hỏi, tìm `mla-c01 q228` để mở câu nguồn Q228, 
 
 Câu chọn nhiều chỉ đúng khi chọn đủ và chính xác toàn bộ phương án. Câu bỏ trống không được điểm.
 
-Trong phiên làm bài, dùng phím **← / →** để chuyển câu. Dùng **1–6** để chọn phương án.
+Trong phiên làm bài, dùng phím **1–6** để chọn phương án A–F. Dùng **← / →** để chuyển câu.
+
+Trong **Học nhanh**, chọn đáp án để xem kết quả ngay. Câu chọn nhiều chờ đủ số phương án rồi chấm.
+
+Sau khi xem kết quả, bấm lại trên một đáp án, hoặc nhấn **Enter / Space** để sang câu tiếp.
+
+Phím **→** cũng sang câu tiếp sau khi chấm. Giữ phím không tự trả lời hoặc bỏ qua nhiều câu.
+
+Câu cuối mở kết quả bằng cùng thao tác. Dùng **Kết thúc** để lưu và kết thúc phiên sớm.
+
+Phần giải thích hiện đáp án đúng, ý chính và lý do lựa chọn của bạn sai. Mở **Why other options are incorrect** để đọc thêm.
+
+Để chọn số câu và bộ lọc, vào **Luyện tập → Học nhanh** trước khi bắt đầu.
+
+Chuyển câu có hiệu ứng ngắn. Ứng dụng tắt hiệu ứng khi thiết bị bật chế độ giảm chuyển động.
 
 Trong flashcard, dùng **Space** để lật thẻ khi con trỏ không nằm trên nút hoặc ô nhập.
 
@@ -55,6 +69,10 @@ Khi đã cấu hình Supabase, trang **Người học** có mã tiếp tục ri�
 Bật **Chia sẻ lịch sử học tập** để hồ sơ xuất hiện trong **Học chung**. Người khác chỉ xem các bài đã hoàn thành.
 
 Nếu chưa cấu hình Supabase, các tính năng hồ sơ vẫn hoạt động trên trình duyệt hiện tại.
+
+Lựa chọn được lưu trên máy ngay. Đồng bộ Supabase chạy nền, gom thay đổi và gửi từng lượt nối tiếp.
+
+Bạn có thể tiếp tục học khi mạng chậm. Thay đổi trong lúc gửi được giữ lại cho lượt đồng bộ tiếp theo.
 
 Đồng hồ thi dùng thời hạn cố định. Đổi tab hoặc tải lại trang không dừng đồng hồ.
 

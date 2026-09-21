@@ -22,7 +22,7 @@ export function keys(prefix: string) {
   try { for (let i = 0; i < localStorage.length; i++) { const key = localStorage.key(i); if (key?.startsWith(prefix)) result.add(key); } } catch { /* Memory remains usable. */ }
   return [...result];
 }
-export function notifyChange() { window.dispatchEvent(new Event(CHANGE_EVENT)); }
+export function notifyChange(profileId?: string) { window.dispatchEvent(new CustomEvent(CHANGE_EVENT, {detail: {profileId}})); }
 export function getProfiles(): Learner[] {
   return keys(PROFILE_PREFIX).flatMap(key => {
     try { const profile = JSON.parse(read(key)!); return typeof profile.id === 'string' && typeof profile.name === 'string' && typeof profile.code === 'string' ? [profile as Learner] : []; } catch { return []; }
@@ -54,28 +54,35 @@ export class ProgressRepository {
   readonly learner: Learner;
   readonly bank: Question[];
   readonly writer: string;
+  private rowCache = new Map<string, {raw: string | null; row: StudyRow | null}>();
   constructor(learner: Learner, bank: Question[], writer: string) {
     this.learner=learner; this.bank=bank; this.writer=writer;
     this.prefix = `${ROW_PREFIX}${learner.id}:`;
     this.activeKey = `ml-active:v2:${learner.id}`;
   }
   rows(): StudyRow[] {
-    return keys(this.prefix).flatMap(key => {
-      try { const row = JSON.parse(read(key)!); validateRow(row, this.bank); return [row as StudyRow]; }
-      catch { lastStorageError = 'Một phần dữ liệu không đọc được. Dữ liệu gốc vẫn được giữ trong trình duyệt.'; return []; }
-    });
+    return keys(this.prefix).flatMap(key => { const row = this.getRow(key.slice(this.prefix.length)); return row ? [row] : []; });
+  }
+  private getRow(key: string): StudyRow | null {
+    const raw = read(this.prefix + key), cached = this.rowCache.get(key);
+    if (cached && cached.raw === raw) return cached.row;
+    let row: StudyRow | null = null;
+    try { if (raw !== null) { row = JSON.parse(raw); validateRow(row, this.bank); } }
+    catch { row = null; lastStorageError = 'Một phần dữ liệu không đọc được. Dữ liệu gốc vẫn được giữ trong trình duyệt.'; }
+    this.rowCache.set(key, {raw, row});
+    return row;
   }
   state() { return composeState(this.rows(), tabGet(this.activeKey), this.writer); }
   put(kind: RowKind, key: string, value: unknown, claim = false) {
-    const raw = read(this.prefix + key), old: StudyRow | null = raw ? JSON.parse(raw) : null;
+    const old = this.getRow(key);
     const row: StudyRow = { key, kind, value, stamp: Math.max(Date.now(), (old?.stamp || 0) + 1), writer: this.writer, dirty: true, claim: claim || Boolean(old?.dirty && old.claim && old.writer === this.writer) };
     validateRow(row, this.bank);
     write(this.prefix + key, JSON.stringify(row));
   }
-  update(fn: (state: State) => State) {
-    const previous = this.state(), next = fn(previous);
-    if (previous === next) return;
-    const sessions = new Map(this.rows().filter(r => r.kind === 'session').map(r => [r.key, r]));
+  update(fn: (state: State) => State, notify = true) {
+    const rows = this.rows(), previous = composeState(rows, tabGet(this.activeKey), this.writer), next = fn(previous);
+    if (previous === next) return false;
+    const sessions = new Map(rows.filter(r => r.kind === 'session').map(r => [r.key, r]));
     for (const session of [...next.history, ...(next.active ? [next.active] : [])]) {
       const old = sessions.get(sessionKey(session.id));
       if (JSON.stringify(old?.value) === JSON.stringify(session)) continue;
@@ -97,16 +104,17 @@ export class ProgressRepository {
     }
     if (JSON.stringify(previous.flash) !== JSON.stringify(next.flash)) this.put('flash', `flash:${this.writer}`, next.flash);
     tabSet(this.activeKey, next.active?.id || '');
-    notifyChange();
+    if (notify) notifyChange(this.learner.id);
+    return true;
   }
   resume(id: string) {
-    const row = this.rows().find(r => r.key === sessionKey(id));
+    const row = this.getRow(sessionKey(id));
     if (!row || (row.value as Session).finishedAt !== null) return;
-    this.put('session', row.key, row.value, true); tabSet(this.activeKey, id); notifyChange();
+    this.put('session', row.key, row.value, true); tabSet(this.activeKey, id); notifyChange(this.learner.id);
   }
   mergeRemote(input: unknown, acknowledged?: StudyRow) {
     const row = validateRow(input, this.bank);
-    const old = this.rows().find(r => r.key === row.key);
+    const old = this.getRow(row.key);
     // An acknowledgement must never clear a newer local edit queued during the request.
     if (acknowledged && old?.dirty && (old.stamp !== acknowledged.stamp || old.writer !== acknowledged.writer)) return;
     if (acknowledged || !old || !old.dirty && newer(row, old) || old.dirty && newer(row, old)) {
@@ -127,17 +135,17 @@ export class ProgressRepository {
       const state = validateState(backup, this.bank);
       const covered: string[] = [];
       for (const session of [...state.history, ...(state.active ? [state.active] : [])]) {
-        const key = sessionKey(session.id), existing = this.rows().find(r => r.key === key);
+        const key = sessionKey(session.id), existing = this.getRow(key);
         if (!existing) this.put('session', key, session, true);
         for (const [id, answer] of Object.entries(session.answers)) if (answer.length && (session.finishedAt !== null || session.revealed.includes(Number(id)))) covered.push(attemptKey(session.id, Number(id)));
       }
-      const baseline = this.rows().find(r => r.kind === 'baseline')?.value as Baseline | undefined;
+      const baseline = this.getRow('baseline:legacy')?.value as Baseline | undefined;
       this.put('baseline', 'baseline:legacy', mergeBaseline(baseline, { progress: state.progress, covered }));
       for (const id of state.bookmarks) this.put('bookmark', `bookmark:${id}`, true);
       for (const id of state.known) this.put('known', `known:${id}`, true);
       if (state.flash) this.put('flash', `flash:${this.writer}`, state.flash);
     }
-    notifyChange();
+    notifyChange(this.learner.id);
   }
   migrateLegacy() {
     const owner = read('ml-legacy-owner:v2'), raw = read(STORAGE_KEY);

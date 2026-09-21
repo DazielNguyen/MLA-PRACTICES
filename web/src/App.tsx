@@ -44,13 +44,26 @@ function StudyApp({learner,switchLearner}:{learner:Learner;switchLearner:()=>voi
   const { state, update, storageError, repo, cloudStatus, cloudError, lastSynced, sync }=useProgress(bank,learner);
   const saveLabel = storageError ? 'Chưa lưu được trên máy' : cloudStatus==='local' ? 'Lưu trên trình duyệt' : cloudStatus==='synced' ? 'Đã đồng bộ' : cloudStatus==='error' ? 'Chờ kết nối lại' : 'Đang đồng bộ…';
   const [route,setRoute]=useState(location.hash.slice(1)||'/');
-  const [now,setNow]=useState(Date.now()), [menu,setMenu]=useState(false), [message,setMessage]=useState('');
+  const [menu,setMenu]=useState(false), [message,setMessage]=useState('');
   const [pending,setPending]=useState<Session|null>(null), [imported,setImported]=useState<Backup|State|null>(null);
   const fileInput=useRef<HTMLInputElement>(null);
   const go=(path:string)=>{location.hash=path;setMenu(false);};
   useEffect(()=>{const changed=()=>{setRoute(location.hash.slice(1)||'/');window.scrollTo({top:0});};window.addEventListener('hashchange',changed);return()=>window.removeEventListener('hashchange',changed);},[]);
-  useEffect(()=>{if(!state.active)return;setNow(Date.now());const tick=()=>setNow(Date.now());const id=window.setInterval(tick,1000);window.addEventListener('focus',tick);document.addEventListener('visibilitychange',tick);return()=>{clearInterval(id);window.removeEventListener('focus',tick);document.removeEventListener('visibilitychange',tick);};},[state.active?.id]);
-  useEffect(()=>{const a=state.active;if(a?.deadline && now>=a.deadline){update(s=>s.active?.id===a.id?finishSession(s,bank,now,'timeout'):s);go(`/results/${a.id}`);}},[now,state.active,update]);
+  useEffect(()=>{
+    const active=state.active;
+    if(!active?.deadline)return;
+    let timer:ReturnType<typeof setTimeout>;
+    const expire=()=>{
+      clearTimeout(timer);
+      const remaining=active.deadline!-Date.now();
+      if(remaining>0){timer=setTimeout(expire,remaining);return;}
+      let submitted=false;
+      update(s=>{if(s.active?.id!==active.id)return s;submitted=true;return finishSession(s,bank,Date.now(),'timeout');});
+      if(submitted)go(`/results/${active.id}`);
+    };
+    expire();window.addEventListener('focus',expire);document.addEventListener('visibilitychange',expire);
+    return()=>{clearTimeout(timer);window.removeEventListener('focus',expire);document.removeEventListener('visibilitychange',expire);};
+  },[state.active?.id,state.active?.deadline,update]);
   useEffect(()=>{if(!message)return;const id=window.setTimeout(()=>setMessage(''),7000);return()=>clearTimeout(id);},[message]);
   const start=(settings:Settings,mode:Session['mode'])=>{
     try {const session=createSession(eligibleQuestions(bank,settings,state,mode),settings,mode);if(state.active)setPending(session);else{update(s=>({...s,active:session}));go('/session');}}
@@ -69,7 +82,7 @@ function StudyApp({learner,switchLearner}:{learner:Learner;switchLearner:()=>voi
     {pending&&<Dialog title="Bạn có một phiên đang làm" confirmLabel="Lưu bài cũ và bắt đầu" onClose={()=>setPending(null)} onConfirm={()=>{const session={...pending,startedAt:Date.now(),deadline:pending.mode==='exam'?Date.now()+pending.settings.minutes*60000:null};update(s=>({...finishSession(s,bank),active:session}));setPending(null);go('/session');}}><p>Phiên hiện tại sẽ được nộp và lưu vào lịch sử trước khi bắt đầu phiên mới. Câu chưa trả lời sẽ tính là chưa đúng.</p><p>Chọn “Quay lại” để giữ nguyên phiên đang làm.</p></Dialog>}
     {imported&&<Dialog title="Gộp bản sao vào hồ sơ này?" confirmLabel="Khôi phục bản sao" onClose={()=>setImported(null)} onConfirm={()=>{download(repo.backup());repo.importBackup(imported);setImported(null);go('/progress');setMessage('Đã gộp bản sao vào hồ sơ này. Bản sao trước khi gộp đã được tải xuống.');}}><p>Bản sao sẽ được gộp vào hồ sơ <strong>{learner.name}</strong>. Những bài đã lưu vẫn được giữ nguyên.</p><p>Ứng dụng tải bản sao hiện tại xuống trước khi gộp. Bài chưa hoàn thành có thể mở lại từ trang Tiến trình; thời hạn thi giữ nguyên.</p></Dialog>}
   </>;
-  if(route==='/session'&&state.active)return <>{overlays}<SessionView key={state.active.id} session={state.active} state={state} bank={bank} now={now} update={update} go={go} finish={finish} learnerName={learner.name} saveLabel={saveLabel}/></>;
+  if(route==='/session'&&state.active)return <>{overlays}<SessionView key={state.active.id} session={state.active} state={state} bank={bank} update={update} go={go} finish={finish} learnerName={learner.name} saveLabel={saveLabel}/></>;
   const result=route.startsWith('/results/')?state.history.find(s=>s.id===route.slice(9)):null;
   const title=navigation.find(n=>n.path===route)?.label||(result?'Kết quả phiên học':'Phiên học');
   return <div className="app-shell">
@@ -80,7 +93,7 @@ function StudyApp({learner,switchLearner}:{learner:Learner;switchLearner:()=>voi
     <div className="app-main"><header className="topbar"><div><button className="icon-button menu-button" aria-label="Mở điều hướng" onClick={()=>setMenu(true)}><Menu size={21}/></button><span className="breadcrumb">Không gian học tập</span><ChevronRight size={14}/><strong>{title}</strong></div><div><span className={`save-indicator ${storageError?'failed':''}`}><Check size={13}/>{saveLabel}</span><button className="current-learner" onClick={()=>go('/learner')} aria-label={`Đang học: ${learner.name}`}><span className="profile-icon">{learner.name.slice(0,1).toUpperCase()}</span><span>{learner.name}</span></button></div></header>
     <main id="main" tabIndex={-1}>
       {cloudError&&<div className="cloud-warning" role="status"><span>Chưa đồng bộ được. Bài làm vẫn được giữ trên máy.</span><button className="text-button" onClick={()=>go('/learner')}>Xem kết nối</button></div>}
-      {route==='/'?<Home state={state} bank={bank} go={go} quick={()=>start({...defaultSettings,count:10},'practice')}/>:
+      {route==='/'?<Home state={state} bank={bank} go={go} quick={()=>start({...defaultSettings,count:10,quick:true},'practice')}/>:
        route==='/flashcards'?<Flashcards bank={bank} state={state} update={update}/>:
        route==='/practice'||route==='/exam'?<Setup key={route} mode={route==='/exam'?'exam':'practice'} bank={bank} state={state} start={start}/>:
        route==='/library'?<LibraryPage bank={bank} state={state} update={update}/>:

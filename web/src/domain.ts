@@ -11,7 +11,7 @@ export type Settings = {
   count: number; minutes: number; order: 'random' | 'sequential';
   scope: 'all' | 'wrong' | 'bookmarked' | 'unseen'; range: string;
   includeReview: boolean; includeHistorical: boolean; feedback: 'immediate' | 'end';
-  collection?: 'all' | 'mls' | 'mla'; includeSource?: boolean;
+  collection?: 'all' | 'mls' | 'mla'; includeSource?: boolean; quick?: boolean;
 };
 export type Session = {
   id: string; mode: 'practice' | 'exam'; questionIds: number[]; index: number;
@@ -35,6 +35,7 @@ export const collectionLabel = (collection: string) => collection === 'mla' ? 'M
 export const sourceLabel = (q: Question) => `${q.collection === 'mla' ? 'MLA-C01' : 'MLS'} Q${String(q.sourceIds[0]).padStart(3,'0')}`;
 export const emptyState = (): State => ({ version: 1, updatedAt: 0, bookmarks: [], known: [], progress: {}, active: null, history: [], flash: null });
 export const isCorrect = (q: Question, answer: string[] = []) => q.status !== 'review' && answer.length === q.answer.length && q.answer.every(v => answer.includes(v));
+export const isQuickSession = (session: Session) => session.mode === 'practice' && session.settings.feedback === 'immediate' && session.settings.quick === true;
 export const studyQuestions = (bank: Question[]) => bank.filter(q => q.duplicateOf === undefined);
 export const relatedQuestionIds = (q: Question) => q.relatedIds || [q.id];
 export const hasQuestionMark = (q: Question, ids: number[]) => relatedQuestionIds(q).some(id => ids.includes(id));
@@ -106,6 +107,15 @@ export function revealAnswer(state: State, q: Question, now = Date.now()): State
   if (!session || session.mode !== 'practice' || session.settings.feedback !== 'immediate' || session.revealed.includes(q.id) || !session.questionIds.includes(q.id) || session.answers[q.id]?.length !== q.required) return state;
   return { ...recordAnswer(state, q, session.answers[q.id], now), active: { ...session, revealed: [...session.revealed, q.id] } };
 }
+export function selectAnswer(state: State, q: Question, letter: string, now = Date.now()): State {
+  const session = state.active;
+  if (!session || session.finishedAt !== null || session.questionIds[session.index] !== q.id || session.revealed.includes(q.id) || !Object.hasOwn(q.choices,letter) || session.deadline !== null && now >= session.deadline) return state;
+  const before = session.answers[q.id] || [];
+  const answer = toggleChoice(before,letter,q.required);
+  if (answer === before) return state;
+  const next = {...state, active: {...session, answers: {...session.answers,[q.id]:answer}}};
+  return isQuickSession(session) && answer.length === q.required ? revealAnswer(next,q,now) : next;
+}
 export function finishSession(state: State, bank: Question[], now = Date.now(), reason: 'manual' | 'timeout' = 'manual'): State {
   const active = state.active;
   if (!active || active.finishedAt) return state;
@@ -136,6 +146,7 @@ export function validateState(input: unknown, bank: Question[]): State {
     if (![...v.revealed, ...v.flagged].every(id => set.has(id))) return fail();
     if (!['immediate', 'end'].includes(String(v.settings.feedback)) || !['random', 'sequential'].includes(String(v.settings.order)) || !['all', 'wrong', 'bookmarked', 'unseen'].includes(String(v.settings.scope)) || !['all',...questionRanges.map(r=>r.value)].includes(String(v.settings.range)) || typeof v.settings.includeReview !== 'boolean' || typeof v.settings.includeHistorical !== 'boolean' || !Number.isInteger(v.settings.count) || v.settings.count !== v.questionIds.length || !Number.isFinite(v.settings.minutes)) return fail();
     if (v.settings.collection !== undefined && !['all','mls','mla'].includes(String(v.settings.collection)) || v.settings.includeSource !== undefined && typeof v.settings.includeSource !== 'boolean') return fail();
+    if (v.settings.quick !== undefined && typeof v.settings.quick !== 'boolean') return fail();
     for (const [id, values] of Object.entries(v.answers)) {
       const q = byId.get(Number(id));
       if (!q || !set.has(q.id) || !Array.isArray(values) || values.length > q.required || new Set(values).size !== values.length || values.some(c => typeof c !== 'string' || !Object.hasOwn(q.choices, c))) return fail();

@@ -1,0 +1,9 @@
+{
+  "269": {"canonical": 70, "reason": "Same S3 SSE-KMS notebook access scenario and IAM/KMS solution. Wording and one distractor differ."},
+  "271": {"canonical": 81, "reason": "Same MLP minority-class recall problem and class-weight solution. Options are reordered and one distractor differs."},
+  "188": {"canonical": 86, "reason": "Same custom training container launch requirement and ENTRYPOINT solution. Wording and distractors differ."},
+  "295": {"canonical": 109, "reason": "Same 200-category insurance-claim count forecast over monthly time periods. Wording and distractors differ."},
+  "202": {"canonical": 113, "reason": "Same TensorFlow train.py and TFRecord data scenario, solved with script mode and S3 without reformatting. Options are reordered."},
+  "193": {"canonical": 143, "reason": "Same encryption-at-rest, AWS root-of-trust and key-auditing requirements, solved with customer managed KMS keys. Options are reordered."},
+  "270": {"canonical": 197, "reason": "Same podcast events and 10-minute window transformation problem, solved with Kinesis Data Streams and managed stream processing. Distractors differ."}
+}

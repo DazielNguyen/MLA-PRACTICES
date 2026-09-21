@@ -142,7 +142,7 @@ def merge_bundle(old):
 
 def write_exports(bank):
     md = ['# Bộ câu hỏi tổng hợp MLS và MLA-C01', '',
-          f'{len(bank)} câu. Mã câu MLS cũ được giữ nguyên. Câu MLA dùng mã 332 + số câu nguồn.', '',
+          f'{len(bank)} câu để học. Biến thể đã gộp giữ mã cũ trong dữ liệu lịch sử. Câu MLA dùng mã 332 + số câu nguồn.', '',
           'Mỗi câu có phân tích tiếng Anh cho từng lựa chọn. “Cần xác minh” không dùng để tính điểm.', '']
     cards = []
     statuses = {'checked': 'Đã đối chiếu', 'historical': 'Dịch vụ cũ', 'source': 'Theo nguồn', 'review': 'Cần xác minh'}
@@ -182,6 +182,33 @@ def write_exports(bank):
     (OUTPUT / 'QUIZLET_COMBINED.md').write_text('\n'.join(cards) + '\n')
 
 
+def group_study_duplicates(bank):
+    """Exclude reviewed variants from new study pools without changing old answers."""
+    decisions = json.loads((APP / 'scripts/study-duplicates.json').read_text())
+    by_id = {q['id']: q for q in bank}
+    groups = defaultdict(list)
+    audit = []
+    for alias, decision in decisions.items():
+        alias, canonical = int(alias), decision['canonical']
+        assert alias != canonical and alias in by_id and canonical in by_id
+        assert str(canonical) not in decisions, 'Duplicate chains are not supported'
+        archived, retained = by_id[alias], by_id[canonical]
+        assert archived['collection'] == retained['collection'] == 'mls'
+        assert archived['required'] == retained['required'] and decision['reason'].strip()
+        archived['duplicateOf'] = canonical
+        groups[canonical].append(alias)
+        audit.append({'id': alias, 'canonical': canonical, 'reason': decision['reason'],
+                      'originalAnswer': archived['answer'], 'canonicalAnswer': retained['answer']})
+    for canonical, aliases in groups.items():
+        members = [canonical, *sorted(aliases)]
+        for member in members:
+            by_id[member]['relatedIds'] = members
+        retained = by_id[canonical]
+        retained['sourceIds'] = sorted({i for member in members for i in by_id[member]['sourceIds']})
+        retained['notes'].append('Grouped study variants: MLS Q' + ', Q'.join(str(i) for i in members) + '. Wording or distractors can differ. Answer letters refer to this version.')
+    return audit
+
+
 def main():
     OUTPUT.mkdir(parents=True, exist_ok=True)
     old = legacy_bank()
@@ -189,18 +216,22 @@ def main():
     bank = old + new
     original_keys = {q['id']: {'answer': list(q['answer']), 'status': q['status']} for q in bank}
     attach(bank)
+    study_duplicates = group_study_duplicates(bank)
+    study_bank = [q for q in bank if 'duplicateOf' not in q]
     assert len({q['id'] for q in bank}) == len(bank)
     assert all(len(q['answer']) == q['required'] for q in bank if q['status'] != 'review')
-    catalog = {'total': len(bank), 'maxId': max(q['id'] for q in bank),
-               'collections': {'mls': len(old), 'mla': len(new)}, 'statuses': dict(Counter(q['status'] for q in bank)),
+    catalog = {'total': len(study_bank), 'records': len(bank), 'archivedVariants': len(study_duplicates), 'maxId': max(q['id'] for q in bank),
+               'collections': dict(Counter(q['collection'] for q in study_bank)), 'statuses': dict(Counter(q['status'] for q in study_bank)),
                'sourceMap': {str(source): q['id'] for q in new for source in q['sourceIds']}}
     (APP / 'src/data/questions.json').write_text(json.dumps(bank, ensure_ascii=False, separators=(',', ':')) + '\n')
     (APP / 'src/data/catalog.json').write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + '\n')
     (OUTPUT / 'MERGE_AUDIT.json').write_text(json.dumps(audit, ensure_ascii=False, indent=2) + '\n')
+    (OUTPUT / 'STUDY_DUPLICATE_AUDIT.json').write_text(json.dumps(study_duplicates, ensure_ascii=False, indent=2) + '\n')
     analysis_audit = {
         'total': len(bank), 'complete': sum(bool(q.get('analysis')) for q in bank),
         'optionAnalyses': sum(len(q['analysis']['options']) for q in bank),
-        'statuses': catalog['statuses'],
+        'statuses': dict(Counter(q['status'] for q in bank)),
+        'studyTotal': len(study_bank), 'archivedIds': [q['id'] for q in bank if 'duplicateOf' in q],
         'changes': [dict(id=q['id'], collection=q['collection'], sourceIds=q['sourceIds'],
                          before=original_keys[q['id']], after={'answer': q['answer'], 'status': q['status']},
                          notes=q['notes'], sources=q['sources'])
@@ -208,9 +239,9 @@ def main():
         'unresolvedIds': [q['id'] for q in bank if q['status'] == 'review'],
     }
     (OUTPUT / 'ANSWER_ANALYSIS_AUDIT.json').write_text(json.dumps(analysis_audit, ensure_ascii=False, indent=2) + '\n')
-    write_exports(bank)
+    write_exports(study_bank)
     print(json.dumps({k:v for k,v in catalog.items() if k!='sourceMap'}, ensure_ascii=False))
-    print(f"Removed {audit['removedDuplicates']} duplicated MLA entries; exported {len(bank)} questions.")
+    print(f"Removed {audit['removedDuplicates']} duplicated MLA entries; archived {len(study_duplicates)} MLS variants; exported {len(study_bank)} study questions.")
 
 
 if __name__ == '__main__':

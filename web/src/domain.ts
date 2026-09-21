@@ -4,6 +4,7 @@ export type Question = {
   answer: string[]; required: number; status: 'checked' | 'historical' | 'review' | 'source';
   explanation: string; sources: { title: string; url: string }[]; notes: string[];
   analysis?: { keyConcept: string; options: Record<string, string> };
+  duplicateOf?: number; relatedIds?: number[];
   images: { url: string; slot: string; alt: string }[];
 };
 export type Settings = {
@@ -34,6 +35,28 @@ export const collectionLabel = (collection: string) => collection === 'mla' ? 'M
 export const sourceLabel = (q: Question) => `${q.collection === 'mla' ? 'MLA-C01' : 'MLS'} Q${String(q.sourceIds[0]).padStart(3,'0')}`;
 export const emptyState = (): State => ({ version: 1, updatedAt: 0, bookmarks: [], known: [], progress: {}, active: null, history: [], flash: null });
 export const isCorrect = (q: Question, answer: string[] = []) => q.status !== 'review' && answer.length === q.answer.length && q.answer.every(v => answer.includes(v));
+export const studyQuestions = (bank: Question[]) => bank.filter(q => q.duplicateOf === undefined);
+export const relatedQuestionIds = (q: Question) => q.relatedIds || [q.id];
+export const hasQuestionMark = (q: Question, ids: number[]) => relatedQuestionIds(q).some(id => ids.includes(id));
+export function setQuestionMark(q: Question, ids: number[], marked = !hasQuestionMark(q, ids)) {
+  const others = ids.filter(id => !relatedQuestionIds(q).includes(id));
+  return marked ? [...others, q.duplicateOf ?? q.id] : others;
+}
+export function questionProgress(q: Question, state: State): Progress | undefined {
+  const records = relatedQuestionIds(q).map(id => state.progress[id]).filter((p): p is Progress => Boolean(p));
+  if (!records.length) return undefined;
+  const latest = records.reduce((a, b) => b.lastSeen > a.lastSeen ? b : a);
+  return { attempts: records.reduce((n,p)=>n+p.attempts,0), correct: records.reduce((n,p)=>n+p.correct,0), latest: latest.latest, lastSeen: latest.lastSeen };
+}
+export function normalizeFlashDeck(flash: State['flash'], bank: Question[]): State['flash'] {
+  if (!flash) return null;
+  const canonical = new Map(bank.map(q=>[q.id,q.duplicateOf ?? q.id]));
+  const mapped = flash.ids.map(id=>canonical.get(id) ?? id);
+  const ids = [...new Set(mapped)];
+  const index = ids.indexOf(mapped[flash.index]);
+  if (ids.length === flash.ids.length && ids.every((id,i)=>id===flash.ids[i])) return flash;
+  return {...flash, ids, index: Math.max(0,index)};
+}
 export function toggleChoice(answer: string[], choice: string, required: number) {
   if (answer.includes(choice)) return answer.filter(c => c !== choice);
   if (required === 1) return [choice];
@@ -41,14 +64,15 @@ export function toggleChoice(answer: string[], choice: string, required: number)
 }
 export function eligibleQuestions(bank: Question[], settings: Settings, state: State, mode: Session['mode'] = 'practice') {
   return bank.filter(q => {
+    if (q.duplicateOf !== undefined) return false;
     if (settings.collection && settings.collection !== 'all' && q.collection !== settings.collection) return false;
     if (q.status === 'source' && settings.includeSource === false) return false;
     if (q.status === 'review' && (mode === 'exam' || !settings.includeReview)) return false;
     if (q.status === 'historical' && !settings.includeHistorical) return false;
     if (settings.range !== 'all') { const [min, max] = settings.range.split('-').map(Number); if (q.id < min || q.id > max) return false; }
-    if (settings.scope === 'wrong') return state.progress[q.id]?.latest === false;
-    if (settings.scope === 'bookmarked') return state.bookmarks.includes(q.id);
-    if (settings.scope === 'unseen') return !state.progress[q.id];
+    if (settings.scope === 'wrong') return questionProgress(q,state)?.latest === false;
+    if (settings.scope === 'bookmarked') return hasQuestionMark(q,state.bookmarks);
+    if (settings.scope === 'unseen') return !questionProgress(q,state);
     return true;
   });
 }
@@ -58,6 +82,7 @@ export function shuffle<T>(values: T[], random: () => number = Math.random): T[]
   return result;
 }
 export function createSession(pool: Question[], settings: Settings, mode: Session['mode'], now = Date.now()): Session {
+  pool = studyQuestions(pool);
   if (!Number.isInteger(settings.count) || settings.count < 1 || settings.count > pool.length) throw new Error('Số câu không hợp lệ.');
   if (mode === 'exam' && (!Number.isFinite(settings.minutes) || settings.minutes < 1 || settings.minutes > 600)) throw new Error('Thời gian thi từ 1 đến 600 phút.');
   const ids = (settings.order === 'random' ? shuffle(pool) : pool).slice(0, settings.count).map(q => q.id);

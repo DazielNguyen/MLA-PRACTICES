@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, BookOpen, Check, ChevronRight, Clock3, Download, GraduationCap, LayoutDashboard, Layers3, Library, Menu, TrendingUp, Upload, UserRound, Users, X } from 'lucide-react';
 import rawBank from './data/questions.json';
 import type { Question, Session, Settings, State } from './domain';
-import { createSession, defaultSettings, eligibleQuestions, finishSession } from './domain';
+import { createSession, defaultSettings, eligibleQuestions, finishSession, studyQuestions } from './domain';
 import { useLearners, useProgress } from './store';
 import { Welcome, LearnerSettings } from './Learners';
 import Group from './Group';
@@ -19,6 +19,7 @@ import LibraryPage from './Library';
 import ProgressPage from './Progress';
 
 const bank = rawBank as Question[];
+const studyBank = studyQuestions(bank);
 const navigation = [
   { path:'/', label:'Tổng quan', icon:LayoutDashboard },
   { path:'/flashcards', label:'Flashcard', icon:Layers3 },
@@ -75,7 +76,7 @@ function StudyApp({learner,switchLearner}:{learner:Learner;switchLearner:()=>voi
     <a href="#main" className="skip-link" onClick={e=>{e.preventDefault();document.getElementById('main')?.focus();}}>Đến nội dung chính</a>
     {menu&&<button className="sidebar-scrim" aria-label="Đóng điều hướng" onClick={()=>setMenu(false)}/>}
     <aside className={`sidebar ${menu?'open':''}`}><a className="brand" href="#/" aria-label="ML Practice — Tổng quan" onClick={()=>setMenu(false)}><span className="brand-symbol">m<span>l</span></span><span>ML Practice<small>YOUR LEARNING SPACE</small></span></a><div className="nav-caption">KHÔNG GIAN CỦA BẠN</div><nav aria-label="Điều hướng chính">{navigation.map(({path,label,icon:Icon},i)=><a href={`#${path}`} onClick={()=>setMenu(false)} className={`nav-link ${route===path?'active':''} ${i===4?'nav-divider':''}`} aria-label={label} title={label} aria-current={route===path?'page':undefined} key={path}><Icon size={19}/><span>{label}</span>{route===path&&<span className="nav-active-dot"/>}</a>)}</nav>
-      <div className="sidebar-bottom"><div className="bank-card"><GraduationCap size={22}/><span>BỘ TÀI LIỆU ĐANG HỌC</span><strong>Machine Learning<br/>MLS + MLA-C01</strong><div>{bank.length} câu hỏi <span>2 bộ</span></div></div><p><span className="live-dot"/>Học theo nhịp của bạn</p><span className="sidebar-version">ML Practice · v2.0</span></div></aside>
+      <div className="sidebar-bottom"><div className="bank-card"><GraduationCap size={22}/><span>BỘ TÀI LIỆU ĐANG HỌC</span><strong>Machine Learning<br/>MLS + MLA-C01</strong><div>{studyBank.length} câu hỏi <span>2 bộ</span></div></div><p><span className="live-dot"/>Học theo nhịp của bạn</p><span className="sidebar-version">ML Practice · v2.0</span></div></aside>
     <div className="app-main"><header className="topbar"><div><button className="icon-button menu-button" aria-label="Mở điều hướng" onClick={()=>setMenu(true)}><Menu size={21}/></button><span className="breadcrumb">Không gian học tập</span><ChevronRight size={14}/><strong>{title}</strong></div><div><span className={`save-indicator ${storageError?'failed':''}`}><Check size={13}/>{saveLabel}</span><button className="current-learner" onClick={()=>go('/learner')} aria-label={`Đang học: ${learner.name}`}><span className="profile-icon">{learner.name.slice(0,1).toUpperCase()}</span><span>{learner.name}</span></button></div></header>
     <main id="main" tabIndex={-1}>
       {cloudError&&<div className="cloud-warning" role="status"><span>Chưa đồng bộ được. Bài làm vẫn được giữ trên máy.</span><button className="text-button" onClick={()=>go('/learner')}>Xem kết nối</button></div>}

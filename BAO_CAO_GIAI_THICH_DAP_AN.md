@@ -1,6 +1,6 @@
 # Giải thích và rà soát đáp án
 
-Cập nhật ngày 21/09/2026. Ngân hàng có **574 câu** và **2.396 phần phân tích lựa chọn** bằng tiếng Anh.
+Cập nhật ngày 21/09/2026. Ngân hàng giữ **574 bản ghi**. Dữ liệu có **2.396 phần phân tích lựa chọn** bằng tiếng Anh. Sau khi gộp 7 biến thể, còn **567 câu học**.
 
 Website: [ML Practice](https://mla-practice-studio.vercel.app).
 
@@ -24,13 +24,13 @@ Thi thử và Tự kiểm tra giữ đáp án ẩn đến khi nộp bài. Thư v
 
 | Trạng thái | MLS | MLA-C01 | Tổng |
 | --- | ---: | ---: | ---: |
-| Đã đối chiếu | 277 | 210 | 487 |
+| Đã đối chiếu | 270 | 210 | 480 |
 | Dịch vụ cũ | 27 | 0 | 27 |
 | Cần xác minh | 28 | 32 | 60 |
 | Theo nguồn | 0 | 0 | 0 |
-| Tổng | 332 | 242 | 574 |
+| Tổng câu học | 325 | 242 | 567 |
 
-Có 514 câu chấm được. Khi loại dịch vụ cũ, còn 487 câu. Các câu Cần xác minh không tham gia điểm hoặc thi thử.
+Có 507 câu chấm được. Khi loại dịch vụ cũ, còn 480 câu. Các câu Cần xác minh không tham gia điểm hoặc thi thử.
 
 Tài liệu AWS hỗ trợ tính năng và giới hạn dịch vụ. Kết luận đáp án là phân tích theo đề, không phải khóa thi chính thức của AWS.
 
@@ -66,12 +66,36 @@ Trang kết quả tính điểm theo khóa hiện tại. Điểm bài cũ có th
 Thống kê lượt luyện đã ghi vẫn giữ nguyên. Vì vậy, thống kê cũ có thể khác điểm bài tính lại.
 
 - [Markdown tổng hợp](output/merged/ML_COMBINED.md): câu hỏi, đáp án, phân tích, ghi chú và tài liệu đối chiếu.
-- [File Quizlet](output/merged/QUIZLET_COMBINED.md): 574 dòng, mỗi dòng là một thẻ.
+- [File Quizlet](output/merged/QUIZLET_COMBINED.md): 567 dòng, mỗi dòng là một thẻ.
 - [Dữ liệu web](web/src/data/questions.json): dữ liệu có cấu trúc cho giao diện.
 
 Trong Quizlet, chọn TAB làm ký tự tách hai mặt thẻ. Chọn dòng mới làm ký tự tách thẻ.
 
 Các câu có hình dẫn về bản Markdown. Bản nhập văn bản Quizlet không nhúng ảnh.
+
+## Gộp 7 cặp biến thể MLS
+
+Các cặp này cùng bài toán và hướng trả lời. Cách diễn đạt hoặc một số phương án khác nhau.
+
+| Mã bản cũ | Mã dùng cho phiên học mới | Nội dung |
+| --- | --- | --- |
+| #269 | #70 | Notebook đọc dữ liệu S3 mã hóa KMS |
+| #271 | #81 | Tăng recall của MLP bằng class weights |
+| #188 | #86 | Khởi chạy training container bằng ENTRYPOINT |
+| #295 | #109 | Dự báo số hồ sơ bảo hiểm theo tháng |
+| #202 | #113 | Cung cấp dữ liệu TFRecord cho SageMaker |
+| #193 | #143 | Mã hóa dữ liệu và ghi nhận việc dùng khóa KMS |
+| #270 | #197 | Xử lý sự kiện podcast trong cửa sổ 10 phút |
+
+[Nhật ký gộp biến thể](output/merged/STUDY_DUPLICATE_AUDIT.json) ghi lý do và khóa của từng phiên bản.
+
+Phiên học mới, thư viện và file xuất dùng 567 câu. Các bản cũ vẫn phục vụ lịch sử và bài chưa hoàn thành.
+
+Việc gộp không đổi ký tự đã chọn hoặc khóa đáp án trong lịch sử. Ví dụ, #271 vẫn chấm A dù bản đại diện #81 chấm D.
+
+Dấu lưu, thẻ đã thuộc và bộ lọc câu sai nhận biết cả nhóm. Thẻ đã lưu được gộp khi mở lại.
+
+Các cặp khác mục tiêu như #14/#25 và #173/#204 vẫn được giữ riêng.
 
 ## Cập nhật dữ liệu
 
@@ -91,10 +115,10 @@ Lệnh nhập tạo lại ngân hàng web, Markdown, Quizlet và nhật ký. D�
 
 ## Kiểm tra hoàn tất
 
-- 33 kiểm thử dữ liệu, chấm điểm, tiến trình và đồng bộ đạt.
-- 20 kiểm thử trình duyệt đạt, gồm màn hình nhỏ và câu nhiều đáp án.
+- 38 kiểm thử dữ liệu, chấm điểm, tiến trình và đồng bộ đạt.
+- 22 kiểm thử trình duyệt đạt, gồm màn hình nhỏ, câu nhiều đáp án và lịch sử dùng mã đã gộp.
 - Build TypeScript/Vite thành công.
-- Kiểm tra đủ 574 thẻ Quizlet, mỗi thẻ có đúng một TAB.
+- Kiểm tra đủ 567 thẻ Quizlet, mỗi thẻ có đúng một TAB.
 - Kiểm tra trực quan phần giải thích trên máy tính và điện thoại.
 
-Bản build có cảnh báo kích thước JavaScript vì chứa toàn bộ ngân hàng câu hỏi. Kích thước nén gzip khoảng 536 KB.
+Bản build có cảnh báo kích thước JavaScript vì chứa toàn bộ ngân hàng câu hỏi. Kích thước nén gzip khoảng 537 KB.

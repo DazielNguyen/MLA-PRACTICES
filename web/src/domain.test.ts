@@ -27,8 +27,8 @@ test('single choice replaces; multi choice caps and can be deselected',()=>{
 });
 test('exam never contains unresolved answers, even with includeReview enabled',()=>{
   const pool=eligibleQuestions(bank,{...defaultSettings,includeReview:true},emptyState(),'exam');
-  assert.equal(pool.length,514);assert.ok(pool.every(q=>q.status!=='review'));
-  assert.equal(eligibleQuestions(bank,{...defaultSettings,includeHistorical:false},emptyState(),'exam').length,487);
+  assert.equal(pool.length,507);assert.ok(pool.every(q=>q.status!=='review'));
+  assert.equal(eligibleQuestions(bank,{...defaultSettings,includeHistorical:false},emptyState(),'exam').length,480);
 });
 test('question filters combine scope, range and status',()=>{
   const state=emptyState();state.bookmarks=[2,70];
@@ -84,7 +84,7 @@ test('collection and source status filters keep MLS and MLA separate',()=>{
   const mla=eligibleQuestions(bank,{...defaultSettings,collection:'mla'},emptyState(),'exam');
   assert.equal(mla.length,210);assert.ok(mla.every(q=>q.collection==='mla'));
   assert.deepEqual(eligibleQuestions(bank,{...defaultSettings,collection:'mla',includeSource:false},emptyState(),'exam'),mla);
-  assert.equal(eligibleQuestions(bank,{...defaultSettings,collection:'mls'},emptyState(),'exam').length,304);
+  assert.equal(eligibleQuestions(bank,{...defaultSettings,collection:'mls'},emptyState(),'exam').length,297);
   assert.ok(!mla.some(q=>q.id===469));
 });
 test('legacy content and IDs are preserved; answer changes require explicit documented reviews',()=>{

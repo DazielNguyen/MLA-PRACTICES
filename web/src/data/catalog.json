@@ -1,13 +1,15 @@
 {
-  "total": 574,
+  "total": 567,
+  "records": 574,
+  "archivedVariants": 7,
   "maxId": 615,
   "collections": {
-    "mls": 332,
+    "mls": 325,
     "mla": 242
   },
   "statuses": {
     "review": 60,
-    "checked": 487,
+    "checked": 480,
     "historical": 27
   },
   "sourceMap": {

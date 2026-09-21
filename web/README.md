@@ -72,7 +72,7 @@ Nếu xóa dữ liệu trình duyệt, dùng mã Supabase hoặc bản sao JSON 
 
 ## Nguồn câu hỏi
 
-Ngân hàng chứa **574 câu**: 332 câu từ PDF Machine Learning – Specialty và 242 câu từ ZIP MLA-C01 bổ sung.
+Ngân hàng học có **567 câu**: 325 câu MLS và 242 câu MLA-C01. Có thêm 7 bản MLS cũ phục vụ lịch sử.
 
 ZIP có 286 mục. Sau khi gộp 44 bản lặp, còn 242 câu. Giữ 22 hình MLS và 16 ảnh MLA khác nhau.
 
@@ -80,32 +80,32 @@ MLS và MLA-C01 là hai bộ nguồn riêng. Chọn bộ trong Luyện tập, Th
 
 | Trạng thái | Số câu | Cách sử dụng |
 | --- | ---: | --- |
-| Đã đối chiếu | 487 | Có chấm điểm; gồm 277 câu MLS và 210 câu MLA. |
+| Đã đối chiếu | 480 | Có chấm điểm; gồm 270 câu MLS và 210 câu MLA. |
 | Dịch vụ cũ | 27 | Có chấm điểm theo bối cảnh cũ. Có thể loại bằng bộ lọc. |
 | Theo nguồn | 0 | Trạng thái dự phòng cho các lần nhập tiếp theo. |
 | Cần xác minh | 60 | Không chấm điểm. Luôn loại khỏi thi thử. Có thể đọc trong luyện tập và flashcard. |
 
-Toàn bộ 574 câu có giải thích tiếng Anh cho từng lựa chọn và liên kết tài liệu hỗ trợ.
+Toàn bộ 567 câu học và 7 bản lưu cho lịch sử có giải thích tiếng Anh cho từng lựa chọn.
 
 Phần đáp án gồm **Correct answer**, **Key Concept**, **Why this is correct** và **Why other options are incorrect**.
 
 Câu **Cần xác minh** dùng **Answer not finalized** và phân tích từng lựa chọn theo điều kiện của đề.
 
-Thi thử có 514 câu chấm được, hoặc 487 câu khi loại dịch vụ cũ. Riêng MLA có 210 câu chấm được.
+Thi thử có 507 câu chấm được, hoặc 480 câu khi loại dịch vụ cũ. Riêng MLA có 210 câu chấm được.
 
 Tỷ lệ đúng của bài luyện không quy đổi thành điểm AWS. Hint chỉ hiện trong luyện cùng đáp án, flashcard và thư viện.
 
-Mã 1–332 không đổi. Mã câu MLA bằng 332 cộng số câu nguồn được giữ; khoảng trống là các bản lặp đã gộp.
+Mã câu cũ vẫn đọc được trong lịch sử. Mã MLA bằng 332 cộng số câu nguồn được giữ. Khoảng trống là các bản đã gộp.
 
 Xem [báo cáo giải thích và sửa đáp án](../BAO_CAO_GIAI_THICH_DAP_AN.md), [báo cáo gộp ban đầu](../BAO_CAO_GOP_BO_DE.md), [Markdown tổng hợp](../output/merged/ML_COMBINED.md) và [file Quizlet](../output/merged/QUIZLET_COMBINED.md).
 
-Trong Quizlet, dùng TAB để tách hai mặt thẻ và dòng mới để tách thẻ. File có 574 thẻ.
+Trong Quizlet, dùng TAB để tách hai mặt thẻ và dòng mới để tách thẻ. File có 567 thẻ.
 
 Lịch sử giữ các lựa chọn đã lưu. Điểm bài cũ được tính lại theo khóa và trạng thái hiện tại khi mở kết quả.
 
 Thống kê lượt luyện đã ghi không được viết lại. Vì vậy, thống kê cũ có thể khác điểm bài sau khi sửa khóa.
 
-File dùng trong ứng dụng là `src/data/questions.json`. Các hình nằm trong `public/images/`.
+File `src/data/questions.json` giữ 574 bản ghi, gồm 567 câu học và 7 biến thể cho lịch sử. Các hình nằm trong `public/images/`.
 
 Ứng dụng không cần PDF hoặc thư mục `tmp` khi chạy hay build. Khi thay đổi bộ dữ liệu đã rà soát, cập nhật bằng:
 
@@ -123,7 +123,25 @@ Giải thích nằm trong `scripts/explanations/`. Khóa, trạng thái, ghi ch�
 
 Hai phần bổ sung dùng mã câu của ngân hàng web. Lệnh nhập dừng nếu thiếu giải thích hoặc sai số lựa chọn.
 
-Dữ liệu nguồn, nhật ký gộp và `ANSWER_ANALYSIS_AUDIT.json` được xuất vào `../output/merged/`.
+Dữ liệu nguồn và các nhật ký được xuất vào `../output/merged/`. `STUDY_DUPLICATE_AUDIT.json` ghi 7 cặp biến thể MLS đã gộp.
+
+## Câu đã gộp và tiến trình cũ
+
+Các cặp dùng chung một câu cho phiên học mới: 269→70, 271→81, 188→86, 295→109, 202→113, 193→143 và 270→197.
+
+Quyết định nằm trong `scripts/study-duplicates.json`. Chỉ các cặp đã đọc và đối chiếu thủ công được gộp.
+
+Câu có `duplicateOf` không xuất hiện trong phiên học mới hoặc file Quizlet. Bản gốc vẫn phục vụ bài đã lưu và bản sao tiến trình.
+
+Lịch sử giữ mã câu, lựa chọn và khóa gốc của từng phiên bản. Ký tự đáp án không được chuyển giữa các bản đã đảo lựa chọn.
+
+Dấu lưu và thẻ đã thuộc của bản cũ áp dụng cho cả nhóm. Bộ lọc câu sai dùng lần trả lời gần nhất trong nhóm.
+
+Flashcard đã lưu được gộp khi mở, giữ vị trí của nhóm đang học. Tìm `#269` hoặc `mls q269` trong thư viện sẽ mở #70.
+
+Tổng số câu đã luyện tính theo nhóm. Tổng lượt trả lời vẫn bao gồm các lần làm bản cũ.
+
+Các câu cùng tình huống nhưng hỏi khác mục tiêu vẫn riêng biệt, như #14 về accuracy và #25 về recall.
 
 ## Đưa lên Vercel
 

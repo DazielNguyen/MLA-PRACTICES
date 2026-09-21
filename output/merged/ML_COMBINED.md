@@ -1,6 +1,6 @@
 # Bộ câu hỏi tổng hợp MLS và MLA-C01
 
-574 câu. Mã câu MLS cũ được giữ nguyên. Câu MLA dùng mã 332 + số câu nguồn.
+567 câu để học. Biến thể đã gộp giữ mã cũ trong dữ liệu lịch sử. Câu MLA dùng mã 332 + số câu nguồn.
 
 Mỗi câu có phân tích tiếng Anh cho từng lựa chọn. “Cần xác minh” không dùng để tính điểm.
 
@@ -2583,7 +2583,7 @@ DeepAR learns shared temporal patterns across related product series rather than
 
 </details>
 
-## #70 · MLS Q070
+## #70 · MLS Q070/Q269
 
 Trạng thái: **Đã đối chiếu** · Chọn 1.
 
@@ -2613,6 +2613,10 @@ Reading an SSE-KMS object requires both S3 object permission and permission to u
 - **A. Define security group(s) to allow all HTTP inbound/outbound traffic and assign those security group(s) to the Amazon SageMaker notebook instance.** — Permissive HTTP network rules do not grant S3 or KMS authorization and unnecessarily widen network access.
 - **B. Configure the Amazon SageMaker notebook instance to have access to the VPC. Grant permission in the KMS key policy to the notebook's KMS role.** — VPC access alone does not authorize object retrieval, and the relevant identity is the notebook execution role rather than an unspecified KMS role.
 - **D. Assign the same KMS key used to encrypt data in Amazon S3 to the Amazon SageMaker notebook instance.** — Selecting a key for the notebook's own storage encryption does not grant permission to decrypt objects already encrypted in S3.
+
+#### Notes
+
+- Grouped study variants: MLS Q70, Q269. Wording or distractors can differ. Answer letters refer to this version.
 
 #### References
 
@@ -2998,7 +3002,7 @@ Dimensionality reduction compresses redundant input information into fewer featu
 
 </details>
 
-## #81 · MLS Q081
+## #81 · MLS Q081/Q271
 
 Trạng thái: **Đã đối chiếu** · Chọn 1.
 
@@ -3028,6 +3032,10 @@ Class weighting changes how strongly errors on a target class influence the trai
 - **A. Gather more data using Amazon Mechanical Turk and then retrain** — Collecting and labeling more examples takes time, while the question asks for a quick change to the existing model.
 - **B. Train an anomaly detection model instead of an MLP** — An anomaly detector changes the task and model, rather than directly improving target-class recall in the current classifier.
 - **C. Train an XGBoost model instead of an MLP** — Switching algorithms requires new tuning and does not automatically correct the target class's insufficient loss contribution.
+
+#### Notes
+
+- Grouped study variants: MLS Q81, Q271. Wording or distractors can differ. Answer letters refer to this version.
 
 #### References
 
@@ -3184,7 +3192,7 @@ True class frequency is a row total; predicted class frequency is a column total
 
 </details>
 
-## #86 · MLS Q086
+## #86 · MLS Q086/Q188
 
 Trạng thái: **Đã đối chiếu** · Chọn 1.
 
@@ -3214,6 +3222,10 @@ SageMaker launches a training container with a train argument, so its entrypoint
 - **A. Modify the bash_profile file in the container and add a bash command to start the training program** — A shell profile is not a reliable container startup mechanism because the training launch does not require an interactive login shell.
 - **B. Use CMD config in the Dockerfile to add the training program as a CMD of the image** — SageMaker supplies its training command and can override CMD; relying only on CMD does not define the required training entrypoint behavior.
 - **D. Copy the training program to directory /opt/ml/train** — Copying a program into /opt/ml/train does not configure Docker to execute it or handle SageMaker's training argument.
+
+#### Notes
+
+- Grouped study variants: MLS Q86, Q188. Wording or distractors can differ. Answer letters refer to this version.
 
 #### References
 
@@ -4049,7 +4061,7 @@ A streaming anomaly detector must adapt to recent observations rather than remai
 
 </details>
 
-## #109 · MLS Q109
+## #109 · MLS Q109/Q295
 
 Trạng thái: **Đã đối chiếu** · Chọn 1.
 
@@ -4079,6 +4091,10 @@ Aggregate outcomes into monthly counts per category, then forecast each category
 - **A. Classification month-to-month using supervised learning of the 200 categories based on claim contents.** — Classifying individual claims is a different target from predicting the number of claims that will occur next month.
 - **B. Reinforcement learning using claim IDs and timestamps where the agent will identify how many claims in each category to expect from month to month.** — There is no sequential action/reward environment requiring reinforcement learning.
 - **D. Classification with supervised learning of the categories for which partial information on claim contents is provided, and forecasting using claim IDs and timestamps for all other categories.** — Splitting categories by availability of text features changes the task unnecessarily; the required output is a count forecast for every category.
+
+#### Notes
+
+- Grouped study variants: MLS Q109, Q295. Wording or distractors can differ. Answer letters refer to this version.
 
 #### References
 
@@ -4197,7 +4213,7 @@ Local edge inference maintains low latency when cloud connectivity is unreliable
 
 </details>
 
-## #113 · MLS Q113
+## #113 · MLS Q113/Q202
 
 Trạng thái: **Đã đối chiếu** · Chọn 1.
 
@@ -4227,6 +4243,10 @@ SageMaker framework script mode can use existing TensorFlow data formats instead
 - **A. Use Amazon SageMaker script mode and use train.py unchanged. Point the Amazon SageMaker training invocation to the local path of the data without reformatting the training data.** — A local notebook path is not directly available to a remote training instance unless the data is uploaded or otherwise made accessible.
 - **C. Rewrite the train.py script to add a section that converts TFRecords to protobuf and ingests the protobuf data instead of TFRecords.** — Converting an already supported TFRecord dataset adds development work and is unnecessary for TensorFlow script mode.
 - **D. Prepare the data in the format accepted by Amazon SageMaker. Use AWS Glue or AWS Lambda to reformat and store the data in an Amazon S3 bucket.** — There is no single universal SageMaker input format requiring this ETL rewrite; the existing TensorFlow reader can consume TFRecords.
+
+#### Notes
+
+- Grouped study variants: MLS Q113, Q202. Wording or distractors can differ. Answer letters refer to this version.
 
 #### References
 
@@ -5327,7 +5347,7 @@ Private API connectivity does not automatically restrict who can generate and us
 
 </details>
 
-## #143 · MLS Q143
+## #143 · MLS Q143/Q193
 
 Trạng thái: **Đã đối chiếu** · Chọn 1.
 
@@ -5357,6 +5377,10 @@ KMS customer managed keys combine service-managed key protection with configurab
 - **A. Use encryption keys that are stored in AWS Cloud HSM to encrypt the ML data volumes, and to encrypt the model artifacts and data in Amazon S3.** — CloudHSM gives the customer more responsibility for HSM and key administration, contrary to the requested AWS-managed root-of-trust approach.
 - **B. Use SageMaker built-in transient keys to encrypt the ML data volumes. Enable default encryption for new Amazon Elastic Block Store (Amazon EBS) volumes.** — Transient storage encryption and default EBS settings do not supply the requested consistent customer-controlled key-use audit across volumes and S3 artifacts.
 - **D. Use AWS Security Token Service (AWS STS) to create temporary tokens to encrypt the ML storage volumes, and to encrypt the model artifacts and data in Amazon S3.** — STS issues temporary authorization credentials; its tokens are not encryption keys for the described storage resources.
+
+#### Notes
+
+- Grouped study variants: MLS Q143, Q193. Wording or distractors can differ. Answer letters refer to this version.
 
 #### References
 
@@ -7049,43 +7073,6 @@ A scheduled Glue ETL job provides managed extraction and transformations without
 
 </details>
 
-## #188 · MLS Q188
-
-Trạng thái: **Đã đối chiếu** · Chọn 1.
-
-A machine learning (ML) specialist wants to bring a custom training algorithm to Amazon SageMaker. The ML specialist implements the algorithm in a Docker container that is supported by SageMaker. How should the ML specialist package the Docker container so that SageMaker can launch the training correctly?
-
-A. Specify the server argument in the ENTRYPOINT instruction in the Dockerfile.
-B. Specify the training program in the ENTRYPOINT instruction in the Dockerfile.
-C. Include the path to the training data in the docker build command when packaging the container.
-D. Use a COPY instruction in the Dockerfile to copy the training program to the /opt/ml/train directory.
-
-<details><summary>Answer and explanation</summary>
-
-Correct answer: **B. Specify the training program in the ENTRYPOINT instruction in the Dockerfile.**
-
-### Explanation and distractor analysis
-
-#### Key Concept
-
-SageMaker starts a custom training container using its configured entry point and the training invocation contract.
-
-#### Why this is correct
-
-- **B. Specify the training program in the ENTRYPOINT instruction in the Dockerfile.** — Setting ENTRYPOINT to the training executable makes the container start the intended program when SageMaker launches the training job; the program must also handle SageMaker's invocation arguments.
-
-#### Why other options are incorrect
-
-- **A. Specify the server argument in the ENTRYPOINT instruction in the Dockerfile.** — A serving command launches an inference server, not the training program. It would not implement the training invocation expected by SageMaker.
-- **C. Include the path to the training data in the docker build command when packaging the container.** — Training channels are supplied at job runtime. Adding a data path to docker build neither selects the container entry point nor configures those runtime channels.
-- **D. Use a COPY instruction in the Dockerfile to copy the training program to the /opt/ml/train directory.** — COPY places a file in the image but does not make it executable at container startup. The container still needs an entry point that launches training.
-
-#### References
-
-- [How Amazon SageMaker AI Runs Your Training Image - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-training-algo-dockerfile.html)
-
-</details>
-
 ## #189 · MLS Q189
 
 Trạng thái: **Đã đối chiếu** · Chọn 2.
@@ -7242,43 +7229,6 @@ Subscription prediction from labeled customer attributes is supervised classific
 
 </details>
 
-## #193 · MLS Q193
-
-Trạng thái: **Đã đối chiếu** · Chọn 1.
-
-A company will use Amazon SageMaker to train and host a machine learning model for a marketing campaign. The data must be encrypted at rest. Most of the data is sensitive customer data. The company wants AWS to maintain the root of trust for the encryption keys and wants key usage to be logged. Which solution will meet these requirements with the LEAST operational overhead?
-
-A. Use AWS Security Token Service (AWS STS) to create temporary tokens to encrypt the storage volumes for all SageMaker instances and to encrypt the model artifacts and data in Amazon S3.
-B. Use customer managed keys in AWS Key Management Service (AWS KMS) to encrypt the storage volumes for all SageMaker instances and to encrypt the model artifacts and data in Amazon S3.
-C. Use encryption keys stored in AWS CloudHSM to encrypt the storage volumes for all SageMaker instances and to encrypt the model artifacts and data in Amazon S3.
-D. Use SageMaker built-in transient keys to encrypt the storage volumes for all SageMaker instances. Enable default encryption ffnew Amazon Elastic Block Store (Amazon EBS) volumes.
-
-<details><summary>Answer and explanation</summary>
-
-Correct answer: **B. Use customer managed keys in AWS Key Management Service (AWS KMS) to encrypt the storage volumes for all SageMaker instances and to encrypt the model artifacts and data in Amazon S3.**
-
-### Explanation and distractor analysis
-
-#### Key Concept
-
-AWS KMS integrates managed key protection, service-side encryption, and CloudTrail logging of key API use.
-
-#### Why this is correct
-
-- **B. Use customer managed keys in AWS Key Management Service (AWS KMS) to encrypt the storage volumes for all SageMaker instances and to encrypt the model artifacts and data in Amazon S3.** — Customer managed KMS keys provide policy-controlled encryption for supported SageMaker storage and S3 data, with AWS-managed key infrastructure and auditable key operations.
-
-#### Why other options are incorrect
-
-- **A. Use AWS Security Token Service (AWS STS) to create temporary tokens to encrypt the storage volumes for all SageMaker instances and to encrypt the model artifacts and data in Amazon S3.** — STS issues temporary credentials for authorization. Those credentials are not encryption keys for EBS volumes or S3 objects.
-- **C. Use encryption keys stored in AWS CloudHSM to encrypt the storage volumes for all SageMaker instances and to encrypt the model artifacts and data in Amazon S3.** — CloudHSM requires managing an HSM cluster and its integration. It adds operational responsibility compared with native SageMaker and S3 integration with KMS.
-- **D. Use SageMaker built-in transient keys to encrypt the storage volumes for all SageMaker instances. Enable default encryption ffnew Amazon Elastic Block Store (Amazon EBS) volumes.** — Instance-local transient encryption and EBS defaults do not establish a single auditable KMS-based encryption policy for both the relevant SageMaker storage and S3 artifacts.
-
-#### References
-
-- [Protect Data at Rest Using Encryption - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html)
-
-</details>
-
 ## #194 · MLS Q194
 
 Trạng thái: **Đã đối chiếu** · Chọn 1.
@@ -7392,7 +7342,7 @@ When raw data is much larger than derived results, running GPU inference near th
 
 </details>
 
-## #197 · MLS Q197
+## #197 · MLS Q197/Q270
 
 Trạng thái: **Đã đối chiếu** · Chọn 1.
 
@@ -7422,6 +7372,10 @@ Managed Apache Flink applications support stateful stream transformations and ti
 - **A. Ingest event data by using a GraphQLAPI in AWS AppSync. Store the data in an Amazon DynamoDB table. Use DynamoDB Streams to call an AWS Lambda function to transform the most recent 10 minutes of data before inference.** — DynamoDB Streams invokes processing for changes, but reconstructing and maintaining each ten-minute window requires additional custom state and query logic.
 - **B. Ingest event data by using Amazon Kinesis Data Streams. Store the data in Amazon S3 by using Amazon Kinesis Data Firehose. Use AWS Glue to transform the most recent 10 minutes of data before inference.** — Firehose delivery to S3 and Glue batch processing introduce buffering and batch orchestration. They are less direct for continuously maintained ten-minute windows.
 - **D. Ingest event data by using Amazon Managed Streaming for Apache Kafka (Amazon MSK). Use an AWS Lambda function to transform the most recent 10 minutes of data before inference.** — MSK with Lambda can process events, but managing the required rolling window and state adds application logic; the proposed solution does not supply Flink's native window semantics.
+
+#### Notes
+
+- Grouped study variants: MLS Q197, Q270. Wording or distractors can differ. Answer letters refer to this version.
 
 #### References
 
@@ -7577,43 +7531,6 @@ Structured pruning removes less useful CNN filters, reducing inference computati
 #### References
 
 - [Pruning machine learning models with Amazon SageMaker Debugger and Amazon SageMaker Experiments | Artificial Intelligence](https://aws.amazon.com/blogs/machine-learning/pruning-machine-learning-models-with-amazon-sagemaker-debugger-and-amazon-sagemaker-experiments/)
-
-</details>
-
-## #202 · MLS Q202
-
-Trạng thái: **Đã đối chiếu** · Chọn 1.
-
-A company's machine learning (ML) specialist is designing a scalable data storage solution for Amazon SageMaker. The company has an existing TensorFlow-based model that uses a train.py script. The model relies on static training data that is currently stored in TFRecord format. What should the ML specialist do to provide the training data to SageMaker with the LEAST development overhead?
-
-A. Put the TFRecord data into an Amazon S3 bucket. Use AWS Glue or AWS Lambda to reformat the data to protobuf format and store the data in a second S3 bucket. Point the SageMaker training invocation to the second S3 bucket.
-B. Rewrite the train.py script to add a section that converts TFRecord data to protobuf format. Point the SageMaker training invocation to the local path of the data. Ingest the protobuf data instead of the TFRecord data.
-C. Use SageMaker script mode, and use train.py unchanged. Point the SageMaker training invocation to the local path of the data without reformatting the training data.
-D. Use SageMaker script mode, and use train.py unchanged. Put the TFRecord data into an Amazon S3 bucket. Point the SageMaker training invocation to the S3 bucket without reformatting the training data.
-
-<details><summary>Answer and explanation</summary>
-
-Correct answer: **D. Use SageMaker script mode, and use train.py unchanged. Put the TFRecord data into an Amazon S3 bucket. Point the SageMaker training invocation to the S3 bucket without reformatting the training data.**
-
-### Explanation and distractor analysis
-
-#### Key Concept
-
-TensorFlow script mode runs a user training script with managed training infrastructure and supports training channels backed by S3 without converting TFRecord files.
-
-#### Why this is correct
-
-- **D. Use SageMaker script mode, and use train.py unchanged. Put the TFRecord data into an Amazon S3 bucket. Point the SageMaker training invocation to the S3 bucket without reformatting the training data.** — S3-backed input channels supply the existing TFRecord dataset to the managed TensorFlow job. The script must already read the configured training-channel path for it to run unchanged.
-
-#### Why other options are incorrect
-
-- **A. Put the TFRecord data into an Amazon S3 bucket. Use AWS Glue or AWS Lambda to reformat the data to protobuf format and store the data in a second S3 bucket. Point the SageMaker training invocation to the second S3 bucket.** — TensorFlow can consume TFRecord data directly. An extra format-conversion pipeline and second bucket add work without addressing a requirement.
-- **B. Rewrite the train.py script to add a section that converts TFRecord data to protobuf format. Point the SageMaker training invocation to the local path of the data. Ingest the protobuf data instead of the TFRecord data.** — Rewriting the script for an unnecessary conversion increases development effort. A local path alone also does not provide a scalable remote training data source.
-- **C. Use SageMaker script mode, and use train.py unchanged. Point the SageMaker training invocation to the local path of the data without reformatting the training data.** — Keeping TFRecord is appropriate, but pointing a remote training job at a notebook-local path does not make that local data available to its training instances.
-
-#### References
-
-- [Launching TensorFlow distributed training easily with Horovod or Parameter Servers in Amazon SageMaker | Artificial Intelligence](https://aws.amazon.com/blogs/machine-learning/launching-tensorflow-distributed-training-easily-with-horovod-or-parameter-servers-in-amazon-sagemaker/)
 
 </details>
 
@@ -10111,118 +10028,6 @@ Feature-level metadata can record authorship and sensitivity, but metadata disco
 
 </details>
 
-## #269 · MLS Q269
-
-Trạng thái: **Đã đối chiếu** · Chọn 1.
-
-A machine learning (ML) specialist uploads a dataset to an Amazon S3 bucket that is protected by server-side encryption with AWS KMS keys (SSE-KMS). The ML specialist needs to ensure that an Amazon SageMaker notebook instance can read the dataset that is in Amazon S3. Which solution will meet these requirements?
-
-A. Define security groups to allow all HTTP inbound and outbound traffic. Assign the security groups to the SageMaker notebook instance.
-B. Configure the SageMaker notebook instance to have access to the VPC. Grant permission in the AWS Key Management Service (AWS KMS) key policy to the notebook’s VPC.
-C. Assign an IAM role that provides S3 read access for the dataset to the SageMaker notebook. Grant permission in the KMS key policy to the IAM role.
-D. Assign the same KMS key that encrypts the data in Amazon S3 to the SageMaker notebook instance.
-
-<details><summary>Answer and explanation</summary>
-
-Correct answer: **C. Assign an IAM role that provides S3 read access for the dataset to the SageMaker notebook. Grant permission in the KMS key policy to the IAM role.**
-
-### Explanation and distractor analysis
-
-#### Key Concept
-
-Reading an SSE-KMS S3 object requires both authorization to read the object and permission to decrypt with its KMS key.
-
-#### Why this is correct
-
-- **C. Assign an IAM role that provides S3 read access for the dataset to the SageMaker notebook. Grant permission in the KMS key policy to the IAM role.** — The notebook assumes its execution role to read S3. Granting that role the required S3 and KMS permissions, with a compatible key policy, permits access to the encrypted dataset.
-
-#### Why other options are incorrect
-
-- **A. Define security groups to allow all HTTP inbound and outbound traffic. Assign the security groups to the SageMaker notebook instance.** — Security groups control network traffic. Allowing HTTP traffic does not grant S3 object permissions or KMS decryption rights.
-- **B. Configure the SageMaker notebook instance to have access to the VPC. Grant permission in the AWS Key Management Service (AWS KMS) key policy to the notebook’s VPC.** — A VPC is not the execution identity that decrypts an object. The KMS policy must authorize the relevant principal, such as the notebook execution role.
-- **D. Assign the same KMS key that encrypts the data in Amazon S3 to the SageMaker notebook instance.** — Encrypting the notebook's own storage with the same key does not automatically authorize its role to read and decrypt objects in S3.
-
-#### References
-
-- [How to use SageMaker AI execution roles - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)
-- [Protect Data at Rest Using Encryption - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html)
-
-</details>
-
-## #270 · MLS Q270
-
-Trạng thái: **Đã đối chiếu** · Chọn 1.
-
-A company has a podcast platform that has thousands of users. The company implemented an algorithm to detect low podcast engagement based on a 10-minute running window of user events such as listening to, pausing, and closing the podcast. A machine learning (ML) specialist is designing the ingestion process for these events. The ML specialist needs to transform the data to prepare the data for inference. How should the ML specialist design the transformation step to meet these requirements with the LEAST operational effort?
-
-A. Use an Amazon Managed Streaming for Apache Kafka (Amazon MSK) cluster to ingest event data. Use Amazon Kinesis Data Analytics to transform the most recent 10 minutes of data before inference.
-B. Use Amazon Kinesis Data Streams to ingest event data. Store the data in Amazon S3 by using Amazon Kinesis Data Firehose. Use AWS Lambda to transform the most recent 10 minutes of data before inference.
-C. Use Amazon Kinesis Data Streams to ingest event data. Use Amazon Kinesis Data Analytics to transform the most recent 10 minutes of data before inference.
-D. Use an Amazon Managed Streaming for Apache Kafka (Amazon MSK) cluster to ingest event data. Use AWS Lambda to transform the most recent 10 minutes of data before inference.
-
-<details><summary>Answer and explanation</summary>
-
-Correct answer: **C. Use Amazon Kinesis Data Streams to ingest event data. Use Amazon Kinesis Data Analytics to transform the most recent 10 minutes of data before inference.**
-
-### Explanation and distractor analysis
-
-#### Key Concept
-
-A managed stream-processing application can maintain a running event-time window and transform it continuously before inference.
-
-#### Why this is correct
-
-- **C. Use Amazon Kinesis Data Streams to ingest event data. Use Amazon Kinesis Data Analytics to transform the most recent 10 minutes of data before inference.** — Kinesis Data Streams plus managed stream processing provides a direct ingestion and windowing path. For a current implementation, use Amazon Managed Service for Apache Flink rather than the retired Kinesis SQL service.
-
-#### Why other options are incorrect
-
-- **A. Use an Amazon Managed Streaming for Apache Kafka (Amazon MSK) cluster to ingest event data. Use Amazon Kinesis Data Analytics to transform the most recent 10 minutes of data before inference.** — MSK can feed a stream processor, but a Kafka cluster adds broker-related configuration and capacity considerations when no Kafka-specific requirement is given.
-- **B. Use Amazon Kinesis Data Streams to ingest event data. Store the data in Amazon S3 by using Amazon Kinesis Data Firehose. Use AWS Lambda to transform the most recent 10 minutes of data before inference.** — Firehose delivery to S3 introduces buffering, and Lambda would need custom logic to reconstruct the latest ten-minute window from stored objects.
-- **D. Use an Amazon Managed Streaming for Apache Kafka (Amazon MSK) cluster to ingest event data. Use AWS Lambda to transform the most recent 10 minutes of data before inference.** — MSK plus Lambda adds Kafka operations and custom stateful-window handling, whereas a stream-processing engine already provides window semantics.
-
-#### References
-
-- [Managed Service for Apache Flink: How it works - Managed Service for Apache Flink](https://docs.aws.amazon.com/managed-flink/latest/java/how-it-works.html)
-
-</details>
-
-## #271 · MLS Q271
-
-Trạng thái: **Đã đối chiếu** · Chọn 1.
-
-A machine learning (ML) specialist is training a multilayer perceptron (MLP) on a dataset with multiple classes. The target class of interest is unique compared to the other classes in the dataset, but it does not achieve an acceptable recall metric. The ML specialist varies the number and size of the MLP's hidden layers, but the results do not improve significantly. Which solution will improve recall in the LEAST amount of time?
-
-A. Add class weights to the MLP's loss function, and then retrain.
-B. Gather more data by using Amazon Mechanical Turk, and then retrain.
-C. Train a k-means algorithm instead of an MLP.
-D. Train an anomaly detection model instead of an MLP.
-
-<details><summary>Answer and explanation</summary>
-
-Correct answer: **A. Add class weights to the MLP's loss function, and then retrain.**
-
-### Explanation and distractor analysis
-
-#### Key Concept
-
-Class-weighted loss increases the training penalty for errors on an important class, potentially improving that class's recall without collecting more data.
-
-#### Why this is correct
-
-- **A. Add class weights to the MLP's loss function, and then retrain.** — Increasing the target class's loss weight makes its missed examples more costly during training. This is a small configuration change that can shift the model toward better recall, with a possible precision tradeoff.
-
-#### Why other options are incorrect
-
-- **B. Gather more data by using Amazon Mechanical Turk, and then retrain.** — Collecting and labeling more data can help, but takes longer than reweighting the existing training objective.
-- **C. Train a k-means algorithm instead of an MLP.** — K-means discovers clusters rather than learning the supplied class labels. It does not directly optimize recall for the target class.
-- **D. Train an anomaly detection model instead of an MLP.** — An anomaly detector changes the task formulation and requires separate calibration. A distinct class is not necessarily an anomaly, and reweighting the current classifier is more direct.
-
-#### References
-
-- [Linear learner hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/ll_hyperparameters.html)
-
-</details>
-
 ## #272 · MLS Q272
 
 Trạng thái: **Đã đối chiếu** · Chọn 2.
@@ -11101,43 +10906,6 @@ A mean above the median and mode suggests right skew, but linear regression does
 
 - [Data Transformations Reference - Amazon Machine Learning](https://docs.aws.amazon.com/machine-learning/latest/dg/data-transformations-reference.html)
 - [1.1. Linear Models — scikit-learn 1.9.1 documentation](https://scikit-learn.org/stable/modules/linear_model.html)
-
-</details>
-
-## #295 · MLS Q295
-
-Trạng thái: **Đã đối chiếu** · Chọn 1.
-
-A data scientist receives a collection of insurance claim records. Each record includes a claim ID. the final outcome of the insurance claim, and the date of the final outcome. The final outcome of each claim is a selection from among 200 outcome categories. Some claim records include only partial information. However, incomplete claim records include only 3 or 4 outcome categories from among the 200 available outcome categories. The collection includes hundreds of records for each outcome category. The records are from the previous 3 years. The data scientist must create a solution to predict the number of claims that will be in each outcome category every month, several months in advance. Which solution will meet these requirements?
-
-A. Perform classification every month by using supervised learning of the 200 outcome categories based on claim contents.
-B. Perform reinforcement learning by using claim IDs and dates. Instruct the insurance agents who submit the claim records to estimate the expected number of claims in each outcome category every month.
-C. Perform forecasting by using claim IDs and dates to identify the expected number of claims in each outcome category every month.
-D. Perform classification by using supervised learning of the outcome categories for which partial information on claim contents is provided. Perform forecasting by using claim IDs and dates for all other outcome categories.
-
-<details><summary>Answer and explanation</summary>
-
-Correct answer: **C. Perform forecasting by using claim IDs and dates to identify the expected number of claims in each outcome category every month.**
-
-### Explanation and distractor analysis
-
-#### Key Concept
-
-Predicting future monthly counts by outcome category is a time-series forecasting task, distinct from classifying the outcome of an individual claim.
-
-#### Why this is correct
-
-- **C. Perform forecasting by using claim IDs and dates to identify the expected number of claims in each outcome category every month.** — Aggregate unique claims by outcome date, month, and category to form count series, then forecast those series. Claim IDs support deduplication and counting rather than serving as meaningful numeric predictors.
-
-#### Why other options are incorrect
-
-- **A. Perform classification every month by using supervised learning of the 200 outcome categories based on claim contents.** — A claim classifier predicts labels for known claims. It does not directly forecast how many claims will reach each category in future months.
-- **B. Perform reinforcement learning by using claim IDs and dates. Instruct the insurance agents who submit the claim records to estimate the expected number of claims in each outcome category every month.** — There is no sequential action-and-reward environment described for reinforcement learning. Asking agents to estimate volumes also does not create the requested automated forecasting model.
-- **D. Perform classification by using supervised learning of the outcome categories for which partial information on claim contents is provided. Perform forecasting by using claim IDs and dates for all other outcome categories.** — Mixing individual-claim classification for some categories with forecasting for others does not consistently estimate future monthly counts across all categories.
-
-#### References
-
-- [Use the SageMaker AI DeepAR forecasting algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deepar.html)
 
 </details>
 

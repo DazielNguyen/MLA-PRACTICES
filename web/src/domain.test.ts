@@ -9,10 +9,10 @@ const multi=bank.find(q=>q.status==='checked'&&q.required>1)!;
 const review=bank.find(q=>q.status==='review')!;
 const settings={...defaultSettings,count:2,order:'sequential' as const};
 const make=():State=>({...emptyState(),active:createSession([single,multi],settings,'practice',1000)});
-test('332 unique questions retain complete choices, source URLs and images',()=>{
-  assert.equal(bank.length,332);assert.equal(new Set(bank.map(q=>q.id)).size,332);
-  assert.equal(bank.filter(q=>q.status==='review').length,28);
-  for(const q of bank){assert.ok(q.text.length>30);assert.ok(Object.keys(q.choices).length>=4);assert.ok(q.sources.length);for(const source of q.sources)assert.match(source.url,/^https:\/\//);if(q.status!=='review'){assert.equal(q.required,q.answer.length);assert.ok(q.answer.every(a=>Object.hasOwn(q.choices,a)));}for(const im of q.images){assert.ok(existsSync(new URL(`../public${im.url}`,import.meta.url)));assert.ok(im.slot==='question'||Object.hasOwn(q.choices,im.slot));}}
+test('merged bank retains unique IDs, provenance, choices, and image assets',()=>{
+  assert.equal(bank.length,574);assert.equal(new Set(bank.map(q=>q.id)).size,574);
+  assert.equal(bank.filter(q=>q.status==='review').length,29);
+  for(const q of bank){assert.ok(q.text.length>30);assert.ok(Object.keys(q.choices).length>=4);assert.ok(q.sourceName);assert.ok(q.sourceIds.length);if(q.status!=='source')assert.ok(q.sources.length);for(const source of q.sources)assert.match(source.url,/^https:\/\//);if(q.status!=='review'){assert.equal(q.required,q.answer.length);assert.ok(q.answer.every(a=>Object.hasOwn(q.choices,a)));}for(const im of q.images){assert.ok(existsSync(new URL(`../public${im.url}`,import.meta.url)));assert.ok(im.slot==='question'||Object.hasOwn(q.choices,im.slot));}}
 });
 test('multiple answers require the exact set, independent of order',()=>{
   assert.equal(isCorrect(multi,[...multi.answer].reverse()),true);
@@ -26,8 +26,8 @@ test('single choice replaces; multi choice caps and can be deselected',()=>{
 });
 test('exam never contains unresolved answers, even with includeReview enabled',()=>{
   const pool=eligibleQuestions(bank,{...defaultSettings,includeReview:true},emptyState(),'exam');
-  assert.equal(pool.length,304);assert.ok(pool.every(q=>q.status!=='review'));
-  assert.equal(eligibleQuestions(bank,{...defaultSettings,includeHistorical:false},emptyState(),'exam').length,278);
+  assert.equal(pool.length,545);assert.ok(pool.every(q=>q.status!=='review'));
+  assert.equal(eligibleQuestions(bank,{...defaultSettings,includeHistorical:false},emptyState(),'exam').length,519);
 });
 test('question filters combine scope, range and status',()=>{
   const state=emptyState();state.bookmarks=[2,70];
@@ -37,7 +37,7 @@ test('question filters combine scope, range and status',()=>{
 test('sampling keeps the source and has no duplicates',()=>{
   const original=[1,2,3,4];const sample=shuffle(original,()=>.5);assert.deepEqual(original,[1,2,3,4]);assert.equal(new Set(sample).size,4);
   const session=createSession(bank, {...settings,count:65,order:'random'},'practice');assert.equal(session.questionIds.length,65);assert.equal(new Set(session.questionIds).size,65);
-  assert.throws(()=>createSession(bank,{...settings,count:333},'exam'));assert.throws(()=>createSession(bank,{...settings,minutes:0},'exam'));
+  assert.throws(()=>createSession(bank,{...settings,count:bank.length+1},'exam'));assert.throws(()=>createSession(bank,{...settings,minutes:0},'exam'));
 });
 test('timer uses an absolute deadline, including after serialization',()=>{
   const session=createSession([single,multi],{...settings,minutes:1},'exam',1000);
@@ -77,4 +77,34 @@ test('invalid backups are rejected before replacing progress',()=>{
   const invalid=[{version:2}, {...emptyState(),bookmarks:[999]}, {...emptyState(),known:[2,2]}, {...emptyState(),flash:{ids:[],index:0}}, {...emptyState(),progress:{2:{attempts:1,correct:2,latest:true,lastSeen:1000}}}];
   for(const value of invalid)assert.throws(()=>validateState(value,bank));
   const state=make();state.active!.answers[single.id]=['Z'];assert.throws(()=>validateState(state,bank));
+});
+
+test('collection and source status filters keep MLS and MLA separate',()=>{
+  const mla=eligibleQuestions(bank,{...defaultSettings,collection:'mla'},emptyState(),'exam');
+  assert.equal(mla.length,241);assert.ok(mla.every(q=>q.collection==='mla'));
+  assert.deepEqual(eligibleQuestions(bank,{...defaultSettings,collection:'mla',includeSource:false},emptyState(),'exam').map(q=>q.id),[433,454]);
+  assert.equal(eligibleQuestions(bank,{...defaultSettings,collection:'mls'},emptyState(),'exam').length,304);
+  assert.ok(!mla.some(q=>q.id===469));
+});
+test('legacy question IDs and answers remain unchanged after adding MLA',()=>{
+  const old=JSON.parse(readFileSync(new URL('../../tmp/pdfs/reviewed_questions.json',import.meta.url),'utf8'));
+  for(const original of old){const q=bank.find(q=>q.id===original.id)!;assert.equal(q.collection,'mls');assert.equal(q.text,original.question);assert.deepEqual(q.choices,original.choices);assert.deepEqual(q.answer,[...original.answer]);assert.equal(q.status,original.status);}
+});
+test('new question sessions roundtrip and old sessions without collection still load',()=>{
+  const q=bank.find(q=>q.id===333)!;const state=emptyState();
+  state.active=createSession([q],{...defaultSettings,collection:'mla',range:'333-397',count:1},'practice',1000);
+  state.active.answers[q.id]=q.answer;state.bookmarks=[q.id];state.flash={ids:[q.id],index:0,collection:'mla'};
+  assert.deepEqual(validateState(state,bank),state);
+  const legacy=make();delete legacy.active!.settings.collection;delete legacy.active!.settings.includeSource;
+  assert.deepEqual(validateState(legacy,bank),legacy);
+});
+test('deduplication preserves all source question references and resolves conflicts',()=>{
+  const mla=bank.filter(q=>q.collection==='mla');
+  const refs=mla.flatMap(q=>q.sourceIds).sort((a,b)=>a-b);
+  assert.deepEqual(refs,Array.from({length:286},(_,i)=>i+1));
+  assert.deepEqual(bank.find(q=>q.id===433)!.sourceIds,[101,247]);
+  assert.deepEqual(bank.find(q=>q.id===454)!.sourceIds,[122,286]);
+  assert.deepEqual(bank.find(q=>q.id===559)!.sourceIds,[227,228]);
+  assert.equal(bank.find(q=>q.id===469)!.status,'review');
+  assert.ok(mla.filter(q=>q.status==='source').every(q=>q.sources.length===0));
 });

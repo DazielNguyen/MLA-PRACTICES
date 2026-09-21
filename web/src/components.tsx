@@ -2,15 +2,16 @@ import { Bookmark, Check, ExternalLink, Flag, Info, X } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
 import type { Question } from './domain';
+import { sourceLabel } from './domain';
 
 export function Tag({ status }: { status: Question['status'] }) {
-  return <span className={`tag ${status}`}>{status === 'checked' ? <><Check size={12} /> Đã đối chiếu</> : status === 'historical' ? 'Dịch vụ cũ' : 'Cần xác minh'}</span>;
+  return <span className={`tag ${status}`}>{status === 'checked' ? <><Check size={12} /> Đã đối chiếu</> : status === 'historical' ? 'Dịch vụ cũ' : status === 'source' ? 'Theo nguồn' : 'Cần xác minh'}</span>;
 }
 export function QuestionImages({ question, slot = 'question' }: { question: Question; slot?: string }) {
   return <>{question.images.filter(im => im.slot === slot).map(im => <a className="question-image" key={im.url} href={im.url} target="_blank" rel="noreferrer" aria-label="Mở hình câu hỏi ở kích thước đầy đủ"><img src={im.url} alt={im.alt} loading="lazy" /><span>Mở hình đầy đủ <ExternalLink size={11} /></span></a>)}</>;
 }
-export function QuestionText({ question }: { question: Question }) {
-  return <><p className="question-text" lang="en">{question.text}</p><QuestionImages question={question} />{question.notes.some(note => note.includes('unit')) && <p className="notice"><Info size={15} /> Đơn vị dung lượng trong PDF bị lỗi, đã giữ nguyên ghi chú thay vì đoán đơn vị.</p>}</>;
+export function QuestionText({ question, allowHint = false }: { question: Question; allowHint?: boolean }) {
+  return <><p className="question-origin">{sourceLabel(question)}{question.sourceIds.length > 1 && ` · Đã gộp ${question.sourceIds.length} bản`}</p><p className="question-text" lang="en">{question.text}</p><QuestionImages question={question} />{allowHint && question.hint && <details className="question-hint"><summary>Gợi ý — mở sau khi tự phân tích</summary><p>{question.hint}</p></details>}{question.notes.some(note => note.includes('unit')) && <p className="notice"><Info size={15} /> Đơn vị dung lượng trong PDF bị lỗi, đã giữ nguyên ghi chú thay vì đoán đơn vị.</p>}</>;
 }
 export function Explanation({ question, selected }: { question: Question; selected?: string[] }) {
   const unscored = question.status === 'review';
@@ -18,8 +19,9 @@ export function Explanation({ question, selected }: { question: Question; select
     <div className="explanation-title"><span className="answer-label">{unscored ? 'CHƯA CHỐT ĐÁP ÁN' : `ĐÁP ÁN ${question.answer.join(' + ')}`}</span>{selected && <span className="muted">Bạn chọn: {selected.join(', ') || 'Chưa trả lời'}</span>}</div>
     {!unscored && <div className="correct-answer-text" lang="en">{question.answer.map(a => <p key={a}><strong>{a}.</strong> {question.choices[a]}</p>)}</div>}
     {unscored && question.answer.length > 0 && <p>Phương án tham khảo có điều kiện: <strong>{question.answer.join(', ')}</strong>. Câu này không tính điểm.</p>}
-    <p>{question.explanation}</p>
-    <details className="source-list"><summary>Tài liệu đối chiếu · PDF trang {question.page}</summary>{question.sources.map(s => <a href={s.url} target="_blank" rel="noreferrer" key={s.url}>{s.title}<ExternalLink size={12} /></a>)}</details>
+    {question.status === 'source' && <p className="source-answer-note">Đáp án theo bộ đề bổ sung, chưa được kiểm chứng với AWS. Điểm câu này dựa trên khóa đáp án của nguồn.</p>}
+    <p className="explanation-copy">{question.explanation}</p>
+    <details className="source-list"><summary>Nguồn và ghi chú · {question.page ? `PDF trang ${question.page}` : sourceLabel(question)}</summary><p>{question.sourceName}{question.sourceIds.length > 1 && ` · Q${question.sourceIds.join(', Q')}`}</p>{question.notes.map(note=><p key={note}>{note}</p>)}{question.sources.map(s => <a href={s.url} target="_blank" rel="noreferrer" key={s.url}>{s.title}<ExternalLink size={12} /></a>)}</details>
   </div>;
 }
 export function ChoiceList({ question, selected, onSelect, revealed = false, disabled = false }: { question: Question; selected: string[]; onSelect?: (letter: string) => void; revealed?: boolean; disabled?: boolean }) {

@@ -1,6 +1,8 @@
 # ML Practice
 
-Ứng dụng ôn tập bằng React, TypeScript và Vite. Tiến trình lưu trên trình duyệt, không cần đăng nhập.
+Ứng dụng ôn tập bằng React, TypeScript và Vite. Mỗi người có hồ sơ riêng, không cần nhập email hoặc mật khẩu. Hỗ trợ lưu trên trình duyệt và đồng bộ Supabase.
+
+Để bật Supabase, làm theo [hướng dẫn kết nối](SUPABASE_SETUP.md).
 
 ## Chạy trên máy
 
@@ -28,7 +30,9 @@ Dùng Node.js 24 LTS. Mã nguồn yêu cầu Node.js từ 22.12 trở lên.
 | Ngân hàng câu hỏi | Tìm theo từ khóa hoặc số câu. Xem hình gốc, giải thích và tài liệu đối chiếu. |
 | Tiến trình | Xem lịch sử, kết quả và xuất hoặc nhập bản sao JSON. |
 
-Bộ lọc hỗ trợ câu sai gần nhất, câu đã lưu, câu chưa luyện và khoảng số câu.
+Bộ lọc hỗ trợ câu sai gần nhất, câu đã lưu, câu chưa luyện, khoảng số câu và bộ MLS/MLA-C01.
+
+Trong Ngân hàng câu hỏi, tìm `mla-c01 q228` để mở câu nguồn Q228, kể cả khi đã gộp với bản lặp.
 
 Câu chọn nhiều chỉ đúng khi chọn đủ và chính xác toàn bộ phương án. Câu bỏ trống không được điểm.
 
@@ -36,43 +40,58 @@ Trong phiên làm bài, dùng phím **← / →** để chuyển câu. Dùng **1
 
 Trong flashcard, dùng **Space** để lật thẻ khi con trỏ không nằm trên nút hoặc ô nhập.
 
-## Tiến trình và đồng hồ
+## Người học, tiến trình và đồng hồ
 
-Dữ liệu lưu trong `localStorage`, tại khóa `ml-practice:v1`. Ứng dụng giữ một phiên đang làm và tối đa 100 phiên hoàn thành.
+Nhập tên tại màn hình đầu để tạo hồ sơ. Tên người đang học luôn xuất hiện ở góc trên.
 
-Đáp án, câu đánh dấu, thẻ đã thuộc và vị trí thẻ đều được lưu. Phiên mới cần xác nhận trước khi nộp phiên cũ.
+Mỗi tab giữ người học và bài đang mở riêng. Trang **Tiến trình** gộp lịch sử theo hồ sơ đang chọn.
 
-Đồng hồ thi dùng thời hạn cố định. Đổi tab, tải lại trang hoặc đóng trình duyệt không dừng đồng hồ.
+Để đổi người học, mở **Người học → Đổi người học**. Bài chưa hoàn thành vẫn được giữ lại.
 
-Khi hết giờ, ứng dụng tự nộp bài. Nếu trình duyệt đang đóng, ứng dụng nộp bài khi bạn mở lại.
+Mở **Tiến trình → Bài chưa hoàn thành** để tiếp tục một phiên đã lưu. Quyền làm phiên đó chuyển sang tab này.
 
-Tiến trình thuộc từng trình duyệt và từng địa chỉ web. `localhost`, `127.0.0.1` và tên miền Vercel có vùng lưu riêng.
+Khi đã cấu hình Supabase, trang **Người học** có mã tiếp tục riêng. Mã này mở lại cùng hồ sơ trên thiết bị khác.
 
-Để chuyển tiến trình sang địa chỉ khác:
+Bật **Chia sẻ lịch sử học tập** để hồ sơ xuất hiện trong **Học chung**. Người khác chỉ xem các bài đã hoàn thành.
 
-1. Tại trang **Tiến trình của tôi**, chọn **Xuất bản sao JSON**.
-2. Mở ứng dụng tại địa chỉ mới.
-3. Chọn **Nhập bản sao**.
-4. Chọn file JSON đã xuất.
-5. Xác nhận khôi phục.
+Nếu chưa cấu hình Supabase, các tính năng hồ sơ vẫn hoạt động trên trình duyệt hiện tại.
 
-Ứng dụng kiểm tra file trước khi thay dữ liệu. Khi xác nhận, ứng dụng tải bản sao tiến trình hiện tại xuống máy.
+Đồng hồ thi dùng thời hạn cố định. Đổi tab hoặc tải lại trang không dừng đồng hồ.
 
-Nếu xóa dữ liệu trình duyệt, tiến trình cũng bị xóa. Bản sao JSON có thể khôi phục tiến trình đó.
+Khi hết giờ, bài được tự nộp. Nếu trình duyệt đã đóng, bài được chấm khi bạn tiếp tục phiên đó.
+
+Ứng dụng giữ dữ liệu v1 gốc sau khi chuyển sang hồ sơ đầu tiên. Các bản ghi v2 lưu theo hồ sơ và mã phiên.
+
+Để sao lưu, chọn **Xuất bản sao JSON**. Để gộp dữ liệu, chọn **Nhập bản sao** và chọn file đã xuất.
+
+Ứng dụng kiểm tra file và tải bản sao hiện tại xuống trước khi gộp. Bản sao JSON không chứa mã tiếp tục riêng.
+
+Dữ liệu trình duyệt thuộc từng địa chỉ web. `localhost`, `127.0.0.1` và tên miền Vercel có vùng lưu riêng.
+
+Nếu xóa dữ liệu trình duyệt, dùng mã Supabase hoặc bản sao JSON để khôi phục.
 
 ## Nguồn câu hỏi
 
-Ngân hàng chứa **332 câu từ PDF Machine Learning – Specialty**, kèm 22 hình ở 19 câu.
+Ngân hàng chứa **574 câu**: 332 câu từ PDF Machine Learning – Specialty và 242 câu từ ZIP MLA-C01 bổ sung.
 
-Đây là tài liệu **MLS**, không phải bộ đề MLA-C01 đã được phân loại theo mục tiêu thi hiện tại.
+ZIP có 286 mục. Sau khi gộp 44 bản lặp, còn 242 câu. Giữ 22 hình MLS và 16 ảnh MLA khác nhau.
+
+MLS và MLA-C01 là hai bộ nguồn riêng. Chọn bộ trong Luyện tập, Thi thử, Flashcard hoặc Ngân hàng câu hỏi.
 
 | Trạng thái | Số câu | Cách sử dụng |
 | --- | ---: | --- |
-| Đã đối chiếu | 278 | Có chấm điểm. |
+| Đã đối chiếu | 280 | Có chấm điểm; gồm 278 câu MLS và 2 câu MLA vừa xử lý mâu thuẫn. |
 | Dịch vụ cũ | 26 | Có chấm điểm theo bối cảnh cũ. Có thể loại bằng bộ lọc. |
-| Cần xác minh | 28 | Không chấm điểm. Luôn loại khỏi thi thử. Có thể đọc trong luyện tập và flashcard. |
+| Theo nguồn | 239 | Chấm theo khóa trong ZIP, chưa kiểm chứng toàn bộ với AWS. Có thể loại khỏi bài bằng bộ lọc. |
+| Cần xác minh | 29 | Không chấm điểm. Luôn loại khỏi thi thử. Có thể đọc trong luyện tập và flashcard. |
 
-Mỗi lời giải có liên kết tài liệu nguồn. Tỷ lệ đúng của bài luyện không quy đổi thành điểm AWS.
+Các câu đã đối chiếu có liên kết tài liệu hỗ trợ. Câu **Theo nguồn** giữ lời giải trong ZIP và ghi rõ trạng thái này.
+
+Tỷ lệ đúng của bài luyện không quy đổi thành điểm AWS. Hint chỉ hiện trong luyện cùng đáp án, flashcard và thư viện.
+
+Mã 1–332 không đổi. Mã câu MLA bằng 332 cộng số câu nguồn được giữ; khoảng trống là các bản lặp đã gộp.
+
+Xem [báo cáo đối chiếu đầy đủ](../BAO_CAO_GOP_BO_DE.md), [Markdown tổng hợp](../output/merged/ML_COMBINED.md) và [file Quizlet](../output/merged/QUIZLET_COMBINED.md).
 
 File dùng trong ứng dụng là `src/data/questions.json`. Các hình nằm trong `public/images/`.
 
@@ -84,11 +103,13 @@ npm test
 npm run build
 ```
 
-Lệnh nhập cần file nguồn `../tmp/pdfs/reviewed_questions.json` và các hình gốc trong repository.
+Lệnh nhập cần `../tmp/pdfs/reviewed_questions.json`, các hình gốc và `../MLA-C01_Web_Study_Bundle.zip`.
+
+Quyết định gộp thủ công và sửa đáp án nằm trong `scripts/bank-review.json`. Dữ liệu nguồn và nhật ký gộp được xuất vào `../output/merged/`.
 
 ## Đưa lên Vercel
 
-Ứng dụng đã có `vercel.json`. Không cần cơ sở dữ liệu, API key hoặc biến môi trường.
+Ứng dụng đã có `vercel.json`. Có thể chạy chỉ với bộ nhớ trình duyệt. Để đồng bộ nhiều thiết bị, thêm hai biến public của Supabase theo [hướng dẫn](SUPABASE_SETUP.md).
 
 ### Qua GitHub
 
@@ -112,7 +133,7 @@ Nếu repository chỉ chứa nội dung của `web`, giữ Root Directory mặc
 
 ### Qua Terminal
 
-Tại thư mục `web`, chạy:
+Với project hiện tại đã đặt Root Directory là `web`, chạy tại thư mục gốc repository:
 
 ```bash
 npx vercel login
@@ -138,6 +159,8 @@ Chạy trong thư mục `web`:
 npm test
 npm run build
 npm run test:e2e
+# Nếu máy có PostgreSQL:
+npm run test:sql
 ```
 
 Kiểm tra trình duyệt dùng Google Chrome qua Playwright. Máy chạy cần cài Google Chrome.
@@ -145,6 +168,8 @@ Kiểm tra trình duyệt dùng Google Chrome qua Playwright. Máy chạy cần 
 Các kiểm tra gồm chấm câu chọn nhiều, ẩn đáp án, tải lại trang, tự nộp khi hết giờ và khôi phục bản sao.
 
 Ảnh kiểm tra giao diện nằm trong `test-results/`. Bộ kiểm tra dùng dữ liệu trình duyệt riêng.
+
+Cổng 5175 chạy không kết nối Supabase; cổng 5174 dùng API giả lập. Kiểm tra không ghi vào project Supabase thật.
 
 Để xem bản build:
 

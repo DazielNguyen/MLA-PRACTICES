@@ -5,3 +5,7 @@ tests
 scripts
 dist
 *.tsbuildinfo
+.env*
+.vercel
+.git
+**/.DS_Store

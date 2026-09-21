@@ -1,0 +1,1350 @@
+{
+  "zipSha256": "6bf62c18fca9600754b41e94db0f401f33764fed232ee4cb64932b57834ee2a8",
+  "inputCount": 286,
+  "retainedCount": 242,
+  "removedDuplicates": 44,
+  "duplicates": [
+    {
+      "canonical": 1,
+      "sourceIds": [
+        1,
+        277
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 1,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Use the SageMaker Model Registry and model groups to catalog the models."
+          ]
+        },
+        {
+          "id": 277,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Use the SageMaker Model Registry and model groups to catalog the models."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 2,
+      "sourceIds": [
+        2,
+        276
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 2,
+          "answer": [
+            "B"
+          ],
+          "answerText": [
+            "Use SageMaker managed warm pools."
+          ]
+        },
+        {
+          "id": 276,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Use SageMaker managed warm pools."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 3,
+      "sourceIds": [
+        3,
+        275
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 3,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Use SageMaker Pipelines. When a model version is registered, use the AWS SDK to change the approval status to \"Approved.\""
+          ]
+        },
+        {
+          "id": 275,
+          "answer": [
+            "A"
+          ],
+          "answerText": [
+            "Use SageMaker Pipelines. When a model version is registered, use the AWS SDK to change the approval status to \"Approved.\""
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 4,
+      "sourceIds": [
+        4,
+        274
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 4,
+          "answer": [
+            "A"
+          ],
+          "answerText": [
+            "Configure the application to invoke an AWS Lambda function that runs a SageMaker Clarify job."
+          ]
+        },
+        {
+          "id": 274,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Configure the application to invoke an AWS Lambda function that runs a SageMaker Clarify job."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 5,
+      "sourceIds": [
+        5,
+        273
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 5,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "AWS Lake Formation"
+          ]
+        },
+        {
+          "id": 273,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "AWS Lake Formation"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 6,
+      "sourceIds": [
+        6,
+        272
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 6,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Use Amazon SageMaker Data Wrangler to automatically detect the anomalies and to visualize the result."
+          ]
+        },
+        {
+          "id": 272,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Use Amazon SageMaker Data Wrangler to automatically detect the anomalies and to visualize the result."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 7,
+      "sourceIds": [
+        7,
+        271
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 7,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Use Amazon SageMaker Data Wrangler to transform the categorical data into numerical data."
+          ]
+        },
+        {
+          "id": 271,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Use Amazon SageMaker Data Wrangler to transform the categorical data into numerical data."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 8,
+      "sourceIds": [
+        8,
+        270
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 8,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Use the Amazon SageMaker Data Wrangler balance data operation to oversample the minority class."
+          ]
+        },
+        {
+          "id": 270,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Use the Amazon SageMaker Data Wrangler balance data operation to oversample the minority class."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 9,
+      "sourceIds": [
+        9,
+        269
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 9,
+          "answer": [
+            "A"
+          ],
+          "answerText": [
+            "LightGBM"
+          ]
+        },
+        {
+          "id": 269,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "LightGBM"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 12,
+      "sourceIds": [
+        12,
+        268
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 12,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Mean absolute error (MAE)"
+          ]
+        },
+        {
+          "id": 268,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Mean absolute error (MAE)"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 15,
+      "sourceIds": [
+        15,
+        267
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 15,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Use the AWS Glue FindMatches transform to detect duplicates."
+          ]
+        },
+        {
+          "id": 267,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Use the AWS Glue FindMatches transform to detect duplicates."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 20,
+      "sourceIds": [
+        20,
+        266
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 20,
+          "answer": [
+            "A"
+          ],
+          "answerText": [
+            "Create a new model by using Amazon SageMaker Autopilot. Report the model's achieved performance."
+          ]
+        },
+        {
+          "id": 266,
+          "answer": [
+            "B"
+          ],
+          "answerText": [
+            "Create a new model by using Amazon SageMaker Autopilot. Report the model's achieved performance."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 23,
+      "sourceIds": [
+        23,
+        265
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 23,
+          "answer": [
+            "B"
+          ],
+          "answerText": [
+            "Use AWS Glue to create the data ingestion pipelines. Use Amazon SageMaker Studio Classic to create the model deployment pipelines."
+          ]
+        },
+        {
+          "id": 265,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Use AWS Glue to create the data ingestion pipelines. Use Amazon SageMaker Studio Classic to create the model deployment pipelines."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 25,
+      "sourceIds": [
+        25,
+        161
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": true,
+      "matchMethod": "manual",
+      "versions": [
+        {
+          "id": 25,
+          "answer": [
+            "B"
+          ],
+          "answerText": [
+            "Create a network ACL inbound rule to deny traffic from the specific IP address. Assign the rule to the default network Ad for the subnet where the domain is located."
+          ]
+        },
+        {
+          "id": 161,
+          "answer": [
+            "B"
+          ],
+          "answerText": [
+            "Create a network ACL inbound rule to deny traffic from the specific IP address. Assign the rule to the default network ACL for the subnet where the domain is located."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 32,
+      "sourceIds": [
+        32,
+        261
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 32,
+          "answer": [
+            "A"
+          ],
+          "answerText": [
+            "Create a SageMaker real-time inference endpoint. Configure auto scaling. Configure the endpoint to present the existing model."
+          ]
+        },
+        {
+          "id": 261,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Create a SageMaker real-time inference endpoint. Configure auto scaling. Configure the endpoint to present the existing model."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 33,
+      "sourceIds": [
+        33,
+        260
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 33,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Run the primary node and core nodes on On-Demand Instances. Run the task nodes on Spot Instances."
+          ]
+        },
+        {
+          "id": 260,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Run the primary node and core nodes on On-Demand Instances. Run the task nodes on Spot Instances."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 34,
+      "sourceIds": [
+        34,
+        259
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "manual",
+      "versions": [
+        {
+          "id": 34,
+          "answer": [
+            "A",
+            "D"
+          ],
+          "answerText": [
+            "Use Amazon SageMaker Debugger to stop training jobs when non-converging conditions are detected.",
+            "Use AWS Trainium instances for training."
+          ]
+        },
+        {
+          "id": 259,
+          "answer": [
+            "D",
+            "E"
+          ],
+          "answerText": [
+            "Use AWS Trainium instances for training.",
+            "Use Amazon SageMaker Debugger to stop training jobs when non-converging conditions are detected."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 36,
+      "sourceIds": [
+        36,
+        258
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 36,
+          "answer": [
+            "A"
+          ],
+          "answerText": [
+            "AWS::SageMaker::Model"
+          ]
+        },
+        {
+          "id": 258,
+          "answer": [
+            "A"
+          ],
+          "answerText": [
+            "AWS::SageMaker::Model"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 37,
+      "sourceIds": [
+        37,
+        257
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "manual",
+      "versions": [
+        {
+          "id": 37,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Use Lake Formation to authorize AWS Glue to access the S3 bucket. Configure Lake Formation tags to map ML engineers to their campaigns."
+          ]
+        },
+        {
+          "id": 257,
+          "answer": [
+            "B"
+          ],
+          "answerText": [
+            "Use Lake Formation to authorize AWS Glue to access the S3 bucket. Configure Lake Formation tags to map ML engineers to their campaigns."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 42,
+      "sourceIds": [
+        42,
+        256
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 42,
+          "answer": [
+            "A"
+          ],
+          "answerText": [
+            "Configure dynamic data masking policies to control how sensitive data is shared with the data scientist at query time."
+          ]
+        },
+        {
+          "id": 256,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Configure dynamic data masking policies to control how sensitive data is shared with the data scientist at query time."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 47,
+      "sourceIds": [
+        47,
+        255
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 47,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Deploy the model to an Amazon SageMaker endpoint. Create SageMaker endpoint auto scaling policies that are based on Amazon CloudWatch metrics to adjust the number of instances dynamically."
+          ]
+        },
+        {
+          "id": 255,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Deploy the model to an Amazon SageMaker endpoint. Create SageMaker endpoint auto scaling policies that are based on Amazon CloudWatch metrics to adjust the number of instances dynamically."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 59,
+      "sourceIds": [
+        59,
+        254
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 59,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Provision a Redshift cluster and Amazon SageMaker Studio in a VPC in the primary account. Create an S3 gateway endpoint. Update the S3 bucket policy to allow IAM principals from the primary account. Set up interface VPC endpoints for SageMaker and Amazon Redshift."
+          ]
+        },
+        {
+          "id": 254,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Provision a Redshift cluster and Amazon SageMaker Studio in a VPC in the primary account. Create an S3 gateway endpoint. Update the S3 bucket policy to allow IAM principals from the primary account. Set up interface VPC endpoints for SageMaker and Amazon Redshift."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 63,
+      "sourceIds": [
+        63,
+        253
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 63,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Use Amazon Comprehend custom entity recognition and key phrase extraction to identify and extract relevant keywords."
+          ]
+        },
+        {
+          "id": 253,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Use Amazon Comprehend custom entity recognition and key phrase extraction to identify and extract relevant keywords."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 76,
+      "sourceIds": [
+        76,
+        252
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 76,
+          "answer": [
+            "A"
+          ],
+          "answerText": [
+            "Accuracy"
+          ]
+        },
+        {
+          "id": 252,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Accuracy"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 81,
+      "sourceIds": [
+        81,
+        251
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 81,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Object detection"
+          ]
+        },
+        {
+          "id": 251,
+          "answer": [
+            "B"
+          ],
+          "answerText": [
+            "Object detection"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 85,
+      "sourceIds": [
+        85,
+        250
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 85,
+          "answer": [
+            "C",
+            "E"
+          ],
+          "answerText": [
+            "Root mean square error (RMSE)",
+            "Average weighted quantile loss (wQL)"
+          ]
+        },
+        {
+          "id": 250,
+          "answer": [
+            "A",
+            "C"
+          ],
+          "answerText": [
+            "Average weighted quantile loss (wQL)",
+            "Root mean square error (RMSE)"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 95,
+      "sourceIds": [
+        95,
+        249
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 95,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Amazon SageMaker Model Registry"
+          ]
+        },
+        {
+          "id": 249,
+          "answer": [
+            "B"
+          ],
+          "answerText": [
+            "Amazon SageMaker Model Registry"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 98,
+      "sourceIds": [
+        98,
+        248
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 98,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Apply random oversampling on the dataset."
+          ]
+        },
+        {
+          "id": 248,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Apply random oversampling on the dataset."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 101,
+      "sourceIds": [
+        101,
+        247
+      ],
+      "answerConflict": true,
+      "answerTextDiffers": true,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 101,
+          "answer": [
+            "A"
+          ],
+          "answerText": [
+            "Use Amazon Comprehend to extract the entities. Store the output in Amazon S3."
+          ]
+        },
+        {
+          "id": 247,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Use Amazon Textract to extract the entities. Use Amazon Comprehend to convert the entities to text. Store the output in Amazon S3."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 106,
+      "sourceIds": [
+        106,
+        246
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 106,
+          "answer": [
+            "A"
+          ],
+          "answerText": [
+            "Create a lifecycle configuration script to install the custom script when a new SageMaker notebook is created. Attach the lifecycle configuration to every new SageMaker notebook as part of the creation steps."
+          ]
+        },
+        {
+          "id": 246,
+          "answer": [
+            "A"
+          ],
+          "answerText": [
+            "Create a lifecycle configuration script to install the custom script when a new SageMaker notebook is created. Attach the lifecycle configuration to every new SageMaker notebook as part of the creation steps."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 108,
+      "sourceIds": [
+        108,
+        245
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 108,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Use Amazon Comprehend to detect and mask the PII before the data is used for model training. Use Amazon Comprehend Medical to detect and mask the PHI before the data is used for model training."
+          ]
+        },
+        {
+          "id": 245,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Use Amazon Comprehend to detect and mask the PII before the data is used for model training. Use Amazon Comprehend Medical to detect and mask the PHI before the data is used for model training."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 122,
+      "sourceIds": [
+        122,
+        286
+      ],
+      "answerConflict": true,
+      "answerTextDiffers": true,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 122,
+          "answer": [
+            "A"
+          ],
+          "answerText": [
+            "Create a lifecycle configuration in SageMaker. Copy the auto-stop-idle script from GitHub to the Start Notebook section."
+          ]
+        },
+        {
+          "id": 286,
+          "answer": [
+            "B"
+          ],
+          "answerText": [
+            "Create a lifecycle configuration in SageMaker. Copy the auto-stop-idle script from GitHub to the Create Notebook section."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 131,
+      "sourceIds": [
+        131,
+        285
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "manual",
+      "versions": [
+        {
+          "id": 131,
+          "answer": [
+            "A",
+            "B"
+          ],
+          "answerText": [
+            "Binary encoding",
+            "Label encoding"
+          ]
+        },
+        {
+          "id": 285,
+          "answer": [
+            "A",
+            "B"
+          ],
+          "answerText": [
+            "Binary encoding",
+            "Label encoding"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 137,
+      "sourceIds": [
+        137,
+        223
+      ],
+      "answerConflict": true,
+      "answerTextDiffers": true,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 137,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Oversample the negative class for all age ranges except 40 to 45."
+          ]
+        },
+        {
+          "id": 223,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Undersample the positive class for the age range of 40 to 45."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 138,
+      "sourceIds": [
+        138,
+        284
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 138,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Enable inter-container traffic encryption."
+          ]
+        },
+        {
+          "id": 284,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Enable inter-container traffic encryption."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 149,
+      "sourceIds": [
+        149,
+        232
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 149,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Perform shadow testing with a traffic sampling percentage of 100%."
+          ]
+        },
+        {
+          "id": 232,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Perform shadow testing with a traffic sampling percentage of 100%."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 152,
+      "sourceIds": [
+        152,
+        233
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 152,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Increase the cooldown period after scale-out activities."
+          ]
+        },
+        {
+          "id": 233,
+          "answer": [
+            "B"
+          ],
+          "answerText": [
+            "Increase the cooldown period after scale-out activities."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 164,
+      "sourceIds": [
+        164,
+        231
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 164,
+          "answer": [
+            "B"
+          ],
+          "answerText": [
+            "Set up a VPC endpoint for the S3 bucket. Set the SageMaker AI OPT_OUT_TRACKING environment variable to 1 in the training job."
+          ]
+        },
+        {
+          "id": 231,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Set up a VPC endpoint for the S3 bucket. Set the SageMaker AI OPT_OUT_TRACKING environment variable to 1 in the training job."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 169,
+      "sourceIds": [
+        169,
+        264
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 169,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Host Model A with a real-time endpoint. Use batch transform for Model B."
+          ]
+        },
+        {
+          "id": 264,
+          "answer": [
+            "B"
+          ],
+          "answerText": [
+            "Host Model A with a real-time endpoint. Use batch transform for Model B."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 175,
+      "sourceIds": [
+        175,
+        263
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 175,
+          "answer": [
+            "D"
+          ],
+          "answerText": [
+            "Recall"
+          ]
+        },
+        {
+          "id": 263,
+          "answer": [
+            "A"
+          ],
+          "answerText": [
+            "Recall"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 178,
+      "sourceIds": [
+        178,
+        234
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 178,
+          "answer": [
+            "B"
+          ],
+          "answerText": [
+            "Perform similarity encoding to represent categories of the feature."
+          ]
+        },
+        {
+          "id": 234,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Perform similarity encoding to represent categories of the feature."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 180,
+      "sourceIds": [
+        180,
+        262
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 180,
+          "answer": [
+            "B"
+          ],
+          "answerText": [
+            "Use an Amazon Elastic File System (Amazon EFS) file system to store the data. Mount the file system to the on-premises servers and the SageMaker AI notebooks."
+          ]
+        },
+        {
+          "id": 262,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Use an Amazon Elastic File System (Amazon EFS) file system to store the data. Mount the file system to the on-premises servers and the SageMaker AI notebooks."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 183,
+      "sourceIds": [
+        183,
+        243
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 183,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Use a vertical bar chart to visualize the outliers. Use a calculated field in QuickSight to square the outlier prices to generate the chart. Use QuickSight anomaly detection insights to determine which prices are unusually high."
+          ]
+        },
+        {
+          "id": 243,
+          "answer": [
+            "A"
+          ],
+          "answerText": [
+            "Use a vertical bar chart to visualize the outliers. Use a calculated field in QuickSight to square the outlier prices to generate the chart. Use QuickSight anomaly detection insights to determine which prices are unusually high."
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": 227,
+      "sourceIds": [
+        227,
+        228
+      ],
+      "answerConflict": false,
+      "answerTextDiffers": false,
+      "matchMethod": "exact_normalized",
+      "versions": [
+        {
+          "id": 227,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Text representation of basic units of data processed by LLMs: Token High-dimensional vectors that contain the semantic meaning of text: Embedding Enrichment of information from additional data sources to improve a generated response: Retrieval Augmented Generation (RAG)"
+          ]
+        },
+        {
+          "id": 228,
+          "answer": [
+            "C"
+          ],
+          "answerText": [
+            "Text representation of basic units of data processed by LLMs: Token High-dimensional vectors that contain the semantic meaning of text: Embedding Enrichment of information from additional data sources to improve a generated response: Retrieval Augmented Generation (RAG)"
+          ]
+        }
+      ]
+    }
+  ],
+  "crossExact": [],
+  "manualReview": [
+    "Chỉ gộp tự động khi nội dung câu, tập lựa chọn và SHA-256 ảnh giống nhau sau chuẩn hóa dấu câu/khoảng trắng.",
+    "Q227/Q228 có ảnh giống từng byte và được gộp, dù tên file ảnh khác nhau.",
+    "Q25/Q161 khác tên SageMaker AI và lỗi OCR Ad/ACL; cùng bài toán, lựa chọn và đáp án.",
+    "Q34/Q259 và Q131/Q285 chỉ khác khoảng trắng hoặc chỉ dẫn Choose two; metadata vẫn chọn hai.",
+    "Q37/Q257 cùng câu và lựa chọn; Q257 thiếu phần mở đầu về Lake Formation. Giữ bản Q37 đầy đủ.",
+    "Các câu cùng case study nhưng hỏi yêu cầu khác nhau vẫn được giữ riêng.",
+    "Các biến thể MLS có lựa chọn hoặc mục tiêu khác nhau được giữ nguyên ID để bảo toàn tiến trình."
+  ]
+}

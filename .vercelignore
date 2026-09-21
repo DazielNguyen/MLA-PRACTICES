@@ -1,0 +1,13 @@
+# Deploy the web application only.
+/*
+!web
+web/node_modules
+web/dist
+web/.env*
+web/.vercel
+web/test-results
+web/playwright-report
+web/tests
+web/scripts
+web/*.tsbuildinfo
+**/.DS_Store

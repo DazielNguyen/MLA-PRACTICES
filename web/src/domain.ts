@@ -1,6 +1,7 @@
 export type Question = {
-  id: number; page: number; text: string; choices: Record<string, string>;
-  answer: string[]; required: number; status: 'checked' | 'historical' | 'review';
+  id: number; page: number | null; text: string; choices: Record<string, string>;
+  collection: 'mls' | 'mla'; sourceIds: number[]; sourceName: string; domain?: string; hint?: string;
+  answer: string[]; required: number; status: 'checked' | 'historical' | 'review' | 'source';
   explanation: string; sources: { title: string; url: string }[]; notes: string[];
   images: { url: string; slot: string; alt: string }[];
 };
@@ -8,6 +9,7 @@ export type Settings = {
   count: number; minutes: number; order: 'random' | 'sequential';
   scope: 'all' | 'wrong' | 'bookmarked' | 'unseen'; range: string;
   includeReview: boolean; includeHistorical: boolean; feedback: 'immediate' | 'end';
+  collection?: 'all' | 'mls' | 'mla'; includeSource?: boolean;
 };
 export type Session = {
   id: string; mode: 'practice' | 'exam'; questionIds: number[]; index: number;
@@ -19,10 +21,16 @@ export type Progress = { attempts: number; correct: number; latest: boolean; las
 export type State = {
   version: 1; updatedAt: number; bookmarks: number[]; known: number[];
   progress: Record<string, Progress>; active: Session | null; history: Session[];
-  flash: { ids: number[]; index: number; filter?: 'all'|'new'|'known'|'bookmarked'; includeReview?: boolean } | null;
+  flash: { ids: number[]; index: number; filter?: 'all'|'new'|'known'|'bookmarked'; includeReview?: boolean; collection?: 'all'|'mls'|'mla'; includeSource?: boolean } | null;
 };
 export const STORAGE_KEY = 'ml-practice:v1';
-export const defaultSettings: Settings = { count: 20, minutes: 40, order: 'random', scope: 'all', range: 'all', includeReview: false, includeHistorical: true, feedback: 'immediate' };
+export const defaultSettings: Settings = { count: 20, minutes: 40, order: 'random', scope: 'all', range: 'all', includeReview: false, includeHistorical: true, feedback: 'immediate', collection: 'all', includeSource: true };
+export const questionRanges = [
+  ...['1-66','67-133','134-200','201-266','267-332'].map(value=>({value,collection:'mls',label:`MLS · câu ${value}`})),
+  ...['333-397','398-462','463-527','528-592','593-618'].map((value,i)=>({value,collection:'mla',label:`MLA-C01 · bộ ${i+1}`})),
+];
+export const collectionLabel = (collection: string) => collection === 'mla' ? 'MLA-C01 · Associate' : collection === 'mls' ? 'MLS · Specialty' : 'MLS + MLA-C01';
+export const sourceLabel = (q: Question) => `${q.collection === 'mla' ? 'MLA-C01' : 'MLS'} Q${String(q.sourceIds[0]).padStart(3,'0')}`;
 export const emptyState = (): State => ({ version: 1, updatedAt: 0, bookmarks: [], known: [], progress: {}, active: null, history: [], flash: null });
 export const isCorrect = (q: Question, answer: string[] = []) => q.status !== 'review' && answer.length === q.answer.length && q.answer.every(v => answer.includes(v));
 export function toggleChoice(answer: string[], choice: string, required: number) {
@@ -32,6 +40,8 @@ export function toggleChoice(answer: string[], choice: string, required: number)
 }
 export function eligibleQuestions(bank: Question[], settings: Settings, state: State, mode: Session['mode'] = 'practice') {
   return bank.filter(q => {
+    if (settings.collection && settings.collection !== 'all' && q.collection !== settings.collection) return false;
+    if (q.status === 'source' && settings.includeSource === false) return false;
     if (q.status === 'review' && (mode === 'exam' || !settings.includeReview)) return false;
     if (q.status === 'historical' && !settings.includeHistorical) return false;
     if (settings.range !== 'all') { const [min, max] = settings.range.split('-').map(Number); if (q.id < min || q.id > max) return false; }
@@ -98,7 +108,8 @@ export function validateState(input: unknown, bank: Question[]): State {
     if (!object(v) || typeof v.id !== 'string' || !v.id || !['practice', 'exam'].includes(String(v.mode)) || !ids(v.questionIds) || !v.questionIds.length || !Number.isInteger(v.index) || Number(v.index) < 0 || Number(v.index) >= v.questionIds.length || !object(v.answers) || !ids(v.revealed) || !ids(v.flagged) || !Number.isFinite(v.startedAt) || !object(v.settings)) return fail();
     const set = new Set(v.questionIds);
     if (![...v.revealed, ...v.flagged].every(id => set.has(id))) return fail();
-    if (!['immediate', 'end'].includes(String(v.settings.feedback)) || !['random', 'sequential'].includes(String(v.settings.order)) || !['all', 'wrong', 'bookmarked', 'unseen'].includes(String(v.settings.scope)) || !['all','1-66','67-133','134-200','201-266','267-332'].includes(String(v.settings.range)) || typeof v.settings.includeReview !== 'boolean' || typeof v.settings.includeHistorical !== 'boolean' || !Number.isInteger(v.settings.count) || v.settings.count !== v.questionIds.length || !Number.isFinite(v.settings.minutes)) return fail();
+    if (!['immediate', 'end'].includes(String(v.settings.feedback)) || !['random', 'sequential'].includes(String(v.settings.order)) || !['all', 'wrong', 'bookmarked', 'unseen'].includes(String(v.settings.scope)) || !['all',...questionRanges.map(r=>r.value)].includes(String(v.settings.range)) || typeof v.settings.includeReview !== 'boolean' || typeof v.settings.includeHistorical !== 'boolean' || !Number.isInteger(v.settings.count) || v.settings.count !== v.questionIds.length || !Number.isFinite(v.settings.minutes)) return fail();
+    if (v.settings.collection !== undefined && !['all','mls','mla'].includes(String(v.settings.collection)) || v.settings.includeSource !== undefined && typeof v.settings.includeSource !== 'boolean') return fail();
     for (const [id, values] of Object.entries(v.answers)) {
       const q = byId.get(Number(id));
       if (!q || !set.has(q.id) || !Array.isArray(values) || values.length > q.required || new Set(values).size !== values.length || values.some(c => typeof c !== 'string' || !Object.hasOwn(q.choices, c))) return fail();
@@ -113,5 +124,6 @@ export function validateState(input: unknown, bank: Question[]): State {
   input.history.forEach(v => session(v, true));
   if (input.flash !== null && (!object(input.flash) || !ids(input.flash.ids) || !input.flash.ids.length || !Number.isInteger(input.flash.index) || Number(input.flash.index) < 0 || Number(input.flash.index) >= input.flash.ids.length)) return fail();
   if (object(input.flash) && (input.flash.filter !== undefined && !['all','new','known','bookmarked'].includes(String(input.flash.filter)) || input.flash.includeReview !== undefined && typeof input.flash.includeReview !== 'boolean')) return fail();
+  if (object(input.flash) && (input.flash.collection !== undefined && !['all','mls','mla'].includes(String(input.flash.collection)) || input.flash.includeSource !== undefined && typeof input.flash.includeSource !== 'boolean')) return fail();
   return JSON.parse(JSON.stringify(input)) as State;
 }

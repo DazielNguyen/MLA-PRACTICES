@@ -1,6 +1,6 @@
 # Bộ câu hỏi tổng hợp MLS và MLA-C01
 
-567 câu để học. Biến thể đã gộp giữ mã cũ trong dữ liệu lịch sử. Câu MLA dùng mã 332 + số câu nguồn.
+919 câu để học. Biến thể đã gộp giữ mã cũ trong dữ liệu lịch sử. Câu MLA dùng mã 332 + số câu nguồn.
 
 Mỗi câu có phân tích tiếng Anh cho từng lựa chọn. “Cần xác minh” không dùng để tính điểm.
 
@@ -21599,5 +21599,15541 @@ Bedrock provides managed access to multiple foundation-model providers through A
 #### References
 
 - [AWS — Managed foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html)
+
+</details>
+
+## #1001 · MLA-C01 Q1001 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A training pipeline needs a durable repository for immutable datasets and model artifacts. Jobs read complete objects through AWS APIs. Which storage service fits this access pattern?
+
+A. Amazon FSx for Lustre
+B. Amazon EBS
+C. Amazon EFS
+D. Amazon S3
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Amazon S3**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Match the storage access interface to the training workload.
+
+#### Why this is correct
+
+- **D. Amazon S3** — S3 exposes durable objects through an object API, rather than a shared POSIX file system. This matches the requirement for durable object storage with API access.
+
+#### Why other options are incorrect
+
+- **A. Amazon FSx for Lustre** — FSx for Lustre provides a parallel file system for high-throughput compute workloads and can integrate with S3. This option does not address the specified need for durable object storage with API access.
+- **B. Amazon EBS** — EBS provides block volumes for EC2 instances, rather than a managed shared network file system. This option does not address the specified need for durable object storage with API access.
+- **C. Amazon EFS** — EFS provides a managed, shared NFS file system for Linux clients. This option does not address the specified need for durable object storage with API access.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [AWS Storage category iconStorage - Overview of Amazon Web Services](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/storage-services.html)
+
+</details>
+
+## #1002 · MLA-C01 Q1002 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Several Linux preprocessing workers must share directories through NFS. The team wants managed capacity without maintaining file servers. Which service fits?
+
+A. Amazon S3
+B. Amazon EBS
+C. Amazon EFS
+D. Amazon FSx for Lustre
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Amazon EFS**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Match the storage access interface to the training workload.
+
+#### Why this is correct
+
+- **C. Amazon EFS** — EFS provides a managed, shared NFS file system for Linux clients. This matches the requirement for a managed shared NFS file system.
+
+#### Why other options are incorrect
+
+- **A. Amazon S3** — S3 exposes durable objects through an object API, rather than a shared POSIX file system. This option does not address the specified need for a managed shared NFS file system.
+- **B. Amazon EBS** — EBS provides block volumes for EC2 instances, rather than a managed shared network file system. This option does not address the specified need for a managed shared NFS file system.
+- **D. Amazon FSx for Lustre** — FSx for Lustre provides a parallel file system for high-throughput compute workloads and can integrate with S3. This option does not address the specified need for a managed shared NFS file system.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [AWS Storage category iconStorage - Overview of Amazon Web Services](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/storage-services.html)
+
+</details>
+
+## #1003 · MLA-C01 Q1003 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A distributed training cluster needs a parallel file system for intensive concurrent reads. The dataset already resides in S3 and must remain linked to it. Which service fits?
+
+A. Amazon S3
+B. Amazon EFS
+C. Amazon FSx for Lustre
+D. Amazon EBS
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Amazon FSx for Lustre**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Match the storage access interface to the training workload.
+
+#### Why this is correct
+
+- **C. Amazon FSx for Lustre** — FSx for Lustre provides a parallel file system for high-throughput compute workloads and can integrate with S3. This matches the requirement for a parallel file system integrated with S3.
+
+#### Why other options are incorrect
+
+- **A. Amazon S3** — S3 exposes durable objects through an object API, rather than a shared POSIX file system. This option does not address the specified need for a parallel file system integrated with S3.
+- **B. Amazon EFS** — EFS provides a managed, shared NFS file system for Linux clients. This option does not address the specified need for a parallel file system integrated with S3.
+- **D. Amazon EBS** — EBS provides block volumes for EC2 instances, rather than a managed shared network file system. This option does not address the specified need for a parallel file system integrated with S3.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [AWS Storage category iconStorage - Overview of Amazon Web Services](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/storage-services.html)
+
+</details>
+
+## #1004 · MLA-C01 Q1004 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An EC2 preprocessing worker needs a persistent block device for its local filesystem. The disk must survive a normal instance stop. Which service fits?
+
+A. Amazon EFS
+B. Amazon S3
+C. Amazon EBS
+D. Amazon FSx for Lustre
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Amazon EBS**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Match the storage access interface to the training workload.
+
+#### Why this is correct
+
+- **C. Amazon EBS** — EBS provides block volumes for EC2 instances, rather than a managed shared network file system. This matches the requirement for persistent block storage attached to EC2.
+
+#### Why other options are incorrect
+
+- **A. Amazon EFS** — EFS provides a managed, shared NFS file system for Linux clients. This option does not address the specified need for persistent block storage attached to EC2.
+- **B. Amazon S3** — S3 exposes durable objects through an object API, rather than a shared POSIX file system. This option does not address the specified need for persistent block storage attached to EC2.
+- **D. Amazon FSx for Lustre** — FSx for Lustre provides a parallel file system for high-throughput compute workloads and can integrate with S3. This option does not address the specified need for persistent block storage attached to EC2.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [AWS Storage category iconStorage - Overview of Amazon Web Services](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/storage-services.html)
+
+</details>
+
+## #1005 · MLA-C01 Q1005 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An audit process retrieves each historical model artifact by its object key. There is no need to mount directories on training instances. Which storage service is appropriate?
+
+A. Amazon S3
+B. Amazon EFS
+C. Amazon FSx for Lustre
+D. Amazon EBS
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Amazon S3**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Match the storage access interface to the training workload.
+
+#### Why this is correct
+
+- **A. Amazon S3** — S3 exposes durable objects through an object API, rather than a shared POSIX file system. This matches the requirement for retrieval of durable objects by key.
+
+#### Why other options are incorrect
+
+- **B. Amazon EFS** — EFS provides a managed, shared NFS file system for Linux clients. This option does not address the specified need for retrieval of durable objects by key.
+- **C. Amazon FSx for Lustre** — FSx for Lustre provides a parallel file system for high-throughput compute workloads and can integrate with S3. This option does not address the specified need for retrieval of durable objects by key.
+- **D. Amazon EBS** — EBS provides block volumes for EC2 instances, rather than a managed shared network file system. This option does not address the specified need for retrieval of durable objects by key.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [AWS Storage category iconStorage - Overview of Amazon Web Services](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/storage-services.html)
+
+</details>
+
+## #1006 · MLA-C01 Q1006 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A legacy feature script opens shared Linux paths with standard NFS clients on several EC2 workers. Which managed service preserves this interface?
+
+A. Amazon FSx for Lustre
+B. Amazon EBS
+C. Amazon EFS
+D. Amazon S3
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Amazon EFS**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Match the storage access interface to the training workload.
+
+#### Why this is correct
+
+- **C. Amazon EFS** — EFS provides a managed, shared NFS file system for Linux clients. This matches the requirement for shared paths accessible through NFS.
+
+#### Why other options are incorrect
+
+- **A. Amazon FSx for Lustre** — FSx for Lustre provides a parallel file system for high-throughput compute workloads and can integrate with S3. This option does not address the specified need for shared paths accessible through NFS.
+- **B. Amazon EBS** — EBS provides block volumes for EC2 instances, rather than a managed shared network file system. This option does not address the specified need for shared paths accessible through NFS.
+- **D. Amazon S3** — S3 exposes durable objects through an object API, rather than a shared POSIX file system. This option does not address the specified need for shared paths accessible through NFS.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [AWS Storage category iconStorage - Overview of Amazon Web Services](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/storage-services.html)
+
+</details>
+
+## #1007 · MLA-C01 Q1007 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A research cluster already uses Lustre on premises. Its port to AWS must preserve the parallel filesystem approach with managed infrastructure. Which service fits?
+
+A. Amazon EBS
+B. Amazon S3
+C. Amazon FSx for Lustre
+D. Amazon EFS
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Amazon FSx for Lustre**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Match the storage access interface to the training workload.
+
+#### Why this is correct
+
+- **C. Amazon FSx for Lustre** — FSx for Lustre provides a parallel file system for high-throughput compute workloads and can integrate with S3. This matches the requirement for a managed Lustre filesystem.
+
+#### Why other options are incorrect
+
+- **A. Amazon EBS** — EBS provides block volumes for EC2 instances, rather than a managed shared network file system. This option does not address the specified need for a managed Lustre filesystem.
+- **B. Amazon S3** — S3 exposes durable objects through an object API, rather than a shared POSIX file system. This option does not address the specified need for a managed Lustre filesystem.
+- **D. Amazon EFS** — EFS provides a managed, shared NFS file system for Linux clients. This option does not address the specified need for a managed Lustre filesystem.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [AWS Storage category iconStorage - Overview of Amazon Web Services](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/storage-services.html)
+
+</details>
+
+## #1008 · MLA-C01 Q1008 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A database on one EC2 instance requires a block device with configurable provisioned IOPS. Which service supplies the required storage interface?
+
+A. Amazon EBS
+B. Amazon EFS
+C. Amazon FSx for Lustre
+D. Amazon S3
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Amazon EBS**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Match the storage access interface to the training workload.
+
+#### Why this is correct
+
+- **A. Amazon EBS** — EBS provides block volumes for EC2 instances, rather than a managed shared network file system. This matches the requirement for a block device with provisioned IOPS.
+
+#### Why other options are incorrect
+
+- **B. Amazon EFS** — EFS provides a managed, shared NFS file system for Linux clients. This option does not address the specified need for a block device with provisioned IOPS.
+- **C. Amazon FSx for Lustre** — FSx for Lustre provides a parallel file system for high-throughput compute workloads and can integrate with S3. This option does not address the specified need for a block device with provisioned IOPS.
+- **D. Amazon S3** — S3 exposes durable objects through an object API, rather than a shared POSIX file system. This option does not address the specified need for a block device with provisioned IOPS.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [AWS Storage category iconStorage - Overview of Amazon Web Services](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/storage-services.html)
+
+</details>
+
+## #1009 · MLA-C01 Q1009 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An Athena feature query reads three columns from a dataset with 180 columns. Which format best reduces unnecessary column reads?
+
+A. RecordIO-Protobuf
+B. CSV
+C. Apache Parquet
+D. JSON Lines
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Apache Parquet**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Data layout affects parsing, schema handling, and the amount of data scanned.
+
+#### Why this is correct
+
+- **C. Apache Parquet** — Parquet stores data by column, which supports compression and selective column reads. This matches the requirement for column-oriented storage for selective queries.
+
+#### Why other options are incorrect
+
+- **A. RecordIO-Protobuf** — RecordIO-Protobuf is a binary record format supported by selected SageMaker built-in algorithms. This option does not address the specified need for column-oriented storage for selective queries.
+- **B. CSV** — CSV represents rows as delimiter-separated text and does not natively represent nested objects. This option does not address the specified need for column-oriented storage for selective queries.
+- **D. JSON Lines** — JSON Lines stores an independent JSON document per line and can represent nested fields. This option does not address the specified need for column-oriented storage for selective queries.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Use columnar storage formats - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html)
+- [Common Data Formats for Training - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-training.html)
+
+</details>
+
+## #1010 · MLA-C01 Q1010 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A legacy ingestion tool only accepts comma-separated rows with a fixed column order. It cannot parse binary files or nested objects. Which format fits?
+
+A. Apache Parquet
+B. CSV
+C. JSON Lines
+D. RecordIO-Protobuf
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. CSV**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Data layout affects parsing, schema handling, and the amount of data scanned.
+
+#### Why this is correct
+
+- **B. CSV** — CSV represents rows as delimiter-separated text and does not natively represent nested objects. This matches the requirement for plain comma-separated text rows.
+
+#### Why other options are incorrect
+
+- **A. Apache Parquet** — Parquet stores data by column, which supports compression and selective column reads. This option does not address the specified need for plain comma-separated text rows.
+- **C. JSON Lines** — JSON Lines stores an independent JSON document per line and can represent nested fields. This option does not address the specified need for plain comma-separated text rows.
+- **D. RecordIO-Protobuf** — RecordIO-Protobuf is a binary record format supported by selected SageMaker built-in algorithms. This option does not address the specified need for plain comma-separated text rows.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Use columnar storage formats - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html)
+- [Common Data Formats for Training - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-training.html)
+
+</details>
+
+## #1011 · MLA-C01 Q1011 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Sensor events contain nested metadata, and a streaming parser must process one complete event per line. Which format fits?
+
+A. Apache Parquet
+B. JSON Lines
+C. RecordIO-Protobuf
+D. CSV
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. JSON Lines**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Data layout affects parsing, schema handling, and the amount of data scanned.
+
+#### Why this is correct
+
+- **B. JSON Lines** — JSON Lines stores an independent JSON document per line and can represent nested fields. This matches the requirement for independent nested JSON events per line.
+
+#### Why other options are incorrect
+
+- **A. Apache Parquet** — Parquet stores data by column, which supports compression and selective column reads. This option does not address the specified need for independent nested JSON events per line.
+- **C. RecordIO-Protobuf** — RecordIO-Protobuf is a binary record format supported by selected SageMaker built-in algorithms. This option does not address the specified need for independent nested JSON events per line.
+- **D. CSV** — CSV represents rows as delimiter-separated text and does not natively represent nested objects. This option does not address the specified need for independent nested JSON events per line.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Use columnar storage formats - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html)
+- [Common Data Formats for Training - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-training.html)
+
+</details>
+
+## #1012 · MLA-C01 Q1012 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A selected SageMaker built-in algorithm explicitly requires dense vectors in its supported protobuf record representation. Which format matches that interface?
+
+A. Apache Parquet
+B. JSON Lines
+C. CSV
+D. RecordIO-Protobuf
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. RecordIO-Protobuf**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Data layout affects parsing, schema handling, and the amount of data scanned.
+
+#### Why this is correct
+
+- **D. RecordIO-Protobuf** — RecordIO-Protobuf is a binary record format supported by selected SageMaker built-in algorithms. This matches the requirement for the algorithm's RecordIO protobuf interface.
+
+#### Why other options are incorrect
+
+- **A. Apache Parquet** — Parquet stores data by column, which supports compression and selective column reads. This option does not address the specified need for the algorithm's RecordIO protobuf interface.
+- **B. JSON Lines** — JSON Lines stores an independent JSON document per line and can represent nested fields. This option does not address the specified need for the algorithm's RecordIO protobuf interface.
+- **C. CSV** — CSV represents rows as delimiter-separated text and does not natively represent nested objects. This option does not address the specified need for the algorithm's RecordIO protobuf interface.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Use columnar storage formats - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html)
+- [Common Data Formats for Training - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-training.html)
+
+</details>
+
+## #1013 · MLA-C01 Q1013 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Feature engineers repeatedly scan a few numeric columns from large S3 tables. They want a compressed analytical format that preserves column types. Which format fits?
+
+A. RecordIO-Protobuf
+B. CSV
+C. JSON Lines
+D. Apache Parquet
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Apache Parquet**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Data layout affects parsing, schema handling, and the amount of data scanned.
+
+#### Why this is correct
+
+- **D. Apache Parquet** — Parquet stores data by column, which supports compression and selective column reads. This matches the requirement for typed, compressed columnar analytics.
+
+#### Why other options are incorrect
+
+- **A. RecordIO-Protobuf** — RecordIO-Protobuf is a binary record format supported by selected SageMaker built-in algorithms. This option does not address the specified need for typed, compressed columnar analytics.
+- **B. CSV** — CSV represents rows as delimiter-separated text and does not natively represent nested objects. This option does not address the specified need for typed, compressed columnar analytics.
+- **C. JSON Lines** — JSON Lines stores an independent JSON document per line and can represent nested fields. This option does not address the specified need for typed, compressed columnar analytics.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Use columnar storage formats - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html)
+- [Common Data Formats for Training - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-training.html)
+
+</details>
+
+## #1014 · MLA-C01 Q1014 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An approved downstream system imports tabular training reports through a simple comma-delimited text interface. Which format preserves compatibility?
+
+A. JSON Lines
+B. RecordIO-Protobuf
+C. Apache Parquet
+D. CSV
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. CSV**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Data layout affects parsing, schema handling, and the amount of data scanned.
+
+#### Why this is correct
+
+- **D. CSV** — CSV represents rows as delimiter-separated text and does not natively represent nested objects. This matches the requirement for compatibility with a comma-delimited importer.
+
+#### Why other options are incorrect
+
+- **A. JSON Lines** — JSON Lines stores an independent JSON document per line and can represent nested fields. This option does not address the specified need for compatibility with a comma-delimited importer.
+- **B. RecordIO-Protobuf** — RecordIO-Protobuf is a binary record format supported by selected SageMaker built-in algorithms. This option does not address the specified need for compatibility with a comma-delimited importer.
+- **C. Apache Parquet** — Parquet stores data by column, which supports compression and selective column reads. This option does not address the specified need for compatibility with a comma-delimited importer.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Use columnar storage formats - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html)
+- [Common Data Formats for Training - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-training.html)
+
+</details>
+
+## #1015 · MLA-C01 Q1015 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A log collection includes optional attributes whose structure differs between events. The consumer uses a line-oriented JSON parser. Which format fits?
+
+A. JSON Lines
+B. RecordIO-Protobuf
+C. CSV
+D. Apache Parquet
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. JSON Lines**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Data layout affects parsing, schema handling, and the amount of data scanned.
+
+#### Why this is correct
+
+- **A. JSON Lines** — JSON Lines stores an independent JSON document per line and can represent nested fields. This matches the requirement for line-oriented parsing of variable JSON records.
+
+#### Why other options are incorrect
+
+- **B. RecordIO-Protobuf** — RecordIO-Protobuf is a binary record format supported by selected SageMaker built-in algorithms. This option does not address the specified need for line-oriented parsing of variable JSON records.
+- **C. CSV** — CSV represents rows as delimiter-separated text and does not natively represent nested objects. This option does not address the specified need for line-oriented parsing of variable JSON records.
+- **D. Apache Parquet** — Parquet stores data by column, which supports compression and selective column reads. This option does not address the specified need for line-oriented parsing of variable JSON records.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Use columnar storage formats - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html)
+- [Common Data Formats for Training - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-training.html)
+
+</details>
+
+## #1016 · MLA-C01 Q1016 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A Linear Learner training workflow is configured for application/x-recordio-protobuf input. Which format must the feature exporter produce?
+
+A. CSV
+B. JSON Lines
+C. Apache Parquet
+D. RecordIO-Protobuf
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. RecordIO-Protobuf**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Data layout affects parsing, schema handling, and the amount of data scanned.
+
+#### Why this is correct
+
+- **D. RecordIO-Protobuf** — RecordIO-Protobuf is a binary record format supported by selected SageMaker built-in algorithms. This matches the requirement for the configured binary training content type.
+
+#### Why other options are incorrect
+
+- **A. CSV** — CSV represents rows as delimiter-separated text and does not natively represent nested objects. This option does not address the specified need for the configured binary training content type.
+- **B. JSON Lines** — JSON Lines stores an independent JSON document per line and can represent nested fields. This option does not address the specified need for the configured binary training content type.
+- **C. Apache Parquet** — Parquet stores data by column, which supports compression and selective column reads. This option does not address the specified need for the configured binary training content type.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Use columnar storage formats - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html)
+- [Common Data Formats for Training - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-training.html)
+
+</details>
+
+## #1017 · MLA-C01 Q1017 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A feature lake needs an initial copy of a supported relational database and ongoing row changes from its transaction log. Which service fits?
+
+A. AWS Database Migration Service
+B. Amazon Data Firehose
+C. AWS DataSync
+D. AWS Glue ETL
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. AWS Database Migration Service**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose ingestion tools by whether the source is a database, file system, stream, or transformation job.
+
+#### Why this is correct
+
+- **A. AWS Database Migration Service** — DMS supports database migration and change data capture from supported database sources. This matches the requirement for database change data capture after an initial load.
+
+#### Why other options are incorrect
+
+- **B. Amazon Data Firehose** — Firehose buffers and delivers streaming records to supported destinations with managed delivery. This option does not address the specified need for database change data capture after an initial load.
+- **C. AWS DataSync** — DataSync transfers file and object data between supported storage systems and AWS storage. This option does not address the specified need for database change data capture after an initial load.
+- **D. AWS Glue ETL** — Glue runs managed data integration and transformation jobs, including Spark workloads. This option does not address the specified need for database change data capture after an initial load.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is AWS Database Migration Service? - AWS Database Migration Service](https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html)
+- [What is AWS DataSync? - AWS DataSync](https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html)
+- [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
+- [What is AWS Glue? - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html)
+
+</details>
+
+## #1018 · MLA-C01 Q1018 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A laboratory must copy existing files from an on-premises NFS server into S3 and verify transfer integrity. Which service fits?
+
+A. AWS DataSync
+B. Amazon Data Firehose
+C. AWS Database Migration Service
+D. AWS Glue ETL
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. AWS DataSync**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose ingestion tools by whether the source is a database, file system, stream, or transformation job.
+
+#### Why this is correct
+
+- **A. AWS DataSync** — DataSync transfers file and object data between supported storage systems and AWS storage. This matches the requirement for managed transfer from an NFS file source.
+
+#### Why other options are incorrect
+
+- **B. Amazon Data Firehose** — Firehose buffers and delivers streaming records to supported destinations with managed delivery. This option does not address the specified need for managed transfer from an NFS file source.
+- **C. AWS Database Migration Service** — DMS supports database migration and change data capture from supported database sources. This option does not address the specified need for managed transfer from an NFS file source.
+- **D. AWS Glue ETL** — Glue runs managed data integration and transformation jobs, including Spark workloads. This option does not address the specified need for managed transfer from an NFS file source.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is AWS Database Migration Service? - AWS Database Migration Service](https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html)
+- [What is AWS DataSync? - AWS DataSync](https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html)
+- [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
+- [What is AWS Glue? - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html)
+
+</details>
+
+## #1019 · MLA-C01 Q1019 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An application emits events and wants managed, buffered delivery into S3 without building a consumer application. Which service fits?
+
+A. AWS Database Migration Service
+B. Amazon Data Firehose
+C. AWS DataSync
+D. AWS Glue ETL
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Amazon Data Firehose**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose ingestion tools by whether the source is a database, file system, stream, or transformation job.
+
+#### Why this is correct
+
+- **B. Amazon Data Firehose** — Firehose buffers and delivers streaming records to supported destinations with managed delivery. This matches the requirement for buffered delivery of streaming records to S3.
+
+#### Why other options are incorrect
+
+- **A. AWS Database Migration Service** — DMS supports database migration and change data capture from supported database sources. This option does not address the specified need for buffered delivery of streaming records to S3.
+- **C. AWS DataSync** — DataSync transfers file and object data between supported storage systems and AWS storage. This option does not address the specified need for buffered delivery of streaming records to S3.
+- **D. AWS Glue ETL** — Glue runs managed data integration and transformation jobs, including Spark workloads. This option does not address the specified need for buffered delivery of streaming records to S3.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is AWS Database Migration Service? - AWS Database Migration Service](https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html)
+- [What is AWS DataSync? - AWS DataSync](https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html)
+- [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
+- [What is AWS Glue? - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html)
+
+</details>
+
+## #1020 · MLA-C01 Q1020 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Nightly feature preparation joins several large tables and applies custom Spark transformations. Which managed service executes the transformation job?
+
+A. Amazon Data Firehose
+B. AWS Database Migration Service
+C. AWS Glue ETL
+D. AWS DataSync
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. AWS Glue ETL**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose ingestion tools by whether the source is a database, file system, stream, or transformation job.
+
+#### Why this is correct
+
+- **C. AWS Glue ETL** — Glue runs managed data integration and transformation jobs, including Spark workloads. This matches the requirement for a managed Spark transformation job.
+
+#### Why other options are incorrect
+
+- **A. Amazon Data Firehose** — Firehose buffers and delivers streaming records to supported destinations with managed delivery. This option does not address the specified need for a managed Spark transformation job.
+- **B. AWS Database Migration Service** — DMS supports database migration and change data capture from supported database sources. This option does not address the specified need for a managed Spark transformation job.
+- **D. AWS DataSync** — DataSync transfers file and object data between supported storage systems and AWS storage. This option does not address the specified need for a managed Spark transformation job.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is AWS Database Migration Service? - AWS Database Migration Service](https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html)
+- [What is AWS DataSync? - AWS DataSync](https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html)
+- [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
+- [What is AWS Glue? - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html)
+
+</details>
+
+## #1021 · MLA-C01 Q1021 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A database administrator needs low-impact replication of committed row updates from PostgreSQL into a data lake. Which service supports this ingestion pattern?
+
+A. Amazon Data Firehose
+B. AWS Glue ETL
+C. AWS Database Migration Service
+D. AWS DataSync
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. AWS Database Migration Service**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose ingestion tools by whether the source is a database, file system, stream, or transformation job.
+
+#### Why this is correct
+
+- **C. AWS Database Migration Service** — DMS supports database migration and change data capture from supported database sources. This matches the requirement for replication from a database transaction log.
+
+#### Why other options are incorrect
+
+- **A. Amazon Data Firehose** — Firehose buffers and delivers streaming records to supported destinations with managed delivery. This option does not address the specified need for replication from a database transaction log.
+- **B. AWS Glue ETL** — Glue runs managed data integration and transformation jobs, including Spark workloads. This option does not address the specified need for replication from a database transaction log.
+- **D. AWS DataSync** — DataSync transfers file and object data between supported storage systems and AWS storage. This option does not address the specified need for replication from a database transaction log.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is AWS Database Migration Service? - AWS Database Migration Service](https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html)
+- [What is AWS DataSync? - AWS DataSync](https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html)
+- [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
+- [What is AWS Glue? - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html)
+
+</details>
+
+## #1022 · MLA-C01 Q1022 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An organization migrates a large SMB file share into supported AWS storage. It needs transfer scheduling rather than database replication. Which service fits?
+
+A. Amazon Data Firehose
+B. AWS Glue ETL
+C. AWS DataSync
+D. AWS Database Migration Service
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. AWS DataSync**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose ingestion tools by whether the source is a database, file system, stream, or transformation job.
+
+#### Why this is correct
+
+- **C. AWS DataSync** — DataSync transfers file and object data between supported storage systems and AWS storage. This matches the requirement for managed transfer of files from an SMB share.
+
+#### Why other options are incorrect
+
+- **A. Amazon Data Firehose** — Firehose buffers and delivers streaming records to supported destinations with managed delivery. This option does not address the specified need for managed transfer of files from an SMB share.
+- **B. AWS Glue ETL** — Glue runs managed data integration and transformation jobs, including Spark workloads. This option does not address the specified need for managed transfer of files from an SMB share.
+- **D. AWS Database Migration Service** — DMS supports database migration and change data capture from supported database sources. This option does not address the specified need for managed transfer of files from an SMB share.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is AWS Database Migration Service? - AWS Database Migration Service](https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html)
+- [What is AWS DataSync? - AWS DataSync](https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html)
+- [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
+- [What is AWS Glue? - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html)
+
+</details>
+
+## #1023 · MLA-C01 Q1023 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Telemetry producers already call a delivery API. The team wants the service to buffer records before writing destination objects. Which service fits?
+
+A. AWS Database Migration Service
+B. Amazon Data Firehose
+C. AWS DataSync
+D. AWS Glue ETL
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Amazon Data Firehose**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose ingestion tools by whether the source is a database, file system, stream, or transformation job.
+
+#### Why this is correct
+
+- **B. Amazon Data Firehose** — Firehose buffers and delivers streaming records to supported destinations with managed delivery. This matches the requirement for managed stream buffering and destination delivery.
+
+#### Why other options are incorrect
+
+- **A. AWS Database Migration Service** — DMS supports database migration and change data capture from supported database sources. This option does not address the specified need for managed stream buffering and destination delivery.
+- **C. AWS DataSync** — DataSync transfers file and object data between supported storage systems and AWS storage. This option does not address the specified need for managed stream buffering and destination delivery.
+- **D. AWS Glue ETL** — Glue runs managed data integration and transformation jobs, including Spark workloads. This option does not address the specified need for managed stream buffering and destination delivery.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is AWS Database Migration Service? - AWS Database Migration Service](https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html)
+- [What is AWS DataSync? - AWS DataSync](https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html)
+- [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
+- [What is AWS Glue? - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html)
+
+</details>
+
+## #1024 · MLA-C01 Q1024 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A dataset must be deduplicated, joined, and converted before analysts can query the output. Which service runs these ETL operations?
+
+A. AWS Glue ETL
+B. Amazon Data Firehose
+C. AWS DataSync
+D. AWS Database Migration Service
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. AWS Glue ETL**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose ingestion tools by whether the source is a database, file system, stream, or transformation job.
+
+#### Why this is correct
+
+- **A. AWS Glue ETL** — Glue runs managed data integration and transformation jobs, including Spark workloads. This matches the requirement for managed transformations across input datasets.
+
+#### Why other options are incorrect
+
+- **B. Amazon Data Firehose** — Firehose buffers and delivers streaming records to supported destinations with managed delivery. This option does not address the specified need for managed transformations across input datasets.
+- **C. AWS DataSync** — DataSync transfers file and object data between supported storage systems and AWS storage. This option does not address the specified need for managed transformations across input datasets.
+- **D. AWS Database Migration Service** — DMS supports database migration and change data capture from supported database sources. This option does not address the specified need for managed transformations across input datasets.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is AWS Database Migration Service? - AWS Database Migration Service](https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html)
+- [What is AWS DataSync? - AWS DataSync](https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html)
+- [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
+- [What is AWS Glue? - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html)
+
+</details>
+
+## #1025 · MLA-C01 Q1025 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Two independent applications consume the same event feed at different rates. They must replay retained events after consumer failures. Which service fits?
+
+A. Amazon MSK
+B. Amazon Kinesis Data Streams
+C. Amazon Data Firehose
+D. Amazon Managed Service for Apache Flink
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Amazon Kinesis Data Streams**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Stream storage, delivery, stateful processing, and Kafka hosting solve different tasks.
+
+#### Why this is correct
+
+- **B. Amazon Kinesis Data Streams** — Data Streams retains streaming records so consumers can read and replay them within the retention window. This matches the requirement for retained streaming records for independent replayable consumers.
+
+#### Why other options are incorrect
+
+- **A. Amazon MSK** — MSK provides managed Apache Kafka infrastructure for Kafka producers and consumers. This option does not address the specified need for retained streaming records for independent replayable consumers.
+- **C. Amazon Data Firehose** — Firehose provides managed delivery into destinations, rather than a general replayable stream for independent consumers. This option does not address the specified need for retained streaming records for independent replayable consumers.
+- **D. Amazon Managed Service for Apache Flink** — Managed Flink runs stateful stream applications with windows and event-time processing. This option does not address the specified need for retained streaming records for independent replayable consumers.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon Kinesis Data Streams? - Amazon Kinesis Data Streams](https://docs.aws.amazon.com/streams/latest/dev/introduction.html)
+- [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
+- [What is Amazon Managed Service for Apache Flink? - Managed Service for Apache Flink](https://docs.aws.amazon.com/managed-flink/latest/java/what-is.html)
+- [Welcome to the Amazon MSK Developer Guide - Amazon Managed Streaming for Apache Kafka](https://docs.aws.amazon.com/msk/latest/developerguide/what-is-msk.html)
+
+</details>
+
+## #1026 · MLA-C01 Q1026 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A producer needs a managed delivery stream that buffers incoming events into S3 objects. No independent replay consumers are required. Which service fits?
+
+A. Amazon Managed Service for Apache Flink
+B. Amazon MSK
+C. Amazon Data Firehose
+D. Amazon Kinesis Data Streams
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Amazon Data Firehose**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Stream storage, delivery, stateful processing, and Kafka hosting solve different tasks.
+
+#### Why this is correct
+
+- **C. Amazon Data Firehose** — Firehose provides managed delivery into destinations, rather than a general replayable stream for independent consumers. This matches the requirement for buffered delivery directly to S3.
+
+#### Why other options are incorrect
+
+- **A. Amazon Managed Service for Apache Flink** — Managed Flink runs stateful stream applications with windows and event-time processing. This option does not address the specified need for buffered delivery directly to S3.
+- **B. Amazon MSK** — MSK provides managed Apache Kafka infrastructure for Kafka producers and consumers. This option does not address the specified need for buffered delivery directly to S3.
+- **D. Amazon Kinesis Data Streams** — Data Streams retains streaming records so consumers can read and replay them within the retention window. This option does not address the specified need for buffered delivery directly to S3.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon Kinesis Data Streams? - Amazon Kinesis Data Streams](https://docs.aws.amazon.com/streams/latest/dev/introduction.html)
+- [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
+- [What is Amazon Managed Service for Apache Flink? - Managed Service for Apache Flink](https://docs.aws.amazon.com/managed-flink/latest/java/what-is.html)
+- [Welcome to the Amazon MSK Developer Guide - Amazon Managed Streaming for Apache Kafka](https://docs.aws.amazon.com/msk/latest/developerguide/what-is-msk.html)
+
+</details>
+
+## #1027 · MLA-C01 Q1027 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A fraud feature needs a rolling event-time window and must handle late arrivals with stateful processing. Which service executes this logic?
+
+A. Amazon Kinesis Data Streams
+B. Amazon Data Firehose
+C. Amazon Managed Service for Apache Flink
+D. Amazon MSK
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Amazon Managed Service for Apache Flink**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Stream storage, delivery, stateful processing, and Kafka hosting solve different tasks.
+
+#### Why this is correct
+
+- **C. Amazon Managed Service for Apache Flink** — Managed Flink runs stateful stream applications with windows and event-time processing. This matches the requirement for stateful event-time window processing.
+
+#### Why other options are incorrect
+
+- **A. Amazon Kinesis Data Streams** — Data Streams retains streaming records so consumers can read and replay them within the retention window. This option does not address the specified need for stateful event-time window processing.
+- **B. Amazon Data Firehose** — Firehose provides managed delivery into destinations, rather than a general replayable stream for independent consumers. This option does not address the specified need for stateful event-time window processing.
+- **D. Amazon MSK** — MSK provides managed Apache Kafka infrastructure for Kafka producers and consumers. This option does not address the specified need for stateful event-time window processing.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon Kinesis Data Streams? - Amazon Kinesis Data Streams](https://docs.aws.amazon.com/streams/latest/dev/introduction.html)
+- [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
+- [What is Amazon Managed Service for Apache Flink? - Managed Service for Apache Flink](https://docs.aws.amazon.com/managed-flink/latest/java/what-is.html)
+- [Welcome to the Amazon MSK Developer Guide - Amazon Managed Streaming for Apache Kafka](https://docs.aws.amazon.com/msk/latest/developerguide/what-is-msk.html)
+
+</details>
+
+## #1028 · MLA-C01 Q1028 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An existing Kafka application must keep its producer and consumer APIs during migration. Which managed service best preserves that interface?
+
+A. Amazon MSK
+B. Amazon Data Firehose
+C. Amazon Kinesis Data Streams
+D. Amazon Managed Service for Apache Flink
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Amazon MSK**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Stream storage, delivery, stateful processing, and Kafka hosting solve different tasks.
+
+#### Why this is correct
+
+- **A. Amazon MSK** — MSK provides managed Apache Kafka infrastructure for Kafka producers and consumers. This matches the requirement for Apache Kafka protocol compatibility.
+
+#### Why other options are incorrect
+
+- **B. Amazon Data Firehose** — Firehose provides managed delivery into destinations, rather than a general replayable stream for independent consumers. This option does not address the specified need for Apache Kafka protocol compatibility.
+- **C. Amazon Kinesis Data Streams** — Data Streams retains streaming records so consumers can read and replay them within the retention window. This option does not address the specified need for Apache Kafka protocol compatibility.
+- **D. Amazon Managed Service for Apache Flink** — Managed Flink runs stateful stream applications with windows and event-time processing. This option does not address the specified need for Apache Kafka protocol compatibility.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon Kinesis Data Streams? - Amazon Kinesis Data Streams](https://docs.aws.amazon.com/streams/latest/dev/introduction.html)
+- [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
+- [What is Amazon Managed Service for Apache Flink? - Managed Service for Apache Flink](https://docs.aws.amazon.com/managed-flink/latest/java/what-is.html)
+- [Welcome to the Amazon MSK Developer Guide - Amazon Managed Streaming for Apache Kafka](https://docs.aws.amazon.com/msk/latest/developerguide/what-is-msk.html)
+
+</details>
+
+## #1029 · MLA-C01 Q1029 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A consumer needs to resume from a checkpoint in a retained Kinesis event stream. Which service holds the records it reads?
+
+A. Amazon MSK
+B. Amazon Managed Service for Apache Flink
+C. Amazon Kinesis Data Streams
+D. Amazon Data Firehose
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Amazon Kinesis Data Streams**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Stream storage, delivery, stateful processing, and Kafka hosting solve different tasks.
+
+#### Why this is correct
+
+- **C. Amazon Kinesis Data Streams** — Data Streams retains streaming records so consumers can read and replay them within the retention window. This matches the requirement for a retained Kinesis record stream.
+
+#### Why other options are incorrect
+
+- **A. Amazon MSK** — MSK provides managed Apache Kafka infrastructure for Kafka producers and consumers. This option does not address the specified need for a retained Kinesis record stream.
+- **B. Amazon Managed Service for Apache Flink** — Managed Flink runs stateful stream applications with windows and event-time processing. This option does not address the specified need for a retained Kinesis record stream.
+- **D. Amazon Data Firehose** — Firehose provides managed delivery into destinations, rather than a general replayable stream for independent consumers. This option does not address the specified need for a retained Kinesis record stream.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon Kinesis Data Streams? - Amazon Kinesis Data Streams](https://docs.aws.amazon.com/streams/latest/dev/introduction.html)
+- [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
+- [What is Amazon Managed Service for Apache Flink? - Managed Service for Apache Flink](https://docs.aws.amazon.com/managed-flink/latest/java/what-is.html)
+- [Welcome to the Amazon MSK Developer Guide - Amazon Managed Streaming for Apache Kafka](https://docs.aws.amazon.com/msk/latest/developerguide/what-is-msk.html)
+
+</details>
+
+## #1030 · MLA-C01 Q1030 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An operations team wants managed record delivery and destination retry handling without maintaining a stream-processing application. Which service fits?
+
+A. Amazon Data Firehose
+B. Amazon Kinesis Data Streams
+C. Amazon Managed Service for Apache Flink
+D. Amazon MSK
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Amazon Data Firehose**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Stream storage, delivery, stateful processing, and Kafka hosting solve different tasks.
+
+#### Why this is correct
+
+- **A. Amazon Data Firehose** — Firehose provides managed delivery into destinations, rather than a general replayable stream for independent consumers. This matches the requirement for managed delivery and destination retries.
+
+#### Why other options are incorrect
+
+- **B. Amazon Kinesis Data Streams** — Data Streams retains streaming records so consumers can read and replay them within the retention window. This option does not address the specified need for managed delivery and destination retries.
+- **C. Amazon Managed Service for Apache Flink** — Managed Flink runs stateful stream applications with windows and event-time processing. This option does not address the specified need for managed delivery and destination retries.
+- **D. Amazon MSK** — MSK provides managed Apache Kafka infrastructure for Kafka producers and consumers. This option does not address the specified need for managed delivery and destination retries.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon Kinesis Data Streams? - Amazon Kinesis Data Streams](https://docs.aws.amazon.com/streams/latest/dev/introduction.html)
+- [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
+- [What is Amazon Managed Service for Apache Flink? - Managed Service for Apache Flink](https://docs.aws.amazon.com/managed-flink/latest/java/what-is.html)
+- [Welcome to the Amazon MSK Developer Guide - Amazon Managed Streaming for Apache Kafka](https://docs.aws.amazon.com/msk/latest/developerguide/what-is-msk.html)
+
+</details>
+
+## #1031 · MLA-C01 Q1031 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An engineer must join two unbounded event streams using application state. Which service supplies a managed stream-processing runtime?
+
+A. Amazon Kinesis Data Streams
+B. Amazon MSK
+C. Amazon Data Firehose
+D. Amazon Managed Service for Apache Flink
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Amazon Managed Service for Apache Flink**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Stream storage, delivery, stateful processing, and Kafka hosting solve different tasks.
+
+#### Why this is correct
+
+- **D. Amazon Managed Service for Apache Flink** — Managed Flink runs stateful stream applications with windows and event-time processing. This matches the requirement for a runtime for stateful joins on unbounded streams.
+
+#### Why other options are incorrect
+
+- **A. Amazon Kinesis Data Streams** — Data Streams retains streaming records so consumers can read and replay them within the retention window. This option does not address the specified need for a runtime for stateful joins on unbounded streams.
+- **B. Amazon MSK** — MSK provides managed Apache Kafka infrastructure for Kafka producers and consumers. This option does not address the specified need for a runtime for stateful joins on unbounded streams.
+- **C. Amazon Data Firehose** — Firehose provides managed delivery into destinations, rather than a general replayable stream for independent consumers. This option does not address the specified need for a runtime for stateful joins on unbounded streams.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon Kinesis Data Streams? - Amazon Kinesis Data Streams](https://docs.aws.amazon.com/streams/latest/dev/introduction.html)
+- [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
+- [What is Amazon Managed Service for Apache Flink? - Managed Service for Apache Flink](https://docs.aws.amazon.com/managed-flink/latest/java/what-is.html)
+- [Welcome to the Amazon MSK Developer Guide - Amazon Managed Streaming for Apache Kafka](https://docs.aws.amazon.com/msk/latest/developerguide/what-is-msk.html)
+
+</details>
+
+## #1032 · MLA-C01 Q1032 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An organization uses Kafka consumer groups and topic partitions. It wants AWS to manage the brokers. Which service fits?
+
+A. Amazon Managed Service for Apache Flink
+B. Amazon Data Firehose
+C. Amazon Kinesis Data Streams
+D. Amazon MSK
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Amazon MSK**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Stream storage, delivery, stateful processing, and Kafka hosting solve different tasks.
+
+#### Why this is correct
+
+- **D. Amazon MSK** — MSK provides managed Apache Kafka infrastructure for Kafka producers and consumers. This matches the requirement for managed brokers for Kafka topics and consumer groups.
+
+#### Why other options are incorrect
+
+- **A. Amazon Managed Service for Apache Flink** — Managed Flink runs stateful stream applications with windows and event-time processing. This option does not address the specified need for managed brokers for Kafka topics and consumer groups.
+- **B. Amazon Data Firehose** — Firehose provides managed delivery into destinations, rather than a general replayable stream for independent consumers. This option does not address the specified need for managed brokers for Kafka topics and consumer groups.
+- **C. Amazon Kinesis Data Streams** — Data Streams retains streaming records so consumers can read and replay them within the retention window. This option does not address the specified need for managed brokers for Kafka topics and consumer groups.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon Kinesis Data Streams? - Amazon Kinesis Data Streams](https://docs.aws.amazon.com/streams/latest/dev/introduction.html)
+- [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
+- [What is Amazon Managed Service for Apache Flink? - Managed Service for Apache Flink](https://docs.aws.amazon.com/managed-flink/latest/java/what-is.html)
+- [Welcome to the Amazon MSK Developer Guide - Amazon Managed Streaming for Apache Kafka](https://docs.aws.amazon.com/msk/latest/developerguide/what-is-msk.html)
+
+</details>
+
+## #1033 · MLA-C01 Q1033 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+New dataset folders arrive in S3. The team wants automated discovery of their schema and partitions in the catalog. Which feature performs discovery?
+
+A. Glue classifier
+B. Glue job bookmark
+C. Glue crawler
+D. Glue Data Catalog table
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Glue crawler**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Glue metadata discovery and incremental processing are separate features.
+
+#### Why this is correct
+
+- **C. Glue crawler** — A crawler discovers source metadata and creates or updates Data Catalog tables and partitions. This matches the requirement for automated discovery of schema and partitions.
+
+#### Why other options are incorrect
+
+- **A. Glue classifier** — A classifier recognizes an input data format and determines its schema during crawling. This option does not address the specified need for automated discovery of schema and partitions.
+- **B. Glue job bookmark** — A bookmark tracks supported job input state so subsequent runs can avoid previously processed data. This option does not address the specified need for automated discovery of schema and partitions.
+- **D. Glue Data Catalog table** — A Data Catalog table stores metadata such as schema and storage location, rather than the underlying dataset. This option does not address the specified need for automated discovery of schema and partitions.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Using crawlers to populate the Data Catalog - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html)
+- [Defining and managing classifiers - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/add-classifier.html)
+- [Tracking processed data using job bookmarks - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html)
+- [Data discovery and cataloging in AWS Glue - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/catalog-and-crawler.html)
+
+</details>
+
+## #1034 · MLA-C01 Q1034 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A crawler cannot interpret a custom log record layout. Which feature defines how the crawler recognizes that layout?
+
+A. Glue classifier
+B. Glue Data Catalog table
+C. Glue crawler
+D. Glue job bookmark
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Glue classifier**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Glue metadata discovery and incremental processing are separate features.
+
+#### Why this is correct
+
+- **A. Glue classifier** — A classifier recognizes an input data format and determines its schema during crawling. This matches the requirement for a custom rule for recognizing the input format.
+
+#### Why other options are incorrect
+
+- **B. Glue Data Catalog table** — A Data Catalog table stores metadata such as schema and storage location, rather than the underlying dataset. This option does not address the specified need for a custom rule for recognizing the input format.
+- **C. Glue crawler** — A crawler discovers source metadata and creates or updates Data Catalog tables and partitions. This option does not address the specified need for a custom rule for recognizing the input format.
+- **D. Glue job bookmark** — A bookmark tracks supported job input state so subsequent runs can avoid previously processed data. This option does not address the specified need for a custom rule for recognizing the input format.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Using crawlers to populate the Data Catalog - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html)
+- [Defining and managing classifiers - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/add-classifier.html)
+- [Tracking processed data using job bookmarks - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html)
+- [Data discovery and cataloging in AWS Glue - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/catalog-and-crawler.html)
+
+</details>
+
+## #1035 · MLA-C01 Q1035 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A supported Glue job reprocesses all old input files every night. Which feature can track prior input processing between successful runs?
+
+A. Glue classifier
+B. Glue Data Catalog table
+C. Glue crawler
+D. Glue job bookmark
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Glue job bookmark**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Glue metadata discovery and incremental processing are separate features.
+
+#### Why this is correct
+
+- **D. Glue job bookmark** — A bookmark tracks supported job input state so subsequent runs can avoid previously processed data. This matches the requirement for persistent tracking of previously processed job inputs.
+
+#### Why other options are incorrect
+
+- **A. Glue classifier** — A classifier recognizes an input data format and determines its schema during crawling. This option does not address the specified need for persistent tracking of previously processed job inputs.
+- **B. Glue Data Catalog table** — A Data Catalog table stores metadata such as schema and storage location, rather than the underlying dataset. This option does not address the specified need for persistent tracking of previously processed job inputs.
+- **C. Glue crawler** — A crawler discovers source metadata and creates or updates Data Catalog tables and partitions. This option does not address the specified need for persistent tracking of previously processed job inputs.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Using crawlers to populate the Data Catalog - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html)
+- [Defining and managing classifiers - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/add-classifier.html)
+- [Tracking processed data using job bookmarks - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html)
+- [Data discovery and cataloging in AWS Glue - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/catalog-and-crawler.html)
+
+</details>
+
+## #1036 · MLA-C01 Q1036 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An Athena integration needs the centralized definition of columns and the S3 location, without copying the data. Which resource stores this information?
+
+A. Glue classifier
+B. Glue job bookmark
+C. Glue Data Catalog table
+D. Glue crawler
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Glue Data Catalog table**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Glue metadata discovery and incremental processing are separate features.
+
+#### Why this is correct
+
+- **C. Glue Data Catalog table** — A Data Catalog table stores metadata such as schema and storage location, rather than the underlying dataset. This matches the requirement for a metadata definition of schema and location.
+
+#### Why other options are incorrect
+
+- **A. Glue classifier** — A classifier recognizes an input data format and determines its schema during crawling. This option does not address the specified need for a metadata definition of schema and location.
+- **B. Glue job bookmark** — A bookmark tracks supported job input state so subsequent runs can avoid previously processed data. This option does not address the specified need for a metadata definition of schema and location.
+- **D. Glue crawler** — A crawler discovers source metadata and creates or updates Data Catalog tables and partitions. This option does not address the specified need for a metadata definition of schema and location.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Using crawlers to populate the Data Catalog - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html)
+- [Defining and managing classifiers - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/add-classifier.html)
+- [Tracking processed data using job bookmarks - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html)
+- [Data discovery and cataloging in AWS Glue - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/catalog-and-crawler.html)
+
+</details>
+
+## #1037 · MLA-C01 Q1037 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A database adds tables that analysts need to discover automatically. Which Glue component scans the configured data source for metadata?
+
+A. Glue job bookmark
+B. Glue crawler
+C. Glue Data Catalog table
+D. Glue classifier
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Glue crawler**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Glue metadata discovery and incremental processing are separate features.
+
+#### Why this is correct
+
+- **B. Glue crawler** — A crawler discovers source metadata and creates or updates Data Catalog tables and partitions. This matches the requirement for automatic metadata scanning of a data source.
+
+#### Why other options are incorrect
+
+- **A. Glue job bookmark** — A bookmark tracks supported job input state so subsequent runs can avoid previously processed data. This option does not address the specified need for automatic metadata scanning of a data source.
+- **C. Glue Data Catalog table** — A Data Catalog table stores metadata such as schema and storage location, rather than the underlying dataset. This option does not address the specified need for automatic metadata scanning of a data source.
+- **D. Glue classifier** — A classifier recognizes an input data format and determines its schema during crawling. This option does not address the specified need for automatic metadata scanning of a data source.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Using crawlers to populate the Data Catalog - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html)
+- [Defining and managing classifiers - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/add-classifier.html)
+- [Tracking processed data using job bookmarks - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html)
+- [Data discovery and cataloging in AWS Glue - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/catalog-and-crawler.html)
+
+</details>
+
+## #1038 · MLA-C01 Q1038 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Several text files use a record syntax the built-in parsers cannot recognize. Which crawler component can be customized for parsing?
+
+A. Glue job bookmark
+B. Glue crawler
+C. Glue classifier
+D. Glue Data Catalog table
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Glue classifier**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Glue metadata discovery and incremental processing are separate features.
+
+#### Why this is correct
+
+- **C. Glue classifier** — A classifier recognizes an input data format and determines its schema during crawling. This matches the requirement for custom input-format recognition during crawling.
+
+#### Why other options are incorrect
+
+- **A. Glue job bookmark** — A bookmark tracks supported job input state so subsequent runs can avoid previously processed data. This option does not address the specified need for custom input-format recognition during crawling.
+- **B. Glue crawler** — A crawler discovers source metadata and creates or updates Data Catalog tables and partitions. This option does not address the specified need for custom input-format recognition during crawling.
+- **D. Glue Data Catalog table** — A Data Catalog table stores metadata such as schema and storage location, rather than the underlying dataset. This option does not address the specified need for custom input-format recognition during crawling.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Using crawlers to populate the Data Catalog - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html)
+- [Defining and managing classifiers - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/add-classifier.html)
+- [Tracking processed data using job bookmarks - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html)
+- [Data discovery and cataloging in AWS Glue - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/catalog-and-crawler.html)
+
+</details>
+
+## #1039 · MLA-C01 Q1039 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An engineer resets incremental processing state to reprocess previously handled source data. Which Glue feature's state is being reset?
+
+A. Glue classifier
+B. Glue crawler
+C. Glue job bookmark
+D. Glue Data Catalog table
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Glue job bookmark**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Glue metadata discovery and incremental processing are separate features.
+
+#### Why this is correct
+
+- **C. Glue job bookmark** — A bookmark tracks supported job input state so subsequent runs can avoid previously processed data. This matches the requirement for state used for incremental input processing.
+
+#### Why other options are incorrect
+
+- **A. Glue classifier** — A classifier recognizes an input data format and determines its schema during crawling. This option does not address the specified need for state used for incremental input processing.
+- **B. Glue crawler** — A crawler discovers source metadata and creates or updates Data Catalog tables and partitions. This option does not address the specified need for state used for incremental input processing.
+- **D. Glue Data Catalog table** — A Data Catalog table stores metadata such as schema and storage location, rather than the underlying dataset. This option does not address the specified need for state used for incremental input processing.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Using crawlers to populate the Data Catalog - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html)
+- [Defining and managing classifiers - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/add-classifier.html)
+- [Tracking processed data using job bookmarks - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html)
+- [Data discovery and cataloging in AWS Glue - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/catalog-and-crawler.html)
+
+</details>
+
+## #1040 · MLA-C01 Q1040 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A team incorrectly expects its catalog definition to contain the actual training records. Which resource contains their schema and pointers instead?
+
+A. Glue Data Catalog table
+B. Glue classifier
+C. Glue crawler
+D. Glue job bookmark
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Glue Data Catalog table**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Glue metadata discovery and incremental processing are separate features.
+
+#### Why this is correct
+
+- **A. Glue Data Catalog table** — A Data Catalog table stores metadata such as schema and storage location, rather than the underlying dataset. This matches the requirement for metadata pointers rather than stored training records.
+
+#### Why other options are incorrect
+
+- **B. Glue classifier** — A classifier recognizes an input data format and determines its schema during crawling. This option does not address the specified need for metadata pointers rather than stored training records.
+- **C. Glue crawler** — A crawler discovers source metadata and creates or updates Data Catalog tables and partitions. This option does not address the specified need for metadata pointers rather than stored training records.
+- **D. Glue job bookmark** — A bookmark tracks supported job input state so subsequent runs can avoid previously processed data. This option does not address the specified need for metadata pointers rather than stored training records.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Using crawlers to populate the Data Catalog - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html)
+- [Defining and managing classifiers - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/add-classifier.html)
+- [Tracking processed data using job bookmarks - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html)
+- [Data discovery and cataloging in AWS Glue - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/catalog-and-crawler.html)
+
+</details>
+
+## #1041 · MLA-C01 Q1041 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A table stores several years of events. Nearly every query selects one calendar day, but the current layout mixes all dates. Which change targets this waste?
+
+A. Compact many tiny files into fewer larger files
+B. Convert row-oriented data to Parquet
+C. Use partition projection for a predictable partition layout
+D. Partition by a commonly filtered date field
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Partition by a commonly filtered date field**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Optimize the part of a data scan that causes the measured overhead.
+
+#### Why this is correct
+
+- **D. Partition by a commonly filtered date field** — Date partitions let compatible predicates exclude entire groups of objects from a scan. This matches the requirement for pruning objects by the queried date.
+
+#### Why other options are incorrect
+
+- **A. Compact many tiny files into fewer larger files** — Compaction reduces file-opening and listing overhead for workloads dominated by tiny objects. This option does not address the specified need for pruning objects by the queried date.
+- **B. Convert row-oriented data to Parquet** — Columnar Parquet reduces reads of unneeded columns in analytical queries. This option does not address the specified need for pruning objects by the queried date.
+- **C. Use partition projection for a predictable partition layout** — Partition projection computes partition values and locations without retrieving stored partition metadata for each value. This option does not address the specified need for pruning objects by the queried date.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Partition your data - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/partitions.html)
+- [Use columnar storage formats - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html)
+- [Optimize data - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/performance-tuning-data-optimization-techniques.html)
+
+</details>
+
+## #1042 · MLA-C01 Q1042 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Queries select five fields from wide CSV rows. The date filter is already efficient. Which change targets unnecessary column scans?
+
+A. Partition by a commonly filtered date field
+B. Convert row-oriented data to Parquet
+C. Use partition projection for a predictable partition layout
+D. Compact many tiny files into fewer larger files
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Convert row-oriented data to Parquet**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Optimize the part of a data scan that causes the measured overhead.
+
+#### Why this is correct
+
+- **B. Convert row-oriented data to Parquet** — Columnar Parquet reduces reads of unneeded columns in analytical queries. This matches the requirement for selective reading of columns rather than full rows.
+
+#### Why other options are incorrect
+
+- **A. Partition by a commonly filtered date field** — Date partitions let compatible predicates exclude entire groups of objects from a scan. This option does not address the specified need for selective reading of columns rather than full rows.
+- **C. Use partition projection for a predictable partition layout** — Partition projection computes partition values and locations without retrieving stored partition metadata for each value. This option does not address the specified need for selective reading of columns rather than full rows.
+- **D. Compact many tiny files into fewer larger files** — Compaction reduces file-opening and listing overhead for workloads dominated by tiny objects. This option does not address the specified need for selective reading of columns rather than full rows.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Partition your data - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/partitions.html)
+- [Use columnar storage formats - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html)
+- [Optimize data - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/performance-tuning-data-optimization-techniques.html)
+
+</details>
+
+## #1043 · MLA-C01 Q1043 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A preprocessing stage writes millions of tiny objects. Query time is dominated by opening files rather than reading useful bytes. Which change targets this overhead?
+
+A. Compact many tiny files into fewer larger files
+B. Partition by a commonly filtered date field
+C. Use partition projection for a predictable partition layout
+D. Convert row-oriented data to Parquet
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Compact many tiny files into fewer larger files**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Optimize the part of a data scan that causes the measured overhead.
+
+#### Why this is correct
+
+- **A. Compact many tiny files into fewer larger files** — Compaction reduces file-opening and listing overhead for workloads dominated by tiny objects. This matches the requirement for fewer file-opening operations.
+
+#### Why other options are incorrect
+
+- **B. Partition by a commonly filtered date field** — Date partitions let compatible predicates exclude entire groups of objects from a scan. This option does not address the specified need for fewer file-opening operations.
+- **C. Use partition projection for a predictable partition layout** — Partition projection computes partition values and locations without retrieving stored partition metadata for each value. This option does not address the specified need for fewer file-opening operations.
+- **D. Convert row-oriented data to Parquet** — Columnar Parquet reduces reads of unneeded columns in analytical queries. This option does not address the specified need for fewer file-opening operations.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Partition your data - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/partitions.html)
+- [Use columnar storage formats - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html)
+- [Optimize data - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/performance-tuning-data-optimization-techniques.html)
+
+</details>
+
+## #1044 · MLA-C01 Q1044 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An Athena table has a predictable date partition path and excessive catalog partition lookup overhead. Which feature can calculate the partition locations?
+
+A. Use partition projection for a predictable partition layout
+B. Compact many tiny files into fewer larger files
+C. Convert row-oriented data to Parquet
+D. Partition by a commonly filtered date field
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Use partition projection for a predictable partition layout**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Optimize the part of a data scan that causes the measured overhead.
+
+#### Why this is correct
+
+- **A. Use partition projection for a predictable partition layout** — Partition projection computes partition values and locations without retrieving stored partition metadata for each value. This matches the requirement for computed partition metadata for a predictable layout.
+
+#### Why other options are incorrect
+
+- **B. Compact many tiny files into fewer larger files** — Compaction reduces file-opening and listing overhead for workloads dominated by tiny objects. This option does not address the specified need for computed partition metadata for a predictable layout.
+- **C. Convert row-oriented data to Parquet** — Columnar Parquet reduces reads of unneeded columns in analytical queries. This option does not address the specified need for computed partition metadata for a predictable layout.
+- **D. Partition by a commonly filtered date field** — Date partitions let compatible predicates exclude entire groups of objects from a scan. This option does not address the specified need for computed partition metadata for a predictable layout.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Partition your data - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/partitions.html)
+- [Use columnar storage formats - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html)
+- [Optimize data - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/performance-tuning-data-optimization-techniques.html)
+
+</details>
+
+## #1045 · MLA-C01 Q1045 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A training query always filters on ingestion day. The storage layout currently prevents elimination of unrelated days. Which change supports that elimination?
+
+A. Convert row-oriented data to Parquet
+B. Partition by a commonly filtered date field
+C. Use partition projection for a predictable partition layout
+D. Compact many tiny files into fewer larger files
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Partition by a commonly filtered date field**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Optimize the part of a data scan that causes the measured overhead.
+
+#### Why this is correct
+
+- **B. Partition by a commonly filtered date field** — Date partitions let compatible predicates exclude entire groups of objects from a scan. This matches the requirement for object-level pruning using ingestion dates.
+
+#### Why other options are incorrect
+
+- **A. Convert row-oriented data to Parquet** — Columnar Parquet reduces reads of unneeded columns in analytical queries. This option does not address the specified need for object-level pruning using ingestion dates.
+- **C. Use partition projection for a predictable partition layout** — Partition projection computes partition values and locations without retrieving stored partition metadata for each value. This option does not address the specified need for object-level pruning using ingestion dates.
+- **D. Compact many tiny files into fewer larger files** — Compaction reduces file-opening and listing overhead for workloads dominated by tiny objects. This option does not address the specified need for object-level pruning using ingestion dates.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Partition your data - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/partitions.html)
+- [Use columnar storage formats - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html)
+- [Optimize data - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/performance-tuning-data-optimization-techniques.html)
+
+</details>
+
+## #1046 · MLA-C01 Q1046 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An analyst reads two numerical fields from records containing hundreds of unused attributes. Which storage-layout change reduces bytes scanned by column?
+
+A. Use partition projection for a predictable partition layout
+B. Partition by a commonly filtered date field
+C. Compact many tiny files into fewer larger files
+D. Convert row-oriented data to Parquet
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Convert row-oriented data to Parquet**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Optimize the part of a data scan that causes the measured overhead.
+
+#### Why this is correct
+
+- **D. Convert row-oriented data to Parquet** — Columnar Parquet reduces reads of unneeded columns in analytical queries. This matches the requirement for column pruning in analytical scans.
+
+#### Why other options are incorrect
+
+- **A. Use partition projection for a predictable partition layout** — Partition projection computes partition values and locations without retrieving stored partition metadata for each value. This option does not address the specified need for column pruning in analytical scans.
+- **B. Partition by a commonly filtered date field** — Date partitions let compatible predicates exclude entire groups of objects from a scan. This option does not address the specified need for column pruning in analytical scans.
+- **C. Compact many tiny files into fewer larger files** — Compaction reduces file-opening and listing overhead for workloads dominated by tiny objects. This option does not address the specified need for column pruning in analytical scans.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Partition your data - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/partitions.html)
+- [Use columnar storage formats - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html)
+- [Optimize data - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/performance-tuning-data-optimization-techniques.html)
+
+</details>
+
+## #1047 · MLA-C01 Q1047 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+ETL output consists of one small file per event. Each new query spends most of its time on per-file work. Which remedy addresses the cause?
+
+A. Convert row-oriented data to Parquet
+B. Compact many tiny files into fewer larger files
+C. Partition by a commonly filtered date field
+D. Use partition projection for a predictable partition layout
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Compact many tiny files into fewer larger files**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Optimize the part of a data scan that causes the measured overhead.
+
+#### Why this is correct
+
+- **B. Compact many tiny files into fewer larger files** — Compaction reduces file-opening and listing overhead for workloads dominated by tiny objects. This matches the requirement for reducing the number of tiny files.
+
+#### Why other options are incorrect
+
+- **A. Convert row-oriented data to Parquet** — Columnar Parquet reduces reads of unneeded columns in analytical queries. This option does not address the specified need for reducing the number of tiny files.
+- **C. Partition by a commonly filtered date field** — Date partitions let compatible predicates exclude entire groups of objects from a scan. This option does not address the specified need for reducing the number of tiny files.
+- **D. Use partition projection for a predictable partition layout** — Partition projection computes partition values and locations without retrieving stored partition metadata for each value. This option does not address the specified need for reducing the number of tiny files.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Partition your data - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/partitions.html)
+- [Use columnar storage formats - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html)
+- [Optimize data - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/performance-tuning-data-optimization-techniques.html)
+
+</details>
+
+## #1048 · MLA-C01 Q1048 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Adding thousands of predictable daily partitions through catalog updates has become operationally expensive. Which Athena feature can avoid those individual registrations?
+
+A. Partition by a commonly filtered date field
+B. Convert row-oriented data to Parquet
+C. Compact many tiny files into fewer larger files
+D. Use partition projection for a predictable partition layout
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Use partition projection for a predictable partition layout**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Optimize the part of a data scan that causes the measured overhead.
+
+#### Why this is correct
+
+- **D. Use partition projection for a predictable partition layout** — Partition projection computes partition values and locations without retrieving stored partition metadata for each value. This matches the requirement for derived partitions without individual catalog registration.
+
+#### Why other options are incorrect
+
+- **A. Partition by a commonly filtered date field** — Date partitions let compatible predicates exclude entire groups of objects from a scan. This option does not address the specified need for derived partitions without individual catalog registration.
+- **B. Convert row-oriented data to Parquet** — Columnar Parquet reduces reads of unneeded columns in analytical queries. This option does not address the specified need for derived partitions without individual catalog registration.
+- **C. Compact many tiny files into fewer larger files** — Compaction reduces file-opening and listing overhead for workloads dominated by tiny objects. This option does not address the specified need for derived partitions without individual catalog registration.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Partition your data - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/partitions.html)
+- [Use columnar storage formats - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html)
+- [Optimize data - Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/performance-tuning-data-optimization-techniques.html)
+
+</details>
+
+## #1049 · MLA-C01 Q1049 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Distance-based training is dominated by annual revenue because its scale dwarfs other continuous features. Which transformation addresses this scale difference?
+
+A. One-hot encode the category
+B. Standardize using training-set mean and standard deviation
+C. Impute with a statistic fitted on training data
+D. Use an explicitly defined ordinal mapping
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Standardize using training-set mean and standard deviation**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Feature transformations must preserve the meaning of the source attribute.
+
+#### Why this is correct
+
+- **B. Standardize using training-set mean and standard deviation** — Standardization rescales numerical features relative to statistics fitted on the training data. This matches the requirement for rescaling continuous features using training statistics.
+
+#### Why other options are incorrect
+
+- **A. One-hot encode the category** — One-hot encoding represents nominal categories as separate indicator features without an artificial order. This option does not address the specified need for rescaling continuous features using training statistics.
+- **C. Impute with a statistic fitted on training data** — Imputation replaces missing values with values determined without learning from validation or test data. This option does not address the specified need for rescaling continuous features using training statistics.
+- **D. Use an explicitly defined ordinal mapping** — Ordinal encoding preserves a real ordering between categories when that order has domain meaning. This option does not address the specified need for rescaling continuous features using training statistics.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Transform Data - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html)
+- [Data preprocessing - Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/data-preprocessing.html)
+
+</details>
+
+## #1050 · MLA-C01 Q1050 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A feature contains country names with no meaningful ranking. Which representation avoids implying that one country is numerically greater than another?
+
+A. Impute with a statistic fitted on training data
+B. One-hot encode the category
+C. Use an explicitly defined ordinal mapping
+D. Standardize using training-set mean and standard deviation
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. One-hot encode the category**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Feature transformations must preserve the meaning of the source attribute.
+
+#### Why this is correct
+
+- **B. One-hot encode the category** — One-hot encoding represents nominal categories as separate indicator features without an artificial order. This matches the requirement for unordered categorical indicators.
+
+#### Why other options are incorrect
+
+- **A. Impute with a statistic fitted on training data** — Imputation replaces missing values with values determined without learning from validation or test data. This option does not address the specified need for unordered categorical indicators.
+- **C. Use an explicitly defined ordinal mapping** — Ordinal encoding preserves a real ordering between categories when that order has domain meaning. This option does not address the specified need for unordered categorical indicators.
+- **D. Standardize using training-set mean and standard deviation** — Standardization rescales numerical features relative to statistics fitted on the training data. This option does not address the specified need for unordered categorical indicators.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Transform Data - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html)
+- [Data preprocessing - Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/data-preprocessing.html)
+
+</details>
+
+## #1051 · MLA-C01 Q1051 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A feature contains approved risk levels low, medium, and high. The model must preserve their known ordering. Which representation fits?
+
+A. Use an explicitly defined ordinal mapping
+B. One-hot encode the category
+C. Impute with a statistic fitted on training data
+D. Standardize using training-set mean and standard deviation
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Use an explicitly defined ordinal mapping**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Feature transformations must preserve the meaning of the source attribute.
+
+#### Why this is correct
+
+- **A. Use an explicitly defined ordinal mapping** — Ordinal encoding preserves a real ordering between categories when that order has domain meaning. This matches the requirement for an explicit ordering of risk categories.
+
+#### Why other options are incorrect
+
+- **B. One-hot encode the category** — One-hot encoding represents nominal categories as separate indicator features without an artificial order. This option does not address the specified need for an explicit ordering of risk categories.
+- **C. Impute with a statistic fitted on training data** — Imputation replaces missing values with values determined without learning from validation or test data. This option does not address the specified need for an explicit ordering of risk categories.
+- **D. Standardize using training-set mean and standard deviation** — Standardization rescales numerical features relative to statistics fitted on the training data. This option does not address the specified need for an explicit ordering of risk categories.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Transform Data - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html)
+- [Data preprocessing - Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/data-preprocessing.html)
+
+</details>
+
+## #1052 · MLA-C01 Q1052 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A training dataset contains missing ages. The pipeline must fill these values without learning from the test set. Which transformation fits?
+
+A. Standardize using training-set mean and standard deviation
+B. Use an explicitly defined ordinal mapping
+C. Impute with a statistic fitted on training data
+D. One-hot encode the category
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Impute with a statistic fitted on training data**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Feature transformations must preserve the meaning of the source attribute.
+
+#### Why this is correct
+
+- **C. Impute with a statistic fitted on training data** — Imputation replaces missing values with values determined without learning from validation or test data. This matches the requirement for replacement of missing values using training-only statistics.
+
+#### Why other options are incorrect
+
+- **A. Standardize using training-set mean and standard deviation** — Standardization rescales numerical features relative to statistics fitted on the training data. This option does not address the specified need for replacement of missing values using training-only statistics.
+- **B. Use an explicitly defined ordinal mapping** — Ordinal encoding preserves a real ordering between categories when that order has domain meaning. This option does not address the specified need for replacement of missing values using training-only statistics.
+- **D. One-hot encode the category** — One-hot encoding represents nominal categories as separate indicator features without an artificial order. This option does not address the specified need for replacement of missing values using training-only statistics.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Transform Data - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html)
+- [Data preprocessing - Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/data-preprocessing.html)
+
+</details>
+
+## #1053 · MLA-C01 Q1053 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A linear model uses continuous measurements in incompatible units. The team wants centered features with comparable variance. Which transformation fits?
+
+A. Use an explicitly defined ordinal mapping
+B. Impute with a statistic fitted on training data
+C. One-hot encode the category
+D. Standardize using training-set mean and standard deviation
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Standardize using training-set mean and standard deviation**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Feature transformations must preserve the meaning of the source attribute.
+
+#### Why this is correct
+
+- **D. Standardize using training-set mean and standard deviation** — Standardization rescales numerical features relative to statistics fitted on the training data. This matches the requirement for centering and variance scaling of numeric features.
+
+#### Why other options are incorrect
+
+- **A. Use an explicitly defined ordinal mapping** — Ordinal encoding preserves a real ordering between categories when that order has domain meaning. This option does not address the specified need for centering and variance scaling of numeric features.
+- **B. Impute with a statistic fitted on training data** — Imputation replaces missing values with values determined without learning from validation or test data. This option does not address the specified need for centering and variance scaling of numeric features.
+- **C. One-hot encode the category** — One-hot encoding represents nominal categories as separate indicator features without an artificial order. This option does not address the specified need for centering and variance scaling of numeric features.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Transform Data - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html)
+- [Data preprocessing - Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/data-preprocessing.html)
+
+</details>
+
+## #1054 · MLA-C01 Q1054 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A categorical device-type column contains printer, router, and camera. No order exists between the values. Which encoding fits?
+
+A. One-hot encode the category
+B. Standardize using training-set mean and standard deviation
+C. Use an explicitly defined ordinal mapping
+D. Impute with a statistic fitted on training data
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. One-hot encode the category**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Feature transformations must preserve the meaning of the source attribute.
+
+#### Why this is correct
+
+- **A. One-hot encode the category** — One-hot encoding represents nominal categories as separate indicator features without an artificial order. This matches the requirement for a category representation without artificial rank.
+
+#### Why other options are incorrect
+
+- **B. Standardize using training-set mean and standard deviation** — Standardization rescales numerical features relative to statistics fitted on the training data. This option does not address the specified need for a category representation without artificial rank.
+- **C. Use an explicitly defined ordinal mapping** — Ordinal encoding preserves a real ordering between categories when that order has domain meaning. This option does not address the specified need for a category representation without artificial rank.
+- **D. Impute with a statistic fitted on training data** — Imputation replaces missing values with values determined without learning from validation or test data. This option does not address the specified need for a category representation without artificial rank.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Transform Data - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html)
+- [Data preprocessing - Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/data-preprocessing.html)
+
+</details>
+
+## #1055 · MLA-C01 Q1055 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An inspection rubric defines levels bronze, silver, and gold as progressively better. Which encoding explicitly retains this ranking?
+
+A. One-hot encode the category
+B. Use an explicitly defined ordinal mapping
+C. Impute with a statistic fitted on training data
+D. Standardize using training-set mean and standard deviation
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Use an explicitly defined ordinal mapping**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Feature transformations must preserve the meaning of the source attribute.
+
+#### Why this is correct
+
+- **B. Use an explicitly defined ordinal mapping** — Ordinal encoding preserves a real ordering between categories when that order has domain meaning. This matches the requirement for preservation of a known category ranking.
+
+#### Why other options are incorrect
+
+- **A. One-hot encode the category** — One-hot encoding represents nominal categories as separate indicator features without an artificial order. This option does not address the specified need for preservation of a known category ranking.
+- **C. Impute with a statistic fitted on training data** — Imputation replaces missing values with values determined without learning from validation or test data. This option does not address the specified need for preservation of a known category ranking.
+- **D. Standardize using training-set mean and standard deviation** — Standardization rescales numerical features relative to statistics fitted on the training data. This option does not address the specified need for preservation of a known category ranking.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Transform Data - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html)
+- [Data preprocessing - Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/data-preprocessing.html)
+
+</details>
+
+## #1056 · MLA-C01 Q1056 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+The same learned replacement values must be applied to training and future requests with missing inputs. Which preprocessing step provides them?
+
+A. One-hot encode the category
+B. Standardize using training-set mean and standard deviation
+C. Use an explicitly defined ordinal mapping
+D. Impute with a statistic fitted on training data
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Impute with a statistic fitted on training data**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Feature transformations must preserve the meaning of the source attribute.
+
+#### Why this is correct
+
+- **D. Impute with a statistic fitted on training data** — Imputation replaces missing values with values determined without learning from validation or test data. This matches the requirement for a fitted rule for replacing missing inputs.
+
+#### Why other options are incorrect
+
+- **A. One-hot encode the category** — One-hot encoding represents nominal categories as separate indicator features without an artificial order. This option does not address the specified need for a fitted rule for replacing missing inputs.
+- **B. Standardize using training-set mean and standard deviation** — Standardization rescales numerical features relative to statistics fitted on the training data. This option does not address the specified need for a fitted rule for replacing missing inputs.
+- **C. Use an explicitly defined ordinal mapping** — Ordinal encoding preserves a real ordering between categories when that order has domain meaning. This option does not address the specified need for a fitted rule for replacing missing inputs.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Transform Data - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html)
+- [Data preprocessing - Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/data-preprocessing.html)
+
+</details>
+
+## #1057 · MLA-C01 Q1057 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A forecast predicts next month's demand. A random split lets the model train on records later than some validation examples. Which change fixes this evaluation design?
+
+A. Use a chronological split
+B. Keep each entity entirely within one split
+C. Fit preprocessing on training data only
+D. Use a stratified split
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Use a chronological split**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Evaluation data must represent deployment conditions without leaking information into training.
+
+#### Why this is correct
+
+- **A. Use a chronological split** — A chronological split trains on earlier records and evaluates on later records to model future prediction. This matches the requirement for evaluation on future records relative to training.
+
+#### Why other options are incorrect
+
+- **B. Keep each entity entirely within one split** — Group-based splitting prevents records from the same entity from appearing in both training and evaluation sets. This option does not address the specified need for evaluation on future records relative to training.
+- **C. Fit preprocessing on training data only** — Training-only fitting keeps evaluation statistics out of learned preprocessing parameters. This option does not address the specified need for evaluation on future records relative to training.
+- **D. Use a stratified split** — Stratification preserves class proportions across splits when observations are otherwise independent. This option does not address the specified need for evaluation on future records relative to training.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Splits and data leakage - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html)
+
+</details>
+
+## #1058 · MLA-C01 Q1058 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Many images come from each patient. Random image splitting puts the same patients in training and test sets. Which change prevents identity leakage?
+
+A. Fit preprocessing on training data only
+B. Use a chronological split
+C. Use a stratified split
+D. Keep each entity entirely within one split
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Keep each entity entirely within one split**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Evaluation data must represent deployment conditions without leaking information into training.
+
+#### Why this is correct
+
+- **D. Keep each entity entirely within one split** — Group-based splitting prevents records from the same entity from appearing in both training and evaluation sets. This matches the requirement for separation of patients across dataset splits.
+
+#### Why other options are incorrect
+
+- **A. Fit preprocessing on training data only** — Training-only fitting keeps evaluation statistics out of learned preprocessing parameters. This option does not address the specified need for separation of patients across dataset splits.
+- **B. Use a chronological split** — A chronological split trains on earlier records and evaluates on later records to model future prediction. This option does not address the specified need for separation of patients across dataset splits.
+- **C. Use a stratified split** — Stratification preserves class proportions across splits when observations are otherwise independent. This option does not address the specified need for separation of patients across dataset splits.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Splits and data leakage - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html)
+
+</details>
+
+## #1059 · MLA-C01 Q1059 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A scaler currently computes mean and variance from the complete dataset before the split. Which change removes the leakage?
+
+A. Use a stratified split
+B. Use a chronological split
+C. Keep each entity entirely within one split
+D. Fit preprocessing on training data only
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Fit preprocessing on training data only**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Evaluation data must represent deployment conditions without leaking information into training.
+
+#### Why this is correct
+
+- **D. Fit preprocessing on training data only** — Training-only fitting keeps evaluation statistics out of learned preprocessing parameters. This matches the requirement for preprocessing parameters learned without evaluation data.
+
+#### Why other options are incorrect
+
+- **A. Use a stratified split** — Stratification preserves class proportions across splits when observations are otherwise independent. This option does not address the specified need for preprocessing parameters learned without evaluation data.
+- **B. Use a chronological split** — A chronological split trains on earlier records and evaluates on later records to model future prediction. This option does not address the specified need for preprocessing parameters learned without evaluation data.
+- **C. Keep each entity entirely within one split** — Group-based splitting prevents records from the same entity from appearing in both training and evaluation sets. This option does not address the specified need for preprocessing parameters learned without evaluation data.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Splits and data leakage - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html)
+
+</details>
+
+## #1060 · MLA-C01 Q1060 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Independent examples contain a rare target class. A small random validation set sometimes contains no positive examples. Which split strategy addresses this?
+
+A. Fit preprocessing on training data only
+B. Keep each entity entirely within one split
+C. Use a chronological split
+D. Use a stratified split
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Use a stratified split**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Evaluation data must represent deployment conditions without leaking information into training.
+
+#### Why this is correct
+
+- **D. Use a stratified split** — Stratification preserves class proportions across splits when observations are otherwise independent. This matches the requirement for preservation of class proportions in each split.
+
+#### Why other options are incorrect
+
+- **A. Fit preprocessing on training data only** — Training-only fitting keeps evaluation statistics out of learned preprocessing parameters. This option does not address the specified need for preservation of class proportions in each split.
+- **B. Keep each entity entirely within one split** — Group-based splitting prevents records from the same entity from appearing in both training and evaluation sets. This option does not address the specified need for preservation of class proportions in each split.
+- **C. Use a chronological split** — A chronological split trains on earlier records and evaluates on later records to model future prediction. This option does not address the specified need for preservation of class proportions in each split.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Splits and data leakage - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html)
+
+</details>
+
+## #1061 · MLA-C01 Q1061 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A backtest must reflect what data was available at each prediction date. Which splitting strategy respects that temporal constraint?
+
+A. Keep each entity entirely within one split
+B. Use a chronological split
+C. Use a stratified split
+D. Fit preprocessing on training data only
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Use a chronological split**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Evaluation data must represent deployment conditions without leaking information into training.
+
+#### Why this is correct
+
+- **B. Use a chronological split** — A chronological split trains on earlier records and evaluates on later records to model future prediction. This matches the requirement for training and evaluation separated by time.
+
+#### Why other options are incorrect
+
+- **A. Keep each entity entirely within one split** — Group-based splitting prevents records from the same entity from appearing in both training and evaluation sets. This option does not address the specified need for training and evaluation separated by time.
+- **C. Use a stratified split** — Stratification preserves class proportions across splits when observations are otherwise independent. This option does not address the specified need for training and evaluation separated by time.
+- **D. Fit preprocessing on training data only** — Training-only fitting keeps evaluation statistics out of learned preprocessing parameters. This option does not address the specified need for training and evaluation separated by time.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Splits and data leakage - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html)
+
+</details>
+
+## #1062 · MLA-C01 Q1062 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Customer records repeat over many rows. The test measures generalization to entirely new customers. Which split rule matches that objective?
+
+A. Use a stratified split
+B. Keep each entity entirely within one split
+C. Use a chronological split
+D. Fit preprocessing on training data only
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Keep each entity entirely within one split**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Evaluation data must represent deployment conditions without leaking information into training.
+
+#### Why this is correct
+
+- **B. Keep each entity entirely within one split** — Group-based splitting prevents records from the same entity from appearing in both training and evaluation sets. This matches the requirement for evaluation on customers absent from training.
+
+#### Why other options are incorrect
+
+- **A. Use a stratified split** — Stratification preserves class proportions across splits when observations are otherwise independent. This option does not address the specified need for evaluation on customers absent from training.
+- **C. Use a chronological split** — A chronological split trains on earlier records and evaluates on later records to model future prediction. This option does not address the specified need for evaluation on customers absent from training.
+- **D. Fit preprocessing on training data only** — Training-only fitting keeps evaluation statistics out of learned preprocessing parameters. This option does not address the specified need for evaluation on customers absent from training.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Splits and data leakage - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html)
+
+</details>
+
+## #1063 · MLA-C01 Q1063 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Missing-value replacements use the median of both training and validation rows. Which change preserves an independent validation set?
+
+A. Keep each entity entirely within one split
+B. Use a chronological split
+C. Use a stratified split
+D. Fit preprocessing on training data only
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Fit preprocessing on training data only**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Evaluation data must represent deployment conditions without leaking information into training.
+
+#### Why this is correct
+
+- **D. Fit preprocessing on training data only** — Training-only fitting keeps evaluation statistics out of learned preprocessing parameters. This matches the requirement for imputation parameters fitted only on training rows.
+
+#### Why other options are incorrect
+
+- **A. Keep each entity entirely within one split** — Group-based splitting prevents records from the same entity from appearing in both training and evaluation sets. This option does not address the specified need for imputation parameters fitted only on training rows.
+- **B. Use a chronological split** — A chronological split trains on earlier records and evaluates on later records to model future prediction. This option does not address the specified need for imputation parameters fitted only on training rows.
+- **C. Use a stratified split** — Stratification preserves class proportions across splits when observations are otherwise independent. This option does not address the specified need for imputation parameters fitted only on training rows.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Splits and data leakage - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html)
+
+</details>
+
+## #1064 · MLA-C01 Q1064 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A binary classifier uses independent rows, and both classes must appear in similar proportions in every holdout set. Which split fits?
+
+A. Fit preprocessing on training data only
+B. Use a chronological split
+C. Keep each entity entirely within one split
+D. Use a stratified split
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Use a stratified split**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Evaluation data must represent deployment conditions without leaking information into training.
+
+#### Why this is correct
+
+- **D. Use a stratified split** — Stratification preserves class proportions across splits when observations are otherwise independent. This matches the requirement for class-proportion preservation for independent rows.
+
+#### Why other options are incorrect
+
+- **A. Fit preprocessing on training data only** — Training-only fitting keeps evaluation statistics out of learned preprocessing parameters. This option does not address the specified need for class-proportion preservation for independent rows.
+- **B. Use a chronological split** — A chronological split trains on earlier records and evaluates on later records to model future prediction. This option does not address the specified need for class-proportion preservation for independent rows.
+- **C. Keep each entity entirely within one split** — Group-based splitting prevents records from the same entity from appearing in both training and evaluation sets. This option does not address the specified need for class-proportion preservation for independent rows.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Splits and data leakage - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html)
+
+</details>
+
+## #1065 · MLA-C01 Q1065 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Training must retain every original row, but errors on the rare class need a larger loss penalty. Which intervention meets both requirements?
+
+A. Oversample the minority class within the training split
+B. Tune the classification threshold on validation data
+C. Undersample the majority class within the training split
+D. Apply class weights in the training loss
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Apply class weights in the training loss**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Training balance and decision thresholds affect different parts of a classifier.
+
+#### Why this is correct
+
+- **D. Apply class weights in the training loss** — Class weights change the relative penalty for training errors without changing the number of training rows. This matches the requirement for a higher minority-class loss penalty without resampling.
+
+#### Why other options are incorrect
+
+- **A. Oversample the minority class within the training split** — Oversampling increases minority representation in training and must not contaminate evaluation data. This option does not address the specified need for a higher minority-class loss penalty without resampling.
+- **B. Tune the classification threshold on validation data** — Threshold tuning changes the precision-recall operating point without retraining the model or balancing training rows. This option does not address the specified need for a higher minority-class loss penalty without resampling.
+- **C. Undersample the majority class within the training split** — Undersampling reduces majority training examples, which can lower training volume at the cost of discarded information. This option does not address the specified need for a higher minority-class loss penalty without resampling.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [XGBoost hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html)
+- [Transform Data - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html)
+- [Metrics reference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-metrics.html)
+
+</details>
+
+## #1066 · MLA-C01 Q1066 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A model needs more minority examples during training. The team can duplicate or synthesize training examples after splitting the data. Which intervention fits?
+
+A. Undersample the majority class within the training split
+B. Oversample the minority class within the training split
+C. Tune the classification threshold on validation data
+D. Apply class weights in the training loss
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Oversample the minority class within the training split**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Training balance and decision thresholds affect different parts of a classifier.
+
+#### Why this is correct
+
+- **B. Oversample the minority class within the training split** — Oversampling increases minority representation in training and must not contaminate evaluation data. This matches the requirement for increased minority representation in the training split.
+
+#### Why other options are incorrect
+
+- **A. Undersample the majority class within the training split** — Undersampling reduces majority training examples, which can lower training volume at the cost of discarded information. This option does not address the specified need for increased minority representation in the training split.
+- **C. Tune the classification threshold on validation data** — Threshold tuning changes the precision-recall operating point without retraining the model or balancing training rows. This option does not address the specified need for increased minority representation in the training split.
+- **D. Apply class weights in the training loss** — Class weights change the relative penalty for training errors without changing the number of training rows. This option does not address the specified need for increased minority representation in the training split.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [XGBoost hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html)
+- [Transform Data - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html)
+- [Metrics reference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-metrics.html)
+
+</details>
+
+## #1067 · MLA-C01 Q1067 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Training cost is dominated by redundant majority examples. The team accepts discarding some of them while retaining the minority rows. Which intervention fits?
+
+A. Tune the classification threshold on validation data
+B. Apply class weights in the training loss
+C. Oversample the minority class within the training split
+D. Undersample the majority class within the training split
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Undersample the majority class within the training split**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Training balance and decision thresholds affect different parts of a classifier.
+
+#### Why this is correct
+
+- **D. Undersample the majority class within the training split** — Undersampling reduces majority training examples, which can lower training volume at the cost of discarded information. This matches the requirement for fewer majority training examples.
+
+#### Why other options are incorrect
+
+- **A. Tune the classification threshold on validation data** — Threshold tuning changes the precision-recall operating point without retraining the model or balancing training rows. This option does not address the specified need for fewer majority training examples.
+- **B. Apply class weights in the training loss** — Class weights change the relative penalty for training errors without changing the number of training rows. This option does not address the specified need for fewer majority training examples.
+- **C. Oversample the minority class within the training split** — Oversampling increases minority representation in training and must not contaminate evaluation data. This option does not address the specified need for fewer majority training examples.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [XGBoost hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html)
+- [Transform Data - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html)
+- [Metrics reference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-metrics.html)
+
+</details>
+
+## #1068 · MLA-C01 Q1068 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A deployed probabilistic classifier needs a different recall target without another training run. Which action changes its operating point?
+
+A. Undersample the majority class within the training split
+B. Oversample the minority class within the training split
+C. Tune the classification threshold on validation data
+D. Apply class weights in the training loss
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Tune the classification threshold on validation data**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Training balance and decision thresholds affect different parts of a classifier.
+
+#### Why this is correct
+
+- **C. Tune the classification threshold on validation data** — Threshold tuning changes the precision-recall operating point without retraining the model or balancing training rows. This matches the requirement for a precision-recall adjustment without retraining.
+
+#### Why other options are incorrect
+
+- **A. Undersample the majority class within the training split** — Undersampling reduces majority training examples, which can lower training volume at the cost of discarded information. This option does not address the specified need for a precision-recall adjustment without retraining.
+- **B. Oversample the minority class within the training split** — Oversampling increases minority representation in training and must not contaminate evaluation data. This option does not address the specified need for a precision-recall adjustment without retraining.
+- **D. Apply class weights in the training loss** — Class weights change the relative penalty for training errors without changing the number of training rows. This option does not address the specified need for a precision-recall adjustment without retraining.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [XGBoost hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html)
+- [Transform Data - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html)
+- [Metrics reference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-metrics.html)
+
+</details>
+
+## #1069 · MLA-C01 Q1069 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An algorithm supports weighted examples. Compliance prohibits deleting or duplicating rows, but positive errors are more costly. Which approach fits?
+
+A. Undersample the majority class within the training split
+B. Tune the classification threshold on validation data
+C. Apply class weights in the training loss
+D. Oversample the minority class within the training split
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Apply class weights in the training loss**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Training balance and decision thresholds affect different parts of a classifier.
+
+#### Why this is correct
+
+- **C. Apply class weights in the training loss** — Class weights change the relative penalty for training errors without changing the number of training rows. This matches the requirement for cost-sensitive training with unchanged row counts.
+
+#### Why other options are incorrect
+
+- **A. Undersample the majority class within the training split** — Undersampling reduces majority training examples, which can lower training volume at the cost of discarded information. This option does not address the specified need for cost-sensitive training with unchanged row counts.
+- **B. Tune the classification threshold on validation data** — Threshold tuning changes the precision-recall operating point without retraining the model or balancing training rows. This option does not address the specified need for cost-sensitive training with unchanged row counts.
+- **D. Oversample the minority class within the training split** — Oversampling increases minority representation in training and must not contaminate evaluation data. This option does not address the specified need for cost-sensitive training with unchanged row counts.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [XGBoost hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html)
+- [Transform Data - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html)
+- [Metrics reference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-metrics.html)
+
+</details>
+
+## #1070 · MLA-C01 Q1070 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A training-only augmentation stage creates additional examples of the rare class. Which imbalance strategy does this implement?
+
+A. Tune the classification threshold on validation data
+B. Undersample the majority class within the training split
+C. Oversample the minority class within the training split
+D. Apply class weights in the training loss
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Oversample the minority class within the training split**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Training balance and decision thresholds affect different parts of a classifier.
+
+#### Why this is correct
+
+- **C. Oversample the minority class within the training split** — Oversampling increases minority representation in training and must not contaminate evaluation data. This matches the requirement for adding minority training examples.
+
+#### Why other options are incorrect
+
+- **A. Tune the classification threshold on validation data** — Threshold tuning changes the precision-recall operating point without retraining the model or balancing training rows. This option does not address the specified need for adding minority training examples.
+- **B. Undersample the majority class within the training split** — Undersampling reduces majority training examples, which can lower training volume at the cost of discarded information. This option does not address the specified need for adding minority training examples.
+- **D. Apply class weights in the training loss** — Class weights change the relative penalty for training errors without changing the number of training rows. This option does not address the specified need for adding minority training examples.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [XGBoost hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html)
+- [Transform Data - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html)
+- [Metrics reference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-metrics.html)
+
+</details>
+
+## #1071 · MLA-C01 Q1071 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A team reduces the abundant negative examples before each training run to shorten experiments. Which strategy describes this change?
+
+A. Oversample the minority class within the training split
+B. Undersample the majority class within the training split
+C. Apply class weights in the training loss
+D. Tune the classification threshold on validation data
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Undersample the majority class within the training split**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Training balance and decision thresholds affect different parts of a classifier.
+
+#### Why this is correct
+
+- **B. Undersample the majority class within the training split** — Undersampling reduces majority training examples, which can lower training volume at the cost of discarded information. This matches the requirement for sampling fewer examples of the majority class.
+
+#### Why other options are incorrect
+
+- **A. Oversample the minority class within the training split** — Oversampling increases minority representation in training and must not contaminate evaluation data. This option does not address the specified need for sampling fewer examples of the majority class.
+- **C. Apply class weights in the training loss** — Class weights change the relative penalty for training errors without changing the number of training rows. This option does not address the specified need for sampling fewer examples of the majority class.
+- **D. Tune the classification threshold on validation data** — Threshold tuning changes the precision-recall operating point without retraining the model or balancing training rows. This option does not address the specified need for sampling fewer examples of the majority class.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [XGBoost hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html)
+- [Transform Data - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html)
+- [Metrics reference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-metrics.html)
+
+</details>
+
+## #1072 · MLA-C01 Q1072 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Model scores are fixed, but a fraud team can tolerate more false positives to catch more fraud. Which configurable decision step must it tune?
+
+A. Apply class weights in the training loss
+B. Undersample the majority class within the training split
+C. Tune the classification threshold on validation data
+D. Oversample the minority class within the training split
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Tune the classification threshold on validation data**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Training balance and decision thresholds affect different parts of a classifier.
+
+#### Why this is correct
+
+- **C. Tune the classification threshold on validation data** — Threshold tuning changes the precision-recall operating point without retraining the model or balancing training rows. This matches the requirement for selection of a different decision threshold.
+
+#### Why other options are incorrect
+
+- **A. Apply class weights in the training loss** — Class weights change the relative penalty for training errors without changing the number of training rows. This option does not address the specified need for selection of a different decision threshold.
+- **B. Undersample the majority class within the training split** — Undersampling reduces majority training examples, which can lower training volume at the cost of discarded information. This option does not address the specified need for selection of a different decision threshold.
+- **D. Oversample the minority class within the training split** — Oversampling increases minority representation in training and must not contaminate evaluation data. This option does not address the specified need for selection of a different decision threshold.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [XGBoost hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html)
+- [Transform Data - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html)
+- [Metrics reference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-metrics.html)
+
+</details>
+
+## #1073 · MLA-C01 Q1073 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A request handler needs current features by customer ID with low latency. Which Feature Store configuration supports this retrieval path?
+
+A. Enable the online store
+B. Define the record identifier feature
+C. Enable the offline store
+D. Define the event time feature
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Enable the online store**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Feature Store distinguishes low-latency current features, historical records, identity, and event time.
+
+#### Why this is correct
+
+- **A. Enable the online store** — The online store supports low-latency retrieval of current feature records by record identifier. This matches the requirement for low-latency lookup of current feature records.
+
+#### Why other options are incorrect
+
+- **B. Define the record identifier feature** — The record identifier identifies the entity to which a feature record belongs. This option does not address the specified need for low-latency lookup of current feature records.
+- **C. Enable the offline store** — The offline store retains historical feature data in S3 for analytical queries and training datasets. This option does not address the specified need for low-latency lookup of current feature records.
+- **D. Define the event time feature** — Event time represents when a feature record's event occurred and helps distinguish versions over time. This option does not address the specified need for low-latency lookup of current feature records.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Create, store, and share features with Feature Store - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html)
+- [Feature Store concepts - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-concepts.html)
+
+</details>
+
+## #1074 · MLA-C01 Q1074 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Analysts need historical feature records in S3 to build training datasets. Which store must be enabled?
+
+A. Define the record identifier feature
+B. Define the event time feature
+C. Enable the online store
+D. Enable the offline store
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Enable the offline store**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Feature Store distinguishes low-latency current features, historical records, identity, and event time.
+
+#### Why this is correct
+
+- **D. Enable the offline store** — The offline store retains historical feature data in S3 for analytical queries and training datasets. This matches the requirement for historical feature storage for training analysis.
+
+#### Why other options are incorrect
+
+- **A. Define the record identifier feature** — The record identifier identifies the entity to which a feature record belongs. This option does not address the specified need for historical feature storage for training analysis.
+- **B. Define the event time feature** — Event time represents when a feature record's event occurred and helps distinguish versions over time. This option does not address the specified need for historical feature storage for training analysis.
+- **C. Enable the online store** — The online store supports low-latency retrieval of current feature records by record identifier. This option does not address the specified need for historical feature storage for training analysis.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Create, store, and share features with Feature Store - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html)
+- [Feature Store concepts - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-concepts.html)
+
+</details>
+
+## #1075 · MLA-C01 Q1075 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A feature group must distinguish records for customer 42 from records for customer 83. Which feature definition specifies this identity?
+
+A. Enable the online store
+B. Enable the offline store
+C. Define the event time feature
+D. Define the record identifier feature
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Define the record identifier feature**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Feature Store distinguishes low-latency current features, historical records, identity, and event time.
+
+#### Why this is correct
+
+- **D. Define the record identifier feature** — The record identifier identifies the entity to which a feature record belongs. This matches the requirement for the entity identifier of each record.
+
+#### Why other options are incorrect
+
+- **A. Enable the online store** — The online store supports low-latency retrieval of current feature records by record identifier. This option does not address the specified need for the entity identifier of each record.
+- **B. Enable the offline store** — The offline store retains historical feature data in S3 for analytical queries and training datasets. This option does not address the specified need for the entity identifier of each record.
+- **C. Define the event time feature** — Event time represents when a feature record's event occurred and helps distinguish versions over time. This option does not address the specified need for the entity identifier of each record.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Create, store, and share features with Feature Store - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html)
+- [Feature Store concepts - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-concepts.html)
+
+</details>
+
+## #1076 · MLA-C01 Q1076 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A feature record must carry the time of the underlying event, rather than only its ingestion time. Which feature definition supplies this?
+
+A. Define the event time feature
+B. Enable the offline store
+C. Enable the online store
+D. Define the record identifier feature
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Define the event time feature**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Feature Store distinguishes low-latency current features, historical records, identity, and event time.
+
+#### Why this is correct
+
+- **A. Define the event time feature** — Event time represents when a feature record's event occurred and helps distinguish versions over time. This matches the requirement for the timestamp of the underlying feature event.
+
+#### Why other options are incorrect
+
+- **B. Enable the offline store** — The offline store retains historical feature data in S3 for analytical queries and training datasets. This option does not address the specified need for the timestamp of the underlying feature event.
+- **C. Enable the online store** — The online store supports low-latency retrieval of current feature records by record identifier. This option does not address the specified need for the timestamp of the underlying feature event.
+- **D. Define the record identifier feature** — The record identifier identifies the entity to which a feature record belongs. This option does not address the specified need for the timestamp of the underlying feature event.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Create, store, and share features with Feature Store - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html)
+- [Feature Store concepts - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-concepts.html)
+
+</details>
+
+## #1077 · MLA-C01 Q1077 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An application uses GetRecord during synchronous prediction and does not query historical S3 files. Which store serves this access pattern?
+
+A. Define the record identifier feature
+B. Enable the offline store
+C. Define the event time feature
+D. Enable the online store
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Enable the online store**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Feature Store distinguishes low-latency current features, historical records, identity, and event time.
+
+#### Why this is correct
+
+- **D. Enable the online store** — The online store supports low-latency retrieval of current feature records by record identifier. This matches the requirement for online retrieval by record identifier.
+
+#### Why other options are incorrect
+
+- **A. Define the record identifier feature** — The record identifier identifies the entity to which a feature record belongs. This option does not address the specified need for online retrieval by record identifier.
+- **B. Enable the offline store** — The offline store retains historical feature data in S3 for analytical queries and training datasets. This option does not address the specified need for online retrieval by record identifier.
+- **C. Define the event time feature** — Event time represents when a feature record's event occurred and helps distinguish versions over time. This option does not address the specified need for online retrieval by record identifier.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Create, store, and share features with Feature Store - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html)
+- [Feature Store concepts - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-concepts.html)
+
+</details>
+
+## #1078 · MLA-C01 Q1078 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A data scientist queries past observations with Athena to reconstruct a training period. Which store supports this workflow?
+
+A. Define the event time feature
+B. Enable the offline store
+C. Define the record identifier feature
+D. Enable the online store
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Enable the offline store**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Feature Store distinguishes low-latency current features, historical records, identity, and event time.
+
+#### Why this is correct
+
+- **B. Enable the offline store** — The offline store retains historical feature data in S3 for analytical queries and training datasets. This matches the requirement for analytical access to historical feature observations.
+
+#### Why other options are incorrect
+
+- **A. Define the event time feature** — Event time represents when a feature record's event occurred and helps distinguish versions over time. This option does not address the specified need for analytical access to historical feature observations.
+- **C. Define the record identifier feature** — The record identifier identifies the entity to which a feature record belongs. This option does not address the specified need for analytical access to historical feature observations.
+- **D. Enable the online store** — The online store supports low-latency retrieval of current feature records by record identifier. This option does not address the specified need for analytical access to historical feature observations.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Create, store, and share features with Feature Store - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html)
+- [Feature Store concepts - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-concepts.html)
+
+</details>
+
+## #1079 · MLA-C01 Q1079 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A pipeline mistakenly assigns the same key to every device. Which feature definition must be corrected to distinguish the devices?
+
+A. Enable the offline store
+B. Enable the online store
+C. Define the record identifier feature
+D. Define the event time feature
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Define the record identifier feature**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Feature Store distinguishes low-latency current features, historical records, identity, and event time.
+
+#### Why this is correct
+
+- **C. Define the record identifier feature** — The record identifier identifies the entity to which a feature record belongs. This matches the requirement for a distinct record identity for each device.
+
+#### Why other options are incorrect
+
+- **A. Enable the offline store** — The offline store retains historical feature data in S3 for analytical queries and training datasets. This option does not address the specified need for a distinct record identity for each device.
+- **B. Enable the online store** — The online store supports low-latency retrieval of current feature records by record identifier. This option does not address the specified need for a distinct record identity for each device.
+- **D. Define the event time feature** — Event time represents when a feature record's event occurred and helps distinguish versions over time. This option does not address the specified need for a distinct record identity for each device.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Create, store, and share features with Feature Store - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html)
+- [Feature Store concepts - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-concepts.html)
+
+</details>
+
+## #1080 · MLA-C01 Q1080 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Late events arrive after newer events for the same account. Which required feature captures the original event chronology?
+
+A. Enable the online store
+B. Define the record identifier feature
+C. Enable the offline store
+D. Define the event time feature
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Define the event time feature**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Feature Store distinguishes low-latency current features, historical records, identity, and event time.
+
+#### Why this is correct
+
+- **D. Define the event time feature** — Event time represents when a feature record's event occurred and helps distinguish versions over time. This matches the requirement for event timestamps that represent original chronology.
+
+#### Why other options are incorrect
+
+- **A. Enable the online store** — The online store supports low-latency retrieval of current feature records by record identifier. This option does not address the specified need for event timestamps that represent original chronology.
+- **B. Define the record identifier feature** — The record identifier identifies the entity to which a feature record belongs. This option does not address the specified need for event timestamps that represent original chronology.
+- **C. Enable the offline store** — The offline store retains historical feature data in S3 for analytical queries and training datasets. This option does not address the specified need for event timestamps that represent original chronology.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Create, store, and share features with Feature Store - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html)
+- [Feature Store concepts - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-concepts.html)
+
+</details>
+
+## #1081 · MLA-C01 Q1081 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Confidential documents can only be labeled by the organization's approved employees. Which workforce configuration matches the requirement?
+
+A. Configure annotation consolidation
+B. Enable supported automated data labeling
+C. Use a vendor workforce
+D. Use a private workforce
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Use a private workforce**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Ground Truth labeling separates worker selection, automated labeling, and consolidation of annotations.
+
+#### Why this is correct
+
+- **D. Use a private workforce** — A private workforce restricts labeling tasks to workers selected and managed by the organization. This matches the requirement for labeling restricted to an approved private team.
+
+#### Why other options are incorrect
+
+- **A. Configure annotation consolidation** — Annotation consolidation combines multiple worker annotations into a consolidated label for an object. This option does not address the specified need for labeling restricted to an approved private team.
+- **B. Enable supported automated data labeling** — Automated data labeling uses an active-learning process to reduce human labeling for supported tasks and suitable datasets. This option does not address the specified need for labeling restricted to an approved private team.
+- **C. Use a vendor workforce** — A vendor workforce supplies labeling workers through an approved external labeling provider. This option does not address the specified need for labeling restricted to an approved private team.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Training data labeling using humans with Amazon SageMaker Ground Truth - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms.html)
+- [Workforces - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management.html)
+- [Automate data labeling - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html)
+- [Annotation consolidation - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html)
+
+</details>
+
+## #1082 · MLA-C01 Q1082 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A project needs an external labeling company's managed workforce through Ground Truth. Which workforce option fits?
+
+A. Use a vendor workforce
+B. Use a private workforce
+C. Configure annotation consolidation
+D. Enable supported automated data labeling
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Use a vendor workforce**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Ground Truth labeling separates worker selection, automated labeling, and consolidation of annotations.
+
+#### Why this is correct
+
+- **A. Use a vendor workforce** — A vendor workforce supplies labeling workers through an approved external labeling provider. This matches the requirement for workers supplied by an external labeling vendor.
+
+#### Why other options are incorrect
+
+- **B. Use a private workforce** — A private workforce restricts labeling tasks to workers selected and managed by the organization. This option does not address the specified need for workers supplied by an external labeling vendor.
+- **C. Configure annotation consolidation** — Annotation consolidation combines multiple worker annotations into a consolidated label for an object. This option does not address the specified need for workers supplied by an external labeling vendor.
+- **D. Enable supported automated data labeling** — Automated data labeling uses an active-learning process to reduce human labeling for supported tasks and suitable datasets. This option does not address the specified need for workers supplied by an external labeling vendor.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Training data labeling using humans with Amazon SageMaker Ground Truth - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms.html)
+- [Workforces - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management.html)
+- [Automate data labeling - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html)
+- [Annotation consolidation - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html)
+
+</details>
+
+## #1083 · MLA-C01 Q1083 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A large supported labeling task must reduce human effort by learning from initial human annotations. Which feature targets that requirement?
+
+A. Enable supported automated data labeling
+B. Use a private workforce
+C. Configure annotation consolidation
+D. Use a vendor workforce
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Enable supported automated data labeling**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Ground Truth labeling separates worker selection, automated labeling, and consolidation of annotations.
+
+#### Why this is correct
+
+- **A. Enable supported automated data labeling** — Automated data labeling uses an active-learning process to reduce human labeling for supported tasks and suitable datasets. This matches the requirement for machine-assisted reduction of human labeling work.
+
+#### Why other options are incorrect
+
+- **B. Use a private workforce** — A private workforce restricts labeling tasks to workers selected and managed by the organization. This option does not address the specified need for machine-assisted reduction of human labeling work.
+- **C. Configure annotation consolidation** — Annotation consolidation combines multiple worker annotations into a consolidated label for an object. This option does not address the specified need for machine-assisted reduction of human labeling work.
+- **D. Use a vendor workforce** — A vendor workforce supplies labeling workers through an approved external labeling provider. This option does not address the specified need for machine-assisted reduction of human labeling work.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Training data labeling using humans with Amazon SageMaker Ground Truth - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms.html)
+- [Workforces - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management.html)
+- [Automate data labeling - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html)
+- [Annotation consolidation - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html)
+
+</details>
+
+## #1084 · MLA-C01 Q1084 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Three workers label each object, and the pipeline needs one consolidated output label. Which mechanism resolves the multiple annotations?
+
+A. Use a vendor workforce
+B. Enable supported automated data labeling
+C. Use a private workforce
+D. Configure annotation consolidation
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Configure annotation consolidation**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Ground Truth labeling separates worker selection, automated labeling, and consolidation of annotations.
+
+#### Why this is correct
+
+- **D. Configure annotation consolidation** — Annotation consolidation combines multiple worker annotations into a consolidated label for an object. This matches the requirement for combination of worker annotations into one label.
+
+#### Why other options are incorrect
+
+- **A. Use a vendor workforce** — A vendor workforce supplies labeling workers through an approved external labeling provider. This option does not address the specified need for combination of worker annotations into one label.
+- **B. Enable supported automated data labeling** — Automated data labeling uses an active-learning process to reduce human labeling for supported tasks and suitable datasets. This option does not address the specified need for combination of worker annotations into one label.
+- **C. Use a private workforce** — A private workforce restricts labeling tasks to workers selected and managed by the organization. This option does not address the specified need for combination of worker annotations into one label.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Training data labeling using humans with Amazon SageMaker Ground Truth - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms.html)
+- [Workforces - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management.html)
+- [Automate data labeling - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html)
+- [Annotation consolidation - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html)
+
+</details>
+
+## #1085 · MLA-C01 Q1085 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An internal domain-expert team must label specialized scans without opening tasks to a public crowd. Which option fits?
+
+A. Enable supported automated data labeling
+B. Use a vendor workforce
+C. Configure annotation consolidation
+D. Use a private workforce
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Use a private workforce**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Ground Truth labeling separates worker selection, automated labeling, and consolidation of annotations.
+
+#### Why this is correct
+
+- **D. Use a private workforce** — A private workforce restricts labeling tasks to workers selected and managed by the organization. This matches the requirement for access limited to selected internal labelers.
+
+#### Why other options are incorrect
+
+- **A. Enable supported automated data labeling** — Automated data labeling uses an active-learning process to reduce human labeling for supported tasks and suitable datasets. This option does not address the specified need for access limited to selected internal labelers.
+- **B. Use a vendor workforce** — A vendor workforce supplies labeling workers through an approved external labeling provider. This option does not address the specified need for access limited to selected internal labelers.
+- **C. Configure annotation consolidation** — Annotation consolidation combines multiple worker annotations into a consolidated label for an object. This option does not address the specified need for access limited to selected internal labelers.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Training data labeling using humans with Amazon SageMaker Ground Truth - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms.html)
+- [Workforces - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management.html)
+- [Automate data labeling - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html)
+- [Annotation consolidation - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html)
+
+</details>
+
+## #1086 · MLA-C01 Q1086 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A procurement contract requires a listed labeling provider to supply and manage the workforce. Which option matches that arrangement?
+
+A. Enable supported automated data labeling
+B. Configure annotation consolidation
+C. Use a private workforce
+D. Use a vendor workforce
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Use a vendor workforce**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Ground Truth labeling separates worker selection, automated labeling, and consolidation of annotations.
+
+#### Why this is correct
+
+- **D. Use a vendor workforce** — A vendor workforce supplies labeling workers through an approved external labeling provider. This matches the requirement for a workforce managed by a contracted vendor.
+
+#### Why other options are incorrect
+
+- **A. Enable supported automated data labeling** — Automated data labeling uses an active-learning process to reduce human labeling for supported tasks and suitable datasets. This option does not address the specified need for a workforce managed by a contracted vendor.
+- **B. Configure annotation consolidation** — Annotation consolidation combines multiple worker annotations into a consolidated label for an object. This option does not address the specified need for a workforce managed by a contracted vendor.
+- **C. Use a private workforce** — A private workforce restricts labeling tasks to workers selected and managed by the organization. This option does not address the specified need for a workforce managed by a contracted vendor.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Training data labeling using humans with Amazon SageMaker Ground Truth - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms.html)
+- [Workforces - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management.html)
+- [Automate data labeling - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html)
+- [Annotation consolidation - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html)
+
+</details>
+
+## #1087 · MLA-C01 Q1087 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Human workers should review uncertain objects while a trained model labels suitable remaining objects. Which feature supports this workflow?
+
+A. Use a private workforce
+B. Use a vendor workforce
+C. Configure annotation consolidation
+D. Enable supported automated data labeling
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Enable supported automated data labeling**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Ground Truth labeling separates worker selection, automated labeling, and consolidation of annotations.
+
+#### Why this is correct
+
+- **D. Enable supported automated data labeling** — Automated data labeling uses an active-learning process to reduce human labeling for supported tasks and suitable datasets. This matches the requirement for an active-learning approach to labeling effort.
+
+#### Why other options are incorrect
+
+- **A. Use a private workforce** — A private workforce restricts labeling tasks to workers selected and managed by the organization. This option does not address the specified need for an active-learning approach to labeling effort.
+- **B. Use a vendor workforce** — A vendor workforce supplies labeling workers through an approved external labeling provider. This option does not address the specified need for an active-learning approach to labeling effort.
+- **C. Configure annotation consolidation** — Annotation consolidation combines multiple worker annotations into a consolidated label for an object. This option does not address the specified need for an active-learning approach to labeling effort.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Training data labeling using humans with Amazon SageMaker Ground Truth - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms.html)
+- [Workforces - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management.html)
+- [Automate data labeling - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html)
+- [Annotation consolidation - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html)
+
+</details>
+
+## #1088 · MLA-C01 Q1088 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Several bounding-box annotations exist for each image. The job must derive a single agreed output from those annotations. Which feature addresses this?
+
+A. Configure annotation consolidation
+B. Use a private workforce
+C. Enable supported automated data labeling
+D. Use a vendor workforce
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Configure annotation consolidation**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Ground Truth labeling separates worker selection, automated labeling, and consolidation of annotations.
+
+#### Why this is correct
+
+- **A. Configure annotation consolidation** — Annotation consolidation combines multiple worker annotations into a consolidated label for an object. This matches the requirement for consolidation of multiple annotations per image.
+
+#### Why other options are incorrect
+
+- **B. Use a private workforce** — A private workforce restricts labeling tasks to workers selected and managed by the organization. This option does not address the specified need for consolidation of multiple annotations per image.
+- **C. Enable supported automated data labeling** — Automated data labeling uses an active-learning process to reduce human labeling for supported tasks and suitable datasets. This option does not address the specified need for consolidation of multiple annotations per image.
+- **D. Use a vendor workforce** — A vendor workforce supplies labeling workers through an approved external labeling provider. This option does not address the specified need for consolidation of multiple annotations per image.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Training data labeling using humans with Amazon SageMaker Ground Truth - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms.html)
+- [Workforces - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management.html)
+- [Automate data labeling - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html)
+- [Annotation consolidation - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html)
+
+</details>
+
+## #1089 · MLA-C01 Q1089 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A model requires a known age for at least 98% of training records. Which data quality check directly tests this requirement?
+
+A. Check completeness
+B. Check referential integrity
+C. Check the allowed values
+D. Check uniqueness
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Check completeness**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Data quality checks must test the constraint that can invalidate the downstream dataset.
+
+#### Why this is correct
+
+- **A. Check completeness** — A completeness rule checks the proportion of non-null values in a column. This matches the requirement for a minimum proportion of non-null ages.
+
+#### Why other options are incorrect
+
+- **B. Check referential integrity** — A referential-integrity rule checks whether values correspond to keys in a reference dataset. This option does not address the specified need for a minimum proportion of non-null ages.
+- **C. Check the allowed values** — An allowed-values rule checks whether values belong to an approved set or satisfy the configured constraint. This option does not address the specified need for a minimum proportion of non-null ages.
+- **D. Check uniqueness** — A uniqueness rule checks whether values or keys repeat where uniqueness is required. This option does not address the specified need for a minimum proportion of non-null ages.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [DQDL rule type reference - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/dqdl-rule-types.html)
+
+</details>
+
+## #1090 · MLA-C01 Q1090 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Each event ID must identify exactly one row in a feature table. Which check detects duplicate IDs?
+
+A. Check uniqueness
+B. Check completeness
+C. Check the allowed values
+D. Check referential integrity
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Check uniqueness**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Data quality checks must test the constraint that can invalidate the downstream dataset.
+
+#### Why this is correct
+
+- **A. Check uniqueness** — A uniqueness rule checks whether values or keys repeat where uniqueness is required. This matches the requirement for uniqueness of the event identifier.
+
+#### Why other options are incorrect
+
+- **B. Check completeness** — A completeness rule checks the proportion of non-null values in a column. This option does not address the specified need for uniqueness of the event identifier.
+- **C. Check the allowed values** — An allowed-values rule checks whether values belong to an approved set or satisfy the configured constraint. This option does not address the specified need for uniqueness of the event identifier.
+- **D. Check referential integrity** — A referential-integrity rule checks whether values correspond to keys in a reference dataset. This option does not address the specified need for uniqueness of the event identifier.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [DQDL rule type reference - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/dqdl-rule-types.html)
+
+</details>
+
+## #1091 · MLA-C01 Q1091 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Every order's customer ID must exist in the customer reference table. Which check tests this relationship?
+
+A. Check the allowed values
+B. Check uniqueness
+C. Check referential integrity
+D. Check completeness
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Check referential integrity**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Data quality checks must test the constraint that can invalidate the downstream dataset.
+
+#### Why this is correct
+
+- **C. Check referential integrity** — A referential-integrity rule checks whether values correspond to keys in a reference dataset. This matches the requirement for matching foreign keys to the customer reference dataset.
+
+#### Why other options are incorrect
+
+- **A. Check the allowed values** — An allowed-values rule checks whether values belong to an approved set or satisfy the configured constraint. This option does not address the specified need for matching foreign keys to the customer reference dataset.
+- **B. Check uniqueness** — A uniqueness rule checks whether values or keys repeat where uniqueness is required. This option does not address the specified need for matching foreign keys to the customer reference dataset.
+- **D. Check completeness** — A completeness rule checks the proportion of non-null values in a column. This option does not address the specified need for matching foreign keys to the customer reference dataset.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [DQDL rule type reference - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/dqdl-rule-types.html)
+
+</details>
+
+## #1092 · MLA-C01 Q1092 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A status field must contain only pending, approved, or rejected. Which check enforces that domain?
+
+A. Check completeness
+B. Check the allowed values
+C. Check referential integrity
+D. Check uniqueness
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Check the allowed values**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Data quality checks must test the constraint that can invalidate the downstream dataset.
+
+#### Why this is correct
+
+- **B. Check the allowed values** — An allowed-values rule checks whether values belong to an approved set or satisfy the configured constraint. This matches the requirement for membership in a fixed set of status values.
+
+#### Why other options are incorrect
+
+- **A. Check completeness** — A completeness rule checks the proportion of non-null values in a column. This option does not address the specified need for membership in a fixed set of status values.
+- **C. Check referential integrity** — A referential-integrity rule checks whether values correspond to keys in a reference dataset. This option does not address the specified need for membership in a fixed set of status values.
+- **D. Check uniqueness** — A uniqueness rule checks whether values or keys repeat where uniqueness is required. This option does not address the specified need for membership in a fixed set of status values.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [DQDL rule type reference - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/dqdl-rule-types.html)
+
+</details>
+
+## #1093 · MLA-C01 Q1093 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An ingestion regression writes null values into the target column. Which check detects the loss of populated labels?
+
+A. Check the allowed values
+B. Check completeness
+C. Check uniqueness
+D. Check referential integrity
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Check completeness**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Data quality checks must test the constraint that can invalidate the downstream dataset.
+
+#### Why this is correct
+
+- **B. Check completeness** — A completeness rule checks the proportion of non-null values in a column. This matches the requirement for detection of missing values in the target column.
+
+#### Why other options are incorrect
+
+- **A. Check the allowed values** — An allowed-values rule checks whether values belong to an approved set or satisfy the configured constraint. This option does not address the specified need for detection of missing values in the target column.
+- **C. Check uniqueness** — A uniqueness rule checks whether values or keys repeat where uniqueness is required. This option does not address the specified need for detection of missing values in the target column.
+- **D. Check referential integrity** — A referential-integrity rule checks whether values correspond to keys in a reference dataset. This option does not address the specified need for detection of missing values in the target column.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [DQDL rule type reference - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/dqdl-rule-types.html)
+
+</details>
+
+## #1094 · MLA-C01 Q1094 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A retry bug inserts the same transaction key more than once. Which check exposes the repeated keys?
+
+A. Check the allowed values
+B. Check referential integrity
+C. Check uniqueness
+D. Check completeness
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Check uniqueness**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Data quality checks must test the constraint that can invalidate the downstream dataset.
+
+#### Why this is correct
+
+- **C. Check uniqueness** — A uniqueness rule checks whether values or keys repeat where uniqueness is required. This matches the requirement for detection of duplicate transaction keys.
+
+#### Why other options are incorrect
+
+- **A. Check the allowed values** — An allowed-values rule checks whether values belong to an approved set or satisfy the configured constraint. This option does not address the specified need for detection of duplicate transaction keys.
+- **B. Check referential integrity** — A referential-integrity rule checks whether values correspond to keys in a reference dataset. This option does not address the specified need for detection of duplicate transaction keys.
+- **D. Check completeness** — A completeness rule checks the proportion of non-null values in a column. This option does not address the specified need for detection of duplicate transaction keys.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [DQDL rule type reference - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/dqdl-rule-types.html)
+
+</details>
+
+## #1095 · MLA-C01 Q1095 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Training rows reference products that no longer exist in the product catalog. Which check detects these orphaned references?
+
+A. Check uniqueness
+B. Check the allowed values
+C. Check referential integrity
+D. Check completeness
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Check referential integrity**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Data quality checks must test the constraint that can invalidate the downstream dataset.
+
+#### Why this is correct
+
+- **C. Check referential integrity** — A referential-integrity rule checks whether values correspond to keys in a reference dataset. This matches the requirement for validation of references against the product catalog.
+
+#### Why other options are incorrect
+
+- **A. Check uniqueness** — A uniqueness rule checks whether values or keys repeat where uniqueness is required. This option does not address the specified need for validation of references against the product catalog.
+- **B. Check the allowed values** — An allowed-values rule checks whether values belong to an approved set or satisfy the configured constraint. This option does not address the specified need for validation of references against the product catalog.
+- **D. Check completeness** — A completeness rule checks the proportion of non-null values in a column. This option does not address the specified need for validation of references against the product catalog.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [DQDL rule type reference - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/dqdl-rule-types.html)
+
+</details>
+
+## #1096 · MLA-C01 Q1096 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A categorical feature unexpectedly contains a misspelled region code. Which check compares it with the approved region list?
+
+A. Check completeness
+B. Check uniqueness
+C. Check the allowed values
+D. Check referential integrity
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Check the allowed values**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Data quality checks must test the constraint that can invalidate the downstream dataset.
+
+#### Why this is correct
+
+- **C. Check the allowed values** — An allowed-values rule checks whether values belong to an approved set or satisfy the configured constraint. This matches the requirement for validation against an approved category list.
+
+#### Why other options are incorrect
+
+- **A. Check completeness** — A completeness rule checks the proportion of non-null values in a column. This option does not address the specified need for validation against an approved category list.
+- **B. Check uniqueness** — A uniqueness rule checks whether values or keys repeat where uniqueness is required. This option does not address the specified need for validation against an approved category list.
+- **D. Check referential integrity** — A referential-integrity rule checks whether values correspond to keys in a reference dataset. This option does not address the specified need for validation against an approved category list.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [DQDL rule type reference - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/dqdl-rule-types.html)
+
+</details>
+
+## #1097 · MLA-C01 Q1097 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A lender has labeled tabular examples and needs a nonlinear default classifier based on boosted trees. Which algorithm matches that approach?
+
+A. Principal component analysis
+B. Random Cut Forest
+C. K-means
+D. XGBoost
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. XGBoost**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose an algorithm by its learning objective and the structure of the available labels.
+
+#### Why this is correct
+
+- **D. XGBoost** — XGBoost learns boosted decision-tree models for supervised tasks such as tabular classification and regression. This matches the requirement for supervised classification with boosted decision trees.
+
+#### Why other options are incorrect
+
+- **A. Principal component analysis** — PCA projects numerical features into fewer components that retain substantial variance. This option does not address the specified need for supervised classification with boosted decision trees.
+- **B. Random Cut Forest** — Random Cut Forest detects unusual observations through unsupervised anomaly scores. This option does not address the specified need for supervised classification with boosted decision trees.
+- **C. K-means** — K-means forms clusters from unlabeled numerical examples using distance to cluster centers. This option does not address the specified need for supervised classification with boosted decision trees.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Built-in algorithms and pretrained models in Amazon SageMaker - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)
+- [XGBoost algorithm with Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost.html)
+- [K-Means Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/k-means.html)
+- [Random Cut Forest (RCF) Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/randomcutforest.html)
+- [Principal Component Analysis (PCA) Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pca.html)
+
+</details>
+
+## #1098 · MLA-C01 Q1098 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A marketing team wants numerical customer segments but has no segment labels. It specifies a fixed number of centroids. Which algorithm fits?
+
+A. Random Cut Forest
+B. K-means
+C. XGBoost
+D. Principal component analysis
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. K-means**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose an algorithm by its learning objective and the structure of the available labels.
+
+#### Why this is correct
+
+- **B. K-means** — K-means forms clusters from unlabeled numerical examples using distance to cluster centers. This matches the requirement for centroid-based clustering without labels.
+
+#### Why other options are incorrect
+
+- **A. Random Cut Forest** — Random Cut Forest detects unusual observations through unsupervised anomaly scores. This option does not address the specified need for centroid-based clustering without labels.
+- **C. XGBoost** — XGBoost learns boosted decision-tree models for supervised tasks such as tabular classification and regression. This option does not address the specified need for centroid-based clustering without labels.
+- **D. Principal component analysis** — PCA projects numerical features into fewer components that retain substantial variance. This option does not address the specified need for centroid-based clustering without labels.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Built-in algorithms and pretrained models in Amazon SageMaker - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)
+- [XGBoost algorithm with Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost.html)
+- [K-Means Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/k-means.html)
+- [Random Cut Forest (RCF) Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/randomcutforest.html)
+- [Principal Component Analysis (PCA) Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pca.html)
+
+</details>
+
+## #1099 · MLA-C01 Q1099 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An operations team has unlabeled numerical telemetry and needs scores that identify unusual observations. Which algorithm fits?
+
+A. Principal component analysis
+B. Random Cut Forest
+C. K-means
+D. XGBoost
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Random Cut Forest**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose an algorithm by its learning objective and the structure of the available labels.
+
+#### Why this is correct
+
+- **B. Random Cut Forest** — Random Cut Forest detects unusual observations through unsupervised anomaly scores. This matches the requirement for unsupervised scoring of anomalous observations.
+
+#### Why other options are incorrect
+
+- **A. Principal component analysis** — PCA projects numerical features into fewer components that retain substantial variance. This option does not address the specified need for unsupervised scoring of anomalous observations.
+- **C. K-means** — K-means forms clusters from unlabeled numerical examples using distance to cluster centers. This option does not address the specified need for unsupervised scoring of anomalous observations.
+- **D. XGBoost** — XGBoost learns boosted decision-tree models for supervised tasks such as tabular classification and regression. This option does not address the specified need for unsupervised scoring of anomalous observations.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Built-in algorithms and pretrained models in Amazon SageMaker - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)
+- [XGBoost algorithm with Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost.html)
+- [K-Means Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/k-means.html)
+- [Random Cut Forest (RCF) Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/randomcutforest.html)
+- [Principal Component Analysis (PCA) Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pca.html)
+
+</details>
+
+## #1100 · MLA-C01 Q1100 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A dataset contains hundreds of correlated numerical features. The team needs a smaller orthogonal representation before training another model. Which algorithm fits?
+
+A. Random Cut Forest
+B. Principal component analysis
+C. XGBoost
+D. K-means
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Principal component analysis**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose an algorithm by its learning objective and the structure of the available labels.
+
+#### Why this is correct
+
+- **B. Principal component analysis** — PCA projects numerical features into fewer components that retain substantial variance. This matches the requirement for variance-preserving projection into fewer components.
+
+#### Why other options are incorrect
+
+- **A. Random Cut Forest** — Random Cut Forest detects unusual observations through unsupervised anomaly scores. This option does not address the specified need for variance-preserving projection into fewer components.
+- **C. XGBoost** — XGBoost learns boosted decision-tree models for supervised tasks such as tabular classification and regression. This option does not address the specified need for variance-preserving projection into fewer components.
+- **D. K-means** — K-means forms clusters from unlabeled numerical examples using distance to cluster centers. This option does not address the specified need for variance-preserving projection into fewer components.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Built-in algorithms and pretrained models in Amazon SageMaker - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)
+- [XGBoost algorithm with Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost.html)
+- [K-Means Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/k-means.html)
+- [Random Cut Forest (RCF) Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/randomcutforest.html)
+- [Principal Component Analysis (PCA) Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pca.html)
+
+</details>
+
+## #1101 · MLA-C01 Q1101 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A price model must predict a continuous target from tabular features using an ensemble of gradient-boosted trees. Which algorithm fits?
+
+A. K-means
+B. Principal component analysis
+C. Random Cut Forest
+D. XGBoost
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. XGBoost**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose an algorithm by its learning objective and the structure of the available labels.
+
+#### Why this is correct
+
+- **D. XGBoost** — XGBoost learns boosted decision-tree models for supervised tasks such as tabular classification and regression. This matches the requirement for supervised regression with gradient-boosted trees.
+
+#### Why other options are incorrect
+
+- **A. K-means** — K-means forms clusters from unlabeled numerical examples using distance to cluster centers. This option does not address the specified need for supervised regression with gradient-boosted trees.
+- **B. Principal component analysis** — PCA projects numerical features into fewer components that retain substantial variance. This option does not address the specified need for supervised regression with gradient-boosted trees.
+- **C. Random Cut Forest** — Random Cut Forest detects unusual observations through unsupervised anomaly scores. This option does not address the specified need for supervised regression with gradient-boosted trees.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Built-in algorithms and pretrained models in Amazon SageMaker - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)
+- [XGBoost algorithm with Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost.html)
+- [K-Means Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/k-means.html)
+- [Random Cut Forest (RCF) Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/randomcutforest.html)
+- [Principal Component Analysis (PCA) Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pca.html)
+
+</details>
+
+## #1102 · MLA-C01 Q1102 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A segmentation experiment changes the number of centroids and measures within-cluster distance. Which algorithm does this configuration describe?
+
+A. K-means
+B. Random Cut Forest
+C. XGBoost
+D. Principal component analysis
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. K-means**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose an algorithm by its learning objective and the structure of the available labels.
+
+#### Why this is correct
+
+- **A. K-means** — K-means forms clusters from unlabeled numerical examples using distance to cluster centers. This matches the requirement for optimization of distances to cluster centroids.
+
+#### Why other options are incorrect
+
+- **B. Random Cut Forest** — Random Cut Forest detects unusual observations through unsupervised anomaly scores. This option does not address the specified need for optimization of distances to cluster centroids.
+- **C. XGBoost** — XGBoost learns boosted decision-tree models for supervised tasks such as tabular classification and regression. This option does not address the specified need for optimization of distances to cluster centroids.
+- **D. Principal component analysis** — PCA projects numerical features into fewer components that retain substantial variance. This option does not address the specified need for optimization of distances to cluster centroids.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Built-in algorithms and pretrained models in Amazon SageMaker - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)
+- [XGBoost algorithm with Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost.html)
+- [K-Means Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/k-means.html)
+- [Random Cut Forest (RCF) Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/randomcutforest.html)
+- [Principal Component Analysis (PCA) Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pca.html)
+
+</details>
+
+## #1103 · MLA-C01 Q1103 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A detector ranks events by anomaly score rather than assigning them to a predefined labeled class. Which listed algorithm serves this role?
+
+A. Principal component analysis
+B. XGBoost
+C. K-means
+D. Random Cut Forest
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Random Cut Forest**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose an algorithm by its learning objective and the structure of the available labels.
+
+#### Why this is correct
+
+- **D. Random Cut Forest** — Random Cut Forest detects unusual observations through unsupervised anomaly scores. This matches the requirement for ranking unusual records without class labels.
+
+#### Why other options are incorrect
+
+- **A. Principal component analysis** — PCA projects numerical features into fewer components that retain substantial variance. This option does not address the specified need for ranking unusual records without class labels.
+- **B. XGBoost** — XGBoost learns boosted decision-tree models for supervised tasks such as tabular classification and regression. This option does not address the specified need for ranking unusual records without class labels.
+- **C. K-means** — K-means forms clusters from unlabeled numerical examples using distance to cluster centers. This option does not address the specified need for ranking unusual records without class labels.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Built-in algorithms and pretrained models in Amazon SageMaker - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)
+- [XGBoost algorithm with Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost.html)
+- [K-Means Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/k-means.html)
+- [Random Cut Forest (RCF) Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/randomcutforest.html)
+- [Principal Component Analysis (PCA) Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pca.html)
+
+</details>
+
+## #1104 · MLA-C01 Q1104 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An engineer inspects explained variance to decide how many transformed axes to retain. Which method produces these axes?
+
+A. XGBoost
+B. Random Cut Forest
+C. K-means
+D. Principal component analysis
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Principal component analysis**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose an algorithm by its learning objective and the structure of the available labels.
+
+#### Why this is correct
+
+- **D. Principal component analysis** — PCA projects numerical features into fewer components that retain substantial variance. This matches the requirement for components selected by explained variance.
+
+#### Why other options are incorrect
+
+- **A. XGBoost** — XGBoost learns boosted decision-tree models for supervised tasks such as tabular classification and regression. This option does not address the specified need for components selected by explained variance.
+- **B. Random Cut Forest** — Random Cut Forest detects unusual observations through unsupervised anomaly scores. This option does not address the specified need for components selected by explained variance.
+- **C. K-means** — K-means forms clusters from unlabeled numerical examples using distance to cluster centers. This option does not address the specified need for components selected by explained variance.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Built-in algorithms and pretrained models in Amazon SageMaker - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)
+- [XGBoost algorithm with Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost.html)
+- [K-Means Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/k-means.html)
+- [Random Cut Forest (RCF) Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/randomcutforest.html)
+- [Principal Component Analysis (PCA) Algorithm - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pca.html)
+
+</details>
+
+## #1105 · MLA-C01 Q1105 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Support messages already contain plain text. The team needs sentiment scores without training its own text model. Which service fits?
+
+A. Amazon Textract
+B. Amazon Transcribe
+C. Amazon Rekognition
+D. Amazon Comprehend
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Amazon Comprehend**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pretrained AI services expose different input and output interfaces.
+
+#### Why this is correct
+
+- **D. Amazon Comprehend** — Comprehend analyzes text for tasks such as sentiment, entities, and key phrases. This matches the requirement for sentiment analysis of existing text.
+
+#### Why other options are incorrect
+
+- **A. Amazon Textract** — Textract extracts text and structured document elements such as forms and tables from document images. This option does not address the specified need for sentiment analysis of existing text.
+- **B. Amazon Transcribe** — Transcribe converts speech in audio into text and supports speech-recognition features. This option does not address the specified need for sentiment analysis of existing text.
+- **C. Amazon Rekognition** — Rekognition analyzes visual content in images and video, including object and scene detection. This option does not address the specified need for sentiment analysis of existing text.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon Comprehend? - Amazon Comprehend](https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html)
+- [What is Amazon Textract? - Amazon Textract](https://docs.aws.amazon.com/textract/latest/dg/what-is.html)
+- [What is Amazon Transcribe? - Amazon Transcribe](https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html)
+- [What is Amazon Rekognition? - Amazon Rekognition](https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html)
+
+</details>
+
+## #1106 · MLA-C01 Q1106 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An application must extract form fields and table cells from scanned invoices. Which service fits?
+
+A. Amazon Textract
+B. Amazon Rekognition
+C. Amazon Transcribe
+D. Amazon Comprehend
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Amazon Textract**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pretrained AI services expose different input and output interfaces.
+
+#### Why this is correct
+
+- **A. Amazon Textract** — Textract extracts text and structured document elements such as forms and tables from document images. This matches the requirement for structured extraction from document images.
+
+#### Why other options are incorrect
+
+- **B. Amazon Rekognition** — Rekognition analyzes visual content in images and video, including object and scene detection. This option does not address the specified need for structured extraction from document images.
+- **C. Amazon Transcribe** — Transcribe converts speech in audio into text and supports speech-recognition features. This option does not address the specified need for structured extraction from document images.
+- **D. Amazon Comprehend** — Comprehend analyzes text for tasks such as sentiment, entities, and key phrases. This option does not address the specified need for structured extraction from document images.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon Comprehend? - Amazon Comprehend](https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html)
+- [What is Amazon Textract? - Amazon Textract](https://docs.aws.amazon.com/textract/latest/dg/what-is.html)
+- [What is Amazon Transcribe? - Amazon Transcribe](https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html)
+- [What is Amazon Rekognition? - Amazon Rekognition](https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html)
+
+</details>
+
+## #1107 · MLA-C01 Q1107 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A pipeline must convert recorded customer calls into searchable text. Which service fits?
+
+A. Amazon Textract
+B. Amazon Rekognition
+C. Amazon Transcribe
+D. Amazon Comprehend
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Amazon Transcribe**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pretrained AI services expose different input and output interfaces.
+
+#### Why this is correct
+
+- **C. Amazon Transcribe** — Transcribe converts speech in audio into text and supports speech-recognition features. This matches the requirement for speech-to-text conversion of recordings.
+
+#### Why other options are incorrect
+
+- **A. Amazon Textract** — Textract extracts text and structured document elements such as forms and tables from document images. This option does not address the specified need for speech-to-text conversion of recordings.
+- **B. Amazon Rekognition** — Rekognition analyzes visual content in images and video, including object and scene detection. This option does not address the specified need for speech-to-text conversion of recordings.
+- **D. Amazon Comprehend** — Comprehend analyzes text for tasks such as sentiment, entities, and key phrases. This option does not address the specified need for speech-to-text conversion of recordings.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon Comprehend? - Amazon Comprehend](https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html)
+- [What is Amazon Textract? - Amazon Textract](https://docs.aws.amazon.com/textract/latest/dg/what-is.html)
+- [What is Amazon Transcribe? - Amazon Transcribe](https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html)
+- [What is Amazon Rekognition? - Amazon Rekognition](https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html)
+
+</details>
+
+## #1108 · MLA-C01 Q1108 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A photo application needs labels for objects visible in uploaded images. Which service fits?
+
+A. Amazon Comprehend
+B. Amazon Textract
+C. Amazon Rekognition
+D. Amazon Transcribe
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Amazon Rekognition**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pretrained AI services expose different input and output interfaces.
+
+#### Why this is correct
+
+- **C. Amazon Rekognition** — Rekognition analyzes visual content in images and video, including object and scene detection. This matches the requirement for visual object labels from images.
+
+#### Why other options are incorrect
+
+- **A. Amazon Comprehend** — Comprehend analyzes text for tasks such as sentiment, entities, and key phrases. This option does not address the specified need for visual object labels from images.
+- **B. Amazon Textract** — Textract extracts text and structured document elements such as forms and tables from document images. This option does not address the specified need for visual object labels from images.
+- **D. Amazon Transcribe** — Transcribe converts speech in audio into text and supports speech-recognition features. This option does not address the specified need for visual object labels from images.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon Comprehend? - Amazon Comprehend](https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html)
+- [What is Amazon Textract? - Amazon Textract](https://docs.aws.amazon.com/textract/latest/dg/what-is.html)
+- [What is Amazon Transcribe? - Amazon Transcribe](https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html)
+- [What is Amazon Rekognition? - Amazon Rekognition](https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html)
+
+</details>
+
+## #1109 · MLA-C01 Q1109 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An analyst wants named entities from text documents that already passed OCR. Which service handles this stage?
+
+A. Amazon Textract
+B. Amazon Rekognition
+C. Amazon Comprehend
+D. Amazon Transcribe
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Amazon Comprehend**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pretrained AI services expose different input and output interfaces.
+
+#### Why this is correct
+
+- **C. Amazon Comprehend** — Comprehend analyzes text for tasks such as sentiment, entities, and key phrases. This matches the requirement for entity extraction from machine-readable text.
+
+#### Why other options are incorrect
+
+- **A. Amazon Textract** — Textract extracts text and structured document elements such as forms and tables from document images. This option does not address the specified need for entity extraction from machine-readable text.
+- **B. Amazon Rekognition** — Rekognition analyzes visual content in images and video, including object and scene detection. This option does not address the specified need for entity extraction from machine-readable text.
+- **D. Amazon Transcribe** — Transcribe converts speech in audio into text and supports speech-recognition features. This option does not address the specified need for entity extraction from machine-readable text.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon Comprehend? - Amazon Comprehend](https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html)
+- [What is Amazon Textract? - Amazon Textract](https://docs.aws.amazon.com/textract/latest/dg/what-is.html)
+- [What is Amazon Transcribe? - Amazon Transcribe](https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html)
+- [What is Amazon Rekognition? - Amazon Rekognition](https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html)
+
+</details>
+
+## #1110 · MLA-C01 Q1110 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A scanned application contains key-value pairs whose document layout matters. Which service can recover that form structure?
+
+A. Amazon Comprehend
+B. Amazon Rekognition
+C. Amazon Textract
+D. Amazon Transcribe
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Amazon Textract**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pretrained AI services expose different input and output interfaces.
+
+#### Why this is correct
+
+- **C. Amazon Textract** — Textract extracts text and structured document elements such as forms and tables from document images. This matches the requirement for form structure extraction from a scan.
+
+#### Why other options are incorrect
+
+- **A. Amazon Comprehend** — Comprehend analyzes text for tasks such as sentiment, entities, and key phrases. This option does not address the specified need for form structure extraction from a scan.
+- **B. Amazon Rekognition** — Rekognition analyzes visual content in images and video, including object and scene detection. This option does not address the specified need for form structure extraction from a scan.
+- **D. Amazon Transcribe** — Transcribe converts speech in audio into text and supports speech-recognition features. This option does not address the specified need for form structure extraction from a scan.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon Comprehend? - Amazon Comprehend](https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html)
+- [What is Amazon Textract? - Amazon Textract](https://docs.aws.amazon.com/textract/latest/dg/what-is.html)
+- [What is Amazon Transcribe? - Amazon Transcribe](https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html)
+- [What is Amazon Rekognition? - Amazon Rekognition](https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html)
+
+</details>
+
+## #1111 · MLA-C01 Q1111 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A recorded conversation needs a transcript with speaker labeling. Which service provides the speech-processing foundation?
+
+A. Amazon Comprehend
+B. Amazon Rekognition
+C. Amazon Transcribe
+D. Amazon Textract
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Amazon Transcribe**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pretrained AI services expose different input and output interfaces.
+
+#### Why this is correct
+
+- **C. Amazon Transcribe** — Transcribe converts speech in audio into text and supports speech-recognition features. This matches the requirement for transcription of audio with speaker information.
+
+#### Why other options are incorrect
+
+- **A. Amazon Comprehend** — Comprehend analyzes text for tasks such as sentiment, entities, and key phrases. This option does not address the specified need for transcription of audio with speaker information.
+- **B. Amazon Rekognition** — Rekognition analyzes visual content in images and video, including object and scene detection. This option does not address the specified need for transcription of audio with speaker information.
+- **D. Amazon Textract** — Textract extracts text and structured document elements such as forms and tables from document images. This option does not address the specified need for transcription of audio with speaker information.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon Comprehend? - Amazon Comprehend](https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html)
+- [What is Amazon Textract? - Amazon Textract](https://docs.aws.amazon.com/textract/latest/dg/what-is.html)
+- [What is Amazon Transcribe? - Amazon Transcribe](https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html)
+- [What is Amazon Rekognition? - Amazon Rekognition](https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html)
+
+</details>
+
+## #1112 · MLA-C01 Q1112 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A video workflow needs visual content moderation rather than extraction of spoken words. Which service targets the visual content?
+
+A. Amazon Transcribe
+B. Amazon Textract
+C. Amazon Rekognition
+D. Amazon Comprehend
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Amazon Rekognition**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pretrained AI services expose different input and output interfaces.
+
+#### Why this is correct
+
+- **C. Amazon Rekognition** — Rekognition analyzes visual content in images and video, including object and scene detection. This matches the requirement for analysis of visual content in video.
+
+#### Why other options are incorrect
+
+- **A. Amazon Transcribe** — Transcribe converts speech in audio into text and supports speech-recognition features. This option does not address the specified need for analysis of visual content in video.
+- **B. Amazon Textract** — Textract extracts text and structured document elements such as forms and tables from document images. This option does not address the specified need for analysis of visual content in video.
+- **D. Amazon Comprehend** — Comprehend analyzes text for tasks such as sentiment, entities, and key phrases. This option does not address the specified need for analysis of visual content in video.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon Comprehend? - Amazon Comprehend](https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html)
+- [What is Amazon Textract? - Amazon Textract](https://docs.aws.amazon.com/textract/latest/dg/what-is.html)
+- [What is Amazon Transcribe? - Amazon Transcribe](https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html)
+- [What is Amazon Rekognition? - Amazon Rekognition](https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html)
+
+</details>
+
+## #1113 · MLA-C01 Q1113 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A team accepts the supported XGBoost input interface and wants AWS's training implementation with minimal algorithm code. Which approach fits?
+
+A. Use a SageMaker built-in algorithm
+B. Use framework script mode
+C. Bring a custom training container
+D. Use a supported pretrained JumpStart model
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Use a SageMaker built-in algorithm**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Select the training interface that supplies the required degree of code and container control.
+
+#### Why this is correct
+
+- **A. Use a SageMaker built-in algorithm** — A built-in algorithm supplies AWS-provided training implementation for a supported task and input interface. This matches the requirement for an AWS-provided training algorithm implementation.
+
+#### Why other options are incorrect
+
+- **B. Use framework script mode** — Script mode runs custom training code inside a supported framework container without requiring a custom image. This option does not address the specified need for an AWS-provided training algorithm implementation.
+- **C. Bring a custom training container** — A custom container supplies control over system libraries, framework versions, and the training runtime image. This option does not address the specified need for an AWS-provided training algorithm implementation.
+- **D. Use a supported pretrained JumpStart model** — JumpStart provides access to pretrained models that can support deployment or fine-tuning for suitable tasks. This option does not address the specified need for an AWS-provided training algorithm implementation.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Train a Model with Amazon SageMaker - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html)
+- [Containers with custom training algorithms - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-training-algo.html)
+- [SageMaker JumpStart pretrained models - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html)
+
+</details>
+
+## #1114 · MLA-C01 Q1114 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A PyTorch script needs custom model code, but the supported SageMaker PyTorch image already contains its dependencies. Which approach fits?
+
+A. Use a supported pretrained JumpStart model
+B. Use a SageMaker built-in algorithm
+C. Use framework script mode
+D. Bring a custom training container
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Use framework script mode**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Select the training interface that supplies the required degree of code and container control.
+
+#### Why this is correct
+
+- **C. Use framework script mode** — Script mode runs custom training code inside a supported framework container without requiring a custom image. This matches the requirement for custom training code without a custom container image.
+
+#### Why other options are incorrect
+
+- **A. Use a supported pretrained JumpStart model** — JumpStart provides access to pretrained models that can support deployment or fine-tuning for suitable tasks. This option does not address the specified need for custom training code without a custom container image.
+- **B. Use a SageMaker built-in algorithm** — A built-in algorithm supplies AWS-provided training implementation for a supported task and input interface. This option does not address the specified need for custom training code without a custom container image.
+- **D. Bring a custom training container** — A custom container supplies control over system libraries, framework versions, and the training runtime image. This option does not address the specified need for custom training code without a custom container image.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Train a Model with Amazon SageMaker - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html)
+- [Containers with custom training algorithms - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-training-algo.html)
+- [SageMaker JumpStart pretrained models - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html)
+
+</details>
+
+## #1115 · MLA-C01 Q1115 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Training requires a proprietary system library absent from every supported framework image. Which approach provides control over the runtime image?
+
+A. Use framework script mode
+B. Use a SageMaker built-in algorithm
+C. Use a supported pretrained JumpStart model
+D. Bring a custom training container
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Bring a custom training container**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Select the training interface that supplies the required degree of code and container control.
+
+#### Why this is correct
+
+- **D. Bring a custom training container** — A custom container supplies control over system libraries, framework versions, and the training runtime image. This matches the requirement for a training image with custom system dependencies.
+
+#### Why other options are incorrect
+
+- **A. Use framework script mode** — Script mode runs custom training code inside a supported framework container without requiring a custom image. This option does not address the specified need for a training image with custom system dependencies.
+- **B. Use a SageMaker built-in algorithm** — A built-in algorithm supplies AWS-provided training implementation for a supported task and input interface. This option does not address the specified need for a training image with custom system dependencies.
+- **C. Use a supported pretrained JumpStart model** — JumpStart provides access to pretrained models that can support deployment or fine-tuning for suitable tasks. This option does not address the specified need for a training image with custom system dependencies.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Train a Model with Amazon SageMaker - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html)
+- [Containers with custom training algorithms - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-training-algo.html)
+- [SageMaker JumpStart pretrained models - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html)
+
+</details>
+
+## #1116 · MLA-C01 Q1116 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A team wants to start from a supported pretrained model rather than initialize all weights from scratch. Which approach fits?
+
+A. Use framework script mode
+B. Bring a custom training container
+C. Use a SageMaker built-in algorithm
+D. Use a supported pretrained JumpStart model
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Use a supported pretrained JumpStart model**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Select the training interface that supplies the required degree of code and container control.
+
+#### Why this is correct
+
+- **D. Use a supported pretrained JumpStart model** — JumpStart provides access to pretrained models that can support deployment or fine-tuning for suitable tasks. This matches the requirement for a reusable pretrained model as the starting point.
+
+#### Why other options are incorrect
+
+- **A. Use framework script mode** — Script mode runs custom training code inside a supported framework container without requiring a custom image. This option does not address the specified need for a reusable pretrained model as the starting point.
+- **B. Bring a custom training container** — A custom container supplies control over system libraries, framework versions, and the training runtime image. This option does not address the specified need for a reusable pretrained model as the starting point.
+- **C. Use a SageMaker built-in algorithm** — A built-in algorithm supplies AWS-provided training implementation for a supported task and input interface. This option does not address the specified need for a reusable pretrained model as the starting point.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Train a Model with Amazon SageMaker - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html)
+- [Containers with custom training algorithms - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-training-algo.html)
+- [SageMaker JumpStart pretrained models - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html)
+
+</details>
+
+## #1117 · MLA-C01 Q1117 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+The workflow only needs supported algorithm hyperparameters and training data channels. It does not need to own the training implementation. Which approach fits?
+
+A. Bring a custom training container
+B. Use a SageMaker built-in algorithm
+C. Use a supported pretrained JumpStart model
+D. Use framework script mode
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Use a SageMaker built-in algorithm**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Select the training interface that supplies the required degree of code and container control.
+
+#### Why this is correct
+
+- **B. Use a SageMaker built-in algorithm** — A built-in algorithm supplies AWS-provided training implementation for a supported task and input interface. This matches the requirement for managed use of a supported built-in algorithm.
+
+#### Why other options are incorrect
+
+- **A. Bring a custom training container** — A custom container supplies control over system libraries, framework versions, and the training runtime image. This option does not address the specified need for managed use of a supported built-in algorithm.
+- **C. Use a supported pretrained JumpStart model** — JumpStart provides access to pretrained models that can support deployment or fine-tuning for suitable tasks. This option does not address the specified need for managed use of a supported built-in algorithm.
+- **D. Use framework script mode** — Script mode runs custom training code inside a supported framework container without requiring a custom image. This option does not address the specified need for managed use of a supported built-in algorithm.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Train a Model with Amazon SageMaker - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html)
+- [Containers with custom training algorithms - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-training-algo.html)
+- [SageMaker JumpStart pretrained models - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html)
+
+</details>
+
+## #1118 · MLA-C01 Q1118 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An engineer changes the loss function in an existing TensorFlow script while retaining a supported framework image. Which approach fits?
+
+A. Use framework script mode
+B. Bring a custom training container
+C. Use a SageMaker built-in algorithm
+D. Use a supported pretrained JumpStart model
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Use framework script mode**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Select the training interface that supplies the required degree of code and container control.
+
+#### Why this is correct
+
+- **A. Use framework script mode** — Script mode runs custom training code inside a supported framework container without requiring a custom image. This matches the requirement for a custom script inside a managed framework container.
+
+#### Why other options are incorrect
+
+- **B. Bring a custom training container** — A custom container supplies control over system libraries, framework versions, and the training runtime image. This option does not address the specified need for a custom script inside a managed framework container.
+- **C. Use a SageMaker built-in algorithm** — A built-in algorithm supplies AWS-provided training implementation for a supported task and input interface. This option does not address the specified need for a custom script inside a managed framework container.
+- **D. Use a supported pretrained JumpStart model** — JumpStart provides access to pretrained models that can support deployment or fine-tuning for suitable tasks. This option does not address the specified need for a custom script inside a managed framework container.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Train a Model with Amazon SageMaker - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html)
+- [Containers with custom training algorithms - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-training-algo.html)
+- [SageMaker JumpStart pretrained models - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html)
+
+</details>
+
+## #1119 · MLA-C01 Q1119 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A regulated build process must pin operating-system libraries in an image supplied by the team. Which approach provides that control?
+
+A. Use a supported pretrained JumpStart model
+B. Use framework script mode
+C. Use a SageMaker built-in algorithm
+D. Bring a custom training container
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Bring a custom training container**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Select the training interface that supplies the required degree of code and container control.
+
+#### Why this is correct
+
+- **D. Bring a custom training container** — A custom container supplies control over system libraries, framework versions, and the training runtime image. This matches the requirement for ownership of the complete training container image.
+
+#### Why other options are incorrect
+
+- **A. Use a supported pretrained JumpStart model** — JumpStart provides access to pretrained models that can support deployment or fine-tuning for suitable tasks. This option does not address the specified need for ownership of the complete training container image.
+- **B. Use framework script mode** — Script mode runs custom training code inside a supported framework container without requiring a custom image. This option does not address the specified need for ownership of the complete training container image.
+- **C. Use a SageMaker built-in algorithm** — A built-in algorithm supplies AWS-provided training implementation for a supported task and input interface. This option does not address the specified need for ownership of the complete training container image.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Train a Model with Amazon SageMaker - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html)
+- [Containers with custom training algorithms - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-training-algo.html)
+- [SageMaker JumpStart pretrained models - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html)
+
+</details>
+
+## #1120 · MLA-C01 Q1120 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An experiment adapts an existing supported vision model through fine-tuning. Which SageMaker option helps discover this starting model?
+
+A. Bring a custom training container
+B. Use framework script mode
+C. Use a SageMaker built-in algorithm
+D. Use a supported pretrained JumpStart model
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Use a supported pretrained JumpStart model**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Select the training interface that supplies the required degree of code and container control.
+
+#### Why this is correct
+
+- **D. Use a supported pretrained JumpStart model** — JumpStart provides access to pretrained models that can support deployment or fine-tuning for suitable tasks. This matches the requirement for discovery of a supported pretrained model for adaptation.
+
+#### Why other options are incorrect
+
+- **A. Bring a custom training container** — A custom container supplies control over system libraries, framework versions, and the training runtime image. This option does not address the specified need for discovery of a supported pretrained model for adaptation.
+- **B. Use framework script mode** — Script mode runs custom training code inside a supported framework container without requiring a custom image. This option does not address the specified need for discovery of a supported pretrained model for adaptation.
+- **C. Use a SageMaker built-in algorithm** — A built-in algorithm supplies AWS-provided training implementation for a supported task and input interface. This option does not address the specified need for discovery of a supported pretrained model for adaptation.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Train a Model with Amazon SageMaker - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html)
+- [Containers with custom training algorithms - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-training-algo.html)
+- [SageMaker JumpStart pretrained models - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html)
+
+</details>
+
+## #1121 · MLA-C01 Q1121 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An existing training script requires all S3 input files on local disk before startup and has enough disk space. Which input mode fits?
+
+A. File mode
+B. Pipe mode
+C. An FSx for Lustre input channel
+D. FastFile mode
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. File mode**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+SageMaker input modes trade startup downloads against streaming interfaces and filesystem behavior.
+
+#### Why this is correct
+
+- **A. File mode** — File mode downloads input data to the training volume before the training application starts. This matches the requirement for a complete input download before training starts.
+
+#### Why other options are incorrect
+
+- **B. Pipe mode** — Pipe mode streams input through named pipes and requires training code compatible with that streaming interface. This option does not address the specified need for a complete input download before training starts.
+- **C. An FSx for Lustre input channel** — An FSx channel lets training jobs read a configured Lustre filesystem with the required network access. This option does not address the specified need for a complete input download before training starts.
+- **D. FastFile mode** — FastFile exposes S3 data through a filesystem interface and loads data on demand rather than downloading the full input first. This option does not address the specified need for a complete input download before training starts.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Setting up training jobs to access datasets - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html)
+
+</details>
+
+## #1122 · MLA-C01 Q1122 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A supported training job needs S3 data through file paths but wants to avoid downloading the whole dataset before startup. Which mode fits?
+
+A. FastFile mode
+B. Pipe mode
+C. File mode
+D. An FSx for Lustre input channel
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. FastFile mode**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+SageMaker input modes trade startup downloads against streaming interfaces and filesystem behavior.
+
+#### Why this is correct
+
+- **A. FastFile mode** — FastFile exposes S3 data through a filesystem interface and loads data on demand rather than downloading the full input first. This matches the requirement for on-demand S3 access through filesystem semantics.
+
+#### Why other options are incorrect
+
+- **B. Pipe mode** — Pipe mode streams input through named pipes and requires training code compatible with that streaming interface. This option does not address the specified need for on-demand S3 access through filesystem semantics.
+- **C. File mode** — File mode downloads input data to the training volume before the training application starts. This option does not address the specified need for on-demand S3 access through filesystem semantics.
+- **D. An FSx for Lustre input channel** — An FSx channel lets training jobs read a configured Lustre filesystem with the required network access. This option does not address the specified need for on-demand S3 access through filesystem semantics.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Setting up training jobs to access datasets - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html)
+
+</details>
+
+## #1123 · MLA-C01 Q1123 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+The training code explicitly reads FIFO streams and can process examples sequentially as they arrive. Which input mode fits?
+
+A. Pipe mode
+B. An FSx for Lustre input channel
+C. FastFile mode
+D. File mode
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Pipe mode**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+SageMaker input modes trade startup downloads against streaming interfaces and filesystem behavior.
+
+#### Why this is correct
+
+- **A. Pipe mode** — Pipe mode streams input through named pipes and requires training code compatible with that streaming interface. This matches the requirement for streaming input through named pipes.
+
+#### Why other options are incorrect
+
+- **B. An FSx for Lustre input channel** — An FSx channel lets training jobs read a configured Lustre filesystem with the required network access. This option does not address the specified need for streaming input through named pipes.
+- **C. FastFile mode** — FastFile exposes S3 data through a filesystem interface and loads data on demand rather than downloading the full input first. This option does not address the specified need for streaming input through named pipes.
+- **D. File mode** — File mode downloads input data to the training volume before the training application starts. This option does not address the specified need for streaming input through named pipes.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Setting up training jobs to access datasets - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html)
+
+</details>
+
+## #1124 · MLA-C01 Q1124 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Training data already resides on an accessible FSx for Lustre filesystem. Which input configuration lets the job use that filesystem directly?
+
+A. FastFile mode
+B. File mode
+C. Pipe mode
+D. An FSx for Lustre input channel
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. An FSx for Lustre input channel**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+SageMaker input modes trade startup downloads against streaming interfaces and filesystem behavior.
+
+#### Why this is correct
+
+- **D. An FSx for Lustre input channel** — An FSx channel lets training jobs read a configured Lustre filesystem with the required network access. This matches the requirement for direct use of the configured Lustre filesystem.
+
+#### Why other options are incorrect
+
+- **A. FastFile mode** — FastFile exposes S3 data through a filesystem interface and loads data on demand rather than downloading the full input first. This option does not address the specified need for direct use of the configured Lustre filesystem.
+- **B. File mode** — File mode downloads input data to the training volume before the training application starts. This option does not address the specified need for direct use of the configured Lustre filesystem.
+- **C. Pipe mode** — Pipe mode streams input through named pipes and requires training code compatible with that streaming interface. This option does not address the specified need for direct use of the configured Lustre filesystem.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Setting up training jobs to access datasets - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html)
+
+</details>
+
+## #1125 · MLA-C01 Q1125 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A small dataset can be staged entirely on the training volume. The job must then read local copies throughout training. Which mode fits?
+
+A. File mode
+B. Pipe mode
+C. An FSx for Lustre input channel
+D. FastFile mode
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. File mode**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+SageMaker input modes trade startup downloads against streaming interfaces and filesystem behavior.
+
+#### Why this is correct
+
+- **A. File mode** — File mode downloads input data to the training volume before the training application starts. This matches the requirement for local copies fully staged before training.
+
+#### Why other options are incorrect
+
+- **B. Pipe mode** — Pipe mode streams input through named pipes and requires training code compatible with that streaming interface. This option does not address the specified need for local copies fully staged before training.
+- **C. An FSx for Lustre input channel** — An FSx channel lets training jobs read a configured Lustre filesystem with the required network access. This option does not address the specified need for local copies fully staged before training.
+- **D. FastFile mode** — FastFile exposes S3 data through a filesystem interface and loads data on demand rather than downloading the full input first. This option does not address the specified need for local copies fully staged before training.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Setting up training jobs to access datasets - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html)
+
+</details>
+
+## #1126 · MLA-C01 Q1126 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A job spends most startup time downloading a large S3 dataset, but its supported file-access pattern can load data as needed. Which mode addresses startup?
+
+A. An FSx for Lustre input channel
+B. File mode
+C. Pipe mode
+D. FastFile mode
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. FastFile mode**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+SageMaker input modes trade startup downloads against streaming interfaces and filesystem behavior.
+
+#### Why this is correct
+
+- **D. FastFile mode** — FastFile exposes S3 data through a filesystem interface and loads data on demand rather than downloading the full input first. This matches the requirement for avoiding a full upfront S3 download with file access.
+
+#### Why other options are incorrect
+
+- **A. An FSx for Lustre input channel** — An FSx channel lets training jobs read a configured Lustre filesystem with the required network access. This option does not address the specified need for avoiding a full upfront S3 download with file access.
+- **B. File mode** — File mode downloads input data to the training volume before the training application starts. This option does not address the specified need for avoiding a full upfront S3 download with file access.
+- **C. Pipe mode** — Pipe mode streams input through named pipes and requires training code compatible with that streaming interface. This option does not address the specified need for avoiding a full upfront S3 download with file access.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Setting up training jobs to access datasets - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html)
+
+</details>
+
+## #1127 · MLA-C01 Q1127 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A framework's input reader is explicitly designed for SageMaker's pipe-based data source. Which mode matches that reader?
+
+A. An FSx for Lustre input channel
+B. File mode
+C. FastFile mode
+D. Pipe mode
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Pipe mode**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+SageMaker input modes trade startup downloads against streaming interfaces and filesystem behavior.
+
+#### Why this is correct
+
+- **D. Pipe mode** — Pipe mode streams input through named pipes and requires training code compatible with that streaming interface. This matches the requirement for compatibility with a pipe-based input reader.
+
+#### Why other options are incorrect
+
+- **A. An FSx for Lustre input channel** — An FSx channel lets training jobs read a configured Lustre filesystem with the required network access. This option does not address the specified need for compatibility with a pipe-based input reader.
+- **B. File mode** — File mode downloads input data to the training volume before the training application starts. This option does not address the specified need for compatibility with a pipe-based input reader.
+- **C. FastFile mode** — FastFile exposes S3 data through a filesystem interface and loads data on demand rather than downloading the full input first. This option does not address the specified need for compatibility with a pipe-based input reader.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Setting up training jobs to access datasets - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html)
+
+</details>
+
+## #1128 · MLA-C01 Q1128 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Several jobs share a high-performance Lustre dataset already prepared inside the VPC. Which input source preserves that existing filesystem?
+
+A. An FSx for Lustre input channel
+B. FastFile mode
+C. File mode
+D. Pipe mode
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. An FSx for Lustre input channel**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+SageMaker input modes trade startup downloads against streaming interfaces and filesystem behavior.
+
+#### Why this is correct
+
+- **A. An FSx for Lustre input channel** — An FSx channel lets training jobs read a configured Lustre filesystem with the required network access. This matches the requirement for reuse of the prepared FSx for Lustre dataset.
+
+#### Why other options are incorrect
+
+- **B. FastFile mode** — FastFile exposes S3 data through a filesystem interface and loads data on demand rather than downloading the full input first. This option does not address the specified need for reuse of the prepared FSx for Lustre dataset.
+- **C. File mode** — File mode downloads input data to the training volume before the training application starts. This option does not address the specified need for reuse of the prepared FSx for Lustre dataset.
+- **D. Pipe mode** — Pipe mode streams input through named pipes and requires training code compatible with that streaming interface. This option does not address the specified need for reuse of the prepared FSx for Lustre dataset.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Setting up training jobs to access datasets - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html)
+
+</details>
+
+## #1129 · MLA-C01 Q1129 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A model fits in each GPU, but training batches take too long. The team wants replicated models to process different examples concurrently. Which approach fits?
+
+A. Use GPU acceleration on one instance
+B. Use a suitable CPU instance
+C. Use model parallelism
+D. Use data parallelism
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Use data parallelism**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose parallelism and compute resources from the measured compute and memory bottleneck.
+
+#### Why this is correct
+
+- **D. Use data parallelism** — Data parallelism replicates the model across workers, divides batches, and synchronizes updates. This matches the requirement for replicated models that split the training examples.
+
+#### Why other options are incorrect
+
+- **A. Use GPU acceleration on one instance** — A GPU can accelerate supported tensor operations when the workload fits on that instance and GPU utilization is useful. This option does not address the specified need for replicated models that split the training examples.
+- **B. Use a suitable CPU instance** — CPU instances can be appropriate for CPU-bound algorithms and preprocessing that do not benefit from GPU execution. This option does not address the specified need for replicated models that split the training examples.
+- **C. Use model parallelism** — Model parallelism partitions model computation or model state across devices when one device cannot hold the workload. This option does not address the specified need for replicated models that split the training examples.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Distributed training in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-training.html)
+- [Introduction to Model Parallelism - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-parallel-intro.html)
+- [Introduction to the SageMaker AI distributed data parallelism library - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-parallel-intro.html)
+
+</details>
+
+## #1130 · MLA-C01 Q1130 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A model's parameters and training state do not fit on one GPU. The team must partition model state across devices. Which approach fits?
+
+A. Use GPU acceleration on one instance
+B. Use model parallelism
+C. Use data parallelism
+D. Use a suitable CPU instance
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Use model parallelism**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose parallelism and compute resources from the measured compute and memory bottleneck.
+
+#### Why this is correct
+
+- **B. Use model parallelism** — Model parallelism partitions model computation or model state across devices when one device cannot hold the workload. This matches the requirement for partitioning model state across devices.
+
+#### Why other options are incorrect
+
+- **A. Use GPU acceleration on one instance** — A GPU can accelerate supported tensor operations when the workload fits on that instance and GPU utilization is useful. This option does not address the specified need for partitioning model state across devices.
+- **C. Use data parallelism** — Data parallelism replicates the model across workers, divides batches, and synchronizes updates. This option does not address the specified need for partitioning model state across devices.
+- **D. Use a suitable CPU instance** — CPU instances can be appropriate for CPU-bound algorithms and preprocessing that do not benefit from GPU execution. This option does not address the specified need for partitioning model state across devices.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Distributed training in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-training.html)
+- [Introduction to Model Parallelism - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-parallel-intro.html)
+- [Introduction to the SageMaker AI distributed data parallelism library - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-parallel-intro.html)
+
+</details>
+
+## #1131 · MLA-C01 Q1131 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A neural network fits on one accelerator, but tensor operations are slow on its current CPU. Which change targets this bottleneck?
+
+A. Use a suitable CPU instance
+B. Use model parallelism
+C. Use data parallelism
+D. Use GPU acceleration on one instance
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Use GPU acceleration on one instance**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose parallelism and compute resources from the measured compute and memory bottleneck.
+
+#### Why this is correct
+
+- **D. Use GPU acceleration on one instance** — A GPU can accelerate supported tensor operations when the workload fits on that instance and GPU utilization is useful. This matches the requirement for accelerated tensor computation on a single fitting device.
+
+#### Why other options are incorrect
+
+- **A. Use a suitable CPU instance** — CPU instances can be appropriate for CPU-bound algorithms and preprocessing that do not benefit from GPU execution. This option does not address the specified need for accelerated tensor computation on a single fitting device.
+- **B. Use model parallelism** — Model parallelism partitions model computation or model state across devices when one device cannot hold the workload. This option does not address the specified need for accelerated tensor computation on a single fitting device.
+- **C. Use data parallelism** — Data parallelism replicates the model across workers, divides batches, and synchronizes updates. This option does not address the specified need for accelerated tensor computation on a single fitting device.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Distributed training in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-training.html)
+- [Introduction to Model Parallelism - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-parallel-intro.html)
+- [Introduction to the SageMaker AI distributed data parallelism library - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-parallel-intro.html)
+
+</details>
+
+## #1132 · MLA-C01 Q1132 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A feature job uses CPU-only parsing code and cannot use CUDA. The current GPU stays idle. Which compute choice avoids paying for unused acceleration?
+
+A. Use model parallelism
+B. Use data parallelism
+C. Use a suitable CPU instance
+D. Use GPU acceleration on one instance
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Use a suitable CPU instance**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose parallelism and compute resources from the measured compute and memory bottleneck.
+
+#### Why this is correct
+
+- **C. Use a suitable CPU instance** — CPU instances can be appropriate for CPU-bound algorithms and preprocessing that do not benefit from GPU execution. This matches the requirement for CPU compute for a CPU-only workload.
+
+#### Why other options are incorrect
+
+- **A. Use model parallelism** — Model parallelism partitions model computation or model state across devices when one device cannot hold the workload. This option does not address the specified need for CPU compute for a CPU-only workload.
+- **B. Use data parallelism** — Data parallelism replicates the model across workers, divides batches, and synchronizes updates. This option does not address the specified need for CPU compute for a CPU-only workload.
+- **D. Use GPU acceleration on one instance** — A GPU can accelerate supported tensor operations when the workload fits on that instance and GPU utilization is useful. This option does not address the specified need for CPU compute for a CPU-only workload.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Distributed training in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-training.html)
+- [Introduction to Model Parallelism - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-parallel-intro.html)
+- [Introduction to the SageMaker AI distributed data parallelism library - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-parallel-intro.html)
+
+</details>
+
+## #1133 · MLA-C01 Q1133 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Each worker holds a full model replica and synchronizes gradients after processing a different batch shard. Which strategy is in use?
+
+A. Use GPU acceleration on one instance
+B. Use model parallelism
+C. Use a suitable CPU instance
+D. Use data parallelism
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Use data parallelism**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose parallelism and compute resources from the measured compute and memory bottleneck.
+
+#### Why this is correct
+
+- **D. Use data parallelism** — Data parallelism replicates the model across workers, divides batches, and synchronizes updates. This matches the requirement for full model replicas with synchronized gradient updates.
+
+#### Why other options are incorrect
+
+- **A. Use GPU acceleration on one instance** — A GPU can accelerate supported tensor operations when the workload fits on that instance and GPU utilization is useful. This option does not address the specified need for full model replicas with synchronized gradient updates.
+- **B. Use model parallelism** — Model parallelism partitions model computation or model state across devices when one device cannot hold the workload. This option does not address the specified need for full model replicas with synchronized gradient updates.
+- **C. Use a suitable CPU instance** — CPU instances can be appropriate for CPU-bound algorithms and preprocessing that do not benefit from GPU execution. This option does not address the specified need for full model replicas with synchronized gradient updates.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Distributed training in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-training.html)
+- [Introduction to Model Parallelism - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-parallel-intro.html)
+- [Introduction to the SageMaker AI distributed data parallelism library - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-parallel-intro.html)
+
+</details>
+
+## #1134 · MLA-C01 Q1134 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Different layers execute on different GPUs because the network exceeds one device's memory. Which strategy describes the placement?
+
+A. Use data parallelism
+B. Use model parallelism
+C. Use GPU acceleration on one instance
+D. Use a suitable CPU instance
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Use model parallelism**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose parallelism and compute resources from the measured compute and memory bottleneck.
+
+#### Why this is correct
+
+- **B. Use model parallelism** — Model parallelism partitions model computation or model state across devices when one device cannot hold the workload. This matches the requirement for partitioning a network across GPU devices.
+
+#### Why other options are incorrect
+
+- **A. Use data parallelism** — Data parallelism replicates the model across workers, divides batches, and synchronizes updates. This option does not address the specified need for partitioning a network across GPU devices.
+- **C. Use GPU acceleration on one instance** — A GPU can accelerate supported tensor operations when the workload fits on that instance and GPU utilization is useful. This option does not address the specified need for partitioning a network across GPU devices.
+- **D. Use a suitable CPU instance** — CPU instances can be appropriate for CPU-bound algorithms and preprocessing that do not benefit from GPU execution. This option does not address the specified need for partitioning a network across GPU devices.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Distributed training in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-training.html)
+- [Introduction to Model Parallelism - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-parallel-intro.html)
+- [Introduction to the SageMaker AI distributed data parallelism library - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-parallel-intro.html)
+
+</details>
+
+## #1135 · MLA-C01 Q1135 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Profiling identifies supported matrix multiplications as the bottleneck, and one GPU has enough memory for the workload. Which change fits?
+
+A. Use model parallelism
+B. Use GPU acceleration on one instance
+C. Use a suitable CPU instance
+D. Use data parallelism
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Use GPU acceleration on one instance**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose parallelism and compute resources from the measured compute and memory bottleneck.
+
+#### Why this is correct
+
+- **B. Use GPU acceleration on one instance** — A GPU can accelerate supported tensor operations when the workload fits on that instance and GPU utilization is useful. This matches the requirement for single-device acceleration of matrix operations.
+
+#### Why other options are incorrect
+
+- **A. Use model parallelism** — Model parallelism partitions model computation or model state across devices when one device cannot hold the workload. This option does not address the specified need for single-device acceleration of matrix operations.
+- **C. Use a suitable CPU instance** — CPU instances can be appropriate for CPU-bound algorithms and preprocessing that do not benefit from GPU execution. This option does not address the specified need for single-device acceleration of matrix operations.
+- **D. Use data parallelism** — Data parallelism replicates the model across workers, divides batches, and synchronizes updates. This option does not address the specified need for single-device acceleration of matrix operations.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Distributed training in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-training.html)
+- [Introduction to Model Parallelism - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-parallel-intro.html)
+- [Introduction to the SageMaker AI distributed data parallelism library - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-parallel-intro.html)
+
+</details>
+
+## #1136 · MLA-C01 Q1136 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A workload's implementation uses only host processors, and benchmarks show no speedup on GPU instances. Which compute choice follows the evidence?
+
+A. Use GPU acceleration on one instance
+B. Use data parallelism
+C. Use a suitable CPU instance
+D. Use model parallelism
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Use a suitable CPU instance**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose parallelism and compute resources from the measured compute and memory bottleneck.
+
+#### Why this is correct
+
+- **C. Use a suitable CPU instance** — CPU instances can be appropriate for CPU-bound algorithms and preprocessing that do not benefit from GPU execution. This matches the requirement for CPU resources for an implementation without GPU speedup.
+
+#### Why other options are incorrect
+
+- **A. Use GPU acceleration on one instance** — A GPU can accelerate supported tensor operations when the workload fits on that instance and GPU utilization is useful. This option does not address the specified need for CPU resources for an implementation without GPU speedup.
+- **B. Use data parallelism** — Data parallelism replicates the model across workers, divides batches, and synchronizes updates. This option does not address the specified need for CPU resources for an implementation without GPU speedup.
+- **D. Use model parallelism** — Model parallelism partitions model computation or model state across devices when one device cannot hold the workload. This option does not address the specified need for CPU resources for an implementation without GPU speedup.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Distributed training in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-training.html)
+- [Introduction to Model Parallelism - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-parallel-intro.html)
+- [Introduction to the SageMaker AI distributed data parallelism library - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/data-parallel-intro.html)
+
+</details>
+
+## #1137 · MLA-C01 Q1137 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A linear model overfits with very large coefficients. The team wants a smooth penalty on squared weight magnitudes. Which change fits?
+
+A. Reduce tree depth
+B. Apply dropout during neural-network training
+C. Increase an appropriate L2 penalty
+D. Use early stopping based on validation performance
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Increase an appropriate L2 penalty**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Regularization controls model complexity through weights, activations, training duration, or tree structure.
+
+#### Why this is correct
+
+- **C. Increase an appropriate L2 penalty** — An L2 penalty discourages large weight magnitudes through the optimization objective. This matches the requirement for a penalty on large coefficient magnitudes.
+
+#### Why other options are incorrect
+
+- **A. Reduce tree depth** — Shallower trees restrict the complexity of interactions that each decision tree can represent. This option does not address the specified need for a penalty on large coefficient magnitudes.
+- **B. Apply dropout during neural-network training** — Dropout randomly disables selected activations during training to reduce reliance on specific units. This option does not address the specified need for a penalty on large coefficient magnitudes.
+- **D. Use early stopping based on validation performance** — Early stopping limits training after the configured validation-based stopping criterion is met. This option does not address the specified need for a penalty on large coefficient magnitudes.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [XGBoost hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html)
+- [DeepAR Hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deepar_hyperparameters.html)
+- [Stop Training Jobs Early - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-early-stopping.html)
+
+</details>
+
+## #1138 · MLA-C01 Q1138 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A neural network relies heavily on particular hidden units. The team wants to randomly deactivate units during training. Which technique fits?
+
+A. Apply dropout during neural-network training
+B. Use early stopping based on validation performance
+C. Reduce tree depth
+D. Increase an appropriate L2 penalty
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Apply dropout during neural-network training**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Regularization controls model complexity through weights, activations, training duration, or tree structure.
+
+#### Why this is correct
+
+- **A. Apply dropout during neural-network training** — Dropout randomly disables selected activations during training to reduce reliance on specific units. This matches the requirement for random deactivation of training activations.
+
+#### Why other options are incorrect
+
+- **B. Use early stopping based on validation performance** — Early stopping limits training after the configured validation-based stopping criterion is met. This option does not address the specified need for random deactivation of training activations.
+- **C. Reduce tree depth** — Shallower trees restrict the complexity of interactions that each decision tree can represent. This option does not address the specified need for random deactivation of training activations.
+- **D. Increase an appropriate L2 penalty** — An L2 penalty discourages large weight magnitudes through the optimization objective. This option does not address the specified need for random deactivation of training activations.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [XGBoost hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html)
+- [DeepAR Hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deepar_hyperparameters.html)
+- [Stop Training Jobs Early - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-early-stopping.html)
+
+</details>
+
+## #1139 · MLA-C01 Q1139 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Validation loss rises after epoch 12 while training loss keeps falling. The team wants training to stop near the useful validation point. Which technique fits?
+
+A. Increase an appropriate L2 penalty
+B. Use early stopping based on validation performance
+C. Reduce tree depth
+D. Apply dropout during neural-network training
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Use early stopping based on validation performance**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Regularization controls model complexity through weights, activations, training duration, or tree structure.
+
+#### Why this is correct
+
+- **B. Use early stopping based on validation performance** — Early stopping limits training after the configured validation-based stopping criterion is met. This matches the requirement for a validation-based limit on training duration.
+
+#### Why other options are incorrect
+
+- **A. Increase an appropriate L2 penalty** — An L2 penalty discourages large weight magnitudes through the optimization objective. This option does not address the specified need for a validation-based limit on training duration.
+- **C. Reduce tree depth** — Shallower trees restrict the complexity of interactions that each decision tree can represent. This option does not address the specified need for a validation-based limit on training duration.
+- **D. Apply dropout during neural-network training** — Dropout randomly disables selected activations during training to reduce reliance on specific units. This option does not address the specified need for a validation-based limit on training duration.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [XGBoost hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html)
+- [DeepAR Hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deepar_hyperparameters.html)
+- [Stop Training Jobs Early - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-early-stopping.html)
+
+</details>
+
+## #1140 · MLA-C01 Q1140 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Boosted trees memorize rare feature combinations through very deep paths. Which change directly restricts each tree's structural complexity?
+
+A. Use early stopping based on validation performance
+B. Apply dropout during neural-network training
+C. Increase an appropriate L2 penalty
+D. Reduce tree depth
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Reduce tree depth**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Regularization controls model complexity through weights, activations, training duration, or tree structure.
+
+#### Why this is correct
+
+- **D. Reduce tree depth** — Shallower trees restrict the complexity of interactions that each decision tree can represent. This matches the requirement for a lower maximum tree depth.
+
+#### Why other options are incorrect
+
+- **A. Use early stopping based on validation performance** — Early stopping limits training after the configured validation-based stopping criterion is met. This option does not address the specified need for a lower maximum tree depth.
+- **B. Apply dropout during neural-network training** — Dropout randomly disables selected activations during training to reduce reliance on specific units. This option does not address the specified need for a lower maximum tree depth.
+- **C. Increase an appropriate L2 penalty** — An L2 penalty discourages large weight magnitudes through the optimization objective. This option does not address the specified need for a lower maximum tree depth.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [XGBoost hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html)
+- [DeepAR Hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deepar_hyperparameters.html)
+- [Stop Training Jobs Early - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-early-stopping.html)
+
+</details>
+
+## #1141 · MLA-C01 Q1141 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An objective must add a squared-weight cost term without deleting features explicitly. Which regularization choice matches this requirement?
+
+A. Reduce tree depth
+B. Increase an appropriate L2 penalty
+C. Use early stopping based on validation performance
+D. Apply dropout during neural-network training
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Increase an appropriate L2 penalty**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Regularization controls model complexity through weights, activations, training duration, or tree structure.
+
+#### Why this is correct
+
+- **B. Increase an appropriate L2 penalty** — An L2 penalty discourages large weight magnitudes through the optimization objective. This matches the requirement for squared-weight regularization in the loss.
+
+#### Why other options are incorrect
+
+- **A. Reduce tree depth** — Shallower trees restrict the complexity of interactions that each decision tree can represent. This option does not address the specified need for squared-weight regularization in the loss.
+- **C. Use early stopping based on validation performance** — Early stopping limits training after the configured validation-based stopping criterion is met. This option does not address the specified need for squared-weight regularization in the loss.
+- **D. Apply dropout during neural-network training** — Dropout randomly disables selected activations during training to reduce reliance on specific units. This option does not address the specified need for squared-weight regularization in the loss.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [XGBoost hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html)
+- [DeepAR Hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deepar_hyperparameters.html)
+- [Stop Training Jobs Early - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-early-stopping.html)
+
+</details>
+
+## #1142 · MLA-C01 Q1142 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Training needs stochastic masking of hidden activations, with the model using the configured inference behavior during evaluation. Which technique fits?
+
+A. Increase an appropriate L2 penalty
+B. Use early stopping based on validation performance
+C. Apply dropout during neural-network training
+D. Reduce tree depth
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Apply dropout during neural-network training**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Regularization controls model complexity through weights, activations, training duration, or tree structure.
+
+#### Why this is correct
+
+- **C. Apply dropout during neural-network training** — Dropout randomly disables selected activations during training to reduce reliance on specific units. This matches the requirement for stochastic masking of hidden units during training.
+
+#### Why other options are incorrect
+
+- **A. Increase an appropriate L2 penalty** — An L2 penalty discourages large weight magnitudes through the optimization objective. This option does not address the specified need for stochastic masking of hidden units during training.
+- **B. Use early stopping based on validation performance** — Early stopping limits training after the configured validation-based stopping criterion is met. This option does not address the specified need for stochastic masking of hidden units during training.
+- **D. Reduce tree depth** — Shallower trees restrict the complexity of interactions that each decision tree can represent. This option does not address the specified need for stochastic masking of hidden units during training.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [XGBoost hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html)
+- [DeepAR Hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deepar_hyperparameters.html)
+- [Stop Training Jobs Early - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-early-stopping.html)
+
+</details>
+
+## #1143 · MLA-C01 Q1143 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A training policy stops runs that no longer improve the monitored validation metric. Which technique implements that policy?
+
+A. Reduce tree depth
+B. Use early stopping based on validation performance
+C. Increase an appropriate L2 penalty
+D. Apply dropout during neural-network training
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Use early stopping based on validation performance**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Regularization controls model complexity through weights, activations, training duration, or tree structure.
+
+#### Why this is correct
+
+- **B. Use early stopping based on validation performance** — Early stopping limits training after the configured validation-based stopping criterion is met. This matches the requirement for stopping according to validation improvement.
+
+#### Why other options are incorrect
+
+- **A. Reduce tree depth** — Shallower trees restrict the complexity of interactions that each decision tree can represent. This option does not address the specified need for stopping according to validation improvement.
+- **C. Increase an appropriate L2 penalty** — An L2 penalty discourages large weight magnitudes through the optimization objective. This option does not address the specified need for stopping according to validation improvement.
+- **D. Apply dropout during neural-network training** — Dropout randomly disables selected activations during training to reduce reliance on specific units. This option does not address the specified need for stopping according to validation improvement.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [XGBoost hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html)
+- [DeepAR Hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deepar_hyperparameters.html)
+- [Stop Training Jobs Early - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-early-stopping.html)
+
+</details>
+
+## #1144 · MLA-C01 Q1144 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An engineer reduces max_depth to control XGBoost overfitting. Which structural intervention does this implement?
+
+A. Use early stopping based on validation performance
+B. Increase an appropriate L2 penalty
+C. Reduce tree depth
+D. Apply dropout during neural-network training
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Reduce tree depth**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Regularization controls model complexity through weights, activations, training duration, or tree structure.
+
+#### Why this is correct
+
+- **C. Reduce tree depth** — Shallower trees restrict the complexity of interactions that each decision tree can represent. This matches the requirement for restriction of individual tree depth.
+
+#### Why other options are incorrect
+
+- **A. Use early stopping based on validation performance** — Early stopping limits training after the configured validation-based stopping criterion is met. This option does not address the specified need for restriction of individual tree depth.
+- **B. Increase an appropriate L2 penalty** — An L2 penalty discourages large weight magnitudes through the optimization objective. This option does not address the specified need for restriction of individual tree depth.
+- **D. Apply dropout during neural-network training** — Dropout randomly disables selected activations during training to reduce reliance on specific units. This option does not address the specified need for restriction of individual tree depth.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [XGBoost hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html)
+- [DeepAR Hyperparameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deepar_hyperparameters.html)
+- [Stop Training Jobs Early - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-early-stopping.html)
+
+</details>
+
+## #1145 · MLA-C01 Q1145 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A team wants many independent trials sampled from ranges, without using earlier trial scores to choose later settings. Which strategy fits?
+
+A. Bayesian optimization
+B. Grid search
+C. Hyperband
+D. Random search
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Random search**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Hyperparameter search strategies differ in how they choose trials and allocate trial budgets.
+
+#### Why this is correct
+
+- **D. Random search** — Random search samples hyperparameter combinations without using previous trial outcomes to guide later samples. This matches the requirement for independent sampling without feedback from previous trials.
+
+#### Why other options are incorrect
+
+- **A. Bayesian optimization** — Bayesian optimization uses observations from earlier trials to guide the choice of later hyperparameter values. This option does not address the specified need for independent sampling without feedback from previous trials.
+- **B. Grid search** — Grid search evaluates combinations from explicitly specified categorical parameter values. This option does not address the specified need for independent sampling without feedback from previous trials.
+- **C. Hyperband** — Hyperband allocates training resources adaptively and stops poorly performing configurations early. This option does not address the specified need for independent sampling without feedback from previous trials.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Understand the hyperparameter tuning strategies available in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html)
+
+</details>
+
+## #1146 · MLA-C01 Q1146 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Each trial is expensive, and later choices must learn from completed trial scores. Which search strategy uses that feedback?
+
+A. Bayesian optimization
+B. Random search
+C. Grid search
+D. Hyperband
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Bayesian optimization**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Hyperparameter search strategies differ in how they choose trials and allocate trial budgets.
+
+#### Why this is correct
+
+- **A. Bayesian optimization** — Bayesian optimization uses observations from earlier trials to guide the choice of later hyperparameter values. This matches the requirement for trial selection informed by earlier results.
+
+#### Why other options are incorrect
+
+- **B. Random search** — Random search samples hyperparameter combinations without using previous trial outcomes to guide later samples. This option does not address the specified need for trial selection informed by earlier results.
+- **C. Grid search** — Grid search evaluates combinations from explicitly specified categorical parameter values. This option does not address the specified need for trial selection informed by earlier results.
+- **D. Hyperband** — Hyperband allocates training resources adaptively and stops poorly performing configurations early. This option does not address the specified need for trial selection informed by earlier results.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Understand the hyperparameter tuning strategies available in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html)
+
+</details>
+
+## #1147 · MLA-C01 Q1147 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An audit requires evaluation of every combination in a small explicit set of categorical parameter values. Which strategy fits?
+
+A. Bayesian optimization
+B. Hyperband
+C. Grid search
+D. Random search
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Grid search**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Hyperparameter search strategies differ in how they choose trials and allocate trial budgets.
+
+#### Why this is correct
+
+- **C. Grid search** — Grid search evaluates combinations from explicitly specified categorical parameter values. This matches the requirement for exhaustive combinations from specified discrete values.
+
+#### Why other options are incorrect
+
+- **A. Bayesian optimization** — Bayesian optimization uses observations from earlier trials to guide the choice of later hyperparameter values. This option does not address the specified need for exhaustive combinations from specified discrete values.
+- **B. Hyperband** — Hyperband allocates training resources adaptively and stops poorly performing configurations early. This option does not address the specified need for exhaustive combinations from specified discrete values.
+- **D. Random search** — Random search samples hyperparameter combinations without using previous trial outcomes to guide later samples. This option does not address the specified need for exhaustive combinations from specified discrete values.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Understand the hyperparameter tuning strategies available in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html)
+
+</details>
+
+## #1148 · MLA-C01 Q1148 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A tuning job should allocate less training time to weak configurations and more to promising ones. Which strategy targets this resource allocation?
+
+A. Grid search
+B. Random search
+C. Bayesian optimization
+D. Hyperband
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Hyperband**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Hyperparameter search strategies differ in how they choose trials and allocate trial budgets.
+
+#### Why this is correct
+
+- **D. Hyperband** — Hyperband allocates training resources adaptively and stops poorly performing configurations early. This matches the requirement for adaptive training budgets with early elimination.
+
+#### Why other options are incorrect
+
+- **A. Grid search** — Grid search evaluates combinations from explicitly specified categorical parameter values. This option does not address the specified need for adaptive training budgets with early elimination.
+- **B. Random search** — Random search samples hyperparameter combinations without using previous trial outcomes to guide later samples. This option does not address the specified need for adaptive training budgets with early elimination.
+- **C. Bayesian optimization** — Bayesian optimization uses observations from earlier trials to guide the choice of later hyperparameter values. This option does not address the specified need for adaptive training budgets with early elimination.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Understand the hyperparameter tuning strategies available in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html)
+
+</details>
+
+## #1149 · MLA-C01 Q1149 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A tuning design deliberately avoids a surrogate model and draws fresh configurations from the parameter space. Which strategy fits?
+
+A. Hyperband
+B. Grid search
+C. Bayesian optimization
+D. Random search
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Random search**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Hyperparameter search strategies differ in how they choose trials and allocate trial budgets.
+
+#### Why this is correct
+
+- **D. Random search** — Random search samples hyperparameter combinations without using previous trial outcomes to guide later samples. This matches the requirement for direct random sampling of configurations.
+
+#### Why other options are incorrect
+
+- **A. Hyperband** — Hyperband allocates training resources adaptively and stops poorly performing configurations early. This option does not address the specified need for direct random sampling of configurations.
+- **B. Grid search** — Grid search evaluates combinations from explicitly specified categorical parameter values. This option does not address the specified need for direct random sampling of configurations.
+- **C. Bayesian optimization** — Bayesian optimization uses observations from earlier trials to guide the choice of later hyperparameter values. This option does not address the specified need for direct random sampling of configurations.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Understand the hyperparameter tuning strategies available in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html)
+
+</details>
+
+## #1150 · MLA-C01 Q1150 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A tuner builds an estimate of promising regions from observed objective values. Which strategy matches this behavior?
+
+A. Random search
+B. Hyperband
+C. Grid search
+D. Bayesian optimization
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Bayesian optimization**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Hyperparameter search strategies differ in how they choose trials and allocate trial budgets.
+
+#### Why this is correct
+
+- **D. Bayesian optimization** — Bayesian optimization uses observations from earlier trials to guide the choice of later hyperparameter values. This matches the requirement for guided search based on observed objective values.
+
+#### Why other options are incorrect
+
+- **A. Random search** — Random search samples hyperparameter combinations without using previous trial outcomes to guide later samples. This option does not address the specified need for guided search based on observed objective values.
+- **B. Hyperband** — Hyperband allocates training resources adaptively and stops poorly performing configurations early. This option does not address the specified need for guided search based on observed objective values.
+- **C. Grid search** — Grid search evaluates combinations from explicitly specified categorical parameter values. This option does not address the specified need for guided search based on observed objective values.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Understand the hyperparameter tuning strategies available in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html)
+
+</details>
+
+## #1151 · MLA-C01 Q1151 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+The experiment defines three learning rates and two batch sizes and must test all six combinations. Which strategy fits?
+
+A. Random search
+B. Hyperband
+C. Bayesian optimization
+D. Grid search
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Grid search**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Hyperparameter search strategies differ in how they choose trials and allocate trial budgets.
+
+#### Why this is correct
+
+- **D. Grid search** — Grid search evaluates combinations from explicitly specified categorical parameter values. This matches the requirement for complete enumeration of a small discrete search space.
+
+#### Why other options are incorrect
+
+- **A. Random search** — Random search samples hyperparameter combinations without using previous trial outcomes to guide later samples. This option does not address the specified need for complete enumeration of a small discrete search space.
+- **B. Hyperband** — Hyperband allocates training resources adaptively and stops poorly performing configurations early. This option does not address the specified need for complete enumeration of a small discrete search space.
+- **C. Bayesian optimization** — Bayesian optimization uses observations from earlier trials to guide the choice of later hyperparameter values. This option does not address the specified need for complete enumeration of a small discrete search space.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Understand the hyperparameter tuning strategies available in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html)
+
+</details>
+
+## #1152 · MLA-C01 Q1152 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A team has many candidate configurations and wants to eliminate weak candidates before they consume the full epoch budget. Which strategy fits?
+
+A. Grid search
+B. Hyperband
+C. Bayesian optimization
+D. Random search
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Hyperband**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Hyperparameter search strategies differ in how they choose trials and allocate trial budgets.
+
+#### Why this is correct
+
+- **B. Hyperband** — Hyperband allocates training resources adaptively and stops poorly performing configurations early. This matches the requirement for early resource reallocation away from weak candidates.
+
+#### Why other options are incorrect
+
+- **A. Grid search** — Grid search evaluates combinations from explicitly specified categorical parameter values. This option does not address the specified need for early resource reallocation away from weak candidates.
+- **C. Bayesian optimization** — Bayesian optimization uses observations from earlier trials to guide the choice of later hyperparameter values. This option does not address the specified need for early resource reallocation away from weak candidates.
+- **D. Random search** — Random search samples hyperparameter combinations without using previous trial outcomes to guide later samples. This option does not address the specified need for early resource reallocation away from weak candidates.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Understand the hyperparameter tuning strategies available in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html)
+
+</details>
+
+## #1153 · MLA-C01 Q1153 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Reviewing an alert is expensive. The team wants the fraction of raised alerts that correspond to real incidents. Which metric measures this?
+
+A. Precision
+B. ROC AUC
+C. F1 score
+D. Recall
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Precision**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose classification metrics from the business cost of false positives and false negatives.
+
+#### Why this is correct
+
+- **A. Precision** — Precision measures the fraction of predicted positives that are actual positives. This matches the requirement for the correctness of positive predictions.
+
+#### Why other options are incorrect
+
+- **B. ROC AUC** — ROC AUC summarizes discrimination across classification thresholds using true-positive and false-positive rates. This option does not address the specified need for the correctness of positive predictions.
+- **C. F1 score** — F1 is the harmonic mean of precision and recall at a chosen decision threshold. This option does not address the specified need for the correctness of positive predictions.
+- **D. Recall** — Recall measures the fraction of actual positives that the classifier identifies. This option does not address the specified need for the correctness of positive predictions.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model quality metrics and Amazon CloudWatch monitoring - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html)
+- [Metrics reference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-metrics.html)
+
+</details>
+
+## #1154 · MLA-C01 Q1154 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Missing an actual failure is costly. The team wants the fraction of real failures detected. Which metric measures this?
+
+A. ROC AUC
+B. Precision
+C. Recall
+D. F1 score
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Recall**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose classification metrics from the business cost of false positives and false negatives.
+
+#### Why this is correct
+
+- **C. Recall** — Recall measures the fraction of actual positives that the classifier identifies. This matches the requirement for coverage of actual positive cases.
+
+#### Why other options are incorrect
+
+- **A. ROC AUC** — ROC AUC summarizes discrimination across classification thresholds using true-positive and false-positive rates. This option does not address the specified need for coverage of actual positive cases.
+- **B. Precision** — Precision measures the fraction of predicted positives that are actual positives. This option does not address the specified need for coverage of actual positive cases.
+- **D. F1 score** — F1 is the harmonic mean of precision and recall at a chosen decision threshold. This option does not address the specified need for coverage of actual positive cases.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model quality metrics and Amazon CloudWatch monitoring - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html)
+- [Metrics reference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-metrics.html)
+
+</details>
+
+## #1155 · MLA-C01 Q1155 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A classifier needs one threshold-specific metric that combines precision and recall through their harmonic mean. Which metric fits?
+
+A. F1 score
+B. Precision
+C. Recall
+D. ROC AUC
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. F1 score**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose classification metrics from the business cost of false positives and false negatives.
+
+#### Why this is correct
+
+- **A. F1 score** — F1 is the harmonic mean of precision and recall at a chosen decision threshold. This matches the requirement for the harmonic mean of precision and recall.
+
+#### Why other options are incorrect
+
+- **B. Precision** — Precision measures the fraction of predicted positives that are actual positives. This option does not address the specified need for the harmonic mean of precision and recall.
+- **C. Recall** — Recall measures the fraction of actual positives that the classifier identifies. This option does not address the specified need for the harmonic mean of precision and recall.
+- **D. ROC AUC** — ROC AUC summarizes discrimination across classification thresholds using true-positive and false-positive rates. This option does not address the specified need for the harmonic mean of precision and recall.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model quality metrics and Amazon CloudWatch monitoring - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html)
+- [Metrics reference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-metrics.html)
+
+</details>
+
+## #1156 · MLA-C01 Q1156 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A team compares ranking discrimination across thresholds using the ROC curve. Which aggregate metric fits?
+
+A. Recall
+B. ROC AUC
+C. F1 score
+D. Precision
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. ROC AUC**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose classification metrics from the business cost of false positives and false negatives.
+
+#### Why this is correct
+
+- **B. ROC AUC** — ROC AUC summarizes discrimination across classification thresholds using true-positive and false-positive rates. This matches the requirement for area under the receiver operating characteristic curve.
+
+#### Why other options are incorrect
+
+- **A. Recall** — Recall measures the fraction of actual positives that the classifier identifies. This option does not address the specified need for area under the receiver operating characteristic curve.
+- **C. F1 score** — F1 is the harmonic mean of precision and recall at a chosen decision threshold. This option does not address the specified need for area under the receiver operating characteristic curve.
+- **D. Precision** — Precision measures the fraction of predicted positives that are actual positives. This option does not address the specified need for area under the receiver operating characteristic curve.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model quality metrics and Amazon CloudWatch monitoring - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html)
+- [Metrics reference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-metrics.html)
+
+</details>
+
+## #1157 · MLA-C01 Q1157 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A classifier raises 50 positive alerts, and 40 are truly positive. Which metric is calculated as 40 divided by 50?
+
+A. F1 score
+B. Precision
+C. ROC AUC
+D. Recall
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Precision**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose classification metrics from the business cost of false positives and false negatives.
+
+#### Why this is correct
+
+- **B. Precision** — Precision measures the fraction of predicted positives that are actual positives. This matches the requirement for true positives divided by predicted positives.
+
+#### Why other options are incorrect
+
+- **A. F1 score** — F1 is the harmonic mean of precision and recall at a chosen decision threshold. This option does not address the specified need for true positives divided by predicted positives.
+- **C. ROC AUC** — ROC AUC summarizes discrimination across classification thresholds using true-positive and false-positive rates. This option does not address the specified need for true positives divided by predicted positives.
+- **D. Recall** — Recall measures the fraction of actual positives that the classifier identifies. This option does not address the specified need for true positives divided by predicted positives.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model quality metrics and Amazon CloudWatch monitoring - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html)
+- [Metrics reference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-metrics.html)
+
+</details>
+
+## #1158 · MLA-C01 Q1158 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A test set contains 80 positive cases, and the model finds 60 of them. Which metric is calculated as 60 divided by 80?
+
+A. ROC AUC
+B. Precision
+C. F1 score
+D. Recall
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Recall**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose classification metrics from the business cost of false positives and false negatives.
+
+#### Why this is correct
+
+- **D. Recall** — Recall measures the fraction of actual positives that the classifier identifies. This matches the requirement for true positives divided by actual positives.
+
+#### Why other options are incorrect
+
+- **A. ROC AUC** — ROC AUC summarizes discrimination across classification thresholds using true-positive and false-positive rates. This option does not address the specified need for true positives divided by actual positives.
+- **B. Precision** — Precision measures the fraction of predicted positives that are actual positives. This option does not address the specified need for true positives divided by actual positives.
+- **C. F1 score** — F1 is the harmonic mean of precision and recall at a chosen decision threshold. This option does not address the specified need for true positives divided by actual positives.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model quality metrics and Amazon CloudWatch monitoring - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html)
+- [Metrics reference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-metrics.html)
+
+</details>
+
+## #1159 · MLA-C01 Q1159 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An evaluation report computes twice the product of precision and recall divided by their sum. Which metric is this?
+
+A. ROC AUC
+B. Recall
+C. F1 score
+D. Precision
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. F1 score**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose classification metrics from the business cost of false positives and false negatives.
+
+#### Why this is correct
+
+- **C. F1 score** — F1 is the harmonic mean of precision and recall at a chosen decision threshold. This matches the requirement for the specified harmonic-mean formula.
+
+#### Why other options are incorrect
+
+- **A. ROC AUC** — ROC AUC summarizes discrimination across classification thresholds using true-positive and false-positive rates. This option does not address the specified need for the specified harmonic-mean formula.
+- **B. Recall** — Recall measures the fraction of actual positives that the classifier identifies. This option does not address the specified need for the specified harmonic-mean formula.
+- **D. Precision** — Precision measures the fraction of predicted positives that are actual positives. This option does not address the specified need for the specified harmonic-mean formula.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model quality metrics and Amazon CloudWatch monitoring - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html)
+- [Metrics reference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-metrics.html)
+
+</details>
+
+## #1160 · MLA-C01 Q1160 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An evaluator integrates true-positive rate against false-positive rate as the threshold varies. Which metric results?
+
+A. Precision
+B. F1 score
+C. Recall
+D. ROC AUC
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. ROC AUC**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose classification metrics from the business cost of false positives and false negatives.
+
+#### Why this is correct
+
+- **D. ROC AUC** — ROC AUC summarizes discrimination across classification thresholds using true-positive and false-positive rates. This matches the requirement for threshold-spanning ROC discrimination.
+
+#### Why other options are incorrect
+
+- **A. Precision** — Precision measures the fraction of predicted positives that are actual positives. This option does not address the specified need for threshold-spanning ROC discrimination.
+- **B. F1 score** — F1 is the harmonic mean of precision and recall at a chosen decision threshold. This option does not address the specified need for threshold-spanning ROC discrimination.
+- **C. Recall** — Recall measures the fraction of actual positives that the classifier identifies. This option does not address the specified need for threshold-spanning ROC discrimination.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model quality metrics and Amazon CloudWatch monitoring - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html)
+- [Metrics reference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/canvas-metrics.html)
+
+</details>
+
+## #1161 · MLA-C01 Q1161 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A forecast report needs average absolute error in dollars, without squaring the errors. Which metric fits?
+
+A. Mean absolute percentage error
+B. Mean absolute error
+C. R-squared
+D. Root mean squared error
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Mean absolute error**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Regression metrics differ in units, sensitivity to large errors, and behavior near zero targets.
+
+#### Why this is correct
+
+- **B. Mean absolute error** — MAE averages absolute prediction errors and expresses the result in the target's units. This matches the requirement for average absolute error in target units.
+
+#### Why other options are incorrect
+
+- **A. Mean absolute percentage error** — MAPE expresses absolute error relative to actual values and becomes problematic for zero or near-zero targets. This option does not address the specified need for average absolute error in target units.
+- **C. R-squared** — R-squared compares residual variation with the variation around the target mean and can be negative on evaluation data. This option does not address the specified need for average absolute error in target units.
+- **D. Root mean squared error** — RMSE takes the square root of mean squared error and penalizes large errors more heavily than MAE. This option does not address the specified need for average absolute error in target units.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model quality metrics and Amazon CloudWatch monitoring - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html)
+- [Metrics and validation - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-metrics-validation.html)
+
+</details>
+
+## #1162 · MLA-C01 Q1162 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Large misses must contribute disproportionately to a regression score, while the final result remains in target units. Which metric fits?
+
+A. R-squared
+B. Root mean squared error
+C. Mean absolute percentage error
+D. Mean absolute error
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Root mean squared error**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Regression metrics differ in units, sensitivity to large errors, and behavior near zero targets.
+
+#### Why this is correct
+
+- **B. Root mean squared error** — RMSE takes the square root of mean squared error and penalizes large errors more heavily than MAE. This matches the requirement for squared-error sensitivity with output in target units.
+
+#### Why other options are incorrect
+
+- **A. R-squared** — R-squared compares residual variation with the variation around the target mean and can be negative on evaluation data. This option does not address the specified need for squared-error sensitivity with output in target units.
+- **C. Mean absolute percentage error** — MAPE expresses absolute error relative to actual values and becomes problematic for zero or near-zero targets. This option does not address the specified need for squared-error sensitivity with output in target units.
+- **D. Mean absolute error** — MAE averages absolute prediction errors and expresses the result in the target's units. This option does not address the specified need for squared-error sensitivity with output in target units.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model quality metrics and Amazon CloudWatch monitoring - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html)
+- [Metrics and validation - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-metrics-validation.html)
+
+</details>
+
+## #1163 · MLA-C01 Q1163 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A report needs relative error as a percentage, and every actual target is safely above zero. Which metric fits?
+
+A. Mean absolute error
+B. Mean absolute percentage error
+C. Root mean squared error
+D. R-squared
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Mean absolute percentage error**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Regression metrics differ in units, sensitivity to large errors, and behavior near zero targets.
+
+#### Why this is correct
+
+- **B. Mean absolute percentage error** — MAPE expresses absolute error relative to actual values and becomes problematic for zero or near-zero targets. This matches the requirement for percentage-based absolute prediction error.
+
+#### Why other options are incorrect
+
+- **A. Mean absolute error** — MAE averages absolute prediction errors and expresses the result in the target's units. This option does not address the specified need for percentage-based absolute prediction error.
+- **C. Root mean squared error** — RMSE takes the square root of mean squared error and penalizes large errors more heavily than MAE. This option does not address the specified need for percentage-based absolute prediction error.
+- **D. R-squared** — R-squared compares residual variation with the variation around the target mean and can be negative on evaluation data. This option does not address the specified need for percentage-based absolute prediction error.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model quality metrics and Amazon CloudWatch monitoring - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html)
+- [Metrics and validation - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-metrics-validation.html)
+
+</details>
+
+## #1164 · MLA-C01 Q1164 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An evaluator wants a score relative to a constant prediction based on the target mean. Which metric fits?
+
+A. R-squared
+B. Mean absolute error
+C. Mean absolute percentage error
+D. Root mean squared error
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. R-squared**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Regression metrics differ in units, sensitivity to large errors, and behavior near zero targets.
+
+#### Why this is correct
+
+- **A. R-squared** — R-squared compares residual variation with the variation around the target mean and can be negative on evaluation data. This matches the requirement for comparison with target-mean baseline variation.
+
+#### Why other options are incorrect
+
+- **B. Mean absolute error** — MAE averages absolute prediction errors and expresses the result in the target's units. This option does not address the specified need for comparison with target-mean baseline variation.
+- **C. Mean absolute percentage error** — MAPE expresses absolute error relative to actual values and becomes problematic for zero or near-zero targets. This option does not address the specified need for comparison with target-mean baseline variation.
+- **D. Root mean squared error** — RMSE takes the square root of mean squared error and penalizes large errors more heavily than MAE. This option does not address the specified need for comparison with target-mean baseline variation.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model quality metrics and Amazon CloudWatch monitoring - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html)
+- [Metrics and validation - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-metrics-validation.html)
+
+</details>
+
+## #1165 · MLA-C01 Q1165 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Errors of minus 3 and plus 5 must contribute magnitudes of 3 and 5 before averaging. Which metric follows this calculation?
+
+A. Root mean squared error
+B. R-squared
+C. Mean absolute percentage error
+D. Mean absolute error
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Mean absolute error**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Regression metrics differ in units, sensitivity to large errors, and behavior near zero targets.
+
+#### Why this is correct
+
+- **D. Mean absolute error** — MAE averages absolute prediction errors and expresses the result in the target's units. This matches the requirement for the mean of absolute residual magnitudes.
+
+#### Why other options are incorrect
+
+- **A. Root mean squared error** — RMSE takes the square root of mean squared error and penalizes large errors more heavily than MAE. This option does not address the specified need for the mean of absolute residual magnitudes.
+- **B. R-squared** — R-squared compares residual variation with the variation around the target mean and can be negative on evaluation data. This option does not address the specified need for the mean of absolute residual magnitudes.
+- **C. Mean absolute percentage error** — MAPE expresses absolute error relative to actual values and becomes problematic for zero or near-zero targets. This option does not address the specified need for the mean of absolute residual magnitudes.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model quality metrics and Amazon CloudWatch monitoring - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html)
+- [Metrics and validation - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-metrics-validation.html)
+
+</details>
+
+## #1166 · MLA-C01 Q1166 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A metric first squares residuals, averages them, and then takes a square root. Which metric is this?
+
+A. Mean absolute percentage error
+B. R-squared
+C. Root mean squared error
+D. Mean absolute error
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Root mean squared error**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Regression metrics differ in units, sensitivity to large errors, and behavior near zero targets.
+
+#### Why this is correct
+
+- **C. Root mean squared error** — RMSE takes the square root of mean squared error and penalizes large errors more heavily than MAE. This matches the requirement for the root of average squared residuals.
+
+#### Why other options are incorrect
+
+- **A. Mean absolute percentage error** — MAPE expresses absolute error relative to actual values and becomes problematic for zero or near-zero targets. This option does not address the specified need for the root of average squared residuals.
+- **B. R-squared** — R-squared compares residual variation with the variation around the target mean and can be negative on evaluation data. This option does not address the specified need for the root of average squared residuals.
+- **D. Mean absolute error** — MAE averages absolute prediction errors and expresses the result in the target's units. This option does not address the specified need for the root of average squared residuals.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model quality metrics and Amazon CloudWatch monitoring - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html)
+- [Metrics and validation - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-metrics-validation.html)
+
+</details>
+
+## #1167 · MLA-C01 Q1167 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A regression metric becomes unstable because some actual demand values approach zero in its denominator. Which metric has this issue?
+
+A. Root mean squared error
+B. R-squared
+C. Mean absolute error
+D. Mean absolute percentage error
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Mean absolute percentage error**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Regression metrics differ in units, sensitivity to large errors, and behavior near zero targets.
+
+#### Why this is correct
+
+- **D. Mean absolute percentage error** — MAPE expresses absolute error relative to actual values and becomes problematic for zero or near-zero targets. This matches the requirement for relative error with actual values in the denominator.
+
+#### Why other options are incorrect
+
+- **A. Root mean squared error** — RMSE takes the square root of mean squared error and penalizes large errors more heavily than MAE. This option does not address the specified need for relative error with actual values in the denominator.
+- **B. R-squared** — R-squared compares residual variation with the variation around the target mean and can be negative on evaluation data. This option does not address the specified need for relative error with actual values in the denominator.
+- **C. Mean absolute error** — MAE averages absolute prediction errors and expresses the result in the target's units. This option does not address the specified need for relative error with actual values in the denominator.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model quality metrics and Amazon CloudWatch monitoring - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html)
+- [Metrics and validation - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-metrics-validation.html)
+
+</details>
+
+## #1168 · MLA-C01 Q1168 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A model performs worse than the mean baseline on held-out data, producing a negative score. Which listed metric can behave this way?
+
+A. Mean absolute percentage error
+B. Mean absolute error
+C. Root mean squared error
+D. R-squared
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. R-squared**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Regression metrics differ in units, sensitivity to large errors, and behavior near zero targets.
+
+#### Why this is correct
+
+- **D. R-squared** — R-squared compares residual variation with the variation around the target mean and can be negative on evaluation data. This matches the requirement for a baseline-relative score that can be negative.
+
+#### Why other options are incorrect
+
+- **A. Mean absolute percentage error** — MAPE expresses absolute error relative to actual values and becomes problematic for zero or near-zero targets. This option does not address the specified need for a baseline-relative score that can be negative.
+- **B. Mean absolute error** — MAE averages absolute prediction errors and expresses the result in the target's units. This option does not address the specified need for a baseline-relative score that can be negative.
+- **C. Root mean squared error** — RMSE takes the square root of mean squared error and penalizes large errors more heavily than MAE. This option does not address the specified need for a baseline-relative score that can be negative.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model quality metrics and Amazon CloudWatch monitoring - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-metrics.html)
+- [Metrics and validation - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-metrics-validation.html)
+
+</details>
+
+## #1169 · MLA-C01 Q1169 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A highly constrained model performs poorly on both clean training data and independent validation data. Which problem is most consistent with this result?
+
+A. Investigate underfitting
+B. Investigate data leakage
+C. Investigate overfitting
+D. Investigate unstable optimization
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Investigate underfitting**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Compare training and validation behavior before changing model capacity or the training process.
+
+#### Why this is correct
+
+- **A. Investigate underfitting** — Underfitting occurs when the learned model does not capture useful patterns, often yielding poor training and validation performance. This matches the requirement for failure to fit even the training patterns.
+
+#### Why other options are incorrect
+
+- **B. Investigate data leakage** — Leakage introduces information during training or evaluation that would not be available in the intended prediction setting. This option does not address the specified need for failure to fit even the training patterns.
+- **C. Investigate overfitting** — Overfitting occurs when a model fits training-specific patterns that fail to generalize to independent data. This option does not address the specified need for failure to fit even the training patterns.
+- **D. Investigate unstable optimization** — Unstable optimization can produce diverging loss or invalid gradients and requires inspection of training numerics and settings. This option does not address the specified need for failure to fit even the training patterns.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model Fit: Underfitting vs. Overfitting - Amazon Machine Learning](https://docs.aws.amazon.com/machine-learning/latest/dg/model-fit-underfitting-vs-overfitting.html)
+- [Splits and data leakage - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html)
+- [Amazon SageMaker Debugger - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
+
+</details>
+
+## #1170 · MLA-C01 Q1170 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Training error approaches zero, but independent validation error gets worse as model complexity grows. Which problem is most consistent?
+
+A. Investigate overfitting
+B. Investigate unstable optimization
+C. Investigate underfitting
+D. Investigate data leakage
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Investigate overfitting**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Compare training and validation behavior before changing model capacity or the training process.
+
+#### Why this is correct
+
+- **A. Investigate overfitting** — Overfitting occurs when a model fits training-specific patterns that fail to generalize to independent data. This matches the requirement for memorization that harms independent generalization.
+
+#### Why other options are incorrect
+
+- **B. Investigate unstable optimization** — Unstable optimization can produce diverging loss or invalid gradients and requires inspection of training numerics and settings. This option does not address the specified need for memorization that harms independent generalization.
+- **C. Investigate underfitting** — Underfitting occurs when the learned model does not capture useful patterns, often yielding poor training and validation performance. This option does not address the specified need for memorization that harms independent generalization.
+- **D. Investigate data leakage** — Leakage introduces information during training or evaluation that would not be available in the intended prediction setting. This option does not address the specified need for memorization that harms independent generalization.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model Fit: Underfitting vs. Overfitting - Amazon Machine Learning](https://docs.aws.amazon.com/machine-learning/latest/dg/model-fit-underfitting-vs-overfitting.html)
+- [Splits and data leakage - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html)
+- [Amazon SageMaker Debugger - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
+
+</details>
+
+## #1171 · MLA-C01 Q1171 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An offline model uses a feature recorded only after the outcome occurs. That feature is unavailable at prediction time. Which problem is present?
+
+A. Investigate unstable optimization
+B. Investigate underfitting
+C. Investigate overfitting
+D. Investigate data leakage
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Investigate data leakage**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Compare training and validation behavior before changing model capacity or the training process.
+
+#### Why this is correct
+
+- **D. Investigate data leakage** — Leakage introduces information during training or evaluation that would not be available in the intended prediction setting. This matches the requirement for use of information unavailable at prediction time.
+
+#### Why other options are incorrect
+
+- **A. Investigate unstable optimization** — Unstable optimization can produce diverging loss or invalid gradients and requires inspection of training numerics and settings. This option does not address the specified need for use of information unavailable at prediction time.
+- **B. Investigate underfitting** — Underfitting occurs when the learned model does not capture useful patterns, often yielding poor training and validation performance. This option does not address the specified need for use of information unavailable at prediction time.
+- **C. Investigate overfitting** — Overfitting occurs when a model fits training-specific patterns that fail to generalize to independent data. This option does not address the specified need for use of information unavailable at prediction time.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model Fit: Underfitting vs. Overfitting - Amazon Machine Learning](https://docs.aws.amazon.com/machine-learning/latest/dg/model-fit-underfitting-vs-overfitting.html)
+- [Splits and data leakage - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html)
+- [Amazon SageMaker Debugger - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
+
+</details>
+
+## #1172 · MLA-C01 Q1172 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Loss suddenly becomes NaN after large gradient updates. Which problem should the engineer investigate first?
+
+A. Investigate data leakage
+B. Investigate unstable optimization
+C. Investigate underfitting
+D. Investigate overfitting
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Investigate unstable optimization**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Compare training and validation behavior before changing model capacity or the training process.
+
+#### Why this is correct
+
+- **B. Investigate unstable optimization** — Unstable optimization can produce diverging loss or invalid gradients and requires inspection of training numerics and settings. This matches the requirement for numerical instability in optimization.
+
+#### Why other options are incorrect
+
+- **A. Investigate data leakage** — Leakage introduces information during training or evaluation that would not be available in the intended prediction setting. This option does not address the specified need for numerical instability in optimization.
+- **C. Investigate underfitting** — Underfitting occurs when the learned model does not capture useful patterns, often yielding poor training and validation performance. This option does not address the specified need for numerical instability in optimization.
+- **D. Investigate overfitting** — Overfitting occurs when a model fits training-specific patterns that fail to generalize to independent data. This option does not address the specified need for numerical instability in optimization.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model Fit: Underfitting vs. Overfitting - Amazon Machine Learning](https://docs.aws.amazon.com/machine-learning/latest/dg/model-fit-underfitting-vs-overfitting.html)
+- [Splits and data leakage - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html)
+- [Amazon SageMaker Debugger - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
+
+</details>
+
+## #1173 · MLA-C01 Q1173 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Increasing model capacity improves both training and validation scores from very poor baselines. Which initial problem does this suggest?
+
+A. Investigate unstable optimization
+B. Investigate overfitting
+C. Investigate underfitting
+D. Investigate data leakage
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Investigate underfitting**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Compare training and validation behavior before changing model capacity or the training process.
+
+#### Why this is correct
+
+- **C. Investigate underfitting** — Underfitting occurs when the learned model does not capture useful patterns, often yielding poor training and validation performance. This matches the requirement for insufficient capacity to learn useful patterns.
+
+#### Why other options are incorrect
+
+- **A. Investigate unstable optimization** — Unstable optimization can produce diverging loss or invalid gradients and requires inspection of training numerics and settings. This option does not address the specified need for insufficient capacity to learn useful patterns.
+- **B. Investigate overfitting** — Overfitting occurs when a model fits training-specific patterns that fail to generalize to independent data. This option does not address the specified need for insufficient capacity to learn useful patterns.
+- **D. Investigate data leakage** — Leakage introduces information during training or evaluation that would not be available in the intended prediction setting. This option does not address the specified need for insufficient capacity to learn useful patterns.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model Fit: Underfitting vs. Overfitting - Amazon Machine Learning](https://docs.aws.amazon.com/machine-learning/latest/dg/model-fit-underfitting-vs-overfitting.html)
+- [Splits and data leakage - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html)
+- [Amazon SageMaker Debugger - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
+
+</details>
+
+## #1174 · MLA-C01 Q1174 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A gap widens between excellent training performance and poor performance on unseen entities. Which problem fits this behavior?
+
+A. Investigate data leakage
+B. Investigate overfitting
+C. Investigate unstable optimization
+D. Investigate underfitting
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Investigate overfitting**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Compare training and validation behavior before changing model capacity or the training process.
+
+#### Why this is correct
+
+- **B. Investigate overfitting** — Overfitting occurs when a model fits training-specific patterns that fail to generalize to independent data. This matches the requirement for failure to generalize beyond training examples.
+
+#### Why other options are incorrect
+
+- **A. Investigate data leakage** — Leakage introduces information during training or evaluation that would not be available in the intended prediction setting. This option does not address the specified need for failure to generalize beyond training examples.
+- **C. Investigate unstable optimization** — Unstable optimization can produce diverging loss or invalid gradients and requires inspection of training numerics and settings. This option does not address the specified need for failure to generalize beyond training examples.
+- **D. Investigate underfitting** — Underfitting occurs when the learned model does not capture useful patterns, often yielding poor training and validation performance. This option does not address the specified need for failure to generalize beyond training examples.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model Fit: Underfitting vs. Overfitting - Amazon Machine Learning](https://docs.aws.amazon.com/machine-learning/latest/dg/model-fit-underfitting-vs-overfitting.html)
+- [Splits and data leakage - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html)
+- [Amazon SageMaker Debugger - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
+
+</details>
+
+## #1175 · MLA-C01 Q1175 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Duplicate customer histories appear on both sides of a supposedly independent split. Which evaluation risk must be investigated?
+
+A. Investigate unstable optimization
+B. Investigate overfitting
+C. Investigate data leakage
+D. Investigate underfitting
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Investigate data leakage**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Compare training and validation behavior before changing model capacity or the training process.
+
+#### Why this is correct
+
+- **C. Investigate data leakage** — Leakage introduces information during training or evaluation that would not be available in the intended prediction setting. This matches the requirement for information overlap between training and evaluation.
+
+#### Why other options are incorrect
+
+- **A. Investigate unstable optimization** — Unstable optimization can produce diverging loss or invalid gradients and requires inspection of training numerics and settings. This option does not address the specified need for information overlap between training and evaluation.
+- **B. Investigate overfitting** — Overfitting occurs when a model fits training-specific patterns that fail to generalize to independent data. This option does not address the specified need for information overlap between training and evaluation.
+- **D. Investigate underfitting** — Underfitting occurs when the learned model does not capture useful patterns, often yielding poor training and validation performance. This option does not address the specified need for information overlap between training and evaluation.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model Fit: Underfitting vs. Overfitting - Amazon Machine Learning](https://docs.aws.amazon.com/machine-learning/latest/dg/model-fit-underfitting-vs-overfitting.html)
+- [Splits and data leakage - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html)
+- [Amazon SageMaker Debugger - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
+
+</details>
+
+## #1176 · MLA-C01 Q1176 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A very high learning rate causes the loss to oscillate and diverge rather than converge. Which problem is indicated?
+
+A. Investigate unstable optimization
+B. Investigate overfitting
+C. Investigate data leakage
+D. Investigate underfitting
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Investigate unstable optimization**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Compare training and validation behavior before changing model capacity or the training process.
+
+#### Why this is correct
+
+- **A. Investigate unstable optimization** — Unstable optimization can produce diverging loss or invalid gradients and requires inspection of training numerics and settings. This matches the requirement for unstable parameter updates during training.
+
+#### Why other options are incorrect
+
+- **B. Investigate overfitting** — Overfitting occurs when a model fits training-specific patterns that fail to generalize to independent data. This option does not address the specified need for unstable parameter updates during training.
+- **C. Investigate data leakage** — Leakage introduces information during training or evaluation that would not be available in the intended prediction setting. This option does not address the specified need for unstable parameter updates during training.
+- **D. Investigate underfitting** — Underfitting occurs when the learned model does not capture useful patterns, often yielding poor training and validation performance. This option does not address the specified need for unstable parameter updates during training.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model Fit: Underfitting vs. Overfitting - Amazon Machine Learning](https://docs.aws.amazon.com/machine-learning/latest/dg/model-fit-underfitting-vs-overfitting.html)
+- [Splits and data leakage - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html)
+- [Amazon SageMaker Debugger - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
+
+</details>
+
+## #1177 · MLA-C01 Q1177 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A fairness review asks whether one demographic group has far fewer training examples than another. Which measure directly addresses representation counts?
+
+A. Difference in Positive Proportions in Predicted Labels (DPPL)
+B. SHAP feature attribution
+C. Class Imbalance (CI)
+D. Difference in Proportions of Labels (DPL)
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Class Imbalance (CI)**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Bias metrics compare specified groups; feature attribution explains contributions to predictions.
+
+#### Why this is correct
+
+- **C. Class Imbalance (CI)** — CI compares the number of examples belonging to different facet groups before training. This matches the requirement for comparison of sample counts between facet groups.
+
+#### Why other options are incorrect
+
+- **A. Difference in Positive Proportions in Predicted Labels (DPPL)** — DPPL compares proportions of predicted positive labels across facet groups after training. This option does not address the specified need for comparison of sample counts between facet groups.
+- **B. SHAP feature attribution** — SHAP attributes a prediction's difference from a baseline to input features; it is not a group-count bias metric. This option does not address the specified need for comparison of sample counts between facet groups.
+- **D. Difference in Proportions of Labels (DPL)** — DPL compares proportions of observed positive labels across facet groups before training. This option does not address the specified need for comparison of sample counts between facet groups.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Pre-training Bias Metrics - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-data-bias.html)
+- [Post-training Data and Model Bias Metrics - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)
+- [Model Explainability - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-explainability.html)
+
+</details>
+
+## #1178 · MLA-C01 Q1178 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Before training, analysts compare historical approval-label rates between two groups. Which metric matches observed label proportions?
+
+A. Difference in Positive Proportions in Predicted Labels (DPPL)
+B. Class Imbalance (CI)
+C. Difference in Proportions of Labels (DPL)
+D. SHAP feature attribution
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Difference in Proportions of Labels (DPL)**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Bias metrics compare specified groups; feature attribution explains contributions to predictions.
+
+#### Why this is correct
+
+- **C. Difference in Proportions of Labels (DPL)** — DPL compares proportions of observed positive labels across facet groups before training. This matches the requirement for group differences in observed positive-label rates.
+
+#### Why other options are incorrect
+
+- **A. Difference in Positive Proportions in Predicted Labels (DPPL)** — DPPL compares proportions of predicted positive labels across facet groups after training. This option does not address the specified need for group differences in observed positive-label rates.
+- **B. Class Imbalance (CI)** — CI compares the number of examples belonging to different facet groups before training. This option does not address the specified need for group differences in observed positive-label rates.
+- **D. SHAP feature attribution** — SHAP attributes a prediction's difference from a baseline to input features; it is not a group-count bias metric. This option does not address the specified need for group differences in observed positive-label rates.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Pre-training Bias Metrics - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-data-bias.html)
+- [Post-training Data and Model Bias Metrics - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)
+- [Model Explainability - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-explainability.html)
+
+</details>
+
+## #1179 · MLA-C01 Q1179 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+After training, analysts compare the model's positive prediction rates between two groups. Which metric fits?
+
+A. Difference in Proportions of Labels (DPL)
+B. Difference in Positive Proportions in Predicted Labels (DPPL)
+C. Class Imbalance (CI)
+D. SHAP feature attribution
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Difference in Positive Proportions in Predicted Labels (DPPL)**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Bias metrics compare specified groups; feature attribution explains contributions to predictions.
+
+#### Why this is correct
+
+- **B. Difference in Positive Proportions in Predicted Labels (DPPL)** — DPPL compares proportions of predicted positive labels across facet groups after training. This matches the requirement for group differences in predicted positive-label rates.
+
+#### Why other options are incorrect
+
+- **A. Difference in Proportions of Labels (DPL)** — DPL compares proportions of observed positive labels across facet groups before training. This option does not address the specified need for group differences in predicted positive-label rates.
+- **C. Class Imbalance (CI)** — CI compares the number of examples belonging to different facet groups before training. This option does not address the specified need for group differences in predicted positive-label rates.
+- **D. SHAP feature attribution** — SHAP attributes a prediction's difference from a baseline to input features; it is not a group-count bias metric. This option does not address the specified need for group differences in predicted positive-label rates.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Pre-training Bias Metrics - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-data-bias.html)
+- [Post-training Data and Model Bias Metrics - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)
+- [Model Explainability - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-explainability.html)
+
+</details>
+
+## #1180 · MLA-C01 Q1180 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A reviewer needs the contribution of income and debt to one model prediction relative to a baseline. Which explanation method fits?
+
+A. Difference in Positive Proportions in Predicted Labels (DPPL)
+B. Difference in Proportions of Labels (DPL)
+C. SHAP feature attribution
+D. Class Imbalance (CI)
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. SHAP feature attribution**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Bias metrics compare specified groups; feature attribution explains contributions to predictions.
+
+#### Why this is correct
+
+- **C. SHAP feature attribution** — SHAP attributes a prediction's difference from a baseline to input features; it is not a group-count bias metric. This matches the requirement for input-feature contributions to an individual prediction.
+
+#### Why other options are incorrect
+
+- **A. Difference in Positive Proportions in Predicted Labels (DPPL)** — DPPL compares proportions of predicted positive labels across facet groups after training. This option does not address the specified need for input-feature contributions to an individual prediction.
+- **B. Difference in Proportions of Labels (DPL)** — DPL compares proportions of observed positive labels across facet groups before training. This option does not address the specified need for input-feature contributions to an individual prediction.
+- **D. Class Imbalance (CI)** — CI compares the number of examples belonging to different facet groups before training. This option does not address the specified need for input-feature contributions to an individual prediction.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Pre-training Bias Metrics - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-data-bias.html)
+- [Post-training Data and Model Bias Metrics - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)
+- [Model Explainability - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-explainability.html)
+
+</details>
+
+## #1181 · MLA-C01 Q1181 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A training set contains 900 members of one facet and 100 of another. The review concerns representation, independent of labels. Which metric fits?
+
+A. Difference in Proportions of Labels (DPL)
+B. SHAP feature attribution
+C. Difference in Positive Proportions in Predicted Labels (DPPL)
+D. Class Imbalance (CI)
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Class Imbalance (CI)**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Bias metrics compare specified groups; feature attribution explains contributions to predictions.
+
+#### Why this is correct
+
+- **D. Class Imbalance (CI)** — CI compares the number of examples belonging to different facet groups before training. This matches the requirement for facet representation regardless of target labels.
+
+#### Why other options are incorrect
+
+- **A. Difference in Proportions of Labels (DPL)** — DPL compares proportions of observed positive labels across facet groups before training. This option does not address the specified need for facet representation regardless of target labels.
+- **B. SHAP feature attribution** — SHAP attributes a prediction's difference from a baseline to input features; it is not a group-count bias metric. This option does not address the specified need for facet representation regardless of target labels.
+- **C. Difference in Positive Proportions in Predicted Labels (DPPL)** — DPPL compares proportions of predicted positive labels across facet groups after training. This option does not address the specified need for facet representation regardless of target labels.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Pre-training Bias Metrics - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-data-bias.html)
+- [Post-training Data and Model Bias Metrics - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)
+- [Model Explainability - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-explainability.html)
+
+</details>
+
+## #1182 · MLA-C01 Q1182 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A label audit finds different positive outcome rates in source data before a model exists. Which metric measures this disparity?
+
+A. Difference in Proportions of Labels (DPL)
+B. SHAP feature attribution
+C. Difference in Positive Proportions in Predicted Labels (DPPL)
+D. Class Imbalance (CI)
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Difference in Proportions of Labels (DPL)**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Bias metrics compare specified groups; feature attribution explains contributions to predictions.
+
+#### Why this is correct
+
+- **A. Difference in Proportions of Labels (DPL)** — DPL compares proportions of observed positive labels across facet groups before training. This matches the requirement for positive-label disparity before model training.
+
+#### Why other options are incorrect
+
+- **B. SHAP feature attribution** — SHAP attributes a prediction's difference from a baseline to input features; it is not a group-count bias metric. This option does not address the specified need for positive-label disparity before model training.
+- **C. Difference in Positive Proportions in Predicted Labels (DPPL)** — DPPL compares proportions of predicted positive labels across facet groups after training. This option does not address the specified need for positive-label disparity before model training.
+- **D. Class Imbalance (CI)** — CI compares the number of examples belonging to different facet groups before training. This option does not address the specified need for positive-label disparity before model training.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Pre-training Bias Metrics - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-data-bias.html)
+- [Post-training Data and Model Bias Metrics - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)
+- [Model Explainability - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-explainability.html)
+
+</details>
+
+## #1183 · MLA-C01 Q1183 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A deployed classifier's favorable decision rate differs by facet even though the review uses predictions rather than true labels. Which metric fits?
+
+A. SHAP feature attribution
+B. Difference in Proportions of Labels (DPL)
+C. Class Imbalance (CI)
+D. Difference in Positive Proportions in Predicted Labels (DPPL)
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Difference in Positive Proportions in Predicted Labels (DPPL)**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Bias metrics compare specified groups; feature attribution explains contributions to predictions.
+
+#### Why this is correct
+
+- **D. Difference in Positive Proportions in Predicted Labels (DPPL)** — DPPL compares proportions of predicted positive labels across facet groups after training. This matches the requirement for facet disparity measured from predicted outcomes.
+
+#### Why other options are incorrect
+
+- **A. SHAP feature attribution** — SHAP attributes a prediction's difference from a baseline to input features; it is not a group-count bias metric. This option does not address the specified need for facet disparity measured from predicted outcomes.
+- **B. Difference in Proportions of Labels (DPL)** — DPL compares proportions of observed positive labels across facet groups before training. This option does not address the specified need for facet disparity measured from predicted outcomes.
+- **C. Class Imbalance (CI)** — CI compares the number of examples belonging to different facet groups before training. This option does not address the specified need for facet disparity measured from predicted outcomes.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Pre-training Bias Metrics - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-data-bias.html)
+- [Post-training Data and Model Bias Metrics - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)
+- [Model Explainability - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-explainability.html)
+
+</details>
+
+## #1184 · MLA-C01 Q1184 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A model explanation assigns positive and negative contributions to features for a specific request. Which method produces this type of output?
+
+A. SHAP feature attribution
+B. Difference in Proportions of Labels (DPL)
+C. Class Imbalance (CI)
+D. Difference in Positive Proportions in Predicted Labels (DPPL)
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. SHAP feature attribution**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Bias metrics compare specified groups; feature attribution explains contributions to predictions.
+
+#### Why this is correct
+
+- **A. SHAP feature attribution** — SHAP attributes a prediction's difference from a baseline to input features; it is not a group-count bias metric. This matches the requirement for local attribution of the prediction to features.
+
+#### Why other options are incorrect
+
+- **B. Difference in Proportions of Labels (DPL)** — DPL compares proportions of observed positive labels across facet groups before training. This option does not address the specified need for local attribution of the prediction to features.
+- **C. Class Imbalance (CI)** — CI compares the number of examples belonging to different facet groups before training. This option does not address the specified need for local attribution of the prediction to features.
+- **D. Difference in Positive Proportions in Predicted Labels (DPPL)** — DPPL compares proportions of predicted positive labels across facet groups after training. This option does not address the specified need for local attribution of the prediction to features.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Pre-training Bias Metrics - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-data-bias.html)
+- [Post-training Data and Model Bias Metrics - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)
+- [Model Explainability - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-explainability.html)
+
+</details>
+
+## #1185 · MLA-C01 Q1185 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A continuously busy application requires synchronous low-latency predictions and a provisioned GPU endpoint. Which inference option fits?
+
+A. Real-time inference
+B. Serverless Inference
+C. Batch Transform
+D. Asynchronous inference
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Real-time inference**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Inference mode must match latency, request size, traffic pattern, and the need for an always-available response.
+
+#### Why this is correct
+
+- **A. Real-time inference** — A provisioned real-time endpoint serves synchronous predictions and supports steady low-latency traffic. This matches the requirement for a provisioned GPU endpoint for synchronous requests.
+
+#### Why other options are incorrect
+
+- **B. Serverless Inference** — Serverless Inference manages compute for supported intermittent inference workloads; cold starts can occur without provisioned concurrency. This option does not address the specified need for a provisioned GPU endpoint for synchronous requests.
+- **C. Batch Transform** — Batch Transform processes a finite dataset as a job without maintaining an endpoint for interactive requests. This option does not address the specified need for a provisioned GPU endpoint for synchronous requests.
+- **D. Asynchronous inference** — An asynchronous endpoint queues requests, processes them asynchronously, and writes results to S3. This option does not address the specified need for a provisioned GPU endpoint for synchronous requests.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Deploy models for inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html)
+- [Real-time inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html)
+- [Asynchronous inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference.html)
+- [Deploy models with Amazon SageMaker Serverless Inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html)
+- [Batch transform for inference with Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html)
+
+</details>
+
+## #1186 · MLA-C01 Q1186 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A pipeline scores a complete S3 dataset every night and needs no interactive serving between runs. Which option fits?
+
+A. Batch Transform
+B. Asynchronous inference
+C. Serverless Inference
+D. Real-time inference
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Batch Transform**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Inference mode must match latency, request size, traffic pattern, and the need for an always-available response.
+
+#### Why this is correct
+
+- **A. Batch Transform** — Batch Transform processes a finite dataset as a job without maintaining an endpoint for interactive requests. This matches the requirement for a finite offline scoring job without an endpoint.
+
+#### Why other options are incorrect
+
+- **B. Asynchronous inference** — An asynchronous endpoint queues requests, processes them asynchronously, and writes results to S3. This option does not address the specified need for a finite offline scoring job without an endpoint.
+- **C. Serverless Inference** — Serverless Inference manages compute for supported intermittent inference workloads; cold starts can occur without provisioned concurrency. This option does not address the specified need for a finite offline scoring job without an endpoint.
+- **D. Real-time inference** — A provisioned real-time endpoint serves synchronous predictions and supports steady low-latency traffic. This option does not address the specified need for a finite offline scoring job without an endpoint.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Deploy models for inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html)
+- [Real-time inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html)
+- [Asynchronous inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference.html)
+- [Deploy models with Amazon SageMaker Serverless Inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html)
+- [Batch transform for inference with Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html)
+
+</details>
+
+## #1187 · MLA-C01 Q1187 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Each prediction takes several minutes, and callers can retrieve the result from S3 later. Which endpoint mode fits?
+
+A. Serverless Inference
+B. Asynchronous inference
+C. Real-time inference
+D. Batch Transform
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Asynchronous inference**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Inference mode must match latency, request size, traffic pattern, and the need for an always-available response.
+
+#### Why this is correct
+
+- **B. Asynchronous inference** — An asynchronous endpoint queues requests, processes them asynchronously, and writes results to S3. This matches the requirement for queued asynchronous predictions with results in S3.
+
+#### Why other options are incorrect
+
+- **A. Serverless Inference** — Serverless Inference manages compute for supported intermittent inference workloads; cold starts can occur without provisioned concurrency. This option does not address the specified need for queued asynchronous predictions with results in S3.
+- **C. Real-time inference** — A provisioned real-time endpoint serves synchronous predictions and supports steady low-latency traffic. This option does not address the specified need for queued asynchronous predictions with results in S3.
+- **D. Batch Transform** — Batch Transform processes a finite dataset as a job without maintaining an endpoint for interactive requests. This option does not address the specified need for queued asynchronous predictions with results in S3.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Deploy models for inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html)
+- [Real-time inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html)
+- [Asynchronous inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference.html)
+- [Deploy models with Amazon SageMaker Serverless Inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html)
+- [Batch transform for inference with Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html)
+
+</details>
+
+## #1188 · MLA-C01 Q1188 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A small supported CPU model receives sporadic synchronous requests. Cold starts are acceptable, and the team wants no instance management. Which option fits?
+
+A. Asynchronous inference
+B. Real-time inference
+C. Serverless Inference
+D. Batch Transform
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Serverless Inference**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Inference mode must match latency, request size, traffic pattern, and the need for an always-available response.
+
+#### Why this is correct
+
+- **C. Serverless Inference** — Serverless Inference manages compute for supported intermittent inference workloads; cold starts can occur without provisioned concurrency. This matches the requirement for managed serverless compute for intermittent synchronous requests.
+
+#### Why other options are incorrect
+
+- **A. Asynchronous inference** — An asynchronous endpoint queues requests, processes them asynchronously, and writes results to S3. This option does not address the specified need for managed serverless compute for intermittent synchronous requests.
+- **B. Real-time inference** — A provisioned real-time endpoint serves synchronous predictions and supports steady low-latency traffic. This option does not address the specified need for managed serverless compute for intermittent synchronous requests.
+- **D. Batch Transform** — Batch Transform processes a finite dataset as a job without maintaining an endpoint for interactive requests. This option does not address the specified need for managed serverless compute for intermittent synchronous requests.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Deploy models for inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html)
+- [Real-time inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html)
+- [Asynchronous inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference.html)
+- [Deploy models with Amazon SageMaker Serverless Inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html)
+- [Batch transform for inference with Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html)
+
+</details>
+
+## #1189 · MLA-C01 Q1189 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Users need responses during live requests, and cold-start delays are unacceptable under steady demand. The model requires GPU acceleration. Which option fits?
+
+A. Batch Transform
+B. Serverless Inference
+C. Real-time inference
+D. Asynchronous inference
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Real-time inference**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Inference mode must match latency, request size, traffic pattern, and the need for an always-available response.
+
+#### Why this is correct
+
+- **C. Real-time inference** — A provisioned real-time endpoint serves synchronous predictions and supports steady low-latency traffic. This matches the requirement for steady synchronous GPU serving with provisioned capacity.
+
+#### Why other options are incorrect
+
+- **A. Batch Transform** — Batch Transform processes a finite dataset as a job without maintaining an endpoint for interactive requests. This option does not address the specified need for steady synchronous GPU serving with provisioned capacity.
+- **B. Serverless Inference** — Serverless Inference manages compute for supported intermittent inference workloads; cold starts can occur without provisioned concurrency. This option does not address the specified need for steady synchronous GPU serving with provisioned capacity.
+- **D. Asynchronous inference** — An asynchronous endpoint queues requests, processes them asynchronously, and writes results to S3. This option does not address the specified need for steady synchronous GPU serving with provisioned capacity.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Deploy models for inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html)
+- [Real-time inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html)
+- [Asynchronous inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference.html)
+- [Deploy models with Amazon SageMaker Serverless Inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html)
+- [Batch transform for inference with Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html)
+
+</details>
+
+## #1190 · MLA-C01 Q1190 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A one-time backfill must produce predictions for existing records in S3. No serving API is required. Which option avoids an ongoing endpoint?
+
+A. Batch Transform
+B. Asynchronous inference
+C. Serverless Inference
+D. Real-time inference
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Batch Transform**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Inference mode must match latency, request size, traffic pattern, and the need for an always-available response.
+
+#### Why this is correct
+
+- **A. Batch Transform** — Batch Transform processes a finite dataset as a job without maintaining an endpoint for interactive requests. This matches the requirement for job-based prediction for an offline backfill.
+
+#### Why other options are incorrect
+
+- **B. Asynchronous inference** — An asynchronous endpoint queues requests, processes them asynchronously, and writes results to S3. This option does not address the specified need for job-based prediction for an offline backfill.
+- **C. Serverless Inference** — Serverless Inference manages compute for supported intermittent inference workloads; cold starts can occur without provisioned concurrency. This option does not address the specified need for job-based prediction for an offline backfill.
+- **D. Real-time inference** — A provisioned real-time endpoint serves synchronous predictions and supports steady low-latency traffic. This option does not address the specified need for job-based prediction for an offline backfill.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Deploy models for inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html)
+- [Real-time inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html)
+- [Asynchronous inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference.html)
+- [Deploy models with Amazon SageMaker Serverless Inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html)
+- [Batch transform for inference with Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html)
+
+</details>
+
+## #1191 · MLA-C01 Q1191 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An image-processing request is too slow for the standard real-time response window. The client can poll an S3 result location. Which option fits?
+
+A. Real-time inference
+B. Serverless Inference
+C. Asynchronous inference
+D. Batch Transform
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Asynchronous inference**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Inference mode must match latency, request size, traffic pattern, and the need for an always-available response.
+
+#### Why this is correct
+
+- **C. Asynchronous inference** — An asynchronous endpoint queues requests, processes them asynchronously, and writes results to S3. This matches the requirement for longer-running prediction outside a synchronous response.
+
+#### Why other options are incorrect
+
+- **A. Real-time inference** — A provisioned real-time endpoint serves synchronous predictions and supports steady low-latency traffic. This option does not address the specified need for longer-running prediction outside a synchronous response.
+- **B. Serverless Inference** — Serverless Inference manages compute for supported intermittent inference workloads; cold starts can occur without provisioned concurrency. This option does not address the specified need for longer-running prediction outside a synchronous response.
+- **D. Batch Transform** — Batch Transform processes a finite dataset as a job without maintaining an endpoint for interactive requests. This option does not address the specified need for longer-running prediction outside a synchronous response.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Deploy models for inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html)
+- [Real-time inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html)
+- [Asynchronous inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference.html)
+- [Deploy models with Amazon SageMaker Serverless Inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html)
+- [Batch transform for inference with Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html)
+
+</details>
+
+## #1192 · MLA-C01 Q1192 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Traffic has long idle periods. A supported CPU model can tolerate startup delay, and the team wants compute allocated per demand. Which option fits?
+
+A. Serverless Inference
+B. Real-time inference
+C. Batch Transform
+D. Asynchronous inference
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Serverless Inference**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Inference mode must match latency, request size, traffic pattern, and the need for an always-available response.
+
+#### Why this is correct
+
+- **A. Serverless Inference** — Serverless Inference manages compute for supported intermittent inference workloads; cold starts can occur without provisioned concurrency. This matches the requirement for intermittent supported inference with acceptable cold starts.
+
+#### Why other options are incorrect
+
+- **B. Real-time inference** — A provisioned real-time endpoint serves synchronous predictions and supports steady low-latency traffic. This option does not address the specified need for intermittent supported inference with acceptable cold starts.
+- **C. Batch Transform** — Batch Transform processes a finite dataset as a job without maintaining an endpoint for interactive requests. This option does not address the specified need for intermittent supported inference with acceptable cold starts.
+- **D. Asynchronous inference** — An asynchronous endpoint queues requests, processes them asynchronously, and writes results to S3. This option does not address the specified need for intermittent supported inference with acceptable cold starts.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Deploy models for inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html)
+- [Real-time inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html)
+- [Asynchronous inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference.html)
+- [Deploy models with Amazon SageMaker Serverless Inference - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html)
+- [Batch transform for inference with Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html)
+
+</details>
+
+## #1193 · MLA-C01 Q1193 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Thousands of small compatible tenant models should share serving capacity. Requests identify the model they need. Which layout fits?
+
+A. Multi-model endpoint
+B. Serial inference pipeline
+C. Multi-container endpoint with direct invocation
+D. Endpoint production variants
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Multi-model endpoint**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Endpoint layouts address model sharing, container routing, serial stages, and traffic allocation.
+
+#### Why this is correct
+
+- **A. Multi-model endpoint** — A multi-model endpoint hosts multiple compatible models behind a shared endpoint and selects a target model for each request. This matches the requirement for shared hosting of many compatible target models.
+
+#### Why other options are incorrect
+
+- **B. Serial inference pipeline** — A serial inference pipeline runs an ordered chain of containers, passing one stage's output to the next. This option does not address the specified need for shared hosting of many compatible target models.
+- **C. Multi-container endpoint with direct invocation** — Direct invocation routes a request to a selected container on a supported multi-container endpoint. This option does not address the specified need for shared hosting of many compatible target models.
+- **D. Endpoint production variants** — Production variants represent deployable model configurations and support traffic allocation for live comparisons. This option does not address the specified need for shared hosting of many compatible target models.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Multi-model endpoints - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-model-endpoints.html)
+- [Multi-container endpoints - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-container-endpoints.html)
+- [Inference pipelines in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipelines.html)
+- [Testing models with production variants - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html)
+
+</details>
+
+## #1194 · MLA-C01 Q1194 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Two different serving containers must share an endpoint, and each request names the container to invoke directly. Which layout fits?
+
+A. Multi-container endpoint with direct invocation
+B. Endpoint production variants
+C. Multi-model endpoint
+D. Serial inference pipeline
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Multi-container endpoint with direct invocation**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Endpoint layouts address model sharing, container routing, serial stages, and traffic allocation.
+
+#### Why this is correct
+
+- **A. Multi-container endpoint with direct invocation** — Direct invocation routes a request to a selected container on a supported multi-container endpoint. This matches the requirement for direct routing to a selected container.
+
+#### Why other options are incorrect
+
+- **B. Endpoint production variants** — Production variants represent deployable model configurations and support traffic allocation for live comparisons. This option does not address the specified need for direct routing to a selected container.
+- **C. Multi-model endpoint** — A multi-model endpoint hosts multiple compatible models behind a shared endpoint and selects a target model for each request. This option does not address the specified need for direct routing to a selected container.
+- **D. Serial inference pipeline** — A serial inference pipeline runs an ordered chain of containers, passing one stage's output to the next. This option does not address the specified need for direct routing to a selected container.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Multi-model endpoints - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-model-endpoints.html)
+- [Multi-container endpoints - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-container-endpoints.html)
+- [Inference pipelines in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipelines.html)
+- [Testing models with production variants - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html)
+
+</details>
+
+## #1195 · MLA-C01 Q1195 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Every request must pass through preprocessing, prediction, and postprocessing containers in that order. Which layout fits?
+
+A. Multi-model endpoint
+B. Endpoint production variants
+C. Multi-container endpoint with direct invocation
+D. Serial inference pipeline
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Serial inference pipeline**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Endpoint layouts address model sharing, container routing, serial stages, and traffic allocation.
+
+#### Why this is correct
+
+- **D. Serial inference pipeline** — A serial inference pipeline runs an ordered chain of containers, passing one stage's output to the next. This matches the requirement for an ordered chain of inference stages.
+
+#### Why other options are incorrect
+
+- **A. Multi-model endpoint** — A multi-model endpoint hosts multiple compatible models behind a shared endpoint and selects a target model for each request. This option does not address the specified need for an ordered chain of inference stages.
+- **B. Endpoint production variants** — Production variants represent deployable model configurations and support traffic allocation for live comparisons. This option does not address the specified need for an ordered chain of inference stages.
+- **C. Multi-container endpoint with direct invocation** — Direct invocation routes a request to a selected container on a supported multi-container endpoint. This option does not address the specified need for an ordered chain of inference stages.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Multi-model endpoints - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-model-endpoints.html)
+- [Multi-container endpoints - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-container-endpoints.html)
+- [Inference pipelines in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipelines.html)
+- [Testing models with production variants - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html)
+
+</details>
+
+## #1196 · MLA-C01 Q1196 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A live experiment sends 10% of user requests to one model configuration and 90% to another. Which endpoint feature fits?
+
+A. Multi-container endpoint with direct invocation
+B. Serial inference pipeline
+C. Endpoint production variants
+D. Multi-model endpoint
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Endpoint production variants**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Endpoint layouts address model sharing, container routing, serial stages, and traffic allocation.
+
+#### Why this is correct
+
+- **C. Endpoint production variants** — Production variants represent deployable model configurations and support traffic allocation for live comparisons. This matches the requirement for weighted live traffic across model configurations.
+
+#### Why other options are incorrect
+
+- **A. Multi-container endpoint with direct invocation** — Direct invocation routes a request to a selected container on a supported multi-container endpoint. This option does not address the specified need for weighted live traffic across model configurations.
+- **B. Serial inference pipeline** — A serial inference pipeline runs an ordered chain of containers, passing one stage's output to the next. This option does not address the specified need for weighted live traffic across model configurations.
+- **D. Multi-model endpoint** — A multi-model endpoint hosts multiple compatible models behind a shared endpoint and selects a target model for each request. This option does not address the specified need for weighted live traffic across model configurations.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Multi-model endpoints - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-model-endpoints.html)
+- [Multi-container endpoints - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-container-endpoints.html)
+- [Inference pipelines in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipelines.html)
+- [Testing models with production variants - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html)
+
+</details>
+
+## #1197 · MLA-C01 Q1197 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A team wants models loaded onto shared endpoint instances on demand, rather than a separate endpoint for every tenant. Which layout fits?
+
+A. Serial inference pipeline
+B. Multi-container endpoint with direct invocation
+C. Endpoint production variants
+D. Multi-model endpoint
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Multi-model endpoint**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Endpoint layouts address model sharing, container routing, serial stages, and traffic allocation.
+
+#### Why this is correct
+
+- **D. Multi-model endpoint** — A multi-model endpoint hosts multiple compatible models behind a shared endpoint and selects a target model for each request. This matches the requirement for on-demand loading of compatible models on shared instances.
+
+#### Why other options are incorrect
+
+- **A. Serial inference pipeline** — A serial inference pipeline runs an ordered chain of containers, passing one stage's output to the next. This option does not address the specified need for on-demand loading of compatible models on shared instances.
+- **B. Multi-container endpoint with direct invocation** — Direct invocation routes a request to a selected container on a supported multi-container endpoint. This option does not address the specified need for on-demand loading of compatible models on shared instances.
+- **C. Endpoint production variants** — Production variants represent deployable model configurations and support traffic allocation for live comparisons. This option does not address the specified need for on-demand loading of compatible models on shared instances.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Multi-model endpoints - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-model-endpoints.html)
+- [Multi-container endpoints - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-container-endpoints.html)
+- [Inference pipelines in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipelines.html)
+- [Testing models with production variants - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html)
+
+</details>
+
+## #1198 · MLA-C01 Q1198 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An application must choose between separately addressable containers instead of invoking them serially. Which layout fits?
+
+A. Endpoint production variants
+B. Multi-container endpoint with direct invocation
+C. Serial inference pipeline
+D. Multi-model endpoint
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Multi-container endpoint with direct invocation**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Endpoint layouts address model sharing, container routing, serial stages, and traffic allocation.
+
+#### Why this is correct
+
+- **B. Multi-container endpoint with direct invocation** — Direct invocation routes a request to a selected container on a supported multi-container endpoint. This matches the requirement for independent invocation of endpoint containers.
+
+#### Why other options are incorrect
+
+- **A. Endpoint production variants** — Production variants represent deployable model configurations and support traffic allocation for live comparisons. This option does not address the specified need for independent invocation of endpoint containers.
+- **C. Serial inference pipeline** — A serial inference pipeline runs an ordered chain of containers, passing one stage's output to the next. This option does not address the specified need for independent invocation of endpoint containers.
+- **D. Multi-model endpoint** — A multi-model endpoint hosts multiple compatible models behind a shared endpoint and selects a target model for each request. This option does not address the specified need for independent invocation of endpoint containers.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Multi-model endpoints - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-model-endpoints.html)
+- [Multi-container endpoints - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-container-endpoints.html)
+- [Inference pipelines in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipelines.html)
+- [Testing models with production variants - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html)
+
+</details>
+
+## #1199 · MLA-C01 Q1199 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A tokenizer must run before a prediction container on every invocation. Its output becomes the next container's input. Which layout fits?
+
+A. Multi-container endpoint with direct invocation
+B. Multi-model endpoint
+C. Serial inference pipeline
+D. Endpoint production variants
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Serial inference pipeline**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Endpoint layouts address model sharing, container routing, serial stages, and traffic allocation.
+
+#### Why this is correct
+
+- **C. Serial inference pipeline** — A serial inference pipeline runs an ordered chain of containers, passing one stage's output to the next. This matches the requirement for container-to-container processing in a fixed sequence.
+
+#### Why other options are incorrect
+
+- **A. Multi-container endpoint with direct invocation** — Direct invocation routes a request to a selected container on a supported multi-container endpoint. This option does not address the specified need for container-to-container processing in a fixed sequence.
+- **B. Multi-model endpoint** — A multi-model endpoint hosts multiple compatible models behind a shared endpoint and selects a target model for each request. This option does not address the specified need for container-to-container processing in a fixed sequence.
+- **D. Endpoint production variants** — Production variants represent deployable model configurations and support traffic allocation for live comparisons. This option does not address the specified need for container-to-container processing in a fixed sequence.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Multi-model endpoints - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-model-endpoints.html)
+- [Multi-container endpoints - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-container-endpoints.html)
+- [Inference pipelines in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipelines.html)
+- [Testing models with production variants - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html)
+
+</details>
+
+## #1200 · MLA-C01 Q1200 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An experiment compares business outcomes from responses returned by two deployed versions. Each version receives a configured share of traffic. Which feature fits?
+
+A. Endpoint production variants
+B. Serial inference pipeline
+C. Multi-container endpoint with direct invocation
+D. Multi-model endpoint
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Endpoint production variants**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Endpoint layouts address model sharing, container routing, serial stages, and traffic allocation.
+
+#### Why this is correct
+
+- **A. Endpoint production variants** — Production variants represent deployable model configurations and support traffic allocation for live comparisons. This matches the requirement for allocation of user-serving traffic to two versions.
+
+#### Why other options are incorrect
+
+- **B. Serial inference pipeline** — A serial inference pipeline runs an ordered chain of containers, passing one stage's output to the next. This option does not address the specified need for allocation of user-serving traffic to two versions.
+- **C. Multi-container endpoint with direct invocation** — Direct invocation routes a request to a selected container on a supported multi-container endpoint. This option does not address the specified need for allocation of user-serving traffic to two versions.
+- **D. Multi-model endpoint** — A multi-model endpoint hosts multiple compatible models behind a shared endpoint and selects a target model for each request. This option does not address the specified need for allocation of user-serving traffic to two versions.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Multi-model endpoints - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-model-endpoints.html)
+- [Multi-container endpoints - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-container-endpoints.html)
+- [Inference pipelines in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipelines.html)
+- [Testing models with production variants - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html)
+
+</details>
+
+## #1201 · MLA-C01 Q1201 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A release should expose a small initial traffic slice, wait for alarms, and then move the rest. Which strategy fits?
+
+A. Canary traffic shifting
+B. Linear traffic shifting
+C. Shadow testing
+D. All-at-once traffic shifting
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Canary traffic shifting**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Deployment guardrails differ in traffic movement; shadow tests keep candidate responses away from users.
+
+#### Why this is correct
+
+- **A. Canary traffic shifting** — Canary deployment moves a small initial portion of traffic, observes it, and then shifts the remainder if checks pass. This matches the requirement for a small initial exposure followed by the remaining traffic.
+
+#### Why other options are incorrect
+
+- **B. Linear traffic shifting** — Linear deployment shifts traffic in successive configured increments with observation periods. This option does not address the specified need for a small initial exposure followed by the remaining traffic.
+- **C. Shadow testing** — A shadow test copies selected production requests to a candidate while production responses remain the responses returned to clients. This option does not address the specified need for a small initial exposure followed by the remaining traffic.
+- **D. All-at-once traffic shifting** — All-at-once deployment shifts the serving traffic to the new fleet in one movement. This option does not address the specified need for a small initial exposure followed by the remaining traffic.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Deployment guardrails for updating models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html)
+- [Blue/Green Deployments - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-blue-green.html)
+- [Shadow tests - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html)
+
+</details>
+
+## #1202 · MLA-C01 Q1202 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A release must move traffic in repeated equal increments with a wait between increments. Which strategy fits?
+
+A. Canary traffic shifting
+B. All-at-once traffic shifting
+C. Linear traffic shifting
+D. Shadow testing
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Linear traffic shifting**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Deployment guardrails differ in traffic movement; shadow tests keep candidate responses away from users.
+
+#### Why this is correct
+
+- **C. Linear traffic shifting** — Linear deployment shifts traffic in successive configured increments with observation periods. This matches the requirement for successive incremental traffic shifts.
+
+#### Why other options are incorrect
+
+- **A. Canary traffic shifting** — Canary deployment moves a small initial portion of traffic, observes it, and then shifts the remainder if checks pass. This option does not address the specified need for successive incremental traffic shifts.
+- **B. All-at-once traffic shifting** — All-at-once deployment shifts the serving traffic to the new fleet in one movement. This option does not address the specified need for successive incremental traffic shifts.
+- **D. Shadow testing** — A shadow test copies selected production requests to a candidate while production responses remain the responses returned to clients. This option does not address the specified need for successive incremental traffic shifts.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Deployment guardrails for updating models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html)
+- [Blue/Green Deployments - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-blue-green.html)
+- [Shadow tests - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html)
+
+</details>
+
+## #1203 · MLA-C01 Q1203 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An approved low-risk update must switch all live requests to the new fleet in one step. Which strategy fits?
+
+A. Canary traffic shifting
+B. Linear traffic shifting
+C. All-at-once traffic shifting
+D. Shadow testing
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. All-at-once traffic shifting**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Deployment guardrails differ in traffic movement; shadow tests keep candidate responses away from users.
+
+#### Why this is correct
+
+- **C. All-at-once traffic shifting** — All-at-once deployment shifts the serving traffic to the new fleet in one movement. This matches the requirement for one complete traffic shift.
+
+#### Why other options are incorrect
+
+- **A. Canary traffic shifting** — Canary deployment moves a small initial portion of traffic, observes it, and then shifts the remainder if checks pass. This option does not address the specified need for one complete traffic shift.
+- **B. Linear traffic shifting** — Linear deployment shifts traffic in successive configured increments with observation periods. This option does not address the specified need for one complete traffic shift.
+- **D. Shadow testing** — A shadow test copies selected production requests to a candidate while production responses remain the responses returned to clients. This option does not address the specified need for one complete traffic shift.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Deployment guardrails for updating models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html)
+- [Blue/Green Deployments - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-blue-green.html)
+- [Shadow tests - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html)
+
+</details>
+
+## #1204 · MLA-C01 Q1204 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A candidate must process real request copies, but its responses must never reach users during evaluation. Which approach fits?
+
+A. Shadow testing
+B. Canary traffic shifting
+C. All-at-once traffic shifting
+D. Linear traffic shifting
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Shadow testing**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Deployment guardrails differ in traffic movement; shadow tests keep candidate responses away from users.
+
+#### Why this is correct
+
+- **A. Shadow testing** — A shadow test copies selected production requests to a candidate while production responses remain the responses returned to clients. This matches the requirement for evaluation on copied requests without serving candidate responses.
+
+#### Why other options are incorrect
+
+- **B. Canary traffic shifting** — Canary deployment moves a small initial portion of traffic, observes it, and then shifts the remainder if checks pass. This option does not address the specified need for evaluation on copied requests without serving candidate responses.
+- **C. All-at-once traffic shifting** — All-at-once deployment shifts the serving traffic to the new fleet in one movement. This option does not address the specified need for evaluation on copied requests without serving candidate responses.
+- **D. Linear traffic shifting** — Linear deployment shifts traffic in successive configured increments with observation periods. This option does not address the specified need for evaluation on copied requests without serving candidate responses.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Deployment guardrails for updating models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html)
+- [Blue/Green Deployments - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-blue-green.html)
+- [Shadow tests - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html)
+
+</details>
+
+## #1205 · MLA-C01 Q1205 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A team wants one limited blast-radius observation stage before a full fleet transition. Which rollout strategy provides that pattern?
+
+A. Linear traffic shifting
+B. All-at-once traffic shifting
+C. Shadow testing
+D. Canary traffic shifting
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Canary traffic shifting**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Deployment guardrails differ in traffic movement; shadow tests keep candidate responses away from users.
+
+#### Why this is correct
+
+- **D. Canary traffic shifting** — Canary deployment moves a small initial portion of traffic, observes it, and then shifts the remainder if checks pass. This matches the requirement for one small canary phase before full transition.
+
+#### Why other options are incorrect
+
+- **A. Linear traffic shifting** — Linear deployment shifts traffic in successive configured increments with observation periods. This option does not address the specified need for one small canary phase before full transition.
+- **B. All-at-once traffic shifting** — All-at-once deployment shifts the serving traffic to the new fleet in one movement. This option does not address the specified need for one small canary phase before full transition.
+- **C. Shadow testing** — A shadow test copies selected production requests to a candidate while production responses remain the responses returned to clients. This option does not address the specified need for one small canary phase before full transition.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Deployment guardrails for updating models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html)
+- [Blue/Green Deployments - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-blue-green.html)
+- [Shadow tests - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html)
+
+</details>
+
+## #1206 · MLA-C01 Q1206 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Operators want several observation opportunities as traffic steadily increases on the new fleet. Which rollout strategy fits?
+
+A. Canary traffic shifting
+B. Shadow testing
+C. Linear traffic shifting
+D. All-at-once traffic shifting
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Linear traffic shifting**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Deployment guardrails differ in traffic movement; shadow tests keep candidate responses away from users.
+
+#### Why this is correct
+
+- **C. Linear traffic shifting** — Linear deployment shifts traffic in successive configured increments with observation periods. This matches the requirement for multiple staged increases in serving traffic.
+
+#### Why other options are incorrect
+
+- **A. Canary traffic shifting** — Canary deployment moves a small initial portion of traffic, observes it, and then shifts the remainder if checks pass. This option does not address the specified need for multiple staged increases in serving traffic.
+- **B. Shadow testing** — A shadow test copies selected production requests to a candidate while production responses remain the responses returned to clients. This option does not address the specified need for multiple staged increases in serving traffic.
+- **D. All-at-once traffic shifting** — All-at-once deployment shifts the serving traffic to the new fleet in one movement. This option does not address the specified need for multiple staged increases in serving traffic.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Deployment guardrails for updating models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html)
+- [Blue/Green Deployments - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-blue-green.html)
+- [Shadow tests - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html)
+
+</details>
+
+## #1207 · MLA-C01 Q1207 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A migration permits no intermediate split between old and new serving fleets. Which traffic-shifting option matches that requirement?
+
+A. Canary traffic shifting
+B. Linear traffic shifting
+C. All-at-once traffic shifting
+D. Shadow testing
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. All-at-once traffic shifting**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Deployment guardrails differ in traffic movement; shadow tests keep candidate responses away from users.
+
+#### Why this is correct
+
+- **C. All-at-once traffic shifting** — All-at-once deployment shifts the serving traffic to the new fleet in one movement. This matches the requirement for a single cutover rather than staged traffic allocation.
+
+#### Why other options are incorrect
+
+- **A. Canary traffic shifting** — Canary deployment moves a small initial portion of traffic, observes it, and then shifts the remainder if checks pass. This option does not address the specified need for a single cutover rather than staged traffic allocation.
+- **B. Linear traffic shifting** — Linear deployment shifts traffic in successive configured increments with observation periods. This option does not address the specified need for a single cutover rather than staged traffic allocation.
+- **D. Shadow testing** — A shadow test copies selected production requests to a candidate while production responses remain the responses returned to clients. This option does not address the specified need for a single cutover rather than staged traffic allocation.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Deployment guardrails for updating models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html)
+- [Blue/Green Deployments - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-blue-green.html)
+- [Shadow tests - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html)
+
+</details>
+
+## #1208 · MLA-C01 Q1208 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+The goal is to compare candidate latency on live inputs while the established model remains the user-facing responder. Which approach fits?
+
+A. All-at-once traffic shifting
+B. Linear traffic shifting
+C. Canary traffic shifting
+D. Shadow testing
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Shadow testing**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Deployment guardrails differ in traffic movement; shadow tests keep candidate responses away from users.
+
+#### Why this is correct
+
+- **D. Shadow testing** — A shadow test copies selected production requests to a candidate while production responses remain the responses returned to clients. This matches the requirement for parallel candidate evaluation with unchanged user-facing responses.
+
+#### Why other options are incorrect
+
+- **A. All-at-once traffic shifting** — All-at-once deployment shifts the serving traffic to the new fleet in one movement. This option does not address the specified need for parallel candidate evaluation with unchanged user-facing responses.
+- **B. Linear traffic shifting** — Linear deployment shifts traffic in successive configured increments with observation periods. This option does not address the specified need for parallel candidate evaluation with unchanged user-facing responses.
+- **C. Canary traffic shifting** — Canary deployment moves a small initial portion of traffic, observes it, and then shifts the remainder if checks pass. This option does not address the specified need for parallel candidate evaluation with unchanged user-facing responses.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Deployment guardrails for updating models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html)
+- [Blue/Green Deployments - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-blue-green.html)
+- [Shadow tests - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html)
+
+</details>
+
+## #1209 · MLA-C01 Q1209 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An endpoint should maintain approximately a chosen number of invocations per instance as load changes. Which scaling policy fits?
+
+A. Scheduled scaling
+B. Step scaling
+C. Manual capacity adjustment
+D. Target-tracking scaling
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Target-tracking scaling**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+A scaling policy should respond to the signal or schedule that describes demand.
+
+#### Why this is correct
+
+- **D. Target-tracking scaling** — Target tracking adjusts capacity to keep a supported utilization metric near a configured target value. This matches the requirement for automatic tracking of a target utilization value.
+
+#### Why other options are incorrect
+
+- **A. Scheduled scaling** — Scheduled scaling changes capacity bounds or desired behavior at specified times for predictable demand changes. This option does not address the specified need for automatic tracking of a target utilization value.
+- **B. Step scaling** — Step scaling applies configured capacity changes based on alarm thresholds and the size of a metric breach. This option does not address the specified need for automatic tracking of a target utilization value.
+- **C. Manual capacity adjustment** — Manual adjustment sets capacity explicitly without an automated demand-response policy. This option does not address the specified need for automatic tracking of a target utilization value.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Automatic scaling of Amazon SageMaker AI models - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html)
+- [Auto scaling policy overview - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-policy.html)
+
+</details>
+
+## #1210 · MLA-C01 Q1210 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A known daily batch of users arrives at 09:00. Capacity must be ready before the traffic increase. Which policy fits?
+
+A. Target-tracking scaling
+B. Manual capacity adjustment
+C. Step scaling
+D. Scheduled scaling
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Scheduled scaling**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+A scaling policy should respond to the signal or schedule that describes demand.
+
+#### Why this is correct
+
+- **D. Scheduled scaling** — Scheduled scaling changes capacity bounds or desired behavior at specified times for predictable demand changes. This matches the requirement for prearranged capacity changes at known times.
+
+#### Why other options are incorrect
+
+- **A. Target-tracking scaling** — Target tracking adjusts capacity to keep a supported utilization metric near a configured target value. This option does not address the specified need for prearranged capacity changes at known times.
+- **B. Manual capacity adjustment** — Manual adjustment sets capacity explicitly without an automated demand-response policy. This option does not address the specified need for prearranged capacity changes at known times.
+- **C. Step scaling** — Step scaling applies configured capacity changes based on alarm thresholds and the size of a metric breach. This option does not address the specified need for prearranged capacity changes at known times.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Automatic scaling of Amazon SageMaker AI models - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html)
+- [Auto scaling policy overview - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-policy.html)
+
+</details>
+
+## #1211 · MLA-C01 Q1211 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An alarm should add different capacity amounts for small and large threshold breaches. Which policy fits?
+
+A. Target-tracking scaling
+B. Step scaling
+C. Manual capacity adjustment
+D. Scheduled scaling
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Step scaling**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+A scaling policy should respond to the signal or schedule that describes demand.
+
+#### Why this is correct
+
+- **B. Step scaling** — Step scaling applies configured capacity changes based on alarm thresholds and the size of a metric breach. This matches the requirement for capacity changes determined by threshold-breach ranges.
+
+#### Why other options are incorrect
+
+- **A. Target-tracking scaling** — Target tracking adjusts capacity to keep a supported utilization metric near a configured target value. This option does not address the specified need for capacity changes determined by threshold-breach ranges.
+- **C. Manual capacity adjustment** — Manual adjustment sets capacity explicitly without an automated demand-response policy. This option does not address the specified need for capacity changes determined by threshold-breach ranges.
+- **D. Scheduled scaling** — Scheduled scaling changes capacity bounds or desired behavior at specified times for predictable demand changes. This option does not address the specified need for capacity changes determined by threshold-breach ranges.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Automatic scaling of Amazon SageMaker AI models - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html)
+- [Auto scaling policy overview - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-policy.html)
+
+</details>
+
+## #1212 · MLA-C01 Q1212 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+For a controlled load test, an engineer must explicitly set an endpoint to a fixed instance count without a scaling policy. Which approach fits?
+
+A. Target-tracking scaling
+B. Manual capacity adjustment
+C. Scheduled scaling
+D. Step scaling
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Manual capacity adjustment**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+A scaling policy should respond to the signal or schedule that describes demand.
+
+#### Why this is correct
+
+- **B. Manual capacity adjustment** — Manual adjustment sets capacity explicitly without an automated demand-response policy. This matches the requirement for an explicit operator-selected capacity setting.
+
+#### Why other options are incorrect
+
+- **A. Target-tracking scaling** — Target tracking adjusts capacity to keep a supported utilization metric near a configured target value. This option does not address the specified need for an explicit operator-selected capacity setting.
+- **C. Scheduled scaling** — Scheduled scaling changes capacity bounds or desired behavior at specified times for predictable demand changes. This option does not address the specified need for an explicit operator-selected capacity setting.
+- **D. Step scaling** — Step scaling applies configured capacity changes based on alarm thresholds and the size of a metric breach. This option does not address the specified need for an explicit operator-selected capacity setting.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Automatic scaling of Amazon SageMaker AI models - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html)
+- [Auto scaling policy overview - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-policy.html)
+
+</details>
+
+## #1213 · MLA-C01 Q1213 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A supported metric has a known desired value, and the team wants the service to calculate capacity changes around that value. Which policy fits?
+
+A. Target-tracking scaling
+B. Manual capacity adjustment
+C. Step scaling
+D. Scheduled scaling
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Target-tracking scaling**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+A scaling policy should respond to the signal or schedule that describes demand.
+
+#### Why this is correct
+
+- **A. Target-tracking scaling** — Target tracking adjusts capacity to keep a supported utilization metric near a configured target value. This matches the requirement for automated capacity control around a metric target.
+
+#### Why other options are incorrect
+
+- **B. Manual capacity adjustment** — Manual adjustment sets capacity explicitly without an automated demand-response policy. This option does not address the specified need for automated capacity control around a metric target.
+- **C. Step scaling** — Step scaling applies configured capacity changes based on alarm thresholds and the size of a metric breach. This option does not address the specified need for automated capacity control around a metric target.
+- **D. Scheduled scaling** — Scheduled scaling changes capacity bounds or desired behavior at specified times for predictable demand changes. This option does not address the specified need for automated capacity control around a metric target.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Automatic scaling of Amazon SageMaker AI models - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html)
+- [Auto scaling policy overview - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-policy.html)
+
+</details>
+
+## #1214 · MLA-C01 Q1214 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A recurring promotional event has a fixed start time. Reactive scaling would be too late. Which policy supports advance provisioning?
+
+A. Scheduled scaling
+B. Step scaling
+C. Target-tracking scaling
+D. Manual capacity adjustment
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Scheduled scaling**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+A scaling policy should respond to the signal or schedule that describes demand.
+
+#### Why this is correct
+
+- **A. Scheduled scaling** — Scheduled scaling changes capacity bounds or desired behavior at specified times for predictable demand changes. This matches the requirement for scaling ahead of a predictable event.
+
+#### Why other options are incorrect
+
+- **B. Step scaling** — Step scaling applies configured capacity changes based on alarm thresholds and the size of a metric breach. This option does not address the specified need for scaling ahead of a predictable event.
+- **C. Target-tracking scaling** — Target tracking adjusts capacity to keep a supported utilization metric near a configured target value. This option does not address the specified need for scaling ahead of a predictable event.
+- **D. Manual capacity adjustment** — Manual adjustment sets capacity explicitly without an automated demand-response policy. This option does not address the specified need for scaling ahead of a predictable event.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Automatic scaling of Amazon SageMaker AI models - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html)
+- [Auto scaling policy overview - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-policy.html)
+
+</details>
+
+## #1215 · MLA-C01 Q1215 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A scaling design maps three alarm breach bands to three different adjustment sizes. Which policy expresses these bands?
+
+A. Target-tracking scaling
+B. Step scaling
+C. Manual capacity adjustment
+D. Scheduled scaling
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Step scaling**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+A scaling policy should respond to the signal or schedule that describes demand.
+
+#### Why this is correct
+
+- **B. Step scaling** — Step scaling applies configured capacity changes based on alarm thresholds and the size of a metric breach. This matches the requirement for tiered adjustments for different alarm severities.
+
+#### Why other options are incorrect
+
+- **A. Target-tracking scaling** — Target tracking adjusts capacity to keep a supported utilization metric near a configured target value. This option does not address the specified need for tiered adjustments for different alarm severities.
+- **C. Manual capacity adjustment** — Manual adjustment sets capacity explicitly without an automated demand-response policy. This option does not address the specified need for tiered adjustments for different alarm severities.
+- **D. Scheduled scaling** — Scheduled scaling changes capacity bounds or desired behavior at specified times for predictable demand changes. This option does not address the specified need for tiered adjustments for different alarm severities.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Automatic scaling of Amazon SageMaker AI models - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html)
+- [Auto scaling policy overview - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-policy.html)
+
+</details>
+
+## #1216 · MLA-C01 Q1216 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An incident commander chooses a temporary instance count based on investigation and applies it directly. Which approach describes this action?
+
+A. Scheduled scaling
+B. Step scaling
+C. Manual capacity adjustment
+D. Target-tracking scaling
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Manual capacity adjustment**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+A scaling policy should respond to the signal or schedule that describes demand.
+
+#### Why this is correct
+
+- **C. Manual capacity adjustment** — Manual adjustment sets capacity explicitly without an automated demand-response policy. This matches the requirement for a direct capacity update by an operator.
+
+#### Why other options are incorrect
+
+- **A. Scheduled scaling** — Scheduled scaling changes capacity bounds or desired behavior at specified times for predictable demand changes. This option does not address the specified need for a direct capacity update by an operator.
+- **B. Step scaling** — Step scaling applies configured capacity changes based on alarm thresholds and the size of a metric breach. This option does not address the specified need for a direct capacity update by an operator.
+- **D. Target-tracking scaling** — Target tracking adjusts capacity to keep a supported utilization metric near a configured target value. This option does not address the specified need for a direct capacity update by an operator.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Automatic scaling of Amazon SageMaker AI models - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html)
+- [Auto scaling policy overview - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-policy.html)
+
+</details>
+
+## #1217 · MLA-C01 Q1217 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A workflow must run a script that validates and transforms raw data before training. Which pipeline step type fits?
+
+A. Processing step
+B. Training step
+C. Model registration step
+D. Condition step
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Processing step**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pipeline step types should reflect whether a stage processes data, trains, branches, or registers a model.
+
+#### Why this is correct
+
+- **A. Processing step** — A processing step runs a SageMaker Processing job for work such as preparation or evaluation. This matches the requirement for execution of a data processing script.
+
+#### Why other options are incorrect
+
+- **B. Training step** — A training step runs a SageMaker training job that produces trained model artifacts. This option does not address the specified need for execution of a data processing script.
+- **C. Model registration step** — Model registration records a model package version and its associated metadata in Model Registry. This option does not address the specified need for execution of a data processing script.
+- **D. Condition step** — A condition step evaluates expressions and selects which pipeline branch to execute. This option does not address the specified need for execution of a data processing script.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Add a step - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps-types.html)
+
+</details>
+
+## #1218 · MLA-C01 Q1218 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+The next stage must optimize model parameters using prepared examples and produce model artifacts. Which step type fits?
+
+A. Condition step
+B. Model registration step
+C. Processing step
+D. Training step
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Training step**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pipeline step types should reflect whether a stage processes data, trains, branches, or registers a model.
+
+#### Why this is correct
+
+- **D. Training step** — A training step runs a SageMaker training job that produces trained model artifacts. This matches the requirement for a managed model training job.
+
+#### Why other options are incorrect
+
+- **A. Condition step** — A condition step evaluates expressions and selects which pipeline branch to execute. This option does not address the specified need for a managed model training job.
+- **B. Model registration step** — Model registration records a model package version and its associated metadata in Model Registry. This option does not address the specified need for a managed model training job.
+- **C. Processing step** — A processing step runs a SageMaker Processing job for work such as preparation or evaluation. This option does not address the specified need for a managed model training job.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Add a step - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps-types.html)
+
+</details>
+
+## #1219 · MLA-C01 Q1219 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A pipeline must continue to registration only when an evaluation metric exceeds a threshold. Which step performs the branch decision?
+
+A. Model registration step
+B. Processing step
+C. Training step
+D. Condition step
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Condition step**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pipeline step types should reflect whether a stage processes data, trains, branches, or registers a model.
+
+#### Why this is correct
+
+- **D. Condition step** — A condition step evaluates expressions and selects which pipeline branch to execute. This matches the requirement for conditional branching on an evaluation result.
+
+#### Why other options are incorrect
+
+- **A. Model registration step** — Model registration records a model package version and its associated metadata in Model Registry. This option does not address the specified need for conditional branching on an evaluation result.
+- **B. Processing step** — A processing step runs a SageMaker Processing job for work such as preparation or evaluation. This option does not address the specified need for conditional branching on an evaluation result.
+- **C. Training step** — A training step runs a SageMaker training job that produces trained model artifacts. This option does not address the specified need for conditional branching on an evaluation result.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Add a step - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps-types.html)
+
+</details>
+
+## #1220 · MLA-C01 Q1220 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An approved training output needs a versioned package record with evaluation metadata. Which pipeline action fits?
+
+A. Processing step
+B. Model registration step
+C. Training step
+D. Condition step
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Model registration step**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pipeline step types should reflect whether a stage processes data, trains, branches, or registers a model.
+
+#### Why this is correct
+
+- **B. Model registration step** — Model registration records a model package version and its associated metadata in Model Registry. This matches the requirement for registration of a versioned model package.
+
+#### Why other options are incorrect
+
+- **A. Processing step** — A processing step runs a SageMaker Processing job for work such as preparation or evaluation. This option does not address the specified need for registration of a versioned model package.
+- **C. Training step** — A training step runs a SageMaker training job that produces trained model artifacts. This option does not address the specified need for registration of a versioned model package.
+- **D. Condition step** — A condition step evaluates expressions and selects which pipeline branch to execute. This option does not address the specified need for registration of a versioned model package.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Add a step - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps-types.html)
+
+</details>
+
+## #1221 · MLA-C01 Q1221 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An evaluation script loads a trained model and writes metrics into a JSON report. It does not train the model. Which step fits?
+
+A. Processing step
+B. Model registration step
+C. Condition step
+D. Training step
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Processing step**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pipeline step types should reflect whether a stage processes data, trains, branches, or registers a model.
+
+#### Why this is correct
+
+- **A. Processing step** — A processing step runs a SageMaker Processing job for work such as preparation or evaluation. This matches the requirement for a script-based model evaluation job.
+
+#### Why other options are incorrect
+
+- **B. Model registration step** — Model registration records a model package version and its associated metadata in Model Registry. This option does not address the specified need for a script-based model evaluation job.
+- **C. Condition step** — A condition step evaluates expressions and selects which pipeline branch to execute. This option does not address the specified need for a script-based model evaluation job.
+- **D. Training step** — A training step runs a SageMaker training job that produces trained model artifacts. This option does not address the specified need for a script-based model evaluation job.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Add a step - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps-types.html)
+
+</details>
+
+## #1222 · MLA-C01 Q1222 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A pipeline stage invokes a configured estimator to learn weights from the training channel. Which step fits?
+
+A. Model registration step
+B. Condition step
+C. Training step
+D. Processing step
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Training step**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pipeline step types should reflect whether a stage processes data, trains, branches, or registers a model.
+
+#### Why this is correct
+
+- **C. Training step** — A training step runs a SageMaker training job that produces trained model artifacts. This matches the requirement for estimator-driven training of model weights.
+
+#### Why other options are incorrect
+
+- **A. Model registration step** — Model registration records a model package version and its associated metadata in Model Registry. This option does not address the specified need for estimator-driven training of model weights.
+- **B. Condition step** — A condition step evaluates expressions and selects which pipeline branch to execute. This option does not address the specified need for estimator-driven training of model weights.
+- **D. Processing step** — A processing step runs a SageMaker Processing job for work such as preparation or evaluation. This option does not address the specified need for estimator-driven training of model weights.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Add a step - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps-types.html)
+
+</details>
+
+## #1223 · MLA-C01 Q1223 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A failed quality gate must send execution down a different branch without registering the candidate. Which step controls this decision?
+
+A. Training step
+B. Processing step
+C. Model registration step
+D. Condition step
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Condition step**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pipeline step types should reflect whether a stage processes data, trains, branches, or registers a model.
+
+#### Why this is correct
+
+- **D. Condition step** — A condition step evaluates expressions and selects which pipeline branch to execute. This matches the requirement for a branch based on the quality-gate outcome.
+
+#### Why other options are incorrect
+
+- **A. Training step** — A training step runs a SageMaker training job that produces trained model artifacts. This option does not address the specified need for a branch based on the quality-gate outcome.
+- **B. Processing step** — A processing step runs a SageMaker Processing job for work such as preparation or evaluation. This option does not address the specified need for a branch based on the quality-gate outcome.
+- **C. Model registration step** — Model registration records a model package version and its associated metadata in Model Registry. This option does not address the specified need for a branch based on the quality-gate outcome.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Add a step - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps-types.html)
+
+</details>
+
+## #1224 · MLA-C01 Q1224 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A release workflow records inference image details and artifact locations as a new Model Registry version. Which action performs this?
+
+A. Processing step
+B. Model registration step
+C. Training step
+D. Condition step
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Model registration step**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pipeline step types should reflect whether a stage processes data, trains, branches, or registers a model.
+
+#### Why this is correct
+
+- **B. Model registration step** — Model registration records a model package version and its associated metadata in Model Registry. This matches the requirement for creation of a model version in the registry.
+
+#### Why other options are incorrect
+
+- **A. Processing step** — A processing step runs a SageMaker Processing job for work such as preparation or evaluation. This option does not address the specified need for creation of a model version in the registry.
+- **C. Training step** — A training step runs a SageMaker training job that produces trained model artifacts. This option does not address the specified need for creation of a model version in the registry.
+- **D. Condition step** — A condition step evaluates expressions and selects which pipeline branch to execute. This option does not address the specified need for creation of a model version in the registry.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Add a step - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps-types.html)
+
+</details>
+
+## #1225 · MLA-C01 Q1225 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An unchanged preprocessing step repeatedly produces identical outputs. The team wants eligible prior successful outputs reused. Which control fits?
+
+A. Configure a retry policy for supported failures
+B. Define pipeline parameters
+C. Enable supported step caching
+D. Declare step dependencies
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Enable supported step caching**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pipeline controls address reuse, configuration, dependencies, and failure recovery.
+
+#### Why this is correct
+
+- **C. Enable supported step caching** — Step caching can reuse eligible outputs from prior successful runs when the configured cache keys match within the cache interval. This matches the requirement for reuse of eligible results from earlier successful steps.
+
+#### Why other options are incorrect
+
+- **A. Configure a retry policy for supported failures** — A retry policy repeats a failed step under specified retryable conditions and retry limits. This option does not address the specified need for reuse of eligible results from earlier successful steps.
+- **B. Define pipeline parameters** — Parameters supply execution-specific values without rewriting the pipeline definition for each run. This option does not address the specified need for reuse of eligible results from earlier successful steps.
+- **D. Declare step dependencies** — Dependencies make a step wait for prerequisite steps or referenced outputs before it executes. This option does not address the specified need for reuse of eligible results from earlier successful steps.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Caching pipeline steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-caching.html)
+- [Pipeline parameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-parameters.html)
+- [Pipelines steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps.html)
+- [Retry Policy for Pipeline Steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-retry-policy.html)
+
+</details>
+
+## #1226 · MLA-C01 Q1226 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Each execution uses a different input S3 prefix, but the pipeline structure remains identical. Which feature supplies the varying value?
+
+A. Enable supported step caching
+B. Define pipeline parameters
+C. Declare step dependencies
+D. Configure a retry policy for supported failures
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Define pipeline parameters**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pipeline controls address reuse, configuration, dependencies, and failure recovery.
+
+#### Why this is correct
+
+- **B. Define pipeline parameters** — Parameters supply execution-specific values without rewriting the pipeline definition for each run. This matches the requirement for per-execution inputs without redefining the pipeline.
+
+#### Why other options are incorrect
+
+- **A. Enable supported step caching** — Step caching can reuse eligible outputs from prior successful runs when the configured cache keys match within the cache interval. This option does not address the specified need for per-execution inputs without redefining the pipeline.
+- **C. Declare step dependencies** — Dependencies make a step wait for prerequisite steps or referenced outputs before it executes. This option does not address the specified need for per-execution inputs without redefining the pipeline.
+- **D. Configure a retry policy for supported failures** — A retry policy repeats a failed step under specified retryable conditions and retry limits. This option does not address the specified need for per-execution inputs without redefining the pipeline.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Caching pipeline steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-caching.html)
+- [Pipeline parameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-parameters.html)
+- [Pipelines steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps.html)
+- [Retry Policy for Pipeline Steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-retry-policy.html)
+
+</details>
+
+## #1227 · MLA-C01 Q1227 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An evaluation stage must wait until training completes and its artifact exists. Which control expresses that ordering?
+
+A. Enable supported step caching
+B. Configure a retry policy for supported failures
+C. Declare step dependencies
+D. Define pipeline parameters
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Declare step dependencies**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pipeline controls address reuse, configuration, dependencies, and failure recovery.
+
+#### Why this is correct
+
+- **C. Declare step dependencies** — Dependencies make a step wait for prerequisite steps or referenced outputs before it executes. This matches the requirement for a prerequisite relationship between pipeline steps.
+
+#### Why other options are incorrect
+
+- **A. Enable supported step caching** — Step caching can reuse eligible outputs from prior successful runs when the configured cache keys match within the cache interval. This option does not address the specified need for a prerequisite relationship between pipeline steps.
+- **B. Configure a retry policy for supported failures** — A retry policy repeats a failed step under specified retryable conditions and retry limits. This option does not address the specified need for a prerequisite relationship between pipeline steps.
+- **D. Define pipeline parameters** — Parameters supply execution-specific values without rewriting the pipeline definition for each run. This option does not address the specified need for a prerequisite relationship between pipeline steps.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Caching pipeline steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-caching.html)
+- [Pipeline parameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-parameters.html)
+- [Pipelines steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps.html)
+- [Retry Policy for Pipeline Steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-retry-policy.html)
+
+</details>
+
+## #1228 · MLA-C01 Q1228 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A processing step occasionally fails from a supported transient service error. It needs limited retries rather than immediate permanent failure. Which control fits?
+
+A. Declare step dependencies
+B. Enable supported step caching
+C. Configure a retry policy for supported failures
+D. Define pipeline parameters
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Configure a retry policy for supported failures**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pipeline controls address reuse, configuration, dependencies, and failure recovery.
+
+#### Why this is correct
+
+- **C. Configure a retry policy for supported failures** — A retry policy repeats a failed step under specified retryable conditions and retry limits. This matches the requirement for bounded retry handling for transient step failures.
+
+#### Why other options are incorrect
+
+- **A. Declare step dependencies** — Dependencies make a step wait for prerequisite steps or referenced outputs before it executes. This option does not address the specified need for bounded retry handling for transient step failures.
+- **B. Enable supported step caching** — Step caching can reuse eligible outputs from prior successful runs when the configured cache keys match within the cache interval. This option does not address the specified need for bounded retry handling for transient step failures.
+- **D. Define pipeline parameters** — Parameters supply execution-specific values without rewriting the pipeline definition for each run. This option does not address the specified need for bounded retry handling for transient step failures.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Caching pipeline steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-caching.html)
+- [Pipeline parameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-parameters.html)
+- [Pipelines steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps.html)
+- [Retry Policy for Pipeline Steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-retry-policy.html)
+
+</details>
+
+## #1229 · MLA-C01 Q1229 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A team sets a cache expiration interval and expects recomputation when relevant step inputs change. Which control implements this behavior?
+
+A. Enable supported step caching
+B. Declare step dependencies
+C. Define pipeline parameters
+D. Configure a retry policy for supported failures
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Enable supported step caching**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pipeline controls address reuse, configuration, dependencies, and failure recovery.
+
+#### Why this is correct
+
+- **A. Enable supported step caching** — Step caching can reuse eligible outputs from prior successful runs when the configured cache keys match within the cache interval. This matches the requirement for key-based reuse constrained by an expiration interval.
+
+#### Why other options are incorrect
+
+- **B. Declare step dependencies** — Dependencies make a step wait for prerequisite steps or referenced outputs before it executes. This option does not address the specified need for key-based reuse constrained by an expiration interval.
+- **C. Define pipeline parameters** — Parameters supply execution-specific values without rewriting the pipeline definition for each run. This option does not address the specified need for key-based reuse constrained by an expiration interval.
+- **D. Configure a retry policy for supported failures** — A retry policy repeats a failed step under specified retryable conditions and retry limits. This option does not address the specified need for key-based reuse constrained by an expiration interval.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Caching pipeline steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-caching.html)
+- [Pipeline parameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-parameters.html)
+- [Pipelines steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps.html)
+- [Retry Policy for Pipeline Steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-retry-policy.html)
+
+</details>
+
+## #1230 · MLA-C01 Q1230 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An instance type should be chosen at execution time while the same pipeline definition remains in use. Which feature fits?
+
+A. Enable supported step caching
+B. Define pipeline parameters
+C. Configure a retry policy for supported failures
+D. Declare step dependencies
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Define pipeline parameters**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pipeline controls address reuse, configuration, dependencies, and failure recovery.
+
+#### Why this is correct
+
+- **B. Define pipeline parameters** — Parameters supply execution-specific values without rewriting the pipeline definition for each run. This matches the requirement for an execution-time configuration value.
+
+#### Why other options are incorrect
+
+- **A. Enable supported step caching** — Step caching can reuse eligible outputs from prior successful runs when the configured cache keys match within the cache interval. This option does not address the specified need for an execution-time configuration value.
+- **C. Configure a retry policy for supported failures** — A retry policy repeats a failed step under specified retryable conditions and retry limits. This option does not address the specified need for an execution-time configuration value.
+- **D. Declare step dependencies** — Dependencies make a step wait for prerequisite steps or referenced outputs before it executes. This option does not address the specified need for an execution-time configuration value.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Caching pipeline steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-caching.html)
+- [Pipeline parameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-parameters.html)
+- [Pipelines steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps.html)
+- [Retry Policy for Pipeline Steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-retry-policy.html)
+
+</details>
+
+## #1231 · MLA-C01 Q1231 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Two branches can run independently, but the final merge must wait for both. Which control creates that synchronization?
+
+A. Configure a retry policy for supported failures
+B. Define pipeline parameters
+C. Declare step dependencies
+D. Enable supported step caching
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Declare step dependencies**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pipeline controls address reuse, configuration, dependencies, and failure recovery.
+
+#### Why this is correct
+
+- **C. Declare step dependencies** — Dependencies make a step wait for prerequisite steps or referenced outputs before it executes. This matches the requirement for dependencies on both upstream branches.
+
+#### Why other options are incorrect
+
+- **A. Configure a retry policy for supported failures** — A retry policy repeats a failed step under specified retryable conditions and retry limits. This option does not address the specified need for dependencies on both upstream branches.
+- **B. Define pipeline parameters** — Parameters supply execution-specific values without rewriting the pipeline definition for each run. This option does not address the specified need for dependencies on both upstream branches.
+- **D. Enable supported step caching** — Step caching can reuse eligible outputs from prior successful runs when the configured cache keys match within the cache interval. This option does not address the specified need for dependencies on both upstream branches.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Caching pipeline steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-caching.html)
+- [Pipeline parameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-parameters.html)
+- [Pipelines steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps.html)
+- [Retry Policy for Pipeline Steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-retry-policy.html)
+
+</details>
+
+## #1232 · MLA-C01 Q1232 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A retry configuration specifies a delay, backoff rate, and a maximum attempt count. Which pipeline control uses these values?
+
+A. Enable supported step caching
+B. Define pipeline parameters
+C. Configure a retry policy for supported failures
+D. Declare step dependencies
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Configure a retry policy for supported failures**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Pipeline controls address reuse, configuration, dependencies, and failure recovery.
+
+#### Why this is correct
+
+- **C. Configure a retry policy for supported failures** — A retry policy repeats a failed step under specified retryable conditions and retry limits. This matches the requirement for a bounded backoff policy for step retries.
+
+#### Why other options are incorrect
+
+- **A. Enable supported step caching** — Step caching can reuse eligible outputs from prior successful runs when the configured cache keys match within the cache interval. This option does not address the specified need for a bounded backoff policy for step retries.
+- **B. Define pipeline parameters** — Parameters supply execution-specific values without rewriting the pipeline definition for each run. This option does not address the specified need for a bounded backoff policy for step retries.
+- **D. Declare step dependencies** — Dependencies make a step wait for prerequisite steps or referenced outputs before it executes. This option does not address the specified need for a bounded backoff policy for step retries.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Caching pipeline steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-caching.html)
+- [Pipeline parameters - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-parameters.html)
+- [Pipelines steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps.html)
+- [Retry Policy for Pipeline Steps - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-retry-policy.html)
+
+</details>
+
+## #1233 · MLA-C01 Q1233 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A model team needs reviewable source changes and a commit identifier for every training script version. Which component provides this history?
+
+A. AWS CodeBuild
+B. AWS CodePipeline
+C. A Git source repository
+D. Amazon ECR
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. A Git source repository**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Source history, builds, image storage, and release orchestration require different components.
+
+#### Why this is correct
+
+- **C. A Git source repository** — A Git repository records source revisions, branches, and commit history for model and application code. This matches the requirement for version control of source code changes.
+
+#### Why other options are incorrect
+
+- **A. AWS CodeBuild** — CodeBuild runs configured build commands and tests in managed build environments. This option does not address the specified need for version control of source code changes.
+- **B. AWS CodePipeline** — CodePipeline coordinates release stages and actions, including configured approval gates. This option does not address the specified need for version control of source code changes.
+- **D. Amazon ECR** — ECR stores and distributes container images and identifies immutable image content through digests. This option does not address the specified need for version control of source code changes.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is AWS CodeBuild? - AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html)
+- [What is AWS CodePipeline? - AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html)
+- [What is Amazon Elastic Container Registry? - Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)
+- [2. Experimentation - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/mlops-checklist/experimentation.html)
+
+</details>
+
+## #1234 · MLA-C01 Q1234 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A commit must trigger execution of unit tests and container build commands in a managed build environment. Which component executes those commands?
+
+A. A Git source repository
+B. Amazon ECR
+C. AWS CodeBuild
+D. AWS CodePipeline
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. AWS CodeBuild**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Source history, builds, image storage, and release orchestration require different components.
+
+#### Why this is correct
+
+- **C. AWS CodeBuild** — CodeBuild runs configured build commands and tests in managed build environments. This matches the requirement for managed execution of build and test commands.
+
+#### Why other options are incorrect
+
+- **A. A Git source repository** — A Git repository records source revisions, branches, and commit history for model and application code. This option does not address the specified need for managed execution of build and test commands.
+- **B. Amazon ECR** — ECR stores and distributes container images and identifies immutable image content through digests. This option does not address the specified need for managed execution of build and test commands.
+- **D. AWS CodePipeline** — CodePipeline coordinates release stages and actions, including configured approval gates. This option does not address the specified need for managed execution of build and test commands.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is AWS CodeBuild? - AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html)
+- [What is AWS CodePipeline? - AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html)
+- [What is Amazon Elastic Container Registry? - Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)
+- [2. Experimentation - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/mlops-checklist/experimentation.html)
+
+</details>
+
+## #1235 · MLA-C01 Q1235 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A completed inference image needs a private registry from which deployment can pull it by digest. Which component fits?
+
+A. AWS CodeBuild
+B. Amazon ECR
+C. A Git source repository
+D. AWS CodePipeline
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Amazon ECR**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Source history, builds, image storage, and release orchestration require different components.
+
+#### Why this is correct
+
+- **B. Amazon ECR** — ECR stores and distributes container images and identifies immutable image content through digests. This matches the requirement for storage and distribution of container images.
+
+#### Why other options are incorrect
+
+- **A. AWS CodeBuild** — CodeBuild runs configured build commands and tests in managed build environments. This option does not address the specified need for storage and distribution of container images.
+- **C. A Git source repository** — A Git repository records source revisions, branches, and commit history for model and application code. This option does not address the specified need for storage and distribution of container images.
+- **D. AWS CodePipeline** — CodePipeline coordinates release stages and actions, including configured approval gates. This option does not address the specified need for storage and distribution of container images.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is AWS CodeBuild? - AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html)
+- [What is AWS CodePipeline? - AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html)
+- [What is Amazon Elastic Container Registry? - Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)
+- [2. Experimentation - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/mlops-checklist/experimentation.html)
+
+</details>
+
+## #1236 · MLA-C01 Q1236 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A release must coordinate source, build, approval, and deployment actions as stages. Which component orchestrates these stages?
+
+A. AWS CodeBuild
+B. AWS CodePipeline
+C. A Git source repository
+D. Amazon ECR
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. AWS CodePipeline**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Source history, builds, image storage, and release orchestration require different components.
+
+#### Why this is correct
+
+- **B. AWS CodePipeline** — CodePipeline coordinates release stages and actions, including configured approval gates. This matches the requirement for orchestration of a release pipeline.
+
+#### Why other options are incorrect
+
+- **A. AWS CodeBuild** — CodeBuild runs configured build commands and tests in managed build environments. This option does not address the specified need for orchestration of a release pipeline.
+- **C. A Git source repository** — A Git repository records source revisions, branches, and commit history for model and application code. This option does not address the specified need for orchestration of a release pipeline.
+- **D. Amazon ECR** — ECR stores and distributes container images and identifies immutable image content through digests. This option does not address the specified need for orchestration of a release pipeline.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is AWS CodeBuild? - AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html)
+- [What is AWS CodePipeline? - AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html)
+- [What is Amazon Elastic Container Registry? - Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)
+- [2. Experimentation - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/mlops-checklist/experimentation.html)
+
+</details>
+
+## #1237 · MLA-C01 Q1237 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An engineer needs to compare two versions of feature code and identify the author of each change. Which component provides this record?
+
+A. Amazon ECR
+B. AWS CodePipeline
+C. AWS CodeBuild
+D. A Git source repository
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. A Git source repository**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Source history, builds, image storage, and release orchestration require different components.
+
+#### Why this is correct
+
+- **D. A Git source repository** — A Git repository records source revisions, branches, and commit history for model and application code. This matches the requirement for commit history and differences between source revisions.
+
+#### Why other options are incorrect
+
+- **A. Amazon ECR** — ECR stores and distributes container images and identifies immutable image content through digests. This option does not address the specified need for commit history and differences between source revisions.
+- **B. AWS CodePipeline** — CodePipeline coordinates release stages and actions, including configured approval gates. This option does not address the specified need for commit history and differences between source revisions.
+- **C. AWS CodeBuild** — CodeBuild runs configured build commands and tests in managed build environments. This option does not address the specified need for commit history and differences between source revisions.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is AWS CodeBuild? - AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html)
+- [What is AWS CodePipeline? - AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html)
+- [What is Amazon Elastic Container Registry? - Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)
+- [2. Experimentation - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/mlops-checklist/experimentation.html)
+
+</details>
+
+## #1238 · MLA-C01 Q1238 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A buildspec defines shell commands and test-report output for an automated build. Which service consumes that build configuration?
+
+A. Amazon ECR
+B. AWS CodeBuild
+C. AWS CodePipeline
+D. A Git source repository
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. AWS CodeBuild**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Source history, builds, image storage, and release orchestration require different components.
+
+#### Why this is correct
+
+- **B. AWS CodeBuild** — CodeBuild runs configured build commands and tests in managed build environments. This matches the requirement for execution of commands from a buildspec.
+
+#### Why other options are incorrect
+
+- **A. Amazon ECR** — ECR stores and distributes container images and identifies immutable image content through digests. This option does not address the specified need for execution of commands from a buildspec.
+- **C. AWS CodePipeline** — CodePipeline coordinates release stages and actions, including configured approval gates. This option does not address the specified need for execution of commands from a buildspec.
+- **D. A Git source repository** — A Git repository records source revisions, branches, and commit history for model and application code. This option does not address the specified need for execution of commands from a buildspec.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is AWS CodeBuild? - AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html)
+- [What is AWS CodePipeline? - AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html)
+- [What is Amazon Elastic Container Registry? - Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)
+- [2. Experimentation - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/mlops-checklist/experimentation.html)
+
+</details>
+
+## #1239 · MLA-C01 Q1239 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A deployment must avoid a mutable latest tag and refer to an exact container image digest. Which service stores that image?
+
+A. AWS CodePipeline
+B. Amazon ECR
+C. AWS CodeBuild
+D. A Git source repository
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Amazon ECR**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Source history, builds, image storage, and release orchestration require different components.
+
+#### Why this is correct
+
+- **B. Amazon ECR** — ECR stores and distributes container images and identifies immutable image content through digests. This matches the requirement for an image registry with digest-based retrieval.
+
+#### Why other options are incorrect
+
+- **A. AWS CodePipeline** — CodePipeline coordinates release stages and actions, including configured approval gates. This option does not address the specified need for an image registry with digest-based retrieval.
+- **C. AWS CodeBuild** — CodeBuild runs configured build commands and tests in managed build environments. This option does not address the specified need for an image registry with digest-based retrieval.
+- **D. A Git source repository** — A Git repository records source revisions, branches, and commit history for model and application code. This option does not address the specified need for an image registry with digest-based retrieval.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is AWS CodeBuild? - AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html)
+- [What is AWS CodePipeline? - AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html)
+- [What is Amazon Elastic Container Registry? - Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)
+- [2. Experimentation - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/mlops-checklist/experimentation.html)
+
+</details>
+
+## #1240 · MLA-C01 Q1240 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A release pauses until an authorized reviewer approves the transition to deployment. Which service coordinates this approval stage?
+
+A. AWS CodeBuild
+B. A Git source repository
+C. Amazon ECR
+D. AWS CodePipeline
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. AWS CodePipeline**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Source history, builds, image storage, and release orchestration require different components.
+
+#### Why this is correct
+
+- **D. AWS CodePipeline** — CodePipeline coordinates release stages and actions, including configured approval gates. This matches the requirement for an approval gate within release orchestration.
+
+#### Why other options are incorrect
+
+- **A. AWS CodeBuild** — CodeBuild runs configured build commands and tests in managed build environments. This option does not address the specified need for an approval gate within release orchestration.
+- **B. A Git source repository** — A Git repository records source revisions, branches, and commit history for model and application code. This option does not address the specified need for an approval gate within release orchestration.
+- **C. Amazon ECR** — ECR stores and distributes container images and identifies immutable image content through digests. This option does not address the specified need for an approval gate within release orchestration.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is AWS CodeBuild? - AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html)
+- [What is AWS CodePipeline? - AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html)
+- [What is Amazon Elastic Container Registry? - Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)
+- [2. Experimentation - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/mlops-checklist/experimentation.html)
+
+</details>
+
+## #1241 · MLA-C01 Q1241 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A training job writes learned weights that the serving container will load later. Which resource holds these serialized model files?
+
+A. SageMaker endpoint configuration
+B. Inference container image in Amazon ECR
+C. Model artifacts in Amazon S3
+D. Model package version in Model Registry
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Model artifacts in Amazon S3**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Model files, container images, registry metadata, and endpoint configuration are distinct deployment resources.
+
+#### Why this is correct
+
+- **C. Model artifacts in Amazon S3** — An S3 model artifact contains serialized model data such as trained weights; it is distinct from a container image. This matches the requirement for storage of the trained model's serialized weights.
+
+#### Why other options are incorrect
+
+- **A. SageMaker endpoint configuration** — An endpoint configuration specifies deployment details such as production variants and configured serving resources. This option does not address the specified need for storage of the trained model's serialized weights.
+- **B. Inference container image in Amazon ECR** — An inference image contains the runtime and serving code used to load model artifacts and handle requests. This option does not address the specified need for storage of the trained model's serialized weights.
+- **D. Model package version in Model Registry** — A model package version records a versioned model definition with metadata and approval status. This option does not address the specified need for storage of the trained model's serialized weights.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model Registration Deployment with Model Registry - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html)
+- [Model Registry Models, Model Versions, and Model Groups - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-models.html)
+- [CreateEndpointConfig - Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html)
+- [Custom Inference Code with Hosting Services - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html)
+
+</details>
+
+## #1242 · MLA-C01 Q1242 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A deployment needs the packaged runtime with its inference server and dependencies. Which resource supplies that executable environment?
+
+A. Model package version in Model Registry
+B. Inference container image in Amazon ECR
+C. Model artifacts in Amazon S3
+D. SageMaker endpoint configuration
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Inference container image in Amazon ECR**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Model files, container images, registry metadata, and endpoint configuration are distinct deployment resources.
+
+#### Why this is correct
+
+- **B. Inference container image in Amazon ECR** — An inference image contains the runtime and serving code used to load model artifacts and handle requests. This matches the requirement for a containerized inference runtime.
+
+#### Why other options are incorrect
+
+- **A. Model package version in Model Registry** — A model package version records a versioned model definition with metadata and approval status. This option does not address the specified need for a containerized inference runtime.
+- **C. Model artifacts in Amazon S3** — An S3 model artifact contains serialized model data such as trained weights; it is distinct from a container image. This option does not address the specified need for a containerized inference runtime.
+- **D. SageMaker endpoint configuration** — An endpoint configuration specifies deployment details such as production variants and configured serving resources. This option does not address the specified need for a containerized inference runtime.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model Registration Deployment with Model Registry - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html)
+- [Model Registry Models, Model Versions, and Model Groups - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-models.html)
+- [CreateEndpointConfig - Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html)
+- [Custom Inference Code with Hosting Services - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html)
+
+</details>
+
+## #1243 · MLA-C01 Q1243 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A reviewer must approve a particular model version with its associated evaluation metadata. Which resource represents that reviewable version?
+
+A. SageMaker endpoint configuration
+B. Inference container image in Amazon ECR
+C. Model artifacts in Amazon S3
+D. Model package version in Model Registry
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Model package version in Model Registry**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Model files, container images, registry metadata, and endpoint configuration are distinct deployment resources.
+
+#### Why this is correct
+
+- **D. Model package version in Model Registry** — A model package version records a versioned model definition with metadata and approval status. This matches the requirement for a model version with registry approval metadata.
+
+#### Why other options are incorrect
+
+- **A. SageMaker endpoint configuration** — An endpoint configuration specifies deployment details such as production variants and configured serving resources. This option does not address the specified need for a model version with registry approval metadata.
+- **B. Inference container image in Amazon ECR** — An inference image contains the runtime and serving code used to load model artifacts and handle requests. This option does not address the specified need for a model version with registry approval metadata.
+- **C. Model artifacts in Amazon S3** — An S3 model artifact contains serialized model data such as trained weights; it is distinct from a container image. This option does not address the specified need for a model version with registry approval metadata.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model Registration Deployment with Model Registry - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html)
+- [Model Registry Models, Model Versions, and Model Groups - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-models.html)
+- [CreateEndpointConfig - Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html)
+- [Custom Inference Code with Hosting Services - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html)
+
+</details>
+
+## #1244 · MLA-C01 Q1244 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An endpoint update changes instance type and variant configuration without editing model weights. Which resource describes these deployment settings?
+
+A. Inference container image in Amazon ECR
+B. Model artifacts in Amazon S3
+C. SageMaker endpoint configuration
+D. Model package version in Model Registry
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. SageMaker endpoint configuration**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Model files, container images, registry metadata, and endpoint configuration are distinct deployment resources.
+
+#### Why this is correct
+
+- **C. SageMaker endpoint configuration** — An endpoint configuration specifies deployment details such as production variants and configured serving resources. This matches the requirement for serving-resource and variant settings.
+
+#### Why other options are incorrect
+
+- **A. Inference container image in Amazon ECR** — An inference image contains the runtime and serving code used to load model artifacts and handle requests. This option does not address the specified need for serving-resource and variant settings.
+- **B. Model artifacts in Amazon S3** — An S3 model artifact contains serialized model data such as trained weights; it is distinct from a container image. This option does not address the specified need for serving-resource and variant settings.
+- **D. Model package version in Model Registry** — A model package version records a versioned model definition with metadata and approval status. This option does not address the specified need for serving-resource and variant settings.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model Registration Deployment with Model Registry - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html)
+- [Model Registry Models, Model Versions, and Model Groups - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-models.html)
+- [CreateEndpointConfig - Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html)
+- [Custom Inference Code with Hosting Services - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html)
+
+</details>
+
+## #1245 · MLA-C01 Q1245 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A deployment fails because the referenced model.tar.gz object is missing. Which resource category must the engineer investigate?
+
+A. SageMaker endpoint configuration
+B. Model package version in Model Registry
+C. Model artifacts in Amazon S3
+D. Inference container image in Amazon ECR
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Model artifacts in Amazon S3**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Model files, container images, registry metadata, and endpoint configuration are distinct deployment resources.
+
+#### Why this is correct
+
+- **C. Model artifacts in Amazon S3** — An S3 model artifact contains serialized model data such as trained weights; it is distinct from a container image. This matches the requirement for the serialized model artifact object.
+
+#### Why other options are incorrect
+
+- **A. SageMaker endpoint configuration** — An endpoint configuration specifies deployment details such as production variants and configured serving resources. This option does not address the specified need for the serialized model artifact object.
+- **B. Model package version in Model Registry** — A model package version records a versioned model definition with metadata and approval status. This option does not address the specified need for the serialized model artifact object.
+- **D. Inference container image in Amazon ECR** — An inference image contains the runtime and serving code used to load model artifacts and handle requests. This option does not address the specified need for the serialized model artifact object.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model Registration Deployment with Model Registry - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html)
+- [Model Registry Models, Model Versions, and Model Groups - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-models.html)
+- [CreateEndpointConfig - Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html)
+- [Custom Inference Code with Hosting Services - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html)
+
+</details>
+
+## #1246 · MLA-C01 Q1246 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+The application contains a dependency version bug in its serving process. Which packaged resource must be rebuilt to fix the runtime?
+
+A. Inference container image in Amazon ECR
+B. Model artifacts in Amazon S3
+C. SageMaker endpoint configuration
+D. Model package version in Model Registry
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Inference container image in Amazon ECR**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Model files, container images, registry metadata, and endpoint configuration are distinct deployment resources.
+
+#### Why this is correct
+
+- **A. Inference container image in Amazon ECR** — An inference image contains the runtime and serving code used to load model artifacts and handle requests. This matches the requirement for the inference container image.
+
+#### Why other options are incorrect
+
+- **B. Model artifacts in Amazon S3** — An S3 model artifact contains serialized model data such as trained weights; it is distinct from a container image. This option does not address the specified need for the inference container image.
+- **C. SageMaker endpoint configuration** — An endpoint configuration specifies deployment details such as production variants and configured serving resources. This option does not address the specified need for the inference container image.
+- **D. Model package version in Model Registry** — A model package version records a versioned model definition with metadata and approval status. This option does not address the specified need for the inference container image.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model Registration Deployment with Model Registry - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html)
+- [Model Registry Models, Model Versions, and Model Groups - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-models.html)
+- [CreateEndpointConfig - Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html)
+- [Custom Inference Code with Hosting Services - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html)
+
+</details>
+
+## #1247 · MLA-C01 Q1247 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Two successive training runs need separate version records within the same model group. Which resource is created for each run?
+
+A. Model artifacts in Amazon S3
+B. Inference container image in Amazon ECR
+C. Model package version in Model Registry
+D. SageMaker endpoint configuration
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Model package version in Model Registry**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Model files, container images, registry metadata, and endpoint configuration are distinct deployment resources.
+
+#### Why this is correct
+
+- **C. Model package version in Model Registry** — A model package version records a versioned model definition with metadata and approval status. This matches the requirement for versioned model packages within a registry group.
+
+#### Why other options are incorrect
+
+- **A. Model artifacts in Amazon S3** — An S3 model artifact contains serialized model data such as trained weights; it is distinct from a container image. This option does not address the specified need for versioned model packages within a registry group.
+- **B. Inference container image in Amazon ECR** — An inference image contains the runtime and serving code used to load model artifacts and handle requests. This option does not address the specified need for versioned model packages within a registry group.
+- **D. SageMaker endpoint configuration** — An endpoint configuration specifies deployment details such as production variants and configured serving resources. This option does not address the specified need for versioned model packages within a registry group.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model Registration Deployment with Model Registry - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html)
+- [Model Registry Models, Model Versions, and Model Groups - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-models.html)
+- [CreateEndpointConfig - Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html)
+- [Custom Inference Code with Hosting Services - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html)
+
+</details>
+
+## #1248 · MLA-C01 Q1248 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An operator prepares a new configuration for an existing endpoint's production variants. Which resource is created before applying the endpoint update?
+
+A. SageMaker endpoint configuration
+B. Model package version in Model Registry
+C. Model artifacts in Amazon S3
+D. Inference container image in Amazon ECR
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. SageMaker endpoint configuration**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Model files, container images, registry metadata, and endpoint configuration are distinct deployment resources.
+
+#### Why this is correct
+
+- **A. SageMaker endpoint configuration** — An endpoint configuration specifies deployment details such as production variants and configured serving resources. This matches the requirement for an endpoint configuration for the new serving setup.
+
+#### Why other options are incorrect
+
+- **B. Model package version in Model Registry** — A model package version records a versioned model definition with metadata and approval status. This option does not address the specified need for an endpoint configuration for the new serving setup.
+- **C. Model artifacts in Amazon S3** — An S3 model artifact contains serialized model data such as trained weights; it is distinct from a container image. This option does not address the specified need for an endpoint configuration for the new serving setup.
+- **D. Inference container image in Amazon ECR** — An inference image contains the runtime and serving code used to load model artifacts and handle requests. This option does not address the specified need for an endpoint configuration for the new serving setup.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Model Registration Deployment with Model Registry - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html)
+- [Model Registry Models, Model Versions, and Model Groups - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-models.html)
+- [CreateEndpointConfig - Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpointConfig.html)
+- [Custom Inference Code with Hosting Services - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html)
+
+</details>
+
+## #1249 · MLA-C01 Q1249 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A team wants declarative YAML definitions to create a repeatable set of AWS infrastructure resources. Which approach fits?
+
+A. CloudFormation template and stack
+B. CloudFormation drift detection
+C. AWS CDK application
+D. CloudFormation change set
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. CloudFormation template and stack**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Infrastructure templates, programming abstractions, previews, and drift checks serve different stages of resource management.
+
+#### Why this is correct
+
+- **A. CloudFormation template and stack** — A CloudFormation template declares infrastructure, and a stack manages the resources represented by that template. This matches the requirement for declarative infrastructure managed as a stack.
+
+#### Why other options are incorrect
+
+- **B. CloudFormation drift detection** — Drift detection compares supported actual resource properties with the expected stack configuration. This option does not address the specified need for declarative infrastructure managed as a stack.
+- **C. AWS CDK application** — CDK defines infrastructure with supported programming languages and synthesizes CloudFormation templates. This option does not address the specified need for declarative infrastructure managed as a stack.
+- **D. CloudFormation change set** — A change set previews proposed stack resource changes before execution. This option does not address the specified need for declarative infrastructure managed as a stack.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is CloudFormation? - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
+- [What is the AWS CDK? - AWS Cloud Development Kit (AWS CDK) v2](https://docs.aws.amazon.com/cdk/v2/guide/home.html)
+- [Update CloudFormation stacks using change sets - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html)
+- [Detect unmanaged configuration changes to stacks and resources with drift detection - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html)
+
+</details>
+
+## #1250 · MLA-C01 Q1250 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Engineers want to define reusable infrastructure constructs in TypeScript and synthesize deployment templates. Which tool fits?
+
+A. CloudFormation drift detection
+B. CloudFormation change set
+C. AWS CDK application
+D. CloudFormation template and stack
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. AWS CDK application**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Infrastructure templates, programming abstractions, previews, and drift checks serve different stages of resource management.
+
+#### Why this is correct
+
+- **C. AWS CDK application** — CDK defines infrastructure with supported programming languages and synthesizes CloudFormation templates. This matches the requirement for programmatic infrastructure that synthesizes CloudFormation.
+
+#### Why other options are incorrect
+
+- **A. CloudFormation drift detection** — Drift detection compares supported actual resource properties with the expected stack configuration. This option does not address the specified need for programmatic infrastructure that synthesizes CloudFormation.
+- **B. CloudFormation change set** — A change set previews proposed stack resource changes before execution. This option does not address the specified need for programmatic infrastructure that synthesizes CloudFormation.
+- **D. CloudFormation template and stack** — A CloudFormation template declares infrastructure, and a stack manages the resources represented by that template. This option does not address the specified need for programmatic infrastructure that synthesizes CloudFormation.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is CloudFormation? - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
+- [What is the AWS CDK? - AWS Cloud Development Kit (AWS CDK) v2](https://docs.aws.amazon.com/cdk/v2/guide/home.html)
+- [Update CloudFormation stacks using change sets - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html)
+- [Detect unmanaged configuration changes to stacks and resources with drift detection - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html)
+
+</details>
+
+## #1251 · MLA-C01 Q1251 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A reviewer must see whether an update will replace resources before executing it. Which feature provides this preview?
+
+A. CloudFormation template and stack
+B. CloudFormation drift detection
+C. CloudFormation change set
+D. AWS CDK application
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. CloudFormation change set**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Infrastructure templates, programming abstractions, previews, and drift checks serve different stages of resource management.
+
+#### Why this is correct
+
+- **C. CloudFormation change set** — A change set previews proposed stack resource changes before execution. This matches the requirement for inspection of proposed changes before stack execution.
+
+#### Why other options are incorrect
+
+- **A. CloudFormation template and stack** — A CloudFormation template declares infrastructure, and a stack manages the resources represented by that template. This option does not address the specified need for inspection of proposed changes before stack execution.
+- **B. CloudFormation drift detection** — Drift detection compares supported actual resource properties with the expected stack configuration. This option does not address the specified need for inspection of proposed changes before stack execution.
+- **D. AWS CDK application** — CDK defines infrastructure with supported programming languages and synthesizes CloudFormation templates. This option does not address the specified need for inspection of proposed changes before stack execution.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is CloudFormation? - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
+- [What is the AWS CDK? - AWS Cloud Development Kit (AWS CDK) v2](https://docs.aws.amazon.com/cdk/v2/guide/home.html)
+- [Update CloudFormation stacks using change sets - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html)
+- [Detect unmanaged configuration changes to stacks and resources with drift detection - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html)
+
+</details>
+
+## #1252 · MLA-C01 Q1252 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An operator suspects someone changed supported stack resources manually outside the template. Which feature detects this divergence?
+
+A. AWS CDK application
+B. CloudFormation drift detection
+C. CloudFormation template and stack
+D. CloudFormation change set
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. CloudFormation drift detection**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Infrastructure templates, programming abstractions, previews, and drift checks serve different stages of resource management.
+
+#### Why this is correct
+
+- **B. CloudFormation drift detection** — Drift detection compares supported actual resource properties with the expected stack configuration. This matches the requirement for comparison of actual resources with expected stack properties.
+
+#### Why other options are incorrect
+
+- **A. AWS CDK application** — CDK defines infrastructure with supported programming languages and synthesizes CloudFormation templates. This option does not address the specified need for comparison of actual resources with expected stack properties.
+- **C. CloudFormation template and stack** — A CloudFormation template declares infrastructure, and a stack manages the resources represented by that template. This option does not address the specified need for comparison of actual resources with expected stack properties.
+- **D. CloudFormation change set** — A change set previews proposed stack resource changes before execution. This option does not address the specified need for comparison of actual resources with expected stack properties.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is CloudFormation? - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
+- [What is the AWS CDK? - AWS Cloud Development Kit (AWS CDK) v2](https://docs.aws.amazon.com/cdk/v2/guide/home.html)
+- [Update CloudFormation stacks using change sets - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html)
+- [Detect unmanaged configuration changes to stacks and resources with drift detection - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html)
+
+</details>
+
+## #1253 · MLA-C01 Q1253 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A stack groups the lifecycle of resources declared in a version-controlled template. Which infrastructure mechanism is this?
+
+A. CloudFormation drift detection
+B. AWS CDK application
+C. CloudFormation change set
+D. CloudFormation template and stack
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. CloudFormation template and stack**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Infrastructure templates, programming abstractions, previews, and drift checks serve different stages of resource management.
+
+#### Why this is correct
+
+- **D. CloudFormation template and stack** — A CloudFormation template declares infrastructure, and a stack manages the resources represented by that template. This matches the requirement for template-based management of a resource stack.
+
+#### Why other options are incorrect
+
+- **A. CloudFormation drift detection** — Drift detection compares supported actual resource properties with the expected stack configuration. This option does not address the specified need for template-based management of a resource stack.
+- **B. AWS CDK application** — CDK defines infrastructure with supported programming languages and synthesizes CloudFormation templates. This option does not address the specified need for template-based management of a resource stack.
+- **C. CloudFormation change set** — A change set previews proposed stack resource changes before execution. This option does not address the specified need for template-based management of a resource stack.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is CloudFormation? - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
+- [What is the AWS CDK? - AWS Cloud Development Kit (AWS CDK) v2](https://docs.aws.amazon.com/cdk/v2/guide/home.html)
+- [Update CloudFormation stacks using change sets - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html)
+- [Detect unmanaged configuration changes to stacks and resources with drift detection - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html)
+
+</details>
+
+## #1254 · MLA-C01 Q1254 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A Python infrastructure program instantiates reusable constructs and generates a CloudFormation template. Which tool supplies this model?
+
+A. AWS CDK application
+B. CloudFormation drift detection
+C. CloudFormation change set
+D. CloudFormation template and stack
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. AWS CDK application**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Infrastructure templates, programming abstractions, previews, and drift checks serve different stages of resource management.
+
+#### Why this is correct
+
+- **A. AWS CDK application** — CDK defines infrastructure with supported programming languages and synthesizes CloudFormation templates. This matches the requirement for infrastructure constructs authored in a programming language.
+
+#### Why other options are incorrect
+
+- **B. CloudFormation drift detection** — Drift detection compares supported actual resource properties with the expected stack configuration. This option does not address the specified need for infrastructure constructs authored in a programming language.
+- **C. CloudFormation change set** — A change set previews proposed stack resource changes before execution. This option does not address the specified need for infrastructure constructs authored in a programming language.
+- **D. CloudFormation template and stack** — A CloudFormation template declares infrastructure, and a stack manages the resources represented by that template. This option does not address the specified need for infrastructure constructs authored in a programming language.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is CloudFormation? - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
+- [What is the AWS CDK? - AWS Cloud Development Kit (AWS CDK) v2](https://docs.aws.amazon.com/cdk/v2/guide/home.html)
+- [Update CloudFormation stacks using change sets - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html)
+- [Detect unmanaged configuration changes to stacks and resources with drift detection - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html)
+
+</details>
+
+## #1255 · MLA-C01 Q1255 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A release process requires review of the proposed resource actions before the stack update is applied. Which feature supports this gate?
+
+A. AWS CDK application
+B. CloudFormation drift detection
+C. CloudFormation change set
+D. CloudFormation template and stack
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. CloudFormation change set**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Infrastructure templates, programming abstractions, previews, and drift checks serve different stages of resource management.
+
+#### Why this is correct
+
+- **C. CloudFormation change set** — A change set previews proposed stack resource changes before execution. This matches the requirement for a preview of planned stack-update actions.
+
+#### Why other options are incorrect
+
+- **A. AWS CDK application** — CDK defines infrastructure with supported programming languages and synthesizes CloudFormation templates. This option does not address the specified need for a preview of planned stack-update actions.
+- **B. CloudFormation drift detection** — Drift detection compares supported actual resource properties with the expected stack configuration. This option does not address the specified need for a preview of planned stack-update actions.
+- **D. CloudFormation template and stack** — A CloudFormation template declares infrastructure, and a stack manages the resources represented by that template. This option does not address the specified need for a preview of planned stack-update actions.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is CloudFormation? - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
+- [What is the AWS CDK? - AWS Cloud Development Kit (AWS CDK) v2](https://docs.aws.amazon.com/cdk/v2/guide/home.html)
+- [Update CloudFormation stacks using change sets - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html)
+- [Detect unmanaged configuration changes to stacks and resources with drift detection - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html)
+
+</details>
+
+## #1256 · MLA-C01 Q1256 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+The template remains unchanged, but a supported resource property differs from its expected value. Which check identifies this state?
+
+A. AWS CDK application
+B. CloudFormation template and stack
+C. CloudFormation change set
+D. CloudFormation drift detection
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. CloudFormation drift detection**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Infrastructure templates, programming abstractions, previews, and drift checks serve different stages of resource management.
+
+#### Why this is correct
+
+- **D. CloudFormation drift detection** — Drift detection compares supported actual resource properties with the expected stack configuration. This matches the requirement for detection of an out-of-band configuration change.
+
+#### Why other options are incorrect
+
+- **A. AWS CDK application** — CDK defines infrastructure with supported programming languages and synthesizes CloudFormation templates. This option does not address the specified need for detection of an out-of-band configuration change.
+- **B. CloudFormation template and stack** — A CloudFormation template declares infrastructure, and a stack manages the resources represented by that template. This option does not address the specified need for detection of an out-of-band configuration change.
+- **C. CloudFormation change set** — A change set previews proposed stack resource changes before execution. This option does not address the specified need for detection of an out-of-band configuration change.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is CloudFormation? - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
+- [What is the AWS CDK? - AWS Cloud Development Kit (AWS CDK) v2](https://docs.aws.amazon.com/cdk/v2/guide/home.html)
+- [Update CloudFormation stacks using change sets - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html)
+- [Detect unmanaged configuration changes to stacks and resources with drift detection - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html)
+
+</details>
+
+## #1257 · MLA-C01 Q1257 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A training completion event should invoke a configured target only when its status matches a rule. Which component fits?
+
+A. Amazon EventBridge rule
+B. AWS Step Functions state machine
+C. Amazon SQS queue
+D. Amazon SNS topic
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Amazon EventBridge rule**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Events, workflow state, work queues, and fan-out notifications are different orchestration primitives.
+
+#### Why this is correct
+
+- **A. Amazon EventBridge rule** — An EventBridge rule matches events and routes matching events to configured targets. This matches the requirement for routing of events that match a pattern.
+
+#### Why other options are incorrect
+
+- **B. AWS Step Functions state machine** — A Step Functions state machine coordinates workflow states, branching, waiting, and error handling. This option does not address the specified need for routing of events that match a pattern.
+- **C. Amazon SQS queue** — An SQS queue buffers messages for consumers and decouples producers from worker processing. This option does not address the specified need for routing of events that match a pattern.
+- **D. Amazon SNS topic** — An SNS topic publishes notifications to subscribed endpoints for fan-out delivery. This option does not address the specified need for routing of events that match a pattern.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What Is Amazon EventBridge? - Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html)
+- [What is Step Functions? - AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)
+- [What is Amazon Simple Queue Service? - Amazon Simple Queue Service](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html)
+- [What is Amazon SNS? - Amazon Simple Notification Service](https://docs.aws.amazon.com/sns/latest/dg/welcome.html)
+
+</details>
+
+## #1258 · MLA-C01 Q1258 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A workflow must train, wait, evaluate, branch, and retry selected failures across services. Which component models that sequence?
+
+A. Amazon SNS topic
+B. AWS Step Functions state machine
+C. Amazon SQS queue
+D. Amazon EventBridge rule
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. AWS Step Functions state machine**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Events, workflow state, work queues, and fan-out notifications are different orchestration primitives.
+
+#### Why this is correct
+
+- **B. AWS Step Functions state machine** — A Step Functions state machine coordinates workflow states, branching, waiting, and error handling. This matches the requirement for stateful coordination of a multi-step workflow.
+
+#### Why other options are incorrect
+
+- **A. Amazon SNS topic** — An SNS topic publishes notifications to subscribed endpoints for fan-out delivery. This option does not address the specified need for stateful coordination of a multi-step workflow.
+- **C. Amazon SQS queue** — An SQS queue buffers messages for consumers and decouples producers from worker processing. This option does not address the specified need for stateful coordination of a multi-step workflow.
+- **D. Amazon EventBridge rule** — An EventBridge rule matches events and routes matching events to configured targets. This option does not address the specified need for stateful coordination of a multi-step workflow.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What Is Amazon EventBridge? - Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html)
+- [What is Step Functions? - AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)
+- [What is Amazon Simple Queue Service? - Amazon Simple Queue Service](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html)
+- [What is Amazon SNS? - Amazon Simple Notification Service](https://docs.aws.amazon.com/sns/latest/dg/welcome.html)
+
+</details>
+
+## #1259 · MLA-C01 Q1259 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Preprocessing workers must consume buffered tasks at their own rate when producers send bursts. Which component fits?
+
+A. Amazon SNS topic
+B. Amazon SQS queue
+C. Amazon EventBridge rule
+D. AWS Step Functions state machine
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Amazon SQS queue**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Events, workflow state, work queues, and fan-out notifications are different orchestration primitives.
+
+#### Why this is correct
+
+- **B. Amazon SQS queue** — An SQS queue buffers messages for consumers and decouples producers from worker processing. This matches the requirement for a durable work queue between producers and consumers.
+
+#### Why other options are incorrect
+
+- **A. Amazon SNS topic** — An SNS topic publishes notifications to subscribed endpoints for fan-out delivery. This option does not address the specified need for a durable work queue between producers and consumers.
+- **C. Amazon EventBridge rule** — An EventBridge rule matches events and routes matching events to configured targets. This option does not address the specified need for a durable work queue between producers and consumers.
+- **D. AWS Step Functions state machine** — A Step Functions state machine coordinates workflow states, branching, waiting, and error handling. This option does not address the specified need for a durable work queue between producers and consumers.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What Is Amazon EventBridge? - Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html)
+- [What is Step Functions? - AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)
+- [What is Amazon Simple Queue Service? - Amazon Simple Queue Service](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html)
+- [What is Amazon SNS? - Amazon Simple Notification Service](https://docs.aws.amazon.com/sns/latest/dg/welcome.html)
+
+</details>
+
+## #1260 · MLA-C01 Q1260 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A completion notification must reach several independent subscribed systems. Which component provides fan-out notifications?
+
+A. AWS Step Functions state machine
+B. Amazon SNS topic
+C. Amazon EventBridge rule
+D. Amazon SQS queue
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Amazon SNS topic**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Events, workflow state, work queues, and fan-out notifications are different orchestration primitives.
+
+#### Why this is correct
+
+- **B. Amazon SNS topic** — An SNS topic publishes notifications to subscribed endpoints for fan-out delivery. This matches the requirement for publication of one notification to multiple subscribers.
+
+#### Why other options are incorrect
+
+- **A. AWS Step Functions state machine** — A Step Functions state machine coordinates workflow states, branching, waiting, and error handling. This option does not address the specified need for publication of one notification to multiple subscribers.
+- **C. Amazon EventBridge rule** — An EventBridge rule matches events and routes matching events to configured targets. This option does not address the specified need for publication of one notification to multiple subscribers.
+- **D. Amazon SQS queue** — An SQS queue buffers messages for consumers and decouples producers from worker processing. This option does not address the specified need for publication of one notification to multiple subscribers.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What Is Amazon EventBridge? - Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html)
+- [What is Step Functions? - AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)
+- [What is Amazon Simple Queue Service? - Amazon Simple Queue Service](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html)
+- [What is Amazon SNS? - Amazon Simple Notification Service](https://docs.aws.amazon.com/sns/latest/dg/welcome.html)
+
+</details>
+
+## #1261 · MLA-C01 Q1261 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A rule filters service events by their detail fields before forwarding them to automation. Which service supplies this routing?
+
+A. Amazon EventBridge rule
+B. Amazon SQS queue
+C. AWS Step Functions state machine
+D. Amazon SNS topic
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Amazon EventBridge rule**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Events, workflow state, work queues, and fan-out notifications are different orchestration primitives.
+
+#### Why this is correct
+
+- **A. Amazon EventBridge rule** — An EventBridge rule matches events and routes matching events to configured targets. This matches the requirement for content-based event filtering and routing.
+
+#### Why other options are incorrect
+
+- **B. Amazon SQS queue** — An SQS queue buffers messages for consumers and decouples producers from worker processing. This option does not address the specified need for content-based event filtering and routing.
+- **C. AWS Step Functions state machine** — A Step Functions state machine coordinates workflow states, branching, waiting, and error handling. This option does not address the specified need for content-based event filtering and routing.
+- **D. Amazon SNS topic** — An SNS topic publishes notifications to subscribed endpoints for fan-out delivery. This option does not address the specified need for content-based event filtering and routing.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What Is Amazon EventBridge? - Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html)
+- [What is Step Functions? - AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)
+- [What is Amazon Simple Queue Service? - Amazon Simple Queue Service](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html)
+- [What is Amazon SNS? - Amazon Simple Notification Service](https://docs.aws.amazon.com/sns/latest/dg/welcome.html)
+
+</details>
+
+## #1262 · MLA-C01 Q1262 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An orchestration must preserve its current state while it waits for an external callback. Which component supports the workflow state?
+
+A. Amazon SNS topic
+B. Amazon EventBridge rule
+C. AWS Step Functions state machine
+D. Amazon SQS queue
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. AWS Step Functions state machine**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Events, workflow state, work queues, and fan-out notifications are different orchestration primitives.
+
+#### Why this is correct
+
+- **C. AWS Step Functions state machine** — A Step Functions state machine coordinates workflow states, branching, waiting, and error handling. This matches the requirement for a state machine with a callback wait.
+
+#### Why other options are incorrect
+
+- **A. Amazon SNS topic** — An SNS topic publishes notifications to subscribed endpoints for fan-out delivery. This option does not address the specified need for a state machine with a callback wait.
+- **B. Amazon EventBridge rule** — An EventBridge rule matches events and routes matching events to configured targets. This option does not address the specified need for a state machine with a callback wait.
+- **D. Amazon SQS queue** — An SQS queue buffers messages for consumers and decouples producers from worker processing. This option does not address the specified need for a state machine with a callback wait.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What Is Amazon EventBridge? - Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html)
+- [What is Step Functions? - AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)
+- [What is Amazon Simple Queue Service? - Amazon Simple Queue Service](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html)
+- [What is Amazon SNS? - Amazon Simple Notification Service](https://docs.aws.amazon.com/sns/latest/dg/welcome.html)
+
+</details>
+
+## #1263 · MLA-C01 Q1263 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Failed workers need their unacknowledged task messages to become available for another consumer after the visibility timeout. Which component fits?
+
+A. Amazon SQS queue
+B. AWS Step Functions state machine
+C. Amazon EventBridge rule
+D. Amazon SNS topic
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Amazon SQS queue**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Events, workflow state, work queues, and fan-out notifications are different orchestration primitives.
+
+#### Why this is correct
+
+- **A. Amazon SQS queue** — An SQS queue buffers messages for consumers and decouples producers from worker processing. This matches the requirement for message redelivery through queue visibility handling.
+
+#### Why other options are incorrect
+
+- **B. AWS Step Functions state machine** — A Step Functions state machine coordinates workflow states, branching, waiting, and error handling. This option does not address the specified need for message redelivery through queue visibility handling.
+- **C. Amazon EventBridge rule** — An EventBridge rule matches events and routes matching events to configured targets. This option does not address the specified need for message redelivery through queue visibility handling.
+- **D. Amazon SNS topic** — An SNS topic publishes notifications to subscribed endpoints for fan-out delivery. This option does not address the specified need for message redelivery through queue visibility handling.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What Is Amazon EventBridge? - Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html)
+- [What is Step Functions? - AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)
+- [What is Amazon Simple Queue Service? - Amazon Simple Queue Service](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html)
+- [What is Amazon SNS? - Amazon Simple Notification Service](https://docs.aws.amazon.com/sns/latest/dg/welcome.html)
+
+</details>
+
+## #1264 · MLA-C01 Q1264 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An alert producer should publish once while delivery reaches both a queue subscriber and a notification subscriber. Which component fits?
+
+A. AWS Step Functions state machine
+B. Amazon SQS queue
+C. Amazon EventBridge rule
+D. Amazon SNS topic
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Amazon SNS topic**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Events, workflow state, work queues, and fan-out notifications are different orchestration primitives.
+
+#### Why this is correct
+
+- **D. Amazon SNS topic** — An SNS topic publishes notifications to subscribed endpoints for fan-out delivery. This matches the requirement for notification fan-out through subscriptions.
+
+#### Why other options are incorrect
+
+- **A. AWS Step Functions state machine** — A Step Functions state machine coordinates workflow states, branching, waiting, and error handling. This option does not address the specified need for notification fan-out through subscriptions.
+- **B. Amazon SQS queue** — An SQS queue buffers messages for consumers and decouples producers from worker processing. This option does not address the specified need for notification fan-out through subscriptions.
+- **C. Amazon EventBridge rule** — An EventBridge rule matches events and routes matching events to configured targets. This option does not address the specified need for notification fan-out through subscriptions.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What Is Amazon EventBridge? - Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html)
+- [What is Step Functions? - AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)
+- [What is Amazon Simple Queue Service? - Amazon Simple Queue Service](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html)
+- [What is Amazon SNS? - Amazon Simple Notification Service](https://docs.aws.amazon.com/sns/latest/dg/welcome.html)
+
+</details>
+
+## #1265 · MLA-C01 Q1265 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Production input distributions change, but outcome labels will arrive weeks later. Which monitoring objective can detect this input shift now?
+
+A. Bias drift monitoring
+B. Model quality monitoring
+C. Data quality monitoring
+D. Feature attribution drift monitoring
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Data quality monitoring**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Select a monitoring objective before deciding which baseline and observations it requires.
+
+#### Why this is correct
+
+- **C. Data quality monitoring** — Data quality monitoring compares production input statistics and constraints with a baseline without requiring outcome labels for that comparison. This matches the requirement for input distribution checks without ground-truth outcomes.
+
+#### Why other options are incorrect
+
+- **A. Bias drift monitoring** — Bias drift monitoring tracks changes in configured fairness metrics across facet groups. This option does not address the specified need for input distribution checks without ground-truth outcomes.
+- **B. Model quality monitoring** — Model quality monitoring compares predictions with corresponding ground truth to assess predictive performance. This option does not address the specified need for input distribution checks without ground-truth outcomes.
+- **D. Feature attribution drift monitoring** — Feature attribution drift monitoring tracks changes in the contribution or importance of input features to model predictions. This option does not address the specified need for input distribution checks without ground-truth outcomes.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Data and model quality monitoring with Amazon SageMaker Model Monitor - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
+- [Data quality - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html)
+- [Model quality - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html)
+- [Bias drift for models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-bias-drift.html)
+- [Create a SHAP Baseline for Models in Production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-shap-baseline.html)
+
+</details>
+
+## #1266 · MLA-C01 Q1266 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Labeled outcomes are now available and must be joined with captured predictions to track accuracy. Which monitoring objective fits?
+
+A. Feature attribution drift monitoring
+B. Model quality monitoring
+C. Bias drift monitoring
+D. Data quality monitoring
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Model quality monitoring**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Select a monitoring objective before deciding which baseline and observations it requires.
+
+#### Why this is correct
+
+- **B. Model quality monitoring** — Model quality monitoring compares predictions with corresponding ground truth to assess predictive performance. This matches the requirement for predictive performance measured against ground truth.
+
+#### Why other options are incorrect
+
+- **A. Feature attribution drift monitoring** — Feature attribution drift monitoring tracks changes in the contribution or importance of input features to model predictions. This option does not address the specified need for predictive performance measured against ground truth.
+- **C. Bias drift monitoring** — Bias drift monitoring tracks changes in configured fairness metrics across facet groups. This option does not address the specified need for predictive performance measured against ground truth.
+- **D. Data quality monitoring** — Data quality monitoring compares production input statistics and constraints with a baseline without requiring outcome labels for that comparison. This option does not address the specified need for predictive performance measured against ground truth.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Data and model quality monitoring with Amazon SageMaker Model Monitor - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
+- [Data quality - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html)
+- [Model quality - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html)
+- [Bias drift for models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-bias-drift.html)
+- [Create a SHAP Baseline for Models in Production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-shap-baseline.html)
+
+</details>
+
+## #1267 · MLA-C01 Q1267 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A team must detect changes in a configured fairness metric between demographic groups. Which monitoring objective fits?
+
+A. Model quality monitoring
+B. Feature attribution drift monitoring
+C. Bias drift monitoring
+D. Data quality monitoring
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Bias drift monitoring**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Select a monitoring objective before deciding which baseline and observations it requires.
+
+#### Why this is correct
+
+- **C. Bias drift monitoring** — Bias drift monitoring tracks changes in configured fairness metrics across facet groups. This matches the requirement for drift in group fairness measurements.
+
+#### Why other options are incorrect
+
+- **A. Model quality monitoring** — Model quality monitoring compares predictions with corresponding ground truth to assess predictive performance. This option does not address the specified need for drift in group fairness measurements.
+- **B. Feature attribution drift monitoring** — Feature attribution drift monitoring tracks changes in the contribution or importance of input features to model predictions. This option does not address the specified need for drift in group fairness measurements.
+- **D. Data quality monitoring** — Data quality monitoring compares production input statistics and constraints with a baseline without requiring outcome labels for that comparison. This option does not address the specified need for drift in group fairness measurements.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Data and model quality monitoring with Amazon SageMaker Model Monitor - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
+- [Data quality - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html)
+- [Model quality - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html)
+- [Bias drift for models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-bias-drift.html)
+- [Create a SHAP Baseline for Models in Production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-shap-baseline.html)
+
+</details>
+
+## #1268 · MLA-C01 Q1268 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+The ranking of features contributing to predictions changes even though raw input distributions look stable. Which monitoring objective targets this?
+
+A. Data quality monitoring
+B. Bias drift monitoring
+C. Feature attribution drift monitoring
+D. Model quality monitoring
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Feature attribution drift monitoring**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Select a monitoring objective before deciding which baseline and observations it requires.
+
+#### Why this is correct
+
+- **C. Feature attribution drift monitoring** — Feature attribution drift monitoring tracks changes in the contribution or importance of input features to model predictions. This matches the requirement for changes in feature attribution patterns.
+
+#### Why other options are incorrect
+
+- **A. Data quality monitoring** — Data quality monitoring compares production input statistics and constraints with a baseline without requiring outcome labels for that comparison. This option does not address the specified need for changes in feature attribution patterns.
+- **B. Bias drift monitoring** — Bias drift monitoring tracks changes in configured fairness metrics across facet groups. This option does not address the specified need for changes in feature attribution patterns.
+- **D. Model quality monitoring** — Model quality monitoring compares predictions with corresponding ground truth to assess predictive performance. This option does not address the specified need for changes in feature attribution patterns.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Data and model quality monitoring with Amazon SageMaker Model Monitor - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
+- [Data quality - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html)
+- [Model quality - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html)
+- [Bias drift for models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-bias-drift.html)
+- [Create a SHAP Baseline for Models in Production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-shap-baseline.html)
+
+</details>
+
+## #1269 · MLA-C01 Q1269 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A feature that was always populated now has many missing values in production. Which monitoring objective directly checks this input constraint?
+
+A. Bias drift monitoring
+B. Model quality monitoring
+C. Feature attribution drift monitoring
+D. Data quality monitoring
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Data quality monitoring**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Select a monitoring objective before deciding which baseline and observations it requires.
+
+#### Why this is correct
+
+- **D. Data quality monitoring** — Data quality monitoring compares production input statistics and constraints with a baseline without requiring outcome labels for that comparison. This matches the requirement for violations of baseline input-data constraints.
+
+#### Why other options are incorrect
+
+- **A. Bias drift monitoring** — Bias drift monitoring tracks changes in configured fairness metrics across facet groups. This option does not address the specified need for violations of baseline input-data constraints.
+- **B. Model quality monitoring** — Model quality monitoring compares predictions with corresponding ground truth to assess predictive performance. This option does not address the specified need for violations of baseline input-data constraints.
+- **C. Feature attribution drift monitoring** — Feature attribution drift monitoring tracks changes in the contribution or importance of input features to model predictions. This option does not address the specified need for violations of baseline input-data constraints.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Data and model quality monitoring with Amazon SageMaker Model Monitor - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
+- [Data quality - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html)
+- [Model quality - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html)
+- [Bias drift for models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-bias-drift.html)
+- [Create a SHAP Baseline for Models in Production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-shap-baseline.html)
+
+</details>
+
+## #1270 · MLA-C01 Q1270 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An endpoint serves valid requests, but delayed labels reveal rising prediction error. Which monitoring objective measures that error?
+
+A. Feature attribution drift monitoring
+B. Data quality monitoring
+C. Model quality monitoring
+D. Bias drift monitoring
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Model quality monitoring**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Select a monitoring objective before deciding which baseline and observations it requires.
+
+#### Why this is correct
+
+- **C. Model quality monitoring** — Model quality monitoring compares predictions with corresponding ground truth to assess predictive performance. This matches the requirement for prediction correctness using delayed outcome labels.
+
+#### Why other options are incorrect
+
+- **A. Feature attribution drift monitoring** — Feature attribution drift monitoring tracks changes in the contribution or importance of input features to model predictions. This option does not address the specified need for prediction correctness using delayed outcome labels.
+- **B. Data quality monitoring** — Data quality monitoring compares production input statistics and constraints with a baseline without requiring outcome labels for that comparison. This option does not address the specified need for prediction correctness using delayed outcome labels.
+- **D. Bias drift monitoring** — Bias drift monitoring tracks changes in configured fairness metrics across facet groups. This option does not address the specified need for prediction correctness using delayed outcome labels.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Data and model quality monitoring with Amazon SageMaker Model Monitor - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
+- [Data quality - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html)
+- [Model quality - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html)
+- [Bias drift for models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-bias-drift.html)
+- [Create a SHAP Baseline for Models in Production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-shap-baseline.html)
+
+</details>
+
+## #1271 · MLA-C01 Q1271 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A governance review tracks whether differences in favorable predictions between two groups grow over time. Which monitoring objective fits?
+
+A. Data quality monitoring
+B. Bias drift monitoring
+C. Feature attribution drift monitoring
+D. Model quality monitoring
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Bias drift monitoring**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Select a monitoring objective before deciding which baseline and observations it requires.
+
+#### Why this is correct
+
+- **B. Bias drift monitoring** — Bias drift monitoring tracks changes in configured fairness metrics across facet groups. This matches the requirement for changes in disparity between facet groups.
+
+#### Why other options are incorrect
+
+- **A. Data quality monitoring** — Data quality monitoring compares production input statistics and constraints with a baseline without requiring outcome labels for that comparison. This option does not address the specified need for changes in disparity between facet groups.
+- **C. Feature attribution drift monitoring** — Feature attribution drift monitoring tracks changes in the contribution or importance of input features to model predictions. This option does not address the specified need for changes in disparity between facet groups.
+- **D. Model quality monitoring** — Model quality monitoring compares predictions with corresponding ground truth to assess predictive performance. This option does not address the specified need for changes in disparity between facet groups.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Data and model quality monitoring with Amazon SageMaker Model Monitor - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
+- [Data quality - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html)
+- [Model quality - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html)
+- [Bias drift for models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-bias-drift.html)
+- [Create a SHAP Baseline for Models in Production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-shap-baseline.html)
+
+</details>
+
+## #1272 · MLA-C01 Q1272 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An approved model begins to rely more heavily on a different input feature. Which monitoring objective detects this explanatory shift?
+
+A. Bias drift monitoring
+B. Model quality monitoring
+C. Data quality monitoring
+D. Feature attribution drift monitoring
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Feature attribution drift monitoring**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Select a monitoring objective before deciding which baseline and observations it requires.
+
+#### Why this is correct
+
+- **D. Feature attribution drift monitoring** — Feature attribution drift monitoring tracks changes in the contribution or importance of input features to model predictions. This matches the requirement for drift in contributions of features to predictions.
+
+#### Why other options are incorrect
+
+- **A. Bias drift monitoring** — Bias drift monitoring tracks changes in configured fairness metrics across facet groups. This option does not address the specified need for drift in contributions of features to predictions.
+- **B. Model quality monitoring** — Model quality monitoring compares predictions with corresponding ground truth to assess predictive performance. This option does not address the specified need for drift in contributions of features to predictions.
+- **C. Data quality monitoring** — Data quality monitoring compares production input statistics and constraints with a baseline without requiring outcome labels for that comparison. This option does not address the specified need for drift in contributions of features to predictions.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Data and model quality monitoring with Amazon SageMaker Model Monitor - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
+- [Data quality - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html)
+- [Model quality - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality.html)
+- [Bias drift for models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-bias-drift.html)
+- [Create a SHAP Baseline for Models in Production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-shap-baseline.html)
+
+</details>
+
+## #1273 · MLA-C01 Q1273 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An operator needs an alarm when endpoint latency exceeds a numeric threshold for several evaluation periods. Which telemetry fits?
+
+A. CloudWatch Logs
+B. AWS CloudTrail
+C. AWS X-Ray traces
+D. CloudWatch metrics and alarms
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. CloudWatch metrics and alarms**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Metrics, application logs, API audit events, and distributed traces answer different operational questions.
+
+#### Why this is correct
+
+- **D. CloudWatch metrics and alarms** — Metrics represent numeric time series, and alarms evaluate configured conditions on those measurements. This matches the requirement for threshold evaluation on latency measurements.
+
+#### Why other options are incorrect
+
+- **A. CloudWatch Logs** — Logs preserve application and service log events, including messages and stack traces. This option does not address the specified need for threshold evaluation on latency measurements.
+- **B. AWS CloudTrail** — CloudTrail records supported AWS API activity with information about the calling identity and request. This option does not address the specified need for threshold evaluation on latency measurements.
+- **C. AWS X-Ray traces** — Distributed traces show request paths and timing across instrumented application components. This option does not address the specified need for threshold evaluation on latency measurements.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon CloudWatch? - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
+- [What is Amazon CloudWatch Logs? - Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)
+- [What Is AWS CloudTrail? - AWS CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
+- [What is AWS X-Ray? - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html)
+
+</details>
+
+## #1274 · MLA-C01 Q1274 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A serving container emits a Python stack trace. The engineer needs the exact error message. Which telemetry fits?
+
+A. AWS X-Ray traces
+B. AWS CloudTrail
+C. CloudWatch Logs
+D. CloudWatch metrics and alarms
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. CloudWatch Logs**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Metrics, application logs, API audit events, and distributed traces answer different operational questions.
+
+#### Why this is correct
+
+- **C. CloudWatch Logs** — Logs preserve application and service log events, including messages and stack traces. This matches the requirement for application error messages and stack traces.
+
+#### Why other options are incorrect
+
+- **A. AWS X-Ray traces** — Distributed traces show request paths and timing across instrumented application components. This option does not address the specified need for application error messages and stack traces.
+- **B. AWS CloudTrail** — CloudTrail records supported AWS API activity with information about the calling identity and request. This option does not address the specified need for application error messages and stack traces.
+- **D. CloudWatch metrics and alarms** — Metrics represent numeric time series, and alarms evaluate configured conditions on those measurements. This option does not address the specified need for application error messages and stack traces.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon CloudWatch? - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
+- [What is Amazon CloudWatch Logs? - Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)
+- [What Is AWS CloudTrail? - AWS CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
+- [What is AWS X-Ray? - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html)
+
+</details>
+
+## #1275 · MLA-C01 Q1275 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An auditor asks which principal called DeleteEndpoint and when. Which telemetry fits?
+
+A. AWS X-Ray traces
+B. CloudWatch Logs
+C. CloudWatch metrics and alarms
+D. AWS CloudTrail
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. AWS CloudTrail**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Metrics, application logs, API audit events, and distributed traces answer different operational questions.
+
+#### Why this is correct
+
+- **D. AWS CloudTrail** — CloudTrail records supported AWS API activity with information about the calling identity and request. This matches the requirement for identity and timing of an AWS API operation.
+
+#### Why other options are incorrect
+
+- **A. AWS X-Ray traces** — Distributed traces show request paths and timing across instrumented application components. This option does not address the specified need for identity and timing of an AWS API operation.
+- **B. CloudWatch Logs** — Logs preserve application and service log events, including messages and stack traces. This option does not address the specified need for identity and timing of an AWS API operation.
+- **C. CloudWatch metrics and alarms** — Metrics represent numeric time series, and alarms evaluate configured conditions on those measurements. This option does not address the specified need for identity and timing of an AWS API operation.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon CloudWatch? - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
+- [What is Amazon CloudWatch Logs? - Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)
+- [What Is AWS CloudTrail? - AWS CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
+- [What is AWS X-Ray? - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html)
+
+</details>
+
+## #1276 · MLA-C01 Q1276 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A prediction request crosses several instrumented services. The team must locate the slow segment of that path. Which telemetry fits?
+
+A. CloudWatch metrics and alarms
+B. AWS CloudTrail
+C. AWS X-Ray traces
+D. CloudWatch Logs
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. AWS X-Ray traces**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Metrics, application logs, API audit events, and distributed traces answer different operational questions.
+
+#### Why this is correct
+
+- **C. AWS X-Ray traces** — Distributed traces show request paths and timing across instrumented application components. This matches the requirement for timing across an instrumented distributed request.
+
+#### Why other options are incorrect
+
+- **A. CloudWatch metrics and alarms** — Metrics represent numeric time series, and alarms evaluate configured conditions on those measurements. This option does not address the specified need for timing across an instrumented distributed request.
+- **B. AWS CloudTrail** — CloudTrail records supported AWS API activity with information about the calling identity and request. This option does not address the specified need for timing across an instrumented distributed request.
+- **D. CloudWatch Logs** — Logs preserve application and service log events, including messages and stack traces. This option does not address the specified need for timing across an instrumented distributed request.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon CloudWatch? - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
+- [What is Amazon CloudWatch Logs? - Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)
+- [What Is AWS CloudTrail? - AWS CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
+- [What is AWS X-Ray? - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html)
+
+</details>
+
+## #1277 · MLA-C01 Q1277 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An operations dashboard plots invocation count and memory utilization over time. Which telemetry category supplies these series?
+
+A. AWS CloudTrail
+B. AWS X-Ray traces
+C. CloudWatch metrics and alarms
+D. CloudWatch Logs
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. CloudWatch metrics and alarms**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Metrics, application logs, API audit events, and distributed traces answer different operational questions.
+
+#### Why this is correct
+
+- **C. CloudWatch metrics and alarms** — Metrics represent numeric time series, and alarms evaluate configured conditions on those measurements. This matches the requirement for numerical time series for operational measurements.
+
+#### Why other options are incorrect
+
+- **A. AWS CloudTrail** — CloudTrail records supported AWS API activity with information about the calling identity and request. This option does not address the specified need for numerical time series for operational measurements.
+- **B. AWS X-Ray traces** — Distributed traces show request paths and timing across instrumented application components. This option does not address the specified need for numerical time series for operational measurements.
+- **D. CloudWatch Logs** — Logs preserve application and service log events, including messages and stack traces. This option does not address the specified need for numerical time series for operational measurements.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon CloudWatch? - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
+- [What is Amazon CloudWatch Logs? - Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)
+- [What Is AWS CloudTrail? - AWS CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
+- [What is AWS X-Ray? - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html)
+
+</details>
+
+## #1278 · MLA-C01 Q1278 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A preprocessing script prints a malformed-record exception with a source filename. Which telemetry captures those diagnostic details?
+
+A. CloudWatch metrics and alarms
+B. AWS X-Ray traces
+C. AWS CloudTrail
+D. CloudWatch Logs
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. CloudWatch Logs**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Metrics, application logs, API audit events, and distributed traces answer different operational questions.
+
+#### Why this is correct
+
+- **D. CloudWatch Logs** — Logs preserve application and service log events, including messages and stack traces. This matches the requirement for text emitted by the application during failure.
+
+#### Why other options are incorrect
+
+- **A. CloudWatch metrics and alarms** — Metrics represent numeric time series, and alarms evaluate configured conditions on those measurements. This option does not address the specified need for text emitted by the application during failure.
+- **B. AWS X-Ray traces** — Distributed traces show request paths and timing across instrumented application components. This option does not address the specified need for text emitted by the application during failure.
+- **C. AWS CloudTrail** — CloudTrail records supported AWS API activity with information about the calling identity and request. This option does not address the specified need for text emitted by the application during failure.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon CloudWatch? - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
+- [What is Amazon CloudWatch Logs? - Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)
+- [What Is AWS CloudTrail? - AWS CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
+- [What is AWS X-Ray? - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html)
+
+</details>
+
+## #1279 · MLA-C01 Q1279 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A model configuration changed unexpectedly through an AWS API. The review needs the caller's role and request details. Which telemetry fits?
+
+A. CloudWatch metrics and alarms
+B. AWS CloudTrail
+C. CloudWatch Logs
+D. AWS X-Ray traces
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. AWS CloudTrail**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Metrics, application logs, API audit events, and distributed traces answer different operational questions.
+
+#### Why this is correct
+
+- **B. AWS CloudTrail** — CloudTrail records supported AWS API activity with information about the calling identity and request. This matches the requirement for an audit trail of the configuration API call.
+
+#### Why other options are incorrect
+
+- **A. CloudWatch metrics and alarms** — Metrics represent numeric time series, and alarms evaluate configured conditions on those measurements. This option does not address the specified need for an audit trail of the configuration API call.
+- **C. CloudWatch Logs** — Logs preserve application and service log events, including messages and stack traces. This option does not address the specified need for an audit trail of the configuration API call.
+- **D. AWS X-Ray traces** — Distributed traces show request paths and timing across instrumented application components. This option does not address the specified need for an audit trail of the configuration API call.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon CloudWatch? - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
+- [What is Amazon CloudWatch Logs? - Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)
+- [What Is AWS CloudTrail? - AWS CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
+- [What is AWS X-Ray? - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html)
+
+</details>
+
+## #1280 · MLA-C01 Q1280 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A request spends time in an API handler, downstream service, and database. Which telemetry links their instrumented timing segments?
+
+A. CloudWatch metrics and alarms
+B. CloudWatch Logs
+C. AWS X-Ray traces
+D. AWS CloudTrail
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. AWS X-Ray traces**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Metrics, application logs, API audit events, and distributed traces answer different operational questions.
+
+#### Why this is correct
+
+- **C. AWS X-Ray traces** — Distributed traces show request paths and timing across instrumented application components. This matches the requirement for end-to-end distributed tracing of a request.
+
+#### Why other options are incorrect
+
+- **A. CloudWatch metrics and alarms** — Metrics represent numeric time series, and alarms evaluate configured conditions on those measurements. This option does not address the specified need for end-to-end distributed tracing of a request.
+- **B. CloudWatch Logs** — Logs preserve application and service log events, including messages and stack traces. This option does not address the specified need for end-to-end distributed tracing of a request.
+- **D. AWS CloudTrail** — CloudTrail records supported AWS API activity with information about the calling identity and request. This option does not address the specified need for end-to-end distributed tracing of a request.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is Amazon CloudWatch? - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
+- [What is Amazon CloudWatch Logs? - Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)
+- [What Is AWS CloudTrail? - AWS CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
+- [What is AWS X-Ray? - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html)
+
+</details>
+
+## #1281 · MLA-C01 Q1281 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A training role must read one approved S3 prefix and must not access other datasets. Which control governs these permissions?
+
+A. AWS Secrets Manager
+B. IAM policies and roles
+C. VPC endpoints
+D. AWS KMS key controls
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. IAM policies and roles**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Authorization, encryption key management, private network access, and secret storage require different controls.
+
+#### Why this is correct
+
+- **B. IAM policies and roles** — IAM policies and roles control which principals can perform authorized AWS actions on resources. This matches the requirement for authorization limited to approved data resources.
+
+#### Why other options are incorrect
+
+- **A. AWS Secrets Manager** — Secrets Manager stores retrievable secrets and supports managed rotation for supported secret integrations. This option does not address the specified need for authorization limited to approved data resources.
+- **C. VPC endpoints** — VPC endpoints provide supported private connectivity between a VPC and AWS services without an internet gateway path. This option does not address the specified need for authorization limited to approved data resources.
+- **D. AWS KMS key controls** — KMS provides managed cryptographic key operations and key policies for supported encryption workflows. This option does not address the specified need for authorization limited to approved data resources.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is IAM? - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
+- [AWS Key Management Service - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)
+- [What is AWS PrivateLink? - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html)
+- [What is AWS Secrets Manager? - AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)
+
+</details>
+
+## #1282 · MLA-C01 Q1282 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A security team needs control over the key used for supported encryption of sensitive artifacts. Which service manages that key?
+
+A. IAM policies and roles
+B. VPC endpoints
+C. AWS Secrets Manager
+D. AWS KMS key controls
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. AWS KMS key controls**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Authorization, encryption key management, private network access, and secret storage require different controls.
+
+#### Why this is correct
+
+- **D. AWS KMS key controls** — KMS provides managed cryptographic key operations and key policies for supported encryption workflows. This matches the requirement for managed cryptographic key operations and policy.
+
+#### Why other options are incorrect
+
+- **A. IAM policies and roles** — IAM policies and roles control which principals can perform authorized AWS actions on resources. This option does not address the specified need for managed cryptographic key operations and policy.
+- **B. VPC endpoints** — VPC endpoints provide supported private connectivity between a VPC and AWS services without an internet gateway path. This option does not address the specified need for managed cryptographic key operations and policy.
+- **C. AWS Secrets Manager** — Secrets Manager stores retrievable secrets and supports managed rotation for supported secret integrations. This option does not address the specified need for managed cryptographic key operations and policy.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is IAM? - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
+- [AWS Key Management Service - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)
+- [What is AWS PrivateLink? - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html)
+- [What is AWS Secrets Manager? - AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)
+
+</details>
+
+## #1283 · MLA-C01 Q1283 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A private VPC workload must call a supported AWS service without routing through an internet gateway. Which network feature fits?
+
+A. IAM policies and roles
+B. VPC endpoints
+C. AWS Secrets Manager
+D. AWS KMS key controls
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. VPC endpoints**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Authorization, encryption key management, private network access, and secret storage require different controls.
+
+#### Why this is correct
+
+- **B. VPC endpoints** — VPC endpoints provide supported private connectivity between a VPC and AWS services without an internet gateway path. This matches the requirement for private service connectivity from the VPC.
+
+#### Why other options are incorrect
+
+- **A. IAM policies and roles** — IAM policies and roles control which principals can perform authorized AWS actions on resources. This option does not address the specified need for private service connectivity from the VPC.
+- **C. AWS Secrets Manager** — Secrets Manager stores retrievable secrets and supports managed rotation for supported secret integrations. This option does not address the specified need for private service connectivity from the VPC.
+- **D. AWS KMS key controls** — KMS provides managed cryptographic key operations and key policies for supported encryption workflows. This option does not address the specified need for private service connectivity from the VPC.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is IAM? - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
+- [AWS Key Management Service - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)
+- [What is AWS PrivateLink? - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html)
+- [What is AWS Secrets Manager? - AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)
+
+</details>
+
+## #1284 · MLA-C01 Q1284 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A data connector needs a database password retrieved at runtime and rotated through a supported integration. Which service fits?
+
+A. AWS Secrets Manager
+B. AWS KMS key controls
+C. VPC endpoints
+D. IAM policies and roles
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. AWS Secrets Manager**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Authorization, encryption key management, private network access, and secret storage require different controls.
+
+#### Why this is correct
+
+- **A. AWS Secrets Manager** — Secrets Manager stores retrievable secrets and supports managed rotation for supported secret integrations. This matches the requirement for managed storage and rotation of a secret.
+
+#### Why other options are incorrect
+
+- **B. AWS KMS key controls** — KMS provides managed cryptographic key operations and key policies for supported encryption workflows. This option does not address the specified need for managed storage and rotation of a secret.
+- **C. VPC endpoints** — VPC endpoints provide supported private connectivity between a VPC and AWS services without an internet gateway path. This option does not address the specified need for managed storage and rotation of a secret.
+- **D. IAM policies and roles** — IAM policies and roles control which principals can perform authorized AWS actions on resources. This option does not address the specified need for managed storage and rotation of a secret.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is IAM? - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
+- [AWS Key Management Service - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)
+- [What is AWS PrivateLink? - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html)
+- [What is AWS Secrets Manager? - AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)
+
+</details>
+
+## #1285 · MLA-C01 Q1285 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An engineer needs temporary AWS credentials for a workload instead of embedded long-term access keys. Which identity mechanism fits?
+
+A. AWS KMS key controls
+B. AWS Secrets Manager
+C. IAM policies and roles
+D. VPC endpoints
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. IAM policies and roles**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Authorization, encryption key management, private network access, and secret storage require different controls.
+
+#### Why this is correct
+
+- **C. IAM policies and roles** — IAM policies and roles control which principals can perform authorized AWS actions on resources. This matches the requirement for role-based authorization with temporary credentials.
+
+#### Why other options are incorrect
+
+- **A. AWS KMS key controls** — KMS provides managed cryptographic key operations and key policies for supported encryption workflows. This option does not address the specified need for role-based authorization with temporary credentials.
+- **B. AWS Secrets Manager** — Secrets Manager stores retrievable secrets and supports managed rotation for supported secret integrations. This option does not address the specified need for role-based authorization with temporary credentials.
+- **D. VPC endpoints** — VPC endpoints provide supported private connectivity between a VPC and AWS services without an internet gateway path. This option does not address the specified need for role-based authorization with temporary credentials.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is IAM? - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
+- [AWS Key Management Service - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)
+- [What is AWS PrivateLink? - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html)
+- [What is AWS Secrets Manager? - AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)
+
+</details>
+
+## #1286 · MLA-C01 Q1286 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Access to a ciphertext must depend on permission to use its customer managed encryption key. Which service enforces the key policy?
+
+A. AWS Secrets Manager
+B. AWS KMS key controls
+C. VPC endpoints
+D. IAM policies and roles
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. AWS KMS key controls**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Authorization, encryption key management, private network access, and secret storage require different controls.
+
+#### Why this is correct
+
+- **B. AWS KMS key controls** — KMS provides managed cryptographic key operations and key policies for supported encryption workflows. This matches the requirement for authorization of cryptographic key use.
+
+#### Why other options are incorrect
+
+- **A. AWS Secrets Manager** — Secrets Manager stores retrievable secrets and supports managed rotation for supported secret integrations. This option does not address the specified need for authorization of cryptographic key use.
+- **C. VPC endpoints** — VPC endpoints provide supported private connectivity between a VPC and AWS services without an internet gateway path. This option does not address the specified need for authorization of cryptographic key use.
+- **D. IAM policies and roles** — IAM policies and roles control which principals can perform authorized AWS actions on resources. This option does not address the specified need for authorization of cryptographic key use.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is IAM? - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
+- [AWS Key Management Service - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)
+- [What is AWS PrivateLink? - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html)
+- [What is AWS Secrets Manager? - AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)
+
+</details>
+
+## #1287 · MLA-C01 Q1287 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An application needs an interface endpoint with private IP addresses for a supported service API. Which feature provides it?
+
+A. VPC endpoints
+B. IAM policies and roles
+C. AWS KMS key controls
+D. AWS Secrets Manager
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. VPC endpoints**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Authorization, encryption key management, private network access, and secret storage require different controls.
+
+#### Why this is correct
+
+- **A. VPC endpoints** — VPC endpoints provide supported private connectivity between a VPC and AWS services without an internet gateway path. This matches the requirement for a private endpoint for a service API.
+
+#### Why other options are incorrect
+
+- **B. IAM policies and roles** — IAM policies and roles control which principals can perform authorized AWS actions on resources. This option does not address the specified need for a private endpoint for a service API.
+- **C. AWS KMS key controls** — KMS provides managed cryptographic key operations and key policies for supported encryption workflows. This option does not address the specified need for a private endpoint for a service API.
+- **D. AWS Secrets Manager** — Secrets Manager stores retrievable secrets and supports managed rotation for supported secret integrations. This option does not address the specified need for a private endpoint for a service API.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is IAM? - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
+- [AWS Key Management Service - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)
+- [What is AWS PrivateLink? - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html)
+- [What is AWS Secrets Manager? - AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)
+
+</details>
+
+## #1288 · MLA-C01 Q1288 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A password must remain outside source control while applications retrieve the current value when authorized. Which service is the appropriate secret store?
+
+A. VPC endpoints
+B. IAM policies and roles
+C. AWS KMS key controls
+D. AWS Secrets Manager
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. AWS Secrets Manager**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Authorization, encryption key management, private network access, and secret storage require different controls.
+
+#### Why this is correct
+
+- **D. AWS Secrets Manager** — Secrets Manager stores retrievable secrets and supports managed rotation for supported secret integrations. This matches the requirement for secure retrieval of an application secret.
+
+#### Why other options are incorrect
+
+- **A. VPC endpoints** — VPC endpoints provide supported private connectivity between a VPC and AWS services without an internet gateway path. This option does not address the specified need for secure retrieval of an application secret.
+- **B. IAM policies and roles** — IAM policies and roles control which principals can perform authorized AWS actions on resources. This option does not address the specified need for secure retrieval of an application secret.
+- **C. AWS KMS key controls** — KMS provides managed cryptographic key operations and key policies for supported encryption workflows. This option does not address the specified need for secure retrieval of an application secret.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [What is IAM? - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
+- [AWS Key Management Service - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)
+- [What is AWS PrivateLink? - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html)
+- [What is AWS Secrets Manager? - AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)
+
+</details>
+
+## #1289 · MLA-C01 Q1289 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A training job must access a private database in the team's VPC. Which job configuration establishes the relevant VPC network placement?
+
+A. Configure the training job's VPC settings
+B. Enable network isolation for the supported job
+C. Enable inter-container traffic encryption
+D. Configure an S3 VPC endpoint and its access rules
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Configure the training job's VPC settings**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Training network controls address workload connectivity, outbound isolation, or transport protection.
+
+#### Why this is correct
+
+- **A. Configure the training job's VPC settings** — VPC settings place the job's network interfaces in specified subnets with configured security groups for access to VPC resources. This matches the requirement for network placement for access to a private VPC database.
+
+#### Why other options are incorrect
+
+- **B. Enable network isolation for the supported job** — Network isolation prevents outbound network calls from the training container, while SageMaker handles supported artifact transfers separately. This option does not address the specified need for network placement for access to a private VPC database.
+- **C. Enable inter-container traffic encryption** — Inter-container traffic encryption protects communication between training instances in supported distributed jobs. This option does not address the specified need for network placement for access to a private VPC database.
+- **D. Configure an S3 VPC endpoint and its access rules** — An S3 endpoint provides a private S3 access path for supported VPC traffic, subject to endpoint and resource policies. This option does not address the specified need for network placement for access to a private VPC database.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Give SageMaker AI Training Jobs Access to Resources in Your Amazon VPC - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html)
+- [Run Training and Inference Containers in Internet-Free Mode - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/mkt-algo-model-internet-free.html)
+- [Protect Communications Between ML Compute Instances in a Distributed Training Job - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)
+
+</details>
+
+## #1290 · MLA-C01 Q1290 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A supported training container must not make outbound network calls, including calls to external services. Which control directly enforces this?
+
+A. Enable inter-container traffic encryption
+B. Configure the training job's VPC settings
+C. Configure an S3 VPC endpoint and its access rules
+D. Enable network isolation for the supported job
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Enable network isolation for the supported job**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Training network controls address workload connectivity, outbound isolation, or transport protection.
+
+#### Why this is correct
+
+- **D. Enable network isolation for the supported job** — Network isolation prevents outbound network calls from the training container, while SageMaker handles supported artifact transfers separately. This matches the requirement for outbound network isolation of the training container.
+
+#### Why other options are incorrect
+
+- **A. Enable inter-container traffic encryption** — Inter-container traffic encryption protects communication between training instances in supported distributed jobs. This option does not address the specified need for outbound network isolation of the training container.
+- **B. Configure the training job's VPC settings** — VPC settings place the job's network interfaces in specified subnets with configured security groups for access to VPC resources. This option does not address the specified need for outbound network isolation of the training container.
+- **C. Configure an S3 VPC endpoint and its access rules** — An S3 endpoint provides a private S3 access path for supported VPC traffic, subject to endpoint and resource policies. This option does not address the specified need for outbound network isolation of the training container.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Give SageMaker AI Training Jobs Access to Resources in Your Amazon VPC - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html)
+- [Run Training and Inference Containers in Internet-Free Mode - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/mkt-algo-model-internet-free.html)
+- [Protect Communications Between ML Compute Instances in a Distributed Training Job - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)
+
+</details>
+
+## #1291 · MLA-C01 Q1291 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Workers exchange gradients across training instances, and that traffic must be encrypted. Which setting targets this communication?
+
+A. Enable inter-container traffic encryption
+B. Configure an S3 VPC endpoint and its access rules
+C. Configure the training job's VPC settings
+D. Enable network isolation for the supported job
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Enable inter-container traffic encryption**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Training network controls address workload connectivity, outbound isolation, or transport protection.
+
+#### Why this is correct
+
+- **A. Enable inter-container traffic encryption** — Inter-container traffic encryption protects communication between training instances in supported distributed jobs. This matches the requirement for encryption of traffic between training workers.
+
+#### Why other options are incorrect
+
+- **B. Configure an S3 VPC endpoint and its access rules** — An S3 endpoint provides a private S3 access path for supported VPC traffic, subject to endpoint and resource policies. This option does not address the specified need for encryption of traffic between training workers.
+- **C. Configure the training job's VPC settings** — VPC settings place the job's network interfaces in specified subnets with configured security groups for access to VPC resources. This option does not address the specified need for encryption of traffic between training workers.
+- **D. Enable network isolation for the supported job** — Network isolation prevents outbound network calls from the training container, while SageMaker handles supported artifact transfers separately. This option does not address the specified need for encryption of traffic between training workers.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Give SageMaker AI Training Jobs Access to Resources in Your Amazon VPC - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html)
+- [Run Training and Inference Containers in Internet-Free Mode - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/mkt-algo-model-internet-free.html)
+- [Protect Communications Between ML Compute Instances in a Distributed Training Job - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)
+
+</details>
+
+## #1292 · MLA-C01 Q1292 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A VPC training workload needs an S3 route without a NAT gateway or internet gateway. Which feature provides the S3 path?
+
+A. Configure the training job's VPC settings
+B. Enable network isolation for the supported job
+C. Configure an S3 VPC endpoint and its access rules
+D. Enable inter-container traffic encryption
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Configure an S3 VPC endpoint and its access rules**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Training network controls address workload connectivity, outbound isolation, or transport protection.
+
+#### Why this is correct
+
+- **C. Configure an S3 VPC endpoint and its access rules** — An S3 endpoint provides a private S3 access path for supported VPC traffic, subject to endpoint and resource policies. This matches the requirement for private VPC connectivity to S3.
+
+#### Why other options are incorrect
+
+- **A. Configure the training job's VPC settings** — VPC settings place the job's network interfaces in specified subnets with configured security groups for access to VPC resources. This option does not address the specified need for private VPC connectivity to S3.
+- **B. Enable network isolation for the supported job** — Network isolation prevents outbound network calls from the training container, while SageMaker handles supported artifact transfers separately. This option does not address the specified need for private VPC connectivity to S3.
+- **D. Enable inter-container traffic encryption** — Inter-container traffic encryption protects communication between training instances in supported distributed jobs. This option does not address the specified need for private VPC connectivity to S3.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Give SageMaker AI Training Jobs Access to Resources in Your Amazon VPC - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html)
+- [Run Training and Inference Containers in Internet-Free Mode - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/mkt-algo-model-internet-free.html)
+- [Protect Communications Between ML Compute Instances in a Distributed Training Job - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)
+
+</details>
+
+## #1293 · MLA-C01 Q1293 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A job cannot reach an internal data service because it has no appropriate subnet and security-group configuration. Which setting must be addressed?
+
+A. Configure an S3 VPC endpoint and its access rules
+B. Enable inter-container traffic encryption
+C. Configure the training job's VPC settings
+D. Enable network isolation for the supported job
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Configure the training job's VPC settings**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Training network controls address workload connectivity, outbound isolation, or transport protection.
+
+#### Why this is correct
+
+- **C. Configure the training job's VPC settings** — VPC settings place the job's network interfaces in specified subnets with configured security groups for access to VPC resources. This matches the requirement for the training job's VPC subnet and security groups.
+
+#### Why other options are incorrect
+
+- **A. Configure an S3 VPC endpoint and its access rules** — An S3 endpoint provides a private S3 access path for supported VPC traffic, subject to endpoint and resource policies. This option does not address the specified need for the training job's VPC subnet and security groups.
+- **B. Enable inter-container traffic encryption** — Inter-container traffic encryption protects communication between training instances in supported distributed jobs. This option does not address the specified need for the training job's VPC subnet and security groups.
+- **D. Enable network isolation for the supported job** — Network isolation prevents outbound network calls from the training container, while SageMaker handles supported artifact transfers separately. This option does not address the specified need for the training job's VPC subnet and security groups.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Give SageMaker AI Training Jobs Access to Resources in Your Amazon VPC - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html)
+- [Run Training and Inference Containers in Internet-Free Mode - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/mkt-algo-model-internet-free.html)
+- [Protect Communications Between ML Compute Instances in a Distributed Training Job - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)
+
+</details>
+
+## #1294 · MLA-C01 Q1294 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A team wants SageMaker to transfer supported inputs while the algorithm container itself cannot open network connections. Which setting fits?
+
+A. Enable inter-container traffic encryption
+B. Configure the training job's VPC settings
+C. Enable network isolation for the supported job
+D. Configure an S3 VPC endpoint and its access rules
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Enable network isolation for the supported job**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Training network controls address workload connectivity, outbound isolation, or transport protection.
+
+#### Why this is correct
+
+- **C. Enable network isolation for the supported job** — Network isolation prevents outbound network calls from the training container, while SageMaker handles supported artifact transfers separately. This matches the requirement for container isolation with service-managed artifact handling.
+
+#### Why other options are incorrect
+
+- **A. Enable inter-container traffic encryption** — Inter-container traffic encryption protects communication between training instances in supported distributed jobs. This option does not address the specified need for container isolation with service-managed artifact handling.
+- **B. Configure the training job's VPC settings** — VPC settings place the job's network interfaces in specified subnets with configured security groups for access to VPC resources. This option does not address the specified need for container isolation with service-managed artifact handling.
+- **D. Configure an S3 VPC endpoint and its access rules** — An S3 endpoint provides a private S3 access path for supported VPC traffic, subject to endpoint and resource policies. This option does not address the specified need for container isolation with service-managed artifact handling.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Give SageMaker AI Training Jobs Access to Resources in Your Amazon VPC - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html)
+- [Run Training and Inference Containers in Internet-Free Mode - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/mkt-algo-model-internet-free.html)
+- [Protect Communications Between ML Compute Instances in a Distributed Training Job - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)
+
+</details>
+
+## #1295 · MLA-C01 Q1295 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A policy requires transport protection for distributed training traffic, independent of at-rest volume encryption. Which control fits?
+
+A. Configure the training job's VPC settings
+B. Enable network isolation for the supported job
+C. Configure an S3 VPC endpoint and its access rules
+D. Enable inter-container traffic encryption
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Enable inter-container traffic encryption**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Training network controls address workload connectivity, outbound isolation, or transport protection.
+
+#### Why this is correct
+
+- **D. Enable inter-container traffic encryption** — Inter-container traffic encryption protects communication between training instances in supported distributed jobs. This matches the requirement for transport encryption between training instances.
+
+#### Why other options are incorrect
+
+- **A. Configure the training job's VPC settings** — VPC settings place the job's network interfaces in specified subnets with configured security groups for access to VPC resources. This option does not address the specified need for transport encryption between training instances.
+- **B. Enable network isolation for the supported job** — Network isolation prevents outbound network calls from the training container, while SageMaker handles supported artifact transfers separately. This option does not address the specified need for transport encryption between training instances.
+- **C. Configure an S3 VPC endpoint and its access rules** — An S3 endpoint provides a private S3 access path for supported VPC traffic, subject to endpoint and resource policies. This option does not address the specified need for transport encryption between training instances.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Give SageMaker AI Training Jobs Access to Resources in Your Amazon VPC - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html)
+- [Run Training and Inference Containers in Internet-Free Mode - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/mkt-algo-model-internet-free.html)
+- [Protect Communications Between ML Compute Instances in a Distributed Training Job - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)
+
+</details>
+
+## #1296 · MLA-C01 Q1296 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An endpoint policy must restrict the S3 access route used by private training resources. Which network resource carries that policy?
+
+A. Configure an S3 VPC endpoint and its access rules
+B. Enable network isolation for the supported job
+C. Enable inter-container traffic encryption
+D. Configure the training job's VPC settings
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Configure an S3 VPC endpoint and its access rules**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Training network controls address workload connectivity, outbound isolation, or transport protection.
+
+#### Why this is correct
+
+- **A. Configure an S3 VPC endpoint and its access rules** — An S3 endpoint provides a private S3 access path for supported VPC traffic, subject to endpoint and resource policies. This matches the requirement for an S3 VPC endpoint with access restrictions.
+
+#### Why other options are incorrect
+
+- **B. Enable network isolation for the supported job** — Network isolation prevents outbound network calls from the training container, while SageMaker handles supported artifact transfers separately. This option does not address the specified need for an S3 VPC endpoint with access restrictions.
+- **C. Enable inter-container traffic encryption** — Inter-container traffic encryption protects communication between training instances in supported distributed jobs. This option does not address the specified need for an S3 VPC endpoint with access restrictions.
+- **D. Configure the training job's VPC settings** — VPC settings place the job's network interfaces in specified subnets with configured security groups for access to VPC resources. This option does not address the specified need for an S3 VPC endpoint with access restrictions.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Give SageMaker AI Training Jobs Access to Resources in Your Amazon VPC - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html)
+- [Run Training and Inference Containers in Internet-Free Mode - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/mkt-algo-model-internet-free.html)
+- [Protect Communications Between ML Compute Instances in a Distributed Training Job - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)
+
+</details>
+
+## #1297 · MLA-C01 Q1297 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Training can tolerate interruptions and can resume from checkpoints. The main goal is reducing compute purchase cost. Which option fits?
+
+A. SageMaker managed warm pools
+B. Benchmark and rightsize the compute resources
+C. Managed Spot Training with suitable checkpoints
+D. Configure an AWS Budget alert
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Managed Spot Training with suitable checkpoints**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Reduce costs or delays at the measured source: purchase model, provisioning, resource size, or spending alerts.
+
+#### Why this is correct
+
+- **C. Managed Spot Training with suitable checkpoints** — Managed Spot Training uses discounted interruptible capacity; compatible checkpoints support recovery after interruptions. This matches the requirement for discounted interruptible training capacity.
+
+#### Why other options are incorrect
+
+- **A. SageMaker managed warm pools** — Warm pools retain compatible training infrastructure for reuse and can reduce provisioning delay between consecutive jobs, with retention costs. This option does not address the specified need for discounted interruptible training capacity.
+- **B. Benchmark and rightsize the compute resources** — Rightsizing uses measured resource requirements to select capacity that meets the workload without unnecessary excess. This option does not address the specified need for discounted interruptible training capacity.
+- **D. Configure an AWS Budget alert** — A budget alert notifies configured recipients when supported actual or forecast spending conditions meet the configured thresholds. This option does not address the specified need for discounted interruptible training capacity.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Managed Spot Training in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html)
+- [SageMaker AI Managed Warm Pools - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-warm-pools.html)
+- [Amazon SageMaker Inference Recommender - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-recommender.html)
+- [Managing your costs with AWS Budgets - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html)
+
+</details>
+
+## #1298 · MLA-C01 Q1298 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Frequent compatible short jobs spend most of their time provisioning instances. The team accepts retention charges to reduce this delay. Which option fits?
+
+A. Benchmark and rightsize the compute resources
+B. SageMaker managed warm pools
+C. Configure an AWS Budget alert
+D. Managed Spot Training with suitable checkpoints
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. SageMaker managed warm pools**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Reduce costs or delays at the measured source: purchase model, provisioning, resource size, or spending alerts.
+
+#### Why this is correct
+
+- **B. SageMaker managed warm pools** — Warm pools retain compatible training infrastructure for reuse and can reduce provisioning delay between consecutive jobs, with retention costs. This matches the requirement for reuse of initialized infrastructure between training jobs.
+
+#### Why other options are incorrect
+
+- **A. Benchmark and rightsize the compute resources** — Rightsizing uses measured resource requirements to select capacity that meets the workload without unnecessary excess. This option does not address the specified need for reuse of initialized infrastructure between training jobs.
+- **C. Configure an AWS Budget alert** — A budget alert notifies configured recipients when supported actual or forecast spending conditions meet the configured thresholds. This option does not address the specified need for reuse of initialized infrastructure between training jobs.
+- **D. Managed Spot Training with suitable checkpoints** — Managed Spot Training uses discounted interruptible capacity; compatible checkpoints support recovery after interruptions. This option does not address the specified need for reuse of initialized infrastructure between training jobs.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Managed Spot Training in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html)
+- [SageMaker AI Managed Warm Pools - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-warm-pools.html)
+- [Amazon SageMaker Inference Recommender - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-recommender.html)
+- [Managing your costs with AWS Budgets - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html)
+
+</details>
+
+## #1299 · MLA-C01 Q1299 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A workload consistently uses little of its expensive instance's memory and compute. Which action can reduce waste based on measurements?
+
+A. SageMaker managed warm pools
+B. Benchmark and rightsize the compute resources
+C. Configure an AWS Budget alert
+D. Managed Spot Training with suitable checkpoints
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Benchmark and rightsize the compute resources**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Reduce costs or delays at the measured source: purchase model, provisioning, resource size, or spending alerts.
+
+#### Why this is correct
+
+- **B. Benchmark and rightsize the compute resources** — Rightsizing uses measured resource requirements to select capacity that meets the workload without unnecessary excess. This matches the requirement for a smaller suitable compute configuration based on profiling.
+
+#### Why other options are incorrect
+
+- **A. SageMaker managed warm pools** — Warm pools retain compatible training infrastructure for reuse and can reduce provisioning delay between consecutive jobs, with retention costs. This option does not address the specified need for a smaller suitable compute configuration based on profiling.
+- **C. Configure an AWS Budget alert** — A budget alert notifies configured recipients when supported actual or forecast spending conditions meet the configured thresholds. This option does not address the specified need for a smaller suitable compute configuration based on profiling.
+- **D. Managed Spot Training with suitable checkpoints** — Managed Spot Training uses discounted interruptible capacity; compatible checkpoints support recovery after interruptions. This option does not address the specified need for a smaller suitable compute configuration based on profiling.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Managed Spot Training in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html)
+- [SageMaker AI Managed Warm Pools - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-warm-pools.html)
+- [Amazon SageMaker Inference Recommender - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-recommender.html)
+- [Managing your costs with AWS Budgets - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html)
+
+</details>
+
+## #1300 · MLA-C01 Q1300 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A project owner wants an email when monthly forecast spending exceeds a chosen amount. Which option fits?
+
+A. SageMaker managed warm pools
+B. Managed Spot Training with suitable checkpoints
+C. Configure an AWS Budget alert
+D. Benchmark and rightsize the compute resources
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Configure an AWS Budget alert**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Reduce costs or delays at the measured source: purchase model, provisioning, resource size, or spending alerts.
+
+#### Why this is correct
+
+- **C. Configure an AWS Budget alert** — A budget alert notifies configured recipients when supported actual or forecast spending conditions meet the configured thresholds. This matches the requirement for notification of a forecast budget threshold.
+
+#### Why other options are incorrect
+
+- **A. SageMaker managed warm pools** — Warm pools retain compatible training infrastructure for reuse and can reduce provisioning delay between consecutive jobs, with retention costs. This option does not address the specified need for notification of a forecast budget threshold.
+- **B. Managed Spot Training with suitable checkpoints** — Managed Spot Training uses discounted interruptible capacity; compatible checkpoints support recovery after interruptions. This option does not address the specified need for notification of a forecast budget threshold.
+- **D. Benchmark and rightsize the compute resources** — Rightsizing uses measured resource requirements to select capacity that meets the workload without unnecessary excess. This option does not address the specified need for notification of a forecast budget threshold.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Managed Spot Training in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html)
+- [SageMaker AI Managed Warm Pools - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-warm-pools.html)
+- [Amazon SageMaker Inference Recommender - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-recommender.html)
+- [Managing your costs with AWS Budgets - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html)
+
+</details>
+
+## #1301 · MLA-C01 Q1301 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A long training run supports reliable checkpoint recovery, and completion time is flexible. Which purchase approach can lower compute charges?
+
+A. Managed Spot Training with suitable checkpoints
+B. SageMaker managed warm pools
+C. Configure an AWS Budget alert
+D. Benchmark and rightsize the compute resources
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Managed Spot Training with suitable checkpoints**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Reduce costs or delays at the measured source: purchase model, provisioning, resource size, or spending alerts.
+
+#### Why this is correct
+
+- **A. Managed Spot Training with suitable checkpoints** — Managed Spot Training uses discounted interruptible capacity; compatible checkpoints support recovery after interruptions. This matches the requirement for training on interruptible discounted capacity.
+
+#### Why other options are incorrect
+
+- **B. SageMaker managed warm pools** — Warm pools retain compatible training infrastructure for reuse and can reduce provisioning delay between consecutive jobs, with retention costs. This option does not address the specified need for training on interruptible discounted capacity.
+- **C. Configure an AWS Budget alert** — A budget alert notifies configured recipients when supported actual or forecast spending conditions meet the configured thresholds. This option does not address the specified need for training on interruptible discounted capacity.
+- **D. Benchmark and rightsize the compute resources** — Rightsizing uses measured resource requirements to select capacity that meets the workload without unnecessary excess. This option does not address the specified need for training on interruptible discounted capacity.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Managed Spot Training in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html)
+- [SageMaker AI Managed Warm Pools - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-warm-pools.html)
+- [Amazon SageMaker Inference Recommender - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-recommender.html)
+- [Managing your costs with AWS Budgets - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html)
+
+</details>
+
+## #1302 · MLA-C01 Q1302 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Startup delay between compatible tuning experiments dominates runtime. Which feature retains infrastructure for subsequent jobs?
+
+A. Managed Spot Training with suitable checkpoints
+B. SageMaker managed warm pools
+C. Configure an AWS Budget alert
+D. Benchmark and rightsize the compute resources
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. SageMaker managed warm pools**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Reduce costs or delays at the measured source: purchase model, provisioning, resource size, or spending alerts.
+
+#### Why this is correct
+
+- **B. SageMaker managed warm pools** — Warm pools retain compatible training infrastructure for reuse and can reduce provisioning delay between consecutive jobs, with retention costs. This matches the requirement for retained training resources for faster subsequent startup.
+
+#### Why other options are incorrect
+
+- **A. Managed Spot Training with suitable checkpoints** — Managed Spot Training uses discounted interruptible capacity; compatible checkpoints support recovery after interruptions. This option does not address the specified need for retained training resources for faster subsequent startup.
+- **C. Configure an AWS Budget alert** — A budget alert notifies configured recipients when supported actual or forecast spending conditions meet the configured thresholds. This option does not address the specified need for retained training resources for faster subsequent startup.
+- **D. Benchmark and rightsize the compute resources** — Rightsizing uses measured resource requirements to select capacity that meets the workload without unnecessary excess. This option does not address the specified need for retained training resources for faster subsequent startup.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Managed Spot Training in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html)
+- [SageMaker AI Managed Warm Pools - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-warm-pools.html)
+- [Amazon SageMaker Inference Recommender - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-recommender.html)
+- [Managing your costs with AWS Budgets - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html)
+
+</details>
+
+## #1303 · MLA-C01 Q1303 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Several candidate instance types meet latency requirements. The team wants the lowest-cost suitable configuration based on load tests. Which action fits?
+
+A. Benchmark and rightsize the compute resources
+B. Configure an AWS Budget alert
+C. Managed Spot Training with suitable checkpoints
+D. SageMaker managed warm pools
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Benchmark and rightsize the compute resources**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Reduce costs or delays at the measured source: purchase model, provisioning, resource size, or spending alerts.
+
+#### Why this is correct
+
+- **A. Benchmark and rightsize the compute resources** — Rightsizing uses measured resource requirements to select capacity that meets the workload without unnecessary excess. This matches the requirement for selection of resources from measured workload performance.
+
+#### Why other options are incorrect
+
+- **B. Configure an AWS Budget alert** — A budget alert notifies configured recipients when supported actual or forecast spending conditions meet the configured thresholds. This option does not address the specified need for selection of resources from measured workload performance.
+- **C. Managed Spot Training with suitable checkpoints** — Managed Spot Training uses discounted interruptible capacity; compatible checkpoints support recovery after interruptions. This option does not address the specified need for selection of resources from measured workload performance.
+- **D. SageMaker managed warm pools** — Warm pools retain compatible training infrastructure for reuse and can reduce provisioning delay between consecutive jobs, with retention costs. This option does not address the specified need for selection of resources from measured workload performance.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Managed Spot Training in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html)
+- [SageMaker AI Managed Warm Pools - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-warm-pools.html)
+- [Amazon SageMaker Inference Recommender - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-recommender.html)
+- [Managing your costs with AWS Budgets - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html)
+
+</details>
+
+## #1304 · MLA-C01 Q1304 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A team needs awareness of budget overruns, without assuming the alert automatically caps all spending. Which feature fits?
+
+A. Configure an AWS Budget alert
+B. Benchmark and rightsize the compute resources
+C. SageMaker managed warm pools
+D. Managed Spot Training with suitable checkpoints
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Configure an AWS Budget alert**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Reduce costs or delays at the measured source: purchase model, provisioning, resource size, or spending alerts.
+
+#### Why this is correct
+
+- **A. Configure an AWS Budget alert** — A budget alert notifies configured recipients when supported actual or forecast spending conditions meet the configured thresholds. This matches the requirement for a spending alert rather than a universal hard spending cap.
+
+#### Why other options are incorrect
+
+- **B. Benchmark and rightsize the compute resources** — Rightsizing uses measured resource requirements to select capacity that meets the workload without unnecessary excess. This option does not address the specified need for a spending alert rather than a universal hard spending cap.
+- **C. SageMaker managed warm pools** — Warm pools retain compatible training infrastructure for reuse and can reduce provisioning delay between consecutive jobs, with retention costs. This option does not address the specified need for a spending alert rather than a universal hard spending cap.
+- **D. Managed Spot Training with suitable checkpoints** — Managed Spot Training uses discounted interruptible capacity; compatible checkpoints support recovery after interruptions. This option does not address the specified need for a spending alert rather than a universal hard spending cap.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Managed Spot Training in Amazon SageMaker AI - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html)
+- [SageMaker AI Managed Warm Pools - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-warm-pools.html)
+- [Amazon SageMaker Inference Recommender - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-recommender.html)
+- [Managing your costs with AWS Budgets - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html)
+
+</details>
+
+## #1305 · MLA-C01 Q1305 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Model artifacts stored in S3 must use a specific customer managed key. Which configuration targets those stored objects?
+
+A. Enable inter-container traffic encryption
+B. Use HTTPS for client requests
+C. Configure the training storage volume's KMS key
+D. Configure S3 server-side encryption with the required KMS key
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Configure S3 server-side encryption with the required KMS key**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Specify which data path needs protection; encryption at one layer does not protect every other layer.
+
+#### Why this is correct
+
+- **D. Configure S3 server-side encryption with the required KMS key** — SSE-KMS protects stored S3 objects using the configured KMS key and its access controls. This matches the requirement for KMS-backed encryption of S3 model objects.
+
+#### Why other options are incorrect
+
+- **A. Enable inter-container traffic encryption** — This setting protects communication between instances in supported distributed training jobs. This option does not address the specified need for KMS-backed encryption of S3 model objects.
+- **B. Use HTTPS for client requests** — HTTPS uses TLS to protect supported client-to-service requests in transit. This option does not address the specified need for KMS-backed encryption of S3 model objects.
+- **C. Configure the training storage volume's KMS key** — Training volume encryption protects supported attached storage at rest using the specified key. This option does not address the specified need for KMS-backed encryption of S3 model objects.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Protect Data at Rest Using Encryption - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html)
+- [Protect Communications Between ML Compute Instances in a Distributed Training Job - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)
+- [Using server-side encryption with AWS KMS keys (SSE-KMS) - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
+
+</details>
+
+## #1306 · MLA-C01 Q1306 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Temporary training data on supported attached training storage must use an approved KMS key. Which configuration targets that layer?
+
+A. Configure the training storage volume's KMS key
+B. Configure S3 server-side encryption with the required KMS key
+C. Enable inter-container traffic encryption
+D. Use HTTPS for client requests
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Configure the training storage volume's KMS key**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Specify which data path needs protection; encryption at one layer does not protect every other layer.
+
+#### Why this is correct
+
+- **A. Configure the training storage volume's KMS key** — Training volume encryption protects supported attached storage at rest using the specified key. This matches the requirement for KMS encryption of the training storage volume.
+
+#### Why other options are incorrect
+
+- **B. Configure S3 server-side encryption with the required KMS key** — SSE-KMS protects stored S3 objects using the configured KMS key and its access controls. This option does not address the specified need for KMS encryption of the training storage volume.
+- **C. Enable inter-container traffic encryption** — This setting protects communication between instances in supported distributed training jobs. This option does not address the specified need for KMS encryption of the training storage volume.
+- **D. Use HTTPS for client requests** — HTTPS uses TLS to protect supported client-to-service requests in transit. This option does not address the specified need for KMS encryption of the training storage volume.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Protect Data at Rest Using Encryption - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html)
+- [Protect Communications Between ML Compute Instances in a Distributed Training Job - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)
+- [Using server-side encryption with AWS KMS keys (SSE-KMS) - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
+
+</details>
+
+## #1307 · MLA-C01 Q1307 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A client must protect prediction requests while they travel to the service endpoint. Which protocol choice fits?
+
+A. Configure the training storage volume's KMS key
+B. Use HTTPS for client requests
+C. Enable inter-container traffic encryption
+D. Configure S3 server-side encryption with the required KMS key
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Use HTTPS for client requests**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Specify which data path needs protection; encryption at one layer does not protect every other layer.
+
+#### Why this is correct
+
+- **B. Use HTTPS for client requests** — HTTPS uses TLS to protect supported client-to-service requests in transit. This matches the requirement for TLS protection for client-to-service requests.
+
+#### Why other options are incorrect
+
+- **A. Configure the training storage volume's KMS key** — Training volume encryption protects supported attached storage at rest using the specified key. This option does not address the specified need for TLS protection for client-to-service requests.
+- **C. Enable inter-container traffic encryption** — This setting protects communication between instances in supported distributed training jobs. This option does not address the specified need for TLS protection for client-to-service requests.
+- **D. Configure S3 server-side encryption with the required KMS key** — SSE-KMS protects stored S3 objects using the configured KMS key and its access controls. This option does not address the specified need for TLS protection for client-to-service requests.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Protect Data at Rest Using Encryption - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html)
+- [Protect Communications Between ML Compute Instances in a Distributed Training Job - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)
+- [Using server-side encryption with AWS KMS keys (SSE-KMS) - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
+
+</details>
+
+## #1308 · MLA-C01 Q1308 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Distributed workers exchange model updates, and the policy requires encryption on that internal network path. Which setting fits?
+
+A. Configure the training storage volume's KMS key
+B. Enable inter-container traffic encryption
+C. Use HTTPS for client requests
+D. Configure S3 server-side encryption with the required KMS key
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Enable inter-container traffic encryption**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Specify which data path needs protection; encryption at one layer does not protect every other layer.
+
+#### Why this is correct
+
+- **B. Enable inter-container traffic encryption** — This setting protects communication between instances in supported distributed training jobs. This matches the requirement for encrypted communication between training instances.
+
+#### Why other options are incorrect
+
+- **A. Configure the training storage volume's KMS key** — Training volume encryption protects supported attached storage at rest using the specified key. This option does not address the specified need for encrypted communication between training instances.
+- **C. Use HTTPS for client requests** — HTTPS uses TLS to protect supported client-to-service requests in transit. This option does not address the specified need for encrypted communication between training instances.
+- **D. Configure S3 server-side encryption with the required KMS key** — SSE-KMS protects stored S3 objects using the configured KMS key and its access controls. This option does not address the specified need for encrypted communication between training instances.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Protect Data at Rest Using Encryption - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html)
+- [Protect Communications Between ML Compute Instances in a Distributed Training Job - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)
+- [Using server-side encryption with AWS KMS keys (SSE-KMS) - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
+
+</details>
+
+## #1309 · MLA-C01 Q1309 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An audit checks the encryption key associated with a saved training output object. Which layer's configuration must the engineer inspect?
+
+A. Configure S3 server-side encryption with the required KMS key
+B. Configure the training storage volume's KMS key
+C. Enable inter-container traffic encryption
+D. Use HTTPS for client requests
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Configure S3 server-side encryption with the required KMS key**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Specify which data path needs protection; encryption at one layer does not protect every other layer.
+
+#### Why this is correct
+
+- **A. Configure S3 server-side encryption with the required KMS key** — SSE-KMS protects stored S3 objects using the configured KMS key and its access controls. This matches the requirement for server-side encryption of the output object in S3.
+
+#### Why other options are incorrect
+
+- **B. Configure the training storage volume's KMS key** — Training volume encryption protects supported attached storage at rest using the specified key. This option does not address the specified need for server-side encryption of the output object in S3.
+- **C. Enable inter-container traffic encryption** — This setting protects communication between instances in supported distributed training jobs. This option does not address the specified need for server-side encryption of the output object in S3.
+- **D. Use HTTPS for client requests** — HTTPS uses TLS to protect supported client-to-service requests in transit. This option does not address the specified need for server-side encryption of the output object in S3.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Protect Data at Rest Using Encryption - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html)
+- [Protect Communications Between ML Compute Instances in a Distributed Training Job - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)
+- [Using server-side encryption with AWS KMS keys (SSE-KMS) - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
+
+</details>
+
+## #1310 · MLA-C01 Q1310 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A security review concerns raw features temporarily present on the supported training volume. Which encryption setting addresses stored volume data?
+
+A. Configure the training storage volume's KMS key
+B. Use HTTPS for client requests
+C. Enable inter-container traffic encryption
+D. Configure S3 server-side encryption with the required KMS key
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Configure the training storage volume's KMS key**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Specify which data path needs protection; encryption at one layer does not protect every other layer.
+
+#### Why this is correct
+
+- **A. Configure the training storage volume's KMS key** — Training volume encryption protects supported attached storage at rest using the specified key. This matches the requirement for encryption at rest on the attached training volume.
+
+#### Why other options are incorrect
+
+- **B. Use HTTPS for client requests** — HTTPS uses TLS to protect supported client-to-service requests in transit. This option does not address the specified need for encryption at rest on the attached training volume.
+- **C. Enable inter-container traffic encryption** — This setting protects communication between instances in supported distributed training jobs. This option does not address the specified need for encryption at rest on the attached training volume.
+- **D. Configure S3 server-side encryption with the required KMS key** — SSE-KMS protects stored S3 objects using the configured KMS key and its access controls. This option does not address the specified need for encryption at rest on the attached training volume.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Protect Data at Rest Using Encryption - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html)
+- [Protect Communications Between ML Compute Instances in a Distributed Training Job - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)
+- [Using server-side encryption with AWS KMS keys (SSE-KMS) - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
+
+</details>
+
+## #1311 · MLA-C01 Q1311 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A network observer must not read application payloads sent to an AWS prediction API. Which transport protects this hop?
+
+A. Enable inter-container traffic encryption
+B. Configure the training storage volume's KMS key
+C. Use HTTPS for client requests
+D. Configure S3 server-side encryption with the required KMS key
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Use HTTPS for client requests**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Specify which data path needs protection; encryption at one layer does not protect every other layer.
+
+#### Why this is correct
+
+- **C. Use HTTPS for client requests** — HTTPS uses TLS to protect supported client-to-service requests in transit. This matches the requirement for HTTPS encryption of API payloads in transit.
+
+#### Why other options are incorrect
+
+- **A. Enable inter-container traffic encryption** — This setting protects communication between instances in supported distributed training jobs. This option does not address the specified need for HTTPS encryption of API payloads in transit.
+- **B. Configure the training storage volume's KMS key** — Training volume encryption protects supported attached storage at rest using the specified key. This option does not address the specified need for HTTPS encryption of API payloads in transit.
+- **D. Configure S3 server-side encryption with the required KMS key** — SSE-KMS protects stored S3 objects using the configured KMS key and its access controls. This option does not address the specified need for HTTPS encryption of API payloads in transit.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Protect Data at Rest Using Encryption - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html)
+- [Protect Communications Between ML Compute Instances in a Distributed Training Job - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)
+- [Using server-side encryption with AWS KMS keys (SSE-KMS) - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
+
+</details>
+
+## #1312 · MLA-C01 Q1312 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+S3 outputs are encrypted, but the review also requires protection of gradient traffic between workers. Which additional setting addresses that traffic?
+
+A. Configure S3 server-side encryption with the required KMS key
+B. Configure the training storage volume's KMS key
+C. Use HTTPS for client requests
+D. Enable inter-container traffic encryption
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Enable inter-container traffic encryption**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Specify which data path needs protection; encryption at one layer does not protect every other layer.
+
+#### Why this is correct
+
+- **D. Enable inter-container traffic encryption** — This setting protects communication between instances in supported distributed training jobs. This matches the requirement for transport protection for inter-worker training messages.
+
+#### Why other options are incorrect
+
+- **A. Configure S3 server-side encryption with the required KMS key** — SSE-KMS protects stored S3 objects using the configured KMS key and its access controls. This option does not address the specified need for transport protection for inter-worker training messages.
+- **B. Configure the training storage volume's KMS key** — Training volume encryption protects supported attached storage at rest using the specified key. This option does not address the specified need for transport protection for inter-worker training messages.
+- **C. Use HTTPS for client requests** — HTTPS uses TLS to protect supported client-to-service requests in transit. This option does not address the specified need for transport protection for inter-worker training messages.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Protect Data at Rest Using Encryption - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html)
+- [Protect Communications Between ML Compute Instances in a Distributed Training Job - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html)
+- [Using server-side encryption with AWS KMS keys (SSE-KMS) - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
+
+</details>
+
+## #1313 · MLA-C01 Q1313 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A job starts successfully but cannot read its approved training objects. Its execution role lacks s3:GetObject on those objects. Which action fits?
+
+A. Inspect and resolve an applicable explicit deny
+B. Grant scoped iam:PassRole to the job creator
+C. Grant the required action on the execution role's approved resources
+D. Configure the role trust policy for the intended principal
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Grant the required action on the execution role's approved resources**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Diagnose which permission boundary controls the failed operation before broadening access.
+
+#### Why this is correct
+
+- **C. Grant the required action on the execution role's approved resources** — The job execution role needs narrowly scoped permissions for the AWS resources the job uses. This matches the requirement for scoped data-read permission for the job execution role.
+
+#### Why other options are incorrect
+
+- **A. Inspect and resolve an applicable explicit deny** — An applicable explicit deny overrides an allow; adding another allow does not cancel that deny. This option does not address the specified need for scoped data-read permission for the job execution role.
+- **B. Grant scoped iam:PassRole to the job creator** — The caller needs permission to pass the approved execution role to SageMaker; this is separate from the role's data permissions. This option does not address the specified need for scoped data-read permission for the job execution role.
+- **D. Configure the role trust policy for the intended principal** — A trust policy controls who can assume the role, including a supported service principal. This option does not address the specified need for scoped data-read permission for the job execution role.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Grant a user permissions to pass a role to an AWS service - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html)
+- [Policy evaluation logic - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html)
+- [Cross account resource access in IAM - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-cross-account-resource-access.html)
+- [How to use SageMaker AI execution roles - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)
+
+</details>
+
+## #1314 · MLA-C01 Q1314 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A caller can create training jobs but receives an error when assigning an approved execution role. The caller lacks PassRole. Which permission is missing?
+
+A. Grant scoped iam:PassRole to the job creator
+B. Inspect and resolve an applicable explicit deny
+C. Grant the required action on the execution role's approved resources
+D. Configure the role trust policy for the intended principal
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Grant scoped iam:PassRole to the job creator**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Diagnose which permission boundary controls the failed operation before broadening access.
+
+#### Why this is correct
+
+- **A. Grant scoped iam:PassRole to the job creator** — The caller needs permission to pass the approved execution role to SageMaker; this is separate from the role's data permissions. This matches the requirement for permission for the caller to pass the approved role.
+
+#### Why other options are incorrect
+
+- **B. Inspect and resolve an applicable explicit deny** — An applicable explicit deny overrides an allow; adding another allow does not cancel that deny. This option does not address the specified need for permission for the caller to pass the approved role.
+- **C. Grant the required action on the execution role's approved resources** — The job execution role needs narrowly scoped permissions for the AWS resources the job uses. This option does not address the specified need for permission for the caller to pass the approved role.
+- **D. Configure the role trust policy for the intended principal** — A trust policy controls who can assume the role, including a supported service principal. This option does not address the specified need for permission for the caller to pass the approved role.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Grant a user permissions to pass a role to an AWS service - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html)
+- [Policy evaluation logic - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html)
+- [Cross account resource access in IAM - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-cross-account-resource-access.html)
+- [How to use SageMaker AI execution roles - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)
+
+</details>
+
+## #1315 · MLA-C01 Q1315 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+SageMaker cannot assume a role because its trust policy does not allow the service principal. Which policy must be corrected?
+
+A. Grant scoped iam:PassRole to the job creator
+B. Grant the required action on the execution role's approved resources
+C. Inspect and resolve an applicable explicit deny
+D. Configure the role trust policy for the intended principal
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Configure the role trust policy for the intended principal**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Diagnose which permission boundary controls the failed operation before broadening access.
+
+#### Why this is correct
+
+- **D. Configure the role trust policy for the intended principal** — A trust policy controls who can assume the role, including a supported service principal. This matches the requirement for the role's assumption trust relationship.
+
+#### Why other options are incorrect
+
+- **A. Grant scoped iam:PassRole to the job creator** — The caller needs permission to pass the approved execution role to SageMaker; this is separate from the role's data permissions. This option does not address the specified need for the role's assumption trust relationship.
+- **B. Grant the required action on the execution role's approved resources** — The job execution role needs narrowly scoped permissions for the AWS resources the job uses. This option does not address the specified need for the role's assumption trust relationship.
+- **C. Inspect and resolve an applicable explicit deny** — An applicable explicit deny overrides an allow; adding another allow does not cancel that deny. This option does not address the specified need for the role's assumption trust relationship.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Grant a user permissions to pass a role to an AWS service - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html)
+- [Policy evaluation logic - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html)
+- [Cross account resource access in IAM - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-cross-account-resource-access.html)
+- [How to use SageMaker AI execution roles - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)
+
+</details>
+
+## #1316 · MLA-C01 Q1316 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A bucket policy explicitly denies the requested access despite an identity-policy allow. Which action addresses the decisive policy condition?
+
+A. Grant scoped iam:PassRole to the job creator
+B. Grant the required action on the execution role's approved resources
+C. Configure the role trust policy for the intended principal
+D. Inspect and resolve an applicable explicit deny
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Inspect and resolve an applicable explicit deny**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Diagnose which permission boundary controls the failed operation before broadening access.
+
+#### Why this is correct
+
+- **D. Inspect and resolve an applicable explicit deny** — An applicable explicit deny overrides an allow; adding another allow does not cancel that deny. This matches the requirement for resolution of the applicable explicit deny.
+
+#### Why other options are incorrect
+
+- **A. Grant scoped iam:PassRole to the job creator** — The caller needs permission to pass the approved execution role to SageMaker; this is separate from the role's data permissions. This option does not address the specified need for resolution of the applicable explicit deny.
+- **B. Grant the required action on the execution role's approved resources** — The job execution role needs narrowly scoped permissions for the AWS resources the job uses. This option does not address the specified need for resolution of the applicable explicit deny.
+- **C. Configure the role trust policy for the intended principal** — A trust policy controls who can assume the role, including a supported service principal. This option does not address the specified need for resolution of the applicable explicit deny.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Grant a user permissions to pass a role to an AWS service - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html)
+- [Policy evaluation logic - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html)
+- [Cross account resource access in IAM - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-cross-account-resource-access.html)
+- [How to use SageMaker AI execution roles - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)
+
+</details>
+
+## #1317 · MLA-C01 Q1317 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A processing job needs permission to write output only to its designated S3 prefix. Which principal needs the resource permission?
+
+A. Grant the required action on the execution role's approved resources
+B. Grant scoped iam:PassRole to the job creator
+C. Inspect and resolve an applicable explicit deny
+D. Configure the role trust policy for the intended principal
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Grant the required action on the execution role's approved resources**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Diagnose which permission boundary controls the failed operation before broadening access.
+
+#### Why this is correct
+
+- **A. Grant the required action on the execution role's approved resources** — The job execution role needs narrowly scoped permissions for the AWS resources the job uses. This matches the requirement for the job's execution role with scoped output access.
+
+#### Why other options are incorrect
+
+- **B. Grant scoped iam:PassRole to the job creator** — The caller needs permission to pass the approved execution role to SageMaker; this is separate from the role's data permissions. This option does not address the specified need for the job's execution role with scoped output access.
+- **C. Inspect and resolve an applicable explicit deny** — An applicable explicit deny overrides an allow; adding another allow does not cancel that deny. This option does not address the specified need for the job's execution role with scoped output access.
+- **D. Configure the role trust policy for the intended principal** — A trust policy controls who can assume the role, including a supported service principal. This option does not address the specified need for the job's execution role with scoped output access.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Grant a user permissions to pass a role to an AWS service - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html)
+- [Policy evaluation logic - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html)
+- [Cross account resource access in IAM - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-cross-account-resource-access.html)
+- [How to use SageMaker AI execution roles - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)
+
+</details>
+
+## #1318 · MLA-C01 Q1318 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A developer can assume their own role but cannot pass a different approved role to a SageMaker job. Which authorization is separately required?
+
+A. Configure the role trust policy for the intended principal
+B. Grant the required action on the execution role's approved resources
+C. Inspect and resolve an applicable explicit deny
+D. Grant scoped iam:PassRole to the job creator
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Grant scoped iam:PassRole to the job creator**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Diagnose which permission boundary controls the failed operation before broadening access.
+
+#### Why this is correct
+
+- **D. Grant scoped iam:PassRole to the job creator** — The caller needs permission to pass the approved execution role to SageMaker; this is separate from the role's data permissions. This matches the requirement for scoped permission to pass the execution role.
+
+#### Why other options are incorrect
+
+- **A. Configure the role trust policy for the intended principal** — A trust policy controls who can assume the role, including a supported service principal. This option does not address the specified need for scoped permission to pass the execution role.
+- **B. Grant the required action on the execution role's approved resources** — The job execution role needs narrowly scoped permissions for the AWS resources the job uses. This option does not address the specified need for scoped permission to pass the execution role.
+- **C. Inspect and resolve an applicable explicit deny** — An applicable explicit deny overrides an allow; adding another allow does not cancel that deny. This option does not address the specified need for scoped permission to pass the execution role.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Grant a user permissions to pass a role to an AWS service - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html)
+- [Policy evaluation logic - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html)
+- [Cross account resource access in IAM - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-cross-account-resource-access.html)
+- [How to use SageMaker AI execution roles - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)
+
+</details>
+
+## #1319 · MLA-C01 Q1319 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A cross-account role's permissions allow data reads, but its trust policy excludes the intended caller. Which configuration blocks assumption?
+
+A. Configure the role trust policy for the intended principal
+B. Grant scoped iam:PassRole to the job creator
+C. Inspect and resolve an applicable explicit deny
+D. Grant the required action on the execution role's approved resources
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Configure the role trust policy for the intended principal**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Diagnose which permission boundary controls the failed operation before broadening access.
+
+#### Why this is correct
+
+- **A. Configure the role trust policy for the intended principal** — A trust policy controls who can assume the role, including a supported service principal. This matches the requirement for the trust policy's permitted principals.
+
+#### Why other options are incorrect
+
+- **B. Grant scoped iam:PassRole to the job creator** — The caller needs permission to pass the approved execution role to SageMaker; this is separate from the role's data permissions. This option does not address the specified need for the trust policy's permitted principals.
+- **C. Inspect and resolve an applicable explicit deny** — An applicable explicit deny overrides an allow; adding another allow does not cancel that deny. This option does not address the specified need for the trust policy's permitted principals.
+- **D. Grant the required action on the execution role's approved resources** — The job execution role needs narrowly scoped permissions for the AWS resources the job uses. This option does not address the specified need for the trust policy's permitted principals.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Grant a user permissions to pass a role to an AWS service - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html)
+- [Policy evaluation logic - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html)
+- [Cross account resource access in IAM - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-cross-account-resource-access.html)
+- [How to use SageMaker AI execution roles - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)
+
+</details>
+
+## #1320 · MLA-C01 Q1320 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An organization policy denies an action allowed by the role policy. Adding AdministratorAccess still fails. Which policy issue must be addressed?
+
+A. Grant the required action on the execution role's approved resources
+B. Configure the role trust policy for the intended principal
+C. Grant scoped iam:PassRole to the job creator
+D. Inspect and resolve an applicable explicit deny
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Inspect and resolve an applicable explicit deny**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Diagnose which permission boundary controls the failed operation before broadening access.
+
+#### Why this is correct
+
+- **D. Inspect and resolve an applicable explicit deny** — An applicable explicit deny overrides an allow; adding another allow does not cancel that deny. This matches the requirement for the higher-level applicable deny rather than another allow.
+
+#### Why other options are incorrect
+
+- **A. Grant the required action on the execution role's approved resources** — The job execution role needs narrowly scoped permissions for the AWS resources the job uses. This option does not address the specified need for the higher-level applicable deny rather than another allow.
+- **B. Configure the role trust policy for the intended principal** — A trust policy controls who can assume the role, including a supported service principal. This option does not address the specified need for the higher-level applicable deny rather than another allow.
+- **C. Grant scoped iam:PassRole to the job creator** — The caller needs permission to pass the approved execution role to SageMaker; this is separate from the role's data permissions. This option does not address the specified need for the higher-level applicable deny rather than another allow.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Grant a user permissions to pass a role to an AWS service - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html)
+- [Policy evaluation logic - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html)
+- [Cross account resource access in IAM - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies-cross-account-resource-access.html)
+- [How to use SageMaker AI execution roles - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)
+
+</details>
+
+## #1321 · MLA-C01 Q1321 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A dataset bucket must reject configurations that expose its contents publicly. Which S3 control directly targets public exposure?
+
+A. A bucket policy that denies insecure transport
+B. S3 Block Public Access
+C. S3 Versioning
+D. S3 Object Lock
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. S3 Block Public Access**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Access exposure, transport requirements, version recovery, and immutable retention are separate S3 controls.
+
+#### Why this is correct
+
+- **B. S3 Block Public Access** — Block Public Access restricts public access configurations according to the enabled settings. This matches the requirement for blocking public bucket and object access configurations.
+
+#### Why other options are incorrect
+
+- **A. A bucket policy that denies insecure transport** — A policy using aws:SecureTransport can deny applicable requests that do not use secure transport. This option does not address the specified need for blocking public bucket and object access configurations.
+- **C. S3 Versioning** — Versioning keeps distinct object versions, supporting recovery from accidental overwrites or deletions when prior versions remain. This option does not address the specified need for blocking public bucket and object access configurations.
+- **D. S3 Object Lock** — Object Lock supplies retention and legal-hold controls for protected object versions, subject to the selected mode and permissions. This option does not address the specified need for blocking public bucket and object access configurations.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Blocking public access to your Amazon S3 storage - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html)
+- [Retaining multiple versions of objects with S3 Versioning - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
+- [Locking objects with Object Lock - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html)
+- [Examples of Amazon S3 bucket policies - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html)
+
+</details>
+
+## #1322 · MLA-C01 Q1322 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A policy must reject applicable requests sent without TLS. Which control expresses this transport requirement?
+
+A. S3 Block Public Access
+B. A bucket policy that denies insecure transport
+C. S3 Object Lock
+D. S3 Versioning
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. A bucket policy that denies insecure transport**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Access exposure, transport requirements, version recovery, and immutable retention are separate S3 controls.
+
+#### Why this is correct
+
+- **B. A bucket policy that denies insecure transport** — A policy using aws:SecureTransport can deny applicable requests that do not use secure transport. This matches the requirement for denial of requests over insecure transport.
+
+#### Why other options are incorrect
+
+- **A. S3 Block Public Access** — Block Public Access restricts public access configurations according to the enabled settings. This option does not address the specified need for denial of requests over insecure transport.
+- **C. S3 Object Lock** — Object Lock supplies retention and legal-hold controls for protected object versions, subject to the selected mode and permissions. This option does not address the specified need for denial of requests over insecure transport.
+- **D. S3 Versioning** — Versioning keeps distinct object versions, supporting recovery from accidental overwrites or deletions when prior versions remain. This option does not address the specified need for denial of requests over insecure transport.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Blocking public access to your Amazon S3 storage - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html)
+- [Retaining multiple versions of objects with S3 Versioning - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
+- [Locking objects with Object Lock - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html)
+- [Examples of Amazon S3 bucket policies - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html)
+
+</details>
+
+## #1323 · MLA-C01 Q1323 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An engineer must recover a model artifact overwritten by mistake yesterday. Which previously enabled feature preserves earlier object versions?
+
+A. S3 Versioning
+B. S3 Object Lock
+C. S3 Block Public Access
+D. A bucket policy that denies insecure transport
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. S3 Versioning**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Access exposure, transport requirements, version recovery, and immutable retention are separate S3 controls.
+
+#### Why this is correct
+
+- **A. S3 Versioning** — Versioning keeps distinct object versions, supporting recovery from accidental overwrites or deletions when prior versions remain. This matches the requirement for retention of earlier versions after an overwrite.
+
+#### Why other options are incorrect
+
+- **B. S3 Object Lock** — Object Lock supplies retention and legal-hold controls for protected object versions, subject to the selected mode and permissions. This option does not address the specified need for retention of earlier versions after an overwrite.
+- **C. S3 Block Public Access** — Block Public Access restricts public access configurations according to the enabled settings. This option does not address the specified need for retention of earlier versions after an overwrite.
+- **D. A bucket policy that denies insecure transport** — A policy using aws:SecureTransport can deny applicable requests that do not use secure transport. This option does not address the specified need for retention of earlier versions after an overwrite.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Blocking public access to your Amazon S3 storage - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html)
+- [Retaining multiple versions of objects with S3 Versioning - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
+- [Locking objects with Object Lock - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html)
+- [Examples of Amazon S3 bucket policies - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html)
+
+</details>
+
+## #1324 · MLA-C01 Q1324 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Protected model artifacts need write-once retention for a compliance period. Which S3 feature supplies retention controls?
+
+A. S3 Block Public Access
+B. S3 Versioning
+C. A bucket policy that denies insecure transport
+D. S3 Object Lock
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. S3 Object Lock**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Access exposure, transport requirements, version recovery, and immutable retention are separate S3 controls.
+
+#### Why this is correct
+
+- **D. S3 Object Lock** — Object Lock supplies retention and legal-hold controls for protected object versions, subject to the selected mode and permissions. This matches the requirement for immutable retention for protected object versions.
+
+#### Why other options are incorrect
+
+- **A. S3 Block Public Access** — Block Public Access restricts public access configurations according to the enabled settings. This option does not address the specified need for immutable retention for protected object versions.
+- **B. S3 Versioning** — Versioning keeps distinct object versions, supporting recovery from accidental overwrites or deletions when prior versions remain. This option does not address the specified need for immutable retention for protected object versions.
+- **C. A bucket policy that denies insecure transport** — A policy using aws:SecureTransport can deny applicable requests that do not use secure transport. This option does not address the specified need for immutable retention for protected object versions.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Blocking public access to your Amazon S3 storage - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html)
+- [Retaining multiple versions of objects with S3 Versioning - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
+- [Locking objects with Object Lock - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html)
+- [Examples of Amazon S3 bucket policies - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html)
+
+</details>
+
+## #1325 · MLA-C01 Q1325 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A team wants account-level safeguards against accidental public bucket policies. Which feature targets this risk?
+
+A. S3 Block Public Access
+B. S3 Object Lock
+C. S3 Versioning
+D. A bucket policy that denies insecure transport
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. S3 Block Public Access**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Access exposure, transport requirements, version recovery, and immutable retention are separate S3 controls.
+
+#### Why this is correct
+
+- **A. S3 Block Public Access** — Block Public Access restricts public access configurations according to the enabled settings. This matches the requirement for account-level restrictions on public S3 access.
+
+#### Why other options are incorrect
+
+- **B. S3 Object Lock** — Object Lock supplies retention and legal-hold controls for protected object versions, subject to the selected mode and permissions. This option does not address the specified need for account-level restrictions on public S3 access.
+- **C. S3 Versioning** — Versioning keeps distinct object versions, supporting recovery from accidental overwrites or deletions when prior versions remain. This option does not address the specified need for account-level restrictions on public S3 access.
+- **D. A bucket policy that denies insecure transport** — A policy using aws:SecureTransport can deny applicable requests that do not use secure transport. This option does not address the specified need for account-level restrictions on public S3 access.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Blocking public access to your Amazon S3 storage - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html)
+- [Retaining multiple versions of objects with S3 Versioning - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
+- [Locking objects with Object Lock - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html)
+- [Examples of Amazon S3 bucket policies - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html)
+
+</details>
+
+## #1326 · MLA-C01 Q1326 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An audit requires a deny condition when aws:SecureTransport is false. Which policy control fulfills that requirement?
+
+A. A bucket policy that denies insecure transport
+B. S3 Versioning
+C. S3 Object Lock
+D. S3 Block Public Access
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. A bucket policy that denies insecure transport**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Access exposure, transport requirements, version recovery, and immutable retention are separate S3 controls.
+
+#### Why this is correct
+
+- **A. A bucket policy that denies insecure transport** — A policy using aws:SecureTransport can deny applicable requests that do not use secure transport. This matches the requirement for a bucket-policy denial of non-TLS requests.
+
+#### Why other options are incorrect
+
+- **B. S3 Versioning** — Versioning keeps distinct object versions, supporting recovery from accidental overwrites or deletions when prior versions remain. This option does not address the specified need for a bucket-policy denial of non-TLS requests.
+- **C. S3 Object Lock** — Object Lock supplies retention and legal-hold controls for protected object versions, subject to the selected mode and permissions. This option does not address the specified need for a bucket-policy denial of non-TLS requests.
+- **D. S3 Block Public Access** — Block Public Access restricts public access configurations according to the enabled settings. This option does not address the specified need for a bucket-policy denial of non-TLS requests.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Blocking public access to your Amazon S3 storage - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html)
+- [Retaining multiple versions of objects with S3 Versioning - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
+- [Locking objects with Object Lock - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html)
+- [Examples of Amazon S3 bucket policies - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html)
+
+</details>
+
+## #1327 · MLA-C01 Q1327 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A delete operation creates a delete marker while prior object versions remain recoverable. Which bucket feature makes this behavior possible?
+
+A. S3 Block Public Access
+B. S3 Object Lock
+C. S3 Versioning
+D. A bucket policy that denies insecure transport
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. S3 Versioning**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Access exposure, transport requirements, version recovery, and immutable retention are separate S3 controls.
+
+#### Why this is correct
+
+- **C. S3 Versioning** — Versioning keeps distinct object versions, supporting recovery from accidental overwrites or deletions when prior versions remain. This matches the requirement for version-preserving deletion behavior.
+
+#### Why other options are incorrect
+
+- **A. S3 Block Public Access** — Block Public Access restricts public access configurations according to the enabled settings. This option does not address the specified need for version-preserving deletion behavior.
+- **B. S3 Object Lock** — Object Lock supplies retention and legal-hold controls for protected object versions, subject to the selected mode and permissions. This option does not address the specified need for version-preserving deletion behavior.
+- **D. A bucket policy that denies insecure transport** — A policy using aws:SecureTransport can deny applicable requests that do not use secure transport. This option does not address the specified need for version-preserving deletion behavior.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Blocking public access to your Amazon S3 storage - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html)
+- [Retaining multiple versions of objects with S3 Versioning - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
+- [Locking objects with Object Lock - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html)
+- [Examples of Amazon S3 bucket policies - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html)
+
+</details>
+
+## #1328 · MLA-C01 Q1328 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A legal case requires retention of specific object versions until a legal hold is removed. Which feature provides this mechanism?
+
+A. S3 Block Public Access
+B. S3 Object Lock
+C. S3 Versioning
+D. A bucket policy that denies insecure transport
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. S3 Object Lock**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Access exposure, transport requirements, version recovery, and immutable retention are separate S3 controls.
+
+#### Why this is correct
+
+- **B. S3 Object Lock** — Object Lock supplies retention and legal-hold controls for protected object versions, subject to the selected mode and permissions. This matches the requirement for legal holds on protected object versions.
+
+#### Why other options are incorrect
+
+- **A. S3 Block Public Access** — Block Public Access restricts public access configurations according to the enabled settings. This option does not address the specified need for legal holds on protected object versions.
+- **C. S3 Versioning** — Versioning keeps distinct object versions, supporting recovery from accidental overwrites or deletions when prior versions remain. This option does not address the specified need for legal holds on protected object versions.
+- **D. A bucket policy that denies insecure transport** — A policy using aws:SecureTransport can deny applicable requests that do not use secure transport. This option does not address the specified need for legal holds on protected object versions.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Blocking public access to your Amazon S3 storage - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html)
+- [Retaining multiple versions of objects with S3 Versioning - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
+- [Locking objects with Object Lock - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html)
+- [Examples of Amazon S3 bucket policies - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html)
+
+</details>
+
+## #1329 · MLA-C01 Q1329 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Finance needs resource costs grouped by a project tag. The tag exists on resources but is not activated for billing. Which action fits?
+
+A. Analyze costs in Cost Explorer
+B. Activate and use cost allocation tags
+C. Create an AWS Budget
+D. Use a detailed cost and usage export
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Activate and use cost allocation tags**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Cost ownership, interactive analysis, alerts, and detailed billing exports require different tools.
+
+#### Why this is correct
+
+- **B. Activate and use cost allocation tags** — Cost allocation tags classify supported billed resources by dimensions such as project or cost center after activation. This matches the requirement for activation of project tags for cost allocation.
+
+#### Why other options are incorrect
+
+- **A. Analyze costs in Cost Explorer** — Cost Explorer provides interactive views of cost and usage with filtering and grouping. This option does not address the specified need for activation of project tags for cost allocation.
+- **C. Create an AWS Budget** — Budgets tracks configured spending or usage targets and can notify on supported threshold conditions. This option does not address the specified need for activation of project tags for cost allocation.
+- **D. Use a detailed cost and usage export** — Cost and usage reports or exports supply detailed billing records for external analysis and custom queries. This option does not address the specified need for activation of project tags for cost allocation.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Analyzing your costs and usage with AWS Cost Explorer - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html)
+- [Managing your costs with AWS Budgets - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html)
+- [What are AWS Cost and Usage Reports? - AWS Data Exports](https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html)
+- [Organizing and tracking costs using AWS cost allocation tags - AWS Billing](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+
+</details>
+
+## #1330 · MLA-C01 Q1330 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An analyst wants an interactive chart grouped by AWS service and month to investigate an increase. Which tool fits?
+
+A. Activate and use cost allocation tags
+B. Use a detailed cost and usage export
+C. Create an AWS Budget
+D. Analyze costs in Cost Explorer
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Analyze costs in Cost Explorer**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Cost ownership, interactive analysis, alerts, and detailed billing exports require different tools.
+
+#### Why this is correct
+
+- **D. Analyze costs in Cost Explorer** — Cost Explorer provides interactive views of cost and usage with filtering and grouping. This matches the requirement for interactive exploration of cost trends.
+
+#### Why other options are incorrect
+
+- **A. Activate and use cost allocation tags** — Cost allocation tags classify supported billed resources by dimensions such as project or cost center after activation. This option does not address the specified need for interactive exploration of cost trends.
+- **B. Use a detailed cost and usage export** — Cost and usage reports or exports supply detailed billing records for external analysis and custom queries. This option does not address the specified need for interactive exploration of cost trends.
+- **C. Create an AWS Budget** — Budgets tracks configured spending or usage targets and can notify on supported threshold conditions. This option does not address the specified need for interactive exploration of cost trends.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Analyzing your costs and usage with AWS Cost Explorer - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html)
+- [Managing your costs with AWS Budgets - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html)
+- [What are AWS Cost and Usage Reports? - AWS Data Exports](https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html)
+- [Organizing and tracking costs using AWS cost allocation tags - AWS Billing](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+
+</details>
+
+## #1331 · MLA-C01 Q1331 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A team needs notifications when actual project spending exceeds a chosen monthly amount. Which tool fits?
+
+A. Use a detailed cost and usage export
+B. Analyze costs in Cost Explorer
+C. Activate and use cost allocation tags
+D. Create an AWS Budget
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Create an AWS Budget**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Cost ownership, interactive analysis, alerts, and detailed billing exports require different tools.
+
+#### Why this is correct
+
+- **D. Create an AWS Budget** — Budgets tracks configured spending or usage targets and can notify on supported threshold conditions. This matches the requirement for alerts tied to a configured spending target.
+
+#### Why other options are incorrect
+
+- **A. Use a detailed cost and usage export** — Cost and usage reports or exports supply detailed billing records for external analysis and custom queries. This option does not address the specified need for alerts tied to a configured spending target.
+- **B. Analyze costs in Cost Explorer** — Cost Explorer provides interactive views of cost and usage with filtering and grouping. This option does not address the specified need for alerts tied to a configured spending target.
+- **C. Activate and use cost allocation tags** — Cost allocation tags classify supported billed resources by dimensions such as project or cost center after activation. This option does not address the specified need for alerts tied to a configured spending target.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Analyzing your costs and usage with AWS Cost Explorer - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html)
+- [Managing your costs with AWS Budgets - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html)
+- [What are AWS Cost and Usage Reports? - AWS Data Exports](https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html)
+- [Organizing and tracking costs using AWS cost allocation tags - AWS Billing](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+
+</details>
+
+## #1332 · MLA-C01 Q1332 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A data platform needs detailed billing records in storage for custom SQL analysis. Which source fits?
+
+A. Activate and use cost allocation tags
+B. Use a detailed cost and usage export
+C. Create an AWS Budget
+D. Analyze costs in Cost Explorer
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Use a detailed cost and usage export**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Cost ownership, interactive analysis, alerts, and detailed billing exports require different tools.
+
+#### Why this is correct
+
+- **B. Use a detailed cost and usage export** — Cost and usage reports or exports supply detailed billing records for external analysis and custom queries. This matches the requirement for a detailed billing dataset for external analysis.
+
+#### Why other options are incorrect
+
+- **A. Activate and use cost allocation tags** — Cost allocation tags classify supported billed resources by dimensions such as project or cost center after activation. This option does not address the specified need for a detailed billing dataset for external analysis.
+- **C. Create an AWS Budget** — Budgets tracks configured spending or usage targets and can notify on supported threshold conditions. This option does not address the specified need for a detailed billing dataset for external analysis.
+- **D. Analyze costs in Cost Explorer** — Cost Explorer provides interactive views of cost and usage with filtering and grouping. This option does not address the specified need for a detailed billing dataset for external analysis.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Analyzing your costs and usage with AWS Cost Explorer - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html)
+- [Managing your costs with AWS Budgets - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html)
+- [What are AWS Cost and Usage Reports? - AWS Data Exports](https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html)
+- [Organizing and tracking costs using AWS cost allocation tags - AWS Billing](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+
+</details>
+
+## #1333 · MLA-C01 Q1333 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Two ML projects share an account. Their resource charges must be attributed through an approved cost-center label. Which mechanism fits?
+
+A. Analyze costs in Cost Explorer
+B. Use a detailed cost and usage export
+C. Activate and use cost allocation tags
+D. Create an AWS Budget
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Activate and use cost allocation tags**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Cost ownership, interactive analysis, alerts, and detailed billing exports require different tools.
+
+#### Why this is correct
+
+- **C. Activate and use cost allocation tags** — Cost allocation tags classify supported billed resources by dimensions such as project or cost center after activation. This matches the requirement for allocation of resource charges through activated tags.
+
+#### Why other options are incorrect
+
+- **A. Analyze costs in Cost Explorer** — Cost Explorer provides interactive views of cost and usage with filtering and grouping. This option does not address the specified need for allocation of resource charges through activated tags.
+- **B. Use a detailed cost and usage export** — Cost and usage reports or exports supply detailed billing records for external analysis and custom queries. This option does not address the specified need for allocation of resource charges through activated tags.
+- **D. Create an AWS Budget** — Budgets tracks configured spending or usage targets and can notify on supported threshold conditions. This option does not address the specified need for allocation of resource charges through activated tags.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Analyzing your costs and usage with AWS Cost Explorer - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html)
+- [Managing your costs with AWS Budgets - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html)
+- [What are AWS Cost and Usage Reports? - AWS Data Exports](https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html)
+- [Organizing and tracking costs using AWS cost allocation tags - AWS Billing](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+
+</details>
+
+## #1334 · MLA-C01 Q1334 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An owner wants to filter historical charges by service and compare date ranges in a visual interface. Which tool fits?
+
+A. Use a detailed cost and usage export
+B. Create an AWS Budget
+C. Activate and use cost allocation tags
+D. Analyze costs in Cost Explorer
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Analyze costs in Cost Explorer**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Cost ownership, interactive analysis, alerts, and detailed billing exports require different tools.
+
+#### Why this is correct
+
+- **D. Analyze costs in Cost Explorer** — Cost Explorer provides interactive views of cost and usage with filtering and grouping. This matches the requirement for interactive filtering and comparison of historical costs.
+
+#### Why other options are incorrect
+
+- **A. Use a detailed cost and usage export** — Cost and usage reports or exports supply detailed billing records for external analysis and custom queries. This option does not address the specified need for interactive filtering and comparison of historical costs.
+- **B. Create an AWS Budget** — Budgets tracks configured spending or usage targets and can notify on supported threshold conditions. This option does not address the specified need for interactive filtering and comparison of historical costs.
+- **C. Activate and use cost allocation tags** — Cost allocation tags classify supported billed resources by dimensions such as project or cost center after activation. This option does not address the specified need for interactive filtering and comparison of historical costs.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Analyzing your costs and usage with AWS Cost Explorer - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html)
+- [Managing your costs with AWS Budgets - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html)
+- [What are AWS Cost and Usage Reports? - AWS Data Exports](https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html)
+- [Organizing and tracking costs using AWS cost allocation tags - AWS Billing](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+
+</details>
+
+## #1335 · MLA-C01 Q1335 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An operations team wants a notification when forecast costs are likely to exceed its allowance. Which tool fits?
+
+A. Create an AWS Budget
+B. Analyze costs in Cost Explorer
+C. Use a detailed cost and usage export
+D. Activate and use cost allocation tags
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Create an AWS Budget**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Cost ownership, interactive analysis, alerts, and detailed billing exports require different tools.
+
+#### Why this is correct
+
+- **A. Create an AWS Budget** — Budgets tracks configured spending or usage targets and can notify on supported threshold conditions. This matches the requirement for a forecast threshold alert against a budget.
+
+#### Why other options are incorrect
+
+- **B. Analyze costs in Cost Explorer** — Cost Explorer provides interactive views of cost and usage with filtering and grouping. This option does not address the specified need for a forecast threshold alert against a budget.
+- **C. Use a detailed cost and usage export** — Cost and usage reports or exports supply detailed billing records for external analysis and custom queries. This option does not address the specified need for a forecast threshold alert against a budget.
+- **D. Activate and use cost allocation tags** — Cost allocation tags classify supported billed resources by dimensions such as project or cost center after activation. This option does not address the specified need for a forecast threshold alert against a budget.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Analyzing your costs and usage with AWS Cost Explorer - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html)
+- [Managing your costs with AWS Budgets - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html)
+- [What are AWS Cost and Usage Reports? - AWS Data Exports](https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html)
+- [Organizing and tracking costs using AWS cost allocation tags - AWS Billing](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+
+</details>
+
+## #1336 · MLA-C01 Q1336 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+An internal finance system must ingest granular AWS billing records instead of screenshots of a cost chart. Which source fits?
+
+A. Activate and use cost allocation tags
+B. Analyze costs in Cost Explorer
+C. Create an AWS Budget
+D. Use a detailed cost and usage export
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Use a detailed cost and usage export**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Cost ownership, interactive analysis, alerts, and detailed billing exports require different tools.
+
+#### Why this is correct
+
+- **D. Use a detailed cost and usage export** — Cost and usage reports or exports supply detailed billing records for external analysis and custom queries. This matches the requirement for machine-readable detailed cost and usage records.
+
+#### Why other options are incorrect
+
+- **A. Activate and use cost allocation tags** — Cost allocation tags classify supported billed resources by dimensions such as project or cost center after activation. This option does not address the specified need for machine-readable detailed cost and usage records.
+- **B. Analyze costs in Cost Explorer** — Cost Explorer provides interactive views of cost and usage with filtering and grouping. This option does not address the specified need for machine-readable detailed cost and usage records.
+- **C. Create an AWS Budget** — Budgets tracks configured spending or usage targets and can notify on supported threshold conditions. This option does not address the specified need for machine-readable detailed cost and usage records.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Analyzing your costs and usage with AWS Cost Explorer - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html)
+- [Managing your costs with AWS Budgets - AWS Cost Management](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html)
+- [What are AWS Cost and Usage Reports? - AWS Data Exports](https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html)
+- [Organizing and tracking costs using AWS cost allocation tags - AWS Billing](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+
+</details>
+
+## #1337 · MLA-C01 Q1337 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+GPU utilization is low while workers repeatedly wait for the next batch from storage. Which area should be optimized first?
+
+A. Optimize input loading and data throughput
+B. Optimize the compute-heavy model operations
+C. Reduce per-step memory demand
+D. Reduce avoidable startup overhead
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Optimize input loading and data throughput**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose the first optimization from measurements rather than assuming every slow job needs a larger GPU.
+
+#### Why this is correct
+
+- **A. Optimize input loading and data throughput** — Input optimization addresses time spent waiting for examples, storage reads, decoding, or data transfer. This matches the requirement for the input path that leaves the accelerator idle.
+
+#### Why other options are incorrect
+
+- **B. Optimize the compute-heavy model operations** — Compute optimization targets expensive model operations when the accelerator is busy rather than waiting for input. This option does not address the specified need for the input path that leaves the accelerator idle.
+- **C. Reduce per-step memory demand** — Reducing batch size or another memory consumer can address out-of-memory failures when capacity is insufficient. This option does not address the specified need for the input path that leaves the accelerator idle.
+- **D. Reduce avoidable startup overhead** — Startup optimization targets provisioning, image initialization, and input staging before useful training work begins. This option does not address the specified need for the input path that leaves the accelerator idle.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Amazon SageMaker Debugger - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
+- [Profile and optimize computational performance - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-profile-computational-performance.html)
+- [Setting up training jobs to access datasets - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html)
+
+</details>
+
+## #1338 · MLA-C01 Q1338 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A job fails with GPU out-of-memory immediately after increasing batch size. Which change category addresses this failure?
+
+A. Optimize input loading and data throughput
+B. Reduce avoidable startup overhead
+C. Optimize the compute-heavy model operations
+D. Reduce per-step memory demand
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Reduce per-step memory demand**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose the first optimization from measurements rather than assuming every slow job needs a larger GPU.
+
+#### Why this is correct
+
+- **D. Reduce per-step memory demand** — Reducing batch size or another memory consumer can address out-of-memory failures when capacity is insufficient. This matches the requirement for the per-step memory demand that exceeded capacity.
+
+#### Why other options are incorrect
+
+- **A. Optimize input loading and data throughput** — Input optimization addresses time spent waiting for examples, storage reads, decoding, or data transfer. This option does not address the specified need for the per-step memory demand that exceeded capacity.
+- **B. Reduce avoidable startup overhead** — Startup optimization targets provisioning, image initialization, and input staging before useful training work begins. This option does not address the specified need for the per-step memory demand that exceeded capacity.
+- **C. Optimize the compute-heavy model operations** — Compute optimization targets expensive model operations when the accelerator is busy rather than waiting for input. This option does not address the specified need for the per-step memory demand that exceeded capacity.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Amazon SageMaker Debugger - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
+- [Profile and optimize computational performance - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-profile-computational-performance.html)
+- [Setting up training jobs to access datasets - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html)
+
+</details>
+
+## #1339 · MLA-C01 Q1339 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+The GPU remains busy, data arrives on time, and profiling locates most time in model tensor operations. Which area should be optimized?
+
+A. Optimize the compute-heavy model operations
+B. Reduce avoidable startup overhead
+C. Reduce per-step memory demand
+D. Optimize input loading and data throughput
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Optimize the compute-heavy model operations**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose the first optimization from measurements rather than assuming every slow job needs a larger GPU.
+
+#### Why this is correct
+
+- **A. Optimize the compute-heavy model operations** — Compute optimization targets expensive model operations when the accelerator is busy rather than waiting for input. This matches the requirement for the measured compute-heavy model operations.
+
+#### Why other options are incorrect
+
+- **B. Reduce avoidable startup overhead** — Startup optimization targets provisioning, image initialization, and input staging before useful training work begins. This option does not address the specified need for the measured compute-heavy model operations.
+- **C. Reduce per-step memory demand** — Reducing batch size or another memory consumer can address out-of-memory failures when capacity is insufficient. This option does not address the specified need for the measured compute-heavy model operations.
+- **D. Optimize input loading and data throughput** — Input optimization addresses time spent waiting for examples, storage reads, decoding, or data transfer. This option does not address the specified need for the measured compute-heavy model operations.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Amazon SageMaker Debugger - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
+- [Profile and optimize computational performance - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-profile-computational-performance.html)
+- [Setting up training jobs to access datasets - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html)
+
+</details>
+
+## #1340 · MLA-C01 Q1340 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A 30-second training script takes minutes to start because of repeated setup before execution. Which area dominates the optimization opportunity?
+
+A. Optimize input loading and data throughput
+B. Reduce avoidable startup overhead
+C. Reduce per-step memory demand
+D. Optimize the compute-heavy model operations
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Reduce avoidable startup overhead**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose the first optimization from measurements rather than assuming every slow job needs a larger GPU.
+
+#### Why this is correct
+
+- **B. Reduce avoidable startup overhead** — Startup optimization targets provisioning, image initialization, and input staging before useful training work begins. This matches the requirement for setup time before useful training begins.
+
+#### Why other options are incorrect
+
+- **A. Optimize input loading and data throughput** — Input optimization addresses time spent waiting for examples, storage reads, decoding, or data transfer. This option does not address the specified need for setup time before useful training begins.
+- **C. Reduce per-step memory demand** — Reducing batch size or another memory consumer can address out-of-memory failures when capacity is insufficient. This option does not address the specified need for setup time before useful training begins.
+- **D. Optimize the compute-heavy model operations** — Compute optimization targets expensive model operations when the accelerator is busy rather than waiting for input. This option does not address the specified need for setup time before useful training begins.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Amazon SageMaker Debugger - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
+- [Profile and optimize computational performance - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-profile-computational-performance.html)
+- [Setting up training jobs to access datasets - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html)
+
+</details>
+
+## #1341 · MLA-C01 Q1341 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Small-file reads and CPU decoding consume most step time while the accelerator waits. Which bottleneck area is indicated?
+
+A. Optimize the compute-heavy model operations
+B. Optimize input loading and data throughput
+C. Reduce avoidable startup overhead
+D. Reduce per-step memory demand
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Optimize input loading and data throughput**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose the first optimization from measurements rather than assuming every slow job needs a larger GPU.
+
+#### Why this is correct
+
+- **B. Optimize input loading and data throughput** — Input optimization addresses time spent waiting for examples, storage reads, decoding, or data transfer. This matches the requirement for data preparation and loading throughput.
+
+#### Why other options are incorrect
+
+- **A. Optimize the compute-heavy model operations** — Compute optimization targets expensive model operations when the accelerator is busy rather than waiting for input. This option does not address the specified need for data preparation and loading throughput.
+- **C. Reduce avoidable startup overhead** — Startup optimization targets provisioning, image initialization, and input staging before useful training work begins. This option does not address the specified need for data preparation and loading throughput.
+- **D. Reduce per-step memory demand** — Reducing batch size or another memory consumer can address out-of-memory failures when capacity is insufficient. This option does not address the specified need for data preparation and loading throughput.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Amazon SageMaker Debugger - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
+- [Profile and optimize computational performance - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-profile-computational-performance.html)
+- [Setting up training jobs to access datasets - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html)
+
+</details>
+
+## #1342 · MLA-C01 Q1342 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Peak activation memory exceeds the available device memory while inputs stream successfully. Which area requires adjustment?
+
+A. Optimize the compute-heavy model operations
+B. Reduce per-step memory demand
+C. Optimize input loading and data throughput
+D. Reduce avoidable startup overhead
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **B. Reduce per-step memory demand**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose the first optimization from measurements rather than assuming every slow job needs a larger GPU.
+
+#### Why this is correct
+
+- **B. Reduce per-step memory demand** — Reducing batch size or another memory consumer can address out-of-memory failures when capacity is insufficient. This matches the requirement for the memory footprint of a training step.
+
+#### Why other options are incorrect
+
+- **A. Optimize the compute-heavy model operations** — Compute optimization targets expensive model operations when the accelerator is busy rather than waiting for input. This option does not address the specified need for the memory footprint of a training step.
+- **C. Optimize input loading and data throughput** — Input optimization addresses time spent waiting for examples, storage reads, decoding, or data transfer. This option does not address the specified need for the memory footprint of a training step.
+- **D. Reduce avoidable startup overhead** — Startup optimization targets provisioning, image initialization, and input staging before useful training work begins. This option does not address the specified need for the memory footprint of a training step.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Amazon SageMaker Debugger - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
+- [Profile and optimize computational performance - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-profile-computational-performance.html)
+- [Setting up training jobs to access datasets - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html)
+
+</details>
+
+## #1343 · MLA-C01 Q1343 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A profiler shows a particular matrix operation dominates runtime on a continuously active accelerator. Which optimization area fits?
+
+A. Reduce avoidable startup overhead
+B. Reduce per-step memory demand
+C. Optimize input loading and data throughput
+D. Optimize the compute-heavy model operations
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Optimize the compute-heavy model operations**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose the first optimization from measurements rather than assuming every slow job needs a larger GPU.
+
+#### Why this is correct
+
+- **D. Optimize the compute-heavy model operations** — Compute optimization targets expensive model operations when the accelerator is busy rather than waiting for input. This matches the requirement for the operation responsible for compute time.
+
+#### Why other options are incorrect
+
+- **A. Reduce avoidable startup overhead** — Startup optimization targets provisioning, image initialization, and input staging before useful training work begins. This option does not address the specified need for the operation responsible for compute time.
+- **B. Reduce per-step memory demand** — Reducing batch size or another memory consumer can address out-of-memory failures when capacity is insufficient. This option does not address the specified need for the operation responsible for compute time.
+- **C. Optimize input loading and data throughput** — Input optimization addresses time spent waiting for examples, storage reads, decoding, or data transfer. This option does not address the specified need for the operation responsible for compute time.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Amazon SageMaker Debugger - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
+- [Profile and optimize computational performance - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-profile-computational-performance.html)
+- [Setting up training jobs to access datasets - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html)
+
+</details>
+
+## #1344 · MLA-C01 Q1344 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Profiling shows very little runtime after the first training step, but repeated provisioning is slow. Which optimization area fits?
+
+A. Optimize input loading and data throughput
+B. Reduce per-step memory demand
+C. Optimize the compute-heavy model operations
+D. Reduce avoidable startup overhead
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Reduce avoidable startup overhead**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Choose the first optimization from measurements rather than assuming every slow job needs a larger GPU.
+
+#### Why this is correct
+
+- **D. Reduce avoidable startup overhead** — Startup optimization targets provisioning, image initialization, and input staging before useful training work begins. This matches the requirement for infrastructure and initialization delay between jobs.
+
+#### Why other options are incorrect
+
+- **A. Optimize input loading and data throughput** — Input optimization addresses time spent waiting for examples, storage reads, decoding, or data transfer. This option does not address the specified need for infrastructure and initialization delay between jobs.
+- **B. Reduce per-step memory demand** — Reducing batch size or another memory consumer can address out-of-memory failures when capacity is insufficient. This option does not address the specified need for infrastructure and initialization delay between jobs.
+- **C. Optimize the compute-heavy model operations** — Compute optimization targets expensive model operations when the accelerator is busy rather than waiting for input. This option does not address the specified need for infrastructure and initialization delay between jobs.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Amazon SageMaker Debugger - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
+- [Profile and optimize computational performance - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/train-profile-computational-performance.html)
+- [Setting up training jobs to access datasets - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html)
+
+</details>
+
+## #1345 · MLA-C01 Q1345 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A deployment receives a string where the trained model expects a numeric feature because an ETL change broke the contract. What is the direct response?
+
+A. Roll back to the known-good serving version
+B. Apply the required model approval gate
+C. Retrain a candidate and evaluate it on appropriate held-out data
+D. Investigate and repair the input-data pipeline
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Investigate and repair the input-data pipeline**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Monitoring signals require different responses; a drift alarm alone does not prove that a new model is better.
+
+#### Why this is correct
+
+- **D. Investigate and repair the input-data pipeline** — A broken input contract or upstream transformation must be corrected before relying on predictions from the malformed data. This matches the requirement for repair of an upstream input-format regression.
+
+#### Why other options are incorrect
+
+- **A. Roll back to the known-good serving version** — Rollback restores an available prior serving configuration when a release causes unacceptable operational behavior. This option does not address the specified need for repair of an upstream input-format regression.
+- **B. Apply the required model approval gate** — An approval gate prevents deployment until the authorized review and release requirements are satisfied. This option does not address the specified need for repair of an upstream input-format regression.
+- **C. Retrain a candidate and evaluate it on appropriate held-out data** — Retraining can adapt to supported changes, but a candidate must demonstrate acceptable performance before release. This option does not address the specified need for repair of an upstream input-format regression.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Data and model quality monitoring with Amazon SageMaker Model Monitor - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
+- [Update the Approval Status of a Model - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-approve.html)
+- [Deployment guardrails for updating models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html)
+- [Monitoring - Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/monitoring.html)
+
+</details>
+
+## #1346 · MLA-C01 Q1346 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Valid data reflects a changed population, and labeled evaluation shows reduced predictive quality. What is the appropriate model-development response?
+
+A. Roll back to the known-good serving version
+B. Investigate and repair the input-data pipeline
+C. Retrain a candidate and evaluate it on appropriate held-out data
+D. Apply the required model approval gate
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Retrain a candidate and evaluate it on appropriate held-out data**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Monitoring signals require different responses; a drift alarm alone does not prove that a new model is better.
+
+#### Why this is correct
+
+- **C. Retrain a candidate and evaluate it on appropriate held-out data** — Retraining can adapt to supported changes, but a candidate must demonstrate acceptable performance before release. This matches the requirement for training and evaluating an adapted candidate.
+
+#### Why other options are incorrect
+
+- **A. Roll back to the known-good serving version** — Rollback restores an available prior serving configuration when a release causes unacceptable operational behavior. This option does not address the specified need for training and evaluating an adapted candidate.
+- **B. Investigate and repair the input-data pipeline** — A broken input contract or upstream transformation must be corrected before relying on predictions from the malformed data. This option does not address the specified need for training and evaluating an adapted candidate.
+- **D. Apply the required model approval gate** — An approval gate prevents deployment until the authorized review and release requirements are satisfied. This option does not address the specified need for training and evaluating an adapted candidate.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Data and model quality monitoring with Amazon SageMaker Model Monitor - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
+- [Update the Approval Status of a Model - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-approve.html)
+- [Deployment guardrails for updating models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html)
+- [Monitoring - Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/monitoring.html)
+
+</details>
+
+## #1347 · MLA-C01 Q1347 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A candidate passes technical tests, but governance requires a reviewer to authorize release. Which control must occur before deployment?
+
+A. Roll back to the known-good serving version
+B. Investigate and repair the input-data pipeline
+C. Retrain a candidate and evaluate it on appropriate held-out data
+D. Apply the required model approval gate
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Apply the required model approval gate**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Monitoring signals require different responses; a drift alarm alone does not prove that a new model is better.
+
+#### Why this is correct
+
+- **D. Apply the required model approval gate** — An approval gate prevents deployment until the authorized review and release requirements are satisfied. This matches the requirement for the required authorized model approval.
+
+#### Why other options are incorrect
+
+- **A. Roll back to the known-good serving version** — Rollback restores an available prior serving configuration when a release causes unacceptable operational behavior. This option does not address the specified need for the required authorized model approval.
+- **B. Investigate and repair the input-data pipeline** — A broken input contract or upstream transformation must be corrected before relying on predictions from the malformed data. This option does not address the specified need for the required authorized model approval.
+- **C. Retrain a candidate and evaluate it on appropriate held-out data** — Retraining can adapt to supported changes, but a candidate must demonstrate acceptable performance before release. This option does not address the specified need for the required authorized model approval.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Data and model quality monitoring with Amazon SageMaker Model Monitor - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
+- [Update the Approval Status of a Model - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-approve.html)
+- [Deployment guardrails for updating models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html)
+- [Monitoring - Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/monitoring.html)
+
+</details>
+
+## #1348 · MLA-C01 Q1348 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A newly released version causes severe inference errors, and a tested prior version is available. Which action restores service fastest?
+
+A. Investigate and repair the input-data pipeline
+B. Retrain a candidate and evaluate it on appropriate held-out data
+C. Apply the required model approval gate
+D. Roll back to the known-good serving version
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Roll back to the known-good serving version**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Monitoring signals require different responses; a drift alarm alone does not prove that a new model is better.
+
+#### Why this is correct
+
+- **D. Roll back to the known-good serving version** — Rollback restores an available prior serving configuration when a release causes unacceptable operational behavior. This matches the requirement for restoration of a known-good serving version.
+
+#### Why other options are incorrect
+
+- **A. Investigate and repair the input-data pipeline** — A broken input contract or upstream transformation must be corrected before relying on predictions from the malformed data. This option does not address the specified need for restoration of a known-good serving version.
+- **B. Retrain a candidate and evaluate it on appropriate held-out data** — Retraining can adapt to supported changes, but a candidate must demonstrate acceptable performance before release. This option does not address the specified need for restoration of a known-good serving version.
+- **C. Apply the required model approval gate** — An approval gate prevents deployment until the authorized review and release requirements are satisfied. This option does not address the specified need for restoration of a known-good serving version.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Data and model quality monitoring with Amazon SageMaker Model Monitor - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
+- [Update the Approval Status of a Model - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-approve.html)
+- [Deployment guardrails for updating models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html)
+- [Monitoring - Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/monitoring.html)
+
+</details>
+
+## #1349 · MLA-C01 Q1349 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A feature transformation accidentally changes units from meters to centimeters without the model expecting it. What should be addressed first?
+
+A. Investigate and repair the input-data pipeline
+B. Roll back to the known-good serving version
+C. Apply the required model approval gate
+D. Retrain a candidate and evaluate it on appropriate held-out data
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Investigate and repair the input-data pipeline**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Monitoring signals require different responses; a drift alarm alone does not prove that a new model is better.
+
+#### Why this is correct
+
+- **A. Investigate and repair the input-data pipeline** — A broken input contract or upstream transformation must be corrected before relying on predictions from the malformed data. This matches the requirement for correction of the changed input-unit contract.
+
+#### Why other options are incorrect
+
+- **B. Roll back to the known-good serving version** — Rollback restores an available prior serving configuration when a release causes unacceptable operational behavior. This option does not address the specified need for correction of the changed input-unit contract.
+- **C. Apply the required model approval gate** — An approval gate prevents deployment until the authorized review and release requirements are satisfied. This option does not address the specified need for correction of the changed input-unit contract.
+- **D. Retrain a candidate and evaluate it on appropriate held-out data** — Retraining can adapt to supported changes, but a candidate must demonstrate acceptable performance before release. This option does not address the specified need for correction of the changed input-unit contract.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Data and model quality monitoring with Amazon SageMaker Model Monitor - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
+- [Update the Approval Status of a Model - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-approve.html)
+- [Deployment guardrails for updating models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html)
+- [Monitoring - Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/monitoring.html)
+
+</details>
+
+## #1350 · MLA-C01 Q1350 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+Seasonal behavior changes despite a healthy data pipeline, and outcome labels confirm declining model quality. What is the appropriate next model step?
+
+A. Retrain a candidate and evaluate it on appropriate held-out data
+B. Investigate and repair the input-data pipeline
+C. Roll back to the known-good serving version
+D. Apply the required model approval gate
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **A. Retrain a candidate and evaluate it on appropriate held-out data**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Monitoring signals require different responses; a drift alarm alone does not prove that a new model is better.
+
+#### Why this is correct
+
+- **A. Retrain a candidate and evaluate it on appropriate held-out data** — Retraining can adapt to supported changes, but a candidate must demonstrate acceptable performance before release. This matches the requirement for evaluation of a retrained candidate on relevant held-out data.
+
+#### Why other options are incorrect
+
+- **B. Investigate and repair the input-data pipeline** — A broken input contract or upstream transformation must be corrected before relying on predictions from the malformed data. This option does not address the specified need for evaluation of a retrained candidate on relevant held-out data.
+- **C. Roll back to the known-good serving version** — Rollback restores an available prior serving configuration when a release causes unacceptable operational behavior. This option does not address the specified need for evaluation of a retrained candidate on relevant held-out data.
+- **D. Apply the required model approval gate** — An approval gate prevents deployment until the authorized review and release requirements are satisfied. This option does not address the specified need for evaluation of a retrained candidate on relevant held-out data.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Data and model quality monitoring with Amazon SageMaker Model Monitor - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
+- [Update the Approval Status of a Model - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-approve.html)
+- [Deployment guardrails for updating models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html)
+- [Monitoring - Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/monitoring.html)
+
+</details>
+
+## #1351 · MLA-C01 Q1351 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A release process must stop unapproved model versions from reaching the deployment stage. Which control enforces this decision?
+
+A. Roll back to the known-good serving version
+B. Investigate and repair the input-data pipeline
+C. Retrain a candidate and evaluate it on appropriate held-out data
+D. Apply the required model approval gate
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **D. Apply the required model approval gate**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Monitoring signals require different responses; a drift alarm alone does not prove that a new model is better.
+
+#### Why this is correct
+
+- **D. Apply the required model approval gate** — An approval gate prevents deployment until the authorized review and release requirements are satisfied. This matches the requirement for a model approval gate before deployment.
+
+#### Why other options are incorrect
+
+- **A. Roll back to the known-good serving version** — Rollback restores an available prior serving configuration when a release causes unacceptable operational behavior. This option does not address the specified need for a model approval gate before deployment.
+- **B. Investigate and repair the input-data pipeline** — A broken input contract or upstream transformation must be corrected before relying on predictions from the malformed data. This option does not address the specified need for a model approval gate before deployment.
+- **C. Retrain a candidate and evaluate it on appropriate held-out data** — Retraining can adapt to supported changes, but a candidate must demonstrate acceptable performance before release. This option does not address the specified need for a model approval gate before deployment.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Data and model quality monitoring with Amazon SageMaker Model Monitor - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
+- [Update the Approval Status of a Model - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-approve.html)
+- [Deployment guardrails for updating models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html)
+- [Monitoring - Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/monitoring.html)
+
+</details>
+
+## #1352 · MLA-C01 Q1352 · Tự biên soạn
+
+Trạng thái: **Đã đối chiếu** · Chọn 1.
+
+A canary release breaches configured latency alarms while the previous fleet remains healthy. Which deployment response limits impact?
+
+A. Apply the required model approval gate
+B. Retrain a candidate and evaluate it on appropriate held-out data
+C. Roll back to the known-good serving version
+D. Investigate and repair the input-data pipeline
+
+<details><summary>Answer and explanation</summary>
+
+Correct answer: **C. Roll back to the known-good serving version**
+
+### Explanation and distractor analysis
+
+#### Key Concept
+
+Monitoring signals require different responses; a drift alarm alone does not prove that a new model is better.
+
+#### Why this is correct
+
+- **C. Roll back to the known-good serving version** — Rollback restores an available prior serving configuration when a release causes unacceptable operational behavior. This matches the requirement for rollback to the healthy previous serving fleet.
+
+#### Why other options are incorrect
+
+- **A. Apply the required model approval gate** — An approval gate prevents deployment until the authorized review and release requirements are satisfied. This option does not address the specified need for rollback to the healthy previous serving fleet.
+- **B. Retrain a candidate and evaluate it on appropriate held-out data** — Retraining can adapt to supported changes, but a candidate must demonstrate acceptable performance before release. This option does not address the specified need for rollback to the healthy previous serving fleet.
+- **D. Investigate and repair the input-data pipeline** — A broken input contract or upstream transformation must be corrected before relying on predictions from the malformed data. This option does not address the specified need for rollback to the healthy previous serving fleet.
+
+#### Notes
+
+- Original practice scenario; not an official AWS exam item or a CertSafari question.
+- Documentation-based study material. Review date: 2026-09-22. Related scenarios reinforce the same concepts.
+
+#### References
+
+- [Data and model quality monitoring with Amazon SageMaker Model Monitor - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
+- [Update the Approval Status of a Model - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-approve.html)
+- [Deployment guardrails for updating models in production - Amazon SageMaker AI](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html)
+- [Monitoring - Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/monitoring.html)
 
 </details>

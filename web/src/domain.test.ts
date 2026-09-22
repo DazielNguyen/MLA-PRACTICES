@@ -11,7 +11,7 @@ const review=bank.find(q=>q.status==='review')!;
 const settings={...defaultSettings,count:2,order:'sequential' as const};
 const make=():State=>({...emptyState(),active:createSession([single,multi],settings,'practice',1000)});
 test('merged bank retains unique IDs, provenance, choices, and image assets',()=>{
-  assert.equal(bank.length,242);assert.equal(new Set(bank.map(q=>q.id)).size,242);
+  assert.equal(bank.length,594);assert.equal(new Set(bank.map(q=>q.id)).size,594);
   assert.equal(bank.filter(q=>q.status==='review').length,32);
   for(const q of bank){assert.ok(q.text.length>30);assert.ok(Object.keys(q.choices).length>=4);assert.ok(q.sourceName);assert.ok(q.sourceIds.length);if(q.status!=='source')assert.ok(q.sources.length);for(const source of q.sources)assert.match(source.url,/^https:\/\//);if(q.status!=='review'){assert.equal(q.required,q.answer.length);assert.ok(q.answer.every(a=>Object.hasOwn(q.choices,a)));}for(const im of q.images){assert.ok(existsSync(new URL(`../public${im.url}`,import.meta.url)));assert.ok(im.slot==='question'||Object.hasOwn(q.choices,im.slot));}}
 });
@@ -27,8 +27,8 @@ test('single choice replaces; multi choice caps and can be deselected',()=>{
 });
 test('exam never contains unresolved answers, even with includeReview enabled',()=>{
   const pool=eligibleQuestions(bank,{...defaultSettings,includeReview:true},emptyState(),'exam');
-  assert.equal(pool.length,210);assert.ok(pool.every(q=>q.status!=='review'));
-  assert.equal(eligibleQuestions(bank,{...defaultSettings,includeHistorical:false},emptyState(),'exam').length,210);
+  assert.equal(pool.length,562);assert.ok(pool.every(q=>q.status!=='review'));
+  assert.equal(eligibleQuestions(bank,{...defaultSettings,includeHistorical:false},emptyState(),'exam').length,562);
 });
 test('question filters combine scope, range and status',()=>{
   const state=emptyState();state.bookmarks=[333,415];
@@ -82,7 +82,7 @@ test('invalid backups are rejected before replacing progress',()=>{
 
 test('collection and source status filters keep MLS and MLA separate',()=>{
   const mla=eligibleQuestions(bank,{...defaultSettings,collection:'mla'},emptyState(),'exam');
-  assert.equal(mla.length,210);assert.ok(mla.every(q=>q.collection==='mla'));
+  assert.equal(mla.length,562);assert.ok(mla.every(q=>q.collection==='mla'));
   assert.deepEqual(eligibleQuestions(bank,{...defaultSettings,collection:'mla',includeSource:false},emptyState(),'exam'),mla);
   assert.equal(eligibleQuestions(bank,{...defaultSettings,collection:'mls'},emptyState(),'exam').length,0);
   assert.ok(!mla.some(q=>q.id===469));
@@ -101,7 +101,7 @@ test('new question sessions roundtrip and old sessions without collection still 
   assert.deepEqual(validateState(legacy,bank),legacy);
 });
 test('deduplication preserves all source question references and resolves conflicts',()=>{
-  const mla=bank.filter(q=>q.collection==='mla');
+  const mla=bank.filter(q=>q.collection==='mla'&&q.origin!=='original');
   const refs=mla.flatMap(q=>q.sourceIds).sort((a,b)=>a-b);
   assert.deepEqual(refs,Array.from({length:286},(_,i)=>i+1));
   assert.deepEqual(bank.find(q=>q.id===433)!.sourceIds,[101,247]);

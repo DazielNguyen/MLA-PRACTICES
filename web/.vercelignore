@@ -3,6 +3,7 @@ test-results
 playwright-report
 tests
 scripts
+local-study
 dist
 *.tsbuildinfo
 .env*

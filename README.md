@@ -13,10 +13,11 @@ npm run dev
 Mở **http://127.0.0.1:5173/**.
 
 - Flashcard, luyện có đáp án, luyện ẩn đáp án và thi có đồng hồ.
-- 574 câu: 332 câu MLS cũ và 242 câu MLA-C01 sau khi gộp 44 bản lặp trong ZIP bổ sung.
-- Lọc riêng MLS, MLA-C01 hoặc học chung. Đáp án chưa kiểm chứng được ghi rõ **Theo nguồn**.
+- 594 câu MLA-C01: 242 câu từ ZIP và 352 câu **Tự biên soạn**. MLS chỉ giữ trong kho lưu trữ.
+- Lọc riêng bộ tự biên soạn khi luyện tập, thi thử, học flashcard hoặc xem ngân hàng câu hỏi.
 - Hồ sơ theo tên, bài riêng cho từng tab, lịch sử chia sẻ chỉ đọc.
 - Lưu trên trình duyệt hoặc đồng bộ Supabase, không cần email/mật khẩu.
+- [Thông tin bộ tự biên soạn và xuất Quizlet](web/PERSONAL_STUDY.md).
 - [Hướng dẫn tạo và kết nối Supabase](web/SUPABASE_SETUP.md).
 - Có cấu hình Vercel. Khi import repository, chọn Root Directory là `web`.
 

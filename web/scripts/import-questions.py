@@ -148,6 +148,7 @@ def write_exports(bank):
     statuses = {'checked': 'Đã đối chiếu', 'historical': 'Dịch vụ cũ', 'source': 'Theo nguồn', 'review': 'Cần xác minh'}
     for q in bank:
         label = ('MLS' if q['collection'] == 'mls' else 'MLA-C01') + ' Q' + '/Q'.join(f'{i:03}' for i in q['sourceIds'])
+        if q.get('origin') == 'original': label += ' · Tự biên soạn'
         md += [f"## #{q['id']} · {label}", '', f"Trạng thái: **{statuses[q['status']]}** · Chọn {q['required']}.", '', q['text'], '']
         image_base = './images/' if q['collection'] == 'mls' else '../../web/public/images/'
         md += [f"![{im['alt']}]({image_base}{Path(im['url']).name})" for im in q['images'] if im['slot'] == 'question']
@@ -217,6 +218,16 @@ def main():
     bank = old + new
     original_keys = {q['id']: {'answer': list(q['answer']), 'status': q['status']} for q in bank}
     attach(bank)
+    originals = json.loads((APP / 'scripts/original-questions.json').read_text())
+    assert [q['id'] for q in originals] == list(range(1001, 1353))
+    assert all(q['origin'] == 'original' and q['collection'] == 'mla' for q in originals)
+    assert not ({normalized(q['text']) for q in bank} & {normalized(q['text']) for q in originals})
+    assert len({normalized(q['text']) for q in originals}) == len(originals)
+    for q in originals:
+        assert set(q['analysis']['options']) == set(q['choices'])
+        assert set(q['answer']) <= set(q['choices']) and q['sources']
+    bank += originals
+    original_keys.update({q['id']: {'answer': q['answer'], 'status': q['status']} for q in originals})
     study_duplicates = group_study_duplicates(bank)
     study_bank = [q for q in bank if 'duplicateOf' not in q]
     web_bank = [q for q in study_bank if q['collection'] == 'mla']
@@ -235,7 +246,7 @@ def main():
     assert all(len(q['answer']) == q['required'] for q in bank if q['status'] != 'review')
     catalog = {'total': len(web_bank), 'records': len(web_bank), 'archivedVariants': 0, 'maxId': max(q['id'] for q in web_bank),
                'collections': dict(Counter(q['collection'] for q in web_bank)), 'statuses': dict(Counter(q['status'] for q in web_bank)),
-               'sourceMap': {str(source): q['id'] for q in new for source in q['sourceIds']}}
+               'sourceMap': {str(source): q['id'] for q in new + originals for source in q['sourceIds']}}
     (APP / 'src/data/questions.json').write_text(json.dumps(web_bank, ensure_ascii=False, separators=(',', ':')) + '\n')
     (APP / 'src/data/catalog.json').write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + '\n')
     (OUTPUT / 'MERGE_AUDIT.json').write_text(json.dumps(audit, ensure_ascii=False, indent=2) + '\n')

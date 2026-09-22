@@ -10,3 +10,6 @@
 /tmp/pdfs/mla-bundle-parsed.json
 /tmp/answer-analysis/
 __pycache__/
+
+# Personal study sources and exports stay on this computer.
+/web/local-study/

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowUpRight, BookOpen, Check, ChevronRight, Clock3, Download, GraduationCap, LayoutDashboard, Layers3, Library, Menu, TrendingUp, Upload, UserRound, Users, X } from 'lucide-react';
-import rawBank from './data/questions.json';
+import rawBank from '@study-bank';
 import type { Question, Session, Settings, State } from './domain';
 import { createSession, defaultSettings, eligibleQuestions, finishSession, studyQuestions, studyState, isStudySession } from './domain';
 import { useLearners, useProgress } from './store';

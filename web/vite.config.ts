@@ -1,6 +1,9 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
-export default defineConfig(({mode}) => {
+import { fileURLToPath, URL } from 'node:url';
+export default defineConfig(({mode, command}) => {
+  const personal = mode === 'personal';
+  if (personal && command !== 'serve') throw new Error('Bộ cá nhân chỉ chạy local bằng npm run study; không dùng để build production.');
   const env = loadEnv(mode, process.cwd(), 'VITE_');
   const url = env.VITE_SUPABASE_URL;
   const key = env.VITE_SUPABASE_PUBLISHABLE_KEY || env.VITE_SUPABASE_ANON_KEY;
@@ -12,5 +15,14 @@ export default defineConfig(({mode}) => {
     }
     if (secret) throw new Error('Không đặt secret key hoặc service_role key trong VITE_. Chỉ dùng publishable key hoặc anon key.');
   }
-  return { plugins: [react()] };
+  return {
+    plugins: [react()],
+    resolve: { alias: { '@study-bank': fileURLToPath(new URL('./src/data/questions.json', import.meta.url)) } },
+    // Personal mode uses the published bank and keeps progress on this browser.
+    ...(personal ? { define: {
+      'import.meta.env.VITE_SUPABASE_URL': JSON.stringify(''),
+      'import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY': JSON.stringify(''),
+      'import.meta.env.VITE_SUPABASE_ANON_KEY': JSON.stringify(''),
+    }, server: { host: '127.0.0.1' } } : {}),
+  };
 });

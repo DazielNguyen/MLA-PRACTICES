@@ -99,8 +99,18 @@ begin
   payload:=jsonb_build_object('id','expanded-session','mode','practice','questionIds',(select jsonb_agg(n) from generate_series(1,400) n),'answers','{}'::jsonb,'settings','{}'::jsonb,'startedAt',1000,'finishedAt',null);
   result:=public.ml_push_rows('11111111-1111-1111-1111-111111111111',jsonb_build_array(jsonb_build_object('key','session:expanded-session','kind','session','value',payload,'stamp',1,'writer','tab-a')));
   assert jsonb_array_length(result->0->'value'->'questionIds')=400, 'sessions can contain more than the old 332 limit';
+  result:=public.ml_push_rows('11111111-1111-1111-1111-111111111111','[{"key":"known:1001","kind":"known","value":true,"stamp":1,"writer":"tab-a"},{"key":"bookmark:1352","kind":"bookmark","value":true,"stamp":1,"writer":"tab-a"},{"key":"attempt:original-session:1352","kind":"attempt","value":{"questionId":1352,"sessionId":"original-session","correct":true,"lastSeen":3000},"stamp":1,"writer":"tab-a"}]'::jsonb);
+  assert jsonb_array_length(result)=3, 'original question marks and attempts are accepted';
+  assert exists(select 1 from public.ml_records where key='bookmark:1352' and value='true'::jsonb), 'four-digit bookmark persists';
+  payload:=jsonb_build_object('id','original-session','mode','practice','questionIds',(select jsonb_agg(n) from generate_series(1001,1352) n),'answers','{}'::jsonb,'settings','{}'::jsonb,'startedAt',1000,'finishedAt',null);
+  result:=public.ml_push_rows('11111111-1111-1111-1111-111111111111',jsonb_build_array(jsonb_build_object('key','session:original-session','kind','session','value',payload,'stamp',1,'writer','tab-a')));
+  assert jsonb_array_length(result->0->'value'->'questionIds')=352, 'full original session persists';
   begin
-    perform public.ml_push_rows('11111111-1111-1111-1111-111111111111','[{"key":"known:619","kind":"known","value":true,"stamp":1,"writer":"tab-a"}]'::jsonb);
+    perform public.ml_push_rows('11111111-1111-1111-1111-111111111111','[{"key":"attempt:invalid:1353","kind":"attempt","value":{"questionId":1353,"sessionId":"invalid","correct":true,"lastSeen":3000},"stamp":1,"writer":"tab-a"}]'::jsonb);
+    raise exception 'out of range attempt accepted' using errcode='XX000';
+  exception when raise_exception then null; end;
+  begin
+    perform public.ml_push_rows('11111111-1111-1111-1111-111111111111','[{"key":"known:1353","kind":"known","value":true,"stamp":1,"writer":"tab-a"}]'::jsonb);
     raise exception 'out of range question accepted' using errcode='XX000';
   exception when raise_exception then null; end;
 end $$;

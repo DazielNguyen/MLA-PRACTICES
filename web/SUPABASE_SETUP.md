@@ -31,13 +31,14 @@ Nếu bật CAPTCHA cho anonymous sign-in, cần tích hợp widget và truyền
 3. Dán toàn bộ nội dung [supabase/001_study_profiles.sql](supabase/001_study_profiles.sql).
 4. Chạy truy vấn **một lần** trên project mới.
 5. Chạy tiếp [supabase/002_expanded_question_bank.sql](supabase/002_expanded_question_bank.sql) để hỗ trợ bộ tổng hợp.
-6. Kiểm tra ba bảng: `ml_profiles`, `ml_memberships` và `ml_records`.
+6. Chạy [supabase/003_original_question_bank.sql](supabase/003_original_question_bank.sql) để hỗ trợ 352 câu tự biên soạn.
+7. Kiểm tra ba bảng: `ml_profiles`, `ml_memberships` và `ml_records`.
 
-Dùng hai file migration theo thứ tự `001` rồi `002`. Các file `test-bootstrap.sql` và `security-tests.sql` chỉ dành cho kiểm tra cục bộ.
+Dùng các migration theo thứ tự `001`, `002`, rồi `003`. Các file `test-bootstrap.sql` và `security-tests.sql` chỉ dành cho kiểm tra cục bộ.
 
-Project hiện tại đã chạy cả hai migration. Khi nâng cấp từ bộ 332 câu, chỉ chạy `002`; không cần tạo lại bảng.
+Khi nâng cấp từ bộ 332 câu, chạy `002` rồi `003`. Project đã có `002` chỉ cần chạy `003`; không tạo lại bảng.
 
-Migration `002` mở giới hạn mã câu và độ dài bài đến 618. Nó giữ nguyên lịch sử, thành viên và chính sách truy cập.
+Migration `002` mở giới hạn đến 618. Migration `003` mở giới hạn đến 1352 và cho phép mã câu có bốn chữ số. Cả hai giữ nguyên lịch sử, thành viên và chính sách truy cập.
 
 SQL tạo RLS, quyền đọc theo hồ sơ và các hàm ghi có kiểm tra quyền. Không cần tắt RLS hoặc mở quyền ghi công khai. [Tài liệu RLS](https://supabase.com/docs/guides/database/postgres/row-level-security)
 
@@ -176,6 +177,6 @@ Kiểm tra SQL cần PostgreSQL và `pg_config` trong PATH. Script tạo databas
 
 Các kiểm tra SQL bao gồm RLS, chia sẻ chỉ đọc, khôi phục danh tính, chuyển tab, chống chấm trùng và giới hạn bộ câu hỏi mới.
 
-Bản cập nhật được kiểm tra bằng PostgreSQL cục bộ và API giả lập. Migration `002` cũng đã được xác nhận trên project thật.
+Bản cập nhật được kiểm tra bằng PostgreSQL cục bộ và API giả lập. Migration `002` và `003` đã được xác nhận trên project thật. `003` được áp dụng ngày 22/09/2026.
 
 Khi cấu hình project khác, làm thêm quy trình hai thiết bị ở bước 7.

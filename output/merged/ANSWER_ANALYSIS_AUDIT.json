@@ -1,13 +1,13 @@
 {
-  "total": 574,
-  "complete": 574,
-  "optionAnalyses": 2396,
+  "total": 926,
+  "complete": 926,
+  "optionAnalyses": 3804,
   "statuses": {
     "review": 60,
-    "checked": 487,
+    "checked": 839,
     "historical": 27
   },
-  "studyTotal": 567,
+  "studyTotal": 919,
   "archivedIds": [
     188,
     193,

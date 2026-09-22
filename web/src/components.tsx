@@ -7,6 +7,9 @@ import { sourceLabel } from './domain';
 export function Tag({ status }: { status: Question['status'] }) {
   return <span className={`tag ${status}`}>{status === 'checked' ? <><Check size={12} /> Đã đối chiếu</> : status === 'historical' ? 'Dịch vụ cũ' : status === 'source' ? 'Theo nguồn' : 'Cần xác minh'}</span>;
 }
+export function OriginTag({ question }: { question: Question }) {
+  return question.origin === 'original' ? <span className="tag original">Tự biên soạn</span> : null;
+}
 export function QuestionImages({ question, slot = 'question' }: { question: Question; slot?: string }) {
   return <>{question.images.filter(im => im.slot === slot).map(im => <a className="question-image" key={im.url} href={im.url} target="_blank" rel="noreferrer" aria-label="Mở hình câu hỏi ở kích thước đầy đủ"><img src={im.url} alt={im.alt} loading="lazy" /><span>Mở hình đầy đủ <ExternalLink size={11} /></span></a>)}</>;
 }

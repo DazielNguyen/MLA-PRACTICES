@@ -90,11 +90,15 @@ Nếu xóa dữ liệu trình duyệt, dùng mã Supabase hoặc bản sao JSON 
 
 ## Nguồn câu hỏi trên web
 
-Ngân hàng web có **242 câu MLA-C01**, được gộp từ 286 mục trong ZIP. Có 16 ảnh khác nhau.
+Ngân hàng web có **594 câu MLA-C01**: 242 câu được gộp từ 286 mục trong ZIP và 352 câu **Tự biên soạn**. Có 16 ảnh khác nhau.
+
+Chọn bộ **MLA-C01 · 352 câu tự biên soạn** khi luyện tập hoặc thi thử. Flashcard và Ngân hàng câu hỏi có bộ lọc **Nguồn câu hỏi**.
+
+Bộ tự biên soạn gồm các tình huống luyện tập thuộc 44 chủ đề, không phải câu hỏi thi chính thức. Xem [nguồn dữ liệu và xuất Quizlet](PERSONAL_STUDY.md).
 
 | Trạng thái | Số câu | Cách sử dụng |
 | --- | ---: | --- |
-| Đã đối chiếu | 210 | Có đáp án và chấm điểm. Dùng trong học nhanh, luyện tập, flashcard và thi thử. |
+| Đã đối chiếu | 562 | Có đáp án và chấm điểm. Dùng trong học nhanh, luyện tập, flashcard và thi thử. |
 | Cần xác minh | 32 | Có phân tích theo điều kiện. Không chấm điểm và không xuất hiện trong thi thử. |
 
 Mỗi câu có giải thích tiếng Anh cho từng lựa chọn và nguồn đối chiếu AWS.
@@ -103,11 +107,11 @@ Phần đáp án gồm **Correct answer**, **Key Concept**, **Why this is correc
 
 Câu cần xác minh dùng **Answer not finalized**. Bật bộ lọc tương ứng để đọc thêm trong luyện tập hoặc flashcard.
 
-Mã câu được giữ nguyên để tiến trình MLA-C01 tiếp tục hoạt động. Mã ngân hàng bằng 332 cộng số câu nguồn được giữ.
+Mã câu được giữ nguyên để tiến trình MLA-C01 tiếp tục hoạt động. Với bộ ZIP, mã ngân hàng bằng 332 cộng số câu nguồn được giữ. Bộ tự biên soạn dùng mã 1001–1352.
 
 Ví dụ, MLA-C01 Q001 có mã #333. Các khoảng trống là câu đã gộp, không phải câu bị mất.
 
-File `src/data/questions.json` chỉ chứa 242 câu MLA-C01. Thư mục `public/images/` chỉ chứa ảnh MLA-C01.
+File `src/data/questions.json` chỉ chứa 594 câu MLA-C01. Thư mục `public/images/` chỉ chứa ảnh MLA-C01.
 
 Bản web không đóng gói nội dung, đáp án, giải thích hoặc hình của bộ MLS.
 

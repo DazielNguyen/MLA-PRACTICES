@@ -33,3 +33,10 @@
 @keyframes quick-feedback-in{from{opacity:.3;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:540px){.quick-session .session-layout{padding-top:14px}.quick-question .question-text{font-size:14px;line-height:1.8}.quick-keyboard-hint{font-size:10px;gap:4px}.quick-keyboard-hint kbd{font-size:10px}.quick-question .choice-button{padding:13px 11px;gap:10px}.quick-question .choice-shortcut{display:none}.quick-question .choice-button>span[lang]{font-size:12px}.quick-session .session-footer{padding:10px}.quick-session .session-footer-label{display:none}.quick-session .session-footer>.button:first-child>span{display:none}.quick-next{min-width:103px}.compact-explanation{padding:14px!important}}
 @media(prefers-reduced-motion:reduce){.quick-question,.quick-feedback{animation:none}.quick-progress>span,.quick-question .choice-button{transition:none}}
+
+/* Original practice source labels and selectors. */
+.tag.original{background:#eee8fb;color:#76539b;border:1px solid #d9cbed;white-space:nowrap}
+.origin-filter{display:flex;align-items:center;gap:10px;font-size:12px;color:#607052;flex-wrap:wrap}
+.origin-filter select{border:1px solid #dce3d2;background:#fff;border-radius:9px;padding:10px;font:inherit;color:#35482d;max-width:100%}
+.flash-controls{flex-wrap:wrap;gap:14px}.library-toolbar{flex-wrap:wrap}.library-card-meta{flex-wrap:wrap}
+@media(max-width:540px){.library-toolbar select{min-width:0;max-width:100%;flex:1}.flash-meta>span{line-height:1.7;max-width:75%}}

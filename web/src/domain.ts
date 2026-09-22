@@ -2,7 +2,7 @@ import { retiredQuestionShapes } from './data/retired-question-shapes.ts';
 
 export type Question = {
   id: number; page: number | null; text: string; choices: Record<string, string>;
-  collection: 'mls' | 'mla'; sourceIds: number[]; sourceName: string; domain?: string; hint?: string;
+  collection: 'mls' | 'mla'; sourceIds: number[]; sourceName: string; domain?: string; hint?: string; origin?: 'original';
   answer: string[]; required: number; status: 'checked' | 'historical' | 'review' | 'source';
   explanation: string; sources: { title: string; url: string }[]; notes: string[];
   analysis?: { keyConcept: string; options: Record<string, string> };
@@ -25,15 +25,18 @@ export type Progress = { attempts: number; correct: number; latest: boolean; las
 export type State = {
   version: 1; updatedAt: number; bookmarks: number[]; known: number[];
   progress: Record<string, Progress>; active: Session | null; history: Session[];
-  flash: { ids: number[]; index: number; filter?: 'all'|'new'|'known'|'bookmarked'; includeReview?: boolean; collection?: 'all'|'mls'|'mla'; includeSource?: boolean } | null;
+  flash: { ids: number[]; index: number; origin?: 'all'|'imported'|'original'; filter?: 'all'|'new'|'known'|'bookmarked'; includeReview?: boolean; collection?: 'all'|'mls'|'mla'; includeSource?: boolean } | null;
 };
 export const STORAGE_KEY = 'ml-practice:v1';
 export const defaultSettings: Settings = { count: 20, minutes: 40, order: 'random', scope: 'all', range: 'all', includeReview: false, includeHistorical: false, feedback: 'immediate', collection: 'mla', includeSource: false };
 export const questionRanges = [
   ...['333-397','398-462','463-527','528-592','593-618'].map((value,i)=>({value,collection:'mla',label:`MLA-C01 · bộ ${i+1}`})),
+  { value:'1001-1352', collection:'mla', label:'MLA-C01 · 352 câu tự biên soạn' },
+  ...['1001-1096','1097-1184','1185-1264','1265-1352'].map((value,i)=>({value,collection:'mla',label:`Tự biên soạn · Domain ${i+1}`})),
 ];
 export const collectionLabel = (collection: string) => collection === 'mla' ? 'MLA-C01 · Associate' : collection === 'mls' ? 'MLS · Specialty' : 'MLS + MLA-C01';
-export const sourceLabel = (q: Question) => `${q.collection === 'mla' ? 'MLA-C01' : 'MLS'} Q${String(q.sourceIds[0]).padStart(3,'0')}`;
+export const sourceLabel = (q: Question) => `${q.collection === 'mla' ? 'MLA-C01' : 'MLS'} Q${String(q.sourceIds[0]).padStart(3,'0')}${q.origin === 'original' ? ' · Tự biên soạn' : ''}`;
+export const matchesOrigin = (q: Question, origin: string) => origin === 'all' || (q.origin === 'original' ? origin === 'original' : origin === 'imported');
 export const emptyState = (): State => ({ version: 1, updatedAt: 0, bookmarks: [], known: [], progress: {}, active: null, history: [], flash: null });
 export const isCorrect = (q: Question, answer: string[] = []) => q.status !== 'review' && answer.length === q.answer.length && q.answer.every(v => answer.includes(v));
 export const isQuickSession = (session: Session) => session.mode === 'practice' && session.settings.feedback === 'immediate' && session.settings.quick === true;
@@ -181,5 +184,6 @@ export function validateState(input: unknown, bank: Question[]): State {
   if (input.flash !== null && (!object(input.flash) || !ids(input.flash.ids) || !input.flash.ids.length || !Number.isInteger(input.flash.index) || Number(input.flash.index) < 0 || Number(input.flash.index) >= input.flash.ids.length)) return fail();
   if (object(input.flash) && (input.flash.filter !== undefined && !['all','new','known','bookmarked'].includes(String(input.flash.filter)) || input.flash.includeReview !== undefined && typeof input.flash.includeReview !== 'boolean')) return fail();
   if (object(input.flash) && (input.flash.collection !== undefined && !['all','mls','mla'].includes(String(input.flash.collection)) || input.flash.includeSource !== undefined && typeof input.flash.includeSource !== 'boolean')) return fail();
+  if (object(input.flash) && input.flash.origin !== undefined && !['all','imported','original'].includes(String(input.flash.origin))) return fail();
   return JSON.parse(JSON.stringify(input)) as State;
 }

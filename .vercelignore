@@ -9,5 +9,6 @@ web/test-results
 web/playwright-report
 web/tests
 web/scripts
+web/local-study
 web/*.tsbuildinfo
 **/.DS_Store

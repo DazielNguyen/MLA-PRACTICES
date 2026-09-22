@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowUpRight, BookOpen, Check, ChevronRight, Clock3, Download, GraduationCap, LayoutDashboard, Layers3, Library, Menu, TrendingUp, Upload, UserRound, Users, X } from 'lucide-react';
 import rawBank from './data/questions.json';
 import type { Question, Session, Settings, State } from './domain';
-import { createSession, defaultSettings, eligibleQuestions, finishSession, studyQuestions } from './domain';
+import { createSession, defaultSettings, eligibleQuestions, finishSession, studyQuestions, studyState, isStudySession } from './domain';
 import { useLearners, useProgress } from './store';
 import { Welcome, LearnerSettings } from './Learners';
 import Group from './Group';
@@ -41,7 +41,8 @@ export default function App() {
   return <StudyApp key={learner.id} learner={learner} switchLearner={()=>select('')}/>;
 }
 function StudyApp({learner,switchLearner}:{learner:Learner;switchLearner:()=>void}) {
-  const { state, update, storageError, repo, cloudStatus, cloudError, lastSynced, sync }=useProgress(bank,learner);
+  const { state: storedState, update, storageError, repo, cloudStatus, cloudError, lastSynced, sync }=useProgress(bank,learner);
+  const state=useMemo(()=>studyState(storedState,bank),[storedState]);
   const saveLabel = storageError ? 'Chưa lưu được trên máy' : cloudStatus==='local' ? 'Lưu trên trình duyệt' : cloudStatus==='synced' ? 'Đã đồng bộ' : cloudStatus==='error' ? 'Chờ kết nối lại' : 'Đang đồng bộ…';
   const [route,setRoute]=useState(location.hash.slice(1)||'/');
   const [menu,setMenu]=useState(false), [message,setMessage]=useState('');
@@ -89,7 +90,7 @@ function StudyApp({learner,switchLearner}:{learner:Learner;switchLearner:()=>voi
     <a href="#main" className="skip-link" onClick={e=>{e.preventDefault();document.getElementById('main')?.focus();}}>Đến nội dung chính</a>
     {menu&&<button className="sidebar-scrim" aria-label="Đóng điều hướng" onClick={()=>setMenu(false)}/>}
     <aside className={`sidebar ${menu?'open':''}`}><a className="brand" href="#/" aria-label="ML Practice — Tổng quan" onClick={()=>setMenu(false)}><span className="brand-symbol">m<span>l</span></span><span>ML Practice<small>YOUR LEARNING SPACE</small></span></a><div className="nav-caption">KHÔNG GIAN CỦA BẠN</div><nav aria-label="Điều hướng chính">{navigation.map(({path,label,icon:Icon},i)=><a href={`#${path}`} onClick={()=>setMenu(false)} className={`nav-link ${route===path?'active':''} ${i===4?'nav-divider':''}`} aria-label={label} title={label} aria-current={route===path?'page':undefined} key={path}><Icon size={19}/><span>{label}</span>{route===path&&<span className="nav-active-dot"/>}</a>)}</nav>
-      <div className="sidebar-bottom"><div className="bank-card"><GraduationCap size={22}/><span>BỘ TÀI LIỆU ĐANG HỌC</span><strong>Machine Learning<br/>MLS + MLA-C01</strong><div>{studyBank.length} câu hỏi <span>2 bộ</span></div></div><p><span className="live-dot"/>Học theo nhịp của bạn</p><span className="sidebar-version">ML Practice · v2.0</span></div></aside>
+      <div className="sidebar-bottom"><div className="bank-card"><GraduationCap size={22}/><span>BỘ TÀI LIỆU ĐANG HỌC</span><strong>Machine Learning Engineer<br/>MLA-C01</strong><div>{studyBank.length} câu hỏi <span>Associate</span></div></div><p><span className="live-dot"/>Học theo nhịp của bạn</p><span className="sidebar-version">ML Practice · v2.0</span></div></aside>
     <div className="app-main"><header className="topbar"><div><button className="icon-button menu-button" aria-label="Mở điều hướng" onClick={()=>setMenu(true)}><Menu size={21}/></button><span className="breadcrumb">Không gian học tập</span><ChevronRight size={14}/><strong>{title}</strong></div><div><span className={`save-indicator ${storageError?'failed':''}`}><Check size={13}/>{saveLabel}</span><button className="current-learner" onClick={()=>go('/learner')} aria-label={`Đang học: ${learner.name}`}><span className="profile-icon">{learner.name.slice(0,1).toUpperCase()}</span><span>{learner.name}</span></button></div></header>
     <main id="main" tabIndex={-1}>
       {cloudError&&<div className="cloud-warning" role="status"><span>Chưa đồng bộ được. Bài làm vẫn được giữ trên máy.</span><button className="text-button" onClick={()=>go('/learner')}>Xem kết nối</button></div>}
@@ -99,9 +100,9 @@ function StudyApp({learner,switchLearner}:{learner:Learner;switchLearner:()=>voi
        route==='/library'?<LibraryPage bank={bank} state={state} update={update}/>:
        route==='/learner'?<LearnerSettings learner={learner} switchLearner={switchLearner} cloudStatus={cloudStatus} cloudError={cloudError} lastSynced={lastSynced} sync={sync}/>:
        route==='/group'?<Group bank={bank}/>:
-       route==='/progress'?<ProgressPage bank={bank} state={state} learnerName={learner.name} cloud={cloudConfigured} unfinished={repo.unfinished()} resume={id=>{repo.resume(id);go('/session');}} go={go} exportProgress={()=>download(repo.backup())} importProgress={()=>fileInput.current?.click()}/>:
+       route==='/progress'?<ProgressPage bank={bank} state={state} learnerName={learner.name} cloud={cloudConfigured} unfinished={repo.unfinished().filter(s=>isStudySession(s,bank))} resume={id=>{repo.resume(id);go('/session');}} go={go} exportProgress={()=>download(repo.backup())} importProgress={()=>fileInput.current?.click()}/>:
        result?<Results key={result.id} session={result} bank={bank} go={go}/>:
-       <div className="page"><Empty title={route==='/session'?'Phiên này đã đóng hoặc chuyển sang tab khác':'Chưa có phiên học ở đây'}>Mở trang Tiến trình để xem lịch sử hoặc tiếp tục một bài chưa hoàn thành.</Empty><button className="button primary" onClick={()=>go('/progress')}>Xem tiến trình <ArrowUpRight size={16}/></button></div>}
+       <div className="page"><Empty title={route==='/session'?'Phiên này không còn trong bộ MLA-C01 hoặc đã đóng':'Chưa có phiên học ở đây'}>Web chỉ phục vụ MLA-C01. Phiên từ bộ đề cũ vẫn được giữ trong bản sao tiến trình.</Empty><button className="button primary" onClick={()=>go('/progress')}>Xem tiến trình <ArrowUpRight size={16}/></button></div>}
     </main><footer className="app-footer"><span>Small steps. Deep learning.</span><div><button onClick={()=>download(repo.backup())}><Download size={13}/>Xuất tiến trình</button><button onClick={()=>fileInput.current?.click()}><Upload size={13}/>Nhập bản sao</button></div></footer></div>{overlays}
   </div>;
 }

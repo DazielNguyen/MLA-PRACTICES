@@ -10,7 +10,7 @@ Trạng thái: **Cần xác minh** · Chọn 1.
 
 A large mobile network operating company is building a machine learning model to predict customers who are likely to unsubscribe from the service. The company plans to offer an incentive for these customers as the cost of churn is far greater than the cost of the incentive. The model produces the following confusion matrix after evaluating on a test dataset of 100 customers: Based on the model evaluation results, why is this a viable model for production?
 
-![Confusion matrix: rows Actual Yes, Actual No; columns Predicted Yes, Predicted No. Actual Yes: [10, 4]. Actual No: [10, 76]. Total: 100.](../../web/public/images/q001_1.jpg)
+![Confusion matrix: rows Actual Yes, Actual No; columns Predicted Yes, Predicted No. Actual Yes: [10, 4]. Actual No: [10, 76]. Total: 100.](./images/q001_1.jpg)
 A. The model is 86% accurate and the cost incurred by the company as a result of false negatives is less than the false positives.
 B. The precision of the model is 86%, which is less than the accuracy of the model.
 C. The model is 86% accurate and the cost incurred by the company as a result of false positives is less than the false negatives.
@@ -454,7 +454,7 @@ Trạng thái: **Đã đối chiếu** · Chọn 1.
 
 The displayed graph is from a forecasting model for testing a time series. Considering the graph only, which conclusion should a Machine Learning Specialist make about the behavior of the model?
 
-![Chart Daily Sales Actuals Vs Forecast: actual sales rise approximately from 32 to 65; forecast rises approximately from 11 to 40. Both lines show repeated peaks and troughs at corresponding times, with the forecast below actual sales. Values are approximate readings from the chart.](../../web/public/images/q013_1.jpg)
+![Chart Daily Sales Actuals Vs Forecast: actual sales rise approximately from 32 to 65; forecast rises approximately from 11 to 40. Both lines show repeated peaks and troughs at corresponding times, with the forecast below actual sales. Values are approximate readings from the chart.](./images/q013_1.jpg)
 A. The model predicts both the trend and the seasonality well
 B. The model predicts the trend well, but not the seasonality.
 C. The model predicts the seasonality well, but not the trend.
@@ -492,7 +492,7 @@ Trạng thái: **Đã đối chiếu** · Chọn 1.
 
 A company wants to classify user behavior as either fraudulent or normal. Based on internal research, a Machine Learning Specialist would like to build a binary classifier based on two features: age of account and transaction month. The class distribution for these features is illustrated in the figure provided. Based on this information, which model would have the HIGHEST accuracy?
 
-![Scatter plot: x=Transaction Month (0–12), y=Account Age (0–10). Orange fraud points occupy a roughly circular central region around x=3–7 and y=3–7. Black normal points surround this central region.](../../web/public/images/q014_1.jpg)
+![Scatter plot: x=Transaction Month (0–12), y=Account Age (0–10). Orange fraud points occupy a roughly circular central region around x=3–7 and y=3–7. Black normal points surround this central region.](./images/q014_1.jpg)
 A. Long short-term memory (LSTM) model with scaled exponential linear unit (SELU)
 B. Logistic regression
 C. Support vector machine (SVM) with non-linear kernel
@@ -903,7 +903,7 @@ Trạng thái: **Cần xác minh** · Chọn 1.
 
 A company wants to classify user behavior as either fraudulent or normal. Based on internal research, a Machine Learning Specialist would like to build a binary classifier based on two features: age of account and transaction month. The class distribution for these features is illustrated in the figure provided. Based on this information, which model would have the HIGHEST recall with respect to the fraudulent class?
 
-![Scatter plot: x=Transaction Month (0–12), y=Account Age (0–10). Orange fraud points occupy a roughly circular central region around x=3–7 and y=3–7. Black normal points surround this central region.](../../web/public/images/q025_1.jpg)
+![Scatter plot: x=Transaction Month (0–12), y=Account Age (0–10). Orange fraud points occupy a roughly circular central region around x=3–7 and y=3–7. Black normal points surround this central region.](./images/q025_1.jpg)
 A. Decision tree
 B. Linear support vector machine (SVM)
 C. Naive Bayesian classifier
@@ -1169,7 +1169,7 @@ Trạng thái: **Đã đối chiếu** · Chọn 1.
 
 Machine Learning Specialist is working with a media company to perform classification on popular articles from the company's website. The company is using random forests to classify how popular an article will be before it is published. A sample of the data being used is below. Given the dataset, the Specialist wants to convert the Day_Of_Week column to binary values. What technique should be used to convert this column to binary values?
 
-![Table columns: Article_Title / Author / Top_Keywords / Day_Of_Week / Url_of_Article / Page_Views. Rows: Building a Big Data Platform / Jane Doe / Big Data, Spark, Hadoop / Tuesday / http://examplecorp.com/data_platform.html / 1300456; Getting Started with Deep Learning / John Doe / Deep Learning, Machine Learning, Spark / Tuesday / http://examplecorp.com/started_deep_learning.html / 1230661; MXNet ML Guide / Jane Doe / Machine Learning, MXNet, Logistic Regression / Thursday / http://examplecorp.com/mxnet_guide.html / 937291; Intro to NoSQL Databases / Mary Major / NoSQL, Operations, Database / Monday / http://examplecorp.com/nosql_intro_guide.html / 407812.](../../web/public/images/q032_1.png)
+![Table columns: Article_Title / Author / Top_Keywords / Day_Of_Week / Url_of_Article / Page_Views. Rows: Building a Big Data Platform / Jane Doe / Big Data, Spark, Hadoop / Tuesday / http://examplecorp.com/data_platform.html / 1300456; Getting Started with Deep Learning / John Doe / Deep Learning, Machine Learning, Spark / Tuesday / http://examplecorp.com/started_deep_learning.html / 1230661; MXNet ML Guide / Jane Doe / Machine Learning, MXNet, Logistic Regression / Thursday / http://examplecorp.com/mxnet_guide.html / 937291; Intro to NoSQL Databases / Mary Major / NoSQL, Operations, Database / Monday / http://examplecorp.com/nosql_intro_guide.html / 407812.](./images/q032_1.png)
 A. Binarization
 B. One-hot encoding
 C. Tokenization
@@ -3160,7 +3160,7 @@ Trạng thái: **Đã đối chiếu** · Chọn 1.
 
 Given the following confusion matrix for a movie classification model, what is the true class frequency for Romance and the predicted class frequency for Adventure?
 
-![Confusion-matrix graphic: actual class totals Romance 57.92% (49.1k), Thriller 21.23% (18k), Adventure 20.85% (17.7k). Predicted class totals Romance 77.56% (65.8k), Thriller 9.33% (7910), Adventure 13.12% (11.1k). Total 84.8k; class F1 scores 0.78, 0.33, 0.32; overall F1 0.47. Individual cell counts are not printed.](../../web/public/images/q085_1.png)
+![Confusion-matrix graphic: actual class totals Romance 57.92% (49.1k), Thriller 21.23% (18k), Adventure 20.85% (17.7k). Predicted class totals Romance 77.56% (65.8k), Thriller 9.33% (7910), Adventure 13.12% (11.1k). Total 84.8k; class F1 scores 0.78, 0.33, 0.32; overall F1 0.47. Individual cell counts are not printed.](./images/q085_1.png)
 A. The true class frequency for Romance is 77.56% and the predicted class frequency for Adventure is 20.85%
 B. The true class frequency for Romance is 57.92% and the predicted class frequency for Adventure is 13.12%
 C. The true class frequency for Romance is 0.78 and the predicted class frequency for Adventure is (0.47-0.32)
@@ -3464,7 +3464,7 @@ Trạng thái: **Đã đối chiếu** · Chọn 1.
 
 A company wants to classify user behavior as either fraudulent or normal. Based on internal research, a machine learning specialist will build a binary classifier based on two features: age of account, denoted by x, and transaction month, denoted by y. The class distributions are illustrated in the provided figure. The positive class is portrayed in red, while the negative class is portrayed in black. Which model would have the HIGHEST accuracy?
 
-![Scatter plot: positive red points lie in a compact rectangular region approximately x=49–51, y=28–31; negative black points surround that region. The sides of the positive region are parallel to the axes.](../../web/public/images/q093_1.png)
+![Scatter plot: positive red points lie in a compact rectangular region approximately x=49–51, y=28–31; negative black points surround that region. The sides of the positive region are parallel to the axes.](./images/q093_1.png)
 A. Linear support vector machine (SVM)
 B. Decision tree
 C. Support vector machine (SVM) with a radial basis function kernel
@@ -3545,7 +3545,7 @@ Trạng thái: **Đã đối chiếu** · Chọn 1.
 
 This graph shows the training and validation loss against the epochs for a neural network. The network being trained is as follows: • Two dense layers, one output neuron • 100 neurons in each layer • 100 epochs Random initialization of weights Which technique can be used to improve model performance in terms of accuracy in the validation set?
 
-![Training/validation error curves: both decline during the first approximately 40 epochs and plateau through approximately epoch 60 (training 0.10, validation 0.15). After epoch 60, training error declines toward 0.03 while validation error increases toward 0.33. Values are approximate.](../../web/public/images/q095_1.jpg)
+![Training/validation error curves: both decline during the first approximately 40 epochs and plateau through approximately epoch 60 (training 0.10, validation 0.15). After epoch 60, training error declines toward 0.03 while validation error increases toward 0.33. Values are approximate.](./images/q095_1.jpg)
 A. Early stopping
 B. Random initialization of weights with appropriate seed
 C. Increasing the number of epochs
@@ -3583,7 +3583,7 @@ Trạng thái: **Đã đối chiếu** · Chọn 1.
 
 A Machine Learning Specialist is attempting to build a linear regression model. Given the displayed residual plot only, what is the MOST likely problem with the model?
 
-![Residual plot: horizontal axis roughly 0–50. Residuals cluster tightly around zero at low x and spread much more widely at high x, approximately −11 to +23.](../../web/public/images/q096_1.jpg)
+![Residual plot: horizontal axis roughly 0–50. Residuals cluster tightly around zero at low x and spread much more widely at high x, approximately −11 to +23.](./images/q096_1.jpg)
 A. Linear regression is inappropriate. The residuals do not have constant variance.
 B. Linear regression is inappropriate. The underlying data has outliers.
 C. Linear regression is appropriate. The residuals have a zero mean.
@@ -3809,7 +3809,7 @@ Trạng thái: **Đã đối chiếu** · Chọn 1.
 
 A Machine Learning Specialist prepared the following graph displaying the results of k-means for k = [1..10]: Considering the graph, what is a reasonable selection for the optimal choice of k?
 
-![Elbow chart: k=1,2,3,4,5,6,7,8,9,10; corresponding SSE approximately 102,58,38,30,27,24,21,20,19,18.](../../web/public/images/q102_1.png)
+![Elbow chart: k=1,2,3,4,5,6,7,8,9,10; corresponding SSE approximately 102,58,38,30,27,24,21,20,19,18.](./images/q102_1.png)
 A. 1
 B. 4
 C. 7
@@ -3955,7 +3955,7 @@ Trạng thái: **Cần xác minh** · Chọn 1.
 
 A Data Scientist is building a linear regression model and will use resulting p-values to evaluate the statistical significance of each coefficient. Upon inspection of the dataset, the Data Scientist discovers that most of the features are normally distributed. The plot of one feature in the dataset is shown in the graphic. What transformation should the Data Scientist apply to satisfy the statistical assumptions of the linear regression model?
 
-![Histogram: most observations are concentrated on the left, with a long tail to the right and a small rise near the far right. Numerical axis labels are not shown.](../../web/public/images/q106_1.jpg)
+![Histogram: most observations are concentrated on the left, with a long tail to the right and a small rise near the far right. Numerical axis labels are not shown.](./images/q106_1.jpg)
 A. Exponential transformation
 B. Logarithmic transformation
 C. Polynomial transformation
@@ -3991,7 +3991,7 @@ Trạng thái: **Đã đối chiếu** · Chọn 1.
 
 A Machine Learning Specialist is assigned to a Fraud Detection team and must tune an XGBoost model, which is working appropriately for test data. However, with unknown data, it is not working as expected. The existing parameters are provided as follows. Which parameter tuning guidelines should the Specialist follow to avoid overfitting?
 
-![Code in image: param={'eta':0.05,'silent':1,'n_estimators':2000,'max_depth':30,'min_child_weight':3,'gamma':0,'subsample':0.8,'objective':'multi:softprob','num_class':201}; num_round=60.](../../web/public/images/q107_1.png)
+![Code in image: param={'eta':0.05,'silent':1,'n_estimators':2000,'max_depth':30,'min_child_weight':3,'gamma':0,'subsample':0.8,'objective':'multi:softprob','num_class':201}; num_round=60.](./images/q107_1.png)
 A. Increase the max_depth parameter value.
 B. Lower the max_depth parameter value.
 C. Update the objective to binary:logistic.
@@ -4448,7 +4448,7 @@ Trạng thái: **Dịch vụ cũ** · Chọn 1.
 
 A data scientist wants to use Amazon Forecast to build a forecasting model for inventory demand for a retail company. The company has provided a dataset of historic inventory demand for its products as a .csv file stored in an Amazon S3 bucket. The table below shows a sample of the dataset. How should the data scientist transform the data?
 
-![Table columns timestamp,item_id,demand,category,lead_time. Rows: 2019-12-14,uni_000736,120,hardware,90; 2020-01-31,uni_003429,98,hardware,30; 2020-03-04,uni_000211,234,accessories,10.](../../web/public/images/q119_1.png)
+![Table columns timestamp,item_id,demand,category,lead_time. Rows: 2019-12-14,uni_000736,120,hardware,90; 2020-01-31,uni_003429,98,hardware,30; 2020-03-04,uni_000211,234,accessories,10.](./images/q119_1.png)
 A. Use ETL jobs in AWS Glue to separate the dataset into a target time series dataset and an item metadata dataset. Upload both datasets as .csv files to Amazon S3.
 B. Use a Jupyter notebook in Amazon SageMaker to separate the dataset into a related time series dataset and an item metadata dataset. Upload both datasets as tables in Amazon Aurora.
 C. Use AWS Batch jobs to separate the dataset into a target time series dataset, a related time series dataset, and an item metadata dataset. Upload them directly to Forecast from a local machine.
@@ -4598,7 +4598,7 @@ Trạng thái: **Đã đối chiếu** · Chọn 2.
 
 A Data Scientist is developing a machine learning model to classify whether a financial transaction is fraudulent. The labeled data available for training consists of 100,000 non-fraudulent observations and 1,000 fraudulent observations. The Data Scientist applies the XGBoost algorithm to the data, resulting in the following confusion matrix when the trained model is applied to a previously unseen validation dataset. The accuracy of the model is 99.1%, but the Data Scientist needs to reduce the number of false negatives. Which combination of steps should the Data Scientist take to reduce the number of false negative predictions by the model? (Choose two.)
 
-![Confusion matrix: rows Actual 0, Actual 1; columns Predicted 0, Predicted 1. Actual 0: [99966,34]. Actual 1: [877,123].](../../web/public/images/q123_1.png)
+![Confusion matrix: rows Actual 0, Actual 1; columns Predicted 0, Predicted 1. Actual 0: [99966,34]. Actual 1: [877,123].](./images/q123_1.png)
 A. Change the XGBoost eval_metric parameter to optimize based on Root Mean Square Error (RMSE).
 B. Increase the XGBoost scale_pos_weight parameter to adjust the balance of positive and negative weights.
 C. Increase the XGBoost max_depth parameter because the model is currently underfitting the data.
@@ -4864,7 +4864,7 @@ Trạng thái: **Đã đối chiếu** · Chọn 1.
 
 A data scientist must build a custom recommendation model in Amazon SageMaker for an online retail company. Due to the nature of the company's products, customers buy only 4-5 products every 5-10 years. So, the company relies on a steady stream of new customers. When a new customer signs up, the company collects data on the customer's preferences. Below is a sample of the data available to the data scientist. How should the data scientist split the dataset into a training and test set for this use case?
 
-![Table columns timestamp,user_id,product_id,preference_1,...,preference_10. Rows: 2020-03-04,90,25,0,...,0.374; 2020-03-04,90,61,0,...,0.374; 2020-02-21,203,56,1,...,0.098.](../../web/public/images/q130_1.png)
+![Table columns timestamp,user_id,product_id,preference_1,...,preference_10. Rows: 2020-03-04,90,25,0,...,0.374; 2020-03-04,90,61,0,...,0.374; 2020-02-21,203,56,1,...,0.098.](./images/q130_1.png)
 A. Shuffle all interaction data. Split off the last 10% of the interaction data for the test set.
 B. Identify the most recent 10% of interactions for each user. Split off these interactions for the test set.
 C. Identify the 10% of users with the least interaction data. Split off all interaction data from these users for the test set.
@@ -5933,8 +5933,8 @@ Trạng thái: **Đã đối chiếu** · Chọn 1.
 
 A data scientist is training a text classification model by using the Amazon SageMaker built-in BlazingText algorithm. There are 5 classes in the dataset, with 300 samples for category A, 292 samples for category B, 240 samples for category C, 258 samples for category D, and 310 samples for category E. The data scientist shuffles the data and splits off 10% for testing. After training the model, the data scientist generates confusion matrices for the training and test sets. What could the data scientist conclude form these results?
 
-![Two confusion matrices, rows=True A–E and columns=Predicted A–E. Training: A[270,0,0,0,0]; B[1,260,0,0,2]; C[0,0,111,100,5]; D[4,3,132,92,1]; E[0,0,2,3,274]. Column totals [275,263,245,195,282], total 1260. Test: A[9,1,0,0,0]; B[2,25,0,2,0]; C[10,2,11,10,1]; D[1,0,12,14,0]; E[9,1,4,1,25]. Column totals [31,29,27,27,26], total 140.](../../web/public/images/q158_1.png)
-![Two confusion matrices, rows=True A–E and columns=Predicted A–E. Training: A[270,0,0,0,0]; B[1,260,0,0,2]; C[0,0,111,100,5]; D[4,3,132,92,1]; E[0,0,2,3,274]. Column totals [275,263,245,195,282], total 1260. Test: A[9,1,0,0,0]; B[2,25,0,2,0]; C[10,2,11,10,1]; D[1,0,12,14,0]; E[9,1,4,1,25]. Column totals [31,29,27,27,26], total 140.](../../web/public/images/q158_2.png)
+![Two confusion matrices, rows=True A–E and columns=Predicted A–E. Training: A[270,0,0,0,0]; B[1,260,0,0,2]; C[0,0,111,100,5]; D[4,3,132,92,1]; E[0,0,2,3,274]. Column totals [275,263,245,195,282], total 1260. Test: A[9,1,0,0,0]; B[2,25,0,2,0]; C[10,2,11,10,1]; D[1,0,12,14,0]; E[9,1,4,1,25]. Column totals [31,29,27,27,26], total 140.](./images/q158_1.png)
+![Two confusion matrices, rows=True A–E and columns=Predicted A–E. Training: A[270,0,0,0,0]; B[1,260,0,0,2]; C[0,0,111,100,5]; D[4,3,132,92,1]; E[0,0,2,3,274]. Column totals [275,263,245,195,282], total 1260. Test: A[9,1,0,0,0]; B[2,25,0,2,0]; C[10,2,11,10,1]; D[1,0,12,14,0]; E[9,1,4,1,25]. Column totals [31,29,27,27,26], total 140.](./images/q158_2.png)
 A. Classes C and D are too similar.
 B. The dataset is too small for holdout cross-validation.
 C. The data distribution is skewed.
@@ -6127,7 +6127,7 @@ Trạng thái: **Cần xác minh** · Chọn 2.
 
 A machine learning specialist is developing a regression model to predict rental rates from rental listings. A variable named Wall_Color represents the most prominent exterior wall color of the property. The following is the sample data, excluding all other variables: The specialist chose a model that needs numerical input data. Which feature engineering approaches should the specialist use to allow the regression model to learn from the Wall_Color data? (Choose two.)
 
-![Table columns Property ID, Wall Color. Rows: 1000,Red; 1001,White; 1002,Green.](../../web/public/images/q163_1.png)
+![Table columns Property ID, Wall Color. Rows: 1000,Red; 1001,White; 1002,Green.](./images/q163_1.png)
 A. Apply integer transformation and set Red = 1, White = 5, and Green = 10.
 B. Add new columns that store one-hot representation of colors.
 C. Replace the color name string by its length.
@@ -6695,12 +6695,12 @@ Trạng thái: **Cần xác minh** · Chọn 1.
 
 A machine learning (ML) specialist is using Amazon SageMaker hyperparameter optimization (HPO) to improve a model's accuracy. The learning rate parameter is specified in the following HPO configuration: During the results analysis, the ML specialist determines that most of the training jobs had a learning rate between 0.01 and 0.1. The best result had a learning rate of less than 0.01. Training jobs need to run regularly over a changing dataset. The ML specialist needs to find a tuning mechanism that uses different learning rates more evenly from the provided range between MinValue and MaxValue. Which solution provides the MOST accurate result?
 
-![Configuration shown: {"Name":"learning_rate","MaxValue":"0.0001","MinValue":"0.1"}.](../../web/public/images/q178_1.png)
+![Configuration shown: {"Name":"learning_rate","MaxValue":"0.0001","MinValue":"0.1"}.](./images/q178_1.png)
 A. Modify the HPO configuration as follows: Select the most accurate hyperparameter configuration form this HPO job.
-![Image: {"Name":"learning_rate","MaxValue":"0.0001","MinValue":"0.1","ScalingType":"ReverseLogarithmic"}.](../../web/public/images/q178_2.png)
+![Image: {"Name":"learning_rate","MaxValue":"0.0001","MinValue":"0.1","ScalingType":"ReverseLogarithmic"}.](./images/q178_2.png)
 B. Run three different HPO jobs that use different learning rates form the following intervals for MinValue and MaxValue while using the same number of training jobs for each HPO job: • [0.01, 0.1] • [0.001, 0.01] • [0.0001, 0.001] Select the most accurate hyperparameter configuration form these three HPO jobs.
 C. Modify the HPO configuration as follows: Select the most accurate hyperparameter configuration form this training job.
-![Image: {"Name":"learning_rate","MaxValue":"0.0001","MinValue":"0.1","ScalingType":"Logarithmic"}.](../../web/public/images/q178_3.png)
+![Image: {"Name":"learning_rate","MaxValue":"0.0001","MinValue":"0.1","ScalingType":"Logarithmic"}.](./images/q178_3.png)
 D. Run three different HPO jobs that use different learning rates form the following intervals for MinValue and MaxValue. Divide the number of training jobs for each HPO job by three: • [0.01, 0.1] • [0.001, 0.01] [0.0001, 0.001] Select the most accurate hyperparameter configuration form these three HPO jobs.
 
 <details><summary>Answer and explanation</summary>
@@ -8295,7 +8295,7 @@ Trạng thái: **Đã đối chiếu** · Chọn 3.
 
 A retail company wants to create a system that can predict sales based on the price of an item. A machine learning (ML) engineer built an initial linear model that resulted in the following residual plot: Which actions should the ML engineer take to improve the accuracy of the predictions in the next phase of model building? (Choose three.)
 
-![Residual-versus-price plot: residuals are close to zero for prices approximately −100 to 50; above approximately 50 they trend downward, reaching approximately −250 near price 100. One point near price 50 has residual around +400. Values are approximate.](../../web/public/images/q223_1.png)
+![Residual-versus-price plot: residuals are close to zero for prices approximately −100 to 50; above approximately 50 they trend downward, reaching approximately −250 near price 100. One point near price 50 has residual around +400. Values are approximate.](./images/q223_1.png)
 A. Downsample the data uniformly to reduce the amount of data.
 B. Create two different models for different sections of the data.
 C. Downsample the data in sections where Price < 50.

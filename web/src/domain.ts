@@ -1,3 +1,5 @@
+import { retiredQuestionShapes } from './data/retired-question-shapes.ts';
+
 export type Question = {
   id: number; page: number | null; text: string; choices: Record<string, string>;
   collection: 'mls' | 'mla'; sourceIds: number[]; sourceName: string; domain?: string; hint?: string;
@@ -26,9 +28,8 @@ export type State = {
   flash: { ids: number[]; index: number; filter?: 'all'|'new'|'known'|'bookmarked'; includeReview?: boolean; collection?: 'all'|'mls'|'mla'; includeSource?: boolean } | null;
 };
 export const STORAGE_KEY = 'ml-practice:v1';
-export const defaultSettings: Settings = { count: 20, minutes: 40, order: 'random', scope: 'all', range: 'all', includeReview: false, includeHistorical: true, feedback: 'immediate', collection: 'all', includeSource: true };
+export const defaultSettings: Settings = { count: 20, minutes: 40, order: 'random', scope: 'all', range: 'all', includeReview: false, includeHistorical: false, feedback: 'immediate', collection: 'mla', includeSource: false };
 export const questionRanges = [
-  ...['1-66','67-133','134-200','201-266','267-332'].map(value=>({value,collection:'mls',label:`MLS · câu ${value}`})),
   ...['333-397','398-462','463-527','528-592','593-618'].map((value,i)=>({value,collection:'mla',label:`MLA-C01 · bộ ${i+1}`})),
 ];
 export const collectionLabel = (collection: string) => collection === 'mla' ? 'MLA-C01 · Associate' : collection === 'mls' ? 'MLS · Specialty' : 'MLS + MLA-C01';
@@ -36,7 +37,24 @@ export const sourceLabel = (q: Question) => `${q.collection === 'mla' ? 'MLA-C01
 export const emptyState = (): State => ({ version: 1, updatedAt: 0, bookmarks: [], known: [], progress: {}, active: null, history: [], flash: null });
 export const isCorrect = (q: Question, answer: string[] = []) => q.status !== 'review' && answer.length === q.answer.length && q.answer.every(v => answer.includes(v));
 export const isQuickSession = (session: Session) => session.mode === 'practice' && session.settings.feedback === 'immediate' && session.settings.quick === true;
-export const studyQuestions = (bank: Question[]) => bank.filter(q => q.duplicateOf === undefined);
+export const studyQuestions = (bank: Question[]) => bank.filter(q => q.collection === 'mla' && q.duplicateOf === undefined);
+export function isStudySession(session: Session, bank: Question[]) {
+  const ids = new Set(studyQuestions(bank).map(q=>q.id));
+  return session.questionIds.length > 0 && session.questionIds.every(id=>ids.has(id));
+}
+// Project the visible study area without rewriting archived sessions or backup rows.
+export function studyState(state: State, bank: Question[]): State {
+  const ids = new Set(studyQuestions(bank).map(q=>q.id));
+  return {...state, bookmarks:state.bookmarks.filter(id=>ids.has(id)), known:state.known.filter(id=>ids.has(id)),
+    progress:Object.fromEntries(Object.entries(state.progress).filter(([id])=>ids.has(Number(id)))),
+    active:state.active && isStudySession(state.active,bank) ? state.active : null,
+    history:state.history.filter(session=>isStudySession(session,bank))};
+}
+type QuestionShape = Pick<Question, 'id'|'choices'|'required'|'status'>;
+const retiredShapes: QuestionShape[] = retiredQuestionShapes.map(([id,letters,required,review])=>({
+  id, choices:Object.fromEntries([...letters].map(letter=>[letter,''])), required, status:review?'review':'checked'
+}));
+export const validationQuestions = (bank: Question[]): QuestionShape[] => [...retiredShapes,...bank];
 export const relatedQuestionIds = (q: Question) => q.relatedIds || [q.id];
 export const hasQuestionMark = (q: Question, ids: number[]) => relatedQuestionIds(q).some(id => ids.includes(id));
 export function setQuestionMark(q: Question, ids: number[], marked = !hasQuestionMark(q, ids)) {
@@ -51,12 +69,13 @@ export function questionProgress(q: Question, state: State): Progress | undefine
 }
 export function normalizeFlashDeck(flash: State['flash'], bank: Question[]): State['flash'] {
   if (!flash) return null;
-  const canonical = new Map(bank.map(q=>[q.id,q.duplicateOf ?? q.id]));
-  const mapped = flash.ids.map(id=>canonical.get(id) ?? id);
-  const ids = [...new Set(mapped)];
-  const index = ids.indexOf(mapped[flash.index]);
-  if (ids.length === flash.ids.length && ids.every((id,i)=>id===flash.ids[i])) return flash;
-  return {...flash, ids, index: Math.max(0,index)};
+  const canonical = new Map(studyQuestions(bank).map(q=>[q.id,q.duplicateOf ?? q.id]));
+  const ids = [...new Set(flash.ids.flatMap(id=>canonical.has(id)?[canonical.get(id)!]:[]))];
+  if (!ids.length) return null;
+  const current = flash.ids.slice(flash.index).find(id=>canonical.has(id));
+  const index = current === undefined ? ids.length-1 : ids.indexOf(canonical.get(current)!);
+  if (ids.length === flash.ids.length && ids.every((id,i)=>id===flash.ids[i]) && flash.collection === 'mla') return flash;
+  return {...flash, ids, index, collection:'mla'};
 }
 export function toggleChoice(answer: string[], choice: string, required: number) {
   if (answer.includes(choice)) return answer.filter(c => c !== choice);
@@ -65,7 +84,7 @@ export function toggleChoice(answer: string[], choice: string, required: number)
 }
 export function eligibleQuestions(bank: Question[], settings: Settings, state: State, mode: Session['mode'] = 'practice') {
   return bank.filter(q => {
-    if (q.duplicateOf !== undefined) return false;
+    if (q.collection !== 'mla' || q.duplicateOf !== undefined) return false;
     if (settings.collection && settings.collection !== 'all' && q.collection !== settings.collection) return false;
     if (q.status === 'source' && settings.includeSource === false) return false;
     if (q.status === 'review' && (mode === 'exam' || !settings.includeReview)) return false;
@@ -134,8 +153,8 @@ export function validateState(input: unknown, bank: Question[]): State {
   const fail = (): never => { throw new Error('File tiến trình không hợp lệ hoặc khác phiên bản.'); };
   const object = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
   if (!object(input) || input.version !== 1 || !Number.isFinite(input.updatedAt)) return fail();
-  const byId = new Map(bank.map(q => [q.id, q]));
-  const ids = (v: unknown): v is number[] => Array.isArray(v) && v.length <= bank.length && v.every(id => Number.isInteger(id) && byId.has(id)) && new Set(v).size === v.length;
+  const byId = new Map(validationQuestions(bank).map(q => [q.id, q]));
+  const ids = (v: unknown): v is number[] => Array.isArray(v) && v.length <= byId.size && v.every(id => Number.isInteger(id) && byId.has(id)) && new Set(v).size === v.length;
   if (!ids(input.bookmarks) || !ids(input.known) || !object(input.progress)) return fail();
   for (const [id, p] of Object.entries(input.progress)) {
     if (!byId.has(Number(id)) || !object(p) || !Number.isInteger(p.attempts) || Number(p.attempts) < 1 || !Number.isInteger(p.correct) || Number(p.correct) < 0 || Number(p.correct) > Number(p.attempts) || typeof p.latest !== 'boolean' || !Number.isFinite(p.lastSeen)) return fail();
@@ -144,7 +163,7 @@ export function validateState(input: unknown, bank: Question[]): State {
     if (!object(v) || typeof v.id !== 'string' || !v.id || !['practice', 'exam'].includes(String(v.mode)) || !ids(v.questionIds) || !v.questionIds.length || !Number.isInteger(v.index) || Number(v.index) < 0 || Number(v.index) >= v.questionIds.length || !object(v.answers) || !ids(v.revealed) || !ids(v.flagged) || !Number.isFinite(v.startedAt) || !object(v.settings)) return fail();
     const set = new Set(v.questionIds);
     if (![...v.revealed, ...v.flagged].every(id => set.has(id))) return fail();
-    if (!['immediate', 'end'].includes(String(v.settings.feedback)) || !['random', 'sequential'].includes(String(v.settings.order)) || !['all', 'wrong', 'bookmarked', 'unseen'].includes(String(v.settings.scope)) || !['all',...questionRanges.map(r=>r.value)].includes(String(v.settings.range)) || typeof v.settings.includeReview !== 'boolean' || typeof v.settings.includeHistorical !== 'boolean' || !Number.isInteger(v.settings.count) || v.settings.count !== v.questionIds.length || !Number.isFinite(v.settings.minutes)) return fail();
+    if (!['immediate', 'end'].includes(String(v.settings.feedback)) || !['random', 'sequential'].includes(String(v.settings.order)) || !['all', 'wrong', 'bookmarked', 'unseen'].includes(String(v.settings.scope)) || !['all','1-66','67-133','134-200','201-266','267-332',...questionRanges.map(r=>r.value)].includes(String(v.settings.range)) || typeof v.settings.includeReview !== 'boolean' || typeof v.settings.includeHistorical !== 'boolean' || !Number.isInteger(v.settings.count) || v.settings.count !== v.questionIds.length || !Number.isFinite(v.settings.minutes)) return fail();
     if (v.settings.collection !== undefined && !['all','mls','mla'].includes(String(v.settings.collection)) || v.settings.includeSource !== undefined && typeof v.settings.includeSource !== 'boolean') return fail();
     if (v.settings.quick !== undefined && typeof v.settings.quick !== 'boolean') return fail();
     for (const [id, values] of Object.entries(v.answers)) {

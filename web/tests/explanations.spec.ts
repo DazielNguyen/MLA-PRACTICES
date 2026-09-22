@@ -5,7 +5,6 @@ test.beforeEach(async({page})=>{await onboard(page);});
 
 test('warm-pool practice explains the correct answer and every distractor after checking',async({page})=>{
   await page.goto('/#/practice');
-  await page.getByRole('combobox',{name:'Bộ đề',exact:true}).selectOption('mla');
   await page.getByLabel('Số câu hỏi',{exact:true}).fill('2');
   await page.getByRole('button',{name:'Theo thứ tự',exact:true}).click();
   await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();

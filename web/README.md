@@ -30,7 +30,7 @@ Dùng Node.js 24 LTS. Mã nguồn yêu cầu Node.js từ 22.12 trở lên.
 | Ngân hàng câu hỏi | Tìm theo từ khóa hoặc số câu. Xem hình gốc, giải thích và tài liệu đối chiếu. |
 | Tiến trình | Xem lịch sử, kết quả và xuất hoặc nhập bản sao JSON. |
 
-Bộ lọc hỗ trợ câu sai gần nhất, câu đã lưu, câu chưa luyện, khoảng số câu và bộ MLS/MLA-C01.
+Web chỉ phục vụ MLA-C01. Bộ lọc hỗ trợ câu sai gần nhất, câu đã lưu, câu chưa luyện và khoảng số câu.
 
 Trong Ngân hàng câu hỏi, tìm `mla-c01 q228` để mở câu nguồn Q228, kể cả khi đã gộp với bản lặp.
 
@@ -88,44 +88,54 @@ Dữ liệu trình duyệt thuộc từng địa chỉ web. `localhost`, `127.0.
 
 Nếu xóa dữ liệu trình duyệt, dùng mã Supabase hoặc bản sao JSON để khôi phục.
 
-## Nguồn câu hỏi
+## Nguồn câu hỏi trên web
 
-Ngân hàng học có **567 câu**: 325 câu MLS và 242 câu MLA-C01. Có thêm 7 bản MLS cũ phục vụ lịch sử.
-
-ZIP có 286 mục. Sau khi gộp 44 bản lặp, còn 242 câu. Giữ 22 hình MLS và 16 ảnh MLA khác nhau.
-
-MLS và MLA-C01 là hai bộ nguồn riêng. Chọn bộ trong Luyện tập, Thi thử, Flashcard hoặc Ngân hàng câu hỏi.
+Ngân hàng web có **242 câu MLA-C01**, được gộp từ 286 mục trong ZIP. Có 16 ảnh khác nhau.
 
 | Trạng thái | Số câu | Cách sử dụng |
 | --- | ---: | --- |
-| Đã đối chiếu | 480 | Có chấm điểm; gồm 270 câu MLS và 210 câu MLA. |
-| Dịch vụ cũ | 27 | Có chấm điểm theo bối cảnh cũ. Có thể loại bằng bộ lọc. |
-| Theo nguồn | 0 | Trạng thái dự phòng cho các lần nhập tiếp theo. |
-| Cần xác minh | 60 | Không chấm điểm. Luôn loại khỏi thi thử. Có thể đọc trong luyện tập và flashcard. |
+| Đã đối chiếu | 210 | Có đáp án và chấm điểm. Dùng trong học nhanh, luyện tập, flashcard và thi thử. |
+| Cần xác minh | 32 | Có phân tích theo điều kiện. Không chấm điểm và không xuất hiện trong thi thử. |
 
-Toàn bộ 567 câu học và 7 bản lưu cho lịch sử có giải thích tiếng Anh cho từng lựa chọn.
+Mỗi câu có giải thích tiếng Anh cho từng lựa chọn và nguồn đối chiếu AWS.
 
 Phần đáp án gồm **Correct answer**, **Key Concept**, **Why this is correct** và **Why other options are incorrect**.
 
-Câu **Cần xác minh** dùng **Answer not finalized** và phân tích từng lựa chọn theo điều kiện của đề.
+Câu cần xác minh dùng **Answer not finalized**. Bật bộ lọc tương ứng để đọc thêm trong luyện tập hoặc flashcard.
 
-Thi thử có 507 câu chấm được, hoặc 480 câu khi loại dịch vụ cũ. Riêng MLA có 210 câu chấm được.
+Mã câu được giữ nguyên để tiến trình MLA-C01 tiếp tục hoạt động. Mã ngân hàng bằng 332 cộng số câu nguồn được giữ.
 
-Tỷ lệ đúng của bài luyện không quy đổi thành điểm AWS. Hint chỉ hiện trong luyện cùng đáp án, flashcard và thư viện.
+Ví dụ, MLA-C01 Q001 có mã #333. Các khoảng trống là câu đã gộp, không phải câu bị mất.
 
-Mã câu cũ vẫn đọc được trong lịch sử. Mã MLA bằng 332 cộng số câu nguồn được giữ. Khoảng trống là các bản đã gộp.
+File `src/data/questions.json` chỉ chứa 242 câu MLA-C01. Thư mục `public/images/` chỉ chứa ảnh MLA-C01.
 
-Xem [báo cáo giải thích và sửa đáp án](../BAO_CAO_GIAI_THICH_DAP_AN.md), [báo cáo gộp ban đầu](../BAO_CAO_GOP_BO_DE.md), [Markdown tổng hợp](../output/merged/ML_COMBINED.md) và [file Quizlet](../output/merged/QUIZLET_COMBINED.md).
+Bản web không đóng gói nội dung, đáp án, giải thích hoặc hình của bộ MLS.
 
-Trong Quizlet, dùng TAB để tách hai mặt thẻ và dòng mới để tách thẻ. File có 567 thẻ.
+Tỷ lệ đúng trong ứng dụng không quy đổi thành điểm thi AWS. Hint chỉ hiện trong các chế độ cho phép xem đáp án.
 
-Lịch sử giữ các lựa chọn đã lưu. Điểm bài cũ được tính lại theo khóa và trạng thái hiện tại khi mở kết quả.
+## Tiến trình và tài liệu từ bộ cũ
 
-Thống kê lượt luyện đã ghi không được viết lại. Vì vậy, thống kê cũ có thể khác điểm bài sau khi sửa khóa.
+Trang học, thống kê và lịch sử chỉ hiển thị các phiên gồm toàn bộ câu MLA-C01.
 
-File `src/data/questions.json` giữ 574 bản ghi, gồm 567 câu học và 7 biến thể cho lịch sử. Các hình nằm trong `public/images/`.
+Phiên MLS và phiên trộn cũ vẫn được giữ trong bộ nhớ trình duyệt, Supabase và bản sao JSON. Ứng dụng không xóa hoặc chấm lại chúng.
 
-Ứng dụng không cần PDF hoặc thư mục `tmp` khi chạy hay build. Khi thay đổi bộ dữ liệu đã rà soát, cập nhật bằng:
+Những lượt trả lời MLA-C01 trong phiên trộn vẫn đóng góp vào thống kê câu MLA-C01.
+
+Một phiên trộn đang làm không thể tiếp tục trên bản web mới. Hãy bắt đầu phiên MLA-C01 mới từ Tổng quan hoặc Luyện tập.
+
+Flashcard cũ giữ các thẻ MLA-C01 và vị trí gần nhất. Nếu không còn thẻ phù hợp, ứng dụng tạo bộ MLA-C01 theo bộ lọc.
+
+File `src/data/retired-question-shapes.ts` chỉ giữ mã câu, ký tự lựa chọn, số đáp án cần chọn và cờ không chấm điểm.
+
+Thông tin này dùng để kiểm tra bản sao cũ. File không chứa đề bài, nội dung lựa chọn hoặc khóa đáp án MLS.
+
+Bộ MLS gốc được lưu tại `../output/merged/MLS_ARCHIVE.json`. Hình MLS nằm trong `../output/merged/images/`.
+
+Các bản [Markdown tổng hợp](../output/merged/ML_COMBINED.md) và [Quizlet tổng hợp](../output/merged/QUIZLET_COMBINED.md) vẫn giữ 567 câu để lưu trữ ngoài web.
+
+## Cập nhật dữ liệu
+
+Ứng dụng không cần PDF hoặc thư mục `tmp` khi chạy hay build. Sau khi thay đổi dữ liệu đã rà soát, chạy:
 
 ```bash
 python3 scripts/import-questions.py
@@ -135,31 +145,13 @@ npm run build
 
 Lệnh nhập cần `../tmp/pdfs/reviewed_questions.json`, các hình gốc và `../MLA-C01_Web_Study_Bundle.zip`.
 
-Quyết định gộp thủ công nằm trong `scripts/bank-review.json` và dùng số câu nguồn MLA.
+Lệnh giữ toàn bộ tài liệu gốc trong `../output/merged/`, nhưng chỉ ghi câu MLA-C01 vào dữ liệu web.
 
-Giải thích nằm trong `scripts/explanations/`. Khóa, trạng thái, ghi chú và nguồn đối chiếu bổ sung nằm trong `scripts/answer-review.json`.
+Giải thích nằm trong `scripts/explanations/`. Khóa, trạng thái và nguồn đối chiếu bổ sung nằm trong `scripts/answer-review.json`.
 
-Hai phần bổ sung dùng mã câu của ngân hàng web. Lệnh nhập dừng nếu thiếu giải thích hoặc sai số lựa chọn.
+Quyết định gộp câu MLA nằm trong `scripts/bank-review.json`. Nhật ký gộp MLS được giữ để kiểm tra tài liệu lưu trữ.
 
-Dữ liệu nguồn và các nhật ký được xuất vào `../output/merged/`. `STUDY_DUPLICATE_AUDIT.json` ghi 7 cặp biến thể MLS đã gộp.
-
-## Câu đã gộp và tiến trình cũ
-
-Các cặp dùng chung một câu cho phiên học mới: 269→70, 271→81, 188→86, 295→109, 202→113, 193→143 và 270→197.
-
-Quyết định nằm trong `scripts/study-duplicates.json`. Chỉ các cặp đã đọc và đối chiếu thủ công được gộp.
-
-Câu có `duplicateOf` không xuất hiện trong phiên học mới hoặc file Quizlet. Bản gốc vẫn phục vụ bài đã lưu và bản sao tiến trình.
-
-Lịch sử giữ mã câu, lựa chọn và khóa gốc của từng phiên bản. Ký tự đáp án không được chuyển giữa các bản đã đảo lựa chọn.
-
-Dấu lưu và thẻ đã thuộc của bản cũ áp dụng cho cả nhóm. Bộ lọc câu sai dùng lần trả lời gần nhất trong nhóm.
-
-Flashcard đã lưu được gộp khi mở, giữ vị trí của nhóm đang học. Tìm `#269` hoặc `mls q269` trong thư viện sẽ mở #70.
-
-Tổng số câu đã luyện tính theo nhóm. Tổng lượt trả lời vẫn bao gồm các lần làm bản cũ.
-
-Các câu cùng tình huống nhưng hỏi khác mục tiêu vẫn riêng biệt, như #14 về accuracy và #25 về recall.
+Các báo cáo cũ phản ánh ngân hàng kết hợp tại thời điểm lập báo cáo. `src/data/catalog.json` thể hiện ngân hàng web hiện tại.
 
 ## Đưa lên Vercel
 

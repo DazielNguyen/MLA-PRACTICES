@@ -14,14 +14,14 @@ test('dashboard, mobile navigation and question images render without errors',as
   await page.setViewportSize({width:390,height:844});await page.screenshot({path:'test-results/dashboard-mobile.png',fullPage:true});
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   await page.getByRole('button',{name:'Mở điều hướng'}).click();await page.getByRole('link',{name:'Ngân hàng câu hỏi'}).click();
-  await page.getByRole('textbox',{name:'Tìm câu hỏi'}).fill('#178');await page.locator('.library-card > details > summary').click();
-  await expect(page.locator('.question-image img')).toHaveCount(3);
+  await page.getByRole('textbox',{name:'Tìm câu hỏi'}).fill('#554');await page.locator('.library-card > details > summary').click();
+  await expect(page.locator('.question-image img')).toHaveCount(1);
   for(const img of await page.locator('.question-image img').all())await expect.poll(()=>img.evaluate((el:HTMLImageElement)=>el.naturalWidth)).toBeGreaterThan(0);
   await page.screenshot({path:'test-results/question-images-mobile.png',fullPage:true});expect(errors).toEqual([]);
 });
 test('exam hides answers, persists selections and flags, and grades on submission',async({page})=>{
   await configure(page);await page.getByRole('button',{name:'Bắt đầu thi thử',exact:true}).click();
-  await expect(page.locator('.question-id')).toHaveText('Ngân hàng #002');
+  await expect(page.locator('.question-id')).toHaveText('Ngân hàng #333');
   await expect(page.locator('.explanation')).toHaveCount(0);await expect(page.getByRole('button',{name:'Kiểm tra đáp án'})).toHaveCount(0);
   const deadline=(await snapshot(page)).active!.deadline;
   await page.locator('.choice-button').nth(1).click();await page.getByRole('button',{name:'Đánh dấu xem lại',exact:true}).click();
@@ -31,7 +31,7 @@ test('exam hides answers, persists selections and flags, and grades on submissio
   await page.getByRole('button',{name:'Câu tiếp',exact:true}).click();await page.locator('.choice-button').nth(0).click();
   await page.getByRole('button',{name:'Nộp bài',exact:true}).click();await page.getByRole('button',{name:'Nộp và xem kết quả'}).click();
   await expect(page.getByText('Câu trả lời đúng',{exact:true})).toBeVisible();
-  const saved=await snapshot(page);expect(saved.active).toBeNull();expect(saved.history).toHaveLength(1);expect(saved.history[0].answers['2']).toEqual(['B']);
+  const saved=await snapshot(page);expect(saved.active).toBeNull();expect(saved.history).toHaveLength(1);expect(saved.history[0].answers['333']).toEqual(['B']);
   await page.locator('.review-card summary').first().click();await expect(page.locator('.explanation').first()).toBeVisible();
   await page.screenshot({path:'test-results/results-desktop.png',fullPage:true});
 });
@@ -39,7 +39,7 @@ test('absolute timer automatically submits once, including on reload after closi
   await page.clock.install();await configure(page,'exam',2);await page.getByRole('button',{name:'Bắt đầu thi thử',exact:true}).click();
   await page.locator('.choice-button').nth(1).click();await page.clock.fastForward(61000);
   await expect(page.getByText('Hết thời gian. Bài làm đã được tự động nộp và lưu.')).toBeVisible();await page.reload();
-  let data=await snapshot(page);expect(data.history).toHaveLength(1);expect(data.progress['2'].attempts).toBe(1);expect(data.history[0].finishedAt).toBe(data.history[0].deadline);
+  let data=await snapshot(page);expect(data.history).toHaveLength(1);expect(data.progress['333'].attempts).toBe(1);expect(data.history[0].finishedAt).toBe(data.history[0].deadline);
   await configure(page,'exam',2);await page.getByRole('button',{name:'Bắt đầu thi thử',exact:true}).click();
   await page.evaluate(()=>{const id=sessionStorage.getItem('ml-selected:v2'),active=sessionStorage.getItem(`ml-active:v2:${id}`);const key=`ml-row:v2:${id}:session:${active}`;const row=JSON.parse(localStorage.getItem(key)!);row.value.startedAt=Date.now()-120000;row.value.deadline=Date.now()-60000;localStorage.setItem(key,JSON.stringify(row));});
   await page.reload();await expect(page.getByText('Hết thời gian. Bài làm đã được tự động nộp và lưu.')).toBeVisible();
@@ -49,18 +49,18 @@ test('practice checks once, while hidden practice reveals only after submission'
   await configure(page,'practice',2);await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();
   await expect(page.getByRole('button',{name:'Kiểm tra đáp án'})).toBeDisabled();await page.locator('.choice-button').nth(1).click();await page.getByRole('button',{name:'Kiểm tra đáp án'}).click();
   await expect(page.locator('.explanation')).toBeVisible();await expect(page.locator('.choice-button').first()).toBeDisabled();
-  await page.reload();await expect(page.locator('.explanation')).toBeVisible();expect((await snapshot(page)).progress['2'].attempts).toBe(1);
+  await page.reload();await expect(page.locator('.explanation')).toBeVisible();expect((await snapshot(page)).progress['333'].attempts).toBe(1);
   await page.setViewportSize({width:390,height:844});await page.screenshot({path:'test-results/practice-mobile.png',fullPage:true});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   await page.getByRole('button',{name:'Nộp bài',exact:true}).click();await page.getByRole('button',{name:'Nộp và xem kết quả'}).click();
-  expect((await snapshot(page)).progress['2'].attempts).toBe(1);
+  expect((await snapshot(page)).progress['333'].attempts).toBe(1);
   await configure(page,'practice',2);await page.getByRole('button',{name:/Tự kiểm tra/}).click();await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();
   await page.locator('.choice-button').nth(1).click();await expect(page.locator('.explanation')).toHaveCount(0);await expect(page.getByRole('button',{name:'Kiểm tra đáp án'})).toHaveCount(0);
 });
 test('flashcards remember the deck position and known cards',async({page})=>{
   await page.goto('/#/flashcards');await expect(page.locator('.answer-analysis')).toHaveCount(0);await expect(page.getByRole('button',{name:'Đã thuộc',exact:true}).last()).toBeDisabled();await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();
   await expect(page.locator('.explanation')).toBeVisible();await page.screenshot({path:'test-results/flashcard-desktop.png',fullPage:true});
-  await page.getByRole('button',{name:'Đã thuộc',exact:true}).last().click();await expect(page.locator('.flashcard-top>.eyebrow')).toContainText('#003');
-  await page.reload();await expect(page.locator('.flashcard-top>.eyebrow')).toContainText('#003');expect((await snapshot(page)).known).toEqual([2]);
+  await page.getByRole('button',{name:'Đã thuộc',exact:true}).last().click();await expect(page.locator('.flashcard-top>.eyebrow')).toContainText('#334');
+  await page.reload();await expect(page.locator('.flashcard-top>.eyebrow')).toContainText('#334');expect((await snapshot(page)).known).toEqual([333]);
   await page.setViewportSize({width:390,height:844});await page.screenshot({path:'test-results/flashcard-mobile.png',fullPage:true});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
 });
 test('backup export and restore preserve state; invalid input cannot clobber it',async({page})=>{
@@ -69,23 +69,23 @@ test('backup export and restore preserve state; invalid input cannot clobber it'
   const before=await snapshot(page);
   await page.getByLabel('Chọn file tiến trình').setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from('{"version":99}')});
   await expect(page.getByRole('status')).toContainText('không hợp lệ');expect(await snapshot(page)).toEqual(before);
-  before.known=[2,3];await page.getByLabel('Chọn file tiến trình').setInputFiles({name:'backup.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(before))});
+  before.known=[333,334];await page.getByLabel('Chọn file tiến trình').setInputFiles({name:'backup.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(before))});
   await expect(page.getByRole('dialog')).toBeVisible();const previousBackup=page.waitForEvent('download');await page.getByRole('button',{name:'Khôi phục bản sao',exact:true}).click();await previousBackup;
-  await page.reload();expect((await snapshot(page)).known).toEqual([2,3]);
+  await page.reload();expect((await snapshot(page)).known).toEqual([333,334]);
 });
 test('a new session requires confirmation and keeps the previous session in history',async({page})=>{
   await configure(page,'practice',2);await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();await page.locator('.choice-button').nth(1).click();
   await page.getByRole('button',{name:'Về tổng quan'}).click();await page.getByRole('button',{name:'Học nhanh 10 câu'}).click();await expect(page.getByRole('dialog')).toBeVisible();
   await page.getByRole('button',{name:'Quay lại',exact:true}).click();expect((await snapshot(page)).active!.questionIds.length).toBe(2);
-  await page.getByRole('button',{name:'Học nhanh 10 câu'}).click();await page.getByRole('button',{name:'Lưu bài cũ và bắt đầu'}).click();const data=await snapshot(page);expect(data.active.questionIds).toHaveLength(10);expect(data.history).toHaveLength(1);expect(data.history[0].answers['2']).toEqual(['B']);
+  await page.getByRole('button',{name:'Học nhanh 10 câu'}).click();await page.getByRole('button',{name:'Lưu bài cũ và bắt đầu'}).click();const data=await snapshot(page);expect(data.active.questionIds).toHaveLength(10);expect(data.history).toHaveLength(1);expect(data.history[0].answers['333']).toEqual(['B']);
 });
 
 test('multiple choices enforce the required count and survive reload',async({page})=>{
   await configure(page,'practice',30);await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();
-  const index=(await snapshot(page)).active!.questionIds.indexOf(21);
-  await page.getByRole('button',{name:`Đến câu ${index+1}`,exact:true}).click();await expect(page.locator('.question-id')).toContainText('#021');
+  const index=(await snapshot(page)).active!.questionIds.indexOf(350);
+  await page.getByRole('button',{name:`Đến câu ${index+1}`,exact:true}).click();await expect(page.locator('.question-id')).toContainText('#350');
   await page.locator('.choice-button').nth(0).click();await expect(page.getByRole('button',{name:'Kiểm tra đáp án'})).toBeDisabled();
-  await page.locator('.choice-button').nth(3).click();await page.locator('.choice-button').nth(1).click();await expect(page.locator('.choice-button[aria-pressed=true]')).toHaveCount(2);
+  await page.locator('.choice-button').nth(1).click();await page.locator('.choice-button').nth(3).click();await expect(page.locator('.choice-button[aria-pressed=true]')).toHaveCount(2);
   await page.reload();await expect(page.locator('.choice-button[aria-pressed=true]')).toHaveCount(2);await page.getByRole('button',{name:'Kiểm tra đáp án'}).click();await expect(page.locator('.feedback-banner')).toContainText('Chính xác!');
   await expect(page.locator('.why-correct [data-option]')).toHaveCount(2);
   await expect(page.locator('.why-incorrect [data-option]')).toHaveCount(3);

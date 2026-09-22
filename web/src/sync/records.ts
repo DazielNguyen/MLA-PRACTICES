@@ -1,4 +1,4 @@
-import { emptyState, validateState } from '../domain.ts';
+import { emptyState, validateState, validationQuestions } from '../domain.ts';
 import type { Progress, Question, Session, State } from '../domain.ts';
 
 export type RowKind = 'session' | 'attempt' | 'bookmark' | 'known' | 'flash' | 'baseline';
@@ -21,9 +21,9 @@ export function validateRow(input: unknown, bank: Question[]): StudyRow {
     if (value.finishedAt === null) state.active = value as Session; else state.history = [value as Session];
     validateState(state, bank);
   } else if (row.kind === 'attempt') {
-    if (!object(value) || !bank.some(q => q.id === value.questionId && q.status !== 'review') || typeof value.sessionId !== 'string' || row.key !== attemptKey(value.sessionId, Number(value.questionId)) || typeof value.correct !== 'boolean' || !Number.isFinite(value.lastSeen)) return fail();
+    if (!object(value) || !validationQuestions(bank).some(q => q.id === value.questionId && q.status !== 'review') || typeof value.sessionId !== 'string' || row.key !== attemptKey(value.sessionId, Number(value.questionId)) || typeof value.correct !== 'boolean' || !Number.isFinite(value.lastSeen)) return fail();
   } else if (row.kind === 'bookmark' || row.kind === 'known') {
-    if (typeof value !== 'boolean' || !bank.some(q => row.key === `${row.kind}:${q.id}`)) return fail();
+    if (typeof value !== 'boolean' || !validationQuestions(bank).some(q => row.key === `${row.kind}:${q.id}`)) return fail();
   } else if (row.kind === 'flash') {
     if (!row.key.startsWith('flash:')) return fail();
     validateState({ ...emptyState(), flash: value }, bank);

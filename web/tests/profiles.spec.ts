@@ -8,7 +8,7 @@ test('welcome, name selection and per-profile history work on mobile',async({pag
   await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();await page.getByRole('button',{name:'Đã thuộc',exact:true}).last().click();
   await page.getByRole('button',{name:'Đang học: Duy'}).click();await page.getByRole('button',{name:'Đổi người học'}).click();
   await page.getByLabel('Tên người học',{exact:true}).fill('An');await page.getByRole('button',{name:'Tạo hồ sơ và bắt đầu'}).click();expect((await snapshot(page)).known).toEqual([]);
-  await page.getByRole('button',{name:'Đang học: An'}).click();await page.getByRole('button',{name:'Đổi người học'}).click();await page.locator('.saved-learners button').filter({hasText:'Duy'}).click();expect((await snapshot(page)).known).toEqual([2]);
+  await page.getByRole('button',{name:'Đang học: An'}).click();await page.getByRole('button',{name:'Đổi người học'}).click();await page.locator('.saved-learners button').filter({hasText:'Duy'}).click();expect((await snapshot(page)).known).toEqual([333]);
   await page.getByRole('button',{name:'Đang học: Duy'}).click();await page.screenshot({path:'test-results/profile-mobile.png',fullPage:true});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
 });
 

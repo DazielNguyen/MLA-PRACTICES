@@ -4,7 +4,6 @@ import { onboard, snapshot } from './helpers';
 test.beforeEach(async({page})=>{await onboard(page);});
 test('MLA reviewed explanations, hints and answers survive reload',async({page})=>{
   await page.goto('/#/practice');
-  await page.getByRole('combobox',{name:'Bộ đề',exact:true}).selectOption('mla');
   await expect(page.locator('.pool-count')).toContainText('210 câu');
   await page.getByLabel('Số câu hỏi',{exact:true}).fill('2');
   await page.getByRole('button',{name:'Theo thứ tự',exact:true}).click();
@@ -22,8 +21,6 @@ test('MLA reviewed explanations, hints and answers survive reload',async({page})
 });
 test('MLA exam hides hints and includes reviewed imported questions',async({page})=>{
   await page.goto('/#/exam');
-  await page.getByRole('combobox',{name:'Bộ đề',exact:true}).selectOption('mla');
-  await page.getByLabel('Bao gồm đáp án theo nguồn').uncheck();
   await expect(page.locator('.pool-count')).toContainText('210 câu');
   await page.getByLabel('Số câu hỏi',{exact:true}).fill('2');
   await page.getByRole('button',{name:'Theo thứ tự',exact:true}).click();
@@ -34,15 +31,13 @@ test('MLA exam hides hints and includes reviewed imported questions',async({page
 });
 test('MLA flashcards and library preserve source references and hotspot images',async({page})=>{
   await page.goto('/#/flashcards');
-  await page.getByRole('combobox',{name:'Bộ đề flashcard'}).selectOption('mla');
   await expect(page.locator('.question-origin')).toContainText('MLA-C01 Q001');
   await expect(page.locator('.answer-analysis')).toHaveCount(0);
   await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();
   await expect(page.locator('.answer-analysis')).toBeVisible();
   await page.reload();
-  await expect(page.getByRole('combobox',{name:'Bộ đề flashcard'})).toHaveValue('mla');
+  expect((await snapshot(page)).flash!.collection).toBe('mla');
   await page.goto('/#/library');
-  await page.getByRole('combobox',{name:'Bộ đề',exact:true}).selectOption('mla');
   await expect(page.locator('.library-count')).toContainText('242 câu hỏi');
   await page.getByRole('textbox',{name:'Tìm câu hỏi'}).fill('mla-c01 q228');
   await expect(page.locator('.library-card')).toHaveCount(1);

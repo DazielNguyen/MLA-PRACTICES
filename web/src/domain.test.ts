@@ -11,8 +11,8 @@ const review=bank.find(q=>q.status==='review')!;
 const settings={...defaultSettings,count:2,order:'sequential' as const};
 const make=():State=>({...emptyState(),active:createSession([single,multi],settings,'practice',1000)});
 test('merged bank retains unique IDs, provenance, choices, and image assets',()=>{
-  assert.equal(bank.length,574);assert.equal(new Set(bank.map(q=>q.id)).size,574);
-  assert.equal(bank.filter(q=>q.status==='review').length,60);
+  assert.equal(bank.length,242);assert.equal(new Set(bank.map(q=>q.id)).size,242);
+  assert.equal(bank.filter(q=>q.status==='review').length,32);
   for(const q of bank){assert.ok(q.text.length>30);assert.ok(Object.keys(q.choices).length>=4);assert.ok(q.sourceName);assert.ok(q.sourceIds.length);if(q.status!=='source')assert.ok(q.sources.length);for(const source of q.sources)assert.match(source.url,/^https:\/\//);if(q.status!=='review'){assert.equal(q.required,q.answer.length);assert.ok(q.answer.every(a=>Object.hasOwn(q.choices,a)));}for(const im of q.images){assert.ok(existsSync(new URL(`../public${im.url}`,import.meta.url)));assert.ok(im.slot==='question'||Object.hasOwn(q.choices,im.slot));}}
 });
 test('multiple answers require the exact set, independent of order',()=>{
@@ -27,12 +27,12 @@ test('single choice replaces; multi choice caps and can be deselected',()=>{
 });
 test('exam never contains unresolved answers, even with includeReview enabled',()=>{
   const pool=eligibleQuestions(bank,{...defaultSettings,includeReview:true},emptyState(),'exam');
-  assert.equal(pool.length,507);assert.ok(pool.every(q=>q.status!=='review'));
-  assert.equal(eligibleQuestions(bank,{...defaultSettings,includeHistorical:false},emptyState(),'exam').length,480);
+  assert.equal(pool.length,210);assert.ok(pool.every(q=>q.status!=='review'));
+  assert.equal(eligibleQuestions(bank,{...defaultSettings,includeHistorical:false},emptyState(),'exam').length,210);
 });
 test('question filters combine scope, range and status',()=>{
-  const state=emptyState();state.bookmarks=[2,70];
-  assert.deepEqual(eligibleQuestions(bank,{...defaultSettings,scope:'bookmarked',range:'1-66'},state).map(q=>q.id),[2]);
+  const state=emptyState();state.bookmarks=[333,415];
+  assert.deepEqual(eligibleQuestions(bank,{...defaultSettings,scope:'bookmarked',range:'333-397'},state).map(q=>q.id),[333]);
   assert.equal(eligibleQuestions(bank,{...defaultSettings,scope:'wrong'},state).length,0);
 });
 test('sampling keeps the source and has no duplicates',()=>{
@@ -84,12 +84,13 @@ test('collection and source status filters keep MLS and MLA separate',()=>{
   const mla=eligibleQuestions(bank,{...defaultSettings,collection:'mla'},emptyState(),'exam');
   assert.equal(mla.length,210);assert.ok(mla.every(q=>q.collection==='mla'));
   assert.deepEqual(eligibleQuestions(bank,{...defaultSettings,collection:'mla',includeSource:false},emptyState(),'exam'),mla);
-  assert.equal(eligibleQuestions(bank,{...defaultSettings,collection:'mls'},emptyState(),'exam').length,297);
+  assert.equal(eligibleQuestions(bank,{...defaultSettings,collection:'mls'},emptyState(),'exam').length,0);
   assert.ok(!mla.some(q=>q.id===469));
 });
 test('legacy content and IDs are preserved; answer changes require explicit documented reviews',()=>{
   const old=JSON.parse(readFileSync(new URL('../../tmp/pdfs/reviewed_questions.json',import.meta.url),'utf8'));
-  for(const original of old){const q=bank.find(q=>q.id===original.id)!;const review=answerReviews[q.id];assert.equal(q.collection,'mls');assert.equal(q.text,original.question);assert.deepEqual(q.choices,original.choices);assert.deepEqual(q.answer,review?.answer??[...original.answer]);assert.equal(q.status,review?.status??original.status);}
+  const archive:Question[]=JSON.parse(readFileSync(new URL('../../output/merged/MLS_ARCHIVE.json',import.meta.url),'utf8'));
+  for(const original of old){const q=archive.find(q=>q.id===original.id)!;const review=answerReviews[q.id];assert.equal(q.collection,'mls');assert.equal(q.text,original.question);assert.deepEqual(q.choices,original.choices);assert.deepEqual(q.answer,review?.answer??[...original.answer]);assert.equal(q.status,review?.status??original.status);}
 });
 test('new question sessions roundtrip and old sessions without collection still load',()=>{
   const q=bank.find(q=>q.id===333)!;const state=emptyState();

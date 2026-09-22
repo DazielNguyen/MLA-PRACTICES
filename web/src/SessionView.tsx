@@ -64,7 +64,7 @@ export default function SessionView({session,state,bank,update,go,finish,learner
       <button className="session-brand" onClick={()=>go('/')}><span className="brand-symbol small">m<span>l</span></span><span>ML Practice <small>{quick?'QUICK LEARN':session.mode==='exam'?'EXAM SIMULATOR':'PRACTICE SESSION'}</small></span></button>
       <div className="session-header-right"><button className="session-learner" onClick={()=>go('/learner')} aria-label={`Đang học: ${learnerName}`}>{learnerName}<small>{saveLabel}</small></button><SessionClock session={session}/></div>
     </header>
-    <div className="session-subbar"><button className="text-button" onClick={()=>go('/')}><ChevronLeft size={16}/> Về tổng quan</button><span>{quick?'Chọn · Hiểu · Tiếp tục':'Machine Learning · MLS / MLA-C01'}</span><span>{answered}/{session.questionIds.length} đã trả lời</span></div>
+    <div className="session-subbar"><button className="text-button" onClick={()=>go('/')}><ChevronLeft size={16}/> Về tổng quan</button><span>{quick?'Chọn · Hiểu · Tiếp tục':'Machine Learning Engineer · MLA-C01'}</span><span>{answered}/{session.questionIds.length} đã trả lời</span></div>
     {quick&&<div className="quick-progress" role="progressbar" aria-label="Tiến độ học nhanh" aria-valuemin={0} aria-valuemax={session.questionIds.length} aria-valuenow={session.revealed.length}><span style={{width:`${session.revealed.length/session.questionIds.length*100}%`}}/></div>}
     <div className="session-layout">
       <main key={quick?q.id:'question'} className={`panel question-panel ${quick?'quick-question':''}`} data-direction={direction}>

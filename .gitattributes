@@ -1,0 +1,2 @@
+# Preserve the supplied CSV bytes used by the source integrity checks.
+MLA-C01-SkillBuilder/*.csv -text whitespace=cr-at-eol

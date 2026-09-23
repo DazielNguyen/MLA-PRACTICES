@@ -13,7 +13,7 @@ test('MLA reviewed explanations, hints and answers survive reload',async({page})
   await expect(page.locator('.question-hint')).toBeVisible();
   await page.locator('.choice-button').nth(2).click();
   await page.getByRole('button',{name:'Kiểm tra đáp án'}).click();
-  await expect(page.locator('.answer-label')).toHaveText('Correct answer: C');
+  await expect(page.locator('.answer-label')).toHaveText('Đáp án đúng: C');
   await expect(page.locator('.answer-analysis')).toBeVisible();
   await page.reload();
   expect((await snapshot(page)).progress[333].correct).toBe(1);

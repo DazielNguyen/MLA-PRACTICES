@@ -4,7 +4,7 @@ export type Question = {
   id: number; page: number | null; text: string; choices: Record<string, string>;
   collection: 'mls' | 'mla'; sourceIds: number[]; sourceName: string; domain?: string; hint?: string; origin?: 'original';
   answer: string[]; required: number; status: 'checked' | 'historical' | 'review' | 'source';
-  explanation: string; sources: { title: string; url: string }[]; notes: string[];
+  explanation: string; explanationLanguage?: 'vi'; sources: { title: string; url: string }[]; notes: string[];
   analysis?: { keyConcept: string; options: Record<string, string> };
   duplicateOf?: number; relatedIds?: number[];
   images: { url: string; slot: string; alt: string }[];

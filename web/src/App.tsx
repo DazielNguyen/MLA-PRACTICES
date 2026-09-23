@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowUpRight, BookOpen, Check, ChevronRight, Clock3, Download, GraduationCap, LayoutDashboard, Layers3, Library, Menu, TrendingUp, Upload, UserRound, Users, X } from 'lucide-react';
 import rawBank from '@study-bank';
 import type { Question, Session, Settings, State } from './domain';
@@ -19,9 +19,11 @@ import LibraryPage from './Library';
 import ProgressPage from './Progress';
 
 const bank = rawBank as Question[];
+const KeywordPractice = lazy(() => import('./KeywordPractice'));
 const studyBank = studyQuestions(bank);
 const navigation = [
   { path:'/', label:'Tổng quan', icon:LayoutDashboard },
+  { path:'/keywork', label:'Keywork Practice', icon:GraduationCap },
   { path:'/flashcards', label:'Flashcard', icon:Layers3 },
   { path:'/practice', label:'Luyện câu hỏi', icon:BookOpen },
   { path:'/exam', label:'Thi thử', icon:Clock3 },
@@ -95,6 +97,7 @@ function StudyApp({learner,switchLearner}:{learner:Learner;switchLearner:()=>voi
     <main id="main" tabIndex={-1}>
       {cloudError&&<div className="cloud-warning" role="status"><span>Chưa đồng bộ được. Bài làm vẫn được giữ trên máy.</span><button className="text-button" onClick={()=>go('/learner')}>Xem kết nối</button></div>}
       {route==='/'?<Home state={state} bank={bank} go={go} unfinished={repo.unfinished().find(s=>isStudySession(s,bank)) || null} resume={id=>{repo.resume(id);go('/session');}} quick={()=>start({...defaultSettings,count:10,quick:true,range:importedBankRange},'practice')}/>:
+       route==='/keywork'?<Suspense fallback={<div className="page" role="status">Đang mở Keywork Practice…</div>}><KeywordPractice repo={repo} revision={storedState}/></Suspense>:
        route==='/flashcards'?<Flashcards bank={bank} state={state} update={update}/>:
        route==='/practice'||route==='/exam'?<Setup key={route} mode={route==='/exam'?'exam':'practice'} bank={bank} state={state} start={start}/>:
        route==='/library'?<LibraryPage bank={bank} state={state} update={update}/>:

@@ -7,6 +7,7 @@ import re
 import shutil
 import zipfile
 from answer_analysis import attach
+from vietnamese_explanations import localize, export_vietnamese
 
 APP = Path(__file__).resolve().parents[1]
 ROOT = APP.parent
@@ -230,7 +231,9 @@ def main():
     original_keys.update({q['id']: {'answer': q['answer'], 'status': q['status']} for q in originals})
     study_duplicates = group_study_duplicates(bank)
     study_bank = [q for q in bank if 'duplicateOf' not in q]
-    web_bank = [q for q in study_bank if q['collection'] == 'mla']
+    # Keep English source archives intact; localize only the published MLA copy.
+    web_bank = localize([q for q in study_bank if q['collection'] == 'mla'])
+    export_vietnamese(web_bank, APP / 'local-study')
     (OUTPUT / 'MLS_ARCHIVE.json').write_text(json.dumps(old, ensure_ascii=False, separators=(',', ':')) + '\n')
     # Only validation shapes are shipped for reading old progress. No MLS content or keys.
     shapes = [[q['id'], ''.join(q['choices']), q['required'], q['status'] == 'review'] for q in old]

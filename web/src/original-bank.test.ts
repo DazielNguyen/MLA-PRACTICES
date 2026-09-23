@@ -44,7 +44,8 @@ test('original IDs preserve answers, flashcards and history through backup valid
   const originals = personal.filter(q=>q.origin==='original');
   assert.equal(originals.length,352);
   const canonical = JSON.parse(readFileSync(new URL('../scripts/original-questions.json',import.meta.url),'utf8'));
-  assert.deepEqual(originals,canonical);
+  const invariant = (q:Question) => Object.fromEntries(Object.entries(q).filter(([key])=>!['analysis','explanation','hint','notes','explanationLanguage'].includes(key)));
+  assert.deepEqual(originals.map(invariant),canonical.map(invariant));
   const normalize=(text:string)=>text.toLowerCase().replace(/[^a-z0-9]/g,'');
   assert.equal(new Set(personal.map(q=>normalize(q.text))).size,personal.length);
   for(const q of originals){

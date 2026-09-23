@@ -32,13 +32,16 @@ Nếu bật CAPTCHA cho anonymous sign-in, cần tích hợp widget và truyền
 4. Chạy truy vấn **một lần** trên project mới.
 5. Chạy tiếp [supabase/002_expanded_question_bank.sql](supabase/002_expanded_question_bank.sql) để hỗ trợ bộ tổng hợp.
 6. Chạy [supabase/003_original_question_bank.sql](supabase/003_original_question_bank.sql) để hỗ trợ 352 câu tự biên soạn.
-7. Kiểm tra ba bảng: `ml_profiles`, `ml_memberships` và `ml_records`.
+7. Chạy [supabase/004_keyword_practice.sql](supabase/004_keyword_practice.sql) để lưu trạng thái và phiên Keywork Practice.
+8. Kiểm tra ba bảng: `ml_profiles`, `ml_memberships` và `ml_records`.
 
-Dùng các migration theo thứ tự `001`, `002`, rồi `003`. Các file `test-bootstrap.sql` và `security-tests.sql` chỉ dành cho kiểm tra cục bộ.
+Dùng các migration theo thứ tự `001`, `002`, `003`, rồi `004`. Các file `test-bootstrap.sql`, `security-tests.sql` và `keyword-tests.sql` chỉ dành cho kiểm tra cục bộ.
 
-Khi nâng cấp từ bộ 332 câu, chạy `002` rồi `003`. Project đã có `002` chỉ cần chạy `003`; không tạo lại bảng.
+Khi nâng cấp, chỉ chạy những migration còn thiếu theo thứ tự; không tạo lại bảng. Project đã có `003` chỉ cần chạy `004`.
 
 Migration `002` mở giới hạn đến 618. Migration `003` mở giới hạn đến 1352 và cho phép mã câu có bốn chữ số. Cả hai giữ nguyên lịch sử, thành viên và chính sách truy cập.
+
+Migration `004` thêm hai loại bản ghi `keyword` và `keywordDeck`, kiểm tra ID kiến thức và cấu trúc phiên học. Quyền thành viên và RLS giữ nguyên. Migration này đã chạy thành công trên project hiện tại ngày 23/09/2026.
 
 SQL tạo RLS, quyền đọc theo hồ sơ và các hàm ghi có kiểm tra quyền. Không cần tắt RLS hoặc mở quyền ghi công khai. [Tài liệu RLS](https://supabase.com/docs/guides/database/postgres/row-level-security)
 

@@ -12,7 +12,7 @@ test('original questions support quick study, explanations and saved progress', 
   await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();
   await expect(page.locator('.question-origin')).toHaveText('MLA-C01 Q1001 · Tự biên soạn');
   await page.locator('.choice-button').nth(3).click();
-  await expect(page.locator('.answer-label')).toHaveText('Correct answer: D');
+  await expect(page.locator('.answer-label')).toHaveText('Đáp án đúng: D');
   await expect(page.locator('.why-correct')).toBeVisible();
   await page.locator('.quick-distractors summary').click();
   await expect(page.locator('.why-incorrect .option-analysis-list li')).toHaveCount(3);

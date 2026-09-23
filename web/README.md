@@ -23,6 +23,7 @@ Dùng Node.js 24 LTS. Mã nguồn yêu cầu Node.js từ 22.12 trở lên.
 | Chế độ | Cách dùng |
 | --- | --- |
 | Học nhanh | Chọn là chấm, xem đáp án và giải thích ngay. Trang chủ mở 10 câu ngẫu nhiên từ bộ ZIP đã nhập. |
+| Keywork Practice | Học 1.574 mục theo Domain và Part bằng flashcard, ghép từ và điền bước quy trình. Lưu phần đã nắm trong hồ sơ. |
 | Flashcard | Lật thẻ, đánh dấu đã thuộc, lọc thẻ chưa thuộc hoặc đã lưu. |
 | Luyện cùng đáp án | Chọn đủ phương án rồi bấm **Kiểm tra đáp án**. Câu đã kiểm tra sẽ khóa lựa chọn. |
 | Tự kiểm tra | Trả lời trước, xem toàn bộ đáp án sau khi nộp bài. Không giới hạn thời gian. |
@@ -31,6 +32,37 @@ Dùng Node.js 24 LTS. Mã nguồn yêu cầu Node.js từ 22.12 trở lên.
 | Tiến trình | Xem lịch sử, kết quả và xuất hoặc nhập bản sao JSON. |
 
 Web chỉ phục vụ MLA-C01. Bộ lọc hỗ trợ câu sai gần nhất, câu đã lưu, câu chưa luyện và khoảng số câu.
+
+## Keywork Practice
+
+Mở **Keywork Practice** từ thanh điều hướng hoặc trang Tổng quan. Chọn Domain, Part, trạng thái và số mục cho mỗi lượt học.
+
+| Domain | Part 1: Thuật ngữ | Part 2: Dịch vụ | Part 3: Quy trình | Part 4: Ghép tình huống |
+| --- | ---: | ---: | ---: | ---: |
+| 1 | 210 | 76 | 42 | 62 |
+| 2 | 164 | 62 | 51 | 113 |
+| 3 | 147 | 69 | 61 | 127 |
+| 4 | 145 | 69 | 60 | 116 |
+
+Câu mẫu giữ tiếng Anh. Giải thích lấy từ các trường tiếng Việt trong CSV. Chuỗi quy trình tiếng Anh được chuyển từ nội dung nguồn để luyện điền bước.
+
+Dùng phím **1–4** để chọn; **Enter / Space** để lật thẻ hoặc tiếp tục. Bấm lại lựa chọn vừa chọn để sang mục kế tiếp.
+
+Đáp án hiện ngay sau khi chọn. Trả lời sai chuyển mục sang **Cần ôn**. Chỉ nút **Đánh dấu đã nắm** xác nhận bạn đã nắm kiến thức.
+
+Danh mục giữ đủ nội dung, Task, nguồn, ngày đối chiếu và điều kiện áp dụng. Nội dung bao phủ 16 file được cung cấp, không phải cam kết về câu hỏi xuất hiện trong đề thi thật.
+
+Mỗi hồ sơ có tiến độ riêng. Các tab cập nhật trạng thái từng mục, giữ phiên học riêng và hỗ trợ mở lại. Bản sao JSON bao gồm tiến độ Keywork. Đồng bộ Supabase cần migration `004_keyword_practice.sql`.
+
+Nhập lại CSV bằng `python3 scripts/import-keywords.py` trong thư mục `web`. Script kiểm tra số hàng, cột, ID và bản tiếng Anh của quy trình. Không sửa trực tiếp file JSON sinh ra.
+
+## Giải thích tiếng Việt
+
+Cả 594 câu trên web có ý chính, phân tích từng lựa chọn và ghi chú tiếng Việt. Câu hỏi, lựa chọn tiếng Anh, đáp án và trạng thái xác minh được giữ nguyên.
+
+Chạy `python3 scripts/import-questions.py` để dựng lại ngân hàng. Bản dịch nằm trong `scripts/translations`; checksum chặn việc áp bản dịch cũ khi nội dung nguồn đổi.
+
+Script cũng tạo `local-study/MLA_VI.md` và `local-study/QUIZLET_MLA_VI.md`. File Quizlet dùng tab ngăn mặt trước và mặt sau, mỗi dòng là một thẻ. Thư mục `local-study` không được đưa vào bản deploy.
 
 Trong Ngân hàng câu hỏi, tìm `mla-c01 q228` để mở câu nguồn Q228, kể cả khi đã gộp với bản lặp.
 

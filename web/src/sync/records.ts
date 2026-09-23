@@ -1,7 +1,8 @@
 import { emptyState, validateState, validationQuestions } from '../domain.ts';
 import type { Progress, Question, Session, State } from '../domain.ts';
+import { isKeywordDeck, isKeywordProgress } from '../keyword-domain.ts';
 
-export type RowKind = 'session' | 'attempt' | 'bookmark' | 'known' | 'flash' | 'baseline';
+export type RowKind = 'session' | 'attempt' | 'bookmark' | 'known' | 'flash' | 'baseline' | 'keyword' | 'keywordDeck';
 export type StudyRow = { key: string; kind: RowKind; value: unknown; stamp: number; writer: string; dirty?: boolean; claim?: boolean };
 export type Attempt = { questionId: number; sessionId: string; correct: boolean; lastSeen: number };
 export type Baseline = { progress: Record<string, Progress>; covered: string[] };
@@ -27,6 +28,10 @@ export function validateRow(input: unknown, bank: Question[]): StudyRow {
   } else if (row.kind === 'flash') {
     if (!row.key.startsWith('flash:')) return fail();
     validateState({ ...emptyState(), flash: value }, bank);
+  } else if (row.kind === 'keyword') {
+    if (!isKeywordProgress(value) || row.key !== `keyword:${value.id}`) return fail();
+  } else if (row.kind === 'keywordDeck') {
+    if (!/^keywordDeck:[a-zA-Z0-9-]{1,80}$/.test(row.key) || !isKeywordDeck(value)) return fail();
   } else if (row.kind === 'baseline') {
     if (row.key !== 'baseline:legacy' || !object(value) || !Array.isArray(value.covered) || value.covered.some(v => typeof v !== 'string' || !v.startsWith('attempt:'))) return fail();
     validateState({ ...emptyState(), progress: value.progress }, bank);

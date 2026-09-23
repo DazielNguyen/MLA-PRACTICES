@@ -66,7 +66,7 @@ for(const [route,button] of [['exam','Bắt đầu thi thử'],['practice','Bắ
 test('a wrong click explains immediately and another click advances exactly once during a burst',async({page})=>{
   await start(page);
   await page.locator('.choice-button').first().click();
-  await expect(page.locator('.answer-label')).toHaveText('Correct answer: C');
+  await expect(page.locator('.answer-label')).toHaveText('Đáp án đúng: C');
   await expect(page.locator('.your-choice-analysis')).toBeVisible();
   await expect(page.locator('.quick-distractors')).not.toHaveAttribute('open','');
   await page.locator('.quick-distractors > summary').click();
@@ -114,7 +114,7 @@ test('multi-select waits for all choices and does not grade an incomplete select
   await page.keyboard.press('1');
   await expect(page.locator('.choice-button[aria-pressed=true]')).toHaveCount(0);
   await page.keyboard.press('1');await page.keyboard.press('2');
-  await expect(page.locator('.answer-label')).toHaveText('Correct answer: A + B');
+  await expect(page.locator('.answer-label')).toHaveText('Đáp án đúng: A + B');
   await expect(page.locator('.why-correct [data-option]')).toHaveCount(2);
   expect((await snapshot(page)).progress[350].correct).toBe(1);
 });

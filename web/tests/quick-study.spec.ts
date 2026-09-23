@@ -18,9 +18,50 @@ test.beforeEach(async({page})=>{await onboard(page);});
 test('quick home entry enables immediate grading without a confirmation button',async({page})=>{
   await page.getByRole('button',{name:'Học nhanh 10 câu'}).click();
   expect((await snapshot(page)).active!.settings.quick).toBe(true);
+  expect((await snapshot(page)).active!.settings.range).toBe('333-618');
+  expect((await snapshot(page)).active!.questionIds.every(id=>id>=333&&id<=618)).toBe(true);
   await expect(page.locator('.quick-session')).toBeVisible();
   await expect(page.getByRole('button',{name:'Kiểm tra đáp án'})).toHaveCount(0);
 });
+
+test('quick setup defaults to imported questions while the original supplement remains selectable',async({page})=>{
+  await page.goto('/#/practice');
+  await page.getByRole('button',{name:/^Học nhanh Chọn là chấm/}).click();
+  await expect(page.getByRole('combobox',{name:'Nội dung',exact:true})).toHaveValue('333-618');
+  await expect(page.locator('.pool-count')).toContainText('210 câu');
+  await page.getByRole('combobox',{name:'Nội dung',exact:true}).selectOption('1001-1352');
+  await expect(page.locator('.pool-count')).toContainText('352 câu');
+  await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();
+  expect((await snapshot(page)).active!.questionIds.every(id=>id>=1001)).toBe(true);
+  await expect(page.locator('.question-origin')).toContainText('Tự biên soạn');
+});
+
+test('quick highlights preserve wording and emphasize every choice without revealing the answer',async({page})=>{
+  await start(page,2);
+  await page.getByRole('button',{name:'Đến câu 2',exact:true}).click();await ready(page);
+  await expect(page.locator('.question-text .keyword-constraint')).toContainText(['MINIMIZE infrastructure startup times']);
+  const choices=await page.locator('.choice-button > span[lang=en]').allTextContents();
+  for(let index=0;index<4;index++) await expect(page.locator('.choice-button').nth(index).locator('.keyword-term').first()).toBeVisible();
+  await expect(page.locator('.choice.correct,.correct-answer-text,.answer-label')).toHaveCount(0);
+  await page.locator('.choice-button').nth(1).click();
+  await expect(page.locator('.correct-answer-text .keyword-term')).toContainText(['SageMaker managed warm pools']);
+  expect(await page.locator('.choice-button > span[lang=en]').allTextContents()).toEqual(choices);
+  expect((await snapshot(page)).progress[334].correct).toBe(1);
+  await page.screenshot({path:'test-results/quick-keywords-desktop.png',fullPage:true,animations:'disabled'});
+  await page.setViewportSize({width:390,height:844});
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  await page.screenshot({path:'test-results/quick-keywords-mobile.png',fullPage:true,animations:'disabled'});
+});
+
+for(const [route,button] of [['exam','Bắt đầu thi thử'],['practice','Bắt đầu luyện tập']]){
+  test(`${route} keeps normal typography`,async({page})=>{
+    await page.goto(`/#/${route}`);
+    await page.getByLabel('Số câu hỏi',{exact:true}).fill('1');
+    await page.getByRole('button',{name:button,exact:true}).click();
+    await expect(page.locator('.question-panel')).toBeVisible();
+    await expect(page.locator('.study-keyword')).toHaveCount(0);
+  });
+}
 
 test('a wrong click explains immediately and another click advances exactly once during a burst',async({page})=>{
   await start(page);

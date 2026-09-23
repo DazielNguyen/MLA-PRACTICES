@@ -1,21 +1,23 @@
 import { ArrowRight, BookOpen, Check, Clock3, Flag, Layers3, Play, Sparkles, Target, TrendingUp } from 'lucide-react';
-import type { Question, State } from './domain';
+import type { Question, Session, State } from './domain';
 import { formatTime, score, studyQuestions, hasQuestionMark, questionProgress } from './domain';
 
-export default function Home({ state, bank, go, quick }: { state: State; bank: Question[]; go: (path: string) => void; quick: () => void }) {
+export default function Home({ state, bank, go, quick, unfinished, resume }: { state: State; bank: Question[]; go: (path: string) => void; quick: () => void; unfinished: Session | null; resume: (id: string) => void }) {
   const questions = studyQuestions(bank);
   const attempted = questions.filter(q=>questionProgress(q,state)).length, known = questions.filter(q=>hasQuestionMark(q,state.known)).length;
   const totalAttempts = Object.values(state.progress).reduce((n, p) => n + p.attempts, 0);
   const correct = Object.values(state.progress).reduce((n, p) => n + p.correct, 0);
   const studyDays = new Set([...Object.values(state.progress).map(p => new Date(p.lastSeen).toLocaleDateString('vi-VN')), ...state.history.map(s => new Date(s.finishedAt!).toLocaleDateString('vi-VN'))]).size;
   const studied = questions.filter(q=>questionProgress(q,state)||hasQuestionMark(q,state.known)).length;
+  const continuing = state.active || unfinished;
   return <div className="page home-page">
     <div className="page-heading"><div><div className="eyebrow">KHÔNG GIAN HỌC TẬP CỦA BẠN</div><h1>Mỗi ngày một chút,<br className="mobile-break" /> vững hơn từng câu.</h1><p>Ôn kiến thức, luyện phản xạ và sẵn sàng cho bài thi.</p></div><span className="day-label"><span className="live-dot" /> Sẵn sàng học tiếp</span></div>
+    {continuing && <button className="resume-banner" onClick={() => state.active ? go('/session') : resume(continuing.id)}><div className="resume-icon"><Play size={19}/></div><div><strong>{state.active ? 'Tiếp tục' : 'Mở lại'} {continuing.mode === 'exam' ? 'bài thi thử' : 'phiên luyện tập'}</strong><p>Đã trả lời {Object.values(continuing.answers).filter(a => a.length).length}/{continuing.questionIds.length} câu{continuing.deadline ? ' · Đồng hồ thi vẫn đang chạy' : ''}{!state.active && ' · Tiếp tục trên tab này'}</p></div><ArrowRight size={20}/></button>}
     <section className="hero">
-      <div className="hero-copy"><span className="hero-label"><Sparkles size={14} /> MỘT PHIÊN HỌC NHỎ, MỘT BƯỚC TIẾN MỚI</span><h2>10 câu hỏi.<br />Bắt đầu tạo thói quen.</h2><p>Ôn nhanh với đáp án và giải thích ngay sau mỗi câu.<br />Bạn chỉ cần dành một chút thời gian hôm nay.</p><button className="button lime" onClick={quick}>Học nhanh 10 câu <ArrowRight size={17} /></button><span className="hero-footnote">Tiến trình được lưu tự động trên thiết bị này</span></div>
+      <div className="hero-copy"><span className="hero-label"><Sparkles size={14} /> MỘT PHIÊN HỌC NHỎ, MỘT BƯỚC TIẾN MỚI</span><h2>10 câu hỏi.<br />Bắt đầu tạo thói quen.</h2><p>Ôn nhanh bộ đề đã nhập, xem đáp án và từ khóa ngay sau mỗi câu.<br />Bạn chỉ cần dành một chút thời gian hôm nay.</p><button className="button lime" onClick={quick}>Học nhanh 10 câu <ArrowRight size={17} /></button><span className="hero-footnote">Tiến trình được lưu tự động trên thiết bị này</span></div>
       <div className="hero-art" aria-hidden="true"><div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="art-spark">✳</div><div className="mini-card back-card"/><div className="mini-card front-card"><div className="mini-card-top"><span>ML / PRACTICE</span><Layers3 size={17}/></div><div className="mini-card-body">Small steps.<br/><em>Deep learning.</em></div><div className="mini-card-bottom"><span className="mini-check"><Check size={14}/></span><span>Mỗi câu hỏi, một điều mới</span></div></div><div className="floating-pill"><span>✦</span> Keep learning</div></div>
     </section>
-    {state.active && <button className="resume-banner" onClick={() => go('/session')}><div className="resume-icon"><Play size={19}/></div><div><strong>Tiếp tục {state.active.mode === 'exam' ? 'bài thi thử' : 'phiên luyện tập'}</strong><p>Đã trả lời {Object.values(state.active.answers).filter(a => a.length).length}/{state.active.questionIds.length} câu{state.active.deadline ? ' · Đồng hồ thi vẫn đang chạy' : ''}</p></div><ArrowRight size={20}/></button>}
+
     <section className="stats-grid" aria-label="Thống kê học tập">
       {[{icon:BookOpen,label:'Câu đã luyện',value:attempted,suffix:`/ ${questions.length}`,hint:'Tích lũy qua mỗi phiên',color:'green'},{icon:Target,label:'Tỷ lệ trả lời đúng',value:totalAttempts ? `${Math.round(correct/totalAttempts*100)}%` : '—',suffix:'',hint:totalAttempts ? `${correct}/${totalAttempts} lượt trả lời` : 'Bắt đầu để xem thống kê',color:'blue'},{icon:Layers3,label:'Flashcard đã thuộc',value:known,suffix:`/ ${questions.length}`,hint:'Ghi nhớ theo nhịp của bạn',color:'purple'},{icon:TrendingUp,label:'Ngày đã luyện tập',value:studyDays,suffix:'ngày',hint:'Một thói quen đáng giữ',color:'orange'}].map(({icon:Icon,label,value,suffix,hint,color}) => <div className="stat-card" key={label}><div className="stat-label"><span>{label}</span><span className={`small-icon ${color}`}><Icon size={17}/></span></div><div className="stat-value">{value} <span>{suffix}</span></div><div className="stat-hint">{hint}</div></div>)}
     </section>

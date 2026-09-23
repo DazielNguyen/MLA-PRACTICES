@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowUpRight, BookOpen, Check, ChevronRight, Clock3, Download, GraduationCap, LayoutDashboard, Layers3, Library, Menu, TrendingUp, Upload, UserRound, Users, X } from 'lucide-react';
 import rawBank from '@study-bank';
 import type { Question, Session, Settings, State } from './domain';
-import { createSession, defaultSettings, eligibleQuestions, finishSession, studyQuestions, studyState, isStudySession } from './domain';
+import { createSession, defaultSettings, importedBankRange, eligibleQuestions, finishSession, studyQuestions, studyState, isStudySession } from './domain';
 import { useLearners, useProgress } from './store';
 import { Welcome, LearnerSettings } from './Learners';
 import Group from './Group';
@@ -94,7 +94,7 @@ function StudyApp({learner,switchLearner}:{learner:Learner;switchLearner:()=>voi
     <div className="app-main"><header className="topbar"><div><button className="icon-button menu-button" aria-label="Mở điều hướng" onClick={()=>setMenu(true)}><Menu size={21}/></button><span className="breadcrumb">Không gian học tập</span><ChevronRight size={14}/><strong>{title}</strong></div><div><span className={`save-indicator ${storageError?'failed':''}`}><Check size={13}/>{saveLabel}</span><button className="current-learner" onClick={()=>go('/learner')} aria-label={`Đang học: ${learner.name}`}><span className="profile-icon">{learner.name.slice(0,1).toUpperCase()}</span><span>{learner.name}</span></button></div></header>
     <main id="main" tabIndex={-1}>
       {cloudError&&<div className="cloud-warning" role="status"><span>Chưa đồng bộ được. Bài làm vẫn được giữ trên máy.</span><button className="text-button" onClick={()=>go('/learner')}>Xem kết nối</button></div>}
-      {route==='/'?<Home state={state} bank={bank} go={go} quick={()=>start({...defaultSettings,count:10,quick:true},'practice')}/>:
+      {route==='/'?<Home state={state} bank={bank} go={go} unfinished={repo.unfinished().find(s=>isStudySession(s,bank)) || null} resume={id=>{repo.resume(id);go('/session');}} quick={()=>start({...defaultSettings,count:10,quick:true,range:importedBankRange},'practice')}/>:
        route==='/flashcards'?<Flashcards bank={bank} state={state} update={update}/>:
        route==='/practice'||route==='/exam'?<Setup key={route} mode={route==='/exam'?'exam':'practice'} bank={bank} state={state} start={start}/>:
        route==='/library'?<LibraryPage bank={bank} state={state} update={update}/>:

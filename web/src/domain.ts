@@ -29,7 +29,9 @@ export type State = {
 };
 export const STORAGE_KEY = 'ml-practice:v1';
 export const defaultSettings: Settings = { count: 20, minutes: 40, order: 'random', scope: 'all', range: 'all', includeReview: false, includeHistorical: false, feedback: 'immediate', collection: 'mla', includeSource: false };
+export const importedBankRange = '333-618';
 export const questionRanges = [
+  { value:importedBankRange, collection:'mla', label:'Bộ đề đã nhập · 242 câu' },
   ...['333-397','398-462','463-527','528-592','593-618'].map((value,i)=>({value,collection:'mla',label:`MLA-C01 · bộ ${i+1}`})),
   { value:'1001-1352', collection:'mla', label:'MLA-C01 · 352 câu tự biên soạn' },
   ...['1001-1096','1097-1184','1185-1264','1265-1352'].map((value,i)=>({value,collection:'mla',label:`Tự biên soạn · Domain ${i+1}`})),

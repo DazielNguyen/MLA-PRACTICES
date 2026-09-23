@@ -1,6 +1,58 @@
 import { test, expect } from '@playwright/test';
 import { onboard, snapshot } from './helpers';
 
+test('closing a tab then typing the saved name reopens its answers, cards and unfinished session',async({page,context})=>{
+  await onboard(page,'Duy Nguyen');
+  await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();await page.getByRole('button',{name:'Đã thuộc',exact:true}).last().click();
+  await page.goto('/#/practice');await page.getByLabel('Số câu hỏi',{exact:true}).fill('3');await page.getByRole('button',{name:'Theo thứ tự',exact:true}).click();await page.getByRole('button',{name:/^Học nhanh Chọn là chấm/}).click();await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();
+  await page.locator('.quick-question').evaluate(async el=>{await Promise.all(el.getAnimations().map(a=>a.finished.catch(()=>{})));});
+  await page.keyboard.press('3');await expect(page.locator('.feedback-banner')).toBeVisible();
+  const before=await snapshot(page);const profileId=await page.evaluate(()=>sessionStorage.getItem('ml-selected:v2'));
+  await page.close();
+  const tab=await context.newPage();await tab.goto('/#/session');
+  const card=tab.locator('.saved-learners button').filter({hasText:'Duy Nguyen'});
+  await expect(card).toContainText('1 thẻ đã thuộc');await expect(card).toContainText('1 bài đang làm');
+  await tab.screenshot({path:'test-results/saved-learners-desktop.png',fullPage:true});
+  await tab.setViewportSize({width:390,height:844});
+  expect((await card.boundingBox())!.y).toBeLessThan((await tab.getByLabel('Tên người học',{exact:true}).boundingBox())!.y);
+  expect(await tab.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  await tab.screenshot({path:'test-results/saved-learners-mobile.png',fullPage:true});
+  await tab.getByLabel('Tên người học',{exact:true}).fill('  dUY   nguyen  ');await tab.getByRole('button',{name:'Tiếp tục với Duy Nguyen',exact:true}).click();
+  expect(await tab.evaluate(()=>sessionStorage.getItem('ml-selected:v2'))).toBe(profileId);
+  expect(await tab.evaluate(()=>Object.keys(localStorage).filter(key=>key.startsWith('ml-profile:v2:')).length)).toBe(1);
+  expect((await snapshot(tab)).known).toEqual(before.known);
+  await tab.getByRole('button',{name:/Mở lại phiên luyện tập/}).click();
+  await expect(tab.locator('.session-screen')).toBeVisible();
+  const after=await snapshot(tab);expect(after.active!.id).toBe(before.active!.id);expect(after.active!.answers).toEqual(before.active!.answers);expect(after.progress).toEqual(before.progress);
+  await tab.close();
+});
+
+test('duplicate saved names require choosing the profile without merging histories',async({page})=>{
+  await onboard(page,'Duy');
+  await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();await page.getByRole('button',{name:'Đã thuộc',exact:true}).last().click();
+  const originalId=await page.evaluate(()=>sessionStorage.getItem('ml-selected:v2'));
+  await page.evaluate(()=>{
+    const profile={id:crypto.randomUUID(),name:'Duy',code:'b'.repeat(64),createdAt:Date.now(),shared:false};
+    localStorage.setItem(`ml-profile:v2:${profile.id}`,JSON.stringify(profile));sessionStorage.removeItem('ml-selected:v2');
+  });
+  await page.reload();await page.getByLabel('Tên người học',{exact:true}).fill('duy');
+  await expect(page.getByRole('button',{name:'Chọn hồ sơ phía trên'})).toBeDisabled();
+  await expect(page.locator('.saved-learners button')).toHaveCount(2);
+  await page.locator('.saved-learners button').filter({hasText:'1 thẻ đã thuộc'}).click();
+  expect(await page.evaluate(()=>sessionStorage.getItem('ml-selected:v2'))).toBe(originalId);
+  expect((await snapshot(page)).known).toEqual([333]);
+});
+
+test('saved learner summaries update when another tab answers a question',async({page,context})=>{
+  await onboard(page,'Duy');
+  const tab=await context.newPage();await tab.goto('/');
+  await expect(tab.locator('.saved-learners button')).toContainText('0 câu đã học');
+  await page.getByRole('button',{name:'Học nhanh 10 câu'}).click();await page.locator('.choice-button').first().click();
+  await expect(tab.locator('.saved-learners button')).toContainText('1 câu đã học');
+  await expect(tab.locator('.saved-learners button')).toContainText('1 bài đang làm');
+  await tab.close();
+});
+
 test('welcome, name selection and per-profile history work on mobile',async({page})=>{
   await page.goto('/');await expect(page.getByRole('heading',{name:'Hôm nay ai đang học?'})).toBeVisible();
   await page.screenshot({path:'test-results/welcome-desktop.png',fullPage:true});await page.setViewportSize({width:390,height:844});await page.screenshot({path:'test-results/welcome-mobile.png',fullPage:true});

@@ -22,7 +22,7 @@ Dùng Node.js 24 LTS. Mã nguồn yêu cầu Node.js từ 22.12 trở lên.
 
 | Chế độ | Cách dùng |
 | --- | --- |
-| Học nhanh | Chọn là chấm, xem đáp án và giải thích ngay. Trang chủ mở 10 câu ngẫu nhiên. |
+| Học nhanh | Chọn là chấm, xem đáp án và giải thích ngay. Trang chủ mở 10 câu ngẫu nhiên từ bộ ZIP đã nhập. |
 | Flashcard | Lật thẻ, đánh dấu đã thuộc, lọc thẻ chưa thuộc hoặc đã lưu. |
 | Luyện cùng đáp án | Chọn đủ phương án rồi bấm **Kiểm tra đáp án**. Câu đã kiểm tra sẽ khóa lựa chọn. |
 | Tự kiểm tra | Trả lời trước, xem toàn bộ đáp án sau khi nộp bài. Không giới hạn thời gian. |
@@ -48,7 +48,15 @@ Câu cuối mở kết quả bằng cùng thao tác. Dùng **Kết thúc** để
 
 Phần giải thích hiện đáp án đúng, ý chính và lý do lựa chọn của bạn sai. Mở **Why other options are incorrect** để đọc thêm.
 
+Trong Học nhanh, từ khóa được in đậm. Màu vàng chỉ yêu cầu, phủ định và số liệu. Màu xanh chỉ dịch vụ và khái niệm.
+
+Mọi lựa chọn dùng cùng cách highlight. Sau khi chấm, đáp án đúng có nền xanh lá. Nội dung câu hỏi giữ nguyên.
+
 Để chọn số câu và bộ lọc, vào **Luyện tập → Học nhanh** trước khi bắt đầu.
+
+Học nhanh mặc định dùng **Bộ đề đã nhập · 242 câu**. Khi tắt câu cần xác minh, bộ này có 210 câu chấm điểm.
+
+Bộ **352 câu tự biên soạn** là lựa chọn bổ sung riêng. Bạn có thể chọn bộ này trong mục **Nội dung**.
 
 Chuyển câu có hiệu ứng ngắn. Ứng dụng tắt hiệu ứng khi thiết bị bật chế độ giảm chuyển động.
 
@@ -56,13 +64,23 @@ Trong flashcard, dùng **Space** để lật thẻ khi con trỏ không nằm tr
 
 ## Người học, tiến trình và đồng hồ
 
-Nhập tên tại màn hình đầu để tạo hồ sơ. Tên người đang học luôn xuất hiện ở góc trên.
+Màn hình đầu hiển thị các hồ sơ đã lưu trên trình duyệt. Mỗi thẻ có tên, tiến trình và số bài đang làm.
+
+Bấm thẻ tên để học tiếp. Bạn cũng có thể nhập lại tên đã lưu để mở hồ sơ cũ.
+
+Ứng dụng bỏ qua khác biệt chữ hoa và khoảng trắng khi tìm tên. Dấu tiếng Việt vẫn phân biệt các tên.
+
+Nếu có nhiều hồ sơ trùng tên, chọn đúng thẻ hồ sơ. Nhập tên mới để tạo hồ sơ riêng.
+
+Tên người đang học luôn xuất hiện ở góc trên. Đóng tab không xóa hồ sơ hoặc bài đã lưu.
 
 Mỗi tab giữ người học và bài đang mở riêng. Trang **Tiến trình** gộp lịch sử theo hồ sơ đang chọn.
 
 Để đổi người học, mở **Người học → Đổi người học**. Bài chưa hoàn thành vẫn được giữ lại.
 
-Mở **Tiến trình → Bài chưa hoàn thành** để tiếp tục một phiên đã lưu. Quyền làm phiên đó chuyển sang tab này.
+Trang chủ có nút **Mở lại phiên luyện tập** hoặc **Mở lại bài thi thử** cho bài đang làm gần nhất.
+
+Để chọn bài khác, mở **Tiến trình → Bài chưa hoàn thành**. Khi tiếp tục, quyền làm phiên đó chuyển sang tab này.
 
 Khi đã cấu hình Supabase, trang **Người học** có mã tiếp tục riêng. Mã này mở lại cùng hồ sơ trên thiết bị khác.
 
@@ -94,7 +112,9 @@ Ngân hàng web có **594 câu MLA-C01**: 242 câu được gộp từ 286 mục
 
 Chọn bộ **MLA-C01 · 352 câu tự biên soạn** khi luyện tập hoặc thi thử. Flashcard và Ngân hàng câu hỏi có bộ lọc **Nguồn câu hỏi**.
 
-Bộ tự biên soạn gồm các tình huống luyện tập thuộc 44 chủ đề, không phải câu hỏi thi chính thức. Xem [nguồn dữ liệu và xuất Quizlet](PERSONAL_STUDY.md).
+Bộ tự biên soạn gồm các tình huống luyện tập thuộc 44 chủ đề. Các câu dựa trên tài liệu AWS, không lấy từ đề thi cũ. Xem [nguồn dữ liệu và xuất Quizlet](PERSONAL_STUDY.md).
+
+Bộ ZIP có nguồn từ tài liệu người dùng cung cấp. Chưa có bằng chứng xác nhận các câu đã xuất hiện trong kỳ thi AWS thật.
 
 | Trạng thái | Số câu | Cách sử dụng |
 | --- | ---: | --- |

@@ -102,7 +102,9 @@ Giá trị `VITE_` được đưa vào ứng dụng khi build. Thay biến môi 
 7. Chọn **Mở hồ sơ bằng mã**.
 8. Kiểm tra tên, lịch sử và số thẻ đã thuộc.
 
-Tên trùng nhau vẫn tạo hai hồ sơ khác nhau. Mã tiếp tục mới nối hai thiết bị với cùng hồ sơ.
+Trên cùng trình duyệt, nhập tên đã lưu sẽ mở hồ sơ cũ. Nếu có nhiều hồ sơ trùng tên, chọn đúng thẻ hồ sơ.
+
+Trên thiết bị khác, dùng mã tiếp tục để mở cùng hồ sơ. Chỉ nhập tên không nối được hai thiết bị.
 
 Mã được tạo bằng 32 byte ngẫu nhiên. Database chỉ giữ hash SHA-256 của mã. Mã gốc lưu trên thiết bị có quyền học.
 

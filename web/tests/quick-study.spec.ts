@@ -28,7 +28,7 @@ test('quick setup defaults to imported questions while the original supplement r
   await page.goto('/#/practice');
   await page.getByRole('button',{name:/^Học nhanh Chọn là chấm/}).click();
   await expect(page.getByRole('combobox',{name:'Nội dung',exact:true})).toHaveValue('333-618');
-  await expect(page.locator('.pool-count')).toContainText('210 câu');
+  await expect(page.locator('.pool-count')).toContainText('242 câu');
   await page.getByRole('combobox',{name:'Nội dung',exact:true}).selectOption('1001-1352');
   await expect(page.locator('.pool-count')).toContainText('352 câu');
   await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();

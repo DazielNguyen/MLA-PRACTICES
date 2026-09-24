@@ -24,7 +24,8 @@ test('every concept, option explanation and note has a Vietnamese translation wi
       assert.match(text,/[àáạảãâầấậẩẫăằắặẳẵđèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹ]/iu, `Missing Vietnamese for ${q.id}`);
       assert.doesNotMatch(text,/This matches the requirement|This option does not address|Source selects|Original practice scenario/);
     }
-    if (q.status === 'review') assert.match(q.explanation,/Chưa chốt đáp án/);
+    if (q.status === 'review') assert.match(q.explanation,/Đáp án chấm theo bộ đề \(cần xác minh\)/);
+    assert.doesNotMatch(q.explanation,/không (?:tính|được chấm) điểm/i);
   }
   assert.equal(options, 2396);
 });

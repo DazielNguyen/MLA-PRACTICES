@@ -11,7 +11,7 @@ export function matchingLearners<T extends { name: string }>(profiles: T[], name
 }
 
 export function learnerOverview(rows: StudyRow[], bank: Question[]) {
-  const state = composeState(rows, null, 'welcome');
+  const state = composeState(rows, null, 'welcome', bank);
   const questions = studyQuestions(bank);
   const sessions = rows.filter(row => row.kind === 'session').map(row => row.value as Session).filter(session => isStudySession(session, bank));
   return {

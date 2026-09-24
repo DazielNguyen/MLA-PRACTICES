@@ -1,4 +1,4 @@
-import { emptyState, validateState, validationQuestions } from '../domain.ts';
+import { emptyState, isCorrect, validateState, validationQuestions } from '../domain.ts';
 import type { Progress, Question, Session, State } from '../domain.ts';
 import { isKeywordDeck, isKeywordProgress } from '../keyword-domain.ts';
 
@@ -22,7 +22,7 @@ export function validateRow(input: unknown, bank: Question[]): StudyRow {
     if (value.finishedAt === null) state.active = value as Session; else state.history = [value as Session];
     validateState(state, bank);
   } else if (row.kind === 'attempt') {
-    if (!object(value) || !validationQuestions(bank).some(q => q.id === value.questionId && q.status !== 'review') || typeof value.sessionId !== 'string' || row.key !== attemptKey(value.sessionId, Number(value.questionId)) || typeof value.correct !== 'boolean' || !Number.isFinite(value.lastSeen)) return fail();
+    if (!object(value) || !validationQuestions(bank).some(q => q.id === value.questionId) || typeof value.sessionId !== 'string' || row.key !== attemptKey(value.sessionId, Number(value.questionId)) || typeof value.correct !== 'boolean' || !Number.isFinite(value.lastSeen)) return fail();
   } else if (row.kind === 'bookmark' || row.kind === 'known') {
     if (typeof value !== 'boolean' || !validationQuestions(bank).some(q => row.key === `${row.kind}:${q.id}`)) return fail();
   } else if (row.kind === 'flash') {
@@ -45,12 +45,32 @@ export function validateBackup(input: unknown, bank: Question[]): Backup | State
   if (new Set(rows.map(r => r.key)).size !== rows.length) throw new Error('File có bản ghi trùng lặp.');
   return { version: 2, name: input.name, exportedAt: Number(input.exportedAt), rows };
 }
-export function composeState(rows: StudyRow[], activeId: string | null, writer: string): State {
+export function composeState(rows: StudyRow[], activeId: string | null, writer: string, bank: Question[] = []): State {
   const state = emptyState();
   const baseline = rows.find(r => r.kind === 'baseline')?.value as Baseline | undefined;
   state.progress = structuredClone(baseline?.progress || {});
   const covered = new Set(baseline?.covered || []);
-  for (const row of [...rows].sort((a,b)=>a.stamp-b.stamp || a.writer.localeCompare(b.writer) || a.key.localeCompare(b.key))) {
+  // Older versions saved reviewed answers in sessions without creating attempt rows.
+  // Project those missing attempts without rewriting sessions or duplicating synced attempts.
+  const reviewQuestions = new Map(bank.filter(q=>q.status==='review').map(q=>[q.id,q]));
+  const attemptKeys = new Set(rows.filter(row=>row.kind==='attempt').map(row=>row.key));
+  const inferred: StudyRow[] = [];
+  for (const row of rows) {
+    if (row.kind !== 'session') continue;
+    const session = row.value as Session;
+    for (const id of session.questionIds) {
+      const question = reviewQuestions.get(id), answer = session.answers[id];
+      const graded = session.finishedAt !== null || session.mode === 'practice' && session.settings.feedback === 'immediate' && session.revealed.includes(id);
+      if (!question || !answer?.length || !graded) continue;
+      const key = attemptKey(session.id,id);
+      if (!baseline?.progress[id]) covered.delete(key);
+      if (attemptKeys.has(key) || covered.has(key)) continue;
+      attemptKeys.add(key);
+      // There is no original grading time; navigation must not make an old answer look new.
+      inferred.push({key,kind:'attempt',stamp:row.stamp,writer:row.writer,value:{questionId:id,sessionId:session.id,correct:isCorrect(question,answer),lastSeen:session.finishedAt ?? session.startedAt}});
+    }
+  }
+  for (const row of [...rows,...inferred].sort((a,b)=>a.stamp-b.stamp || a.writer.localeCompare(b.writer) || a.key.localeCompare(b.key))) {
     state.updatedAt = Math.max(state.updatedAt, row.stamp);
     if (row.kind === 'session') {
       const session = row.value as Session;

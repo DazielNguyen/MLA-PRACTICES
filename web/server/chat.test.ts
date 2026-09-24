@@ -93,7 +93,10 @@ test('the tutor receives the current choice and a server-computed comparison, in
   assert.equal(reference(334,['B']).study.resultAgainstBank,'correct');
   assert.equal(reference(334,['A'],false).study.resultAgainstBank,'not_graded');
   assert.equal(reference(334,[]).study.resultAgainstBank,'unanswered');
-  assert.equal(reference(337,[]).study.resultAgainstBank,'unscored');
+  assert.equal(reference(337,[]).study.resultAgainstBank,'unanswered');
+  assert.equal(reference(337,['D']).study.resultAgainstBank,'correct');
+  assert.equal(reference(337,['A']).study.resultAgainstBank,'incorrect');
+  assert.equal(reference(337,['D'],false).study.resultAgainstBank,'not_graded');
   const multi=questions.find(q=>q.required>1 && q.answer.length===q.required && q.status!=='review')!;
   assert.equal(reference(multi.id,[...multi.answer].reverse()).study.resultAgainstBank,'correct');
   assert.equal(reference(multi.id,multi.answer.slice(0,1),false).study.resultAgainstBank,'not_graded');

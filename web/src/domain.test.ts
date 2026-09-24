@@ -13,22 +13,25 @@ const make=():State=>({...emptyState(),active:createSession([single,multi],setti
 test('merged bank retains unique IDs, provenance, choices, and image assets',()=>{
   assert.equal(bank.length,594);assert.equal(new Set(bank.map(q=>q.id)).size,594);
   assert.equal(bank.filter(q=>q.status==='review').length,32);
-  for(const q of bank){assert.ok(q.text.length>30);assert.ok(Object.keys(q.choices).length>=4);assert.ok(q.sourceName);assert.ok(q.sourceIds.length);if(q.status!=='source')assert.ok(q.sources.length);for(const source of q.sources)assert.match(source.url,/^https:\/\//);if(q.status!=='review'){assert.equal(q.required,q.answer.length);assert.ok(q.answer.every(a=>Object.hasOwn(q.choices,a)));}for(const im of q.images){assert.ok(existsSync(new URL(`../public${im.url}`,import.meta.url)));assert.ok(im.slot==='question'||Object.hasOwn(q.choices,im.slot));}}
+  for(const q of bank){assert.ok(q.text.length>30);assert.ok(Object.keys(q.choices).length>=4);assert.ok(q.sourceName);assert.ok(q.sourceIds.length);if(q.status!=='source')assert.ok(q.sources.length);for(const source of q.sources)assert.match(source.url,/^https:\/\//);assert.ok(q.answer.length);assert.equal(q.required,q.answer.length);assert.ok(q.answer.every(a=>Object.hasOwn(q.choices,a)));for(const im of q.images){assert.ok(existsSync(new URL(`../public${im.url}`,import.meta.url)));assert.ok(im.slot==='question'||Object.hasOwn(q.choices,im.slot));}}
 });
 test('multiple answers require the exact set, independent of order',()=>{
   assert.equal(isCorrect(multi,[...multi.answer].reverse()),true);
   assert.equal(isCorrect(multi,multi.answer.slice(1)),false);
   assert.equal(isCorrect(multi,[...multi.answer,'Z']),false);
-  assert.equal(isCorrect(review,review.answer),false);
+  assert.equal(isCorrect(review,review.answer),true);
+  assert.equal(isCorrect({...review,answer:[]},[]),false);
 });
 test('single choice replaces; multi choice caps and can be deselected',()=>{
   assert.deepEqual(toggleChoice(['A'],'B',1),['B']);assert.deepEqual(toggleChoice(['A','B'],'C',2),['A','B']);
   assert.deepEqual(toggleChoice(['A','B'],'A',2),['B']);assert.deepEqual(toggleChoice(['B'],'A',2),['A','B']);
 });
-test('exam never contains unresolved answers, even with includeReview enabled',()=>{
-  const pool=eligibleQuestions(bank,{...defaultSettings,includeReview:true},emptyState(),'exam');
-  assert.equal(pool.length,562);assert.ok(pool.every(q=>q.status!=='review'));
-  assert.equal(eligibleQuestions(bank,{...defaultSettings,includeHistorical:false},emptyState(),'exam').length,562);
+test('practice and exam include review questions by default and respect an explicit filter',()=>{
+  for (const mode of ['practice','exam'] as const) {
+    const pool=eligibleQuestions(bank,defaultSettings,emptyState(),mode);
+    assert.equal(pool.length,594);assert.equal(pool.filter(q=>q.status==='review').length,32);
+    assert.equal(eligibleQuestions(bank,{...defaultSettings,includeReview:false},emptyState(),mode).length,562);
+  }
 });
 test('question filters combine scope, range and status',()=>{
   const state=emptyState();state.bookmarks=[333,415];
@@ -65,9 +68,21 @@ test('timeout grades once and preserves flags and deadline',()=>{
   state=finishSession(state,bank,90000,'timeout');state=finishSession(state,bank,100000,'timeout');
   assert.equal(state.active,null);assert.equal(state.history.length,1);assert.equal(state.history[0].finishedAt,61000);assert.equal(state.history[0].finishReason,'timeout');assert.deepEqual(state.history[0].flagged,[multi.id]);assert.equal(state.progress[single.id].attempts,1);assert.deepEqual(score(state.history[0],bank),{correct:1,total:2,answered:1,skipped:0,percent:50});
 });
-test('review questions neither alter score denominator nor progress',()=>{
+test('review questions contribute to scores, counters and wrong-answer filters',()=>{
   let state=emptyState();state.active=createSession([single,review],settings,'practice',1000);state.active.answers[single.id]=single.answer;state.active.answers[review.id]=review.answer;
-  state=finishSession(state,bank,3000);assert.equal(state.progress[review.id],undefined);assert.equal(score(state.history[0],bank).total,1);assert.equal(score(state.history[0],bank).percent,100);assert.equal(score(state.history[0],bank).skipped,1);
+  state=revealAnswer(state,review,2000);state=revealAnswer(state,review,2500);
+  state=finishSession(state,bank,3000);
+  assert.equal(state.progress[review.id].attempts,1);assert.equal(state.progress[review.id].correct,1);
+  assert.deepEqual(score(state.history[0],bank),{correct:2,total:2,answered:2,skipped:0,percent:100});
+  state.active=createSession([review],{...settings,count:1},'exam',4000);
+  state.active.answers[review.id]=[Object.keys(review.choices).find(letter=>!review.answer.includes(letter))!];
+  assert.deepEqual(validateState(state,bank),state);
+  state=finishSession(state,bank,5000);
+  assert.equal(state.progress[review.id].attempts,2);assert.equal(state.progress[review.id].correct,1);
+  assert.equal(score(state.history[0],bank).percent,0);
+  assert.deepEqual(eligibleQuestions(bank,{...defaultSettings,scope:'wrong'},state).map(q=>q.id),[review.id]);
+  const unanswered=createSession([review],{...settings,count:1},'exam',6000);
+  assert.deepEqual(score(unanswered,bank),{correct:0,total:1,answered:0,skipped:0,percent:0});
 });
 test('backup restores selections, flags, card position and results',()=>{
   const state=make();state.active!.answers[multi.id]=multi.answer;state.active!.flagged=[single.id];state.flash={ids:[single.id,multi.id],index:1};state.bookmarks=[multi.id];state.known=[single.id];
@@ -82,10 +97,10 @@ test('invalid backups are rejected before replacing progress',()=>{
 
 test('collection and source status filters keep MLS and MLA separate',()=>{
   const mla=eligibleQuestions(bank,{...defaultSettings,collection:'mla'},emptyState(),'exam');
-  assert.equal(mla.length,562);assert.ok(mla.every(q=>q.collection==='mla'));
+  assert.equal(mla.length,594);assert.ok(mla.every(q=>q.collection==='mla'));
   assert.deepEqual(eligibleQuestions(bank,{...defaultSettings,collection:'mla',includeSource:false},emptyState(),'exam'),mla);
   assert.equal(eligibleQuestions(bank,{...defaultSettings,collection:'mls'},emptyState(),'exam').length,0);
-  assert.ok(!mla.some(q=>q.id===469));
+  assert.ok(mla.some(q=>q.id===469));
 });
 test('legacy content and IDs are preserved; answer changes require explicit documented reviews',()=>{
   const old=JSON.parse(readFileSync(new URL('../../tmp/pdfs/reviewed_questions.json',import.meta.url),'utf8'));
@@ -108,6 +123,8 @@ test('deduplication preserves all source question references and resolves confli
   assert.deepEqual(bank.find(q=>q.id===454)!.sourceIds,[122,286]);
   assert.deepEqual(bank.find(q=>q.id===559)!.sourceIds,[227,228]);
   assert.equal(bank.find(q=>q.id===469)!.status,'review');
+  assert.deepEqual(bank.find(q=>q.id===469)!.answer,['D']);
+  assert.match(bank.find(q=>q.id===469)!.notes.join(' '),/bản nguồn chính Q137/);
   assert.ok(mla.every(q=>q.status!=='source'&&q.sources.length>0));
 });
 
@@ -132,7 +149,7 @@ test('reviewed corrections and disputed API behavior affect grading explicitly',
   for(const id of [437,466,525,568,613]){
     const q=bank.find(q=>q.id===id)!;
     assert.equal(q.status,'review');
-    assert.equal(isCorrect(q,q.answer),false);
+    assert.equal(isCorrect(q,q.answer),true);
   }
   const warm=bank.find(q=>q.id===334)!;
   assert.deepEqual(warm.answer,['B']);

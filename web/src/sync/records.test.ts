@@ -44,6 +44,39 @@ test('one graded answer contributes once across check, finish, replay and sync',
   assert.equal(repo.state().progress['334'].attempts,1);const backup=repo.backup();repo.importBackup(backup);assert.equal(repo.state().progress['334'].attempts,1);
   for(const row of repo.rows())repo.mergeRemote(row,row);assert.equal(repo.state().progress['334'].attempts,1);
 });
+test('review answer attempts survive repository writes, backups and remote merges',()=>{
+  const review=bank.find(q=>q.id===337)!;
+  const repo=make(), session=createSession([review],settings,'practice',1000);
+  repo.update(s=>({...s,active:{...session,answers:{337:['D']}}}));
+  repo.update(s=>revealAnswer(s,review,2000));finish(repo);
+  assert.equal(repo.state().progress[337].attempts,1);assert.equal(repo.state().progress[337].correct,1);
+  const backup=validateBackup(repo.backup(),bank);repo.importBackup(backup);
+  for (const row of repo.rows()) repo.mergeRemote(row,row);
+  assert.equal(repo.state().progress[337].attempts,1);
+  assert.equal(repo.rows().filter(row=>row.kind==='attempt').length,1);
+});
+test('previously unscored review answers are projected once without changing saved sessions',()=>{
+  const review=bank.find(q=>q.id===337)!;
+  const session={...createSession([review],settings,'practice',1000),answers:{337:['D']},revealed:[337]};
+  const row={key:`session:${session.id}`,kind:'session' as const,value:session,stamp:2000,writer:'old-tab'};
+  const rows=[row], original=structuredClone(rows);
+  const project=()=>composeState(rows,session.id,'old-tab',bank);
+  assert.equal(project().progress[337].correct,1);assert.deepEqual(rows,original);
+  assert.deepEqual(composeState([{...row,stamp:9000}],session.id,'old-tab',bank).progress,project().progress);
+  const key=`attempt:${session.id}:337`;
+  const attempt={key,kind:'attempt' as const,stamp:2100,writer:'old-tab',value:{questionId:337,sessionId:session.id,correct:true,lastSeen:2000}};
+  assert.equal(composeState([...rows,attempt],session.id,'old-tab',bank).progress[337].attempts,1);
+  const legacy={key:'baseline:legacy',kind:'baseline' as const,stamp:2200,writer:'old-tab',value:{progress:{},covered:[key]}};
+  assert.equal(composeState([...rows,legacy],session.id,'old-tab',bank).progress[337].attempts,1);
+  const withCounts={...legacy,value:{progress:project().progress,covered:[key]}};
+  assert.equal(composeState([...rows,withCounts],session.id,'old-tab',bank).progress[337].attempts,1);
+  const hidden={...row,value:{...session,revealed:[],settings:{...settings,feedback:'end' as const}}};
+  assert.equal(composeState([hidden],session.id,'old-tab',bank).progress[337],undefined);
+  const finished={...hidden,value:{...hidden.value,answers:{337:['A']},finishedAt:3000,finishReason:'manual' as const}};
+  assert.equal(composeState([finished],null,'old-tab',bank).progress[337].latest,false);
+  const blank={...finished,value:{...finished.value,answers:{}}};
+  assert.equal(composeState([blank],null,'old-tab',bank).progress[337],undefined);
+});
 test('independent tab grades accumulate without overwriting the other tab',()=>{
   const a=make(),b=new ProgressRepository(a.learner,bank,crypto.randomUUID());
   const sa=start(a),sb=start(b);

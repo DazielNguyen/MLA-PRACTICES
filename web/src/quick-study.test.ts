@@ -41,9 +41,11 @@ test('stale, invalid and expired input cannot alter the current question',()=>{
   const exam=make(334,'exam');
   assert.equal(selectAnswer(exam,get(334),'B',exam.active.deadline!),exam);
 });
-test('unresolved quick questions reveal their analysis without grading',()=>{
+test('review quick questions reveal their analysis and grade against the bank key',()=>{
   const state=selectAnswer(make(337),get(337),'C',2000);
-  assert.deepEqual(state.active!.revealed,[337]);assert.equal(state.progress[337],undefined);
+  assert.deepEqual(state.active!.revealed,[337]);assert.equal(state.progress[337].attempts,1);assert.equal(state.progress[337].correct,0);
+  const correct=selectAnswer(make(337),get(337),'D',2000);
+  assert.equal(correct.progress[337].correct,1);
 });
 test('quick mode survives backups while older sessions remain manual',()=>{
   const state=selectAnswer(make(),get(334),'B',2000);

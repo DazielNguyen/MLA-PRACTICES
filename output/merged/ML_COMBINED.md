@@ -17550,6 +17550,7 @@ Difference in proportions of labels is DPL = q_a − q_d. The direction of corre
 #### Notes
 
 - Mâu thuẫn nội dung đáp án Q137/Q223. Cần xác định rõ hai facet trước khi chốt đáp án.
+- Chấm điểm theo D của bản nguồn chính Q137. Q223 chọn C, tương ứng B ở câu này; nhãn cần xác minh và phân tích mâu thuẫn vẫn được giữ.
 
 #### References
 

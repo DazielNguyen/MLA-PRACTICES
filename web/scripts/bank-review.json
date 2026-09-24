@@ -18,10 +18,10 @@
       "notes": ["Mâu thuẫn Q122=A và Q286=B đã được đối chiếu mẫu AWS."]
     },
     "137": {
-      "answer": [], "status": "review",
-      "explanation": "Nguồn Q137 chọn D; Q223 chọn C, tương ứng B trong thứ tự Q137. AWS định nghĩa DPL = q_a − q_d. Nếu nhóm 40–45 là facet a, tỷ lệ nhãn dương của nhóm này cao hơn; giảm mẫu dương của nhóm này (B) làm giảm chênh lệch. Đề không chỉ rõ facet a/d. Giữ câu ở trạng thái cần xác minh, không tính điểm, thay vì chọn khóa nguồn có mâu thuẫn.",
+      "answer": ["D"], "status": "review",
+      "explanation": "Nguồn Q137 chọn D; Q223 chọn C, tương ứng B trong thứ tự Q137. AWS định nghĩa DPL = q_a − q_d. Nếu nhóm 40–45 là facet a, tỷ lệ nhãn dương của nhóm này cao hơn; giảm mẫu dương của nhóm này (B) làm giảm chênh lệch. Đề không chỉ rõ facet a/d. Chấm theo D của bản nguồn chính Q137; giữ trạng thái cần xác minh vì Q223 chọn đáp án khác.",
       "sources": [{"title": "AWS — Difference in Proportions of Labels", "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-data-bias-metric-true-label-imbalance.html"}],
-      "notes": ["Mâu thuẫn nội dung đáp án Q137/Q223. Cần xác định rõ hai facet trước khi chốt đáp án."]
+      "notes": ["Mâu thuẫn nội dung đáp án Q137/Q223. Cần xác định rõ hai facet trước khi chốt đáp án.", "Chấm điểm theo D của bản nguồn chính Q137. Q223 chọn C, tương ứng B ở câu này; nhãn cần xác minh và phân tích mâu thuẫn vẫn được giữ."]
     }
   },
   "notes": [

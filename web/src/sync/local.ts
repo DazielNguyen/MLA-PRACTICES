@@ -72,7 +72,7 @@ export class ProgressRepository {
     this.rowCache.set(key, {raw, row});
     return row;
   }
-  state() { return composeState(this.rows(), tabGet(this.activeKey), this.writer); }
+  state() { return composeState(this.rows(), tabGet(this.activeKey), this.writer, this.bank); }
   put(kind: RowKind, key: string, value: unknown, claim = false) {
     const old = this.getRow(key);
     const row: StudyRow = { key, kind, value, stamp: Math.max(Date.now(), (old?.stamp || 0) + 1), writer: this.writer, dirty: true, claim: claim || Boolean(old?.dirty && old.claim && old.writer === this.writer) };
@@ -80,7 +80,7 @@ export class ProgressRepository {
     write(this.prefix + key, JSON.stringify(row));
   }
   update(fn: (state: State) => State, notify = true) {
-    const rows = this.rows(), previous = composeState(rows, tabGet(this.activeKey), this.writer), next = fn(previous);
+    const rows = this.rows(), previous = composeState(rows, tabGet(this.activeKey), this.writer, this.bank), next = fn(previous);
     if (previous === next) return false;
     const sessions = new Map(rows.filter(r => r.kind === 'session').map(r => [r.key, r]));
     for (const session of [...next.history, ...(next.active ? [next.active] : [])]) {

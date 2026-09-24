@@ -6,7 +6,7 @@ import { Empty, Explanation, IconToggle, QuestionAnswerStats, QuestionImages, Qu
 import { useAssistantTopic } from './assistant-context';
 
 export default function Flashcards({bank,state,update}:{bank:Question[];state:State;update:(fn:(s:State)=>State)=>void}) {
-  const [flipped,setFlipped]=useState(false),[filter,setFilter]=useState(state.flash?.filter||'all'),[origin,setOrigin]=useState<NonNullable<State['flash']>['origin']>(state.flash?.origin||'all'),[includeReview,setIncludeReview]=useState(state.flash?.includeReview??false),[done,setDone]=useState(false);
+  const [flipped,setFlipped]=useState(false),[filter,setFilter]=useState(state.flash?.filter||'all'),[origin,setOrigin]=useState<NonNullable<State['flash']>['origin']>(state.flash?.origin||'all'),[includeReview,setIncludeReview]=useState(state.flash?.includeReview??true),[done,setDone]=useState(false);
   const eligible=(group:string,review:boolean,source=origin)=>studyQuestions(bank).filter(q=>matchesOrigin(q,source||'all')&&(review||q.status!=='review')&&(group==='all'||group==='new'&&!hasQuestionMark(q,state.known)||group==='known'&&hasQuestionMark(q,state.known)||group==='bookmarked'&&hasQuestionMark(q,state.bookmarks))).map(q=>q.id);
   useEffect(()=>{
     if(!normalizeFlashDeck(state.flash,bank)){const ids=eligible(filter,includeReview);if(ids.length)update(s=>({...s,flash:{ids,index:0,filter,includeReview,origin,collection:'mla'}}));else setEmpty(true);}

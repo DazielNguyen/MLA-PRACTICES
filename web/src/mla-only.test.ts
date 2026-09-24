@@ -20,7 +20,7 @@ test('every study entry point rejects retired questions even if given an old com
   const combined=[...archive,...bank];
   assert.equal(studyQuestions(combined).length,594);
   const exam=eligibleQuestions(combined,{...defaultSettings,collection:'all',includeReview:true,includeHistorical:true},emptyState(),'exam');
-  assert.equal(exam.length,562);assert.ok(exam.every(q=>q.collection==='mla'));
+  assert.equal(exam.length,594);assert.ok(exam.every(q=>q.collection==='mla'));
   const session=createSession(combined,{...defaultSettings,count:594},'practice');
   assert.ok(session.questionIds.every(id=>id>332));
   assert.throws(()=>createSession(archive,{...defaultSettings,count:1},'practice'));

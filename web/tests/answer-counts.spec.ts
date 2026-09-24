@@ -83,10 +83,45 @@ test('exam counts change only after submission and blank questions do not count 
   await expectCounts(page, 0, 0, 334);
 });
 
-test('unverified questions explain why right and wrong counters are unavailable', async ({ page }) => {
+test('review questions grade, count attempts and show wrong answers in the navigator', async ({ page }) => {
   await onboard(page);
-  await page.goto('/#/library');
-  await page.getByLabel('Tìm câu hỏi').fill('#337');
-  await expect(counts(page, 337)).toHaveText('Cần xác minh · Không tính đúng/sai');
-  await expect(counts(page, 337).locator('.answer-count-correct,.answer-count-wrong')).toHaveCount(0);
+  await page.goto('/#/practice');
+  await page.getByLabel('Số câu hỏi',{exact:true}).fill('5');
+  await page.getByRole('button',{name:'Theo thứ tự',exact:true}).click();
+  await page.getByRole('button',{name:/^Học nhanh Chọn là chấm/}).click();
+  await expect(page.getByRole('checkbox',{name:/Bao gồm câu cần xác minh/})).toBeChecked();
+  await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();
+  await page.getByRole('button',{name:'Đến câu 5',exact:true}).click();
+  await expect(page.locator('.question-id')).toContainText('#337');
+  await page.locator('.quick-question').evaluate(async el=>{await Promise.all(el.getAnimations().map(a=>a.finished.catch(()=>{})));});
+  await page.locator('.choice-button').first().click();
+  await expect(page.locator('.feedback-banner')).toContainText('Sai theo đáp án bộ đề');
+  await expect(page.locator('.answer-label')).toHaveText('Đáp án chấm theo bộ đề: D');
+  await expect(page.locator('.question-toolbar .tag.review')).toHaveText('Cần xác minh');
+  await expect(page.locator('.choice.correct .choice-button')).toContainText('Lake Formation');
+  await expect(page.getByRole('button',{name:'Đến câu 5',exact:true})).toHaveClass(/incorrect/);
+  await expectCounts(page,0,1,337);
+  await page.reload();await expectCounts(page,0,1,337);
+  await page.getByRole('button',{name:'Xem kết quả',exact:true}).click();
+  await expect(page.getByRole('button',{name:'Cần ôn lại (5)',exact:true})).toBeVisible();
+  await expectCounts(page,0,1,337);
+});
+
+test('exam includes review questions, hides their outcomes, then counts their score',async({page})=>{
+  await onboard(page);
+  await page.goto('/#/exam');
+  await page.getByLabel('Số câu hỏi',{exact:true}).fill('5');
+  await page.getByRole('button',{name:'Theo thứ tự',exact:true}).click();
+  await page.getByRole('button',{name:'Bắt đầu thi thử',exact:true}).click();
+  await page.getByRole('button',{name:'Đến câu 5',exact:true}).click();
+  await expect(page.locator('.question-id')).toContainText('#337');
+  await page.locator('.choice-button').nth(3).click();
+  await expectCounts(page,0,0,337);
+  await expect(page.locator('.explanation,.choice.correct,.question-grid .incorrect')).toHaveCount(0);
+  await page.reload();await expect(page.locator('.choice-button').nth(3)).toHaveAttribute('aria-pressed','true');
+  await page.getByRole('button',{name:'Nộp bài',exact:true}).click();
+  await page.getByRole('button',{name:'Nộp và xem kết quả',exact:true}).click();
+  await expect(page.locator('.score-ring strong')).toHaveText('20%');
+  await expectCounts(page,1,0,337);
+  await page.reload();await expectCounts(page,1,0,337);
 });

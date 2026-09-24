@@ -28,7 +28,7 @@ export type State = {
   flash: { ids: number[]; index: number; origin?: 'all'|'imported'|'original'; filter?: 'all'|'new'|'known'|'bookmarked'; includeReview?: boolean; collection?: 'all'|'mls'|'mla'; includeSource?: boolean } | null;
 };
 export const STORAGE_KEY = 'ml-practice:v1';
-export const defaultSettings: Settings = { count: 20, minutes: 40, order: 'random', scope: 'all', range: 'all', includeReview: false, includeHistorical: false, feedback: 'immediate', collection: 'mla', includeSource: false };
+export const defaultSettings: Settings = { count: 20, minutes: 40, order: 'random', scope: 'all', range: 'all', includeReview: true, includeHistorical: false, feedback: 'immediate', collection: 'mla', includeSource: false };
 export const importedBankRange = '333-618';
 export const questionRanges = [
   { value:importedBankRange, collection:'mla', label:'Bộ đề đã nhập · 242 câu' },
@@ -40,7 +40,7 @@ export const collectionLabel = (collection: string) => collection === 'mla' ? 'M
 export const sourceLabel = (q: Question) => `${q.collection === 'mla' ? 'MLA-C01' : 'MLS'} Q${String(q.sourceIds[0]).padStart(3,'0')}${q.origin === 'original' ? ' · Tự biên soạn' : ''}`;
 export const matchesOrigin = (q: Question, origin: string) => origin === 'all' || (q.origin === 'original' ? origin === 'original' : origin === 'imported');
 export const emptyState = (): State => ({ version: 1, updatedAt: 0, bookmarks: [], known: [], progress: {}, active: null, history: [], flash: null });
-export const isCorrect = (q: Question, answer: string[] = []) => q.status !== 'review' && answer.length === q.answer.length && q.answer.every(v => answer.includes(v));
+export const isCorrect = (q: Question, answer: string[] = []) => q.answer.length > 0 && answer.length === q.answer.length && q.answer.every(v => answer.includes(v));
 export const isQuickSession = (session: Session) => session.mode === 'practice' && session.settings.feedback === 'immediate' && session.settings.quick === true;
 export const studyQuestions = (bank: Question[]) => bank.filter(q => q.collection === 'mla' && q.duplicateOf === undefined);
 export function isStudySession(session: Session, bank: Question[]) {
@@ -87,12 +87,12 @@ export function toggleChoice(answer: string[], choice: string, required: number)
   if (required === 1) return [choice];
   return answer.length < required ? [...answer, choice].sort() : answer;
 }
-export function eligibleQuestions(bank: Question[], settings: Settings, state: State, mode: Session['mode'] = 'practice') {
+export function eligibleQuestions(bank: Question[], settings: Settings, state: State, _mode: Session['mode'] = 'practice') {
   return bank.filter(q => {
     if (q.collection !== 'mla' || q.duplicateOf !== undefined) return false;
     if (settings.collection && settings.collection !== 'all' && q.collection !== settings.collection) return false;
     if (q.status === 'source' && settings.includeSource === false) return false;
-    if (q.status === 'review' && (mode === 'exam' || !settings.includeReview)) return false;
+    if (q.status === 'review' && !settings.includeReview) return false;
     if (q.status === 'historical' && !settings.includeHistorical) return false;
     if (settings.range !== 'all') { const [min, max] = settings.range.split('-').map(Number); if (q.id < min || q.id > max) return false; }
     if (settings.scope === 'wrong') return questionProgress(q,state)?.latest === false;
@@ -115,13 +115,13 @@ export function createSession(pool: Question[], settings: Settings, mode: Sessio
 }
 export function remainingMs(session: Session, now = Date.now()) { return session.deadline === null ? null : Math.max(0, session.deadline - now); }
 export function score(session: Session, bank: Question[]) {
-  const eligible = bank.filter(q => session.questionIds.includes(q.id) && q.status !== 'review');
+  const eligible = bank.filter(q => session.questionIds.includes(q.id));
   const correct = eligible.filter(q => isCorrect(q, session.answers[q.id])).length;
   const answered = session.questionIds.filter(id => session.answers[id]?.length).length;
   return { correct, total: eligible.length, answered, skipped: session.questionIds.length - eligible.length, percent: eligible.length ? Math.round(correct / eligible.length * 100) : 0 };
 }
 export function recordAnswer(state: State, q: Question, answer: string[], now: number): State {
-  if (q.status === 'review' || !answer.length) return state;
+  if (!answer.length) return state;
   const previous = state.progress[q.id] || { attempts: 0, correct: 0, latest: false, lastSeen: 0 };
   const correct = isCorrect(q, answer);
   return { ...state, progress: { ...state.progress, [q.id]: { attempts: previous.attempts + 1, correct: previous.correct + Number(correct), latest: correct, lastSeen: now } } };
@@ -175,7 +175,7 @@ export function validateState(input: unknown, bank: Question[]): State {
       const q = byId.get(Number(id));
       if (!q || !set.has(q.id) || !Array.isArray(values) || values.length > q.required || new Set(values).size !== values.length || values.some(c => typeof c !== 'string' || !Object.hasOwn(q.choices, c))) return fail();
     }
-    if (v.mode === 'exam' && (!Number.isFinite(v.deadline) || Number(v.deadline) <= Number(v.startedAt) || v.revealed.length || v.questionIds.some(id => byId.get(id)?.status === 'review'))) return fail();
+    if (v.mode === 'exam' && (!Number.isFinite(v.deadline) || Number(v.deadline) <= Number(v.startedAt) || v.revealed.length)) return fail();
     if (v.mode === 'practice' && v.deadline !== null) return fail();
     if (finished ? !Number.isFinite(v.finishedAt) || Number(v.finishedAt) < Number(v.startedAt) || !['manual','timeout'].includes(String(v.finishReason)) : v.finishedAt !== null || v.finishReason !== null) return fail();
     return true;

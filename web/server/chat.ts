@@ -67,7 +67,7 @@ function studyReference(context: unknown) {
         const matches = selected.length === q.answer.length && selected.every(letter => q.answer.includes(letter));
         attempt = { page: study.page, selected, selectedChoices: Object.fromEntries(selected.map(letter=>[letter,(q.choices as Record<string,string>)[letter]])), revealed: study.revealed, resultAgainstBank: !selected.length ? 'unanswered' : !study.revealed ? 'not_graded' : matches ? 'correct' : 'incorrect' };
       }
-      reference = JSON.stringify({ type: 'question', id: q.id, study: attempt, text: q.text, choices: q.choices, answerFromBank: q.answer, status: q.status, conditionalAnswer: 'conditionalAnswer' in q && q.conditionalAnswer === true, origin: 'origin' in q ? q.origin : 'imported', analysis: q.analysis, notes: q.notes, references: q.sources, hasFigures: q.images.length > 0 });
+      reference = JSON.stringify({ type: 'question', id: q.id, study: attempt, text: q.text, choices: q.choices, answerFromBank: q.answer, status: q.status, sourceName: q.sourceName, sourceIds: q.sourceIds, duplicateMatches: 'duplicateMatches' in q ? q.duplicateMatches : undefined, conditionalAnswer: 'conditionalAnswer' in q && q.conditionalAnswer === true, origin: 'origin' in q ? q.origin : 'imported', analysis: q.analysis, notes: q.notes, references: q.sources, hasFigures: q.images.length > 0 });
     } else if (context.kind === 'keyword') {
       const item = keywords.find(item => item.id === context.id);
       if (!item) throw new ChatError(400, 'Không tìm thấy nội dung Keywork.');

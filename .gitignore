@@ -3,12 +3,23 @@
 .env*
 !.env.example
 
-# Generated copies of tracked source bundles and audit exports.
-/extracted/MLA-C01-Web-Study-Bundle/
-/tmp/pdfs/legacy-quiz-audit.json
-/tmp/pdfs/merge-candidates.json
-/tmp/pdfs/mla-bundle-parsed.json
-/tmp/answer-analysis/
+# Private question banks, source documents, exports and audit metadata.
+/*.json
+*.quiz
+*.zip
+*.pdf
+*.csv
+*.tsv
+*.xlsx
+/extracted/
+/tmp/
+/output/
+/MLA-C01-SkillBuilder/
+/BAO_CAO*.md
+/web/src/data/
+/web/public/images/
+/web/scripts/**/*.json
+/web/scripts/udemy/
 __pycache__/
 
 # Personal study sources and exports stay on this computer.

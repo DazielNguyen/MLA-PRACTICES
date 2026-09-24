@@ -31,6 +31,7 @@ test('warm-pool practice explains the correct answer and every distractor after 
 
 test('conditional source questions show their scoring key while retaining conditional analysis',async({page})=>{
   await page.goto('/#/library');
+  await page.getByLabel('Nguồn câu hỏi',{exact:true}).selectOption('imported');
   await page.getByLabel('Trạng thái đáp án').selectOption('source');
   await expect(page.locator('.library-count strong')).toHaveText('32 câu hỏi');
   await expect(page.getByLabel('Trạng thái đáp án').locator('option[value="review"]')).toHaveCount(0);

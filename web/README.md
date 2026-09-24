@@ -24,7 +24,7 @@ Dùng Node.js 24 LTS. Mã nguồn yêu cầu Node.js từ 22.12 trở lên.
 | --- | --- |
 | Học nhanh | Chọn là chấm, xem đáp án và giải thích ngay. Trang chủ mở 10 câu ngẫu nhiên từ bộ ZIP đã nhập. |
 | Keywork Practice | Học 1.574 mục theo Domain và Part bằng flashcard, ghép từ và điền bước quy trình. Lưu phần đã nắm trong hồ sơ. |
-| Flashcard | Lật thẻ, đánh dấu đã thuộc, lọc thẻ chưa thuộc hoặc đã lưu. |
+| Flashcard | Học vòng 10 câu: sai thì thử lại, đúng thì thêm câu mới. Có chế độ lật thẻ tự đánh giá. |
 | Luyện cùng đáp án | Chọn đủ phương án rồi bấm **Kiểm tra đáp án**. Câu đã kiểm tra sẽ khóa lựa chọn. |
 | Tự kiểm tra | Trả lời trước, xem toàn bộ đáp án sau khi nộp bài. Không giới hạn thời gian. |
 | Thi thử | Chọn số câu và thời gian. Đáp án ẩn cho đến khi nộp bài. |
@@ -58,7 +58,7 @@ Nhập lại CSV bằng `python3 scripts/import-keywords.py` trong thư mục `w
 
 ## Giải thích tiếng Việt
 
-Cả 594 câu trên web có ý chính, phân tích từng lựa chọn và ghi chú tiếng Việt. Câu hỏi, lựa chọn tiếng Anh, đáp án và trạng thái xác minh được giữ nguyên.
+Toàn bộ câu trên web có ý chính, phân tích từng lựa chọn và ghi chú tiếng Việt. Câu hỏi, lựa chọn tiếng Anh, đáp án và trạng thái xác minh được giữ nguyên.
 
 Chạy `python3 scripts/import-questions.py` để dựng lại ngân hàng. Bản dịch nằm trong `scripts/translations`; checksum chặn việc áp bản dịch cũ khi nội dung nguồn đổi.
 
@@ -86,7 +86,7 @@ Mọi lựa chọn dùng cùng cách highlight. Sau khi chấm, đáp án đúng
 
 Để chọn số câu và bộ lọc, vào **Luyện tập → Học nhanh** trước khi bắt đầu.
 
-Học nhanh mặc định dùng **Bộ đề đã nhập · 242 câu**. Khi tắt câu cần xác minh, bộ này có 210 câu chấm điểm.
+Học nhanh mặc định dùng **Bộ 286 · 242 câu sau gộp**. Các câu có đáp án tham khảo vẫn được tính điểm.
 
 Bộ **352 câu tự biên soạn** là lựa chọn bổ sung riêng. Bạn có thể chọn bộ này trong mục **Nội dung**.
 
@@ -140,7 +140,11 @@ Nếu xóa dữ liệu trình duyệt, dùng mã Supabase hoặc bản sao JSON 
 
 ## Nguồn câu hỏi trên web
 
-Ngân hàng web có **594 câu MLA-C01**: 242 câu được gộp từ 286 mục trong ZIP và 352 câu **Tự biên soạn**. Có 16 ảnh khác nhau.
+Ngân hàng giữ bộ MLA-C01 cũ, bộ Udemy bổ sung và bộ **Tự biên soạn**. Mỗi bộ có lựa chọn riêng.
+
+Bộ Udemy giữ nguyên từng câu và tiến trình riêng. Nhãn trùng chỉ giúp đối chiếu với bộ cũ, không gộp câu.
+
+Nguồn Udemy là nhãn theo tệp người dùng cung cấp. Đây không phải xác nhận các câu từng xuất hiện trong kỳ thi AWS.
 
 Chọn bộ **MLA-C01 · 352 câu tự biên soạn** khi luyện tập hoặc thi thử. Flashcard và Ngân hàng câu hỏi có bộ lọc **Nguồn câu hỏi**.
 
@@ -151,19 +155,19 @@ Bộ ZIP có nguồn từ tài liệu người dùng cung cấp. Chưa có bằn
 | Trạng thái | Số câu | Cách sử dụng |
 | --- | ---: | --- |
 | Đã đối chiếu | 562 | Có đáp án và chấm điểm. Dùng trong học nhanh, luyện tập, flashcard và thi thử. |
-| Cần xác minh | 32 | Có phân tích theo điều kiện. Không chấm điểm và không xuất hiện trong thi thử. |
+| Theo đáp án bộ đề | 227 | Có chấm điểm trong mọi chế độ. Giải thích nêu điều kiện và điểm mơ hồ của nguồn. |
 
-Mỗi câu có giải thích tiếng Anh cho từng lựa chọn và nguồn đối chiếu AWS.
+Mỗi câu có giải thích tiếng Việt cho từng lựa chọn và liên kết tài liệu. Câu hỏi và lựa chọn giữ tiếng Anh.
 
-Phần đáp án gồm **Correct answer**, **Key Concept**, **Why this is correct** và **Why other options are incorrect**.
+Phần giải thích gồm đáp án, ý chính và phân tích từng lựa chọn.
 
-Câu cần xác minh dùng **Answer not finalized**. Bật bộ lọc tương ứng để đọc thêm trong luyện tập hoặc flashcard.
+Câu có điểm chưa chắc chắn vẫn chấm theo khóa nguồn. Ghi chú giải thích điều kiện áp dụng.
 
-Mã câu được giữ nguyên để tiến trình MLA-C01 tiếp tục hoạt động. Với bộ ZIP, mã ngân hàng bằng 332 cộng số câu nguồn được giữ. Bộ tự biên soạn dùng mã 1001–1352.
+Mã câu được giữ nguyên để tiến trình MLA-C01 tiếp tục hoạt động. Với bộ ZIP, mã ngân hàng bằng 332 cộng số câu nguồn được giữ. Bộ tự biên soạn dùng mã 1001–1352. Bộ Udemy dùng mã 701–895.
 
 Ví dụ, MLA-C01 Q001 có mã #333. Các khoảng trống là câu đã gộp, không phải câu bị mất.
 
-File `src/data/questions.json` chỉ chứa 594 câu MLA-C01. Thư mục `public/images/` chỉ chứa ảnh MLA-C01.
+File `src/data/questions.json` chỉ chứa câu MLA-C01. Thư mục `public/images/` chỉ chứa ảnh MLA-C01.
 
 Bản web không đóng gói nội dung, đáp án, giải thích hoặc hình của bộ MLS.
 
@@ -199,7 +203,9 @@ npm test
 npm run build
 ```
 
-Lệnh nhập cần `../tmp/pdfs/reviewed_questions.json`, các hình gốc và `../MLA-C01_Web_Study_Bundle.zip`.
+Lệnh nhập cần bộ nguồn cũ, file Udemy ở thư mục gốc và các bản dịch riêng trong `scripts/udemy/`.
+
+File sửa định dạng và nhãn trùng cũng nằm trong `scripts/udemy/`. Checksum chặn nguồn đã đổi nhưng chưa rà soát lại.
 
 Lệnh giữ toàn bộ tài liệu gốc trong `../output/merged/`, nhưng chỉ ghi câu MLA-C01 vào dữ liệu web.
 
@@ -213,25 +219,23 @@ Các báo cáo cũ phản ánh ngân hàng kết hợp tại thời điểm lậ
 
 Ứng dụng đã có `vercel.json`. Có thể chạy chỉ với bộ nhớ trình duyệt. Để đồng bộ nhiều thiết bị, thêm hai biến public của Supabase theo [hướng dẫn](SUPABASE_SETUP.md).
 
-### Qua GitHub
+### Dữ liệu riêng và GitHub
 
-1. Đưa mã nguồn lên repository GitHub của bạn.
-2. Tại Vercel, tạo project từ repository đó.
-3. Đặt **Root Directory** thành `web`.
-4. Kiểm tra các giá trị sau.
+`.gitignore` loại đề gốc, ảnh, bản dịch, bản xuất và metadata khỏi các commit mới.
+Git ngừng theo dõi các file này nhưng vẫn giữ chúng trên máy.
+Lịch sử Git cũ vẫn chứa những dữ liệu đã commit trước đây.
 
-| Mục | Giá trị |
-| --- | --- |
-| Framework Preset | Vite |
-| Install Command | `npm ci` |
-| Build Command | `npm run build` |
-| Output Directory | `dist` |
-| Node.js Version | 24.x |
+Một bản clone chỉ có mã nguồn chưa đủ để build hoặc chạy kiểm thử dữ liệu.
+Trước khi dùng máy mới, khôi phục `src/data/` và `public/images/` từ bản sao riêng.
+Để nhập lại hoặc kiểm thử dữ liệu, khôi phục thêm nguồn và metadata trong các thư mục bị bỏ qua.
+Không dùng `git add -f` cho các file này.
 
-5. Chọn **Deploy**.
-6. Mở URL Vercel trả về.
+`git.deploymentEnabled` trong `vercel.json` tắt triển khai tự động từ Git.
+Dùng Vercel CLI từ máy giữ đủ dữ liệu để cập nhật website.
+`.vercelignore` cho phép gửi dữ liệu chạy web nhưng loại nguồn gốc, script nhập, bản xuất và file môi trường.
 
-Nếu repository chỉ chứa nội dung của `web`, giữ Root Directory mặc định.
+Website tải dữ liệu đề vào trình duyệt. Người truy cập web vẫn có thể lấy dữ liệu đã tải.
+Việc bỏ qua bằng Git chỉ bảo vệ khỏi các commit mới, không tạo kiểm soát truy cập trên web.
 
 ### Qua Terminal
 

@@ -6,11 +6,11 @@ import { createSession, defaultSettings, eligibleQuestions, emptyState, finishSe
 import { validateBackup } from './sync/records.ts';
 
 const personal: Question[] = JSON.parse(readFileSync(new URL('./data/questions.json', import.meta.url), 'utf8'));
-const base = personal.filter(q=>q.origin!=='original');
+const base = personal.filter(q=>!q.origin);
 
 test('published original pack preserves imported records and exposes all four domain ranges', () => {
   assert.deepEqual(personal.slice(0, base.length), base);
-  const added = personal.slice(base.length);
+  const added = personal.filter(q=>q.origin==='original');
   assert.equal(added.length, 352);
   assert.deepEqual(added.map(q=>q.id), Array.from({length:352}, (_,i)=>1001+i));
   const whole = eligibleQuestions(personal, {...defaultSettings, range:'1001-1352'}, emptyState(), 'exam');
@@ -47,7 +47,7 @@ test('original IDs preserve answers, flashcards and history through backup valid
   const invariant = (q:Question) => Object.fromEntries(Object.entries(q).filter(([key])=>!['analysis','explanation','hint','notes','explanationLanguage'].includes(key)));
   assert.deepEqual(originals.map(invariant),canonical.map(invariant));
   const normalize=(text:string)=>text.toLowerCase().replace(/[^a-z0-9]/g,'');
-  assert.equal(new Set(personal.map(q=>normalize(q.text))).size,personal.length);
+  assert.equal(new Set(personal.filter(q=>q.origin!=='udemy').map(q=>normalize(q.text))).size,personal.filter(q=>q.origin!=='udemy').length);
   for(const q of originals){
     assert.match(sourceLabel(q),/Tự biên soạn/);
     assert.equal(q.sourceName,'MLA-C01 · Tự biên soạn');

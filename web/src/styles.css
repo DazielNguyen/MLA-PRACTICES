@@ -82,3 +82,6 @@
 .question-grid>button.incorrect.flagged{border-bottom-color:#d4ab5b}
 .navigator-legend i.incorrect{background:#efb7b2}
 @media(max-width:540px){.question-answer-stats{font-size:10px;gap:6px 8px}.question-answer-stats b{font-size:12px}.answer-count-correct,.answer-count-wrong,.answer-count-unscored{padding:4px 6px}}
+
+/* Supplemental sources retain independent question IDs and progress. */
+.tag.udemy{background:#f1e8ff;color:#70409b}.tag.duplicate{background:#fff3d9;color:#866119}.question-origin .tag{margin-right:6px}.duplicate-matches{padding:12px 14px;border:1px solid #ecddba;background:#fffdf6;border-radius:8px;margin:12px 0;font-size:12px}.duplicate-matches p{line-height:1.9}.duplicate-matches small{display:block;color:#7d806c;margin-top:6px;font-size:11px}.question-text{white-space:pre-line}

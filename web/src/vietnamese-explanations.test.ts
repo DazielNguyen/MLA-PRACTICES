@@ -6,13 +6,13 @@ import type { Question } from './domain.ts';
 const bank: Question[] = JSON.parse(readFileSync(new URL('./data/questions.json', import.meta.url), 'utf8'));
 const baseline = JSON.parse(readFileSync(new URL('../scripts/translations/content-sha256.json', import.meta.url), 'utf8'));
 function sorted(value: any): any {return Array.isArray(value) ? value.map(sorted) : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map(key => [key, sorted(value[key])])) : value;}
-test('Vietnamese localization preserves all 594 stems, choices, grading keys, identities and reference links', () => {
-  assert.equal(bank.length, 594);
+test('Vietnamese localization preserves all 789 stems, choices, grading keys, identities and reference links', () => {
+  assert.equal(bank.length, 789);
   for (const q of bank) {
     const payload = Object.fromEntries(Object.entries(q).filter(([key]) => baseline.fields.includes(key)));
     assert.equal(createHash('sha256').update(JSON.stringify(sorted(payload))).digest('hex'), baseline.questions[q.id], `Question content changed: ${q.id}`);
   }
-  assert.equal(bank.filter(q => q.status === 'source' && q.conditionalAnswer).length,32);
+  assert.equal(bank.filter(q => q.origin !== 'udemy' && q.status === 'source' && q.conditionalAnswer).length,32);
 });
 test('every concept, option explanation and note has a Vietnamese translation without English template leftovers', () => {
   let options = 0;
@@ -27,5 +27,5 @@ test('every concept, option explanation and note has a Vietnamese translation wi
     if (q.conditionalAnswer) assert.match(q.explanation,/Đáp án theo bộ đề/);
     assert.doesNotMatch(q.explanation,/không (?:tính|được chấm) điểm/i);
   }
-  assert.equal(options, 2396);
+  assert.equal(options, 3207);
 });

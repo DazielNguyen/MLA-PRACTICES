@@ -8,6 +8,7 @@ import shutil
 import zipfile
 from answer_analysis import attach
 from vietnamese_explanations import localize, export_vietnamese
+from udemy_bank import load_udemy
 
 APP = Path(__file__).resolve().parents[1]
 ROOT = APP.parent
@@ -240,6 +241,7 @@ def main():
         if q['status'] == 'review':
             q['status'] = 'source'
             q['conditionalAnswer'] = True
+    web_bank += load_udemy(web_bank)
     export_vietnamese(web_bank, APP / 'local-study')
     (OUTPUT / 'MLS_ARCHIVE.json').write_text(json.dumps(old, ensure_ascii=False, separators=(',', ':')) + '\n')
     # Only validation shapes are shipped for reading old progress. No MLS content or keys.
@@ -257,6 +259,7 @@ def main():
     catalog = {'total': len(web_bank), 'records': len(web_bank), 'archivedVariants': 0, 'maxId': max(q['id'] for q in web_bank),
                'collections': dict(Counter(q['collection'] for q in web_bank)), 'statuses': dict(Counter(q['status'] for q in web_bank)),
                'sourceMap': {str(source): q['id'] for q in new + originals for source in q['sourceIds']}}
+    catalog['udemySourceMap'] = {str(q['sourceIds'][0]): q['id'] for q in web_bank if q.get('origin') == 'udemy'}
     (APP / 'src/data/questions.json').write_text(json.dumps(web_bank, ensure_ascii=False, separators=(',', ':')) + '\n')
     (APP / 'src/data/catalog.json').write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + '\n')
     (OUTPUT / 'MERGE_AUDIT.json').write_text(json.dumps(audit, ensure_ascii=False, indent=2) + '\n')

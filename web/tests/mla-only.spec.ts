@@ -4,18 +4,18 @@ import { onboard, snapshot } from './helpers';
 
 test('all web study modes expose only MLA questions and no MLS selector',async({page})=>{
   await onboard(page);
-  await expect(page.locator('.bank-card')).toContainText('594 câu hỏi');
+  await expect(page.locator('.bank-card')).toContainText('789 câu hỏi');
   await expect(page.locator('.bank-card')).not.toContainText('MLS');
   await page.goto('/#/exam');
-  await expect(page.locator('.pool-count')).toContainText('594 câu');
+  await expect(page.locator('.pool-count')).toContainText('789 câu');
   await expect(page.getByRole('combobox',{name:'Bộ đề',exact:true})).toHaveCount(0);
   await expect(page.getByLabel('Bao gồm câu về dịch vụ cũ')).toHaveCount(0);
-  await page.getByLabel('Số câu hỏi',{exact:true}).fill('594');
+  await page.getByLabel('Số câu hỏi',{exact:true}).fill('789');
   await page.getByRole('button',{name:'Bắt đầu thi thử',exact:true}).click();
   const ids=(await snapshot(page)).active!.questionIds;
-  expect(ids).toHaveLength(594);expect(ids.every(id=>id>332)).toBe(true);
+  expect(ids).toHaveLength(789);expect(ids.every(id=>id>332)).toBe(true);
   await page.goto('/#/library');
-  await expect(page.locator('.library-count')).toContainText('594 câu hỏi');
+  await expect(page.locator('.library-count')).toContainText('789 câu hỏi');
   await page.getByRole('textbox',{name:'Tìm câu hỏi'}).fill('#269');
   await expect(page.locator('.library-card')).toHaveCount(0);
   await page.getByRole('textbox',{name:'Tìm câu hỏi'}).fill('mla-c01 q228');

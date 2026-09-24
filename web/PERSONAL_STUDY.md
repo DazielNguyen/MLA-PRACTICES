@@ -1,6 +1,6 @@
 # Original MLA-C01 practice
 
-The website contains 594 questions: 242 imported questions and 352 original practice questions.
+The website keeps the original practice pack alongside the imported ZIP and Udemy packs.
 Each original question displays **Tự biên soạn**. IDs 1001–1352 remain unchanged from the personal pack.
 
 Select **MLA-C01 · 352 câu tự biên soạn** in practice or exam setup to study the new questions.
@@ -35,7 +35,7 @@ Run from the `web` directory:
 npm run study
 ```
 
-Open <http://127.0.0.1:5176>. This mode uses the same 594 questions and disables Supabase.
+Open <http://127.0.0.1:5176>. This mode uses the same local question bank and disables Supabase.
 Progress stays in the browser. Use the application's JSON backup to transfer it to the website.
 A production build uses the same bank with the configured Supabase connection.
 

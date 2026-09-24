@@ -43,7 +43,8 @@ test('request validation rejects injected roles, oversized payloads and invented
   assert.match(prepared.reference, /SageMaker managed warm pools/);
   assert.match(prepared.reference, /"answerFromBank":\["B"\]/);
   assert.doesNotMatch(prepared.reference, /Untrusted replacement/);
-  assert.match(prepareChat({ ...body, context: { kind: 'question', id: 337 } }).reference, /"status":"source","conditionalAnswer":true/);
+  const conditional = JSON.parse(prepareChat({ ...body, context: { kind: 'question', id: 337 } }).reference);
+  assert.equal(conditional.status, 'source'); assert.equal(conditional.conditionalAnswer, true);
   assert.match(prepareChat({ ...body, context: { kind: 'keyword', id: 'd1-p1-5753cbd622eb6b7e' } }).reference, /"domain":1/);
 });
 test('the official SDK sends bounded canonical context and streams text with clickable AWS citations', async () => {

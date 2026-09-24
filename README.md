@@ -2,6 +2,8 @@
 
 Ứng dụng ôn tập nằm trong [web](web/README.md).
 
+Dữ liệu đề, bản dịch, ảnh và metadata không được Git theo dõi. Máy mới cần khôi phục các file riêng trước khi chạy.
+
 Chạy từ thư mục này:
 
 ```bash
@@ -13,13 +15,15 @@ npm run dev
 Mở **http://127.0.0.1:5173/**.
 
 - Flashcard, luyện có đáp án, luyện ẩn đáp án và thi có đồng hồ.
-- 594 câu MLA-C01: 242 câu từ ZIP và 352 câu **Tự biên soạn**. MLS chỉ giữ trong kho lưu trữ.
+- Các bộ MLA-C01 từ ZIP, Udemy và **Tự biên soạn** cùng dùng trên web. MLS chỉ giữ trong kho lưu trữ.
 - Lọc riêng bộ tự biên soạn khi luyện tập, thi thử, học flashcard hoặc xem ngân hàng câu hỏi.
 - Hồ sơ theo tên, bài riêng cho từng tab, lịch sử chia sẻ chỉ đọc.
 - Lưu trên trình duyệt hoặc đồng bộ Supabase, không cần email/mật khẩu.
 - [Thông tin bộ tự biên soạn và xuất Quizlet](web/PERSONAL_STUDY.md).
 - [Hướng dẫn tạo và kết nối Supabase](web/SUPABASE_SETUP.md).
-- Có cấu hình Vercel. Khi import repository, chọn Root Directory là `web`.
+- Triển khai Vercel từ máy giữ dữ liệu riêng. Project dùng Root Directory là `web`.
+
+Các báo cáo và bản xuất bên dưới chỉ có trên máy giữ dữ liệu riêng.
 
 Xem [hướng dẫn sử dụng và triển khai](web/README.md), [báo cáo kiểm tra dữ liệu](BAO_CAO_KIEM_TRA.md) và [tài liệu Quizlet](output/quizlet/HUONG_DAN_QUIZLET.md).
 

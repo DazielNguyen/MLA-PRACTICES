@@ -74,8 +74,10 @@ Nút **Hỏi AI về câu này** hoặc **Hỏi AI về nội dung này** đưa 
 
 Chat tự theo câu hiện tại trong Học nhanh, Luyện câu hỏi, Flashcard và Keywork.
 Trong Ngân hàng câu hỏi hoặc Kết quả, mở một câu để chat nhận đúng câu đó.
-Chuyển câu sẽ đổi ngữ cảnh và hội thoại. Nếu đang trả lời câu cũ, yêu cầu đó được hủy.
-Rời trang học sẽ bỏ ngữ cảnh câu cũ.
+Mỗi người học dùng một hội thoại chung. Chuyển câu chỉ đổi phần “câu đang mở” phía trên chat.
+Tin nhắn, bản nháp và câu trả lời đang chạy được giữ nguyên khi chuyển câu.
+Mỗi lượt hỏi ghi lại câu và lựa chọn lúc gửi để bot phân biệt với nội dung đang mở.
+Rời trang học sẽ bỏ ngữ cảnh câu hiện tại, nhưng vẫn giữ lịch sử trò chuyện.
 
 Server lấy đề, lựa chọn, đáp án và giải thích từ bộ tài liệu theo ID.
 Chat cũng nhận lựa chọn hiện tại và trạng thái đã xem đáp án của bạn.
@@ -92,9 +94,11 @@ Bot không tự đổi khóa đáp án hoặc ghi điểm.
 Shift + Enter xuống dòng. **Dừng trả lời** hủy yêu cầu đang chạy.
 Trợ lý tạm khóa trong màn hình thi thử và tự kiểm tra có ẩn đáp án.
 
-Hội thoại lưu trên trình duyệt, riêng theo người học và câu hỏi hoặc mục Keywork.
+Hội thoại lưu trên trình duyệt, riêng theo người học và dùng chung giữa các câu hỏi, Flashcard và Keywork.
 Hội thoại AI chưa đồng bộ qua Supabase. Tiến trình học vẫn đồng bộ theo cơ chế hiện có.
-Mỗi hội thoại giữ tối đa 40 tin nhắn. Nút dấu cộng xóa hội thoại đang mở để bắt đầu lại.
+Mỗi hội thoại giữ tối đa 40 tin nhắn. Chỉ nút dấu cộng tạo hội thoại mới.
+Khi nâng cấp, các chat cũ được gộp vào hội thoại chung, ưu tiên nhóm của câu đang mở.
+Các nhóm cũ không có thời gian gửi nên được đánh dấu “Hội thoại cũ”; dữ liệu gốc vẫn được giữ trong trình duyệt.
 Khi gửi, tin nhắn, ngữ cảnh câu hỏi và lựa chọn hiện tại được chuyển tới OpenAI.
 Tên, mã hồ sơ và lịch sử điểm không tự gửi kèm. Mở khung chat không tự gọi model.
 
@@ -102,6 +106,7 @@ Tên, mã hồ sơ và lịch sử điểm không tự gửi kèm. Mở khung ch
 
 Mỗi lượt hỏi nhận tối đa 3.000 output token, gồm reasoning token.
 Server chỉ gửi tối đa năm cặp hỏi đáp hoàn chỉnh gần nhất, kèm câu hỏi mới.
+Các lượt hỏi trước có ngữ cảnh riêng. Tài liệu tham chiếu lịch sử được giới hạn độ dài; nội dung câu hiện tại được gửi riêng.
 Nội dung đầu vào có giới hạn độ dài. SDK không tự thử lại yêu cầu lỗi.
 Khi bật tra cứu, mỗi lượt có tối đa hai lần gọi công cụ.
 

@@ -283,6 +283,6 @@ Mở địa chỉ Terminal hiển thị, mặc định là `http://127.0.0.1:417
 
 ## Trợ lý AI riêng
 
-Bot dùng OpenAI SDK và Responses API phía server. Chat nằm ngay trong trang học, tự nhận câu đang mở và đáp án bạn chọn. Bạn có thể hỏi bằng tiếng Việt và chuyển câu mà không đóng chat.
+Bot dùng OpenAI SDK và Responses API phía server. Chat nằm ngay trong trang học, tự nhận câu đang mở và đáp án bạn chọn. Mỗi người học dùng một hội thoại chung: chuyển câu vẫn giữ tin nhắn, bản nháp và câu trả lời đang chạy.
 
 Điền `OPENAI_API_KEY` trong `.env.local`. Mã truy cập bot đã được tạo sẵn trong `AI_CHAT_ACCESS_CODE`. Xem [hướng dẫn OpenAI](OPENAI_SETUP.md) để chạy trên máy hoặc cấu hình Vercel.

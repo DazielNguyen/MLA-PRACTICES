@@ -29,14 +29,14 @@ export function AssistantProvider({ learnerId, children }: { learnerId: string; 
       panel?.querySelector<HTMLElement>('.assistant-unlock input, textarea:not(:disabled)')?.focus({preventScroll:true});
     });
   };
-  useEffect(() => { if (blocked || embedded) setOpen(false); }, [blocked, embedded]);
-  const chat = (loaded || embedded) && <Suspense fallback={<div className={embedded?'assistant-notice':'assistant-loading'} role="status">Đang mở trợ lý…</div>}><Chat key={`${learnerId}:${topicKey(topic)}`} learnerId={learnerId} topic={topic} embedded={embedded} open={(embedded || open) && !blocked} close={() => setOpen(false)} clearTopic={() => setOverride({ anchor })}/></Suspense>;
+  useEffect(() => { if (embedded) setLoaded(true); if (blocked || embedded) setOpen(false); }, [blocked, embedded]);
+  const chat = (loaded || embedded) && <Suspense fallback={<div className={embedded?'assistant-notice':'assistant-loading'} role="status">Đang mở trợ lý…</div>}><Chat key={learnerId} learnerId={learnerId} topic={topic} embedded={embedded} open={(embedded || open) && !blocked} close={() => setOpen(false)} clearTopic={() => setOverride({ anchor })}/></Suspense>;
   return <AssistantContext.Provider value={{ ask, setCurrentTopic, setBlocked, blocked }}>
     <div className={`assistant-workspace ${embedded?'with-assistant':''}`}>
       <div className="assistant-page">{children}</div>
-      {embedded && <aside className="assistant-inline-rail" aria-label="Trợ lý trong trang học">{chat}</aside>}
+      <aside className={embedded?'assistant-inline-rail':'assistant-floating-host'} aria-label="Trợ lý học tập">{chat}</aside>
     </div>
-    {!embedded && <><button className="assistant-launcher" onClick={() => ask()} disabled={blocked} title={blocked ? 'Trợ lý mở lại sau khi nộp bài hoặc rời chế độ tự kiểm tra.' : 'Hỏi trợ lý MLA'} aria-label="Mở trợ lý AI"><MessageCircle size={20}/><span>Trợ lý AI</span></button>{chat}</>}
+    {!embedded && <button className="assistant-launcher" onClick={() => ask()} disabled={blocked} title={blocked ? 'Trợ lý mở lại sau khi nộp bài hoặc rời chế độ tự kiểm tra.' : 'Hỏi trợ lý MLA'} aria-label="Mở trợ lý AI"><MessageCircle size={20}/><span>Trợ lý AI</span></button>}
   </AssistantContext.Provider>;
 }
 // Exactly one page owns the visible study context. Do not register hidden list rows.

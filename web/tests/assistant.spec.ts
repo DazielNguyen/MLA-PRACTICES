@@ -61,9 +61,12 @@ test('question chat uses its ID, saves messages, renders citations and never tri
   expect(requests[1].messages).toHaveLength(3);
   await expect(page.getByRole('button', { name: 'Gửi câu hỏi' })).toBeVisible();
   await page.getByRole('button', { name: 'Chuyển sang hỏi chung' }).click();
-  await expect(page.locator('.assistant-message')).toHaveCount(0);
+  await expect(page.locator('.assistant-message')).toHaveCount(4);
+  await page.getByLabel('Câu hỏi cho trợ lý').fill('Tin nhắn đang soạn');
   await page.evaluate(()=>{location.hash='#/flashcards';});
   await expect(page.locator('.assistant-topic')).toContainText('Flashcard');
+  await expect(page.locator('.assistant-message')).toHaveCount(4);
+  await expect(page.getByLabel('Câu hỏi cho trợ lý')).toHaveValue('Tin nhắn đang soạn');
 });
 
 test('Keywork sends its own context and the chat fits mobile without changing mastery', async ({ page }) => {
@@ -117,12 +120,15 @@ test('the embedded bot follows the selected answer, next question and leaving th
   await page.getByRole('button',{name:'Đến câu 1',exact:true}).click();
   await expect(page.locator('.assistant-topic')).toContainText('Câu #333');
   await expect(page.locator('.assistant-topic')).toContainText('Chưa chọn đáp án');
-  await expect(page.locator('.assistant-message')).toHaveCount(0);
+  await expect(page.locator('.assistant-message')).toHaveCount(2);
   await page.getByLabel('Câu hỏi cho trợ lý').fill('Câu này cần nhớ gì?');
   await page.getByLabel('Câu hỏi cho trợ lý').press('Enter');
   await expect.poll(()=>requests.length).toBe(2);
   expect(requests[1].context.id).toBe(333);
   expect(requests[1].context.study.selected).toEqual([]);
+  expect(requests[1].messages).toHaveLength(3);
+  expect(requests[1].messages[0].context.id).toBe(334);
+  await expect(page.locator('.assistant-message.assistant strong')).toHaveCount(2);
   await page.evaluate(()=>{location.hash='#/';});
   await expect(page.getByRole('dialog')).not.toBeVisible();
   await page.getByRole('button',{name:'Mở trợ lý AI'}).click();
@@ -131,6 +137,8 @@ test('the embedded bot follows the selected answer, next question and leaving th
   await page.getByLabel('Câu hỏi cho trợ lý').press('Enter');
   await expect.poll(()=>requests.length).toBe(3);
   expect(requests[2].context).toBeNull();
+  expect(requests[2].messages).toHaveLength(5);
+  expect(requests[2].messages[2].context.id).toBe(333);
 });
 
 test('flashcard backs and expanded library rows supply the visible item to the embedded bot', async ({page}) => {
@@ -192,7 +200,7 @@ test('exam and hidden practice disable the tutor until the session ends', async 
   await expect(page.getByRole('button', { name: 'Mở trợ lý AI' })).toBeDisabled();
 });
 
-test('studying remains interactive during a reply and changing questions cancels the old chat', async ({page}) => {
+test('one conversation keeps streaming, draft and history while the current question changes', async ({page}) => {
   const requests:any[]=[]; let finish!:()=>void;
   const gate=new Promise<void>(resolve=>{finish=resolve;});
   await mockAI(page,requests,()=>gate); await onboard(page);
@@ -206,20 +214,53 @@ test('studying remains interactive during a reply and changing questions cancels
   await page.getByLabel('Câu hỏi cho trợ lý').fill('Câu này cần lưu ý gì?');
   await page.getByLabel('Câu hỏi cho trợ lý').press('Enter');
   await expect(page.getByRole('button',{name:'Dừng trả lời'})).toBeVisible();
+  await page.getByLabel('Câu hỏi cho trợ lý').fill('Câu tiếp khác câu trước thế nào?');
   await page.locator('.choice-button').nth(1).click();
   expect((await snapshot(page)).active!.answers[334]).toEqual(['B']);
   await expect(page.locator('.assistant-topic')).toContainText('Bạn chọn: B');
   await page.getByRole('button',{name:'Câu tiếp',exact:true}).click();
   await expect(page.locator('.assistant-topic')).toContainText('Câu #335');
+  await expect(page.getByRole('button',{name:'Dừng trả lời'})).toBeVisible();
+  await expect(page.getByLabel('Câu hỏi cho trợ lý')).toHaveValue('Câu tiếp khác câu trước thế nào?');
   finish();
-  await expect(page.locator('.assistant-message')).toHaveCount(0);
+  await expect(page.locator('.assistant-message.assistant strong')).toHaveText('Managed warm pools');
+  await expect(page.locator('.assistant-message-topic')).toContainText('Câu #334');
   await expect(page.getByRole('dialog')).toHaveCount(0);
-  await expect(page.getByRole('button',{name:'Gửi câu hỏi'})).toBeDisabled();
+  await page.getByRole('button',{name:'Gửi câu hỏi'}).click();
+  await expect(page.locator('.assistant-message.assistant strong')).toHaveCount(2);
+  expect(requests[1].context.id).toBe(335);
+  expect(requests[1].messages[0].context.id).toBe(334);
   await page.locator('.quick-question').evaluate(async element=>{await Promise.all(element.getAnimations().map(animation=>animation.finished));});
   await page.getByRole('button',{name:'Đến câu 2',exact:true}).click();
   await expect(page.locator('.assistant-topic')).toContainText('Câu #334');
-  await expect(page.locator('.assistant-message.user')).toContainText('Câu này cần lưu ý gì?');
-  await expect(page.locator('.assistant-incomplete')).toHaveCount(1);
+  await expect(page.locator('.assistant-message.user').first()).toContainText('Câu này cần lưu ý gì?');
+  await expect(page.locator('.assistant-message')).toHaveCount(4);
+  await expect(page.locator('.assistant-incomplete')).toHaveCount(0);
+});
+
+test('legacy question chats join the shared conversation once, remain private to the learner and do not return after clearing', async ({page}) => {
+  await mockAI(page,[]); await onboard(page);
+  await page.evaluate(()=>{
+    const id=sessionStorage.getItem('ml-selected:v2');
+    const pair=(text:string)=>JSON.stringify([{role:'user',content:text,complete:true},{role:'assistant',content:'Giải thích đã lưu',complete:true}]);
+    localStorage.setItem(`ml-ai-chat:v1:${id}:question:334`,pair('Hỏi cũ câu 334'));
+    localStorage.setItem(`ml-ai-chat:v1:${id}:question:335`,pair('Hỏi cũ câu 335'));
+    localStorage.setItem('ml-ai-chat:v1:another-learner:question:334',pair('Riêng tư của người khác'));
+  });
+  await page.getByRole('button',{name:'Mở trợ lý AI'}).click();
+  await expect(page.locator('.assistant-message')).toHaveCount(4);
+  await expect(page.locator('.assistant-thread')).toContainText('Hỏi cũ câu 334');
+  await expect(page.locator('.assistant-thread')).toContainText('Hỏi cũ câu 335');
+  await expect(page.locator('.assistant-thread')).not.toContainText('Riêng tư của người khác');
+  await page.reload();
+  await page.getByRole('button',{name:'Mở trợ lý AI'}).click();
+  await expect(page.locator('.assistant-message')).toHaveCount(4);
+  await page.getByRole('button',{name:'Cuộc trò chuyện mới'}).click();
+  await expect(page.locator('.assistant-message')).toHaveCount(0);
+  await page.reload();
+  await page.getByRole('button',{name:'Mở trợ lý AI'}).click();
+  await expect(page.locator('.assistant-message')).toHaveCount(0);
+  expect(await page.evaluate(()=>localStorage.getItem(`ml-ai-chat:v1:${sessionStorage.getItem('ml-selected:v2')}:question:334`))).toContain('Hỏi cũ câu 334');
 });
 
 test('wrong codes can be corrected and stopping a request keeps a retryable incomplete reply', async ({ page }) => {

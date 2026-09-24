@@ -2,25 +2,38 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowUp, BookOpen, KeyRound, LockKeyhole, MessageCircle, Plus, Square, X } from 'lucide-react';
 import Markdown from 'react-markdown';
 import type { AssistantTopic } from './assistant-context';
-import { read, tabGet, tabSet, write } from './sync/local';
+import { keys, read, tabGet, tabSet, write } from './sync/local';
 
-type Message = { role: 'user' | 'assistant'; content: string; complete: boolean };
+type Message = { role: 'user' | 'assistant'; content: string; complete: boolean; topic?: AssistantTopic; legacy?: boolean };
 type Config = { configured: boolean; requiresAccessCode: boolean; model: string };
 const ACCESS_KEY = 'ml-ai-access:v1';
 const SEARCH_KEY = 'ml-ai-search:v1';
-const storageKey = (learnerId: string, topic?: AssistantTopic) => `ml-ai-chat:v1:${learnerId}:${topic?.kind || 'general'}:${topic?.id || ''}`;
+const storageKey = (learnerId: string) => `ml-ai-chat:v2:${learnerId}`;
 function loadMessages(key: string): Message[] {
   try {
     const rows: unknown = JSON.parse(read(key) || '[]');
     if (!Array.isArray(rows)) return [];
-    return rows.filter((row): row is Message => row && ['user', 'assistant'].includes(row.role) && typeof row.content === 'string' && row.content.length <= 16000 && typeof row.complete === 'boolean').slice(-40);
+    return rows.filter((row): row is Message => row && ['user', 'assistant'].includes(row.role) && typeof row.content === 'string' && row.content.length <= 16000 && typeof row.complete === 'boolean').map(row => ({...row, topic: row.topic && ((row.topic.kind === 'question' && Number.isSafeInteger(row.topic.id)) || (row.topic.kind === 'keyword' && typeof row.topic.id === 'string')) && typeof row.topic.label === 'string' ? row.topic : undefined})).slice(-40);
   } catch { return []; }
+}
+function loadConversation(learnerId: string, current?: AssistantTopic) {
+  const key = storageKey(learnerId);
+  if (read(key) !== null) return loadMessages(key);
+  // Legacy chats have no timestamps. Keep each group intact and mark its origin,
+  // putting the currently open item's group last. Original keys remain untouched.
+  const prefix = `ml-ai-chat:v1:${learnerId}:`;
+  const currentKey = `${prefix}${current?.kind || 'general'}:${current?.id || ''}`;
+  return keys(prefix).sort((a,b)=>a === currentKey ? 1 : b === currentKey ? -1 : a.localeCompare(b)).flatMap(oldKey => {
+    const [kind,id] = oldKey.slice(prefix.length).split(':');
+    const topic: AssistantTopic | undefined = kind === 'question' && /^\d+$/.test(id) ? {kind,id:Number(id),label:`Câu #${id}`} : kind === 'keyword' ? {kind,id,label:`Keywork · ${id}`} : undefined;
+    return loadMessages(oldKey).map(message=>({...message,topic,legacy:true}));
+  }).slice(-40);
 }
 const safeLink = (url: string) => { try { return new URL(url).protocol === 'https:' ? url : ''; } catch { return ''; } };
 
 export default function StudyAssistant({ learnerId, topic, embedded, open, close, clearTopic }: { learnerId: string; topic?: AssistantTopic; embedded: boolean; open: boolean; close: () => void; clearTopic: () => void }) {
-  const key = storageKey(learnerId, topic);
-  const [messages, setMessages] = useState(() => loadMessages(key)), [draft, setDraft] = useState('');
+  const key = storageKey(learnerId);
+  const [messages, setMessages] = useState(() => loadConversation(learnerId, topic)), [draft, setDraft] = useState('');
   const [config, setConfig] = useState<Config | null>(null), [error, setError] = useState(''), [busy, setBusy] = useState(false), [status, setStatus] = useState('');
   const [access, setAccess] = useState(() => tabGet(ACCESS_KEY) || ''), [editAccess, setEditAccess] = useState(!tabGet(ACCESS_KEY));
   const dialog = useRef<HTMLDialogElement>(null), input = useRef<HTMLTextAreaElement>(null), thread = useRef<HTMLDivElement>(null);
@@ -60,14 +73,19 @@ export default function StudyAssistant({ learnerId, topic, embedded, open, close
   const send = async (text = draft, retry = false) => {
     if (pending.current || !text.trim() || !config?.configured || !access.trim()) return;
     // Only completed user/assistant pairs become context. Interrupted turns remain visible.
-    const pairs: { role: 'user' | 'assistant'; content: string }[] = [];
+    const pairs: { role: 'user' | 'assistant'; content: string; context?: unknown }[] = [];
     for (let i = 0; i < messages.length - 1; i++) if (messages[i].role === 'user' && messages[i + 1].role === 'assistant' && messages[i + 1].complete) {
-      pairs.push({ role: 'user', content: messages[i].content }, { role: 'assistant', content: messages[i + 1].content }); i++;
+      const previousTopic=messages[i].topic;
+      pairs.push({ role: 'user', content: messages[i].content, context: previousTopic ? {kind:previousTopic.kind,id:previousTopic.id,study:previousTopic.study} : null }, { role: 'assistant', content: messages[i + 1].content.slice(0,12000) }); i++;
     }
     let history = pairs.slice(-10);
     while (history.reduce((n, m) => n + m.content.length, text.length) > 32000) history = history.slice(2);
-    const base = retry && messages.at(-1)?.role === 'assistant' && !messages.at(-1)?.complete ? messages.slice(0, -2) : messages;
-    const next: Message[] = [...base, { role: 'user', content: text.trim(), complete: true }, { role: 'assistant', content: '', complete: false }];
+    const retrying = retry && messages.at(-1)?.role === 'assistant' && !messages.at(-1)?.complete;
+    const requestTopic = retrying ? messages.at(-2)?.topic : topic;
+    const base = (retrying ? messages.slice(0, -2) : messages).slice(-38);
+    const payload = () => ({messages:[...history,{role:'user',content:text.trim()}],context:requestTopic ? {kind:requestTopic.kind,id:requestTopic.id,study:requestTopic.study} : null,webSearch});
+    while (history.length && new TextEncoder().encode(JSON.stringify(payload())).byteLength > 60000) history = history.slice(2);
+    const next: Message[] = [...base, { role: 'user', content: text.trim(), complete: true, topic:requestTopic }, { role: 'assistant', content: '', complete: false, topic:requestTopic }];
     const index = next.length - 1;
     pending.current = true; setBusy(true); setMessages(next); setDraft(''); setError(''); setStatus('Đang suy nghĩ…');
     input.current?.focus({preventScroll:true});
@@ -76,7 +94,7 @@ export default function StudyAssistant({ learnerId, topic, embedded, open, close
     let received = '', finished = false;
     try {
       const response = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${access.trim()}` }, signal: abort.signal,
-        body: JSON.stringify({ messages: [...history, { role: 'user', content: text.trim() }], context: topic ? { kind: topic.kind, id: topic.id, study: topic.study } : null, webSearch }) });
+        body: JSON.stringify(payload()) });
       if (!response.ok) {
         const data = await response.json().catch(() => ({}));
         if (response.status === 401) { tabSet(ACCESS_KEY, ''); setEditAccess(true); }
@@ -125,13 +143,13 @@ export default function StudyAssistant({ learnerId, topic, embedded, open, close
       {config && !config.configured && <div className="assistant-notice" role="status">Trợ lý chưa được kích hoạt. Chủ website cần hoàn tất cấu hình kết nối.<button className="text-button" onClick={() => void checkConfig()}>Kiểm tra lại</button></div>}
       {config?.configured && editAccess && <form className="assistant-unlock" onSubmit={e => { e.preventDefault(); tabSet(ACCESS_KEY, access.trim()); setEditAccess(false); input.current?.focus(); }}><label><KeyRound size={15}/>Mã truy cập bot<input type="password" aria-label="Mã truy cập bot" value={access} onChange={e => setAccess(e.target.value)} autoComplete="off" maxLength={200} placeholder="Nhập mã riêng của bạn"/></label><button className="button secondary" disabled={access.trim().length < 16}>Dùng mã này</button><small>Mã này khác API key OpenAI. Chỉ nhớ trong tab đang mở.</small></form>}
       {!messages.length && <div className="assistant-suggestions">{suggestions.map(text => <button key={text} disabled={!config?.configured || editAccess || busy} onClick={() => void send(text)}>{text}<ArrowUp size={14}/></button>)}</div>}
-      {messages.map((m, i) => <article className={`assistant-message ${m.role}`} key={i}><span className="assistant-author">{m.role === 'user' ? 'Bạn' : 'Trợ lý MLA'}</span><div className="assistant-markdown"><Markdown skipHtml urlTransform={safeLink} components={{ a: ({ children, href }) => <a href={href} target="_blank" rel="noreferrer">{children}</a>, img: () => null }}>{m.content.replace(/\uE200[^\uE201]*\uE201/g, '') || (busy && i === messages.length - 1 ? 'Đang suy nghĩ…' : 'Chưa có câu trả lời.')}</Markdown></div>{m.role === 'assistant' && !m.complete && !busy && <small className="assistant-incomplete">Chưa hoàn tất</small>}</article>)}
+      {messages.map((m, i) => <article className={`assistant-message ${m.role}`} key={i}><span className="assistant-author">{m.role === 'user' ? 'Bạn' : 'Trợ lý MLA'}</span>{m.role==='user' && <small className="assistant-message-topic">{m.legacy?'Hội thoại cũ · ':''}{m.topic?.label || 'Hỏi chung'}</small>}<div className="assistant-markdown"><Markdown skipHtml urlTransform={safeLink} components={{ a: ({ children, href }) => <a href={href} target="_blank" rel="noreferrer">{children}</a>, img: () => null }}>{m.content.replace(/\uE200[^\uE201]*\uE201/g, '') || (busy && i === messages.length - 1 ? 'Đang suy nghĩ…' : 'Chưa có câu trả lời.')}</Markdown></div>{m.role === 'assistant' && !m.complete && !busy && <small className="assistant-incomplete">Chưa hoàn tất</small>}</article>)}
       {error && <div className="assistant-error" role="alert"><p>{error}</p>{!busy && lastQuestion && !editAccess && config?.configured && <button className="text-button" onClick={() => void send(lastQuestion, true)}>Thử lại câu vừa hỏi</button>}{!config && <button className="text-button" onClick={() => void checkConfig()}>Kết nối lại</button>}</div>}
     </div>
     <form className="assistant-composer" onSubmit={e => { e.preventDefault(); void send(); }}>
       <div className="assistant-options"><label><input type="checkbox" checked={webSearch} disabled={busy} onChange={e => {setWebSearch(e.target.checked);tabSet(SEARCH_KEY,String(e.target.checked));}}/>Tra tài liệu AWS</label><button type="button" className="text-button" onClick={() => { controller.current?.abort(); tabSet(ACCESS_KEY, ''); setAccess(''); setEditAccess(true); }}><LockKeyhole size={12}/>Khóa bot</button></div>
       <div className="assistant-input"><textarea ref={input} aria-label="Câu hỏi cho trợ lý" rows={2} maxLength={4000} value={draft} onChange={e => setDraft(e.target.value)} placeholder={topic ? 'Bạn chưa rõ điểm nào trong câu này?' : 'Hỏi về AWS hoặc kiến thức MLA-C01…'} disabled={!config?.configured || editAccess} onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); void send(); } }}/>{busy ? <button type="button" className="assistant-send" aria-label="Dừng trả lời" onClick={() => controller.current?.abort()}><Square size={16}/></button> : <button className="assistant-send" aria-label="Gửi câu hỏi" disabled={!draft.trim() || !config?.configured || editAccess}><ArrowUp size={20}/></button>}</div>
-      <p className="assistant-footnote" role="status">{status || 'Enter để gửi · Shift + Enter xuống dòng. AI có thể nhầm; đối chiếu nguồn khi cần.'}</p>
+      <p className="assistant-footnote" role="status">{status ? `${status}${messages.at(-1)?.topic ? ` · ${messages.at(-1)!.topic!.label}` : ''}` : 'Enter để gửi · Shift + Enter xuống dòng. AI có thể nhầm; đối chiếu nguồn khi cần.'}</p>
       <p className="assistant-storage-note">Hội thoại lưu trên trình duyệt này, riêng theo người học. Tin nhắn, câu đang mở và lựa chọn hiện tại được gửi tới OpenAI khi bạn bấm gửi.</p>
     </form>
   </>;

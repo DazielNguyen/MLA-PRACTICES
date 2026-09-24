@@ -120,6 +120,29 @@ test('Keywork reconstructs the exact gap and choices from the current exercise i
   assert.deepEqual(card.study.choices,[]);
 });
 
+test('a shared conversation preserves previous question references and places the current item next to the latest ask', async () => {
+  const previous={kind:'question',id:334,study:{page:'session',selected:['A'],revealed:true}};
+  const current={kind:'question',id:335,study:{page:'session',selected:[],revealed:false}};
+  const messages=[{role:'user',content:'Vì sao sai?',context:previous},{role:'assistant',content:'Warm pools giảm thời gian khởi tạo.'},{role:'user',content:'Câu đang mở khác câu trước thế nào?',context:previous}];
+  const prepared=prepareChat({...body,messages,context:current});
+  assert.match(prepared.messages[0].content,/"id":334/);
+  assert.match(prepared.messages[0].content,/Managed Spot Training/);
+  assert.match(prepared.messages[0].content,/"resultAgainstBank":"incorrect"/);
+  assert.equal(JSON.parse(prepared.reference).id,335);
+  assert.equal(prepared.messages[2].content,messages[2].content);
+  let sent:Record<string,unknown> | undefined;
+  const handler=createChatHandler(()=>env,fakeClient([{type:'response.completed',response:modelResponse('Hai câu khác yêu cầu.')}],data=>{sent=data;}));
+  await (await handler(request({...body,messages,context:current}))).text();
+  const input=sent?.input as {role:string;content:string}[];
+  assert.match(input[0].content,/Earlier turn context/);
+  assert.match(input.at(-2)!.content,/CURRENT study context/);
+  assert.match(input.at(-2)!.content,/"id":335/);
+  assert.equal(input.at(-1)!.content,messages[2].content);
+  const noCurrent=prepareChat({...body,messages,context:null});
+  assert.equal(noCurrent.reference,'');
+  assert.match(noCurrent.messages[0].content,/"id":334/);
+});
+
 test('simultaneous requests cannot pass the same per-IP slot while the body is being read', async () => {
   let finish!: () => void, clients = 0;
   const gate = new Promise<void>(resolve => { finish = resolve; });

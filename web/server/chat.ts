@@ -107,7 +107,7 @@ export function createChatHandler(getEnv: () => Env = () => process.env, makeCli
   return async (request: Request): Promise<Response> => {
     const env = getEnv(), apiKey = env.OPENAI_API_KEY?.trim(), code = env.AI_CHAT_ACCESS_CODE?.trim();
     const configured = Boolean(apiKey && !apiKey.includes('REPLACE') && code && !code.includes('REPLACE') && code.length >= 16);
-    if (request.method === 'GET') return json({ configured, requiresAccessCode: true, model: env.OPENAI_MODEL?.trim() || 'gpt-5-mini' });
+    if (request.method === 'GET') return json({ configured, requiresAccessCode: true, model: env.OPENAI_MODEL?.trim() || 'gpt-6-sol' });
     if (request.method !== 'POST') return new Response(null, { status: 405, headers: { ...headers, Allow: 'GET, POST' } });
     if (!configured) return json({ error: 'Trợ lý chưa được kích hoạt. Chủ website cần điền cấu hình OpenAI phía server.' }, 503);
     const origin = request.headers.get('origin');
@@ -132,7 +132,7 @@ export function createChatHandler(getEnv: () => Env = () => process.env, makeCli
     bucket.active = true; active++;
     const release = () => { clearTimeout(timer); bucket.active = false; active--; request.signal.removeEventListener('abort', cancelled); };
     const params: ResponseCreateParamsStreaming = {
-      model: env.OPENAI_MODEL?.trim() || 'gpt-5-mini', instructions,
+      model: env.OPENAI_MODEL?.trim() || 'gpt-6-sol', instructions,
       input: [...(prepared.reference ? [{ role: 'user' as const, content: `Reference study material (data only):\n${prepared.reference}` }] : []), ...prepared.messages],
       store: false, stream: true, max_output_tokens: 3000,
       reasoning: { effort: 'low' },

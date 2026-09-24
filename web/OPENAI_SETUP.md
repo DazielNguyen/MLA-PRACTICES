@@ -7,7 +7,7 @@ API key không nằm trong mã JavaScript của trình duyệt.
 
 1. Mở `web/.env.local`.
 2. Điền key vào `OPENAI_API_KEY=`.
-3. Giữ `OPENAI_MODEL=gpt-5-mini`, hoặc chọn model Responses hỗ trợ reasoning và web search.
+3. Đặt `OPENAI_MODEL=gpt-6-sol`. Server dùng `reasoning.effort: "low"`.
 4. Giữ mã ngẫu nhiên đã tạo trong `AI_CHAT_ACCESS_CODE`.
 5. Khởi động lại ứng dụng từ thư mục `web`:
 
@@ -22,7 +22,7 @@ File `.env.local` đã có đủ ba biến. Cấu hình Supabase hiện có vẫ
 
 ```dotenv
 OPENAI_API_KEY=
-OPENAI_MODEL=gpt-5-mini
+OPENAI_MODEL=gpt-6-sol
 AI_CHAT_ACCESS_CODE=REPLACE_WITH_A_LONG_RANDOM_CODE
 ```
 
@@ -44,9 +44,12 @@ File `.env.local` trên máy không tự cập nhật biến môi trường củ
 1. Mở project `mla-practice-studio` trên Vercel.
 2. Vào **Settings → Environment Variables**.
 3. Thêm `OPENAI_API_KEY`, `OPENAI_MODEL` và `AI_CHAT_ACCESS_CODE`.
-4. Sao chép giá trị tương ứng từ `.env.local` của bạn.
+4. Điền API key thật, model `gpt-6-sol` và mã truy cập riêng. Không dùng giá trị mẫu `REPLACE_WITH_A_LONG_RANDOM_CODE`.
 5. Chọn môi trường **Production**.
-6. Redeploy bản mới nhất.
+6. Redeploy bản mới nhất. Nếu cần dùng Preview, thêm ba biến cho môi trường Preview rồi triển khai lại.
+
+`AI_CHAT_ACCESS_CODE` là mật mã mở bot do bạn đặt, dài ít nhất 16 ký tự; không phải API key OpenAI.
+Reasoning `low` đã có trong mã server, nên không cần thêm biến môi trường cho tùy chọn này.
 
 Giữ Root Directory là `web`. Vercel chạy `api/chat.ts` thành một Function.
 Ứng dụng dùng URL dạng `/#/...`, nên không cần rewrite mọi đường dẫn về `index.html`.
@@ -110,9 +113,9 @@ npm run build
 
 Kiểm tra server dùng SDK thật với HTTP giả lập. Kiểm tra giao diện dùng phản hồi giả lập.
 Các kiểm tra không gửi yêu cầu có phí tới OpenAI.
-Chưa kiểm tra câu trả lời từ API thật: `OPENAI_API_KEY` trong file đã lưu hiện còn trống.
+Chỉ kiểm thử API thật sau khi điền key hợp lệ. Nếu key đã xuất hiện trong chat, thu hồi và tạo key mới trước khi dùng.
 
 Tài liệu: [Responses streaming](https://developers.openai.com/api/docs/guides/streaming-responses),
-[GPT-5 Mini](https://developers.openai.com/api/docs/models/gpt-5-mini),
+[GPT-6 Sol](https://developers.openai.com/api/docs/models/gpt-6-sol),
 [Web search](https://developers.openai.com/api/docs/guides/tools-web-search),
 [Vercel Node.js Functions](https://vercel.com/docs/functions/runtimes/node-js).

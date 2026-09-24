@@ -46,13 +46,13 @@ test('the official SDK sends bounded canonical context and streams text with cli
   let sent: Record<string, unknown> | undefined;
   const text = 'Warm pools giảm thời gian khởi tạo. [nguồn]';
   const response = modelResponse(text, [{ type: 'url_citation', start_index: text.indexOf('[nguồn]'), end_index: text.length, url: 'https://docs.aws.amazon.com/sagemaker/latest/dg/train-warm-pools.html', title: 'AWS Warm Pools' }]);
-  const handler = createChatHandler(() => env, fakeClient([{ type: 'response.web_search_call.in_progress' }, { type: 'response.output_text.delta', delta: 'Warm pools' }, { type: 'response.completed', response }], data => { sent = data; }));
+  const handler = createChatHandler(() => ({ ...env, OPENAI_MODEL: undefined }), fakeClient([{ type: 'response.web_search_call.in_progress' }, { type: 'response.output_text.delta', delta: 'Warm pools' }, { type: 'response.completed', response }], data => { sent = data; }));
   const result = await handler(request({ ...body, webSearch: true, model: 'user-selected-expensive-model' }));
   assert.equal(result.status, 200);
   const events = (await result.text()).trim().split('\n').map(line => JSON.parse(line));
   assert.equal(events[0].type, 'status'); assert.equal(events[1].text, 'Warm pools');
   assert.match(events.at(-1).text, /\[AWS Warm Pools\]\(<https:\/\/docs.aws.amazon.com/);
-  assert.equal(sent?.model, 'gpt-5-mini'); assert.equal(sent?.store, false); assert.equal(sent?.stream, true); assert.equal(sent?.max_output_tokens, 3000);
+  assert.equal(sent?.model, 'gpt-6-sol'); assert.deepEqual(sent?.reasoning, { effort: 'low' }); assert.equal(sent?.store, false); assert.equal(sent?.stream, true); assert.equal(sent?.max_output_tokens, 3000);
   assert.deepEqual(sent?.tools, [{ type: 'web_search', filters: { allowed_domains: ['docs.aws.amazon.com', 'aws.amazon.com'] }, search_context_size: 'low' }]);
   assert.equal(sent?.tool_choice, 'required'); assert.equal(sent?.max_tool_calls, 2);
   assert.ok(!JSON.stringify(sent).includes(secret));

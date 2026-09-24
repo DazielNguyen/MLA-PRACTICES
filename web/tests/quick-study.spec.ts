@@ -67,12 +67,21 @@ test('a wrong click explains immediately and another click advances exactly once
   await start(page);
   await page.locator('.choice-button').first().click();
   await expect(page.locator('.answer-label')).toHaveText('Đáp án đúng: C');
+  const wrongQuestion=page.getByRole('button',{name:'Đến câu 1',exact:true});
+  await expect(wrongQuestion).toHaveClass(/incorrect/);
+  await expect(wrongQuestion).toHaveAccessibleDescription('Trả lời sai');
+  await expect(wrongQuestion).toHaveCSS('background-color','rgb(173, 59, 50)');
   await expect(page.locator('.your-choice-analysis')).toBeVisible();
   await expect(page.locator('.quick-distractors')).not.toHaveAttribute('open','');
   await page.locator('.quick-distractors > summary').click();
   await expect(page.locator('.why-incorrect [data-option]')).toHaveCount(3);
   await page.locator('.choice-button').first().evaluate(button=>{for(let i=0;i<15;i++)(button as HTMLButtonElement).click();});
   await expect(page.locator('.question-id')).toContainText('#334');
+  await expect(wrongQuestion).toHaveClass(/incorrect/);
+  await expect(wrongQuestion).toHaveCSS('background-color','rgb(252, 232, 230)');
+  await page.reload();await ready(page);
+  await expect(wrongQuestion).toHaveClass(/incorrect/);
+  await page.locator('.question-navigator').screenshot({path:'test-results/navigator-wrong-desktop.png'});
   const saved=await snapshot(page);
   expect(saved.active!.index).toBe(1);
   expect(saved.active!.answers).toEqual({333:['A']});
@@ -83,6 +92,7 @@ test('number keys grade, Enter and Space advance, and the last answer finishes w
   await start(page,2);
   await page.keyboard.press('3');
   await expect(page.locator('.feedback-banner')).toContainText('Chính xác!');
+  await expect(page.getByRole('button',{name:'Đến câu 1',exact:true})).not.toHaveClass(/incorrect/);
   await page.reload();await ready(page);
   expect((await snapshot(page)).progress[333].attempts).toBe(1);
   await page.getByRole('button',{name:'Lưu câu hỏi',exact:true}).focus();
@@ -110,6 +120,7 @@ test('multi-select waits for all choices and does not grade an incomplete select
   await page.getByRole('button',{name:`Đến câu ${index+1}`,exact:true}).click();await ready(page);
   await page.keyboard.press('1');
   await expect(page.locator('.explanation')).toHaveCount(0);
+  await expect(page.getByRole('button',{name:`Đến câu ${index+1}`,exact:true})).not.toHaveClass(/incorrect/);
   expect((await snapshot(page)).progress[350]).toBeUndefined();
   await page.keyboard.press('1');
   await expect(page.locator('.choice-button[aria-pressed=true]')).toHaveCount(0);

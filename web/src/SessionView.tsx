@@ -19,6 +19,10 @@ export default function SessionView({session,state,bank,update,go,finish,learner
   const immediate = session.mode==='practice' && session.settings.feedback==='immediate';
   useAssistantTopic(immediate ? {kind:'question',id:q.id,label:`Câu #${q.id} · ${quick?'Học nhanh':'Luyện câu hỏi'}`,study:{page:'session',selected:answers,revealed}} : undefined);
   const answered = Object.values(session.answers).filter(a=>a.length).length;
+  const incorrectIds = new Set(immediate ? session.revealed.filter(id=>{
+    const question=bank.find(item=>item.id===id);
+    return question && question.status!=='review' && session.answers[id]?.length && !isCorrect(question,session.answers[id]);
+  }) : []);
   const last = session.index===session.questionIds.length-1;
   const correct = isCorrect(q,answers);
   const FeedbackIcon = q.status==='review' ? CircleHelp : correct ? CheckCircle2 : XCircle;
@@ -86,8 +90,8 @@ export default function SessionView({session,state,bank,update,go,finish,learner
       <aside className={`panel question-navigator ${palette?'show-mobile':''}`}>
         {quick&&<div className="quick-mode-label"><Zap size={16}/>HỌC NHANH</div>}
         <div className="section-heading"><h2>Danh sách câu</h2><Grid2X2 size={18}/></div><div className="progress-caption"><span>Tiến độ trả lời</span><strong>{Math.round(answered/session.questionIds.length*100)}%</strong></div><div className="progress-track"><div style={{width:`${answered/session.questionIds.length*100}%`}}/></div>
-        <div className="question-grid">{session.questionIds.map((id,i)=><button key={id} onClick={()=>navigateTo(i)} aria-label={`Đến câu ${i+1}${session.flagged.includes(id)?', đã đánh dấu':''}`} aria-current={i===session.index?'step':undefined} className={`${session.answers[id]?.length?'answered':''} ${i===session.index?'current':''} ${session.flagged.includes(id)?'flagged':''}`}>{i+1}{session.flagged.includes(id)&&<Flag size={8} fill="currentColor"/>}</button>)}</div>
-        <div className="navigator-legend"><span><i className="answered"/>Đã trả lời</span><span><i/>Chưa trả lời</span><span><Flag size={12}/>Xem lại ({session.flagged.length})</span></div>
+        <div className="question-grid">{session.questionIds.map((id,i)=><button key={id} onClick={()=>navigateTo(i)} aria-label={`Đến câu ${i+1}${session.flagged.includes(id)?', đã đánh dấu':''}`} aria-current={i===session.index?'step':undefined} aria-describedby={incorrectIds.has(id)?'navigator-incorrect-legend':undefined} title={incorrectIds.has(id)?`Câu ${i+1} · Trả lời sai`:undefined} className={`${session.answers[id]?.length?'answered':''} ${incorrectIds.has(id)?'incorrect':''} ${i===session.index?'current':''} ${session.flagged.includes(id)?'flagged':''}`}>{i+1}{session.flagged.includes(id)&&<Flag size={8} fill="currentColor"/>}</button>)}</div>
+        <div className="navigator-legend"><span><i className="answered"/>Đã trả lời</span>{immediate&&<span id="navigator-incorrect-legend"><i className="incorrect"/>Trả lời sai</span>}<span><i/>Chưa trả lời</span><span><Flag size={12}/>Xem lại ({session.flagged.length})</span></div>
         <div className="navigator-tip"><strong>{quick?'Giữ nhịp học của bạn':'Mẹo nhỏ'}</strong><p>{quick?'Chọn để xem kết quả ngay. Đọc ý chính, rồi bấm lại ngay trên đáp án để sang câu tiếp.':'Đánh dấu câu cần suy nghĩ thêm và quay lại trước khi nộp.'}</p><span>{quick?'1–6 Chọn · Enter / Space Tiếp tục':'← → Chuyển câu · 1–6 Chọn đáp án'}</span></div>
       </aside>
     </div>

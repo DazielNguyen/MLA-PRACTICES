@@ -77,4 +77,8 @@
 .library-card>.question-answer-stats{margin:9px 0 13px}
 .review-card .question-answer-stats{margin:10px 0 0}
 .flashcard>.question-answer-stats{margin-bottom:20px}
+.question-grid>button.incorrect{background:#fce8e6;color:#a12f28;border-color:#efb7b2}
+.question-grid>button.incorrect.current{background:#ad3b32;border-color:#ad3b32;color:white;outline-color:#d78e87}
+.question-grid>button.incorrect.flagged{border-bottom-color:#d4ab5b}
+.navigator-legend i.incorrect{background:#efb7b2}
 @media(max-width:540px){.question-answer-stats{font-size:10px;gap:6px 8px}.question-answer-stats b{font-size:12px}.answer-count-correct,.answer-count-wrong,.answer-count-unscored{padding:4px 6px}}

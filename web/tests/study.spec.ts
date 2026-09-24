@@ -27,6 +27,8 @@ test('exam hides answers, persists selections and flags, and grades on submissio
   await page.locator('.choice-button').nth(1).click();await page.getByRole('button',{name:'Đánh dấu xem lại',exact:true}).click();
   await page.reload();await expect(page.locator('.choice-button').nth(1)).toHaveAttribute('aria-pressed','true');await expect(page.getByRole('button',{name:'Bỏ đánh dấu xem lại'})).toBeVisible();
   expect((await snapshot(page)).active!.deadline).toBe(deadline);
+  await expect(page.locator('.question-grid .incorrect')).toHaveCount(0);
+  await expect(page.locator('#navigator-incorrect-legend')).toHaveCount(0);
   await page.screenshot({path:'test-results/exam-desktop.png',fullPage:true});
   await page.getByRole('button',{name:'Câu tiếp',exact:true}).click();await page.locator('.choice-button').nth(0).click();
   await page.getByRole('button',{name:'Nộp bài',exact:true}).click();await page.getByRole('button',{name:'Nộp và xem kết quả'}).click();
@@ -47,14 +49,24 @@ test('absolute timer automatically submits once, including on reload after closi
 });
 test('practice checks once, while hidden practice reveals only after submission',async({page})=>{
   await configure(page,'practice',2);await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();
-  await expect(page.getByRole('button',{name:'Kiểm tra đáp án'})).toBeDisabled();await page.locator('.choice-button').nth(1).click();await page.getByRole('button',{name:'Kiểm tra đáp án'}).click();
+  await expect(page.getByRole('button',{name:'Kiểm tra đáp án'})).toBeDisabled();await page.locator('.choice-button').nth(1).click();
+  await expect(page.locator('.question-grid .incorrect')).toHaveCount(0);
+  await page.getByRole('button',{name:'Kiểm tra đáp án'}).click();
+  await expect(page.getByRole('button',{name:'Đến câu 1',exact:true})).toHaveClass(/incorrect/);
   await expect(page.locator('.explanation')).toBeVisible();await expect(page.locator('.choice-button').first()).toBeDisabled();
   await page.reload();await expect(page.locator('.explanation')).toBeVisible();expect((await snapshot(page)).progress['333'].attempts).toBe(1);
   await page.setViewportSize({width:390,height:844});await page.screenshot({path:'test-results/practice-mobile.png',fullPage:true});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  await page.getByRole('button',{name:'Các câu',exact:true}).click();
+  await expect(page.getByRole('button',{name:'Đến câu 1',exact:true})).toHaveClass(/incorrect/);
+  await page.getByRole('button',{name:'Đánh dấu xem lại',exact:true}).click();
+  await expect(page.getByRole('button',{name:'Đến câu 1, đã đánh dấu',exact:true})).toHaveClass(/incorrect.*flagged/);
+  await page.locator('.question-navigator').screenshot({path:'test-results/navigator-wrong-mobile.png'});
   await page.getByRole('button',{name:'Nộp bài',exact:true}).click();await page.getByRole('button',{name:'Nộp và xem kết quả'}).click();
   expect((await snapshot(page)).progress['333'].attempts).toBe(1);
   await configure(page,'practice',2);await page.getByRole('button',{name:/Tự kiểm tra/}).click();await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();
   await page.locator('.choice-button').nth(1).click();await expect(page.locator('.explanation')).toHaveCount(0);await expect(page.getByRole('button',{name:'Kiểm tra đáp án'})).toHaveCount(0);
+  await expect(page.locator('.question-grid .incorrect')).toHaveCount(0);
+  await expect(page.locator('#navigator-incorrect-legend')).toHaveCount(0);
 });
 test('flashcards remember the deck position and known cards',async({page})=>{
   await page.goto('/#/flashcards');await expect(page.locator('.answer-analysis')).toHaveCount(0);await expect(page.getByRole('button',{name:'Đã thuộc',exact:true}).last()).toBeDisabled();await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();

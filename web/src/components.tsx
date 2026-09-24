@@ -1,8 +1,8 @@
 import { Bookmark, Check, ExternalLink, Flag, Info, X } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
-import type { Question } from './domain';
-import { sourceLabel } from './domain';
+import type { Question, State } from './domain';
+import { questionProgress, sourceLabel } from './domain';
 import StudyText from './StudyText';
 
 export function Tag({ status }: { status: Question['status'] }) {
@@ -10,6 +10,17 @@ export function Tag({ status }: { status: Question['status'] }) {
 }
 export function OriginTag({ question }: { question: Question }) {
   return question.origin === 'original' ? <span className="tag original">Tự biên soạn</span> : null;
+}
+export function QuestionAnswerStats({ question, state, live = false }: { question: Question; state: State; live?: boolean }) {
+  const progress = questionProgress(question, state);
+  const correct = progress?.correct ?? 0, wrong = (progress?.attempts ?? 0) - correct;
+  return <span className="question-answer-stats" role="group" aria-label={`Lịch sử trả lời câu #${question.id}`} aria-live={live ? 'polite' : undefined} aria-atomic={live || undefined} title="Cộng dồn các lượt trả lời đã chấm của bạn. Mỗi câu tính một lần trong một phiên; câu bỏ trống không tính lượt.">
+    {question.status === 'review' ? <span className="answer-count-unscored"><Info size={13}/>Cần xác minh · Không tính đúng/sai</span> : <>
+      <span className="answer-count-label">Lịch sử trả lời</span>
+      <span className="answer-count-correct"><Check size={13}/>Đúng <b>{correct}</b> lần</span>
+      <span className="answer-count-wrong"><X size={13}/>Sai <b>{wrong}</b> lần</span>
+    </>}
+  </span>;
 }
 export function QuestionImages({ question, slot = 'question' }: { question: Question; slot?: string }) {
   return <>{question.images.filter(im => im.slot === slot).map(im => <a className="question-image" key={im.url} href={im.url} target="_blank" rel="noreferrer" aria-label="Mở hình câu hỏi ở kích thước đầy đủ"><img src={im.url} alt={im.alt} loading="lazy" /><span>Mở hình đầy đủ <ExternalLink size={11} /></span></a>)}</>;

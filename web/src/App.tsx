@@ -104,7 +104,7 @@ function StudyApp({learner,switchLearner}:{learner:Learner;switchLearner:()=>voi
        route==='/learner'?<LearnerSettings learner={learner} switchLearner={switchLearner} cloudStatus={cloudStatus} cloudError={cloudError} lastSynced={lastSynced} sync={sync}/>:
        route==='/group'?<Group bank={bank}/>:
        route==='/progress'?<ProgressPage bank={bank} state={state} learnerName={learner.name} cloud={cloudConfigured} unfinished={repo.unfinished().filter(s=>isStudySession(s,bank))} resume={id=>{repo.resume(id);go('/session');}} go={go} exportProgress={()=>download(repo.backup())} importProgress={()=>fileInput.current?.click()}/>:
-       result?<Results key={result.id} session={result} bank={bank} go={go}/>:
+       result?<Results key={result.id} session={result} bank={bank} state={state} go={go}/>:
        <div className="page"><Empty title={route==='/session'?'Phiên này không còn trong bộ MLA-C01 hoặc đã đóng':'Chưa có phiên học ở đây'}>Web chỉ phục vụ MLA-C01. Phiên từ bộ đề cũ vẫn được giữ trong bản sao tiến trình.</Empty><button className="button primary" onClick={()=>go('/progress')}>Xem tiến trình <ArrowUpRight size={16}/></button></div>}
     </main><footer className="app-footer"><span>Small steps. Deep learning.</span><div><button onClick={()=>download(repo.backup())}><Download size={13}/>Xuất tiến trình</button><button onClick={()=>fileInput.current?.click()}><Upload size={13}/>Nhập bản sao</button></div></footer></div>{overlays}
   </div>;

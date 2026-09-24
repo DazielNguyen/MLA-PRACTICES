@@ -66,3 +66,15 @@
 .has-saved-learners .welcome-grid{align-items:start;margin-top:40px}
 .home-page>.resume-banner{margin:0 0 20px}
 @media(max-width:900px){.has-saved-learners .welcome-grid{display:flex;flex-direction:column;gap:28px;margin-top:24px}.has-saved-learners .welcome-card{order:-1;width:100%}}
+.question-answer-stats{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin:0 0 16px;font-size:11px;line-height:1.5;font-weight:450}
+.question-answer-stats>span{display:inline-flex;align-items:center;gap:5px}
+.question-answer-stats b{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.answer-count-label{color:#6c7d65;margin-right:2px}
+.answer-count-correct,.answer-count-wrong,.answer-count-unscored{border:1px solid;border-radius:6px;padding:4px 8px}
+.answer-count-correct{background:#eef6ed;border-color:#d6e7d1;color:#34633c}
+.answer-count-wrong{background:#fff2ed;border-color:#f0dcd3;color:#9b4936}
+.answer-count-unscored{background:#fbf5e9;border-color:#ebdfc6;color:#876333}
+.library-card>.question-answer-stats{margin:9px 0 13px}
+.review-card .question-answer-stats{margin:10px 0 0}
+.flashcard>.question-answer-stats{margin-bottom:20px}
+@media(max-width:540px){.question-answer-stats{font-size:10px;gap:6px 8px}.question-answer-stats b{font-size:12px}.answer-count-correct,.answer-count-wrong,.answer-count-unscored{padding:4px 6px}}

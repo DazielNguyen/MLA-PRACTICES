@@ -68,6 +68,13 @@ test('Supabase adapter retries queued edits and restores a profile on another de
   await expect.poll(()=>[...records.values()][0].values().toArray().filter(r=>r.kind==='keyword'&&r.value.status==='mastered').length).toBe(1);
   const other=await browser.newContext({baseURL:'http://127.0.0.1:5174'});await mock(other);const otherPage=await other.newPage();await otherPage.goto(`/#/join/${code}`);await otherPage.getByRole('button',{name:'Mở hồ sơ bằng mã'}).click();await expect(otherPage.getByRole('button',{name:'Đang học: Duy'})).toBeVisible();
   await expect.poll(async()=>(await snapshot(otherPage)).known).toEqual([333]);expect(await otherPage.evaluate(()=>location.hash)).toBe('#/');expect(profiles.size).toBe(1);expect(signupCount).toBe(2);
+  await otherPage.goto('/#/library');
+  await otherPage.getByLabel('Tìm câu hỏi').fill('#333');
+  await expect(otherPage.getByRole('group',{name:'Lịch sử trả lời câu #333',exact:true})).toContainText('Đúng 1 lần');
+  await expect(otherPage.getByRole('group',{name:'Lịch sử trả lời câu #333',exact:true})).toContainText('Sai 0 lần');
+  await otherPage.getByLabel('Tìm câu hỏi').fill('#334');
+  await expect(otherPage.getByRole('group',{name:'Lịch sử trả lời câu #334',exact:true})).toContainText('Đúng 0 lần');
+  await expect(otherPage.getByRole('group',{name:'Lịch sử trả lời câu #334',exact:true})).toContainText('Sai 1 lần');
   await otherPage.getByRole('link',{name:'Keywork Practice',exact:true}).click();
   await expect(otherPage.locator('.kw-overview>div>strong')).toContainText('1 / 1574');
   await otherPage.getByRole('button',{name:/Tiếp tục Keywork Practice/}).click();

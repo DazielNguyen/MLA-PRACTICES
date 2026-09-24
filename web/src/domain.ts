@@ -3,7 +3,7 @@ import { retiredQuestionShapes } from './data/retired-question-shapes.ts';
 export type Question = {
   id: number; page: number | null; text: string; choices: Record<string, string>;
   collection: 'mls' | 'mla'; sourceIds: number[]; sourceName: string; domain?: string; hint?: string; origin?: 'original';
-  answer: string[]; required: number; status: 'checked' | 'historical' | 'review' | 'source';
+  answer: string[]; required: number; status: 'checked' | 'historical' | 'review' | 'source'; conditionalAnswer?: boolean;
   explanation: string; explanationLanguage?: 'vi'; sources: { title: string; url: string }[]; notes: string[];
   analysis?: { keyConcept: string; options: Record<string, string> };
   duplicateOf?: number; relatedIds?: number[];
@@ -22,13 +22,15 @@ export type Session = {
   finishReason: 'manual' | 'timeout' | null; settings: Settings;
 };
 export type Progress = { attempts: number; correct: number; latest: boolean; lastSeen: number };
+export type FlashAttempt = { id: string; questionId: number; correct: boolean; lastSeen: number };
+export type FlashLoop = { selected: string[]; result: boolean | null; done: boolean; lastAttempt: FlashAttempt | null };
 export type State = {
   version: 1; updatedAt: number; bookmarks: number[]; known: number[];
   progress: Record<string, Progress>; active: Session | null; history: Session[];
-  flash: { ids: number[]; index: number; origin?: 'all'|'imported'|'original'; filter?: 'all'|'new'|'known'|'bookmarked'; includeReview?: boolean; collection?: 'all'|'mls'|'mla'; includeSource?: boolean } | null;
+  flash: { ids: number[]; index: number; origin?: 'all'|'imported'|'original'; filter?: 'all'|'new'|'known'|'bookmarked'; includeReview?: boolean; collection?: 'all'|'mls'|'mla'; includeSource?: boolean; mode?: 'loop'|'classic'; loop?: FlashLoop } | null;
 };
 export const STORAGE_KEY = 'ml-practice:v1';
-export const defaultSettings: Settings = { count: 20, minutes: 40, order: 'random', scope: 'all', range: 'all', includeReview: true, includeHistorical: false, feedback: 'immediate', collection: 'mla', includeSource: false };
+export const defaultSettings: Settings = { count: 20, minutes: 40, order: 'random', scope: 'all', range: 'all', includeReview: true, includeHistorical: false, feedback: 'immediate', collection: 'mla', includeSource: true };
 export const importedBankRange = '333-618';
 export const questionRanges = [
   { value:importedBankRange, collection:'mla', label:'Bộ đề đã nhập · 242 câu' },
@@ -79,8 +81,9 @@ export function normalizeFlashDeck(flash: State['flash'], bank: Question[]): Sta
   if (!ids.length) return null;
   const current = flash.ids.slice(flash.index).find(id=>canonical.has(id));
   const index = current === undefined ? ids.length-1 : ids.indexOf(canonical.get(current)!);
-  if (ids.length === flash.ids.length && ids.every((id,i)=>id===flash.ids[i]) && flash.collection === 'mla') return flash;
-  return {...flash, ids, index, collection:'mla'};
+  const sameIds=ids.length===flash.ids.length && ids.every((id,i)=>id===flash.ids[i]);
+  if (sameIds && flash.collection === 'mla') return flash;
+  return {...flash, ids, index, collection:'mla', ...(!sameIds && flash.loop ? {loop:undefined} : {})};
 }
 export function toggleChoice(answer: string[], choice: string, required: number) {
   if (answer.includes(choice)) return answer.filter(c => c !== choice);
@@ -91,7 +94,6 @@ export function eligibleQuestions(bank: Question[], settings: Settings, state: S
   return bank.filter(q => {
     if (q.collection !== 'mla' || q.duplicateOf !== undefined) return false;
     if (settings.collection && settings.collection !== 'all' && q.collection !== settings.collection) return false;
-    if (q.status === 'source' && settings.includeSource === false) return false;
     if (q.status === 'review' && !settings.includeReview) return false;
     if (q.status === 'historical' && !settings.includeHistorical) return false;
     if (settings.range !== 'all') { const [min, max] = settings.range.split('-').map(Number); if (q.id < min || q.id > max) return false; }
@@ -187,5 +189,18 @@ export function validateState(input: unknown, bank: Question[]): State {
   if (object(input.flash) && (input.flash.filter !== undefined && !['all','new','known','bookmarked'].includes(String(input.flash.filter)) || input.flash.includeReview !== undefined && typeof input.flash.includeReview !== 'boolean')) return fail();
   if (object(input.flash) && (input.flash.collection !== undefined && !['all','mls','mla'].includes(String(input.flash.collection)) || input.flash.includeSource !== undefined && typeof input.flash.includeSource !== 'boolean')) return fail();
   if (object(input.flash) && input.flash.origin !== undefined && !['all','imported','original'].includes(String(input.flash.origin))) return fail();
+  if (object(input.flash)) {
+    const flash=input.flash;
+    if (flash.mode !== undefined && !['loop','classic'].includes(String(flash.mode))) return fail();
+    if (flash.loop !== undefined) {
+      const loop=flash.loop, deck=flash.ids as number[], question=byId.get(deck[Number(flash.index)])!;
+      if (!object(loop) || typeof loop.done !== 'boolean' || !(loop.result === null || typeof loop.result === 'boolean') || !Array.isArray(loop.selected) || loop.selected.length>question.required || new Set(loop.selected).size!==loop.selected.length || loop.selected.some(letter=>typeof letter!=='string'||!Object.hasOwn(question.choices,letter))) return fail();
+      if (loop.result !== null && loop.selected.length!==question.required || loop.done && (flash.index!==deck.length-1 || loop.result!==null || loop.selected.length)) return fail();
+      const attempt=loop.lastAttempt;
+      if (attempt !== null && (!object(attempt) || typeof attempt.id!=='string' || !/^[a-zA-Z0-9-]{1,80}$/.test(attempt.id) || !deck.includes(Number(attempt.questionId)) || !Number.isInteger(attempt.questionId) || typeof attempt.correct!=='boolean' || !Number.isFinite(attempt.lastSeen) || Number(attempt.lastSeen)<0)) return fail();
+      if (loop.result !== null && (!object(attempt) || attempt.questionId!==question.id || attempt.correct!==loop.result)) return fail();
+      if (loop.done && (!object(attempt) || attempt.questionId!==question.id || attempt.correct!==true)) return fail();
+    }
+  }
   return JSON.parse(JSON.stringify(input)) as State;
 }

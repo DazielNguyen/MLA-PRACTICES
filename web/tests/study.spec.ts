@@ -69,14 +69,14 @@ test('practice checks once, while hidden practice reveals only after submission'
   await expect(page.locator('#navigator-incorrect-legend')).toHaveCount(0);
 });
 test('flashcards remember the deck position and known cards',async({page})=>{
-  await page.goto('/#/flashcards');await expect(page.locator('.answer-analysis')).toHaveCount(0);await expect(page.getByRole('button',{name:'Đã thuộc',exact:true}).last()).toBeDisabled();await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();
+  await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lật thẻ tự đánh giá',exact:true}).click();await expect(page.locator('.answer-analysis')).toHaveCount(0);await expect(page.getByRole('button',{name:'Đã thuộc',exact:true}).last()).toBeDisabled();await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();
   await expect(page.locator('.explanation')).toBeVisible();await page.screenshot({path:'test-results/flashcard-desktop.png',fullPage:true});
   await page.getByRole('button',{name:'Đã thuộc',exact:true}).last().click();await expect(page.locator('.flashcard-top>.eyebrow')).toContainText('#334');
   await page.reload();await expect(page.locator('.flashcard-top>.eyebrow')).toContainText('#334');expect((await snapshot(page)).known).toEqual([333]);
   await page.setViewportSize({width:390,height:844});await page.screenshot({path:'test-results/flashcard-mobile.png',fullPage:true});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
 });
 test('backup export and restore preserve state; invalid input cannot clobber it',async({page})=>{
-  await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lưu câu hỏi',exact:true}).click();
+  await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lật thẻ tự đánh giá',exact:true}).click();await page.getByRole('button',{name:'Lưu câu hỏi',exact:true}).click();
   await page.goto('/#/progress');const downloadPromise=page.waitForEvent('download');await page.getByRole('button',{name:'Xuất bản sao JSON',exact:true}).click();const download=await downloadPromise;expect(download.suggestedFilename()).toMatch(/ml-practice.*\.json/);
   const before=await snapshot(page);
   await page.getByLabel('Chọn file tiến trình').setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from('{"version":99}')});

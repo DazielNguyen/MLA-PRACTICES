@@ -45,7 +45,7 @@ test('answer counters accumulate across sessions, reloads and tabs without count
   await page.goto('/#/library');
   await page.getByLabel('Tìm câu hỏi').fill('#333');
   await expectCounts(page, 1, 1);
-  await page.goto('/#/flashcards');
+  await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lật thẻ tự đánh giá',exact:true}).click();
   await expectCounts(page, 1, 1);
   await page.getByRole('button', { name: 'Lật thẻ', exact: true }).click();
   await page.getByRole('button', { name: 'Đã thuộc', exact: true }).last().click();
@@ -83,21 +83,21 @@ test('exam counts change only after submission and blank questions do not count 
   await expectCounts(page, 0, 0, 334);
 });
 
-test('review questions grade, count attempts and show wrong answers in the navigator', async ({ page }) => {
+test('conditional source questions grade, count attempts and show wrong answers in the navigator', async ({ page }) => {
   await onboard(page);
   await page.goto('/#/practice');
   await page.getByLabel('Số câu hỏi',{exact:true}).fill('5');
   await page.getByRole('button',{name:'Theo thứ tự',exact:true}).click();
   await page.getByRole('button',{name:/^Học nhanh Chọn là chấm/}).click();
-  await expect(page.getByRole('checkbox',{name:/Bao gồm câu cần xác minh/})).toBeChecked();
+  await expect(page.getByRole('checkbox',{name:/Bao gồm câu cần xác minh/})).toHaveCount(0);
   await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();
   await page.getByRole('button',{name:'Đến câu 5',exact:true}).click();
   await expect(page.locator('.question-id')).toContainText('#337');
   await page.locator('.quick-question').evaluate(async el=>{await Promise.all(el.getAnimations().map(a=>a.finished.catch(()=>{})));});
   await page.locator('.choice-button').first().click();
   await expect(page.locator('.feedback-banner')).toContainText('Sai theo đáp án bộ đề');
-  await expect(page.locator('.answer-label')).toHaveText('Đáp án chấm theo bộ đề: D');
-  await expect(page.locator('.question-toolbar .tag.review')).toHaveText('Cần xác minh');
+  await expect(page.locator('.answer-label')).toHaveText('Đáp án theo bộ đề: D');
+  await expect(page.locator('.question-toolbar .tag.source')).toHaveText('Theo đáp án bộ đề');
   await expect(page.locator('.choice.correct .choice-button')).toContainText('Lake Formation');
   await expect(page.getByRole('button',{name:'Đến câu 5',exact:true})).toHaveClass(/incorrect/);
   await expectCounts(page,0,1,337);
@@ -107,7 +107,7 @@ test('review questions grade, count attempts and show wrong answers in the navig
   await expectCounts(page,0,1,337);
 });
 
-test('exam includes review questions, hides their outcomes, then counts their score',async({page})=>{
+test('exam includes conditional source questions, hides their outcomes, then counts their score',async({page})=>{
   await onboard(page);
   await page.goto('/#/exam');
   await page.getByLabel('Số câu hỏi',{exact:true}).fill('5');

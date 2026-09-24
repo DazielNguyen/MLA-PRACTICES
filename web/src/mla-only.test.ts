@@ -14,7 +14,7 @@ test('the deployed bank, image assets and catalog contain only MLA questions',()
   assert.ok(readdirSync(new URL('../public/images/',import.meta.url)).every(file=>file.startsWith('mla-')));
   const catalog=JSON.parse(readFileSync(new URL('./data/catalog.json',import.meta.url),'utf8'));
   assert.equal(catalog.total,594);assert.equal(catalog.records,594);assert.deepEqual(catalog.collections,{mla:594});
-  assert.deepEqual(catalog.statuses,{checked:562,review:32});
+  assert.deepEqual(catalog.statuses,{checked:562,source:32});
 });
 test('every study entry point rejects retired questions even if given an old combined bank',()=>{
   const combined=[...archive,...bank];

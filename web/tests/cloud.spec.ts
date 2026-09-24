@@ -36,7 +36,7 @@ test('Supabase adapter retries queued edits and restores a profile on another de
   });}
   await mock(context);await onboard(page,'Duy');await page.getByRole('button',{name:'Đang học: Duy'}).click();await expect(page.getByRole('button',{name:'Xem mã tiếp tục'})).toBeVisible();
   await expect(page.getByText('Các thay đổi đã được gửi lên Supabase.')).toBeVisible();await page.getByRole('button',{name:'Xem mã tiếp tục'}).click();const code=await page.getByLabel('Mã hồ sơ riêng').inputValue();expect(code).toMatch(/^[a-f0-9]{64}$/);
-  await page.getByRole('link',{name:'Flashcard',exact:true}).click();await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();failWrites=true;await page.getByRole('button',{name:'Đã thuộc',exact:true}).last().click();
+  await page.getByRole('link',{name:'Flashcard',exact:true}).click();await page.getByRole('button',{name:'Lật thẻ tự đánh giá',exact:true}).click();await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();failWrites=true;await page.getByRole('button',{name:'Đã thuộc',exact:true}).last().click();
   await page.getByRole('button',{name:'Đang học: Duy'}).click();await expect(page.getByText('Chưa kết nối được. Thay đổi vẫn được giữ trên máy và sẽ thử gửi lại.')).toBeVisible();expect((await snapshot(page)).known).toEqual([333]);
   failWrites=false;await page.getByRole('button',{name:'Đồng bộ ngay',exact:true}).click();await expect(page.getByText('Các thay đổi đã được gửi lên Supabase.')).toBeVisible();
   await page.goto('/#/practice');
@@ -60,6 +60,14 @@ test('Supabase adapter retries queued edits and restores a profile on another de
   await page.reload();
   expect((await snapshot(page)).active!.revealed).toEqual([333,334]);
   expect((await snapshot(page)).progress[333].attempts).toBe(1);
+  await page.goto('/#/flashcards');
+  await page.getByRole('button',{name:'Vòng học 10 câu',exact:true}).click();
+  await expect(page.locator('.flashcard-top>.eyebrow')).toContainText('#334');
+  await page.locator('.choice-button').nth(1).click();
+  await expect(page.locator('.feedback-banner')).toContainText('Đúng rồi');
+  expect((await snapshot(page)).progress[334].attempts).toBe(2);
+  expect((await snapshot(page)).active!.id).toBe(sessionId);
+  await expect.poll(()=>[...records.values()][0].values().toArray().find(r=>r.kind==='flash'&&r.value?.mode==='loop')?.value.loop.result).toBe(true);
   await page.goto('/#/keywork');
   await page.getByLabel('Tìm kiến thức Keywork').fill('Representative');
   await page.getByRole('button',{name:'Bắt đầu học',exact:true}).click();
@@ -67,14 +75,19 @@ test('Supabase adapter retries queued edits and restores a profile on another de
   await page.getByRole('button',{name:'Đánh dấu đã nắm',exact:true}).click();
   await expect.poll(()=>[...records.values()][0].values().toArray().filter(r=>r.kind==='keyword'&&r.value.status==='mastered').length).toBe(1);
   const other=await browser.newContext({baseURL:'http://127.0.0.1:5174'});await mock(other);const otherPage=await other.newPage();await otherPage.goto(`/#/join/${code}`);await otherPage.getByRole('button',{name:'Mở hồ sơ bằng mã'}).click();await expect(otherPage.getByRole('button',{name:'Đang học: Duy'})).toBeVisible();
-  await expect.poll(async()=>(await snapshot(otherPage)).known).toEqual([333]);expect(await otherPage.evaluate(()=>location.hash)).toBe('#/');expect(profiles.size).toBe(1);expect(signupCount).toBe(2);
+  await expect.poll(async()=>(await snapshot(otherPage)).known).toEqual([333,334]);expect(await otherPage.evaluate(()=>location.hash)).toBe('#/');expect(profiles.size).toBe(1);expect(signupCount).toBe(2);
   await otherPage.goto('/#/library');
   await otherPage.getByLabel('Tìm câu hỏi').fill('#333');
   await expect(otherPage.getByRole('group',{name:'Lịch sử trả lời câu #333',exact:true})).toContainText('Đúng 1 lần');
   await expect(otherPage.getByRole('group',{name:'Lịch sử trả lời câu #333',exact:true})).toContainText('Sai 0 lần');
   await otherPage.getByLabel('Tìm câu hỏi').fill('#334');
-  await expect(otherPage.getByRole('group',{name:'Lịch sử trả lời câu #334',exact:true})).toContainText('Đúng 0 lần');
+  await expect(otherPage.getByRole('group',{name:'Lịch sử trả lời câu #334',exact:true})).toContainText('Đúng 1 lần');
   await expect(otherPage.getByRole('group',{name:'Lịch sử trả lời câu #334',exact:true})).toContainText('Sai 1 lần');
+  await otherPage.goto('/#/flashcards');
+  await expect(otherPage.getByRole('button',{name:'Vòng học 10 câu',exact:true})).toHaveAttribute('aria-pressed','true');
+  await expect(otherPage.locator('.flashcard-top>.eyebrow')).toContainText('#334');
+  await expect(otherPage.locator('.choice-button').nth(1)).toHaveAttribute('aria-pressed','true');
+  await expect(otherPage.locator('.feedback-banner')).toContainText('Đúng rồi');
   await otherPage.getByRole('link',{name:'Keywork Practice',exact:true}).click();
   await expect(otherPage.locator('.kw-overview>div>strong')).toContainText('1 / 1574');
   await otherPage.getByRole('button',{name:/Tiếp tục Keywork Practice/}).click();

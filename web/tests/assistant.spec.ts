@@ -143,7 +143,7 @@ test('the embedded bot follows the selected answer, next question and leaving th
 
 test('flashcard backs and expanded library rows supply the visible item to the embedded bot', async ({page}) => {
   const requests: any[]=[]; await mockAI(page,requests); await onboard(page);
-  await page.goto('/#/flashcards');
+  await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lật thẻ tự đánh giá',exact:true}).click();
   await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();
   await unlock(page);
   await expect(page.locator('.assistant-topic')).toContainText('Flashcard');

@@ -52,7 +52,7 @@ export function composeState(rows: StudyRow[], activeId: string | null, writer: 
   const covered = new Set(baseline?.covered || []);
   // Older versions saved reviewed answers in sessions without creating attempt rows.
   // Project those missing attempts without rewriting sessions or duplicating synced attempts.
-  const reviewQuestions = new Map(bank.filter(q=>q.status==='review').map(q=>[q.id,q]));
+  const reviewQuestions = new Map(bank.filter(q=>q.conditionalAnswer || q.status==='review').map(q=>[q.id,q]));
   const attemptKeys = new Set(rows.filter(row=>row.kind==='attempt').map(row=>row.key));
   const inferred: StudyRow[] = [];
   for (const row of rows) {

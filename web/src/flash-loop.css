@@ -1,0 +1,22 @@
+.flash-mode-switch{padding-bottom:0;max-width:1050px}
+.flash-mode-switch .segmented{width:fit-content;max-width:100%}
+.flash-mode-switch+.flash-page{padding-top:24px}
+.flash-loop-window{padding:20px;margin-bottom:22px}
+.flash-loop-window>div{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;color:#567146}
+.flash-loop-window strong{display:flex;align-items:center;gap:7px}
+.flash-loop-window ol{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px;padding:0;margin:16px 0;list-style:none}
+.flash-loop-window li{border:1px solid #e2e8dc;border-radius:8px;padding:10px 3px;text-align:center;background:#f7f9f4;color:#728564}
+.flash-loop-window li span{display:block;font-size:9px;margin-bottom:5px}
+.flash-loop-window li strong{display:block;font-size:12px;font-variant-numeric:tabular-nums}
+.flash-loop-window li.current{background:#e6f0df;border-color:#99b589;color:#355d35}
+.flash-loop-window li.correct{background:#245b48;border-color:#245b48;color:white}
+.flash-loop-window li.incorrect{background:#fce8e6;border-color:#d78e87;color:#a12f28}
+.flash-loop-window>p{font-size:11px;line-height:1.7;color:#75866a;margin:0}
+.flash-loop-question .flashcard-top>.eyebrow:focus{outline:none}
+.flash-loop-question .flashcard-top>.eyebrow:focus-visible{outline:2px solid #628d47;outline-offset:5px}
+.flash-loop-action{margin:0 0 14px}
+.flash-loop-question{scroll-margin-top:80px}
+.flash-loop-question .quick-feedback .explanation{margin-top:0}
+.flash-loop-page .flash-progress{max-width:none}
+@media(max-width:1200px){.flash-loop-window ol{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:540px){.flash-mode-switch .segmented{width:100%}.flash-mode-switch .segmented button{padding:10px 8px;font-size:11px;flex:1}.flash-loop-window{padding:15px}.flash-loop-window>div{align-items:flex-start;flex-direction:column;gap:7px}.flash-loop-window ol{gap:5px}.flash-loop-window li{padding:8px 2px}.flash-loop-window li strong{font-size:11px}.flash-loop-action{width:100%;font-size:12px}.flash-loop-page .page-heading h1{font-size:25px}}

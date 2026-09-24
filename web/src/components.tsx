@@ -7,7 +7,7 @@ import StudyText from './StudyText';
 import { AskAssistant } from './assistant-context';
 
 export function Tag({ status }: { status: Question['status'] }) {
-  return <span className={`tag ${status}`}>{status === 'checked' ? <><Check size={12} /> Đã đối chiếu</> : status === 'historical' ? 'Dịch vụ cũ' : status === 'source' ? 'Theo nguồn' : 'Cần xác minh'}</span>;
+  return <span className={`tag ${status}`}>{status === 'checked' ? <><Check size={12} /> Đã đối chiếu</> : status === 'historical' ? 'Dịch vụ cũ' : status === 'source' ? 'Theo đáp án bộ đề' : 'Cần xác minh'}</span>;
 }
 export function OriginTag({ question }: { question: Question }) {
   return question.origin === 'original' ? <span className="tag original">Tự biên soạn</span> : null;
@@ -15,7 +15,7 @@ export function OriginTag({ question }: { question: Question }) {
 export function QuestionAnswerStats({ question, state, live = false }: { question: Question; state: State; live?: boolean }) {
   const progress = questionProgress(question, state);
   const correct = progress?.correct ?? 0, wrong = (progress?.attempts ?? 0) - correct;
-  return <span className="question-answer-stats" role="group" aria-label={`Lịch sử trả lời câu #${question.id}`} aria-live={live ? 'polite' : undefined} aria-atomic={live || undefined} title="Cộng dồn các lượt trả lời đã chấm của bạn. Mỗi câu tính một lần trong một phiên; câu bỏ trống không tính lượt.">
+  return <span className="question-answer-stats" role="group" aria-label={`Lịch sử trả lời câu #${question.id}`} aria-live={live ? 'polite' : undefined} aria-atomic={live || undefined} title="Cộng dồn các lượt trả lời đã chấm. Chuyển câu hoặc tải lại không cộng lượt; câu bỏ trống không tính lượt.">
       <span className="answer-count-label">Lịch sử trả lời</span>
       <span className="answer-count-correct"><Check size={13}/>Đúng <b>{correct}</b> lần</span>
       <span className="answer-count-wrong"><X size={13}/>Sai <b>{wrong}</b> lần</span>
@@ -28,14 +28,13 @@ export function QuestionText({ question, allowHint = false, highlight = false }:
   return <><AskAssistant topic={{kind:"question",id:question.id,label:`Câu #${question.id} · MLA-C01`}}/><p className="question-origin">{sourceLabel(question)}{question.sourceIds.length > 1 && ` · Đã gộp ${question.sourceIds.length} bản`}</p>{question.duplicateOf !== undefined && <p className="notice archived-variant">Biến thể đã gộp vào #{String(question.duplicateOf).padStart(3,'0')}. Đây là bản câu hỏi của phiên đã lưu.</p>}<p className="question-text" lang="en"><StudyText text={question.text} highlight={highlight}/></p><QuestionImages question={question} />{allowHint && question.hint && <details className="question-hint"><summary>Gợi ý — mở sau khi tự phân tích</summary><p>{question.hint}</p></details>}{question.notes.some(note => note.includes('unit')) && <p className="notice"><Info size={15} /> Đơn vị dung lượng trong PDF bị lỗi, đã giữ nguyên ghi chú thay vì đoán đơn vị.</p>}</>;
 }
 export function Explanation({ question, selected, compact = false }: { question: Question; selected?: string[]; compact?: boolean }) {
-  const uncertain = question.status === 'review';
+  const uncertain = question.conditionalAnswer || question.status === 'review';
   const analysis = question.analysis;
   const optionAnalysis = (letters: string[]) => <ul className="option-analysis-list">{letters.map(letter=><li key={letter} data-option={letter}><p className="option-analysis-choice" lang="en"><strong>{letter}.</strong> <StudyText text={question.choices[letter]} highlight={compact}/></p><p><StudyText text={analysis?.options[letter]||''} highlight={compact}/></p></li>)}</ul>;
-  return <div className={`explanation ${uncertain ? 'uncertain' : ''} ${compact?'compact-explanation':''}`}>
-    <div className="explanation-title"><span className="answer-label" lang="vi">{`${uncertain ? 'Đáp án chấm theo bộ đề' : question.status === 'source' ? 'Đáp án theo nguồn' : 'Đáp án đúng'}: ${question.answer.join(' + ')}`}</span>{selected && <span className="muted">Bạn chọn: {selected.join(', ') || 'Chưa trả lời'}</span>}</div>
+  return <div className={`explanation ${question.status === 'review' ? 'uncertain' : ''} ${compact?'compact-explanation':''}`}>
+    <div className="explanation-title"><span className="answer-label" lang="vi">{`${uncertain || question.status === 'source' ? 'Đáp án theo bộ đề' : 'Đáp án đúng'}: ${question.answer.join(' + ')}`}</span>{selected && <span className="muted">Bạn chọn: {selected.join(', ') || 'Chưa trả lời'}</span>}</div>
     <div className="correct-answer-text" lang="en">{question.answer.map(a => <p key={a}><strong>{a}.</strong> <StudyText text={question.choices[a]} highlight={compact}/></p>)}</div>
-    {uncertain && <p className="source-answer-note">Câu này được tính điểm theo đáp án hiện có trong bộ đề. Nhãn “Cần xác minh” cho biết đáp án còn điểm cần kiểm chứng.</p>}
-    {question.status === 'source' && <p className="source-answer-note">Đáp án theo bộ đề bổ sung, chưa được kiểm chứng với AWS. Điểm câu này dựa trên khóa đáp án của nguồn.</p>}
+    {(uncertain || question.status === 'source') && <p className="source-answer-note">Chấm điểm theo đáp án bộ đề. Phần giải thích bên dưới nêu các giả định của câu hỏi.</p>}
     {analysis && compact && !uncertain ? <div className="answer-analysis quick-analysis" lang="vi">
       <section className="key-concept"><h4>Ý chính</h4><p><StudyText text={analysis.keyConcept} highlight={compact}/></p></section>
       <section className="why-correct"><h4>Vì sao đáp án này đúng</h4>{question.answer.map(letter=><p key={letter} data-option={letter}><strong>{letter}.</strong> <StudyText text={analysis.options[letter]} highlight={compact}/></p>)}</section>
@@ -45,13 +44,13 @@ export function Explanation({ question, selected, compact = false }: { question:
     <details className="source-list"><summary>Nguồn và ghi chú · {question.page ? `PDF trang ${question.page}` : sourceLabel(question)}</summary><p>{question.sourceName}{question.sourceIds.length > 1 && ` · Q${question.sourceIds.join(', Q')}`}</p>{question.notes.map(note=><p key={note}>{note}</p>)}{question.sources.map(s => <a href={s.url} target="_blank" rel="noreferrer" key={s.url}>{s.title}<ExternalLink size={12} /></a>)}</details>
   </div>;
 }
-export function ChoiceList({ question, selected, onSelect, revealed = false, disabled = false, quick = false }: { question: Question; selected: string[]; onSelect?: (letter: string) => void; revealed?: boolean; disabled?: boolean; quick?: boolean }) {
+export function ChoiceList({ question, selected, onSelect, revealed = false, disabled = false, quick = false, revealedAction }: { question: Question; selected: string[]; onSelect?: (letter: string) => void; revealed?: boolean; disabled?: boolean; quick?: boolean; revealedAction?: string }) {
   return <div className="choices" role="group" aria-label={`Chọn ${question.required} đáp án`}>
     {Object.entries(question.choices).map(([letter, text], index) => {
       const chosen = selected.includes(letter), correct = revealed && question.answer.includes(letter);
       const wrong = revealed && chosen && !correct;
       return <div key={letter} className={`choice ${chosen ? 'selected' : ''} ${correct ? 'correct' : ''} ${wrong ? 'wrong' : ''}`}>
-        <button type="button" aria-pressed={chosen} disabled={disabled} onClick={() => onSelect?.(letter)} className="choice-button" title={quick&&revealed?'Bấm lại để tiếp tục':undefined}>
+        <button type="button" aria-pressed={chosen} disabled={disabled} onClick={() => onSelect?.(letter)} className="choice-button" title={quick&&revealed?(revealedAction||'Bấm lại để tiếp tục'):undefined}>
           <span className={`choice-letter ${question.required > 1 ? 'square' : ''}`}>{quick ? letter : correct ? <Check size={16} /> : wrong ? <X size={16} /> : letter}</span>
           <span lang="en"><StudyText text={text} highlight={quick}/></span>{quick&&<kbd className="choice-shortcut" aria-hidden="true">{index+1}</kbd>}<span className="choice-indicator">{wrong ? <X size={16}/> : chosen||correct ? <Check size={16} /> : null}</span>
         </button>

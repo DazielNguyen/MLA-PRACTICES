@@ -5,6 +5,7 @@ import { emptyState, createSession, defaultSettings, finishSession, revealAnswer
 import type { Question, State } from '../domain.ts';
 import { composeState, validateBackup, validateRow } from './records.ts';
 import { ProgressRepository, createLearner, getProfiles, read, tabSet } from './local.ts';
+import { advanceFlashLoop, emptyFlashLoop, retryFlashAnswer, selectFlashAnswer } from '../flash-loop.ts';
 const bank:Question[]=JSON.parse(readFileSync(new URL('../data/questions.json',import.meta.url),'utf8'));
 class MemoryStorage {
   values=new Map<string,string>();
@@ -54,6 +55,27 @@ test('review answer attempts survive repository writes, backups and remote merge
   for (const row of repo.rows()) repo.mergeRemote(row,row);
   assert.equal(repo.state().progress[337].attempts,1);
   assert.equal(repo.rows().filter(row=>row.kind==='attempt').length,1);
+});
+test('flash retries count independently, sync once and never attach to a running quiz',()=>{
+  const repo=make();const active=start(repo);
+  repo.update(s=>({...s,flash:{ids:[333,334],index:0,mode:'loop',loop:emptyFlashLoop()}}));
+  const card=bank.find(q=>q.id===333)!;
+  repo.update(s=>selectFlashAnswer(s,card,'A',1000));
+  assert.equal(repo.state().progress[333].attempts,1);assert.equal(repo.state().progress[333].correct,0);
+  repo.update(s=>retryFlashAnswer(s,333));
+  repo.update(s=>selectFlashAnswer(s,card,'C',2000));
+  const graded=repo.state().flash;
+  assert.equal(repo.state().progress[333].attempts,2);assert.equal(repo.state().progress[333].correct,1);
+  assert.equal(repo.rows().filter(r=>r.kind==='attempt').every(r=>String((r.value as any).sessionId).startsWith('flash-')),true);
+  repo.importBackup(validateBackup(repo.backup(),bank));
+  for(const row of repo.rows())repo.mergeRemote(row,row);
+  const restored=new ProgressRepository(repo.learner,bank,repo.writer);
+  assert.deepEqual(restored.state().flash,graded);assert.equal(restored.state().progress[333].attempts,2);
+  repo.update(s=>advanceFlashLoop(s,333));repo.update(s=>advanceFlashLoop(s,333));
+  assert.equal(repo.state().progress[333].attempts,2);assert.deepEqual(repo.state().active,active);
+  const other=new ProgressRepository(createLearner('Other'),bank,'other-device');
+  other.importBackup(validateBackup(repo.backup(),bank));
+  assert.equal(other.state().flash!.index,1);assert.equal(other.state().progress[333].attempts,2);
 });
 test('previously unscored review answers are projected once without changing saved sessions',()=>{
   const review=bank.find(q=>q.id===337)!;

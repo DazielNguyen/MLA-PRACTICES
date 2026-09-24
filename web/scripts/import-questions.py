@@ -234,6 +234,12 @@ def main():
     # Keep English source archives intact; localize only the published MLA copy.
     web_bank = localize([q for q in study_bank if q['collection'] == 'mla'])
     assert all(q['answer'] and len(q['answer']) == q['required'] and set(q['answer']) <= set(q['choices']) for q in web_bank), 'Every published question needs a complete scoring key'
+    # Publish complete conditional keys as scored source answers, not a separate review pool.
+    # Retain the caveats and legacy unscored-attempt migration without claiming AWS verification.
+    for q in web_bank:
+        if q['status'] == 'review':
+            q['status'] = 'source'
+            q['conditionalAnswer'] = True
     export_vietnamese(web_bank, APP / 'local-study')
     (OUTPUT / 'MLS_ARCHIVE.json').write_text(json.dumps(old, ensure_ascii=False, separators=(',', ':')) + '\n')
     # Only validation shapes are shipped for reading old progress. No MLS content or keys.

@@ -1,33 +1,23 @@
-import { ArrowLeft, ArrowRight, Check, CornerDownLeft, Layers3, RotateCcw, Shuffle } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { Layers3, Zap } from 'lucide-react';
 import type { Question, State } from './domain';
-import { matchesOrigin, shuffle, sourceLabel, studyQuestions, hasQuestionMark, setQuestionMark, normalizeFlashDeck } from './domain';
-import { Empty, Explanation, IconToggle, QuestionAnswerStats, QuestionImages, QuestionText, Tag } from './components';
-import { useAssistantTopic } from './assistant-context';
+import ClassicFlashcards from './ClassicFlashcards';
+import FlashcardLoop from './FlashcardLoop';
+import './flash-loop.css';
 
-export default function Flashcards({bank,state,update}:{bank:Question[];state:State;update:(fn:(s:State)=>State)=>void}) {
-  const [flipped,setFlipped]=useState(false),[filter,setFilter]=useState(state.flash?.filter||'all'),[origin,setOrigin]=useState<NonNullable<State['flash']>['origin']>(state.flash?.origin||'all'),[includeReview,setIncludeReview]=useState(state.flash?.includeReview??true),[done,setDone]=useState(false);
-  const eligible=(group:string,review:boolean,source=origin)=>studyQuestions(bank).filter(q=>matchesOrigin(q,source||'all')&&(review||q.status!=='review')&&(group==='all'||group==='new'&&!hasQuestionMark(q,state.known)||group==='known'&&hasQuestionMark(q,state.known)||group==='bookmarked'&&hasQuestionMark(q,state.bookmarks))).map(q=>q.id);
-  useEffect(()=>{
-    if(!normalizeFlashDeck(state.flash,bank)){const ids=eligible(filter,includeReview);if(ids.length)update(s=>({...s,flash:{ids,index:0,filter,includeReview,origin,collection:'mla'}}));else setEmpty(true);}
-    else if(normalizeFlashDeck(state.flash,bank)!==state.flash)update(s=>({...s,flash:normalizeFlashDeck(s.flash,bank)}));
-  },[state.flash,bank,update]);
-  const deck=normalizeFlashDeck(state.flash,bank), q=deck?bank.find(q=>q.id===deck.ids[deck.index]):null;
-  const [empty,setEmpty]=useState(false);
-  useAssistantTopic(q && !empty && !done ? {kind:'question',id:q.id,label:`Câu #${q.id} · Flashcard`,study:{page:'flashcards',selected:[],revealed:flipped}} : undefined);
-  const rebuild=(group=filter,review=includeReview,random=false,source=origin)=>{const ids=eligible(group,review,source);setEmpty(!ids.length);if(ids.length)update(s=>({...s,flash:{ids:random?shuffle(ids):ids,index:0,filter:group,includeReview:review,origin:source,collection:'mla'}}));setFlipped(false);setDone(false);};
-  const move=(offset:number)=>{update(s=>{const flash=normalizeFlashDeck(s.flash,bank);return flash?{...s,flash:{...flash,index:Math.max(0,Math.min(flash.ids.length-1,flash.index+offset))}}:s;});setFlipped(false);setDone(false);};
-  const rate=(known:boolean)=>{if(!q||!flipped)return;update(s=>({...s,known:setQuestionMark(q,s.known,known)}));if(deck&&deck.index===deck.ids.length-1){setDone(true);setFlipped(false);}else move(1);};
-  useEffect(()=>{const key=(e:KeyboardEvent)=>{if(document.querySelector('dialog[open]')||(e.target as HTMLElement).closest('.assistant-dialog')||e.altKey||e.ctrlKey||e.metaKey||/INPUT|TEXTAREA|SELECT|BUTTON|A/.test((e.target as HTMLElement).tagName))return;if(e.code==='Space'){e.preventDefault();setFlipped(v=>!v);}if(e.key==='ArrowRight')move(1);if(e.key==='ArrowLeft')move(-1);};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);});
-  return <div className="page flash-page"><div className="page-heading"><div className="eyebrow">LEARN. FLIP. REMEMBER.</div><h1>Kiến thức ở mặt bên kia.</h1><p>Thử nhớ đáp án trước khi lật thẻ. Một lần nhớ lại, một lần nhớ lâu hơn.</p></div>
-    <div className="flash-controls"><label className="origin-filter">Nguồn câu hỏi<select aria-label="Nguồn câu hỏi" value={origin} onChange={e=>{const value=e.target.value as NonNullable<State['flash']>['origin'];setOrigin(value);rebuild(filter,includeReview,false,value);}}><option value="all">Tất cả nguồn</option><option value="original">Tự biên soạn · 352 câu</option><option value="imported">Bộ đề đã nhập · 242 câu</option></select></label><div className="filter-tabs">{([['all','Tất cả'],['new','Chưa thuộc'],['known','Đã thuộc'],['bookmarked','Đã lưu']] as const).map(([value,label])=><button key={value} className={filter===value?'active':''} onClick={()=>{setFilter(value);rebuild(value);}}>{label}</button>)}</div><div><label className="check-label compact"><input type="checkbox" checked={includeReview} onChange={e=>{setIncludeReview(e.target.checked);rebuild(filter,e.target.checked);}}/>Câu cần xác minh</label><button className="button secondary small" onClick={()=>rebuild(filter,includeReview,true)}><Shuffle size={15}/>Trộn thẻ</button></div></div>
-    {empty?<Empty title="Chưa có thẻ trong nhóm này">Hãy chọn “Tất cả”, lưu câu hỏi hoặc đánh dấu thẻ đã thuộc.</Empty>:done?<div className="panel deck-complete"><span className="mode-icon green"><Check size={30}/></span><h2>Bạn đã đi hết bộ thẻ!</h2><p>Các thẻ đã thuộc được lưu lại. Tiếp tục với những câu cần nhớ nhé.</p><button className="button primary" onClick={()=>{setFilter('new');rebuild('new');}}>Ôn thẻ chưa thuộc <ArrowRight size={16}/></button><button className="text-button" onClick={()=>rebuild()}>Học lại bộ thẻ này</button></div>:q&&deck&&<>
-    <div className="flash-meta"><span><Layers3 size={16}/> {sourceLabel(q)}</span><strong>{deck.index+1}<span> / {deck.ids.length}</span></strong></div>
-    <div className={`flashcard panel ${flipped?'flipped':''}`} key={`${q.id}-${flipped}`}><div className="flashcard-top"><span className="eyebrow">{flipped?'MẶT SAU · ĐÁP ÁN & GIẢI THÍCH':`MẶT TRƯỚC · CÂU #${String(q.id).padStart(3,'0')}`}</span><div><Tag status={q.status}/><IconToggle active={hasQuestionMark(q,state.bookmarks)} onClick={()=>update(s=>({...s,bookmarks:setQuestionMark(q,s.bookmarks)}))}/></div></div>
-      <QuestionAnswerStats question={q} state={state}/>
-      {flipped?<Explanation question={q}/>:<div className="flashcard-question"><QuestionText question={q} allowHint/><span className="selection-rule">Chọn {q.required} đáp án</span><div className="flash-choices">{Object.entries(q.choices).map(([letter,text])=><div key={letter}><span>{letter}</span><div lang="en">{text}<QuestionImages question={q} slot={letter}/></div></div>)}</div></div>}
-      <div className="flashcard-bottom"><span>{flipped?'Bạn đã nhớ được câu này chưa?':'Suy nghĩ câu trả lời, rồi lật thẻ để đối chiếu.'}</span><button className="button secondary" onClick={()=>setFlipped(v=>!v)}><RotateCcw size={15}/>{flipped?'Xem câu hỏi':'Lật thẻ'}</button></div>
-    </div><div className="flash-navigation"><button className="icon-button bordered" aria-label="Thẻ trước" disabled={deck.index===0} onClick={()=>move(-1)}><ArrowLeft size={19}/></button><div className="rating-buttons"><button className="button again" disabled={!flipped} onClick={()=>rate(false)}><RotateCcw size={16}/>Cần học lại</button><button className="button primary" disabled={!flipped} onClick={()=>rate(true)}><Check size={17}/>Đã thuộc</button></div><button className="icon-button bordered" aria-label="Thẻ tiếp" disabled={deck.index===deck.ids.length-1} onClick={()=>move(1)}><ArrowRight size={19}/></button></div><div className="flash-progress"><div className="progress-track"><div style={{width:`${(deck.index+1)/deck.ids.length*100}%`}}/></div><span>{deck.ids.filter(id=>hasQuestionMark(bank.find(q=>q.id===id)!,state.known)).length} / {deck.ids.length} thẻ đã thuộc trong bộ đang học</span></div><p className="keyboard-hint"><CornerDownLeft size={13}/><kbd>Space</kbd> Lật thẻ <span>·</span><kbd>←</kbd><kbd>→</kbd> Chuyển thẻ</p>
-    </>}
-  </div>;
+export type FlashcardProps = {bank:Question[];state:State;update:(fn:(s:State)=>State)=>void};
+export default function Flashcards(props:FlashcardProps) {
+  const [mode,setMode]=useState(props.state.flash?.mode || 'loop');
+  const change=(next:'loop'|'classic')=>{
+    if (next===mode) return;
+    setMode(next);
+    props.update(s=>s.flash?{...s,flash:{...s.flash,mode:next,loop:undefined}}:s);
+  };
+  return <>
+    <div className="page flash-mode-switch"><div className="segmented" aria-label="Cách học flashcard">
+      <button aria-pressed={mode==='loop'} className={mode==='loop'?'active':''} onClick={()=>change('loop')}><Zap size={16}/>Vòng học 10 câu</button>
+      <button aria-pressed={mode==='classic'} className={mode==='classic'?'active':''} onClick={()=>change('classic')}><Layers3 size={16}/>Lật thẻ tự đánh giá</button>
+    </div></div>
+    {mode==='loop'?<FlashcardLoop {...props}/>:<ClassicFlashcards {...props}/>}
+  </>;
 }

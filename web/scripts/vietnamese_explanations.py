@@ -50,7 +50,7 @@ def localize(bank):
         q['analysis'] = {'keyConcept': concept, 'options': options}
         q['notes'] = [notes[note] for note in q['notes']]
         q['explanationLanguage'] = 'vi'
-        answer = ('Đáp án chấm theo bộ đề (cần xác minh): ' if q['status'] == 'review' else 'Đáp án đúng: ') + ' + '.join(q['answer']) + '.'
+        answer = ('Đáp án theo bộ đề: ' if q['status'] in ('review', 'source') else 'Đáp án đúng: ') + ' + '.join(q['answer']) + '.'
         q['explanation'] = '\n\n'.join([answer, 'Ý chính: ' + concept, *[f'{letter}. {reason}' for letter, reason in options.items()]])
         assert {k: v for k, v in before.items() if k not in TRANSLATED_FIELDS} == {k: v for k, v in q.items() if k not in TRANSLATED_FIELDS}
     return output
@@ -59,16 +59,16 @@ def localize(bank):
 def export_vietnamese(bank, directory):
     directory.mkdir(parents=True, exist_ok=True)
     md = ['# MLA-C01 — Giải thích tiếng Việt', '', f'{len(bank)} câu. Giữ nguyên câu hỏi và lựa chọn tiếng Anh; giải thích và ghi chú bằng tiếng Việt.',
-          'Câu cần xác minh được tính điểm theo đáp án hiện có trong bộ đề. Bộ tự biên soạn được ghi nhãn riêng.', '']
+          'Mọi câu đều được tính điểm theo khóa đáp án. Câu có giả định được ghi nhãn “Theo đáp án bộ đề”; bộ tự biên soạn được ghi nhãn riêng.', '']
     cards = []
     for q in bank:
-        answer = ('Đáp án chấm theo bộ đề (cần xác minh): ' if q['status'] == 'review' else 'Đáp án: ') + ' + '.join(q['answer'])
+        answer = ('Đáp án theo bộ đề: ' if q['status'] in ('review', 'source') else 'Đáp án: ') + ' + '.join(q['answer'])
         label = f"#{q['id']} · {q['sourceName']}"
         md += ['## ' + label, '', q['text'], '', *[f'{k}. {v}' for k, v in q['choices'].items()], '', '**' + answer + '**', '', '### Ý chính', '', q['analysis']['keyConcept'], '']
         for image in q['images']:
             md += [f"![{image['alt']}](../public{image['url']})", '']
         for letter, reason in q['analysis']['options'].items():
-            heading = 'Phân tích' if q['status'] == 'review' else 'Vì sao đúng' if letter in q['answer'] else 'Vì sao sai'
+            heading = 'Phân tích' if q.get('conditionalAnswer') or q['status'] == 'review' else 'Vì sao đúng' if letter in q['answer'] else 'Vì sao sai'
             md += [f'### {letter} — {heading}', '', reason, '']
         md += ['### Ghi chú và nguồn', '', *['- ' + note for note in q['notes']], *[f"- [{s['title']}]({s['url']})" for s in q['sources']], '']
         front = label + ': ' + q['text'] + ' ' + ' '.join(f'{k}. {v}' for k, v in q['choices'].items())

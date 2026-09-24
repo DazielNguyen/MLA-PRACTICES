@@ -3,7 +3,7 @@ import { onboard, snapshot } from './helpers';
 
 test('closing a tab then typing the saved name reopens its answers, cards and unfinished session',async({page,context})=>{
   await onboard(page,'Duy Nguyen');
-  await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();await page.getByRole('button',{name:'Đã thuộc',exact:true}).last().click();
+  await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lật thẻ tự đánh giá',exact:true}).click();await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();await page.getByRole('button',{name:'Đã thuộc',exact:true}).last().click();
   await page.goto('/#/practice');await page.getByLabel('Số câu hỏi',{exact:true}).fill('3');await page.getByRole('button',{name:'Theo thứ tự',exact:true}).click();await page.getByRole('button',{name:/^Học nhanh Chọn là chấm/}).click();await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();
   await page.locator('.quick-question').evaluate(async el=>{await Promise.all(el.getAnimations().map(a=>a.finished.catch(()=>{})));});
   await page.keyboard.press('3');await expect(page.locator('.feedback-banner')).toBeVisible();
@@ -29,7 +29,7 @@ test('closing a tab then typing the saved name reopens its answers, cards and un
 
 test('duplicate saved names require choosing the profile without merging histories',async({page})=>{
   await onboard(page,'Duy');
-  await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();await page.getByRole('button',{name:'Đã thuộc',exact:true}).last().click();
+  await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lật thẻ tự đánh giá',exact:true}).click();await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();await page.getByRole('button',{name:'Đã thuộc',exact:true}).last().click();
   const originalId=await page.evaluate(()=>sessionStorage.getItem('ml-selected:v2'));
   await page.evaluate(()=>{
     const profile={id:crypto.randomUUID(),name:'Duy',code:'b'.repeat(64),createdAt:Date.now(),shared:false};
@@ -57,7 +57,7 @@ test('welcome, name selection and per-profile history work on mobile',async({pag
   await page.goto('/');await expect(page.getByRole('heading',{name:'Hôm nay ai đang học?'})).toBeVisible();
   await page.screenshot({path:'test-results/welcome-desktop.png',fullPage:true});await page.setViewportSize({width:390,height:844});await page.screenshot({path:'test-results/welcome-mobile.png',fullPage:true});
   await page.getByLabel('Tên người học',{exact:true}).fill('Duy');await page.getByRole('button',{name:'Tạo hồ sơ và bắt đầu'}).click();await expect(page.getByRole('button',{name:'Đang học: Duy'})).toBeVisible();
-  await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();await page.getByRole('button',{name:'Đã thuộc',exact:true}).last().click();
+  await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lật thẻ tự đánh giá',exact:true}).click();await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();await page.getByRole('button',{name:'Đã thuộc',exact:true}).last().click();
   await page.getByRole('button',{name:'Đang học: Duy'}).click();await page.getByRole('button',{name:'Đổi người học'}).click();
   await page.getByLabel('Tên người học',{exact:true}).fill('An');await page.getByRole('button',{name:'Tạo hồ sơ và bắt đầu'}).click();expect((await snapshot(page)).known).toEqual([]);
   await page.getByRole('button',{name:'Đang học: An'}).click();await page.getByRole('button',{name:'Đổi người học'}).click();await page.locator('.saved-learners button').filter({hasText:'Duy'}).click();expect((await snapshot(page)).known).toEqual([333]);

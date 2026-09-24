@@ -7,20 +7,20 @@ test('all web study modes expose only MLA questions and no MLS selector',async({
   await expect(page.locator('.bank-card')).toContainText('594 câu hỏi');
   await expect(page.locator('.bank-card')).not.toContainText('MLS');
   await page.goto('/#/exam');
-  await expect(page.locator('.pool-count')).toContainText('562 câu');
+  await expect(page.locator('.pool-count')).toContainText('594 câu');
   await expect(page.getByRole('combobox',{name:'Bộ đề',exact:true})).toHaveCount(0);
   await expect(page.getByLabel('Bao gồm câu về dịch vụ cũ')).toHaveCount(0);
-  await page.getByLabel('Số câu hỏi',{exact:true}).fill('562');
+  await page.getByLabel('Số câu hỏi',{exact:true}).fill('594');
   await page.getByRole('button',{name:'Bắt đầu thi thử',exact:true}).click();
   const ids=(await snapshot(page)).active!.questionIds;
-  expect(ids).toHaveLength(562);expect(ids.every(id=>id>332)).toBe(true);
+  expect(ids).toHaveLength(594);expect(ids.every(id=>id>332)).toBe(true);
   await page.goto('/#/library');
   await expect(page.locator('.library-count')).toContainText('594 câu hỏi');
   await page.getByRole('textbox',{name:'Tìm câu hỏi'}).fill('#269');
   await expect(page.locator('.library-card')).toHaveCount(0);
   await page.getByRole('textbox',{name:'Tìm câu hỏi'}).fill('mla-c01 q228');
   await expect(page.locator('.library-card-meta')).toContainText('#559');
-  await page.goto('/#/flashcards');
+  await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lật thẻ tự đánh giá',exact:true}).click();
   expect((await snapshot(page)).flash!.ids.every(id=>id>332)).toBe(true);
 });
 
@@ -33,7 +33,7 @@ test('old mixed backups remain intact while sessions, flashcards and statistics 
   await expect(page.getByRole('region',{name:'Thống kê học tập'})).toContainText('100%');
   await page.goto('/#/results/old-mlp');await expect(page.locator('.results-page')).toHaveCount(0);
   await page.goto('/#/progress');await expect(page.locator('.history-row,.unfinished-row')).toHaveCount(0);
-  await page.goto('/#/flashcards');await expect(page.locator('.question-origin')).toContainText('MLA-C01 Q002');
+  await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lật thẻ tự đánh giá',exact:true}).click();await expect(page.locator('.question-origin')).toContainText('MLA-C01 Q002');
   expect((await snapshot(page)).flash).toMatchObject({ids:[333,334],index:1,collection:'mla'});
   await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();await page.getByRole('button',{name:'Đã thuộc',exact:true}).last().click();
   expect((await snapshot(page)).known).toEqual([271,333,334]);

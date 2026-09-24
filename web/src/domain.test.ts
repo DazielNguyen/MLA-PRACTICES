@@ -7,12 +7,13 @@ const bank:Question[]=JSON.parse(readFileSync(new URL('./data/questions.json',im
 const answerReviews=JSON.parse(readFileSync(new URL('../scripts/answer-review.json',import.meta.url),'utf8'));
 const single=bank.find(q=>q.status==='checked'&&q.required===1)!;
 const multi=bank.find(q=>q.status==='checked'&&q.required>1)!;
-const review=bank.find(q=>q.status==='review')!;
+const review=bank.find(q=>q.conditionalAnswer)!;
 const settings={...defaultSettings,count:2,order:'sequential' as const};
 const make=():State=>({...emptyState(),active:createSession([single,multi],settings,'practice',1000)});
 test('merged bank retains unique IDs, provenance, choices, and image assets',()=>{
   assert.equal(bank.length,594);assert.equal(new Set(bank.map(q=>q.id)).size,594);
-  assert.equal(bank.filter(q=>q.status==='review').length,32);
+  assert.equal(bank.filter(q=>q.status==='review').length,0);
+  assert.equal(bank.filter(q=>q.status==='source' && q.conditionalAnswer).length,32);
   for(const q of bank){assert.ok(q.text.length>30);assert.ok(Object.keys(q.choices).length>=4);assert.ok(q.sourceName);assert.ok(q.sourceIds.length);if(q.status!=='source')assert.ok(q.sources.length);for(const source of q.sources)assert.match(source.url,/^https:\/\//);assert.ok(q.answer.length);assert.equal(q.required,q.answer.length);assert.ok(q.answer.every(a=>Object.hasOwn(q.choices,a)));for(const im of q.images){assert.ok(existsSync(new URL(`../public${im.url}`,import.meta.url)));assert.ok(im.slot==='question'||Object.hasOwn(q.choices,im.slot));}}
 });
 test('multiple answers require the exact set, independent of order',()=>{
@@ -26,11 +27,11 @@ test('single choice replaces; multi choice caps and can be deselected',()=>{
   assert.deepEqual(toggleChoice(['A'],'B',1),['B']);assert.deepEqual(toggleChoice(['A','B'],'C',2),['A','B']);
   assert.deepEqual(toggleChoice(['A','B'],'A',2),['B']);assert.deepEqual(toggleChoice(['B'],'A',2),['A','B']);
 });
-test('practice and exam include review questions by default and respect an explicit filter',()=>{
+test('practice and exam include conditional keys even with legacy source/review exclusions',()=>{
   for (const mode of ['practice','exam'] as const) {
     const pool=eligibleQuestions(bank,defaultSettings,emptyState(),mode);
-    assert.equal(pool.length,594);assert.equal(pool.filter(q=>q.status==='review').length,32);
-    assert.equal(eligibleQuestions(bank,{...defaultSettings,includeReview:false},emptyState(),mode).length,562);
+    assert.equal(pool.length,594);assert.equal(pool.filter(q=>q.conditionalAnswer).length,32);
+    assert.equal(eligibleQuestions(bank,{...defaultSettings,includeReview:false,includeSource:false},emptyState(),mode).length,594);
   }
 });
 test('question filters combine scope, range and status',()=>{
@@ -68,7 +69,7 @@ test('timeout grades once and preserves flags and deadline',()=>{
   state=finishSession(state,bank,90000,'timeout');state=finishSession(state,bank,100000,'timeout');
   assert.equal(state.active,null);assert.equal(state.history.length,1);assert.equal(state.history[0].finishedAt,61000);assert.equal(state.history[0].finishReason,'timeout');assert.deepEqual(state.history[0].flagged,[multi.id]);assert.equal(state.progress[single.id].attempts,1);assert.deepEqual(score(state.history[0],bank),{correct:1,total:2,answered:1,skipped:0,percent:50});
 });
-test('review questions contribute to scores, counters and wrong-answer filters',()=>{
+test('conditional source questions contribute to scores, counters and wrong-answer filters',()=>{
   let state=emptyState();state.active=createSession([single,review],settings,'practice',1000);state.active.answers[single.id]=single.answer;state.active.answers[review.id]=review.answer;
   state=revealAnswer(state,review,2000);state=revealAnswer(state,review,2500);
   state=finishSession(state,bank,3000);
@@ -122,10 +123,10 @@ test('deduplication preserves all source question references and resolves confli
   assert.deepEqual(bank.find(q=>q.id===433)!.sourceIds,[101,247]);
   assert.deepEqual(bank.find(q=>q.id===454)!.sourceIds,[122,286]);
   assert.deepEqual(bank.find(q=>q.id===559)!.sourceIds,[227,228]);
-  assert.equal(bank.find(q=>q.id===469)!.status,'review');
+  assert.equal(bank.find(q=>q.id===469)!.status,'source');
   assert.deepEqual(bank.find(q=>q.id===469)!.answer,['D']);
   assert.match(bank.find(q=>q.id===469)!.notes.join(' '),/bản nguồn chính Q137/);
-  assert.ok(mla.every(q=>q.status!=='source'&&q.sources.length>0));
+  assert.ok(mla.every(q=>q.sources.length>0));
 });
 
 test('every question explains its concept and every option without source boilerplate',()=>{
@@ -148,7 +149,7 @@ test('reviewed corrections and disputed API behavior affect grading explicitly',
   assert.deepEqual(bank.find(q=>q.id===544)!.answer,['D']);
   for(const id of [437,466,525,568,613]){
     const q=bank.find(q=>q.id===id)!;
-    assert.equal(q.status,'review');
+    assert.equal(q.status,'source');assert.equal(q.conditionalAnswer,true);
     assert.equal(isCorrect(q,q.answer),true);
   }
   const warm=bank.find(q=>q.id===334)!;

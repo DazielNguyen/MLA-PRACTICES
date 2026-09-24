@@ -24,7 +24,7 @@ test('original questions support quick study, explanations and saved progress', 
 
 test('original flashcard source survives reload and labels remain readable on mobile', async ({page}) => {
   await onboard(page);
-  await page.goto('/#/flashcards');
+  await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lật thẻ tự đánh giá',exact:true}).click();
   await page.getByLabel('Nguồn câu hỏi',{exact:true}).selectOption('original');
   await expect(page.locator('.flash-meta')).toContainText('/ 352');
   await expect(page.locator('.question-origin')).toContainText('Q1001 · Tự biên soạn');

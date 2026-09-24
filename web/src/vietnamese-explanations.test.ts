@@ -12,7 +12,7 @@ test('Vietnamese localization preserves all 594 stems, choices, grading keys, id
     const payload = Object.fromEntries(Object.entries(q).filter(([key]) => baseline.fields.includes(key)));
     assert.equal(createHash('sha256').update(JSON.stringify(sorted(payload))).digest('hex'), baseline.questions[q.id], `Question content changed: ${q.id}`);
   }
-  assert.equal(bank.filter(q => q.status === 'review').length,32);
+  assert.equal(bank.filter(q => q.status === 'source' && q.conditionalAnswer).length,32);
 });
 test('every concept, option explanation and note has a Vietnamese translation without English template leftovers', () => {
   let options = 0;
@@ -24,7 +24,7 @@ test('every concept, option explanation and note has a Vietnamese translation wi
       assert.match(text,/[àáạảãâầấậẩẫăằắặẳẵđèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹ]/iu, `Missing Vietnamese for ${q.id}`);
       assert.doesNotMatch(text,/This matches the requirement|This option does not address|Source selects|Original practice scenario/);
     }
-    if (q.status === 'review') assert.match(q.explanation,/Đáp án chấm theo bộ đề \(cần xác minh\)/);
+    if (q.conditionalAnswer) assert.match(q.explanation,/Đáp án theo bộ đề/);
     assert.doesNotMatch(q.explanation,/không (?:tính|được chấm) điểm/i);
   }
   assert.equal(options, 2396);

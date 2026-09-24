@@ -4,7 +4,7 @@ import { onboard, snapshot } from './helpers';
 test.beforeEach(async({page})=>{await onboard(page);});
 test('MLA reviewed explanations, hints and answers survive reload',async({page})=>{
   await page.goto('/#/practice');
-  await expect(page.locator('.pool-count')).toContainText('562 câu');
+  await expect(page.locator('.pool-count')).toContainText('594 câu');
   await page.getByLabel('Số câu hỏi',{exact:true}).fill('2');
   await page.getByRole('button',{name:'Theo thứ tự',exact:true}).click();
   await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();
@@ -21,7 +21,7 @@ test('MLA reviewed explanations, hints and answers survive reload',async({page})
 });
 test('MLA exam hides hints and includes reviewed imported questions',async({page})=>{
   await page.goto('/#/exam');
-  await expect(page.locator('.pool-count')).toContainText('562 câu');
+  await expect(page.locator('.pool-count')).toContainText('594 câu');
   await page.getByLabel('Số câu hỏi',{exact:true}).fill('2');
   await page.getByRole('button',{name:'Theo thứ tự',exact:true}).click();
   await page.getByRole('button',{name:'Bắt đầu thi thử',exact:true}).click();
@@ -30,7 +30,7 @@ test('MLA exam hides hints and includes reviewed imported questions',async({page
   await expect(page.locator('.explanation')).toHaveCount(0);
 });
 test('MLA flashcards and library preserve source references and hotspot images',async({page})=>{
-  await page.goto('/#/flashcards');
+  await page.goto('/#/flashcards');await page.getByRole('button',{name:'Lật thẻ tự đánh giá',exact:true}).click();
   await expect(page.locator('.question-origin')).toContainText('MLA-C01 Q001');
   await expect(page.locator('.answer-analysis')).toHaveCount(0);
   await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();

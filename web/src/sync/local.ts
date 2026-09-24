@@ -97,6 +97,11 @@ export class ProgressRepository {
       const key = attemptKey(session.id, Number(id));
       if (!read(this.prefix + key)) this.put('attempt', key, { questionId: Number(id), sessionId: session.id, correct: progress.latest, lastSeen: progress.lastSeen });
     }
+    const flashAttempt=next.flash?.loop?.lastAttempt;
+    if (flashAttempt && flashAttempt.id!==previous.flash?.loop?.lastAttempt?.id) {
+      const sessionId=`flash-${flashAttempt.id}`, key=attemptKey(sessionId,flashAttempt.questionId);
+      if (!read(this.prefix+key)) this.put('attempt',key,{questionId:flashAttempt.questionId,sessionId,correct:flashAttempt.correct,lastSeen:flashAttempt.lastSeen});
+    }
     for (const kind of ['bookmark', 'known'] as const) {
       const before = new Set(kind === 'bookmark' ? previous.bookmarks : previous.known);
       const after = new Set(kind === 'bookmark' ? next.bookmarks : next.known);

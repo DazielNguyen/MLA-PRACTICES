@@ -45,13 +45,15 @@ test('question chat uses its ID, saves messages, renders citations and never tri
   await expect(page.locator('.assistant-message.assistant strong')).toHaveText('Managed warm pools');
   await expect(page.getByRole('link', { name: 'AWS', exact: true })).toHaveAttribute('href', /https:\/\/docs.aws.amazon.com/);
   expect(requests).toHaveLength(1);
-  expect(requests[0].context).toEqual({ kind: 'question', id: 334 });
+  expect(requests[0].context).toEqual({ kind: 'question', id: 334, study: {page:'session',selected:[],revealed:false} });
   expect(requests[0].webSearch).toBe(true);
   expect((await snapshot(page)).active!.answers).toEqual({});
+  await page.evaluate(()=>window.scrollTo(0,0));
+  await expect(page.getByRole('dialog')).toHaveCount(0);
   await page.screenshot({ path: 'test-results/assistant-desktop.png' });
-  await page.getByRole('button', { name: 'Đóng trợ lý AI' }).click();
   await page.reload();
   await page.getByRole('button', { name: 'Hỏi AI về câu này', exact: true }).click();
+  await expect(page.getByLabel('Tra tài liệu AWS',{exact:true})).toBeChecked();
   await expect(page.locator('.assistant-message.assistant strong')).toHaveText('Managed warm pools');
   await page.getByLabel('Câu hỏi cho trợ lý').fill('Cho tôi ví dụ khác.');
   await page.getByRole('button', { name: 'Gửi câu hỏi' }).click();
@@ -60,6 +62,8 @@ test('question chat uses its ID, saves messages, renders citations and never tri
   await expect(page.getByRole('button', { name: 'Gửi câu hỏi' })).toBeVisible();
   await page.getByRole('button', { name: 'Chuyển sang hỏi chung' }).click();
   await expect(page.locator('.assistant-message')).toHaveCount(0);
+  await page.evaluate(()=>{location.hash='#/flashcards';});
+  await expect(page.locator('.assistant-topic')).toContainText('Flashcard');
 });
 
 test('Keywork sends its own context and the chat fits mobile without changing mastery', async ({ page }) => {
@@ -67,21 +71,109 @@ test('Keywork sends its own context and the chat fits mobile without changing ma
   await page.goto('/#/keywork');
   await page.getByLabel('Tìm kiến thức Keywork').fill('Representative');
   await page.getByRole('button', { name: 'Bắt đầu học', exact: true }).click();
-  await page.getByRole('button', { name: 'Hỏi AI về nội dung này', exact: true }).click();
   await unlock(page);
   await page.getByLabel('Câu hỏi cho trợ lý').fill('Giải thích 1 2 3 4');
   await page.getByLabel('Câu hỏi cho trợ lý').press('Enter');
   await expect(page.locator('.assistant-message.assistant strong')).toBeVisible();
   expect(requests[0].context.kind).toBe('keyword');
   expect(requests[0].context.id).toMatch(/^d[1-4]-p[1-4]-/);
+  expect(requests[0].context.study).toMatchObject({page:'keyword-study',mode:'match',selected:null,revealed:false});
+  expect(typeof requests[0].context.study.seed).toBe('number');
   await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByRole('button', {name:'Hỏi AI về nội dung này',exact:true}).click();
   await expect(page.getByLabel('Câu hỏi cho trợ lý')).toBeInViewport();
-  await expect(page.getByRole('button', { name: 'Đóng trợ lý AI' })).toBeInViewport();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: 'test-results/assistant-mobile.png' });
-  await page.getByRole('button', { name: 'Đóng trợ lý AI' }).click();
   await expect(page.locator('.kw-feedback')).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Xem đáp án', exact: true })).toBeVisible();
+  const choice=await page.locator('.kw-choice span').first().innerText();
+  await page.locator('.kw-choice').first().click();
+  await expect(page.locator('.assistant-topic')).toContainText(`Bạn chọn: ${choice}`);
+  await page.getByLabel('Câu hỏi cho trợ lý').fill('Vì sao lựa chọn này phù hợp hoặc không phù hợp?');
+  await page.getByLabel('Câu hỏi cho trợ lý').press('Enter');
+  await expect.poll(()=>requests.length).toBe(2);
+  expect(requests[1].context.study).toMatchObject({selected:choice,revealed:true});
+});
+
+test('the embedded bot follows the selected answer, next question and leaving the study page', async ({page}) => {
+  const requests: any[]=[]; await mockAI(page,requests); await onboard(page);
+  await page.goto('/#/practice');
+  await page.getByLabel('Số câu hỏi',{exact:true}).fill('2');
+  await page.getByRole('button',{name:'Theo thứ tự',exact:true}).click();
+  await page.getByRole('button',{name:/^Học nhanh Chọn là chấm/}).click();
+  await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();
+  await page.getByRole('button',{name:'Đến câu 2',exact:true}).click();
+  await page.locator('.choice-button').first().click();
+  await expect(page.locator('.assistant-topic')).toContainText('Câu #334');
+  await expect(page.locator('.assistant-topic')).toContainText('Bạn chọn: A');
+  await unlock(page);
+  await page.getByLabel('Câu hỏi cho trợ lý').fill('Vì sao tôi sai, cần lưu ý gì?');
+  await page.getByLabel('Câu hỏi cho trợ lý').press('Enter');
+  await expect(page.locator('.assistant-message.assistant strong')).toBeVisible();
+  expect(requests[0].context).toEqual({kind:'question',id:334,study:{page:'session',selected:['A'],revealed:true}});
+  await page.evaluate(()=>window.scrollTo(0,0));
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await page.screenshot({path:'test-results/assistant-current-question.png'});
+  await page.getByRole('button',{name:'Đến câu 1',exact:true}).click();
+  await expect(page.locator('.assistant-topic')).toContainText('Câu #333');
+  await expect(page.locator('.assistant-topic')).toContainText('Chưa chọn đáp án');
+  await expect(page.locator('.assistant-message')).toHaveCount(0);
+  await page.getByLabel('Câu hỏi cho trợ lý').fill('Câu này cần nhớ gì?');
+  await page.getByLabel('Câu hỏi cho trợ lý').press('Enter');
+  await expect.poll(()=>requests.length).toBe(2);
+  expect(requests[1].context.id).toBe(333);
+  expect(requests[1].context.study.selected).toEqual([]);
+  await page.evaluate(()=>{location.hash='#/';});
+  await expect(page.getByRole('dialog')).not.toBeVisible();
+  await page.getByRole('button',{name:'Mở trợ lý AI'}).click();
+  await expect(page.locator('.assistant-topic')).toHaveCount(0);
+  await page.getByLabel('Câu hỏi cho trợ lý').fill('Ôn Domain 1');
+  await page.getByLabel('Câu hỏi cho trợ lý').press('Enter');
+  await expect.poll(()=>requests.length).toBe(3);
+  expect(requests[2].context).toBeNull();
+});
+
+test('flashcard backs and expanded library rows supply the visible item to the embedded bot', async ({page}) => {
+  const requests: any[]=[]; await mockAI(page,requests); await onboard(page);
+  await page.goto('/#/flashcards');
+  await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();
+  await unlock(page);
+  await expect(page.locator('.assistant-topic')).toContainText('Flashcard');
+  await page.getByLabel('Câu hỏi cho trợ lý').fill('Giải thích câu đang xem.');
+  await page.getByLabel('Câu hỏi cho trợ lý').press('Enter');
+  await expect(page.locator('.assistant-message.assistant strong')).toBeVisible();
+  expect(requests[0].context.study).toEqual({page:'flashcards',selected:[],revealed:true});
+  const first=requests[0].context.id;
+  await page.getByRole('button',{name:'Thẻ tiếp',exact:true}).click();
+  await expect(page.locator('.assistant-topic')).not.toContainText(`Câu #${first} `);
+  await page.goto('/#/library');
+  await page.getByLabel('Tìm câu hỏi').fill('#334');
+  await page.locator('.library-card > details > summary').click();
+  await expect(page.locator('.assistant-topic')).toContainText('Câu #334');
+  await page.getByLabel('Câu hỏi cho trợ lý').fill('Câu này có bẫy gì?');
+  await page.getByLabel('Câu hỏi cho trợ lý').press('Enter');
+  await expect.poll(()=>requests.length).toBe(2);
+  expect(requests[1].context).toEqual({kind:'question',id:334,study:{page:'library',selected:[],revealed:false}});
+  await page.locator('.library-card > details > summary').click();
+  await expect(page.locator('.assistant-topic')).toHaveCount(0);
+});
+
+test('reviewing a completed attempt attaches its saved choice to the bot', async ({page}) => {
+  const requests: any[]=[]; await mockAI(page,requests); await onboard(page);
+  await page.goto('/#/practice');
+  await page.getByLabel('Số câu hỏi',{exact:true}).fill('2');
+  await page.getByRole('button',{name:'Theo thứ tự',exact:true}).click();
+  await page.getByRole('button',{name:/^Học nhanh Chọn là chấm/}).click();
+  await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();
+  await page.getByRole('button',{name:'Đến câu 2',exact:true}).click();
+  await page.locator('.choice-button').first().click();
+  await page.getByRole('button',{name:'Kết thúc',exact:true}).click();
+  await page.locator('.review-card').filter({hasText:'Ngân hàng #334'}).locator('summary').first().click();
+  await unlock(page);
+  await page.getByLabel('Câu hỏi cho trợ lý').fill('Vì sao tôi sai câu này?');
+  await page.getByLabel('Câu hỏi cho trợ lý').press('Enter');
+  await expect(page.locator('.assistant-message.assistant strong')).toBeVisible();
+  expect(requests[0].context).toEqual({kind:'question',id:334,study:{page:'results',selected:['A'],revealed:true}});
 });
 
 test('exam and hidden practice disable the tutor until the session ends', async ({ page }) => {
@@ -98,6 +190,36 @@ test('exam and hidden practice disable the tutor until the session ends', async 
   await page.getByRole('button', { name: /^Tự kiểm tra/ }).click();
   await page.getByRole('button', { name: 'Bắt đầu luyện tập', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Mở trợ lý AI' })).toBeDisabled();
+});
+
+test('studying remains interactive during a reply and changing questions cancels the old chat', async ({page}) => {
+  const requests:any[]=[]; let finish!:()=>void;
+  const gate=new Promise<void>(resolve=>{finish=resolve;});
+  await mockAI(page,requests,()=>gate); await onboard(page);
+  await page.goto('/#/practice');
+  await page.getByLabel('Số câu hỏi',{exact:true}).fill('3');
+  await page.getByRole('button',{name:'Theo thứ tự',exact:true}).click();
+  await page.getByRole('button',{name:/^Học nhanh Chọn là chấm/}).click();
+  await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();
+  await page.getByRole('button',{name:'Đến câu 2',exact:true}).click();
+  await unlock(page);
+  await page.getByLabel('Câu hỏi cho trợ lý').fill('Câu này cần lưu ý gì?');
+  await page.getByLabel('Câu hỏi cho trợ lý').press('Enter');
+  await expect(page.getByRole('button',{name:'Dừng trả lời'})).toBeVisible();
+  await page.locator('.choice-button').nth(1).click();
+  expect((await snapshot(page)).active!.answers[334]).toEqual(['B']);
+  await expect(page.locator('.assistant-topic')).toContainText('Bạn chọn: B');
+  await page.getByRole('button',{name:'Câu tiếp',exact:true}).click();
+  await expect(page.locator('.assistant-topic')).toContainText('Câu #335');
+  finish();
+  await expect(page.locator('.assistant-message')).toHaveCount(0);
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page.getByRole('button',{name:'Gửi câu hỏi'})).toBeDisabled();
+  await page.locator('.quick-question').evaluate(async element=>{await Promise.all(element.getAnimations().map(animation=>animation.finished));});
+  await page.getByRole('button',{name:'Đến câu 2',exact:true}).click();
+  await expect(page.locator('.assistant-topic')).toContainText('Câu #334');
+  await expect(page.locator('.assistant-message.user')).toContainText('Câu này cần lưu ý gì?');
+  await expect(page.locator('.assistant-incomplete')).toHaveCount(1);
 });
 
 test('wrong codes can be corrected and stopping a request keeps a retryable incomplete reply', async ({ page }) => {

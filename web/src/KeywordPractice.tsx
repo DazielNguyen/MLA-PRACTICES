@@ -6,7 +6,7 @@ import type { KeywordDeck, KeywordItem, KeywordProgress, KeywordStatus } from '.
 import { notifyChange } from './sync/local';
 import type { ProgressRepository } from './sync/local';
 import './keyword-practice.css';
-import { AskAssistant } from './assistant-context';
+import { AskAssistant, useAssistantTopic } from './assistant-context';
 
 const items = rawItems as KeywordItem[];
 const byId = new Map(items.map(item => [item.id, item]));
@@ -41,6 +41,8 @@ export default function KeywordPractice({repo, revision}: {repo: ProgressReposit
   const pageCount = Math.max(1, Math.ceil(filtered.length / 20)), currentPage = Math.min(page, pageCount - 1);
   const item = deck && byId.get(deck.ids[deck.index]);
   const exercise = useMemo(() => item && deck ? keywordExercise(item, items, deck.startedAt) : null, [item, deck?.startedAt]);
+  const currentItem = studying ? item : filtered.slice(currentPage*20,(currentPage+1)*20).find(q=>q.id===expanded);
+  useAssistantTopic(currentItem ? {kind:'keyword',id:currentItem.id,label:`Domain ${currentItem.domain} · Part ${currentItem.part} · ${currentItem.title}`,study:studying && deck ? {page:'keyword-study',seed:deck.startedAt,mode:deck.mode,selected:deck.selected,revealed:deck.revealed} : {page:'keyword-library',selected:null,revealed:false}} : undefined);
   const save = (next: KeywordDeck | null, record?: KeywordProgress) => {
     if (record) repo.put('keyword', `keyword:${record.id}`, record);
     repo.put('keywordDeck', `keywordDeck:${repo.writer}`, next);
@@ -75,7 +77,7 @@ export default function KeywordPractice({repo, revision}: {repo: ProgressReposit
   useEffect(() => {
     if (!studying || !item) return;
     const keydown = (event: KeyboardEvent) => {
-      if (document.querySelector('dialog[open]') || event.repeat || event.metaKey || event.ctrlKey || event.altKey || (event.target as HTMLElement).closest('input,textarea,select,a,summary,[contenteditable="true"]')) return;
+      if (document.querySelector('dialog[open]') || event.repeat || event.metaKey || event.ctrlKey || event.altKey || (event.target as HTMLElement).closest('.assistant-dialog,input,textarea,select,a,summary,[contenteditable="true"]')) return;
       if (/^[1-4]$/.test(event.key) && deck?.mode === 'match' && exercise?.choices[Number(event.key) - 1]) {event.preventDefault(); reveal(exercise.choices[Number(event.key) - 1]);}
       else if (event.key === 'Enter' || event.key === ' ') {
         // Space/Enter on a control keeps that control's native behavior.

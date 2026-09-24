@@ -58,7 +58,7 @@ Nhờ đó, `/api/chat` đi đến API thay vì nhận trang HTML.
 ## Cách dùng
 
 1. Chọn hồ sơ người học.
-2. Bấm **Trợ lý AI**, hoặc **Hỏi AI về câu này** ngay trên câu hỏi.
+2. Mở câu hỏi, flashcard hoặc mục Keywork. Chat tự hiện trong trang học.
 3. Nhập giá trị `AI_CHAT_ACCESS_CODE` vào **Mã truy cập bot**.
 4. Bấm **Dùng mã này**.
 5. Nhập câu hỏi và bấm Enter.
@@ -67,12 +67,25 @@ Mã truy cập bot khác API key. Không nhập API key vào ô chat.
 Mã truy cập chỉ được nhớ trong tab hiện tại. Nút **Khóa bot** xóa mã khỏi tab.
 API kiểm tra mã ở mỗi lượt hỏi.
 
-Nút **Hỏi AI về nội dung này** gửi đúng ID mục Keywork.
-Server lấy nội dung tương ứng từ bộ tài liệu, gồm Domain, Part và nguồn tham khảo.
-Người học không cần sao chép đề hoặc phần giải thích.
+Trên máy tính, chat nằm cạnh đề. Trên màn hình nhỏ, chat nằm bên dưới nội dung học.
+Bạn có thể chọn đáp án và chuyển câu trong khi chat đang mở, không có lớp phủ chặn trang.
+Nút **Hỏi AI về câu này** hoặc **Hỏi AI về nội dung này** đưa con trỏ tới ô chat.
+Ở các trang không có câu đang mở, nút **Trợ lý AI** vẫn mở chat chung.
+
+Chat tự theo câu hiện tại trong Học nhanh, Luyện câu hỏi, Flashcard và Keywork.
+Trong Ngân hàng câu hỏi hoặc Kết quả, mở một câu để chat nhận đúng câu đó.
+Chuyển câu sẽ đổi ngữ cảnh và hội thoại. Nếu đang trả lời câu cũ, yêu cầu đó được hủy.
+Rời trang học sẽ bỏ ngữ cảnh câu cũ.
+
+Server lấy đề, lựa chọn, đáp án và giải thích từ bộ tài liệu theo ID.
+Chat cũng nhận lựa chọn hiện tại và trạng thái đã xem đáp án của bạn.
+Với Keywork, server dựng lại đúng chỗ trống và các lựa chọn của bài đang hiện.
+Bạn có thể hỏi “Vì sao tôi sai?” hoặc “Cần lưu ý gì?” mà không sao chép đề.
+Nếu chưa chọn, bot không tự đoán bạn đã trả lời sai. Câu cần xác minh vẫn được ghi rõ.
 
 Bot trả lời bằng tiếng Việt và giữ tên dịch vụ, keyword tiếng Anh.
 Bật **Tra tài liệu AWS** để tra cứu các trang thuộc `docs.aws.amazon.com` và `aws.amazon.com`.
+Tùy chọn tra cứu được nhớ trong tab để bạn không phải bật lại khi chuyển câu.
 Khi không bật tra cứu, câu trả lời dựa trên tài liệu đang học và kiến thức của model.
 Bot không tự đổi khóa đáp án hoặc ghi điểm.
 
@@ -82,7 +95,8 @@ Trợ lý tạm khóa trong màn hình thi thử và tự kiểm tra có ẩn đ
 Hội thoại lưu trên trình duyệt, riêng theo người học và câu hỏi hoặc mục Keywork.
 Hội thoại AI chưa đồng bộ qua Supabase. Tiến trình học vẫn đồng bộ theo cơ chế hiện có.
 Mỗi hội thoại giữ tối đa 40 tin nhắn. Nút dấu cộng xóa hội thoại đang mở để bắt đầu lại.
-Khi gửi, tin nhắn và ngữ cảnh câu hỏi được chuyển tới OpenAI. Tên và mã hồ sơ không tự gửi kèm.
+Khi gửi, tin nhắn, ngữ cảnh câu hỏi và lựa chọn hiện tại được chuyển tới OpenAI.
+Tên, mã hồ sơ và lịch sử điểm không tự gửi kèm. Mở khung chat không tự gọi model.
 
 ## Giới hạn và lỗi
 

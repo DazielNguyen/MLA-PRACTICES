@@ -6,6 +6,7 @@ import { createSession, defaultSettings, importedBankRange, eligibleQuestions, f
 import { useLearners, useProgress } from './store';
 import { Welcome, LearnerSettings } from './Learners';
 import Group from './Group';
+import { AssistantProvider, useAssistantGuard } from './assistant-context';
 import type { Learner } from './sync/local';
 import type { Backup } from './sync/records';
 import { validateBackup } from './sync/records';
@@ -40,13 +41,14 @@ function download(state:Backup) {
 export default function App() {
   const { profiles, learner, select } = useLearners();
   if (!learner || location.hash.startsWith('#/join/')) return <Welcome profiles={profiles} select={select} bank={bank}/>;
-  return <StudyApp key={learner.id} learner={learner} switchLearner={()=>select('')}/>;
+  return <AssistantProvider key={learner.id} learnerId={learner.id}><StudyApp learner={learner} switchLearner={()=>select('')}/></AssistantProvider>;
 }
 function StudyApp({learner,switchLearner}:{learner:Learner;switchLearner:()=>void}) {
   const { state: storedState, update, storageError, repo, cloudStatus, cloudError, lastSynced, sync }=useProgress(bank,learner);
   const state=useMemo(()=>studyState(storedState,bank),[storedState]);
   const saveLabel = storageError ? 'Chưa lưu được trên máy' : cloudStatus==='local' ? 'Lưu trên trình duyệt' : cloudStatus==='synced' ? 'Đã đồng bộ' : cloudStatus==='error' ? 'Chờ kết nối lại' : 'Đang đồng bộ…';
   const [route,setRoute]=useState(location.hash.slice(1)||'/');
+  useAssistantGuard(route === '/session' && Boolean(state.active && (state.active.mode === 'exam' || state.active.settings.feedback === 'end')));
   const [menu,setMenu]=useState(false), [message,setMessage]=useState('');
   const [pending,setPending]=useState<Session|null>(null), [imported,setImported]=useState<Backup|State|null>(null);
   const fileInput=useRef<HTMLInputElement>(null);

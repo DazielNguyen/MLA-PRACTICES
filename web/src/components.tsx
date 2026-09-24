@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 import type { Question, State } from './domain';
 import { questionProgress, sourceLabel } from './domain';
 import StudyText from './StudyText';
+import { AskAssistant } from './assistant-context';
 
 export function Tag({ status }: { status: Question['status'] }) {
   return <span className={`tag ${status}`}>{status === 'checked' ? <><Check size={12} /> Đã đối chiếu</> : status === 'historical' ? 'Dịch vụ cũ' : status === 'source' ? 'Theo nguồn' : 'Cần xác minh'}</span>;
@@ -26,7 +27,7 @@ export function QuestionImages({ question, slot = 'question' }: { question: Ques
   return <>{question.images.filter(im => im.slot === slot).map(im => <a className="question-image" key={im.url} href={im.url} target="_blank" rel="noreferrer" aria-label="Mở hình câu hỏi ở kích thước đầy đủ"><img src={im.url} alt={im.alt} loading="lazy" /><span>Mở hình đầy đủ <ExternalLink size={11} /></span></a>)}</>;
 }
 export function QuestionText({ question, allowHint = false, highlight = false }: { question: Question; allowHint?: boolean; highlight?: boolean }) {
-  return <><p className="question-origin">{sourceLabel(question)}{question.sourceIds.length > 1 && ` · Đã gộp ${question.sourceIds.length} bản`}</p>{question.duplicateOf !== undefined && <p className="notice archived-variant">Biến thể đã gộp vào #{String(question.duplicateOf).padStart(3,'0')}. Đây là bản câu hỏi của phiên đã lưu.</p>}<p className="question-text" lang="en"><StudyText text={question.text} highlight={highlight}/></p><QuestionImages question={question} />{allowHint && question.hint && <details className="question-hint"><summary>Gợi ý — mở sau khi tự phân tích</summary><p>{question.hint}</p></details>}{question.notes.some(note => note.includes('unit')) && <p className="notice"><Info size={15} /> Đơn vị dung lượng trong PDF bị lỗi, đã giữ nguyên ghi chú thay vì đoán đơn vị.</p>}</>;
+  return <><AskAssistant topic={{kind:"question",id:question.id,label:`Câu #${question.id} · MLA-C01`}}/><p className="question-origin">{sourceLabel(question)}{question.sourceIds.length > 1 && ` · Đã gộp ${question.sourceIds.length} bản`}</p>{question.duplicateOf !== undefined && <p className="notice archived-variant">Biến thể đã gộp vào #{String(question.duplicateOf).padStart(3,'0')}. Đây là bản câu hỏi của phiên đã lưu.</p>}<p className="question-text" lang="en"><StudyText text={question.text} highlight={highlight}/></p><QuestionImages question={question} />{allowHint && question.hint && <details className="question-hint"><summary>Gợi ý — mở sau khi tự phân tích</summary><p>{question.hint}</p></details>}{question.notes.some(note => note.includes('unit')) && <p className="notice"><Info size={15} /> Đơn vị dung lượng trong PDF bị lỗi, đã giữ nguyên ghi chú thay vì đoán đơn vị.</p>}</>;
 }
 export function Explanation({ question, selected, compact = false }: { question: Question; selected?: string[]; compact?: boolean }) {
   const unscored = question.status === 'review';

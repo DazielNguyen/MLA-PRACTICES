@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "types": ["node"], "incremental": false },
+  "include": ["api", "server", "vite.config.ts"],
+  "exclude": ["server/**/*.test.ts"]
+}

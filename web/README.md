@@ -280,3 +280,9 @@ npm run preview
 ```
 
 Mở địa chỉ Terminal hiển thị, mặc định là `http://127.0.0.1:4173/`.
+
+## Trợ lý AI riêng
+
+Bot dùng OpenAI SDK và Responses API phía server. Mở **Hỏi AI** trên câu hỏi hoặc mục Keywork để hỏi bằng tiếng Việt.
+
+Điền `OPENAI_API_KEY` trong `.env.local`. Mã truy cập bot đã được tạo sẵn trong `AI_CHAT_ACCESS_CODE`. Xem [hướng dẫn OpenAI](OPENAI_SETUP.md) để chạy trên máy hoặc cấu hình Vercel.

@@ -6,6 +6,7 @@ import type { KeywordDeck, KeywordItem, KeywordProgress, KeywordStatus } from '.
 import { notifyChange } from './sync/local';
 import type { ProgressRepository } from './sync/local';
 import './keyword-practice.css';
+import { AskAssistant } from './assistant-context';
 
 const items = rawItems as KeywordItem[];
 const byId = new Map(items.map(item => [item.id, item]));
@@ -15,6 +16,7 @@ function savedDeck(repo: ProgressRepository) {
 }
 function ItemDetails({item}: {item: KeywordItem}) {
   return <div className="kw-details" lang="vi">
+    <AskAssistant topic={{kind:'keyword',id:item.id,label:`Domain ${item.domain} · Part ${item.part} · ${item.title}`}}/>
     <div className="kw-keywords"><Lightbulb size={18}/><div><strong>Từ khóa nhận diện</strong><p>{item.keywords}</p></div></div>
     {item.sections.map(section => <section key={section.title}><h3>{section.title}</h3><p>{section.text}</p></section>)}
     <details className="kw-source"><summary>Nguồn và phạm vi nội dung <ChevronDown size={15}/></summary><p>{item.source.scope} · Đối chiếu trong tài liệu: {item.source.date}</p><p>{item.source.file} · Dòng {item.source.row}</p>{item.part === 3 && <p>Chuỗi tiếng Anh được chuyển từ các bước trong tài liệu để luyện ghi nhớ. Xem điều kiện và biến thể trước khi áp dụng.</p>}<ul>{item.source.urls.map((url, i) => <li key={url}><a href={url} target="_blank" rel="noreferrer">Nguồn tham khảo {i + 1} · {new URL(url).hostname}</a></li>)}</ul></details>
@@ -73,7 +75,7 @@ export default function KeywordPractice({repo, revision}: {repo: ProgressReposit
   useEffect(() => {
     if (!studying || !item) return;
     const keydown = (event: KeyboardEvent) => {
-      if (event.repeat || event.metaKey || event.ctrlKey || event.altKey || (event.target as HTMLElement).closest('input,textarea,select,a,summary,[contenteditable="true"]')) return;
+      if (document.querySelector('dialog[open]') || event.repeat || event.metaKey || event.ctrlKey || event.altKey || (event.target as HTMLElement).closest('input,textarea,select,a,summary,[contenteditable="true"]')) return;
       if (/^[1-4]$/.test(event.key) && deck?.mode === 'match' && exercise?.choices[Number(event.key) - 1]) {event.preventDefault(); reveal(exercise.choices[Number(event.key) - 1]);}
       else if (event.key === 'Enter' || event.key === ' ') {
         // Space/Enter on a control keeps that control's native behavior.
@@ -90,6 +92,7 @@ export default function KeywordPractice({repo, revision}: {repo: ProgressReposit
     <div className="kw-meter" role="progressbar" aria-label="Tiến độ phiên Keywork" aria-valuemin={0} aria-valuemax={deck.ids.length} aria-valuenow={deck.index}><span style={{width: `${deck.index / deck.ids.length * 100}%`}}/></div>
     {item && exercise ? <article className="kw-study-card" key={`${deck.startedAt}:${deck.index}`}>
       <ItemLabels item={item}/>
+      {!deck.revealed && <AskAssistant topic={{kind:'keyword',id:item.id,label:`Domain ${item.domain} · Part ${item.part} · ${item.title}`}}/>}
       <p className="eyebrow">{deck.mode === 'cards' ? 'THẺ GHI NHỚ' : item.part === 3 ? 'ĐIỀN BƯỚC CÒN THIẾU' : 'GHÉP TỪ KHÓA VỚI TÌNH HUỐNG'}</p>
       <h1 className="kw-prompt" lang="en">{deck.mode === 'cards' && item.part === 3 ? 'Recall this workflow from its keywords.' : exercise.prompt}</h1>
       {deck.mode === 'cards' && item.part === 3 && <p className="kw-front-keywords">{item.keywords}</p>}

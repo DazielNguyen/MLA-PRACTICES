@@ -24,11 +24,11 @@ test('quick home entry enables immediate grading without a confirmation button',
   await expect(page.getByRole('button',{name:'Kiểm tra đáp án'})).toHaveCount(0);
 });
 
-test('quick setup defaults to imported questions while Udemy remains selectable',async({page})=>{
+test('quick setup preserves all sources while Udemy remains selectable',async({page})=>{
   await page.goto('/#/practice');
   await page.getByRole('button',{name:/^Học nhanh Chọn là chấm/}).click();
-  await expect(page.getByRole('combobox',{name:'Nội dung',exact:true})).toHaveValue('333-618');
-  await expect(page.locator('.pool-count')).toContainText('242 câu');
+  await expect(page.getByRole('combobox',{name:'Nội dung',exact:true})).toHaveValue('all');
+  await expect(page.locator('.pool-count')).toContainText('437 câu');
   await page.getByRole('combobox',{name:'Nội dung',exact:true}).selectOption('701-895');
   await expect(page.locator('.pool-count')).toContainText('195 câu');
   await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();

@@ -5,6 +5,7 @@ import type { Question, State } from './domain';
 import { questionProgress, sourceLabel } from './domain';
 import StudyText from './StudyText';
 import { AskAssistant } from './assistant-context';
+import { unscoredLabels, unscoredReason } from './question-statistics';
 
 export function Tag({ status }: { status: Question['status'] }) {
   return <span className={`tag ${status}`}>{status === 'checked' ? <><Check size={12} /> Đã đối chiếu</> : status === 'historical' ? 'Dịch vụ cũ' : status === 'source' ? 'Theo đáp án bộ đề' : 'Cần xác minh'}</span>;
@@ -19,6 +20,7 @@ export function QuestionAnswerStats({ question, state, live = false }: { questio
       <span className="answer-count-label">Lịch sử trả lời</span>
       <span className="answer-count-correct"><Check size={13}/>Đúng <b>{correct}</b> lần</span>
       <span className="answer-count-wrong"><X size={13}/>Sai <b>{wrong}</b> lần</span>
+      {!progress?.attempts&&<small className="answer-count-status">{unscoredLabels[unscoredReason(question,state)]}</small>}
   </span>;
 }
 export function QuestionImages({ question, slot = 'question' }: { question: Question; slot?: string }) {

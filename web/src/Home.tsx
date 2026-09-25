@@ -4,13 +4,13 @@ import { focusedQuestions } from './question-formats';
 import type { Question, Session, State } from './domain';
 import { formatTime, score, studyQuestions, hasQuestionMark, questionProgress } from './domain';
 
-export default function Home({ state, bank, go, quick, unfinished, resume }: { state: State; bank: Question[]; go: (path: string) => void; quick: () => void; unfinished: Session | null; resume: (id: string) => void }) {
+export default function Home({ state, bank, go, quick, unfinished, resume }: { state: State; bank: Question[]; go: (path: string) => void; quick: () => void; unfinished: Session[]; resume: (id: string) => void }) {
   const questions = studyQuestions(bank);
   const attempted = questions.filter(q=>questionProgress(q,state)).length, known = questions.filter(q=>hasQuestionMark(q,state.known)).length;
   const totalAttempts = Object.values(state.progress).reduce((n, p) => n + p.attempts, 0);
   const correct = Object.values(state.progress).reduce((n, p) => n + p.correct, 0);
   const studyDays = new Set([...Object.values(state.progress).map(p => new Date(p.lastSeen).toLocaleDateString('vi-VN')), ...state.history.map(s => new Date(s.finishedAt!).toLocaleDateString('vi-VN'))]).size;
-  const continuing = state.active || unfinished;
+  const continuing = state.active || unfinished[0];
   return <div className="page home-page">
     <div className="page-heading"><div><div className="eyebrow">KHÔNG GIAN HỌC TẬP CỦA BẠN</div><h1>Mỗi ngày một chút,<br className="mobile-break" /> vững hơn từng câu.</h1><p>Ôn kiến thức, luyện phản xạ và sẵn sàng cho bài thi.</p></div><span className="day-label"><span className="live-dot" /> Sẵn sàng học tiếp</span></div>
     {continuing && <button className="resume-banner" onClick={() => state.active ? go('/session') : resume(continuing.id)}><div className="resume-icon"><Play size={19}/></div><div><strong>{state.active ? 'Tiếp tục' : 'Mở lại'} {continuing.mode === 'exam' ? 'bài thi thử' : 'phiên luyện tập'}</strong><p>Đã trả lời {Object.values(continuing.answers).filter(a => a.length).length}/{continuing.questionIds.length} câu{continuing.deadline ? ' · Đồng hồ thi vẫn đang chạy' : ''}{!state.active && ' · Tiếp tục trên tab này'}</p></div><ArrowRight size={20}/></button>}
@@ -28,7 +28,7 @@ export default function Home({ state, bank, go, quick, unfinished, resume }: { s
     <section className="mode-grid">
       {[{icon:Layers3,color:'purple',number:'01',title:'Flashcard',desc:'Ôn liên tục theo vòng 10 câu. Sai thì thử lại; đúng thì thêm câu mới.',tags:'Vòng 10 câu · Chọn là chấm',route:'/flashcards',cta:'Mở bộ thẻ'},{icon:BookOpen,color:'orange',number:'02',title:'Luyện câu hỏi',desc:'Học theo bộ đề, xem giải thích ngay hoặc tự trả lời trước khi xem đáp án.',tags:'Có đáp án · Tự kiểm tra',route:'/practice',cta:'Bắt đầu luyện'},{icon:Clock3,color:'green',number:'03',title:'Thi thử',desc:'Tập trung như trong phòng thi. Tùy chọn số câu, đặt thời gian và xem kết quả.',tags:'Bấm giờ · Ẩn đáp án',route:'/exam',cta:'Tạo bài thi'}].map(({icon:Icon,...m}) => <button className={`mode-card ${m.color}`} key={m.number} onClick={() => go(m.route)}><div className="mode-card-top"><span className={`mode-icon ${m.color}`}><Icon size={25}/></span><span>{m.number}</span></div><h3>{m.title}</h3><p>{m.desc}</p><span className="mode-tags">{m.tags}</span><div className="mode-cta">{m.cta}<ArrowRight size={18}/></div></button>)}
     </section>
-    <div className="bottom-grid"><QuestionJourney bank={bank} state={state} go={go}/>
+    <div className="bottom-grid"><QuestionJourney bank={bank} state={state} go={go} unfinished={unfinished}/>
     <section className="panel recent-panel"><div className="section-heading"><h2>Phiên gần đây</h2><button className="text-button" onClick={() => go('/progress')}>Xem tất cả <ArrowRight size={14}/></button></div>{state.history.length ? state.history.slice(0,3).map(s => { const result=score(s,bank);return <button key={s.id} className="recent-row" onClick={() => go(`/results/${s.id}`)}><span className="recent-icon">{s.mode==='exam'?<Clock3 size={18}/>:<BookOpen size={18}/>}</span><span><strong>{s.mode==='exam'?'Thi thử':'Luyện tập'} · {s.questionIds.length} câu</strong><small>{new Date(s.finishedAt!).toLocaleDateString('vi-VN')} · {formatTime(s.finishedAt!-s.startedAt)}</small></span><b>{result.total ? `${result.percent}%` : '—'}</b></button>}) : <div className="recent-empty"><div><Clock3 size={27}/></div><h3>Phiên học đầu tiên đang chờ bạn</h3><p>Hoàn thành một phiên để xem kết quả<br/>và theo dõi sự tiến bộ ở đây.</p><button className="text-button" onClick={() => go('/practice')}>Cùng bắt đầu <ArrowRight size={14}/></button></div>}</section></div>
     <div className="source-note"><span className="live-dot"/>MLA-C01 · {questions.length} câu<span>{questions.filter(q=>q.origin==='udemy').length} câu Udemy · {questions.filter(q=>q.status==='source').length} câu chấm theo bộ đề.</span></div>
   </div>;

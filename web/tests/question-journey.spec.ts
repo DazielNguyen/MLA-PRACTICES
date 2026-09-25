@@ -21,7 +21,7 @@ test('heatmap grades lifetime accuracy, sorts mistakes and opens the matching qu
   await expect(panel.locator('.mastery-grid [data-question-id="334"]')).toHaveClass(/strong/);
   await expect(panel.locator('.mastery-grid [data-question-id="335"]')).toHaveClass(/never-correct/);
   await expect(panel.locator('.mastery-grid [data-question-id="336"]')).toHaveClass(/low/);
-  await expect(panel.locator('.mastery-grid [data-question-id="338"]')).toHaveClass(/unseen/);
+  await expect(panel.locator('.mastery-grid [data-question-id="338"]')).toHaveClass(/known-only/);
   await expect(panel.locator('.mastery-grid [data-question-id="1001"]')).toHaveCount(0);
   await expect(panel.locator('.mastery-grid [data-question-id="334"]')).toHaveAttribute('title',/Đúng 9 · Sai 1 · 90%/);
   expect(await panel.locator('tbody tr').evaluateAll(rows=>rows.map(r=>r.getAttribute('data-question-id')))).toEqual(['336','335','701','333','334']);

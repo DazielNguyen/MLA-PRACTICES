@@ -1,30 +1,32 @@
 import { useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight, Flag } from 'lucide-react';
-import type { Question, State } from './domain';
+import type { Question, Session, State } from './domain';
 import { matchesOrigin, sourceLabel } from './domain';
-import { accuracyLabel, questionStatistics, rankMistakes } from './question-statistics';
-import type { Mastery } from './question-statistics';
+import { accuracyLabel, questionStatistics, rankMistakes, unscoredLabels } from './question-statistics';
+import type { Mastery, UnscoredReason } from './question-statistics';
 const levels:{value:Mastery;label:string}[]=[
   {value:'strong',label:'Trên 80%'},{value:'building',label:'50–80%'},{value:'low',label:'Trên 0%, dưới 50%'},
-  {value:'never-correct',label:'Đã sai, chưa đúng'},{value:'unseen',label:'Chưa trả lời'},
+  {value:'never-correct',label:'Đã sai, chưa đúng'},
+  ...Object.entries(unscoredLabels).map(([value,label])=>({value:value as UnscoredReason,label})),
 ];
-export default function QuestionJourney({bank,state,go}:{bank:Question[];state:State;go:(path:string)=>void}) {
+export default function QuestionJourney({bank,state,go,unfinished}:{bank:Question[];state:State;go:(path:string)=>void;unfinished?:Session[]}) {
   const [origin,setOrigin]=useState('all'),[level,setLevel]=useState('all'),[neverCorrect,setNeverCorrect]=useState(false),[page,setPage]=useState(0);
-  const all=useMemo(()=>questionStatistics(bank,state),[bank,state]);
+  const all=useMemo(()=>questionStatistics(bank,state,unfinished),[bank,state,unfinished]);
   const stats=all.filter(s=>matchesOrigin(s.question,origin));
   const attempted=stats.filter(s=>s.attempts>0).length;
   const coverage=stats.length?Math.round(attempted/stats.length*100):0;
-  const visible=stats.filter(s=>level==='all'||s.mastery===level);
+  const visible=stats.filter(s=>level==='all'||level==='ungraded'&&s.attempts===0||s.mastery===level);
   const ranked=rankMistakes(stats,neverCorrect),pages=Math.max(1,Math.ceil(ranked.length/10)),current=Math.min(page,pages-1);
   const open=(id:number)=>go(`/library?question=${id}`);
   return <section className="panel progress-panel question-journey" aria-label="Hành trình theo tỷ lệ đúng">
     <div className="section-heading"><h2>Hành trình của bạn</h2><Flag size={18}/></div>
-    <div className="journey-filters"><label>Bộ đề<select aria-label="Bộ đề trong bản đồ" value={origin} onChange={e=>{setOrigin(e.target.value);setPage(0);}}><option value="all">Tất cả bộ đề</option><option value="imported">Bộ 286 · 242 câu</option><option value="udemy">Udemy · 195 câu</option></select></label><label>Tỷ lệ đúng<select aria-label="Lọc màu bản đồ" value={level} onChange={e=>setLevel(e.target.value)}><option value="all">Mọi mức độ</option>{levels.map(l=><option value={l.value} key={l.value}>{l.label}</option>)}</select></label></div>
-    <div className="progress-caption"><strong>{attempted}<span> / {stats.length} câu đã trả lời</span></strong><span>{coverage}%</span></div>
+    <div className="journey-filters"><label>Bộ đề<select aria-label="Bộ đề trong bản đồ" value={origin} onChange={e=>{setOrigin(e.target.value);setPage(0);}}><option value="all">Tất cả bộ đề</option><option value="imported">Bộ 286 · 242 câu</option><option value="udemy">Udemy · 195 câu</option></select></label><label>Tỷ lệ đúng<select aria-label="Lọc màu bản đồ" value={level} onChange={e=>setLevel(e.target.value)}><option value="all">Mọi mức độ</option><option value="ungraded">Tất cả câu chưa có lượt chấm</option>{levels.map(l=><option value={l.value} key={l.value}>{l.label}</option>)}</select></label></div>
+    <div className="progress-caption"><strong>{attempted}<span> / {stats.length} câu đã có lượt chấm</span></strong><span>{coverage}%</span></div>
     <div className="progress-track"><div style={{width:`${coverage}%`}}/></div>
     <p className="journey-description">Mỗi ô là một câu. Màu dựa trên số lần đúng / tổng lượt trả lời, không dự báo kết quả thi. Bấm số câu để mở nội dung.</p>
+    {stats.some(s=>s.attempts===0)&&<div className="ungraded-summary"><strong>{stats.filter(s=>s.attempts===0).length} câu chưa có lượt chấm</strong><p>{Object.entries(unscoredLabels).flatMap(([value,label])=>{const count=stats.filter(s=>s.mastery===value).length;return count?[`${count} ${label.toLowerCase()}`]:[];}).join(' · ')}.</p><p>Chỉ lượt được chấm mới tăng số lần đúng/sai. Đánh dấu “đã thuộc” và bỏ trống trong bài đã nộp không ghi thêm lượt trả lời.</p><button type="button" className="text-button" onClick={()=>setLevel('ungraded')}>Xem các câu chưa có lượt chấm</button></div>}
     <div className="mastery-grid" aria-label="Bản đồ tỷ lệ đúng từng câu">{visible.map(s=>{
-      const label=`Câu #${s.question.id} · ${sourceLabel(s.question)} · Đúng ${s.correct} · Sai ${s.wrong} · ${accuracyLabel(s.rate)} (${s.attempts} lượt)`;
+      const label=`Câu #${s.question.id} · ${sourceLabel(s.question)} · Đúng ${s.correct} · Sai ${s.wrong} · ${accuracyLabel(s.rate)} (${s.attempts} lượt)${s.rate===null?` · ${unscoredLabels[s.mastery as UnscoredReason]}`:''}`;
       return <button key={s.question.id} type="button" className={`mastery-cell ${s.mastery}`} data-question-id={s.question.id} title={label} aria-label={label} onClick={()=>open(s.question.id)}>{s.question.id}</button>;
     })}</div>
     {!visible.length&&<p className="journey-empty" role="status">Chưa có câu nào ở mức này.</p>}

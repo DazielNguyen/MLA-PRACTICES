@@ -31,7 +31,15 @@ Dùng Node.js 24 LTS. Mã nguồn yêu cầu Node.js từ 22.12 trở lên.
 | Ngân hàng câu hỏi | Tìm theo từ khóa hoặc số câu. Xem hình gốc, giải thích và tài liệu đối chiếu. |
 | Tiến trình | Xem lịch sử, kết quả và xuất hoặc nhập bản sao JSON. |
 
-Web chỉ phục vụ MLA-C01. Bộ lọc hỗ trợ câu sai gần nhất, câu đã lưu, câu chưa luyện và khoảng số câu.
+Web chỉ phục vụ MLA-C01. Bộ lọc hỗ trợ câu sai gần nhất, câu đã lưu, câu chưa có lượt chấm và khoảng số câu.
+
+Trong **Ưu tiên ôn**, chọn tỷ lệ đúng thấp, tỷ lệ sai cao, tổng số lần sai hoặc câu chưa từng đúng.
+Bạn có thể đặt ngưỡng phần trăm và số lượt trả lời tối thiểu. Thứ tự ưu tiên lấy câu yếu nhất trước.
+Bộ lọc dùng toàn bộ lịch sử trả lời và cũng có trong **Ảnh & ghép từ**.
+
+**Số câu hỏi** là số câu thực tế của phiên, giới hạn bởi bộ lọc hiện tại.
+Nếu đổi từ nhóm nhỏ sang nhóm lớn, số câu trở về mức bạn đã chọn. Chọn **Tất cả** để học toàn bộ nhóm.
+Đổi sang **Học nhanh** giữ nguyên nguồn đề và bộ lọc.
 
 ## Keywork Practice
 
@@ -86,7 +94,8 @@ Mọi lựa chọn dùng cùng cách highlight. Sau khi chấm, đáp án đúng
 
 Để chọn số câu và bộ lọc, vào **Luyện tập → Học nhanh** trước khi bắt đầu.
 
-Học nhanh mặc định dùng **Bộ 286 · 242 câu sau gộp**. Các câu có đáp án tham khảo vẫn được tính điểm.
+Nút học nhanh ở trang chủ dùng **Bộ 286 · 242 câu sau gộp**. Trong trang thiết lập, học nhanh dùng nguồn đề bạn chọn.
+Các câu có đáp án tham khảo vẫn được tính điểm.
 
 Bộ tự biên soạn không còn trên web. Tiến trình cũ vẫn được giữ trong bản sao JSON.
 
@@ -105,7 +114,13 @@ Tỷ lệ đúng bằng số lần đúng chia tổng lượt trả lời. Đây
 - Vàng: từ 50% đến 80%.
 - Cam: trên 0% và dưới 50%.
 - Đỏ: đã trả lời sai nhưng chưa từng đúng.
-- Xám: chưa có lượt trả lời.
+- Xám: chưa có lịch sử trả lời.
+- Xanh nhạt: có đáp án đã lưu nhưng chưa có lượt chấm.
+- Tím: đã đánh dấu thuộc flashcard nhưng chưa có lượt chấm.
+- Viền nét đứt: bỏ trống trong bài đã nộp và chưa có lượt chấm.
+
+Chọn **Tất cả câu chưa có lượt chấm** để xem chung bốn nhóm cuối.
+Câu bỏ trống không được điểm trong bài thi, nhưng không tạo lượt trả lời đúng/sai trong thống kê từng câu.
 
 Dấu **đã thuộc** không thay đổi tỷ lệ này. Bảng hiển thị cả số lần đúng và sai để đánh giá cỡ mẫu.
 Danh sách **Sai nhiều nhất** xếp theo số lần sai giảm dần.

@@ -38,16 +38,16 @@ export const questionRanges = [
   { value:'701-895', collection:'mla', label:'Udemy · 195 câu' },
   ...['701-765','766-830','831-895'].map((value,i)=>({value,collection:'mla',label:`Udemy · phần ${i+1} · 65 câu`})),
   ...['333-397','398-462','463-527','528-592','593-618'].map((value,i)=>({value,collection:'mla',label:`MLA-C01 · bộ ${i+1}`})),
-  { value:'1001-1352', collection:'mla', label:'MLA-C01 · 352 câu tự biên soạn' },
-  ...['1001-1096','1097-1184','1185-1264','1265-1352'].map((value,i)=>({value,collection:'mla',label:`Tự biên soạn · Domain ${i+1}`})),
 ];
+// These ranges remain valid in old backups but are never offered for new study.
+const retiredRanges = ['1-66','67-133','134-200','201-266','267-332','1001-1352','1001-1096','1097-1184','1185-1264','1265-1352'];
 export const collectionLabel = (collection: string) => collection === 'mla' ? 'MLA-C01 · Associate' : collection === 'mls' ? 'MLS · Specialty' : 'MLS + MLA-C01';
 export const sourceLabel = (q: Question) => `${q.origin === 'udemy' ? 'Udemy · MLA-C01' : q.collection === 'mla' ? 'MLA-C01' : 'MLS'} Q${String(q.sourceIds[0]).padStart(3,'0')}${q.origin === 'original' ? ' · Tự biên soạn' : ''}`;
 export const matchesOrigin = (q: Question, origin: string) => origin === 'all' || (q.origin || 'imported') === origin;
 export const emptyState = (): State => ({ version: 1, updatedAt: 0, bookmarks: [], known: [], progress: {}, active: null, history: [], flash: null });
 export const isCorrect = (q: Question, answer: string[] = []) => q.answer.length > 0 && answer.length === q.answer.length && q.answer.every(v => answer.includes(v));
 export const isQuickSession = (session: Session) => session.mode === 'practice' && session.settings.feedback === 'immediate' && session.settings.quick === true;
-export const studyQuestions = (bank: Question[]) => bank.filter(q => q.collection === 'mla' && q.duplicateOf === undefined);
+export const studyQuestions = (bank: Question[]) => bank.filter(q => q.collection === 'mla' && q.origin !== 'original' && q.duplicateOf === undefined);
 export function isStudySession(session: Session, bank: Question[]) {
   const ids = new Set(studyQuestions(bank).map(q=>q.id));
   return session.questionIds.length > 0 && session.questionIds.every(id=>ids.has(id));
@@ -85,8 +85,9 @@ export function normalizeFlashDeck(flash: State['flash'], bank: Question[]): Sta
   const current = flash.ids.slice(flash.index).find(id=>canonical.has(id));
   const index = current === undefined ? ids.length-1 : ids.indexOf(canonical.get(current)!);
   const sameIds=ids.length===flash.ids.length && ids.every((id,i)=>id===flash.ids[i]);
-  if (sameIds && flash.collection === 'mla') return flash;
-  return {...flash, ids, index, collection:'mla', ...(!sameIds && flash.loop ? {loop:undefined} : {})};
+  const origin = flash.origin === 'original' ? 'imported' : flash.origin;
+  if (sameIds && flash.collection === 'mla' && origin === flash.origin) return flash;
+  return {...flash, ids, index, collection:'mla', ...(origin !== flash.origin ? {origin} : {}), ...(!sameIds && flash.loop ? {loop:undefined} : {})};
 }
 export function toggleChoice(answer: string[], choice: string, required: number) {
   if (answer.includes(choice)) return answer.filter(c => c !== choice);
@@ -95,7 +96,7 @@ export function toggleChoice(answer: string[], choice: string, required: number)
 }
 export function eligibleQuestions(bank: Question[], settings: Settings, state: State, _mode: Session['mode'] = 'practice') {
   return bank.filter(q => {
-    if (q.collection !== 'mla' || q.duplicateOf !== undefined) return false;
+    if (q.collection !== 'mla' || q.origin === 'original' || q.duplicateOf !== undefined) return false;
     if (settings.collection && settings.collection !== 'all' && q.collection !== settings.collection) return false;
     if (q.status === 'review' && !settings.includeReview) return false;
     if (q.status === 'historical' && !settings.includeHistorical) return false;
@@ -173,7 +174,7 @@ export function validateState(input: unknown, bank: Question[]): State {
     if (!object(v) || typeof v.id !== 'string' || !v.id || !['practice', 'exam'].includes(String(v.mode)) || !ids(v.questionIds) || !v.questionIds.length || !Number.isInteger(v.index) || Number(v.index) < 0 || Number(v.index) >= v.questionIds.length || !object(v.answers) || !ids(v.revealed) || !ids(v.flagged) || !Number.isFinite(v.startedAt) || !object(v.settings)) return fail();
     const set = new Set(v.questionIds);
     if (![...v.revealed, ...v.flagged].every(id => set.has(id))) return fail();
-    if (!['immediate', 'end'].includes(String(v.settings.feedback)) || !['random', 'sequential'].includes(String(v.settings.order)) || !['all', 'wrong', 'bookmarked', 'unseen'].includes(String(v.settings.scope)) || !['all','1-66','67-133','134-200','201-266','267-332',...questionRanges.map(r=>r.value)].includes(String(v.settings.range)) || typeof v.settings.includeReview !== 'boolean' || typeof v.settings.includeHistorical !== 'boolean' || !Number.isInteger(v.settings.count) || v.settings.count !== v.questionIds.length || !Number.isFinite(v.settings.minutes)) return fail();
+    if (!['immediate', 'end'].includes(String(v.settings.feedback)) || !['random', 'sequential'].includes(String(v.settings.order)) || !['all', 'wrong', 'bookmarked', 'unseen'].includes(String(v.settings.scope)) || !['all',...retiredRanges,...questionRanges.map(r=>r.value)].includes(String(v.settings.range)) || typeof v.settings.includeReview !== 'boolean' || typeof v.settings.includeHistorical !== 'boolean' || !Number.isInteger(v.settings.count) || v.settings.count !== v.questionIds.length || !Number.isFinite(v.settings.minutes)) return fail();
     if (v.settings.collection !== undefined && !['all','mls','mla'].includes(String(v.settings.collection)) || v.settings.includeSource !== undefined && typeof v.settings.includeSource !== 'boolean') return fail();
     if (v.settings.quick !== undefined && typeof v.settings.quick !== 'boolean') return fail();
     for (const [id, values] of Object.entries(v.answers)) {

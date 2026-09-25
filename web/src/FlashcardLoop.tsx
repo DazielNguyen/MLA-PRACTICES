@@ -10,7 +10,7 @@ import type { FlashcardProps } from './Flashcards';
 type Deck = NonNullable<State['flash']>;
 const TRANSITION_MS=180;
 export default function FlashcardLoop({bank,state,update}:FlashcardProps) {
-  const [origin,setOrigin]=useState<NonNullable<Deck['origin']>>(state.flash?.origin || 'imported');
+  const [origin,setOrigin]=useState<NonNullable<Deck['origin']>>(state.flash?.origin==='original'?'imported':state.flash?.origin || 'imported');
   const [filter,setFilter]=useState<NonNullable<Deck['filter']>>(state.flash?.filter || 'new');
   const [includeReview,setIncludeReview]=useState(state.flash?.includeReview ?? true);
   const inputLockedUntil=useRef(0), heading=useRef<HTMLSpanElement>(null), previousQuestion=useRef<number | undefined>(undefined);
@@ -75,7 +75,7 @@ export default function FlashcardLoop({bank,state,update}:FlashcardProps) {
   return <div className="page flash-page flash-loop-page">
     <div className="page-heading"><div className="eyebrow">FLASHCARD · VÒNG HỌC 10 CÂU</div><h1>10 câu mỗi vòng. Nhớ đến đâu, tiến đến đó.</h1><p>Chọn sai: thử lại ngay. Chọn đúng: đưa thẻ ra khỏi vòng và thêm câu mới khi tiếp tục.</p></div>
     <div className="flash-controls">
-      <label className="origin-filter">Nguồn câu hỏi<select aria-label="Nguồn câu hỏi" value={origin} onChange={e=>{const value=e.target.value as typeof origin;setOrigin(value);rebuild(value);}}><option value="imported">Bộ 286 · 242 câu sau gộp</option><option value="udemy">Udemy · 195 câu</option><option value="original">Tự biên soạn · 352 câu</option><option value="all">Tất cả nguồn</option></select></label>
+      <label className="origin-filter">Nguồn câu hỏi<select aria-label="Nguồn câu hỏi" value={origin} onChange={e=>{const value=e.target.value as typeof origin;setOrigin(value);rebuild(value);}}><option value="imported">Bộ 286 · 242 câu sau gộp</option><option value="udemy">Udemy · 195 câu</option><option value="all">Tất cả nguồn</option></select></label>
       <div className="filter-tabs">{([['new','Chưa thuộc'],['all','Tất cả'],['known','Đã thuộc'],['bookmarked','Đã lưu']] as const).map(([value,label])=><button key={value} aria-pressed={filter===value} className={filter===value?'active':''} onClick={()=>{setFilter(value);rebuild(origin,value);}}>{label}</button>)}</div>
       <div>{bank.some(q=>q.status==='review') && <label className="check-label compact"><input type="checkbox" checked={includeReview} onChange={e=>{setIncludeReview(e.target.checked);rebuild(origin,filter,e.target.checked);}}/>Câu cần xác minh</label>}<button className="button secondary small" onClick={()=>rebuild(origin,filter,includeReview,true)}><Shuffle size={15}/>Trộn thẻ</button></div>
     </div>

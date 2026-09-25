@@ -56,8 +56,8 @@ test('multi-select retries, a short final window and completion survive reload',
 });
 
 test('loop fits mobile, supports reduced motion and keeps source and empty filters usable',async({page})=>{
-  await page.getByLabel('Nguồn câu hỏi',{exact:true}).selectOption('original');
-  await expect(page.locator('.question-origin')).toContainText('Q1001');
+  await page.getByLabel('Nguồn câu hỏi',{exact:true}).selectOption('udemy');
+  await expect(page.locator('.question-origin')).toContainText('Udemy · MLA-C01 Q001');
   await page.keyboard.press('4');await ready(page);
   await page.setViewportSize({width:390,height:844});
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
@@ -68,7 +68,7 @@ test('loop fits mobile, supports reduced motion and keeps source and empty filte
   await expect(page.getByRole('heading',{name:'Không còn thẻ trong nhóm này'})).toBeVisible();
   await page.getByRole('button',{name:'Tất cả',exact:true}).click();
   await expect(page.locator('.flash-loop-window li')).toHaveCount(10);
-  await page.reload();await expect(page.getByLabel('Nguồn câu hỏi',{exact:true})).toHaveValue('original');
+  await page.reload();await expect(page.getByLabel('Nguồn câu hỏi',{exact:true})).toHaveValue('udemy');
 });
 
 test('the assistant receives the loop choice and follows the new question without losing chat',async({page})=>{

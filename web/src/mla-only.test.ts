@@ -9,19 +9,19 @@ const archive:Question[]=JSON.parse(readFileSync(new URL('../../output/merged/ML
 const oldSession=(ids=[271]):Session=>({id:'old-session',mode:'practice',questionIds:ids,index:0,answers:{271:['A']},revealed:[271],flagged:[271],startedAt:1000,deadline:null,finishedAt:2000,finishReason:'manual',settings:{...defaultSettings,collection:'all',range:'all',count:ids.length}});
 
 test('the deployed bank, image assets and catalog contain only MLA questions',()=>{
-  assert.equal(bank.length,789);assert.ok(bank.every(q=>q.collection==='mla'&&q.id>332));
+  assert.equal(bank.length,437);assert.ok(bank.every(q=>q.collection==='mla'&&q.id>332));
   assert.equal(archive.length,332);assert.ok(archive.every(q=>q.collection==='mls'));
   assert.ok(readdirSync(new URL('../public/images/',import.meta.url)).every(file=>file.startsWith('mla-')));
   const catalog=JSON.parse(readFileSync(new URL('./data/catalog.json',import.meta.url),'utf8'));
-  assert.equal(catalog.total,789);assert.equal(catalog.records,789);assert.deepEqual(catalog.collections,{mla:789});
-  assert.deepEqual(catalog.statuses,{checked:562,source:227});
+  assert.equal(catalog.total,437);assert.equal(catalog.records,437);assert.deepEqual(catalog.collections,{mla:437});
+  assert.deepEqual(catalog.statuses,{checked:210,source:227});
 });
 test('every study entry point rejects retired questions even if given an old combined bank',()=>{
   const combined=[...archive,...bank];
-  assert.equal(studyQuestions(combined).length,789);
+  assert.equal(studyQuestions(combined).length,437);
   const exam=eligibleQuestions(combined,{...defaultSettings,collection:'all',includeReview:true,includeHistorical:true},emptyState(),'exam');
-  assert.equal(exam.length,789);assert.ok(exam.every(q=>q.collection==='mla'));
-  const session=createSession(combined,{...defaultSettings,count:789},'practice');
+  assert.equal(exam.length,437);assert.ok(exam.every(q=>q.collection==='mla'));
+  const session=createSession(combined,{...defaultSettings,count:437},'practice');
   assert.ok(session.questionIds.every(id=>id>332));
   assert.throws(()=>createSession(archive,{...defaultSettings,count:1},'practice'));
 });

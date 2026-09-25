@@ -1,11 +1,9 @@
 # Original MLA-C01 practice
 
-The website keeps the original practice pack alongside the imported ZIP and Udemy packs.
-Each original question displays **Tự biên soạn**. IDs 1001–1352 remain unchanged from the personal pack.
-
-Select **MLA-C01 · 352 câu tự biên soạn** in practice or exam setup to study the new questions.
-The four **Tự biên soạn · Domain** filters select individual domains.
-Flashcards and the question library have a **Nguồn câu hỏi** selector.
+The original pack is archived on this computer and is no longer available on the website.
+The website contains only the imported ZIP and Udemy packs.
+Existing original-pack progress remains in browser storage, Supabase and JSON backups.
+The application excludes retired questions and their sessions from the study screens.
 
 The original pack covers 44 topics. Related scenarios reinforce the same concepts; each question has one correct answer.
 These are original practice scenarios, not official AWS exam questions or copies of CertSafari questions.
@@ -14,7 +12,7 @@ The reference review date is September 22, 2026. Service availability can change
 
 ## Published data
 
-The canonical pack is `scripts/original-questions.json`. The importer appends it to the existing MLA bank without renumbering questions.
+The canonical pack is `scripts/original-questions.json`. The importer keeps it in the local archive and exports validation shapes for old progress.
 
 ```sh
 python3 scripts/import-questions.py

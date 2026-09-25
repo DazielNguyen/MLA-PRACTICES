@@ -59,7 +59,7 @@ def localize(bank):
 def export_vietnamese(bank, directory):
     directory.mkdir(parents=True, exist_ok=True)
     md = ['# MLA-C01 — Giải thích tiếng Việt', '', f'{len(bank)} câu. Giữ nguyên câu hỏi và lựa chọn tiếng Anh; giải thích và ghi chú bằng tiếng Việt.',
-          'Mọi câu đều được tính điểm theo khóa đáp án. Câu có giả định được ghi nhãn “Theo đáp án bộ đề”; bộ tự biên soạn được ghi nhãn riêng.', '']
+          'Mọi câu đều được tính điểm theo khóa đáp án. Câu có giả định được ghi nhãn “Theo đáp án bộ đề”.', '']
     cards = []
     for q in bank:
         answer = ('Đáp án theo bộ đề: ' if q['status'] in ('review', 'source') else 'Đáp án: ') + ' + '.join(q['answer'])

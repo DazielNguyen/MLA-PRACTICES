@@ -11,7 +11,7 @@ const review=bank.find(q=>q.conditionalAnswer)!;
 const settings={...defaultSettings,count:2,order:'sequential' as const};
 const make=():State=>({...emptyState(),active:createSession([single,multi],settings,'practice',1000)});
 test('merged bank retains unique IDs, provenance, choices, and image assets',()=>{
-  assert.equal(bank.length,789);assert.equal(new Set(bank.map(q=>q.id)).size,789);
+  assert.equal(bank.length,437);assert.equal(new Set(bank.map(q=>q.id)).size,437);
   assert.equal(bank.filter(q=>q.status==='review').length,0);
   assert.equal(bank.filter(q=>q.origin!=='udemy' && q.status==='source' && q.conditionalAnswer).length,32);
   for(const q of bank){assert.ok(q.text.length>30);assert.ok(Object.keys(q.choices).length>=4);assert.ok(q.sourceName);assert.ok(q.sourceIds.length);if(q.status!=='source')assert.ok(q.sources.length);for(const source of q.sources)assert.match(source.url,/^https:\/\//);assert.ok(q.answer.length);assert.equal(q.required,q.answer.length);assert.ok(q.answer.every(a=>Object.hasOwn(q.choices,a)));for(const im of q.images){assert.ok(existsSync(new URL(`../public${im.url}`,import.meta.url)));assert.ok(im.slot==='question'||Object.hasOwn(q.choices,im.slot));}}
@@ -30,8 +30,8 @@ test('single choice replaces; multi choice caps and can be deselected',()=>{
 test('practice and exam include conditional keys even with legacy source/review exclusions',()=>{
   for (const mode of ['practice','exam'] as const) {
     const pool=eligibleQuestions(bank,defaultSettings,emptyState(),mode);
-    assert.equal(pool.length,789);assert.equal(pool.filter(q=>q.origin!=='udemy'&&q.conditionalAnswer).length,32);
-    assert.equal(eligibleQuestions(bank,{...defaultSettings,includeReview:false,includeSource:false},emptyState(),mode).length,789);
+    assert.equal(pool.length,437);assert.equal(pool.filter(q=>q.origin!=='udemy'&&q.conditionalAnswer).length,32);
+    assert.equal(eligibleQuestions(bank,{...defaultSettings,includeReview:false,includeSource:false},emptyState(),mode).length,437);
   }
 });
 test('question filters combine scope, range and status',()=>{
@@ -98,7 +98,7 @@ test('invalid backups are rejected before replacing progress',()=>{
 
 test('collection and source status filters keep MLS and MLA separate',()=>{
   const mla=eligibleQuestions(bank,{...defaultSettings,collection:'mla'},emptyState(),'exam');
-  assert.equal(mla.length,789);assert.ok(mla.every(q=>q.collection==='mla'));
+  assert.equal(mla.length,437);assert.ok(mla.every(q=>q.collection==='mla'));
   assert.deepEqual(eligibleQuestions(bank,{...defaultSettings,collection:'mla',includeSource:false},emptyState(),'exam'),mla);
   assert.equal(eligibleQuestions(bank,{...defaultSettings,collection:'mls'},emptyState(),'exam').length,0);
   assert.ok(mla.some(q=>q.id===469));

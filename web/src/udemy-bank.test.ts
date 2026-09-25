@@ -11,10 +11,10 @@ const added=bank.filter(q=>q.origin==='udemy');
 const source=read('../../MLA-C01-195-cau-hoi.json').questions;
 const corrections=read('../scripts/udemy/corrections.json');
 
-test('Udemy keeps every source record, key and stable ID alongside both existing packs',()=>{
+test('Udemy keeps every source record, key and stable ID alongside the existing imported pack',()=>{
   assert.equal(added.length,195);
   assert.equal(bank.filter(q=>!q.origin).length,242);
-  assert.equal(bank.filter(q=>q.origin==='original').length,352);
+  assert.equal(bank.filter(q=>q.origin==='original').length,0);
   assert.equal(eligibleQuestions(bank,{...defaultSettings,range:'701-895'},emptyState(),'exam').length,195);
   assert.equal(bank.filter(q=>matchesOrigin(q,'imported')).length,242);
   assert.equal(bank.filter(q=>matchesOrigin(q,'udemy')).length,195);

@@ -15,8 +15,9 @@ npm run dev
 Mở **http://127.0.0.1:5173/**.
 
 - Flashcard, luyện có đáp án, luyện ẩn đáp án và thi có đồng hồ.
-- Các bộ MLA-C01 từ ZIP, Udemy và **Tự biên soạn** cùng dùng trên web. MLS chỉ giữ trong kho lưu trữ.
-- Lọc riêng bộ tự biên soạn khi luyện tập, thi thử, học flashcard hoặc xem ngân hàng câu hỏi.
+- Web có 437 câu MLA-C01 từ ZIP và Udemy. MLS và bộ tự biên soạn chỉ giữ trong kho lưu trữ.
+- Mục **Ảnh & ghép từ** để ôn riêng câu có ảnh, ghép tình huống và sắp xếp thứ tự.
+- Bảng màu tỷ lệ đúng từng câu, danh sách sai nhiều nhất và câu chưa từng trả lời đúng.
 - Hồ sơ theo tên, bài riêng cho từng tab, lịch sử chia sẻ chỉ đọc.
 - Lưu trên trình duyệt hoặc đồng bộ Supabase, không cần email/mật khẩu.
 - [Thông tin bộ tự biên soạn và xuất Quizlet](web/PERSONAL_STUDY.md).

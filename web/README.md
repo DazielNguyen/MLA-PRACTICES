@@ -88,11 +88,42 @@ Mọi lựa chọn dùng cùng cách highlight. Sau khi chấm, đáp án đúng
 
 Học nhanh mặc định dùng **Bộ 286 · 242 câu sau gộp**. Các câu có đáp án tham khảo vẫn được tính điểm.
 
-Bộ **352 câu tự biên soạn** là lựa chọn bổ sung riêng. Bạn có thể chọn bộ này trong mục **Nội dung**.
+Bộ tự biên soạn không còn trên web. Tiến trình cũ vẫn được giữ trong bản sao JSON.
 
 Chuyển câu có hiệu ứng ngắn. Ứng dụng tắt hiệu ứng khi thiết bị bật chế độ giảm chuyển động.
 
 Trong flashcard, dùng **Space** để lật thẻ khi con trỏ không nằm trên nút hoặc ô nhập.
+
+## Bản đồ tỷ lệ đúng
+
+Mở **Tổng quan** hoặc **Tiến trình của tôi** để xem **Hành trình của bạn**.
+Mỗi ô là một câu trong bộ đề đang phục vụ. Bấm ô để mở câu trong Ngân hàng câu hỏi.
+
+Tỷ lệ đúng bằng số lần đúng chia tổng lượt trả lời. Đây là thống kê đã học, không dự báo kết quả thi.
+
+- Xanh: trên 80%.
+- Vàng: từ 50% đến 80%.
+- Cam: trên 0% và dưới 50%.
+- Đỏ: đã trả lời sai nhưng chưa từng đúng.
+- Xám: chưa có lượt trả lời.
+
+Dấu **đã thuộc** không thay đổi tỷ lệ này. Bảng hiển thị cả số lần đúng và sai để đánh giá cỡ mẫu.
+Danh sách **Sai nhiều nhất** xếp theo số lần sai giảm dần.
+Danh sách **Chưa từng đúng** chỉ gồm câu đã sai và có 0 lần đúng.
+Bấm mã câu trong danh sách để mở nội dung. Thao tác xem không ghi thêm lượt trả lời.
+
+## Ôn riêng ảnh, ghép từ và sắp xếp
+
+Mở **Ảnh & ghép từ** từ thanh bên hoặc trang Tổng quan.
+Mục này gom 21 câu trong bộ 437 câu, gồm 16 câu có ảnh và 5 câu Udemy bằng chữ.
+Có 11 câu ghép và 10 câu sắp xếp. Nhóm có ảnh giao với hai nhóm này.
+
+Chọn dạng câu, nguồn đề và ưu tiên ôn. Chọn **Ôn 10 câu** hoặc **Ôn toàn bộ** để đặt độ dài phiên.
+Dùng **Học nhanh** để chấm ngay khi chọn, hoặc **Tự kiểm tra** để ẩn đáp án đến khi nộp.
+Các câu đã chuyển ảnh sang chữ vẫn nằm trong nhóm tương ứng.
+
+Bấm câu trong danh sách để xem ảnh và giải thích tiếng Việt. Với câu ghép, chọn phương án chứa toàn bộ tổ hợp đúng.
+Phiên học dùng mã câu và tiến trình chung với ngân hàng chính. Lọc câu không tạo bản sao hoặc xóa lịch sử.
 
 ## Người học, tiến trình và đồng hồ
 
@@ -140,21 +171,21 @@ Nếu xóa dữ liệu trình duyệt, dùng mã Supabase hoặc bản sao JSON 
 
 ## Nguồn câu hỏi trên web
 
-Ngân hàng giữ bộ MLA-C01 cũ, bộ Udemy bổ sung và bộ **Tự biên soạn**. Mỗi bộ có lựa chọn riêng.
+Ngân hàng có 437 câu: 242 câu từ bộ cũ và 195 câu Udemy. Mỗi bộ có lựa chọn riêng.
 
 Bộ Udemy giữ nguyên từng câu và tiến trình riêng. Nhãn trùng chỉ giúp đối chiếu với bộ cũ, không gộp câu.
 
 Nguồn Udemy là nhãn theo tệp người dùng cung cấp. Đây không phải xác nhận các câu từng xuất hiện trong kỳ thi AWS.
 
-Chọn bộ **MLA-C01 · 352 câu tự biên soạn** khi luyện tập hoặc thi thử. Flashcard và Ngân hàng câu hỏi có bộ lọc **Nguồn câu hỏi**.
+Flashcard và Ngân hàng câu hỏi có bộ lọc **Nguồn câu hỏi** cho bộ cũ và Udemy.
 
-Bộ tự biên soạn gồm các tình huống luyện tập thuộc 44 chủ đề. Các câu dựa trên tài liệu AWS, không lấy từ đề thi cũ. Xem [nguồn dữ liệu và xuất Quizlet](PERSONAL_STUDY.md).
+Bộ tự biên soạn chỉ giữ ở kho riêng trên máy. Bản web không đóng gói nội dung hoặc đáp án của bộ này.
 
 Bộ ZIP có nguồn từ tài liệu người dùng cung cấp. Chưa có bằng chứng xác nhận các câu đã xuất hiện trong kỳ thi AWS thật.
 
 | Trạng thái | Số câu | Cách sử dụng |
 | --- | ---: | --- |
-| Đã đối chiếu | 562 | Có đáp án và chấm điểm. Dùng trong học nhanh, luyện tập, flashcard và thi thử. |
+| Đã đối chiếu | 210 | Có đáp án và chấm điểm. Dùng trong học nhanh, luyện tập, flashcard và thi thử. |
 | Theo đáp án bộ đề | 227 | Có chấm điểm trong mọi chế độ. Giải thích nêu điều kiện và điểm mơ hồ của nguồn. |
 
 Mỗi câu có giải thích tiếng Việt cho từng lựa chọn và liên kết tài liệu. Câu hỏi và lựa chọn giữ tiếng Anh.
@@ -163,7 +194,7 @@ Phần giải thích gồm đáp án, ý chính và phân tích từng lựa ch�
 
 Câu có điểm chưa chắc chắn vẫn chấm theo khóa nguồn. Ghi chú giải thích điều kiện áp dụng.
 
-Mã câu được giữ nguyên để tiến trình MLA-C01 tiếp tục hoạt động. Với bộ ZIP, mã ngân hàng bằng 332 cộng số câu nguồn được giữ. Bộ tự biên soạn dùng mã 1001–1352. Bộ Udemy dùng mã 701–895.
+Mã câu được giữ nguyên để tiến trình MLA-C01 tiếp tục hoạt động. Với bộ ZIP, mã ngân hàng bằng 332 cộng số câu nguồn được giữ. Mã 1001–1352 chỉ dùng để đọc các bản ghi cũ. Bộ Udemy dùng mã 701–895.
 
 Ví dụ, MLA-C01 Q001 có mã #333. Các khoảng trống là câu đã gộp, không phải câu bị mất.
 
@@ -185,9 +216,9 @@ Một phiên trộn đang làm không thể tiếp tục trên bản web mới. 
 
 Flashcard cũ giữ các thẻ MLA-C01 và vị trí gần nhất. Nếu không còn thẻ phù hợp, ứng dụng tạo bộ MLA-C01 theo bộ lọc.
 
-File `src/data/retired-question-shapes.ts` chỉ giữ mã câu, ký tự lựa chọn, số đáp án cần chọn và cờ không chấm điểm.
+File `src/data/retired-question-shapes.ts` giữ cấu trúc tối thiểu của MLS và bộ tự biên soạn để kiểm tra bản sao cũ.
 
-Thông tin này dùng để kiểm tra bản sao cũ. File không chứa đề bài, nội dung lựa chọn hoặc khóa đáp án MLS.
+Thông tin này dùng để kiểm tra bản sao cũ. File không chứa đề bài, nội dung lựa chọn hoặc khóa đáp án của các bộ đã bỏ.
 
 Bộ MLS gốc được lưu tại `../output/merged/MLS_ARCHIVE.json`. Hình MLS nằm trong `../output/merged/images/`.
 

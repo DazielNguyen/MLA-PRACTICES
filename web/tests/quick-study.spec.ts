@@ -24,16 +24,16 @@ test('quick home entry enables immediate grading without a confirmation button',
   await expect(page.getByRole('button',{name:'Kiểm tra đáp án'})).toHaveCount(0);
 });
 
-test('quick setup defaults to imported questions while the original supplement remains selectable',async({page})=>{
+test('quick setup defaults to imported questions while Udemy remains selectable',async({page})=>{
   await page.goto('/#/practice');
   await page.getByRole('button',{name:/^Học nhanh Chọn là chấm/}).click();
   await expect(page.getByRole('combobox',{name:'Nội dung',exact:true})).toHaveValue('333-618');
   await expect(page.locator('.pool-count')).toContainText('242 câu');
-  await page.getByRole('combobox',{name:'Nội dung',exact:true}).selectOption('1001-1352');
-  await expect(page.locator('.pool-count')).toContainText('352 câu');
+  await page.getByRole('combobox',{name:'Nội dung',exact:true}).selectOption('701-895');
+  await expect(page.locator('.pool-count')).toContainText('195 câu');
   await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();
-  expect((await snapshot(page)).active!.questionIds.every(id=>id>=1001)).toBe(true);
-  await expect(page.locator('.question-origin')).toContainText('Tự biên soạn');
+  expect((await snapshot(page)).active!.questionIds.every(id=>id>=701&&id<=895)).toBe(true);
+  await expect(page.locator('.question-origin')).toContainText('Udemy');
 });
 
 test('quick highlights preserve wording and emphasize every choice without revealing the answer',async({page})=>{

@@ -2,58 +2,40 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import type { Question } from './domain.ts';
-import { createSession, defaultSettings, eligibleQuestions, emptyState, finishSession, isCorrect, sourceLabel, questionRanges, revealAnswer, validateState } from './domain.ts';
+import { createSession, defaultSettings, eligibleQuestions, emptyState, isStudySession, normalizeFlashDeck, questionRanges, studyQuestions, studyState, validateState } from './domain.ts';
 import { validateBackup } from './sync/records.ts';
-
-const personal: Question[] = JSON.parse(readFileSync(new URL('./data/questions.json', import.meta.url), 'utf8'));
-const base = personal.filter(q=>!q.origin);
-
-test('published original pack preserves imported records and exposes all four domain ranges', () => {
-  assert.deepEqual(personal.slice(0, base.length), base);
-  const added = personal.filter(q=>q.origin==='original');
-  assert.equal(added.length, 352);
-  assert.deepEqual(added.map(q=>q.id), Array.from({length:352}, (_,i)=>1001+i));
-  const whole = eligibleQuestions(personal, {...defaultSettings, range:'1001-1352'}, emptyState(), 'exam');
-  assert.equal(whole.length, 352);
-  const domainRanges = questionRanges.filter(r=>r.label.startsWith('Tự biên soạn · Domain'));
-  const groups = domainRanges.map(r=>eligibleQuestions(personal, {...defaultSettings,range:r.value},emptyState(),'exam'));
-  assert.deepEqual(groups.map(q=>q.length), [96,88,80,88]);
-  assert.deepEqual(groups.flat().map(q=>q.id), whole.map(q=>q.id));
+import { prepareChat } from '../server/chat.ts';
+const bank:Question[]=JSON.parse(readFileSync(new URL('./data/questions.json',import.meta.url),'utf8'));
+const archive:Question[]=JSON.parse(readFileSync(new URL('../../output/merged/ORIGINAL_ARCHIVE.json',import.meta.url),'utf8'));
+test('original questions are absent from every published pool and the assistant',()=>{
+  assert.equal(archive.length,352);assert.equal(bank.length,437);
+  assert.ok(bank.every(q=>q.origin!=='original'&&q.id<1001));
+  const combined=[...bank,...archive];
+  assert.deepEqual(studyQuestions(combined),bank);
+  assert.deepEqual(eligibleQuestions(combined,defaultSettings,emptyState()),bank);
+  assert.equal(eligibleQuestions(combined,{...defaultSettings,range:'1001-1352'},emptyState()).length,0);
+  assert.ok(questionRanges.every(r=>Number(r.value.split('-')[0])<1001));
+  assert.throws(()=>createSession(archive,{...defaultSettings,count:1},'practice'));
+  assert.throws(()=>prepareChat({messages:[{role:'user',content:'Explain'}],context:{kind:'question',id:1001}}));
 });
-
-test('original IDs preserve answers, flashcards and history through backup validation', () => {
-  const q = personal.find(q=>q.id===1001)!;
-  const settings = {...defaultSettings, count:1, range:'1001-1352', quick:true};
-  let state = emptyState();
-  state.active = createSession([q], settings, 'practice', 1000);
-  state.active.answers[q.id] = q.answer;
-  state = revealAnswer(state, q, 2000);
-  assert.equal(isCorrect(q, state.active!.answers[q.id]), true);
-  state = finishSession(state, personal, 3000);
-  state.bookmarks = [q.id]; state.known = [q.id]; state.flash = {ids:[q.id],index:0,collection:'mla',origin:'original'};
-  assert.equal(state.progress[q.id].attempts,1);
-  assert.equal(state.progress[q.id].correct,1);
-  assert.deepEqual(validateState(JSON.parse(JSON.stringify(state)),personal),state);
-  const session = state.history[0];
-  const backup = {version:2,name:'Local test',exportedAt:3000,rows:[{kind:'session',key:`session:${session.id}`,value:session,stamp:3000,writer:'local-test'}]};
-  assert.deepEqual(validateBackup(backup,personal),backup);
-  assert.throws(()=>validateBackup(backup,base));
-});
-
- test('all original records have a visible source label and complete explanations', () => {
-  const originals = personal.filter(q=>q.origin==='original');
-  assert.equal(originals.length,352);
-  const canonical = JSON.parse(readFileSync(new URL('../scripts/original-questions.json',import.meta.url),'utf8'));
-  const invariant = (q:Question) => Object.fromEntries(Object.entries(q).filter(([key])=>!['analysis','explanation','hint','notes','explanationLanguage'].includes(key)));
-  assert.deepEqual(originals.map(invariant),canonical.map(invariant));
-  const normalize=(text:string)=>text.toLowerCase().replace(/[^a-z0-9]/g,'');
-  assert.equal(new Set(personal.filter(q=>q.origin!=='udemy').map(q=>normalize(q.text))).size,personal.filter(q=>q.origin!=='udemy').length);
-  for(const q of originals){
-    assert.match(sourceLabel(q),/Tự biên soạn/);
-    assert.equal(q.sourceName,'MLA-C01 · Tự biên soạn');
-    assert.equal(q.required,1);
-    assert.deepEqual(Object.keys(q.analysis!.options).sort(),Object.keys(q.choices).sort());
-    assert.ok(q.sources.every(s=>new URL(s.url).hostname.endsWith('.amazon.com')));
+test('old original sessions, marks, attempts and flashcards remain valid in backups without content',()=>{
+  for(const range of ['1001-1352','1001-1096','1097-1184','1185-1264','1265-1352']){
+    const id=Number(range.split('-')[0]),q=archive.find(q=>q.id===id)!;
+    const old={...createSession([bank[0]],{...defaultSettings,count:1},'practice',1000),questionIds:[id],answers:{[id]:q.answer},revealed:[id],settings:{...defaultSettings,count:1,range}};
+    const state={...emptyState(),active:old,known:[id,333],bookmarks:[id],progress:{[id]:{attempts:2,correct:1,latest:true,lastSeen:2000}},flash:{ids:[id],index:0,origin:'original' as const}};
+    assert.deepEqual(validateState(state,bank),state);
+    const backup={version:2,name:'Retired learner',exportedAt:3000,rows:[{kind:'session',key:`session:${old.id}`,value:old,stamp:3000,writer:'old-tab'}]};
+    assert.deepEqual(validateBackup(backup,bank),backup);
+    assert.equal(isStudySession(old,bank),false);
+    const visible=studyState(state,bank);assert.equal(visible.active,null);assert.deepEqual(visible.known,[333]);assert.deepEqual(visible.progress,{});
+    assert.equal(state.progress[id].attempts,2);
   }
-  assert.throws(()=>validateState({...emptyState(),flash:{ids:[1001],index:0,origin:'invalid'}},personal));
+});
+test('mixed flash decks retain the next available question and reset stale answer feedback',()=>{
+  const flash={ids:[333,1001,701],index:1,origin:'all' as const,collection:'mla' as const,mode:'loop' as const,loop:{selected:['A'],result:false,done:false,lastAttempt:null}};
+  const normalized=normalizeFlashDeck(flash,bank)!;
+  assert.deepEqual(normalized.ids,[333,701]);assert.equal(normalized.index,1);assert.equal(normalized.loop,undefined);
+  assert.equal(normalizeFlashDeck({ids:[1001],index:0,origin:'original'},bank),null);
+  assert.equal(normalizeFlashDeck({...flash,origin:'original'},bank)!.origin,'imported');
+  assert.deepEqual(flash.ids,[333,1001,701]);
 });

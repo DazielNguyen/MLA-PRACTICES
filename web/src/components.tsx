@@ -10,7 +10,7 @@ export function Tag({ status }: { status: Question['status'] }) {
   return <span className={`tag ${status}`}>{status === 'checked' ? <><Check size={12} /> Đã đối chiếu</> : status === 'historical' ? 'Dịch vụ cũ' : status === 'source' ? 'Theo đáp án bộ đề' : 'Cần xác minh'}</span>;
 }
 export function OriginTag({ question }: { question: Question }) {
-  return question.origin === 'udemy' ? <span className="tag udemy">Udemy</span> : question.origin === 'original' ? <span className="tag original">Tự biên soạn</span> : null;
+  return question.origin === 'udemy' ? <span className="tag udemy">Udemy</span> : null;
 }
 export function QuestionAnswerStats({ question, state, live = false }: { question: Question; state: State; live?: boolean }) {
   const progress = questionProgress(question, state);

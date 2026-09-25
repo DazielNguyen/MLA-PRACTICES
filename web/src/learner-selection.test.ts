@@ -26,6 +26,6 @@ test('welcome summarizes unique MLA questions and unfinished work without changi
     { key: 'attempt:finished:334', kind: 'attempt', value: { sessionId: 'finished', questionId: 334, correct: true, lastSeen: 5 }, stamp: 6, writer: 'a' },
   ];
   const before = JSON.stringify(rows);
-  assert.deepEqual(learnerOverview(rows, bank), { studied: 2, known: 2, unfinished: 1, completed: 1, lastActivity: 6 });
+  assert.deepEqual(learnerOverview(rows, bank), { studied: 1, known: 1, unfinished: 1, completed: 1, lastActivity: 6 });
   assert.equal(JSON.stringify(rows), before);
 });

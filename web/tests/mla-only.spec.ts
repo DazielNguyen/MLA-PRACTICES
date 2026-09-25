@@ -37,7 +37,7 @@ test('old mixed backups remain intact while sessions, flashcards and statistics 
   expect((await snapshot(page)).flash).toMatchObject({ids:[333,334],index:1,collection:'mla'});
   await page.getByRole('button',{name:'Lật thẻ',exact:true}).click();await page.getByRole('button',{name:'Đã thuộc',exact:true}).last().click();
   expect((await snapshot(page)).known).toEqual([271,333,334]);
-  await page.goto('/');await page.getByRole('button',{name:'Học nhanh 10 câu'}).click();
+  await page.goto('/');await page.getByRole('button',{name:'Học nhanh 10 câu',exact:true}).click();
   expect((await snapshot(page)).active!.questionIds.every(id=>id>332)).toBe(true);
   await page.goto('/#/progress');
   const downloadPromise=page.waitForEvent('download');await page.getByRole('button',{name:'Xuất bản sao JSON',exact:true}).click();

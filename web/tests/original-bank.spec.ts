@@ -19,7 +19,7 @@ test('old original running session does not block a new retained session or disa
   const active={id:'retired-original',mode:'practice' as const,questionIds:[1001],index:0,answers:{1001:['A']},revealed:[1001],flagged:[],startedAt:1000,deadline:null,finishedAt:null,finishReason:null,settings:{...defaultSettings,count:1,range:'1001-1352'}};
   await page.goto('/');await page.evaluate(s=>localStorage.setItem('ml-practice:v1',JSON.stringify(s)),{...emptyState(),active});
   await onboard(page);await page.goto('/#/session');await expect(page.locator('.session-screen')).toHaveCount(0);
-  await page.goto('/');await page.getByRole('button',{name:'Học nhanh 10 câu'}).click();
+  await page.goto('/');await page.getByRole('button',{name:'Học nhanh 10 câu',exact:true}).click();
   expect((await snapshot(page)).active!.questionIds.every(id=>id<1001)).toBe(true);
   await page.goto('/#/progress');const downloaded=page.waitForEvent('download');await page.getByRole('button',{name:'Xuất bản sao JSON',exact:true}).click();
   const stream=await (await downloaded).createReadStream();const chunks=[];for await(const chunk of stream!)chunks.push(chunk);

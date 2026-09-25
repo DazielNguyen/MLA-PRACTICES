@@ -80,16 +80,16 @@ test('backup export and restore preserve state; invalid input cannot clobber it'
   await page.goto('/#/progress');const downloadPromise=page.waitForEvent('download');await page.getByRole('button',{name:'Xuất bản sao JSON',exact:true}).click();const download=await downloadPromise;expect(download.suggestedFilename()).toMatch(/ml-practice.*\.json/);
   const before=await snapshot(page);
   await page.getByLabel('Chọn file tiến trình').setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from('{"version":99}')});
-  await expect(page.getByRole('status')).toContainText('không hợp lệ');expect(await snapshot(page)).toEqual(before);
+  await expect(page.locator('.toast[role=status]')).toContainText('không hợp lệ');expect(await snapshot(page)).toEqual(before);
   before.known=[333,334];await page.getByLabel('Chọn file tiến trình').setInputFiles({name:'backup.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(before))});
   await expect(page.getByRole('dialog')).toBeVisible();const previousBackup=page.waitForEvent('download');await page.getByRole('button',{name:'Khôi phục bản sao',exact:true}).click();await previousBackup;
   await page.reload();expect((await snapshot(page)).known).toEqual([333,334]);
 });
 test('a new session requires confirmation and keeps the previous session in history',async({page})=>{
   await configure(page,'practice',2);await page.getByRole('button',{name:'Bắt đầu luyện tập',exact:true}).click();await page.locator('.choice-button').nth(1).click();
-  await page.getByRole('button',{name:'Về tổng quan'}).click();await page.getByRole('button',{name:'Học nhanh 10 câu'}).click();await expect(page.getByRole('dialog')).toBeVisible();
+  await page.getByRole('button',{name:'Về tổng quan'}).click();await page.getByRole('button',{name:'Học nhanh 10 câu',exact:true}).click();await expect(page.getByRole('dialog')).toBeVisible();
   await page.getByRole('button',{name:'Quay lại',exact:true}).click();expect((await snapshot(page)).active!.questionIds.length).toBe(2);
-  await page.getByRole('button',{name:'Học nhanh 10 câu'}).click();await page.getByRole('button',{name:'Lưu bài cũ và bắt đầu'}).click();const data=await snapshot(page);expect(data.active.questionIds).toHaveLength(10);expect(data.history).toHaveLength(1);expect(data.history[0].answers['333']).toEqual(['B']);
+  await page.getByRole('button',{name:'Học nhanh 10 câu',exact:true}).click();await page.getByRole('button',{name:'Lưu bài cũ và bắt đầu'}).click();const data=await snapshot(page);expect(data.active.questionIds).toHaveLength(10);expect(data.history).toHaveLength(1);expect(data.history[0].answers['333']).toEqual(['B']);
 });
 
 test('multiple choices enforce the required count and survive reload',async({page})=>{
@@ -105,6 +105,6 @@ test('multiple choices enforce the required count and survive reload',async({pag
 
 test('storage failures are visible and progress can still be exported',async({page})=>{
   await page.addInitScript(()=>{Storage.prototype.setItem=function(){throw new DOMException('Storage quota exceeded','QuotaExceededError');};});
-  await page.goto('/');await page.getByRole('button',{name:'Học nhanh 10 câu'}).click();await expect(page.getByRole('alert')).toContainText('Trình duyệt chưa lưu được tiến trình');
+  await page.goto('/');await page.getByRole('button',{name:'Học nhanh 10 câu',exact:true}).click();await expect(page.getByRole('alert')).toContainText('Trình duyệt chưa lưu được tiến trình');
   const download=page.waitForEvent('download');await page.getByRole('alert').getByRole('button',{name:'Xuất bản sao'}).click();expect((await download).suggestedFilename()).toMatch(/\.json$/);
 });

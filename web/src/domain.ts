@@ -94,13 +94,15 @@ export function toggleChoice(answer: string[], choice: string, required: number)
   if (required === 1) return [choice];
   return answer.length < required ? [...answer, choice].sort() : answer;
 }
-export function eligibleQuestions(bank: Question[], settings: Settings, state: State, _mode: Session['mode'] = 'practice') {
+export function eligibleQuestions(bank: Question[], settings: Settings, state: State, mode: Session['mode'] = 'practice') {
   return bank.filter(q => {
     if (q.collection !== 'mla' || q.origin === 'original' || q.duplicateOf !== undefined) return false;
     if (settings.collection && settings.collection !== 'all' && q.collection !== settings.collection) return false;
     if (q.status === 'review' && !settings.includeReview) return false;
     if (q.status === 'historical' && !settings.includeHistorical) return false;
     if (settings.range !== 'all') { const [min, max] = settings.range.split('-').map(Number); if (q.id < min || q.id > max) return false; }
+    // Exam pools remain available regardless of previous answers or known marks.
+    if (mode === 'exam') return true;
     if (settings.scope === 'wrong') return questionProgress(q,state)?.latest === false;
     if (settings.scope === 'bookmarked') return hasQuestionMark(q,state.bookmarks);
     if (settings.scope === 'unseen') return !questionProgress(q,state);
@@ -116,6 +118,7 @@ export function createSession(pool: Question[], settings: Settings, mode: Sessio
   pool = studyQuestions(pool);
   if (!Number.isInteger(settings.count) || settings.count < 1 || settings.count > pool.length) throw new Error('Số câu không hợp lệ.');
   if (mode === 'exam' && (!Number.isFinite(settings.minutes) || settings.minutes < 1 || settings.minutes > 600)) throw new Error('Thời gian thi từ 1 đến 600 phút.');
+  if (mode === 'exam') settings = {...settings, scope:'all', feedback:'end', quick:false};
   const ids = (settings.order === 'random' ? shuffle(pool) : pool).slice(0, settings.count).map(q => q.id);
   return { id: crypto.randomUUID(), mode, questionIds: ids, index: 0, answers: {}, revealed: [], flagged: [], startedAt: now, deadline: mode === 'exam' ? now + settings.minutes * 60000 : null, finishedAt: null, finishReason: null, settings: { ...settings } };
 }

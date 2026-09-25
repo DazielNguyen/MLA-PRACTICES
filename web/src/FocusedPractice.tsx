@@ -19,6 +19,7 @@ export default function FocusedPractice({bank,state,update,start}:{bank:Question
   const valid=Number.isInteger(size)&&size>0;
   return <div className="page focused-page">
     <div className="page-heading"><div className="eyebrow">ÔN RIÊNG DẠNG CÂU KHÓ</div><h1>Ảnh & ghép từ</h1><p>{all.length} câu trong bộ {bank.length} câu · Giữ nguyên nguồn, đáp án và lịch sử học.</p></div>
+    <a className="button secondary focused-exam-link" href="#/exam?set=focused">Thi thử bộ {all.length} câu này <ArrowRight size={17}/></a>
     <section className="panel focused-setup" aria-label="Thiết lập ôn ảnh và ghép từ">
       <div className="section-heading"><h2><Images size={20}/> Chọn phần cần ôn</h2></div>
       <div className="focused-formats" aria-label="Dạng câu hỏi">

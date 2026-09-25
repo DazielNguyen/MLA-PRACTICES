@@ -16,7 +16,7 @@ async function start(page:Page,count=3){
 test.beforeEach(async({page})=>{await onboard(page);});
 
 test('quick home entry enables immediate grading without a confirmation button',async({page})=>{
-  await page.getByRole('button',{name:'Học nhanh 10 câu'}).click();
+  await page.getByRole('button',{name:'Học nhanh 10 câu',exact:true}).click();
   expect((await snapshot(page)).active!.settings.quick).toBe(true);
   expect((await snapshot(page)).active!.settings.range).toBe('333-618');
   expect((await snapshot(page)).active!.questionIds.every(id=>id>=333&&id<=618)).toBe(true);

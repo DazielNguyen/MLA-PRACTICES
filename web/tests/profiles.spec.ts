@@ -47,7 +47,7 @@ test('saved learner summaries update when another tab answers a question',async(
   await onboard(page,'Duy');
   const tab=await context.newPage();await tab.goto('/');
   await expect(tab.locator('.saved-learners button')).toContainText('0 câu đã học');
-  await page.getByRole('button',{name:'Học nhanh 10 câu'}).click();await page.locator('.choice-button').first().click();
+  await page.getByRole('button',{name:'Học nhanh 10 câu',exact:true}).click();await page.locator('.choice-button').first().click();
   await expect(tab.locator('.saved-learners button')).toContainText('1 câu đã học');
   await expect(tab.locator('.saved-learners button')).toContainText('1 bài đang làm');
   await tab.close();
@@ -65,8 +65,8 @@ test('welcome, name selection and per-profile history work on mobile',async({pag
 });
 
 test('two tabs start independent sessions, then combine history without losing answers',async({page,context})=>{
-  await onboard(page,'Duy');await page.getByRole('button',{name:'Học nhanh 10 câu'}).click();await page.locator('.choice-button').first().click();const first=(await snapshot(page)).active!;
-  const tab=await context.newPage();await tab.goto('/');await tab.locator('.saved-learners button').filter({hasText:'Duy'}).click();await tab.getByRole('button',{name:'Học nhanh 10 câu'}).click();await tab.locator('.choice-button').last().click();const second=(await snapshot(tab)).active!;
+  await onboard(page,'Duy');await page.getByRole('button',{name:'Học nhanh 10 câu',exact:true}).click();await page.locator('.choice-button').first().click();const first=(await snapshot(page)).active!;
+  const tab=await context.newPage();await tab.goto('/');await tab.locator('.saved-learners button').filter({hasText:'Duy'}).click();await tab.getByRole('button',{name:'Học nhanh 10 câu',exact:true}).click();await tab.locator('.choice-button').last().click();const second=(await snapshot(tab)).active!;
   expect(first.id).not.toBe(second.id);expect((await snapshot(page)).active!.answers).toEqual(first.answers);expect((await snapshot(tab)).active!.answers).toEqual(second.answers);
   await page.getByRole('button',{name:'Kết thúc',exact:true}).click();
   await expect(tab.locator('.session-screen')).toBeVisible();await tab.getByRole('button',{name:'Kết thúc',exact:true}).click();
@@ -74,7 +74,7 @@ test('two tabs start independent sessions, then combine history without losing a
 });
 
 test('continuing an unfinished session moves control to the selected tab',async({page,context})=>{
-  await onboard(page,'Duy');await page.getByRole('button',{name:'Học nhanh 10 câu'}).click();await page.locator('.choice-button').first().click();
+  await onboard(page,'Duy');await page.getByRole('button',{name:'Học nhanh 10 câu',exact:true}).click();await page.locator('.choice-button').first().click();
   const active=(await snapshot(page)).active!;
   const tab=await context.newPage();await tab.goto('/');await tab.locator('.saved-learners button').filter({hasText:'Duy'}).click();await tab.getByRole('link',{name:'Tiến trình của tôi',exact:true}).click();await tab.getByRole('button',{name:'Tiếp tục',exact:true}).click();
   await expect(tab.locator('.session-screen')).toBeVisible();expect((await snapshot(tab)).active!.answers).toEqual(active.answers);
@@ -82,7 +82,7 @@ test('continuing an unfinished session moves control to the selected tab',async(
 });
 
 test('shared history is read only and toggling sharing controls its listing',async({page})=>{
-  await onboard(page,'Duy');await page.getByRole('button',{name:'Học nhanh 10 câu'}).click();await page.locator('.choice-button').first().click();await page.getByRole('button',{name:'Kết thúc',exact:true}).click();
+  await onboard(page,'Duy');await page.getByRole('button',{name:'Học nhanh 10 câu',exact:true}).click();await page.locator('.choice-button').first().click();await page.getByRole('button',{name:'Kết thúc',exact:true}).click();
   await page.getByRole('button',{name:'Đang học: Duy'}).click();await page.getByRole('checkbox',{name:'Chia sẻ lịch sử học tập'}).check();await page.getByRole('button',{name:'Đổi người học'}).click();
   await page.getByLabel('Tên người học',{exact:true}).fill('An');await page.getByRole('button',{name:'Tạo hồ sơ và bắt đầu'}).click();await page.getByRole('link',{name:'Học chung',exact:true}).click();
   await page.locator('.group-person').filter({hasText:'Duy'}).click();await expect(page.locator('.group-session')).toHaveCount(1);await page.screenshot({path:'test-results/group-desktop.png',fullPage:true});

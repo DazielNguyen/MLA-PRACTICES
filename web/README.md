@@ -125,6 +125,15 @@ Các câu đã chuyển ảnh sang chữ vẫn nằm trong nhóm tương ứng.
 Bấm câu trong danh sách để xem ảnh và giải thích tiếng Việt. Với câu ghép, chọn phương án chứa toàn bộ tổ hợp đúng.
 Phiên học dùng mã câu và tiến trình chung với ngân hàng chính. Lọc câu không tạo bản sao hoặc xóa lịch sử.
 
+## Thi lại bộ đề
+
+Trong **Thi thử**, chọn **Ảnh & ghép từ · 21 câu riêng** để thi nhóm này có đồng hồ.
+Các bộ đề luôn giữ cả câu đã làm đúng và câu đã thuộc. Lịch sử học không làm giảm số câu có thể thi.
+
+Sau khi nộp, bấm **Thi lại bộ này** để làm lại đúng nhóm câu vừa thi.
+Lượt mới đặt lại đáp án và đồng hồ, đồng thời giữ thời lượng đã chọn. Thứ tự theo thiết lập của lượt trước.
+Kết quả mỗi lượt được lưu riêng. Số lần đúng/sai tiếp tục cộng dồn vào cùng mã câu.
+
 ## Người học, tiến trình và đồng hồ
 
 Màn hình đầu hiển thị các hồ sơ đã lưu trên trình duyệt. Mỗi thẻ có tên, tiến trình và số bài đang làm.

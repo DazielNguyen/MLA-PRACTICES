@@ -157,3 +157,41 @@ test('reviewed corrections and disputed API behavior affect grading explicitly',
   assert.match(warm.analysis!.options.B,/warm|startup|initializ/i);
   assert.match(warm.analysis!.options.A,/cost|Spot/i);
 });
+
+test('exam banks remain complete after mastery while practice can still filter attempts',()=>{
+  const state=emptyState();
+  state.known=bank.map(q=>q.id);
+  state.progress=Object.fromEntries(bank.map(q=>[q.id,{attempts:5,correct:5,latest:true,lastSeen:1000}]));
+  for(const scope of ['all','wrong','bookmarked','unseen'] as const){
+    const settings={...defaultSettings,scope};
+    assert.equal(eligibleQuestions(bank,settings,state,'exam').length,437);
+    assert.equal(eligibleQuestions(bank,{...settings,range:'701-895'},state,'exam').length,195);
+  }
+  assert.equal(eligibleQuestions(bank,{...defaultSettings,scope:'unseen'},state,'practice').length,0);
+  assert.equal(eligibleQuestions(bank,{...defaultSettings,scope:'wrong'},state,'practice').length,0);
+});
+test('new exam attempts reset answers and deadlines without changing previous results',()=>{
+  let state=emptyState();
+  const settings={...defaultSettings,count:1,minutes:10,scope:'unseen' as const,quick:true};
+  state.active=createSession([single],settings,'exam',1000);
+  state.active.answers[single.id]=single.answer;
+  state=finishSession(state,bank,2000);
+  const history=structuredClone(state.history),previous=history[0];
+  const pool=eligibleQuestions([single],previous.settings,state,'exam');
+  state.active=createSession(pool,previous.settings,'exam',5000);
+  assert.notEqual(state.active.id,previous.id);
+  assert.equal(state.active.deadline,605000);
+  assert.deepEqual(state.active.answers,{});
+  assert.deepEqual(state.active.revealed,[]);
+  assert.deepEqual(state.active.flagged,[]);
+  assert.equal(state.active.settings.scope,'all');
+  assert.equal(state.active.settings.feedback,'end');
+  assert.equal(state.active.settings.quick,false);
+  assert.deepEqual(state.history,history);
+  state.active.answers[single.id]=single.answer;
+  state=finishSession(state,bank,6000);
+  assert.equal(state.history.length,2);
+  assert.equal(state.progress[single.id].attempts,2);
+  assert.equal(state.progress[single.id].correct,2);
+  assert.deepEqual(validateState(JSON.parse(JSON.stringify(state)),bank),state);
+});

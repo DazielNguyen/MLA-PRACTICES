@@ -11,8 +11,9 @@ export type Question = {
   images: { url: string; slot: string; alt: string }[];
 };
 export type Settings = {
-  count: number; minutes: number; order: 'random' | 'sequential';
-  scope: 'all' | 'wrong' | 'bookmarked' | 'unseen'; range: string;
+  count: number; minutes: number; order: 'random' | 'sequential' | 'priority';
+  scope: 'all' | 'wrong' | 'bookmarked' | 'unseen' | 'low-accuracy' | 'high-error' | 'most-wrong' | 'never-correct'; range: string;
+  accuracyMax?: number; errorMin?: number; minAttempts?: number;
   includeReview: boolean; includeHistorical: boolean; feedback: 'immediate' | 'end';
   collection?: 'all' | 'mls' | 'mla'; includeSource?: boolean; quick?: boolean;
 };
@@ -94,8 +95,38 @@ export function toggleChoice(answer: string[], choice: string, required: number)
   if (required === 1) return [choice];
   return answer.length < required ? [...answer, choice].sort() : answer;
 }
+export const isPerformanceScope = (scope: Settings['scope']) => ['low-accuracy','high-error','most-wrong','never-correct'].includes(scope);
+export function validPrioritySettings(settings: Pick<Settings,'accuracyMax'|'errorMin'|'minAttempts'>) {
+  return [settings.accuracyMax,settings.errorMin].every(value=>value===undefined||Number.isInteger(value)&&value>=0&&value<=100)
+    && (settings.minAttempts===undefined||Number.isInteger(settings.minAttempts)&&settings.minAttempts>=1&&settings.minAttempts<=10000);
+}
+export function matchesStudyScope(question: Question, settings: Settings, state: State) {
+  const p=questionProgress(question,state);
+  if (settings.scope==='wrong') return p?.latest===false;
+  if (settings.scope==='bookmarked') return hasQuestionMark(question,state.bookmarks);
+  if (settings.scope==='unseen') return !p?.attempts;
+  if (!isPerformanceScope(settings.scope)) return true;
+  if (!p?.attempts || p.attempts<(settings.minAttempts??1)) return false;
+  const wrong=p.attempts-p.correct;
+  // Compare integer counts so exact percentage boundaries do not depend on rounding.
+  if (settings.scope==='low-accuracy') return p.correct*100<=(settings.accuracyMax??80)*p.attempts;
+  if (settings.scope==='high-error') return wrong>0&&wrong*100>=(settings.errorMin??50)*p.attempts;
+  if (settings.scope==='never-correct') return p.correct===0;
+  return wrong>0;
+}
+export function prioritizeQuestions(pool: Question[], settings: Settings, state: State) {
+  const stats=new Map(pool.map(q=>[q.id,questionProgress(q,state)]));
+  return [...pool].sort((a,b)=>{
+    const ap=stats.get(a.id),bp=stats.get(b.id);
+    const ar=ap?.attempts?ap.correct/ap.attempts:Infinity,br=bp?.attempts?bp.correct/bp.attempts:Infinity;
+    const aw=ap?ap.attempts-ap.correct:0,bw=bp?bp.attempts-bp.correct:0;
+    if (settings.scope==='most-wrong') return bw-aw||(ar===br?0:ar<br?-1:1)||a.id-b.id;
+    return (ar===br?0:ar<br?-1:1)||bw-aw||a.id-b.id;
+  });
+}
 export function eligibleQuestions(bank: Question[], settings: Settings, state: State, mode: Session['mode'] = 'practice') {
-  return bank.filter(q => {
+  if (mode==='practice'&&!validPrioritySettings(settings)) return [];
+  const pool=bank.filter(q => {
     if (q.collection !== 'mla' || q.origin === 'original' || q.duplicateOf !== undefined) return false;
     if (settings.collection && settings.collection !== 'all' && q.collection !== settings.collection) return false;
     if (q.status === 'review' && !settings.includeReview) return false;
@@ -103,11 +134,9 @@ export function eligibleQuestions(bank: Question[], settings: Settings, state: S
     if (settings.range !== 'all') { const [min, max] = settings.range.split('-').map(Number); if (q.id < min || q.id > max) return false; }
     // Exam pools remain available regardless of previous answers or known marks.
     if (mode === 'exam') return true;
-    if (settings.scope === 'wrong') return questionProgress(q,state)?.latest === false;
-    if (settings.scope === 'bookmarked') return hasQuestionMark(q,state.bookmarks);
-    if (settings.scope === 'unseen') return !questionProgress(q,state);
-    return true;
+    return matchesStudyScope(q,settings,state);
   });
+  return mode==='practice'&&settings.order==='priority'?prioritizeQuestions(pool,settings,state):pool;
 }
 export function shuffle<T>(values: T[], random: () => number = Math.random): T[] {
   const result = [...values];
@@ -118,7 +147,7 @@ export function createSession(pool: Question[], settings: Settings, mode: Sessio
   pool = studyQuestions(pool);
   if (!Number.isInteger(settings.count) || settings.count < 1 || settings.count > pool.length) throw new Error('Số câu không hợp lệ.');
   if (mode === 'exam' && (!Number.isFinite(settings.minutes) || settings.minutes < 1 || settings.minutes > 600)) throw new Error('Thời gian thi từ 1 đến 600 phút.');
-  if (mode === 'exam') settings = {...settings, scope:'all', feedback:'end', quick:false};
+  if (mode === 'exam') settings = {...settings, scope:'all', feedback:'end', quick:false,order:settings.order==='priority'?'random':settings.order};
   const ids = (settings.order === 'random' ? shuffle(pool) : pool).slice(0, settings.count).map(q => q.id);
   return { id: crypto.randomUUID(), mode, questionIds: ids, index: 0, answers: {}, revealed: [], flagged: [], startedAt: now, deadline: mode === 'exam' ? now + settings.minutes * 60000 : null, finishedAt: null, finishReason: null, settings: { ...settings } };
 }
@@ -177,7 +206,8 @@ export function validateState(input: unknown, bank: Question[]): State {
     if (!object(v) || typeof v.id !== 'string' || !v.id || !['practice', 'exam'].includes(String(v.mode)) || !ids(v.questionIds) || !v.questionIds.length || !Number.isInteger(v.index) || Number(v.index) < 0 || Number(v.index) >= v.questionIds.length || !object(v.answers) || !ids(v.revealed) || !ids(v.flagged) || !Number.isFinite(v.startedAt) || !object(v.settings)) return fail();
     const set = new Set(v.questionIds);
     if (![...v.revealed, ...v.flagged].every(id => set.has(id))) return fail();
-    if (!['immediate', 'end'].includes(String(v.settings.feedback)) || !['random', 'sequential'].includes(String(v.settings.order)) || !['all', 'wrong', 'bookmarked', 'unseen'].includes(String(v.settings.scope)) || !['all',...retiredRanges,...questionRanges.map(r=>r.value)].includes(String(v.settings.range)) || typeof v.settings.includeReview !== 'boolean' || typeof v.settings.includeHistorical !== 'boolean' || !Number.isInteger(v.settings.count) || v.settings.count !== v.questionIds.length || !Number.isFinite(v.settings.minutes)) return fail();
+    if (!['immediate', 'end'].includes(String(v.settings.feedback)) || !['random', 'sequential', 'priority'].includes(String(v.settings.order)) || !['all', 'wrong', 'bookmarked', 'unseen', 'low-accuracy', 'high-error', 'most-wrong', 'never-correct'].includes(String(v.settings.scope)) || !['all',...retiredRanges,...questionRanges.map(r=>r.value)].includes(String(v.settings.range)) || typeof v.settings.includeReview !== 'boolean' || typeof v.settings.includeHistorical !== 'boolean' || !Number.isInteger(v.settings.count) || v.settings.count !== v.questionIds.length || !Number.isFinite(v.settings.minutes)) return fail();
+    if (!validPrioritySettings(v.settings)) return fail();
     if (v.settings.collection !== undefined && !['all','mls','mla'].includes(String(v.settings.collection)) || v.settings.includeSource !== undefined && typeof v.settings.includeSource !== 'boolean') return fail();
     if (v.settings.quick !== undefined && typeof v.settings.quick !== 'boolean') return fail();
     for (const [id, values] of Object.entries(v.answers)) {
